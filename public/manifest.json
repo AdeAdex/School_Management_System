@@ -1,0 +1,20 @@
+{
+  "name": "Adex School",
+  "short_name": "Adex",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "icons": [
+    {
+      "src": "vite.svg",
+      "sizes": "193x192",
+      "type": "image/png"
+    },
+    {
+      "src": "vite.svg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
