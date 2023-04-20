@@ -7,6 +7,9 @@ import HomePage from './HomePage'
 import Navbar from './components/Navbar'
 import ErrorPage from './ErrorPage'
 import NavigateTo from './components/NavigateTo'
+import FixedNav from './components/FixedNav'
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
 
 
@@ -32,6 +35,8 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='/signin' element={<SignIn/>}/>
+        <Route path='signup' element={<SignUp/>}/>
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
     </Router>

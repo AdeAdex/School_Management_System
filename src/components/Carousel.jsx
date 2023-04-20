@@ -6,7 +6,8 @@ const Carousel = () => {
       <div
         id="carouselExampleDark"
         className="carousel carousel-dark slide"
-        data-bs-ride="carousel"
+        data-bs-ride="carousel" style={{marginTop
+        : '-120px'}}
       >
         <div className="carousel-indicators">
           <button

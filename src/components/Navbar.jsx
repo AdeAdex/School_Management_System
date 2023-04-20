@@ -1,118 +1,58 @@
 import React from "react";
+import StickyNav from "./StickyNav";
+import MulticolorLine from "./MulticolorLine";
+import Nav from "./Nav";
+import FixedNav from "./FixedNav";
 
 const Navbar = () => {
+
+  // window.onscroll = function () {
+  //   scrollFunction();
+  // };
+
+  // function scrollFunction() {
+  //   if (
+  //     document.body.scrollTop > 20 ||
+  //     document.documentElement.scrollTop > 20
+  //   ) {
+  //     stickyNav.style.setProperty("top", "", "important");
+  //   } else if (
+  //     document.body.scrollTop < 20 ||
+  //     document.documentElement.scrollTop < 20
+  //   ) {
+  //     stickyNav.style.setProperty("display", "none", "important");
+  //   } else {
+  //   }
+  // }
+
+
   return (
     <>
-      <section style={{ width: "100%", height: "auto" }}>
-        <div
-          className="py-3 text-center text-white bg-secondary w-100 start-0"
-          style={{
-            height: "60px",
-            width: "100%",
-            position: "fixed",
-            top: "0",
-            left: "0",
-            right: "0",
-          }}
-        >
-          hey
+    <FixedNav/>
+      <section className="mx-auto"  id="stickyNav" style={{ width: "75%", height: "auto", position: 'sticky', top: '20px', zIndex: '5'}}>
+      <div
+        className="d-flex px-4 text-capitalize text-white"
+        style={{
+          height: "35px",
+          marginTop: "60px",
+          backgroundColor: "#495052",
+        }}
+      >
+      <div className="d-flex w-100">
+        <div className="d-flex gap-5 w-50 justify-content-start">
+        <StickyNav name="our event" icon="fas fa-user"></StickyNav>
+        <StickyNav name="news" icon="fas fa-edit"></StickyNav>
+        <StickyNav name="+2347033959586" icon="fas fa-phone"></StickyNav>
         </div>
-        <nav
-          className="navbar navbar-expand-lg bg-light px-2 px-lg-5 d-flex flex-column"
-          style={{ position: "relative" }}
-        >
-          <div
-            className="container-fluid"
-            style={{ top: "60px", position: "sticky" }}
-          >
-            <a className="navbar-brand" href="#">
-              Navbar
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-              style={{ height: "80px" }}
-            >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Courses
-                  </a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    pages
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link">blog</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link">event</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link">shop</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link">Contact US</a>
-                </li>
-              </ul>
-              <form className="d-flex" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-            </div>
-          </div>
-        </nav>
+        <div className="d-flex gap-5 w-50 justify-content-end">
+        <StickyNav name="languages" icon="fas fa-language" wh="/errorPage" ></StickyNav>
+        <StickyNav name="register" icon="fas fa-circle-plus"  wh="/SignUp"></StickyNav>
+        <StickyNav name="login" icon="fas fa-right-to-bracket" wh="/SignIn"></StickyNav>
+        </div>
+      </div>
+      </div>
+        <MulticolorLine/>
+        <Nav/>
       </section>
     </>
   );

@@ -4,6 +4,7 @@ import NavigateTo from "./components/NavigateTo";
 import OurActivities from "./components/OurActivities";
 
 const HomePage = () => {
+
   return (
     <>
       <Carousel />
@@ -30,33 +31,38 @@ const HomePage = () => {
         </section>
         <section className="my-5 py-5 d-flex flex-wrap w-100">
           <OurActivities
-            title="custom food"
-            icon="fas fa-star text-primary fs-1"
+            title="creative"
+            icon="fas fa-lightbulb text-primary fs-1"
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ut harum corrupti a sequi atque, voluptas, necessitatibus rem error ad quasi, reprehenderit vel explicabo dolorem at nihil nemo laboriosam?"
           />
           <OurActivities
             title="many sport"
-            icon="fas fa-star text-primary fs-1"
+            icon="fas fa-person-skiing fs-1"
+            style={{color: "#EC774B"}}
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ut harum corrupti a sequi atque, voluptas, necessitatibus rem error ad quasi, reprehenderit vel explicabo dolorem at nihil nemo laboriosam?"
           />
           <OurActivities
             title="bus free"
-            icon="fas fa-star text-primary fs-1"
+            icon="fas fa-bus fs-1"
+            style={{color: "#CDDC39"}}
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ut harum corrupti a sequi atque, voluptas, necessitatibus rem error ad quasi, reprehenderit vel explicabo dolorem at nihil nemo laboriosam?"
           />
           <OurActivities
             title="modern canteen"
-            icon="fas fa-star text-primary fs-1"
+            icon="fas fa-utensils fs-1"
+            style={{color: "#FFC107"}}
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ut harum corrupti a sequi atque, voluptas, necessitatibus rem error ad quasi, reprehenderit vel explicabo dolorem at nihil nemo laboriosam?"
           />
           <OurActivities
             title="friendly support"
-            icon="fas fa-star text-primary fs-1"
+            icon="fas fa-hand-holding-heart fs-1"
+            style={{color: "#3F51B5"}}
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ut harum corrupti a sequi atque, voluptas, necessitatibus rem error ad quasi, reprehenderit vel explicabo dolorem at nihil nemo laboriosam?"
           />
           <OurActivities
-            title="creative & excursion"
-            icon="fas fa-star text-primary fs-1"
+            title="excursion"
+            icon="fas fa-earth-europe fs-1"
+            style={{color: "#FF5722"}}
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ut harum corrupti a sequi atque, voluptas, necessitatibus rem error ad quasi, reprehenderit vel explicabo dolorem at nihil nemo laboriosam?"
           />
         </section>
