@@ -246,7 +246,6 @@ const SignUp = () => {
               Please provide a your age.
             </div>
           </div>
-          <input type="text" name="identity" id="idd" />
           <div className="col-md-6 position-relative d-flex flex-column mb-3">
             <input
               type="text"
