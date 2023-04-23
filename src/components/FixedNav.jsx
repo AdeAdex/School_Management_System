@@ -6,7 +6,7 @@ const FixedNav = () => {
       <div
         className="text-white w-100 d-flex px-5"
         style={{
-          height: "60px",
+          height: "50px",
           width: "100%",
           position: "fixed",
           top: "0",

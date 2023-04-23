@@ -1,0 +1,267 @@
+.inputbox {
+  position: relative;
+  margin-top: 10px;
+}
+
+.inputbox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.inputbox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: whitesmoke;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.inputbox input:valid ~ span,
+.inputbox input:focus ~ span {
+  color: white;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0, 75em;
+}
+
+.inputbox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(15, 12, 33);
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.inputbox input:valid ~ i,
+.inputbox input:focus ~ i {
+  height: 44px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+
+.main-container {
+  background-image: radial-gradient(
+      circle at 20% -25%,
+      darkorange 35%,
+      rgb(15, 12, 33) 35%
+    ),
+    url("pic/3.png");
+  background-color: rgb(10, 9, 22);
+  transition: background-color 1ms;
+  background-position: 68% 40%;
+  background-repeat: no-repeat;
+  background-blend-mode: exclusion;
+  width: 100%;
+  height: 100%;
+  border: 8px solid darkcyan;
+  border-radius: 40px;
+  padding: 0px 30px 15px 30px;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  height: 100%;
+}
+
+
+.file-btn {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  border: 5px solid white;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 60%;
+  object-fit: cover;
+}
+
+.file2 {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#photo {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+#myFrame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  object-fit: cover;
+  object-position: center;
+}
+
+#h1 {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+  text-transform: capitalize;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+@media screen and (min-width: 600px) and (max-width: 991px) {
+  .main-container {
+    width: 100%;
+    margin: auto;
+    background-image: radial-gradient(
+        circle at 30% -25%,
+        darkorange 40%,
+        rgb(15, 12, 33) 30%
+      ),
+      url("pic/img.png");
+  }
+  #imgContainer {
+    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-left: 65%;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .main {
+    width: 75%;
+  }
+  .main-container {
+    width: 40%;
+    background-position: 68% 60%;
+    margin: auto;
+    background-image: radial-gradient(
+        circle at 30% -35%,
+        darkorange 45%,
+        rgb(15, 12, 33) 30%
+      ),
+      url("pic/img.png");
+  }
+  #imgContainer {
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-left: 65%;
+  }
+
+  .second-container {
+    display: flex !important;
+  }
+}
+
+.check {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: white;
+}
+
+#checkBox {
+  margin: auto 5px auto 10px;
+  cursor: pointer;
+}
+
+#forgotPass {
+  color: white;
+  font-size: 14px;
+}
+
+#h3 {
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.fab {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  padding: 0px 0px;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.fa-facebook {
+  color: #3b5998;
+  background-color: white;
+}
+
+.fa-linkedin-in {
+  color: #0072b1;
+}
+
+.fa-google {
+  color: #bd3518;
+}
+.fa-twitter {
+  color: #33ccff;
+}
+
+.sign-up-container {
+  width: 100%;
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.sign-up-container a {
+  color: darkorange;
+  font-size: 20px;
+  font-family: cursive;
+  margin-left: 10px;
+}
+
+#signUpBtn {
+  width: 50%;
+  line-height: 30px;
+  border-radius: 30px;
+  background-color: darkorange;
+  color: whitesmoke;
+  font-weight: bolder;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}

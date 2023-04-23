@@ -29,12 +29,12 @@ const Navbar = () => {
   return (
     <>
     <FixedNav/>
-      <section className="mx-auto"  id="stickyNav" style={{ width: "75%", height: "auto", position: 'sticky', top: '20px', zIndex: '5'}}>
+      <section className="mx-auto"  id="stickyNav" style={{ width: "75%", height: "auto", position: 'sticky', top: '15px', zIndex: '5'}}>
       <div
         className="d-flex px-4 text-capitalize text-white"
         style={{
-          height: "35px",
-          marginTop: "60px",
+          height: "30px",
+          marginTop: "50px",
           backgroundColor: "#495052",
         }}
       >

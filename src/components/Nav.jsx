@@ -6,16 +6,16 @@ const Nav = () => {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg px-2 px-lg-5 d-flex flex-column"
+        className="navbar shadow navbar-expand-lg px-2 px-lg-5 d-flex flex-column"
         style={{
           position: "relative",
-          height: "80px",
-          backgroundColor: "#F9F9F9",
+          height: "70px",
+          backgroundColor: "white",
           borderBottomRightRadius: "5px",
           borderBottomLeftRadius: "5px",
         }}
       >
-        <div className="container-fluid" style={{ top: "60px" }}>
+        <div className="container-fluid h-100" style={{ top: "0px" }}>
           <a className="navbar-brand" href="#">
             Navbar
           </a>

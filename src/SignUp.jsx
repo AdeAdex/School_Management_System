@@ -3,7 +3,7 @@ import "./SignUp.css";
 
 const SignUp = () => {
   return (
-    <section className="d-flex w-100 px-5 py-3" style={{ height: "100vh" }}>
+    <section className="d-flex mx-auto py-3" style={{width: '75%', height: "100vh" }}>
       <div
         className="h-100 py-4 px-5 position-relative text-white"
         style={{
@@ -12,7 +12,7 @@ const SignUp = () => {
           borderRadius: "10px",
         }}
       >
-        <img src="pic/adexlogo.png" className="mt-5 mb-lg-5" alt="" />
+        <img src="pic/ade.png" className="mt-5 mb-lg-5" style={{width: '50px'}} alt="" />
         <h2 className="mt-lg-5" style={{ textTransform: "capitalize" }}>
           start your <br />
           journey with us.
@@ -153,7 +153,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div className="w-50 h-100" style={{ padding: "50px 100px" }}>
+      <div className="h-100 shadow bg-light" style={{ padding: "50px 100px", width: '70%'}}>
         <h2 className="fw-bold" style={{ textTransform: "capitalize" }}>
           sign up
         </h2>
@@ -166,8 +166,7 @@ const SignUp = () => {
               type="text"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="firstName"
               required
             />
@@ -183,8 +182,7 @@ const SignUp = () => {
               type="text"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="lastName"
               required
             />
@@ -200,8 +198,7 @@ const SignUp = () => {
               type="tel"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="phoneNumber"
               required
             />
@@ -217,8 +214,7 @@ const SignUp = () => {
               type="text"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="city"
               required
             />
@@ -234,8 +230,7 @@ const SignUp = () => {
               type="number"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="age"
               required
             />
@@ -251,8 +246,7 @@ const SignUp = () => {
               type="text"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="gender"
               required
             />
@@ -268,8 +262,7 @@ const SignUp = () => {
               type="email"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="email"
               required
             />
@@ -291,7 +284,7 @@ const SignUp = () => {
               aria-describedby="validationServer04Feedback"
               required
             >
-              <option selected disabled value="">
+              <option selected disabled>
                 Choose...
               </option>
               <option value="Oyo State">Oyo State</option>
@@ -306,8 +299,7 @@ const SignUp = () => {
               type="text"
               autocomplete="on"
               className="input form-control "
-              id="validationServer01"
-              value=""
+              id=""
               name="password"
               required
             />
@@ -323,7 +315,6 @@ const SignUp = () => {
               <input
                 className="form-check-input is-invalid"
                 type="checkbox"
-                value=""
                 id="invalidCheck3"
                 aria-describedby="invalidCheck3Feedback"
                 required
