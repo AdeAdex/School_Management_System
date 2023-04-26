@@ -3,6 +3,7 @@ import Carousel from "./components/Carousel";
 import NavigateTo from "./components/NavigateTo";
 import OurActivities from "./components/OurActivities";
 import './Homepage.scss'
+import './App.css'
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -36,7 +37,8 @@ const HomePage = () => {
             }}
           />
         </section>
-        <div className="activities "><h2>our activities</h2> <p>OUR BEST SERVICES FOR YOUR KIDS</p></div>
+        <div className="activities "><h2 className="">our activities</h2> <p>OUR BEST SERVICES FOR YOUR KIDS</p></div>
+        <h1 className="text-4xl font-bold underline text-red-500 text-center">Hello world!</h1>
         <section className="activities-container mb-5 pb-5 d-flex flex-wrap w-100">        
           <OurActivities
             title="creative"

@@ -1,19 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      body {
-        background-color: white;
-        position: relative;
-      }
-      .nav-link {
-        text-transform: uppercase;
-      }
-   
-      /* #stickyNav {
+body {
+  background-color: white;
+  position: relative;
+}
+.nav-link {
+  text-transform: uppercase;
+}
+
+/* #stickyNav {
         animation-name: slide;
         animation-duration: 2s;
         animation-timing-function: linear;
@@ -24,26 +27,29 @@
         100% {transform: translateY(-40px);}
       } */
 
-      @media screen and (max-width: 600px) {
-        #stickyNav {
-          width: 100% !important;
-          top: 50px !important;
-          position: fixed !important;
-        }
-        .navbar {
-          height: unset !important;
-        }
+@media screen and (max-width: 600px) {
+  #stickyNav {
+    width: 100% !important;
+    top: 50px !important;
+    position: fixed !important;
+  }
+  .navbar {
+    height: unset !important;
+  }
 
-        .sticky-container {
-          display: none !important;
-          /* margin-top: 0px !important; */
-        }
+  .sticky-container {
+    display: none !important;
+    /* margin-top: 0px !important; */
+  }
 
-        .carousel-inner {
-          height: 300px !important;
-        }
-        #carouselExampleDark {
-          margin-top: 140px !important;
-        }
-      }
-      
+  .carousel-inner {
+    height: 300px !important;
+  }
+  #carouselExampleDark {
+    margin-top: 140px !important;
+  }
+}
+
+/* .activities h2 {
+  background-color: rgb(220 38 38);
+} */
