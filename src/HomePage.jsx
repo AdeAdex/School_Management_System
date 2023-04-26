@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Carousel from "./components/Carousel";
 import NavigateTo from "./components/NavigateTo";
 import OurActivities from "./components/OurActivities";
+import './Homepage.scss'
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -35,7 +36,8 @@ const HomePage = () => {
             }}
           />
         </section>
-        <section className="my-5 py-5 d-flex flex-wrap w-100">
+        <div className="activities "><h2>our activities</h2> <p>OUR BEST SERVICES FOR YOUR KIDS</p></div>
+        <section className="activities-container mb-5 pb-5 d-flex flex-wrap w-100">        
           <OurActivities
             title="creative"
             icon="fas fa-lightbulb text-primary fs-1"
@@ -73,7 +75,7 @@ const HomePage = () => {
           />
         </section>
       </div>
-      <div
+      {/* <div
         className="position-fixed top-0 d-flex flex-column gap-2"
         style={{ marginTop: "40%", marginLeft: "2%" }}
       >
@@ -99,7 +101,7 @@ const HomePage = () => {
           <i className="fas fa-plus"></i>
         </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

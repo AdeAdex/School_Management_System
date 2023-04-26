@@ -8,7 +8,7 @@ const OurActivities = (props) => {
           <i className={props.icon} style={props.style}></i>
           <div>
             <h4 className='text-capitalize'>{props.title}</h4>
-            <div className="mt-3">{props.content}</div>
+            <div className="content mt-3">{props.content}</div>
           </div>
         </div>
     </>

@@ -1,0 +1,32 @@
+$font-color_1: #868585;
+$font-color_2: #A4A4B7;
+$margin: 50px 0px;
+$text-transform: uppercase;
+
+.activities {
+  margin: $margin;
+
+  h2 {
+    color: $font-color_1;
+    text-transform: $text-transform;
+  }
+  p {
+    color: $font-color_2;
+  }
+}
+
+.activities-container h4 {
+  // color: $font-color_1;
+}
+
+.activities-container .content {
+  color: $font-color_1;
+}
+
+.fixed-container {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+
+

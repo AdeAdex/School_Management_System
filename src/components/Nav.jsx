@@ -16,8 +16,8 @@ const Nav = () => {
         }}
       >
         <div className="container-fluid h-100" style={{ top: "0px" }}>
-          <a className="navbar-brand" href="#">
-            Navbar
+          <a className="navbar-brand w-auto h-100 position-relative d-flex" href="#">
+            <img src="pic/ade.png" alt="Logo" className="my-auto" style={{height: '50px'}}/>
           </a>
           <button
             className="navbar-toggler"

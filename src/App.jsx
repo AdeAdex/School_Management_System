@@ -10,6 +10,7 @@ import NavigateTo from './components/NavigateTo'
 import FixedNav from './components/FixedNav'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+// import './Homepage.scss'
 
 
 
