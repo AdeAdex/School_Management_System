@@ -9,11 +9,19 @@ $text-transform: uppercase;
 
 .center-div {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  flex-direction: column;
+  margin: auto;
   width: 75%;
+  color: white;
+  padding-bottom: 40px;
 }
 
+.center-div2 {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
 .margin-y-auto {
   display: flex;
   margin-top: auto;
@@ -36,6 +44,12 @@ $text-transform: uppercase;
   }
   p {
     color: $font-color_2;
+    text-transform: $text-transform;
+  }
+  hr {
+    height: 10px;
+    width: 70px;
+    border-radius: 35px;
   }
 }
 
@@ -107,3 +121,4 @@ $skyblue: #74CEE4;
 $orange: #edbf47;
 $red: #ec774b;
 $green: #6fc191;
+$gray: #495052
