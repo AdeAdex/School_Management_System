@@ -56,7 +56,11 @@ body {
     height: 100% !important;
   }
 
-  .our-events-container, .bg-image2-container {
+  .image3 {
+    height: auto !important;
+  }
+
+  .our-events-container, .bg-image2-container, .bg-image3-container {
     flex-direction: column;
   }
 }
