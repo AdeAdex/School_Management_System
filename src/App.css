@@ -51,6 +51,14 @@ body {
   .card {
     min-width: 100% !important;
   }
+
+  .image2 {
+    height: 100% !important;
+  }
+
+  .our-events-container, .bg-image2-container {
+    flex-direction: column;
+  }
 }
 
 /* .activities h2 {

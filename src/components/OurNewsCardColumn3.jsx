@@ -18,7 +18,6 @@ const OurNewsCardColumn3 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
-          styles={{ backgroundColor: "#C389CE" }}
         ></EventCard_Img>
         <EventsCard
           cardstyle={{ width: "100%" }}

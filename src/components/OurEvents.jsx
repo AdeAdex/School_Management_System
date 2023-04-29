@@ -12,7 +12,7 @@ const OurEvents = () => {
           hrStyle={{ backgroundColor: "red" }}
         ></ActivitiesHeader>
       </div>
-      <div className="d-flex flex-lg-row flex-sm-column col-12 gap-3">
+      <div className="our-events-container d-flex flex-lg-row flex-sm-column col-12 gap-3">
         <EventsCard
           cardstyle={{ width: "18rem" }}
           classes="our-events"
