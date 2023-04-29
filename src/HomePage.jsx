@@ -9,6 +9,7 @@ import NavigatoContainer from "./components/NavigatoContainer";
 import BgImageInner2 from "./components/BgImageInner2";
 import BgImageInner1 from "./components/BgImageInner1";
 import BgImageInner3 from "./components/BgImageInner3";
+import OurNews from "./components/OurNews";
 
 
 
@@ -68,7 +69,9 @@ const HomePage = () => {
        <div className="bg image3 d-flex">
         <BgImageInner3></BgImageInner3>
        </div>
-        <div className="center-div"></div>
+        <div className="center-div">
+          <OurNews></OurNews>
+        </div>
        <div className="bg image4"></div>
       </div>
       {/* <div

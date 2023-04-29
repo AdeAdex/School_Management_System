@@ -48,6 +48,9 @@ body {
   #carouselExampleDark {
     margin-top: 140px !important;
   }
+  .card {
+    min-width: 100% !important;
+  }
 }
 
 /* .activities h2 {

@@ -1,6 +1,7 @@
 import React from "react";
 
 const EventsCard = ({
+  cardstyle,
   styles,
   days,
   date,
@@ -10,28 +11,37 @@ const EventsCard = ({
   content,
   btn,
   img,
-  btnstyle
+  btnstyle,
+  classes,
+  h5Classes,
+  time_container,
+  country_container,
+  h5Style,
+  days_time,
+  days_time_icon,
+  classesStyle
 }) => {
   return (
-    <div class="card" style={{ width: "18rem", color: "white" }}>
+    <div class="card text-white" style={cardstyle}>
       <div
-        className="position-absolute bg-secondary px-4 d-flex justify-content-center rounded"
-        style={{ top: "20px", left: "20px", height: '60px', overflow: 'hidden' }}
+        className={classes}
+        style={ classesStyle }
       >
-        <div className="h-75 my-auto justify-content-center">
+        <div className={days_time}>
           <span className="d-flex justify-content-center">{days}</span>
           <p className="text-uppercase">{date}</p>
         </div>
+        <i className={days_time_icon}></i>
       </div>
       <img src={img} class="card-img-top" alt="..." style={{opacity: '1', filter: 'blur'}}/>
-      <h5 class="card-title bg-secondary py-3 text-uppercase px-3" style={{marginBottom: '0px'}}>{title}</h5>
+      <h5 className={h5Classes} style={h5Style}>{title}</h5>
       <div class="card-body" style={styles}>
         <p class="card-text">
-          <div className="d-flex gap-2 mb-2">
+          <div className={country_container}>
             <i class="fas fa-thumbtack  my-auto"></i>
             <span className="text-capitalize my-auto">{country}</span>
           </div>
-          <div className="d-flex gap-2">
+          <div className={time_container}>
             <i class="fas fa-clock my-auto"></i>
             <span className="text-uppercase my-auto">{time}</span>
           </div>
@@ -40,7 +50,7 @@ const EventsCard = ({
           />
           <div>{content}</div>
         </p>
-        <a href="#" class="btn text-uppercase text-white" style={btnstyle}>
+        <a href="#" class="btn text-white" style={btnstyle}>
           {btn}
         </a>
       </div>
