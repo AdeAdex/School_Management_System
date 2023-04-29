@@ -6,7 +6,7 @@ import EventsCard_Content from "./EventsCard_Content";
 const OurNewsCardColumn2 = () => {
   return (
     <>
-      <div className="d-flex flex-column gap-3" style={{ width: "33.3%" }}>
+      <div className="our-news-card-column-2 d-flex flex-column gap-3" style={{ width: "33.3%" }}>
         <EventsCard_Content
           cardstyle={{ width: "100%" }}
           h5Classes="card-title py-3 text-uppercase px-3"

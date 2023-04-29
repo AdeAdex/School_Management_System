@@ -60,8 +60,12 @@ body {
     height: auto !important;
   }
 
-  .our-events-container, .bg-image2-container, .bg-image3-container {
+  .our-events-container, .bg-image2-container, .bg-image3-container, .our-news-container {
     flex-direction: column;
+  }
+
+  .our-news-card-column-1, .our-news-card-column-2, .our-news-card-column-3 {
+    width: 100% !important;
   }
 }
 

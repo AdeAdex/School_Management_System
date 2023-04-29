@@ -15,7 +15,7 @@ const OurNews = () => {
           hrStyle={{ backgroundColor: "#74CEE4" }}
         ></ActivitiesHeader>
       </div>
-      <div className="d-flex flex-lg-row flex-sm-column col-12 gap-3" style={{width: '100%'}}>
+      <div className="our-news-container d-flex flex-lg-row flex-sm-column col-12 gap-3" style={{width: '100%'}}>
       <OurNewsCardColumn1></OurNewsCardColumn1>  
       <OurNewsCardColumn2></OurNewsCardColumn2>
       <OurNewsCardColumn3></OurNewsCardColumn3>

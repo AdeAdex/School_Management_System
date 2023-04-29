@@ -5,7 +5,7 @@ import EventCard_Img from "./EventCard_Img";
 const OurNewsCardColumn3 = () => {
   return (
     <>
-      <div className="d-flex flex-column gap-3" style={{ width: "33.3%" }}>
+      <div className="our-news-card-column-3 d-flex flex-column gap-3" style={{ width: "33.3%" }}>
         <EventCard_Img
           cardstyle={{ width: "100%" }}
           classes="our-news"
