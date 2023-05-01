@@ -1,9 +1,9 @@
 import React from "react";
 
-const CalculateTotalNumber = ({id, innerText, styles, text}) => {
+const CalculateTotalNumber = ({id, innerText, styles, text, classes}) => {
   return (
     <>
-      <div>
+      <div className={classes}>
         <div className="margin-y-auto" id={id} style={styles}>{text}</div>
         <div className="text-center text-uppercase fw-bold  py-1">
           {innerText}

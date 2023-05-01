@@ -6,35 +6,38 @@ import FixedNav from "./FixedNav";
 
 const Navbar = () => {
 
-  // window.onscroll = function () {
-  //   scrollFunction();
-  // };
+  window.onscroll = function () {
+    scrollFunction();
+  };
 
-  // function scrollFunction() {
-  //   if (
-  //     document.body.scrollTop > 20 ||
-  //     document.documentElement.scrollTop > 20
-  //   ) {
-  //     stickyNav.style.setProperty("top", "", "important");
-  //   } else if (
-  //     document.body.scrollTop < 20 ||
-  //     document.documentElement.scrollTop < 20
-  //   ) {
-  //     stickyNav.style.setProperty("display", "none", "important");
-  //   } else {
-  //   }
-  // }
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 100 ||
+      document.documentElement.scrollTop > 100
+    ) {
+      // stickyNav.style.setProperty("top", "25px", "important");
+      stickyNav.classList.add("scroll-animation");
+    } else if (
+      document.body.scrollTop < 100 ||
+      document.documentElement.scrollTop < 100
+    ) {
+      // stickyNav.style.setProperty("top", "50px", "important");
+      stickyNav.classList.remove("scroll-animation");
+    } else {
+    }
+  }
+  
 
 
   return (
     <>
     <FixedNav/>
-      <section className="mx-auto"  id="stickyNav" style={{ width: "75%", height: "auto", position: 'sticky', top: '15px', zIndex: '5'}}>
+      <section className="animation"  id="stickyNav" style={{ width: "75%", height: "auto", position: 'fixed',  zIndex: '5', left: '12.5%'}}>
       <div
         className="sticky-container d-flex px-4 text-capitalize text-white"
         style={{
           height: "30px",
-          marginTop: "50px",
+          // marginTop: "50px",
           backgroundColor: "#495052",
         }}
       >
