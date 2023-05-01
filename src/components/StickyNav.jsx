@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const StickyNav = (props) => {
   const navigate = useNavigate();
   const login = (myNumber) => {
-    navigate(props.wh);
+    navigate(props.to_where);
     // alert("Hello" + myNumber);
   };
 

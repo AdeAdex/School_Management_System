@@ -48,9 +48,9 @@ const Navbar = () => {
         <StickyNav name="+2347033959586" icon="fas fa-phone"></StickyNav>
         </div>
         <div className="d-flex gap-5 w-50 justify-content-end">
-        <StickyNav name="languages" icon="fas fa-language" wh="/errorPage" ></StickyNav>
-        <StickyNav name="register" icon="fas fa-circle-plus"  wh="/SignUp"></StickyNav>
-        <StickyNav name="login" icon="fas fa-right-to-bracket" wh="/SignIn"></StickyNav>
+        <StickyNav name="languages" icon="fas fa-language" to_where="/errorPage" ></StickyNav>
+        <StickyNav name="register" icon="fas fa-circle-plus"  to_where="/SignUp"></StickyNav>
+        <StickyNav name="login" icon="fas fa-right-to-bracket" to_where="/SignIn"></StickyNav>
         </div>
       </div>
       </div>

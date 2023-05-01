@@ -16,9 +16,9 @@ const Nav = () => {
         }}
       >
         <div className="container-fluid h-100" style={{ top: "0px" }}>
-          <a
+          <Link
             className="navbar-brand w-auto h-100 position-relative d-flex"
-            href="#"
+            to="/"
           >
             <img
               src="pic/ade.png"
@@ -26,7 +26,7 @@ const Nav = () => {
               className="my-auto"
               style={{ height: "50px" }}
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -48,12 +48,12 @@ const Nav = () => {
                 <StickyNav
                   name="register"
                   icon="fas fa-circle-plus"
-                  wh="/SignUp"
+                  to_where="/SignUp"
                 ></StickyNav>
                 <StickyNav
                   name="login"
                   icon="fas fa-right-to-bracket"
-                  wh="/SignIn"
+                  to_where="/SignIn"
                 ></StickyNav>
               </div>
               <li className="nav-item">
