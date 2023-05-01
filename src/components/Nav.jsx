@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import StickyNav from "./StickyNav";
 
 const Nav = () => {
   return (
@@ -10,14 +10,22 @@ const Nav = () => {
         style={{
           position: "relative",
           height: "70px",
-          backgroundColor: "white",
+          backgroundColor: "#F1F1F1",
           borderBottomRightRadius: "5px",
           borderBottomLeftRadius: "5px",
         }}
       >
         <div className="container-fluid h-100" style={{ top: "0px" }}>
-          <a className="navbar-brand w-auto h-100 position-relative d-flex" href="#">
-            <img src="pic/ade.png" alt="Logo" className="my-auto" style={{height: '50px'}}/>
+          <a
+            className="navbar-brand w-auto h-100 position-relative d-flex"
+            href="#"
+          >
+            <img
+              src="pic/ade.png"
+              alt="Logo"
+              className="my-auto"
+              style={{ height: "50px" }}
+            />
           </a>
           <button
             className="navbar-toggler"
@@ -36,8 +44,20 @@ const Nav = () => {
             style={{ height: "80px" }}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <div className="d-flex justify-content-between mt-3">
+                <StickyNav
+                  name="register"
+                  icon="fas fa-circle-plus"
+                  wh="/SignUp"
+                ></StickyNav>
+                <StickyNav
+                  name="login"
+                  icon="fas fa-right-to-bracket"
+                  wh="/SignIn"
+                ></StickyNav>
+              </div>
               <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page" >
+                <Link to="/" className="nav-link active" aria-current="page">
                   Home
                 </Link>
               </li>

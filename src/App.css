@@ -42,7 +42,6 @@ body {
     width: 100% !important;
     top: 75px !important;
     left: 0% !important;
-    /* position: fixed !important; */
   }
   .navbar {
     height: unset !important;
@@ -51,6 +50,10 @@ body {
   .sticky-container {
     display: none !important;
     /* margin-top: 0px !important; */
+  }
+
+  ul {
+    background-color: white;
   }
 
   .carousel-inner {
