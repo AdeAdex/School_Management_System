@@ -16,7 +16,7 @@ const Nav = () => {
         }}
       >
         <div className="container-fluid h-100" style={{ top: "0px", padding: '0px' }}>
-        <div className="logo-icon-div d-flex justify-content-between w-auto" style={{backgroundColor: '#F1F1F1'}}>
+        <div className="logo-icon-div d-flex justify-content-between w-auto" style={{backgroundColor: ''}}>
         <Link
             className="navbar-brand w-auto h-100 position-relative d-flex"
             to="/"
@@ -24,7 +24,7 @@ const Nav = () => {
             <img
               src="pic/ade.png"
               alt="Logo"
-              className="my-auto"
+              className="my-auto logo"
               style={{ height: "50px" }}
             />
           </Link>
@@ -46,7 +46,7 @@ const Nav = () => {
             style={{ height: "80px" }}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <div className="sign-in-lg d-flex justify-content-between mt-3 w-100 gap-3">
+              <div className="sign-in-lg d-flex justify-content-between my-3 w-100 gap-3">
                 <StickyNav
                   name="register"
                   icon="fas fa-circle-plus"

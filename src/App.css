@@ -41,7 +41,18 @@ body {
   display: none !important;
 }
 
-@media screen and (max-width: 600px) {
+/* .logo {
+  opacity: 0;
+}
+.navbar-brand {
+  width: 50px !important;
+  height: 50px !important;
+}
+.logo .navbar-brand:hover {
+  opacity: 1;
+} */
+
+@media screen and (max-width: 1200px) {
   #stickyNav {
     width: 100% !important;
     top: 75px !important;
@@ -57,6 +68,17 @@ body {
 
   .logo-icon-div {
     width: 100% !important;
+    background-color: #F1F1F1;
+  }
+
+  .navbar-toggler {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .navbar-toggler:focus {
+    border: none !important;
+    outline: none !important;
   }
 
   .sticky-container {
@@ -69,6 +91,10 @@ body {
   }
   .sign-in-lg {
     display: flex !important;
+  }
+
+  .nav-item:hover {
+    background-color: rgb(219, 212, 212);
   }
 
   .carousel-inner {
@@ -89,7 +115,7 @@ body {
     height: auto !important;
   }
 
-  .our-events-container, .bg-image2-container, .bg-image3-container, .our-news-container {
+  .our-events-container, .bg-image1-container, .bg-image2-container, .bg-image3-container, .our-news-container {
     flex-direction: column;
   }
 
