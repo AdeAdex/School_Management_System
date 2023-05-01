@@ -51,6 +51,14 @@ body {
     height: unset !important;
   }
 
+  .navbar-nav {
+    
+  }
+
+  .logo-icon-div {
+    width: 100% !important;
+  }
+
   .sticky-container {
     display: none !important;
     /* margin-top: 0px !important; */

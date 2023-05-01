@@ -10,13 +10,14 @@ const Nav = () => {
         style={{
           position: "relative",
           height: "70px",
-          backgroundColor: "#F1F1F1",
+          backgroundColor: "white",
           borderBottomRightRadius: "5px",
           borderBottomLeftRadius: "5px",
         }}
       >
-        <div className="container-fluid h-100" style={{ top: "0px" }}>
-          <Link
+        <div className="container-fluid h-100" style={{ top: "0px", padding: '0px' }}>
+        <div className="logo-icon-div d-flex justify-content-between w-auto" style={{backgroundColor: '#F1F1F1'}}>
+        <Link
             className="navbar-brand w-auto h-100 position-relative d-flex"
             to="/"
           >
@@ -38,22 +39,25 @@ const Nav = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+        </div>
           <div
             className="collapse navbar-collapse"
             id="navbarSupportedContent"
             style={{ height: "80px" }}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <div className="sign-in-lg d-flex justify-content-between mt-3">
+              <div className="sign-in-lg d-flex justify-content-between mt-3 w-100 gap-3">
                 <StickyNav
                   name="register"
                   icon="fas fa-circle-plus"
                   to_where="/SignUp"
+                  styles={{border: '1px solid gray', width: '50%', padding: '5px 0px', justifyContent: 'center'}}
                 ></StickyNav>
                 <StickyNav
                   name="login"
                   icon="fas fa-right-to-bracket"
                   to_where="/SignIn"
+                  styles={{border: '1px solid gray', width: '50%', padding: '5px 0px', justifyContent: 'center'}}
                 ></StickyNav>
               </div>
               <li className="nav-item">

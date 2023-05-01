@@ -10,7 +10,7 @@ const StickyNav = (props) => {
 
   return (
     <>
-      <div className="w-50 my-auto w-auto">
+      <div className="my-auto d-flex" style={props.styles}>
         <div className="d-flex gap-2">
           <i
             className={props.icon}

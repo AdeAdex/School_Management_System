@@ -43,14 +43,14 @@ const Navbar = () => {
       >
       <div className="d-flex w-100">
         <div className="d-flex gap-5 w-50 justify-content-start">
-        <StickyNav name="our event" icon="fas fa-user"></StickyNav>
-        <StickyNav name="news" icon="fas fa-edit"></StickyNav>
-        <StickyNav name="+2347033959586" icon="fas fa-phone"></StickyNav>
+        <StickyNav name="our event" icon="fas fa-user" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="news" icon="fas fa-edit" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="+2347033959586" icon="fas fa-phone" styles={{width: "auto"}}></StickyNav>
         </div>
         <div className="d-flex gap-5 w-50 justify-content-end">
-        <StickyNav name="languages" icon="fas fa-language" to_where="/errorPage" ></StickyNav>
-        <StickyNav name="register" icon="fas fa-circle-plus"  to_where="/SignUp"></StickyNav>
-        <StickyNav name="login" icon="fas fa-right-to-bracket" to_where="/SignIn"></StickyNav>
+        <StickyNav name="languages" icon="fas fa-language" to_where="/errorPage" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="register" icon="fas fa-circle-plus"  to_where="/SignUp" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="login" icon="fas fa-right-to-bracket" to_where="/SignIn" styles={{width: "auto"}}></StickyNav>
         </div>
       </div>
       </div>
