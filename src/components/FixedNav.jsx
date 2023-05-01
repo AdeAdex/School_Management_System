@@ -8,11 +8,11 @@ const FixedNav = () => {
         className="fixed-container text-white w-100 d-flex px-5"
         style={{
           height: "50px",
-          width: "100%",
+          width: "90%",
           position: "fixed",
           top: "0",
           left: "0",
-          right: "0",
+          // right: "0",
           zIndex: "6",
           backgroundColor: "#262626",
         }}

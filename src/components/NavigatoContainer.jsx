@@ -4,7 +4,7 @@ import NavigateTo from './NavigateTo'
 const NavigatoContainer = () => {
   return (
     <>
-        <section className="d-flex flex-column flex-lg-row justify-content-center w-100">
+        <section className="d-flex flex-column flex-lg-row justify-content-center w-100 mt-3">
             <NavigateTo
               txt="courses"
               style={{

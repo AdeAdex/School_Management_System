@@ -57,6 +57,7 @@ const Navbar = () => {
         <MulticolorLine/>
         <Nav/>
       </section>
+    
     </>
   );
 };

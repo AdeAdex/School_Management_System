@@ -3,16 +3,12 @@ import Carousel from "./components/Carousel";
 import OurActivities from "./components/OurActivities";
 import "./Homepage.scss";
 import "./App.css";
-import Countdown from "./components/Countdown";
 import OurEvents from "./components/OurEvents";
 import NavigatoContainer from "./components/NavigatoContainer";
 import BgImageInner2 from "./components/BgImageInner2";
 import BgImageInner1 from "./components/BgImageInner1";
 import BgImageInner3 from "./components/BgImageInner3";
 import OurNews from "./components/OurNews";
-
-
-
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -50,12 +46,12 @@ const HomePage = () => {
   return (
     <>
       <Carousel />
-      <div className="mx-auto" style={{ width: "100%", height: "100vh" }}>
+      <div className="mx-aut" style={{ width: "100%", height: "100vh"}}>
         <div className="center-div">
           <NavigatoContainer></NavigatoContainer>
         </div>
         <div className="bg image1 d-flex">
-        <BgImageInner1></BgImageInner1>
+          <BgImageInner1></BgImageInner1>
         </div>
         <div className="center-div">
           <OurActivities></OurActivities>
@@ -66,13 +62,13 @@ const HomePage = () => {
         <div className="center-div">
           <OurEvents></OurEvents>
         </div>
-       <div className="bg image3 d-flex">
-        <BgImageInner3></BgImageInner3>
-       </div>
+        <div className="bg image3 d-flex">
+          <BgImageInner3></BgImageInner3>
+        </div>
         <div className="center-div">
           <OurNews></OurNews>
         </div>
-       <div className="bg image4"></div>
+        <div className="bg image4"></div>
       </div>
       {/* <div
         className="position-fixed top-0 d-flex flex-column gap-2"
