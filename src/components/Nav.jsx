@@ -44,7 +44,7 @@ const Nav = () => {
             style={{ height: "80px" }}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <div className="d-flex justify-content-between mt-3">
+              <div className="sign-in-lg d-flex justify-content-between mt-3">
                 <StickyNav
                   name="register"
                   icon="fas fa-circle-plus"

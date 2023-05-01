@@ -37,6 +37,10 @@ body {
   text-transform: uppercase;
 }
 
+.sign-in-lg {
+  display: none !important;
+}
+
 @media screen and (max-width: 600px) {
   #stickyNav {
     width: 100% !important;
@@ -54,6 +58,9 @@ body {
 
   ul {
     background-color: white;
+  }
+  .sign-in-lg {
+    display: flex !important;
   }
 
   .carousel-inner {
