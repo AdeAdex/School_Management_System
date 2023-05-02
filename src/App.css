@@ -41,16 +41,11 @@ body {
   display: none !important;
 }
 
-/* .logo {
-  opacity: 0;
+@media screen and (min-width: 600px) {
+  .our-events-header  {
+    margin-top: 100px;
+  }
 }
-.navbar-brand {
-  width: 50px !important;
-  height: 50px !important;
-}
-.logo .navbar-brand:hover {
-  opacity: 1;
-} */
 
 @media screen and (max-width: 1200px) {
   #stickyNav {

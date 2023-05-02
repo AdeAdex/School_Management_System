@@ -10,6 +10,8 @@ import NavigateTo from './components/NavigateTo'
 import FixedNav from './components/FixedNav'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+import EventPage from './EventPage'
+import NewsPage from './NewsPage'
 // import './Homepage.scss'
 
 
@@ -38,6 +40,8 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='signup' element={<SignUp/>}/>
+        <Route path='/ourevent' element={<EventPage/>}/>
+        <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
     </Router>

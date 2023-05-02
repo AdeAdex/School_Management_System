@@ -5,7 +5,7 @@ const BgImageInner2 = ({}) => {
   return (
     <>
         <p className="bg-image2-main center-div" style={{ height: "60%" }}>
-            <div className="text-center">
+            <div className="text-center our-events-header">
               <span className="fs-3"> FIRST DAY AT SCHOOL !</span>
               <br />
               ARE YOU READY ?

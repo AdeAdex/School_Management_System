@@ -43,8 +43,8 @@ const Navbar = () => {
       >
       <div className="d-flex w-100">
         <div className="d-flex gap-5 w-50 justify-content-start">
-        <StickyNav name="our event" icon="fas fa-user" styles={{width: "auto"}}></StickyNav>
-        <StickyNav name="news" icon="fas fa-edit" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="our event" icon="fas fa-user" to_where="/ourevent" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="news" icon="fas fa-edit" to_where="/ournews" styles={{width: "auto"}}></StickyNav>
         <StickyNav name="+2347033959586" icon="fas fa-phone" styles={{width: "auto"}}></StickyNav>
         </div>
         <div className="d-flex gap-5 w-50 justify-content-end">
