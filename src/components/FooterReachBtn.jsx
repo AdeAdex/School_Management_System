@@ -1,6 +1,6 @@
 import React from "react";
 
-const FooterHero = () => {
+const FooterReachBtn = () => {
   return (
     <>
       <button class="bt" id="bt">
@@ -11,4 +11,4 @@ const FooterHero = () => {
   );
 };
 
-export default FooterHero;
+export default FooterReachBtn;

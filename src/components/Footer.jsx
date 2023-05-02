@@ -2,7 +2,9 @@ import React from "react";
 import FooterHeader from "./FooterHeader";
 import OurTagBtn from "./OurTagBtn";
 import FooterGallary from "./FooterGallary";
-import FooterHero from "./FooterHero";
+import FooterReachBtn from "./FooterReachBtn";
+
+
 
 const Footer = () => {
   return (
@@ -19,9 +21,9 @@ const Footer = () => {
               Repudiandae quam voluptatibus itaque aspernatur veniam officiis.
             </div>
             <div className="d-flex mt-3 gap-3">
-              <FooterHero></FooterHero>
-              <FooterHero></FooterHero>
-              <FooterHero></FooterHero>
+              <FooterReachBtn></FooterReachBtn>
+              <FooterReachBtn></FooterReachBtn>
+              <FooterReachBtn></FooterReachBtn>
             </div>
           </div>
           <div className="each-footer" style={{ width: "25%" }}>
