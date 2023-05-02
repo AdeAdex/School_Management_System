@@ -9,6 +9,7 @@ import BgImageInner2 from "./components/BgImageInner2";
 import BgImageInner1 from "./components/BgImageInner1";
 import BgImageInner3 from "./components/BgImageInner3";
 import OurNews from "./components/OurNews";
+import Footer from "./components/Footer";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -69,6 +70,7 @@ const HomePage = () => {
           <OurNews></OurNews>
         </div>
         <div className="bg image4"></div>
+        <Footer/>
       </div>
       {/* <div
         className="position-fixed top-0 d-flex flex-column gap-2"

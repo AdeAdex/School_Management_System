@@ -12,6 +12,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import EventPage from './EventPage'
 import NewsPage from './NewsPage'
+import Footer from './components/Footer'
 // import './Homepage.scss'
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
+      {/* <Footer/> */}
     </Router>
     
     </>
