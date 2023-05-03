@@ -8,8 +8,8 @@ const NewsPage = () => {
   return (
     <>
       <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
-        <div className="bg image3 news-image2 d-flex">
-          <BgImageInner3></BgImageInner3>
+        <div className="bg image3 news-image2 d-flex flex-column">
+          <BgImageInner3 bg3_styles={{height: '0px'}}></BgImageInner3>
         </div>
         <div className="center-div">
           <OurNews></OurNews>
