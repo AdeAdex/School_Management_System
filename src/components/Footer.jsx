@@ -21,7 +21,7 @@ const Footer = () => {
               Repudiandae quam voluptatibus itaque aspernatur veniam officiis.
             </div>
             <div className="d-flex mt-3 gap-3">
-              <FooterReachBtn></FooterReachBtn>
+              <FooterReachBtn classes="fas fa-"></FooterReachBtn>
               <FooterReachBtn></FooterReachBtn>
               <FooterReachBtn></FooterReachBtn>
             </div>

@@ -68,14 +68,15 @@ body {
   .navbar-toggler {
     border: 0 !important;
     outline: 0 !important;
+    box-shadow: none !important;
+    
   }
 
-  .navbar-toggler:focus,
+  .navbar-toggler:focus
   .navbar-toggler:active,
   .navbar-toggler:hover {
-    border: 0 !important;
+    box-shadow: none !important;
     outline: 0 !important;
-    box-shadow: 0 !important;
     outline-width: 0 !important;
   }
 

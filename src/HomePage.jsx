@@ -20,6 +20,10 @@ const HomePage = () => {
   }, [count]);
 
   var countDownDate = new Date("Jun 1, 2023 12:00:00").getTime();
+  const myDate = new Date();
+  const days = myDate.getHours()
+  console.log(myDate)
+  console.log(days)
   var x = setInterval(function () {
     var now = new Date().getTime();
     var distance = countDownDate - now;
