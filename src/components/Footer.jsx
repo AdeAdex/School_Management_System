@@ -56,8 +56,8 @@ const Footer = () => {
             <FooterHeader headerName="school gallary"></FooterHeader>
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3">
-                <FooterGallary img="pic/3.png" cover="Image 1"></FooterGallary>
-                <FooterGallary img="pic/2.png" cover="Image 2"></FooterGallary>
+                <FooterGallary img="pic/gallary1.jpeg" cover="Image 1"></FooterGallary>
+                <FooterGallary img="pic/gallary2.jpg" cover="Image 2"></FooterGallary>
                 <FooterGallary img="pic/3.png" cover="Image 3"></FooterGallary>
               </div>
               <div className="d-flex gap-3">
