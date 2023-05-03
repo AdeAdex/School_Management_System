@@ -58,7 +58,7 @@ const Footer = () => {
               <div className="d-flex gap-3">
                 <FooterGallary img="pic/gallary1.jpeg" cover="Image 1"></FooterGallary>
                 <FooterGallary img="pic/gallary2.jpg" cover="Image 2"></FooterGallary>
-                <FooterGallary img="pic/3.png" cover="Image 3"></FooterGallary>
+                <FooterGallary img="pic/gallary3.jpg" cover="Image 3"></FooterGallary>
               </div>
               <div className="d-flex gap-3">
                 <FooterGallary img="pic/5.png" cover="Image 4"></FooterGallary>
