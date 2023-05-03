@@ -4,6 +4,7 @@ import OurTagBtn from "./OurTagBtn";
 import FooterGallary from "./FooterGallary";
 import FooterReachBtn from "./FooterReachBtn";
 import Contact_Us_Form from "./Contact_Us_Form";
+import FooterHero from "./FooterHero";
 
 const Footer = () => {
   return (
@@ -78,7 +79,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mx-auto d-flex gap-4 w-75"></div>
+        <div className="mx-auto d-flex gap-4 w-100 mt-5">
+                <FooterHero></FooterHero>
+        </div>
       </div>
     </>
   );
