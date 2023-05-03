@@ -3,8 +3,7 @@ import FooterHeader from "./FooterHeader";
 import OurTagBtn from "./OurTagBtn";
 import FooterGallary from "./FooterGallary";
 import FooterReachBtn from "./FooterReachBtn";
-
-
+import Contact_Us_Form from "./Contact_Us_Form";
 
 const Footer = () => {
   return (
@@ -14,16 +13,26 @@ const Footer = () => {
         style={{ backgroundColor: "#495052", padding: "50px 0px" }}
       >
         <div className="top-footer mx-auto d-flex gap-4 w-75">
-          <div className="each-footer" style={{ width: "25%" }}>
+          <div className="each-footer text-white" style={{ width: "25%" }}>
             <FooterHeader headerName="our primary school"></FooterHeader>
             <div>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Repudiandae quam voluptatibus itaque aspernatur veniam officiis.
             </div>
             <div className="d-flex mt-3 gap-3">
-              <FooterReachBtn classes="fas fa-"></FooterReachBtn>
-              <FooterReachBtn></FooterReachBtn>
-              <FooterReachBtn></FooterReachBtn>
+              <FooterReachBtn
+                btn_classes="bt orange"
+                classes="fas fa-envelope text-white"
+                icon="msg"
+              ></FooterReachBtn>
+              <FooterReachBtn
+                btn_classes="bt yellow"
+                classes="fas fa-home "
+              ></FooterReachBtn>
+              <FooterReachBtn
+                btn_classes="bt pink"
+                classes="fas fa-phone"
+              ></FooterReachBtn>
             </div>
           </div>
           <div className="each-footer" style={{ width: "25%" }}>
@@ -65,6 +74,7 @@ const Footer = () => {
           </div>
           <div className="each-footer" style={{ width: "25%" }}>
             <FooterHeader headerName="contact us"></FooterHeader>
+            <Contact_Us_Form></Contact_Us_Form>
           </div>
         </div>
 

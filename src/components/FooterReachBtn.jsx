@@ -1,10 +1,10 @@
 import React from "react";
 
-const FooterReachBtn = ({classes}) => {
+const FooterReachBtn = ({btn_classes, classes, icon}) => {
   return (
     <>
-      <button class="bt" id="bt">
-        <span class="msg" id="msg"></span>
+      <button className={btn_classes} id="bt">
+        <span className={icon} id=""></span>
         <i className={classes}></i>
       </button>
     </>
