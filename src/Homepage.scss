@@ -234,9 +234,7 @@ html {
   border-radius: 10px;
   width: 80px;
   height: 80px;
-  background-color: whitesmoke;
-  -webkit-box-shadow: 1px 1px 12px #000;
-  box-shadow: 1px 1px 12px #000;
+  background-color: rgb(143, 139, 139);
   -webkit-transform: preserve-3d;
   -ms-transform: preserve-3d;
   transform: preserve-3d;
@@ -252,6 +250,7 @@ html {
   -ms-flex-pack: center;
   justify-content: center;
   color: #000;
+  cursor: pointer;
 }
 
 .cover {
@@ -289,9 +288,9 @@ html {
 .book:hover .cover {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-transform: rotatey(-100deg);
-  -ms-transform: rotatey(-100deg);
-  transform: rotatey(-100deg);
+  -webkit-transform: rotatey(-95deg);
+  -ms-transform: rotatey(-95deg);
+  transform: rotatey(-95deg);
 }
 
 .book img {
@@ -305,10 +304,9 @@ html {
   font-size: 18px;
   color: white;
   text-align: center;
-  box-shadow: #cacaca 1px 1px 5px 1px;
+  box-shadow: #161515 3px 2px 1px 0px;
   border-radius: 5px;
   height: 40px;
-  // line-height: 60px;
   width: 35px;
   transition: all .5s ease;
   position: relative;
