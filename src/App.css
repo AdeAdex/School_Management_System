@@ -119,14 +119,16 @@ body {
   .bg-image2-container,
   .bg-image3-container,
   .our-news-container,
-  .top-footer {
+  .top-footer,
+  .teachers_type {
     flex-direction: column;
   }
 
   .our-news-card-column-1,
   .our-news-card-column-2,
   .our-news-card-column-3,
-  .each-footer {
+  .each-footer,
+  .each-teachers-type {
     width: 100% !important;
   }
 }
@@ -143,4 +145,9 @@ body {
   opacity: 1;
   transform: translateY(-30px);
   top: 50px;
+}
+
+ .each-teachers-type:hover{ 
+  box-shadow: none !important;
+  background-color: red !important;
 }
