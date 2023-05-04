@@ -7,6 +7,7 @@ const OurEvents = () => {
     <>
       <div>
         <ActivitiesHeader
+          classes="activities activities-color"
           name="our events"
           content="dont miss our events"
           hrStyle={{ backgroundColor: "red" }}
@@ -18,7 +19,7 @@ const OurEvents = () => {
           classes="our-events"
           img="pic/bg-image-3.jpg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: '0px' }}
+          h5Style={{ marginBottom: "0px" }}
           time_container="time-container"
           country_container="country-container mb-1"
           days_time="days-time"
@@ -31,14 +32,14 @@ const OurEvents = () => {
           time="9:00am to 4:00pm"
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
-          btnstyle={{ backgroundColor: "#6AB78A", textTransform: 'uppercase' }}
+          btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
         ></EventsCard>
         <EventsCard
           cardstyle={{ width: "18rem" }}
           classes="our-events"
           img="pic/bg-image-3.jpg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: '0px' }}
+          h5Style={{ marginBottom: "0px" }}
           time_container="time-container"
           country_container="country-container mb-1"
           days_time="days-time"
@@ -51,14 +52,14 @@ const OurEvents = () => {
           time="9:00am to 4:00pm"
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
-          btnstyle={{ backgroundColor: "#6FC4D9", textTransform: 'uppercase' }}
+          btnstyle={{ backgroundColor: "#6FC4D9", textTransform: "uppercase" }}
         ></EventsCard>
         <EventsCard
           cardstyle={{ width: "18rem" }}
           classes="our-events"
           img="pic/bg-image-5.jpeg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: '0px' }}
+          h5Style={{ marginBottom: "0px" }}
           time_container="time-container"
           country_container="country-container mb-1"
           days_time="days-time"
@@ -71,14 +72,14 @@ const OurEvents = () => {
           time="9:00am to 4:00pm"
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
-          btnstyle={{ backgroundColor: "#E0B84E", textTransform: 'uppercase' }}
+          btnstyle={{ backgroundColor: "#E0B84E", textTransform: "uppercase" }}
         ></EventsCard>
         <EventsCard
           cardstyle={{ width: "18rem" }}
           classes="our-events"
           img="pic/bg-image-4.jpg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: '0px' }}
+          h5Style={{ marginBottom: "0px" }}
           time_container="time-container"
           country_container="country-container mb-1"
           days_time="days-time"
@@ -91,7 +92,7 @@ const OurEvents = () => {
           time="9:00am to 4:00pm"
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
-          btnstyle={{ backgroundColor: "#DF764E", textTransform: 'uppercase' }}
+          btnstyle={{ backgroundColor: "#DF764E", textTransform: "uppercase" }}
         ></EventsCard>
       </div>
     </>

@@ -90,9 +90,7 @@ $text-transform: uppercase;
   gap: 0px;
 }
 
-.activities {
-  margin: $margin;
-
+.activities-color {
   h2 {
     color: $font-color_1;
     text-transform: $text-transform;
@@ -101,11 +99,32 @@ $text-transform: uppercase;
     color: $font-color_2;
     text-transform: $text-transform;
   }
-  hr {
-    height: 10px;
+}
+
+
+.activities-white-color {
+  h2 {
+    color: white;
+    text-transform: $text-transform;
+  }
+  p {
+    color: white;
+    text-transform: $text-transform;
+  }
+}
+
+.activities {
+  margin: $margin;
+
+  div {
+    height: 5px;
     width: 70px;
     border-radius: 35px;
   }
+}
+
+.white-text {
+  color: white;
 }
 
 .activities-container h4 {

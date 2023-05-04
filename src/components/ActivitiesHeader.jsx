@@ -1,12 +1,12 @@
 import React from "react";
 
-const ActivitiesHeader = ({ name, content, hrStyle }) => {
+const ActivitiesHeader = ({ name, content, hrStyle, classes}) => {
   return (
     <>
-      <div className="activities">
+      <div className={classes}>
         <h2 className="">{name}</h2>
         <p>{content}</p>
-        <hr style={hrStyle}/>
+        <div style={hrStyle}></div>
       </div>
     </>
   );

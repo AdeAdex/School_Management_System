@@ -13,6 +13,7 @@ import SignUp from './SignUp'
 import EventPage from './EventPage'
 import NewsPage from './NewsPage'
 import Footer from './components/Footer'
+import TeachersPage from './TeachersPage'
 // import './Homepage.scss'
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path='signup' element={<SignUp/>}/>
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
+        <Route path='/ourteachers' element={<TeachersPage/>}/>
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
       {/* <Footer/> */}

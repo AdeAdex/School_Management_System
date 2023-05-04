@@ -10,15 +10,19 @@ const OurNews = () => {
     <>
       <div>
         <ActivitiesHeader
+          classes="activities activities-color"
           name="our news"
           content="follow our most important news"
           hrStyle={{ backgroundColor: "#74CEE4" }}
         ></ActivitiesHeader>
       </div>
-      <div className="our-news-container d-flex flex-lg-row flex-sm-column col-12 gap-3" style={{width: '100%'}}>
-      <OurNewsCardColumn1></OurNewsCardColumn1>  
-      <OurNewsCardColumn2></OurNewsCardColumn2>
-      <OurNewsCardColumn3></OurNewsCardColumn3>
+      <div
+        className="our-news-container d-flex flex-lg-row flex-sm-column col-12 gap-3"
+        style={{ width: "100%" }}
+      >
+        <OurNewsCardColumn1></OurNewsCardColumn1>
+        <OurNewsCardColumn2></OurNewsCardColumn2>
+        <OurNewsCardColumn3></OurNewsCardColumn3>
       </div>
     </>
   );
