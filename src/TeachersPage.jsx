@@ -103,8 +103,8 @@ const TeachersPage = () => {
             h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
-            styles={{ backgroundColor: "#6fc191" }}
-            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            styles={{ backgroundColor: "#F9F9F9" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
             btn="check it"
             btnstyle={{
               backgroundColor: "#6AB78A",
@@ -119,8 +119,8 @@ const TeachersPage = () => {
             h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
-            styles={{ backgroundColor: "#6fc191" }}
-            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            styles={{ backgroundColor: "#F9F9F9" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
             btn="check it"
             btnstyle={{
               backgroundColor: "#6AB78A",
@@ -135,8 +135,8 @@ const TeachersPage = () => {
             h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
-            styles={{ backgroundColor: "#6fc191" }}
-            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            styles={{ backgroundColor: "#F9F9F9" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
             btn="check it"
             btnstyle={{
               backgroundColor: "#6AB78A",
@@ -151,8 +151,8 @@ const TeachersPage = () => {
             h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
-            styles={{ backgroundColor: "#6fc191" }}
-            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            styles={{ backgroundColor: "#F9F9F9" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
             btn="check it"
             btnstyle={{
               backgroundColor: "#6AB78A",

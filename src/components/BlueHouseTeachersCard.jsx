@@ -29,13 +29,14 @@ const BlueHouseTeachersCard = ({
           {title}
         </h5>
         <div class="card-body" style={styles}>
-          <p class="card-text">
-            <Small_hr></Small_hr>
+          <p class="card-text text-black">
             <div>{content}</div>
           </p>
-          <a href="#" class="btn text-white" style={btnstyle}>
-            {btn}
-          </a>
+          <div className="d-flex justify-content-evenly">
+              <i class="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM"></i>
+              <i class="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT"></i>
+              <i class="fas fa-microphone shadow about-icon-mains" title="COURSES"></i>
+            </div>
         </div>
       </div>
     </>
