@@ -69,11 +69,9 @@ body {
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-    
   }
 
-  .navbar-toggler:focus
-  .navbar-toggler:active,
+  .navbar-toggler:focus .navbar-toggler:active,
   .navbar-toggler:hover {
     box-shadow: none !important;
     outline: 0 !important;
@@ -147,7 +145,16 @@ body {
   top: 50px;
 }
 
- .each-teachers-type:hover{ 
+.each-teachers-type:hover {
   box-shadow: none !important;
   background-color: red !important;
+}
+
+.about-icon-mains{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 12px;
+  cursor: pointer;
 }

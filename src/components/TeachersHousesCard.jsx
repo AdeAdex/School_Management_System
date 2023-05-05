@@ -1,24 +1,59 @@
 import React from "react";
+import Small_hr from "./Small_hr";
 
-const TeachersHousesCard = ({img}) => {
+const TeachersHousesCard = ({
+  img,
+  teacherName,
+  aboutTeacher,
+  knowme_bg,
+  bodyStyle,
+  bodyClassName,
+}) => {
   return (
     <>
-      <div className="card mb-3" style={{width: '48%', height: '230px'}}>
+      <div
+        className="card mb-3 position-relative"
+        style={{ width: "48%", height: "230px" }}
+      >
         <div className="col-12 row g-0 h-100">
-          <div className="col-md-5">
-            <img src={img} className="img-fluid rounded-start" alt="..." style={{height: '100%'}} />
+          <div className="col-md-5 h-100 ">
+            <img
+              src={img}
+              className="img-fluid rounded-start w-100"
+              alt="..."
+              style={{
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "70% 20%",
+              }}
+            />
           </div>
-          <div className="col-md-6">
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
+          <div className={bodyClassName} style={bodyStyle}>
+            <div className="card-body col-10">
+              <h5
+                className="card-title text-uppercase mb-4"
+                style={{ backgroundColor: "inherit" }}
+              >
+                {teacherName}
+              </h5>
+              <Small_hr></Small_hr>
               <p className="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                {/* {aboutTeacher} */}Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Et rerum distinctio cumque quas.
               </p>
-              <p className="card-text">
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </p>
+              <button
+                className="btn card-text  text-white d-flex gap-2 shadow py-2 px-2 border-0"
+                style={{ cursor: "pointer", backgroundColor: "inherit" }}
+              >
+                <i className="fas fa-graduation-cap fs-5 my-auto"></i>
+                <h5 className="text-capitalize my-auto">know me</h5>{" "}
+                <span>:)</span>
+              </button>
+            </div>
+            <div className="d-flex flex-column justify-content-evenly col-2">
+              <i class="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM"><span>adeoluwa</span></i>
+              <i class="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT"></i>
+              <i class="fas fa-microphone shadow about-icon-mains" title="COURSES"></i>
             </div>
           </div>
         </div>

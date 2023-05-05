@@ -1,4 +1,5 @@
 import React from 'react'
+import Small_hr from './Small_hr'
 
 const EventsCard_Content = ({cardstyle,
         styles,
@@ -33,9 +34,7 @@ const EventsCard_Content = ({cardstyle,
             <i class="fas fa-clock my-auto"></i>
             <span className="text-uppercase my-auto">{time}</span>
           </div>
-          <hr
-            style={{ height: "5px", backgroundColor: "white", width: "40px" }}
-          />
+         <Small_hr></Small_hr>
           <div>{content}</div>
         </p>
         <a href="#" class="btn text-white" style={btnstyle}>
