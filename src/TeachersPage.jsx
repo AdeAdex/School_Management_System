@@ -55,31 +55,114 @@ const TeachersPage = () => {
 
           <Previous_Next_Btn></Previous_Next_Btn>
           <ActivitiesHeader
-          classes="activities activities-color"
-          name="orange house"
-          content="FULL TIME · AGE: 3-6 YEARS OLD"
-          hrStyle={{ backgroundColor: "orange" }}
-        ></ActivitiesHeader>
-        <div className="d-flex gap-4 w-100 flex-wrap">
-        <TeachersHousesCard img="pic/teacher10.jpg" bodyClassName="col-md-7 orange d-flex h-100" teacherName="juliet margaret" knowme_bg={{backgroundColor: ''}}></TeachersHousesCard>
-        <TeachersHousesCard img="pic/teacher8.jpg" bodyClassName="col-md-7 skyblue d-flex h-100" teacherName="mary clara"></TeachersHousesCard>
-        <TeachersHousesCard img="pic/teacher5.png" bodyClassName="col-md-7 yellow d-flex h-100" teacherName="joseph hope"></TeachersHousesCard>
-        <TeachersHousesCard img="pic/teacher9.jpg" bodyClassName="col-md-7 purple d-flex h-100" teacherName="angel smith"></TeachersHousesCard>
-        </div>
+            classes="activities activities-color"
+            name="orange house"
+            content="FULL TIME · AGE: 3-6 YEARS OLD"
+            hrStyle={{ backgroundColor: "orange" }}
+          ></ActivitiesHeader>
+          <div className="d-flex gap-4 w-100 flex-wrap">
+            <TeachersHousesCard
+              img="pic/teacher10.jpg"
+              bodyClassName="col-md-7 orange d-flex h-100"
+              teacherName="juliet margaret"
+              knowme_bg={{ backgroundColor: "" }}
+            ></TeachersHousesCard>
+            <TeachersHousesCard
+              img="pic/teacher8.jpg"
+              bodyClassName="col-md-7 skyblue d-flex h-100"
+              teacherName="mary clara"
+            ></TeachersHousesCard>
+            <TeachersHousesCard
+              img="pic/teacher5.png"
+              bodyClassName="col-md-7 yellow d-flex h-100"
+              teacherName="joseph hope"
+            ></TeachersHousesCard>
+            <TeachersHousesCard
+              img="pic/teacher9.jpg"
+              bodyClassName="col-md-7 purple d-flex h-100"
+              teacherName="angel smith"
+            ></TeachersHousesCard>
+          </div>
         </div>
         <div className="bg image3 d-flex">
-          <BgImageInner3 bg3_styles={{height: '60px'}}></BgImageInner3>
+          <BgImageInner3 bg3_styles={{ height: "60px" }}></BgImageInner3>
         </div>
         <div className="center-div mt-4">
-        <ActivitiesHeader
-          classes="activities activities-color"
-          name="blue house"
-          content="FULL TIME · AGE: 0-3 YEARS OLD"
-          hrStyle={{ backgroundColor: "orange" }}
-        ></ActivitiesHeader>
-        <BlueHouseTeachersCard></BlueHouseTeachersCard>
+          <ActivitiesHeader
+            classes="activities activities-color"
+            name="blue house"
+            content="FULL TIME · AGE: 0-3 YEARS OLD"
+            hrStyle={{ backgroundColor: "orange" }}
+          ></ActivitiesHeader>
+          <div class="card-group gap-4">
+          <BlueHouseTeachersCard
+          teacherName="promise joy"
+            img="pic/teacher8.jpg"
+            cardstyle={{ width: "18rem" }}
+            classes="our-events"
+            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Style={{ marginBottom: "0px" }}
+            title="A DAY IN THE PARK"
+            styles={{ backgroundColor: "#6fc191" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            btn="check it"
+            btnstyle={{
+              backgroundColor: "#6AB78A",
+              textTransform: "uppercase",
+            }}
+          ></BlueHouseTeachersCard>
+          <BlueHouseTeachersCard
+          teacherName="promise joy"
+            img="pic/teacher8.jpg"
+            cardstyle={{ width: "18rem" }}
+            classes="our-events"
+            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Style={{ marginBottom: "0px" }}
+            title="A DAY IN THE PARK"
+            styles={{ backgroundColor: "#6fc191" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            btn="check it"
+            btnstyle={{
+              backgroundColor: "#6AB78A",
+              textTransform: "uppercase",
+            }}
+          ></BlueHouseTeachersCard>
+          <BlueHouseTeachersCard
+          teacherName="promise joy"
+            img="pic/teacher8.jpg"
+            cardstyle={{ width: "18rem" }}
+            classes="our-events"
+            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Style={{ marginBottom: "0px" }}
+            title="A DAY IN THE PARK"
+            styles={{ backgroundColor: "#6fc191" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            btn="check it"
+            btnstyle={{
+              backgroundColor: "#6AB78A",
+              textTransform: "uppercase",
+            }}
+          ></BlueHouseTeachersCard>
+          <BlueHouseTeachersCard
+          teacherName="promise joy"
+            img="pic/teacher8.jpg"
+            cardstyle={{ width: "18rem" }}
+            classes="our-events"
+            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Style={{ marginBottom: "0px" }}
+            title="A DAY IN THE PARK"
+            styles={{ backgroundColor: "#6fc191" }}
+            content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+            btn="check it"
+            btnstyle={{
+              backgroundColor: "#6AB78A",
+              textTransform: "uppercase",
+            }}
+          ></BlueHouseTeachersCard>
+          </div>
+          
         </div>
-        
+
         <Footer></Footer>
       </div>
     </>
