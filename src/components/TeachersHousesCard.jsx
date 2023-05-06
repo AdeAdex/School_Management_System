@@ -12,11 +12,11 @@ const TeachersHousesCard = ({
   return (
     <>
       <div
-        className="card mb-3 position-relative"
+        className="orange-teacher-card card mb-3 position-relative bg-info"
         style={{ width: "48%", height: "230px" }}
       >
-        <div className="col-12 row g-0 h-100">
-          <div className="col-md-5 h-100 ">
+        <div className="orange-card-main col-12 row g-0 h-100">
+          <div className="orange-img col-5 h-100 ">
             <img
               src={img}
               className="img-fluid rounded-start w-100"
@@ -38,7 +38,7 @@ const TeachersHousesCard = ({
               </h5>
               <Small_hr></Small_hr>
               <p className="card-text">
-                {/* {aboutTeacher} */}Lorem ipsum dolor sit, amet consectetur
+                Lorem ipsum dolor sit, amet consectetur
                 adipisicing elit. Et rerum distinctio cumque quas.
               </p>
               <button

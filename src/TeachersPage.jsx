@@ -60,12 +60,11 @@ const TeachersPage = () => {
             content="FULL TIME · AGE: 3-6 YEARS OLD"
             hrStyle={{ backgroundColor: "orange" }}
           ></ActivitiesHeader>
-          <div className="d-flex gap-4 w-100 flex-wrap">
+          <div className="d-flex gap-4 w-100 flex-wrap position-relative">
             <TeachersHousesCard
               img="pic/teacher10.jpg"
               bodyClassName="col-md-7 orange d-flex h-100"
               teacherName="juliet margaret"
-              knowme_bg={{ backgroundColor: "" }}
             ></TeachersHousesCard>
             <TeachersHousesCard
               img="pic/teacher8.jpg"
@@ -105,59 +104,43 @@ const TeachersPage = () => {
             title="A DAY IN THE PARK"
             styles={{ backgroundColor: "#F9F9F9" }}
             content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-            btn="check it"
-            btnstyle={{
-              backgroundColor: "#6AB78A",
-              textTransform: "uppercase",
-            }}
+            iconStyle={{backgroundColor: '#74cee4'}}
           ></BlueHouseTeachersCard>
           <BlueHouseTeachersCard
           teacherName="promise joy"
             img="pic/teacher8.jpg"
             cardstyle={{ width: "18rem" }}
             classes="our-events"
-            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Classes="card-title yellow py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
             styles={{ backgroundColor: "#F9F9F9" }}
             content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-            btn="check it"
-            btnstyle={{
-              backgroundColor: "#6AB78A",
-              textTransform: "uppercase",
-            }}
+            iconStyle={{}}
           ></BlueHouseTeachersCard>
           <BlueHouseTeachersCard
           teacherName="promise joy"
             img="pic/teacher8.jpg"
             cardstyle={{ width: "18rem" }}
             classes="our-events"
-            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Classes="card-title pink py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
             styles={{ backgroundColor: "#F9F9F9" }}
             content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-            btn="check it"
-            btnstyle={{
-              backgroundColor: "#6AB78A",
-              textTransform: "uppercase",
-            }}
+            iconStyle={{}}
           ></BlueHouseTeachersCard>
           <BlueHouseTeachersCard
           teacherName="promise joy"
             img="pic/teacher8.jpg"
             cardstyle={{ width: "18rem" }}
             classes="our-events"
-            h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+            h5Classes="card-title red py-3 text-center text-uppercase px-3"
             h5Style={{ marginBottom: "0px" }}
             title="A DAY IN THE PARK"
             styles={{ backgroundColor: "#F9F9F9" }}
             content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-            btn="check it"
-            btnstyle={{
-              backgroundColor: "#6AB78A",
-              textTransform: "uppercase",
-            }}
+            iconStyle={{}}
           ></BlueHouseTeachersCard>
           </div>
           

@@ -11,7 +11,8 @@ const BlueHouseTeachersCard = ({
   btnstyle,
   btn,
   title,
-  teacherName
+  teacherName,
+  iconStyle
 }) => {
   return (
     <>
@@ -33,9 +34,9 @@ const BlueHouseTeachersCard = ({
             <div>{content}</div>
           </p>
           <div className="d-flex justify-content-evenly">
-              <i class="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM"></i>
-              <i class="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT"></i>
-              <i class="fas fa-microphone shadow about-icon-mains" title="COURSES"></i>
+              <i class="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM" style={iconStyle}></i>
+              <i class="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT" style={iconStyle}></i>
+              <i class="fas fa-microphone shadow about-icon-mains" title="COURSES" style={iconStyle}></i>
             </div>
         </div>
       </div>
