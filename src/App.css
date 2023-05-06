@@ -132,6 +132,15 @@ body {
     width: 100% !important;
   }
 
+  .bg-image3-main {
+    margin-top: 30px !important;
+  }
+
+  .each-calculate-to-number {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   .footer-hero {
     height: 150px !important;
   }

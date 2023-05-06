@@ -68,7 +68,7 @@ const HomePage = () => {
           <OurEvents></OurEvents>
         </div>
         <div className="bg image3 d-flex">
-          <BgImageInner3 bg3_styles={{height: '60px'}}></BgImageInner3>
+          <BgImageInner3 bg3_styles={{height: '60%'}}></BgImageInner3>
         </div>
         <div className="center-div">
           <OurNews></OurNews>
