@@ -68,17 +68,17 @@ const TeachersPage = () => {
             <OrangeHouseTeachersCard
               img="pic/teacher9.jpg"
               bodyClassName="orange-body-main col-md-7 skyblue d-flex"
-              teacherName="juliet margaret"
+              teacherName="lucy faith"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher5.png"
               bodyClassName="orange-body-main col-md-7 yellow d-flex"
-              teacherName="juliet margaret"
+              teacherName="john smith"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher8.jpg"
               bodyClassName="orange-body-main col-md-7 purple d-flex"
-              teacherName="juliet margaret"
+              teacherName="oluwaseun adewale"
             ></OrangeHouseTeachersCard>
           </div>
         </div>
@@ -95,7 +95,7 @@ const TeachersPage = () => {
           <div class="card-group gap-4">
             <BlueHouseTeachersCard
               teacherName="promise joy"
-              img="pic/teacher8.jpg"
+              img="pic/teacher1.jpg"
               cardstyle={{ width: "18rem" }}
               classes="our-events"
               h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
@@ -106,8 +106,8 @@ const TeachersPage = () => {
               iconStyle={{ backgroundColor: "#74cee4" }}
             ></BlueHouseTeachersCard>
             <BlueHouseTeachersCard
-              teacherName="promise joy"
-              img="pic/teacher8.jpg"
+              teacherName="wale ayefele"
+              img="pic/teacher12.png"
               cardstyle={{ width: "18rem" }}
               classes="our-events"
               h5Classes="card-title yellow py-3 text-center text-uppercase px-3"
@@ -118,8 +118,8 @@ const TeachersPage = () => {
               iconStyle={{}}
             ></BlueHouseTeachersCard>
             <BlueHouseTeachersCard
-              teacherName="promise joy"
-              img="pic/teacher8.jpg"
+              teacherName="george ramsey"
+              img="pic/teacher11.jpg"
               cardstyle={{ width: "18rem" }}
               classes="our-events"
               h5Classes="card-title pink py-3 text-center text-uppercase px-3"
@@ -130,8 +130,8 @@ const TeachersPage = () => {
               iconStyle={{}}
             ></BlueHouseTeachersCard>
             <BlueHouseTeachersCard
-              teacherName="promise joy"
-              img="pic/teacher8.jpg"
+              teacherName="evelyn rose"
+              img="pic/teacher7.jpg"
               cardstyle={{ width: "18rem" }}
               classes="our-events"
               h5Classes="card-title red py-3 text-center text-uppercase px-3"
