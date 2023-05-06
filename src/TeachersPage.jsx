@@ -115,11 +115,23 @@ const TeachersPage = () => {
               title="A DAY IN THE PARK"
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{}}
+              iconStyle={{backgroundColor: '#edbf47'}}
             ></BlueHouseTeachersCard>
             <BlueHouseTeachersCard
               teacherName="george ramsey"
               img="pic/teacher11.jpg"
+              cardstyle={{ width: "18rem" }}
+              classes="our-events"
+              h5Classes="card-title orange py-3 text-center text-uppercase px-3"
+              h5Style={{ marginBottom: "0px" }}
+              title="A DAY IN THE PARK"
+              styles={{ backgroundColor: "#F9F9F9" }}
+              content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
+              iconStyle={{backgroundColor: '#ec774b'}}
+            ></BlueHouseTeachersCard>
+            <BlueHouseTeachersCard
+              teacherName="evelyn rose"
+              img="pic/teacher7.jpg"
               cardstyle={{ width: "18rem" }}
               classes="our-events"
               h5Classes="card-title pink py-3 text-center text-uppercase px-3"
@@ -127,19 +139,7 @@ const TeachersPage = () => {
               title="A DAY IN THE PARK"
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{}}
-            ></BlueHouseTeachersCard>
-            <BlueHouseTeachersCard
-              teacherName="evelyn rose"
-              img="pic/teacher7.jpg"
-              cardstyle={{ width: "18rem" }}
-              classes="our-events"
-              h5Classes="card-title red py-3 text-center text-uppercase px-3"
-              h5Style={{ marginBottom: "0px" }}
-              title="A DAY IN THE PARK"
-              styles={{ backgroundColor: "#F9F9F9" }}
-              content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{}}
+              iconStyle={{backgroundColor: '#e16c6c'}}
             ></BlueHouseTeachersCard>
           </div>
         </div>
