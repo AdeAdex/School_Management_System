@@ -20,7 +20,7 @@ const OrangeHouseTeachersCard = ({
               style={{
                 height: "230px",
                 objectFit: "cover",
-                objectPosition: "100% 50%",
+                objectPosition: "100% 10%",
               }}
             />
           </div>

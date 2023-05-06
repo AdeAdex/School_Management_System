@@ -11,7 +11,7 @@ import OrangeHouseTeachersCard from "./components/OrangeHouseTeachersCard";
 const TeachersPage = () => {
   return (
     <>
-      <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
+      <div className="teachers-container mx-aut" style={{ width: "100%", height: "100vh" }}>
         <div className="bg image2 news-image2 d-flex flex-column">
           <OthersBgImage></OthersBgImage>
         </div>

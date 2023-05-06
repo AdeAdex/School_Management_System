@@ -149,6 +149,15 @@ body {
     flex-direction: row !important;
     display:  none !important;
   }
+
+  .ornage-card-main img {
+    height: 270px !important;
+    object-position: 100% 10% !important;
+  }
+
+  .teachers-container {
+    height: 70vh !important;
+  }
 }
 
 
