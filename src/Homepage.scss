@@ -8,7 +8,7 @@ $margin: 50px 0px;
 $text-transform: uppercase;
 
 .text-color {
-  color: #A4A4A4;
+  color: #a4a4a4;
 }
 
 .center-div {
@@ -105,7 +105,6 @@ $text-transform: uppercase;
     text-transform: $text-transform;
   }
 }
-
 
 .activities-white-color {
   h2 {
@@ -332,7 +331,7 @@ html {
   border-radius: 5px;
   height: 40px;
   width: 35px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   position: relative;
 }
 
@@ -366,11 +365,11 @@ textarea {
   padding: 5px;
   border: none !important;
   outline: none;
-  box-shadow: inset 0px -8px 10px #353B3D;
+  box-shadow: inset 0px -8px 10px #353b3d;
   border-radius: 5px;
   margin-bottom: 10px;
   background-color: #404547;
-  color: white;  
+  color: white;
 }
 
 .contact-form input:focus,
@@ -380,7 +379,7 @@ textarea {
 }
 
 .contact-form button[type="submit"] {
-  background-color: #6FC191;
+  background-color: #6fc191;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -394,8 +393,8 @@ textarea {
 }
 
 .contact-form button[type="submit"]:hover {
-  box-shadow: inset 0px 3px 2px #88CC9A;
-  background-color: #88CC9A;
+  box-shadow: inset 0px 3px 2px #88cc9a;
+  background-color: #88cc9a;
 }
 
 $skyblue: #74cee4;
@@ -421,5 +420,11 @@ $gray: #495052;
 }
 
 .purple {
-  background-color: #C389CE;
+  background-color: #c389ce;
+}
+
+.card img:hover {
+  // opacity: .8 !important;
+  background-image: linear-gradient(rgba(2, 2, 144, 0.5));
+  background-blend-mode: multiply;
 }
