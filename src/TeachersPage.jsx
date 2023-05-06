@@ -62,22 +62,22 @@ const TeachersPage = () => {
           <div className="d-flex gap-4 w-100 flex-wrap position-relative">
             <OrangeHouseTeachersCard
               img="pic/teacher10.jpg"
-              bodyClassName="col-md-7 orange d-flex"
+              bodyClassName="orange-body-main col-md-7 orange d-flex"
               teacherName="juliet margaret"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher9.jpg"
-              bodyClassName="col-md-7 skyblue d-flex"
+              bodyClassName="orange-body-main col-md-7 skyblue d-flex"
               teacherName="juliet margaret"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher5.png"
-              bodyClassName="col-md-7 yellow d-flex"
+              bodyClassName="orange-body-main col-md-7 yellow d-flex"
               teacherName="juliet margaret"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher8.jpg"
-              bodyClassName="col-md-7 purple d-flex"
+              bodyClassName="orange-body-main col-md-7 purple d-flex"
               teacherName="juliet margaret"
             ></OrangeHouseTeachersCard>
           </div>

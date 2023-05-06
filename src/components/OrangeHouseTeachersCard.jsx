@@ -25,7 +25,7 @@ const OrangeHouseTeachersCard = ({
             />
           </div>
           <div className={bodyClassName} style={bodyStyle}>
-            <div className="card-body bg-info col-lg-10 col-sm-12">
+            <div className="orange-body card-body col-lg-10 col-sm-12">
             <h5
                 className="card-title text-uppercase mb-4"
                 style={{ backgroundColor: "inherit" }}
@@ -46,7 +46,7 @@ const OrangeHouseTeachersCard = ({
                 <span>:)</span>
               </button>
             </div>
-            <div className="d-flex flex-column justify-content-evenly col-lg-2 col-sm-12">
+            <div className="orange-footer d-flex flex-column justify-content-evenly col-lg-2 col-sm-12">
               <i class="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM"><span>adeoluwa</span></i>
               <i class="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT"></i>
               <i class="fas fa-microphone shadow about-icon-mains" title="COURSES"></i>
