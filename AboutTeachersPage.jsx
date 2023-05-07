@@ -32,9 +32,9 @@ const AboutTeachersPage = () => {
           <div className="" style={{ width: "33%" }}>
             <FooterHeader headerName="about me"></FooterHeader>
             <Small_hr
+              hr_class="my-3 skyblue"
               hr_style={{
                 height: "3px",
-                backgroundColor: "red",
                 width: "35px",
               }}
             ></Small_hr>
@@ -61,9 +61,9 @@ const AboutTeachersPage = () => {
           <div className="" style={{ width: "33%" }}>
             <FooterHeader headerName="my skills"></FooterHeader>
             <Small_hr
+            hr_class="my-3 yellow"
               hr_style={{
                 height: "3px",
-                backgroundColor: "red",
                 width: "35px",
               }}
             ></Small_hr>

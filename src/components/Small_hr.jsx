@@ -1,9 +1,9 @@
 import React from "react";
 
-const Small_hr = ({hr_style}) => {
+const Small_hr = ({hr_class, hr_style}) => {
   return (
     <>
-      <div className="my-3"
+      <div className={hr_class}
         style={hr_style}
       ></div>
     </>
