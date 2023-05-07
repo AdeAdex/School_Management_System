@@ -19,7 +19,8 @@ const EventsCard_Content = ({cardstyle,
         h5Style,
         days_time,
         days_time_icon,
-        classesStyle}) => {
+        classesStyle,  hr_class,
+        hr_style}) => {
   return (
     <>
     <div class="card text-white" style={cardstyle}>
@@ -34,7 +35,7 @@ const EventsCard_Content = ({cardstyle,
             <i class="fas fa-clock my-auto"></i>
             <span className="text-uppercase my-auto">{time}</span>
           </div>
-         <Small_hr></Small_hr>
+          <div className={hr_class} style={hr_style}></div>
           <div>{content}</div>
         </p>
         <a href="#" class="btn text-white" style={btnstyle}>

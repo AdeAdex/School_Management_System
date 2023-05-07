@@ -18,7 +18,7 @@ const OurNewsCardColumn2 = () => {
           country_container="country-container-none"
           days_time="none"
           days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          title="our school"
           hr_class="mb-3 bg-white"
           hr_style={{
             height: "3px",
