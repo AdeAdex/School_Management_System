@@ -6,7 +6,10 @@ import EventsCard_Content from "./EventsCard_Content";
 const OurNewsCardColumn2 = () => {
   return (
     <>
-      <div className="our-news-card-column-2 d-flex flex-column gap-3" style={{ width: "33.3%" }}>
+      <div
+        className="our-news-card-column-2 d-flex flex-column gap-3"
+        style={{ width: "33.3%" }}
+      >
         <EventsCard_Content
           cardstyle={{ width: "100%" }}
           h5Classes="card-title py-3 text-uppercase px-3"
@@ -16,6 +19,11 @@ const OurNewsCardColumn2 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
+          hr_class="mb-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           styles={{ backgroundColor: "#6fc191" }}
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"
@@ -46,6 +54,11 @@ const OurNewsCardColumn2 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
+          hr_class="mb-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           styles={{ backgroundColor: "#edbf47" }}
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"
@@ -60,6 +73,11 @@ const OurNewsCardColumn2 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
+          hr_class="mb-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           styles={{ backgroundColor: "#E16C6C" }}
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"

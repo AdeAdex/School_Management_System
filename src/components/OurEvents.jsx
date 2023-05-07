@@ -30,6 +30,11 @@ const OurEvents = () => {
           styles={{ backgroundColor: "#6fc191" }}
           country="nigeria"
           time="9:00am to 4:00pm"
+          hr_class="my-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
@@ -50,6 +55,11 @@ const OurEvents = () => {
           styles={{ backgroundColor: "#74CEE4" }}
           country="nigeria"
           time="9:00am to 4:00pm"
+          hr_class="my-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
           btnstyle={{ backgroundColor: "#6FC4D9", textTransform: "uppercase" }}
@@ -70,6 +80,11 @@ const OurEvents = () => {
           styles={{ backgroundColor: "#edbf47" }}
           country="nigeria"
           time="9:00am to 4:00pm"
+          hr_class="my-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
           btnstyle={{ backgroundColor: "#E0B84E", textTransform: "uppercase" }}
@@ -90,6 +105,11 @@ const OurEvents = () => {
           styles={{ backgroundColor: "#ec774b" }}
           country="nigeria"
           time="9:00am to 4:00pm"
+          hr_class="my-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
           btn="check it"
           btnstyle={{ backgroundColor: "#DF764E", textTransform: "uppercase" }}

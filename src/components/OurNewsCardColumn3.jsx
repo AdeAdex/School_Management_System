@@ -5,7 +5,10 @@ import EventCard_Img from "./EventCard_Img";
 const OurNewsCardColumn3 = () => {
   return (
     <>
-      <div className="our-news-card-column-3 d-flex flex-column gap-3" style={{ width: "33.3%" }}>
+      <div
+        className="our-news-card-column-3 d-flex flex-column gap-3"
+        style={{ width: "33.3%" }}
+      >
         <EventCard_Img
           cardstyle={{ width: "100%" }}
           classes="our-news"
@@ -31,6 +34,11 @@ const OurNewsCardColumn3 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
+          hr_class="mb-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           styles={{ backgroundColor: "#E16C6C" }}
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"
@@ -48,6 +56,11 @@ const OurNewsCardColumn3 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
+          hr_class="mb-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
           styles={{ backgroundColor: "#74CEE4" }}
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"

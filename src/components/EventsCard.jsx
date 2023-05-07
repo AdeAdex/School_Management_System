@@ -20,22 +20,28 @@ const EventsCard = ({
   h5Style,
   days_time,
   days_time_icon,
-  classesStyle
+  classesStyle,
+  hr_class,
+  hr_style
 }) => {
   return (
     <div class="card text-white" style={cardstyle}>
-      <div
-        className={classes}
-        style={ classesStyle }
-      >
+      <div className={classes} style={classesStyle}>
         <div className={days_time}>
           <span className="d-flex justify-content-center">{days}</span>
           <p className="text-uppercase">{date}</p>
         </div>
         <i className={days_time_icon}></i>
       </div>
-      <img src={img} class="card-img-top" alt="..." style={{opacity: '1', filter: 'blur'}}/>
-      <h5 className={h5Classes} style={h5Style}>{title}</h5>
+      <img
+        src={img}
+        class="card-img-top"
+        alt="..."
+        style={{ opacity: "1", filter: "blur" }}
+      />
+      <h5 className={h5Classes} style={h5Style}>
+        {title}
+      </h5>
       <div class="card-body" style={styles}>
         <p class="card-text">
           <div className={country_container}>
@@ -46,7 +52,7 @@ const EventsCard = ({
             <i class="fas fa-clock my-auto"></i>
             <span className="text-uppercase my-auto">{time}</span>
           </div>
-          <Small_hr></Small_hr>
+          <div className={hr_class} style={hr_style}></div>
           <div>{content}</div>
         </p>
         <a href="#" class="btn text-white" style={btnstyle}>
