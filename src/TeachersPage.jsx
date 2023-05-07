@@ -11,9 +11,17 @@ import OrangeHouseTeachersCard from "./components/OrangeHouseTeachersCard";
 const TeachersPage = () => {
   return (
     <>
-      <div className="teachers-container mx-aut" style={{ width: "100%", height: "100vh" }}>
+      <div
+        className="teachers-container mx-aut"
+        style={{ width: "100%", height: "100vh" }}
+      >
         <div className="bg image2 news-image2 d-flex flex-column">
-          <OthersBgImage></OthersBgImage>
+          <OthersBgImage
+            classes="activities activities-white-color"
+            name="our teachers"
+            content="know our best educators"
+            hrStyle={{ backgroundColor: "white" }}
+          ></OthersBgImage>
         </div>
         <div className="center-div mt-4">
           <div className="teachers_type d-flex w-100 gap-4">
@@ -64,21 +72,29 @@ const TeachersPage = () => {
               img="pic/teacher10.jpg"
               bodyClassName="orange-body-main col-md-7 orange d-flex"
               teacherName="juliet margaret"
+              to_where="/aboutThisTeacher"
+              para="/aboutThisTeacher"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher9.jpg"
               bodyClassName="orange-body-main col-md-7 skyblue d-flex"
               teacherName="lucy faith"
+              to_where="/aboutThisTeacher"
+              para="/aboutThisTeacher"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher5.png"
               bodyClassName="orange-body-main col-md-7 yellow d-flex"
               teacherName="john smith"
+              to_where="/aboutThisTeacher"
+              para="/aboutThisTeacher"
             ></OrangeHouseTeachersCard>
             <OrangeHouseTeachersCard
               img="pic/teacher8.jpg"
               bodyClassName="orange-body-main col-md-7 purple d-flex"
               teacherName="oluwaseun adewale"
+              to_where="/aboutThisTeacher"
+              para="/aboutThisTeacher"
             ></OrangeHouseTeachersCard>
           </div>
         </div>
@@ -115,7 +131,7 @@ const TeachersPage = () => {
               title="A DAY IN THE PARK"
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{backgroundColor: '#edbf47'}}
+              iconStyle={{ backgroundColor: "#edbf47" }}
             ></BlueHouseTeachersCard>
             <BlueHouseTeachersCard
               teacherName="george ramsey"
@@ -127,7 +143,7 @@ const TeachersPage = () => {
               title="A DAY IN THE PARK"
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{backgroundColor: '#ec774b'}}
+              iconStyle={{ backgroundColor: "#ec774b" }}
             ></BlueHouseTeachersCard>
             <BlueHouseTeachersCard
               teacherName="evelyn rose"
@@ -139,7 +155,7 @@ const TeachersPage = () => {
               title="A DAY IN THE PARK"
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{backgroundColor: '#e16c6c'}}
+              iconStyle={{ backgroundColor: "#e16c6c" }}
             ></BlueHouseTeachersCard>
           </div>
         </div>

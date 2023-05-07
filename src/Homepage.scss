@@ -193,16 +193,20 @@ html {
 .image4 {
   background-image: url("pic/bg-image-3.jpg");
 }
+
+.image5 {
+  background-image: linear-gradient(
+    rgba(136, 136, 219, 0.5),
+    rgba(116, 116, 124, 0.8)
+  ),
+    url("pic/teacher24.jpg");
+    background-position: 100% 10%;
+}
 .text {
-  //  font-size: 30px;
-  //  top: 30%;
   height: 100%;
-  //  left: 30%;
-  //  padding: 16px;
   background-color: rgba(125, 145, 244, 0.4);
   color: white;
   width: 75%;
-  //  text-align: center;
 }
 
 .tag-btn {

@@ -1,5 +1,6 @@
 import React from "react";
 import Small_hr from "./Small_hr";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const OrangeHouseTeachersCard = ({
   img,
@@ -7,10 +8,19 @@ const OrangeHouseTeachersCard = ({
   aboutTeacher,
   bodyStyle,
   bodyClassName,
+  to_where,
+  para
 }) => {
+  const navigate = useNavigate();
+  const toTeachersPage = () => {
+    navigate({para})
+  };
   return (
     <>
-      <div className="ornage-card-main card mb-2 col-6" style={{ width: "48.95%" }}>
+      <div
+        className="ornage-card-main card mb-2 col-6"
+        style={{ width: "48.95%" }}
+      >
         <div className="row g-0">
           <div className="col-md-5">
             <img
@@ -26,18 +36,24 @@ const OrangeHouseTeachersCard = ({
           </div>
           <div className={bodyClassName} style={bodyStyle}>
             <div className="orange-body card-body col-lg-10 col-sm-12">
-            <h5
+              <Link
+                to={to_where}
                 className="card-title text-uppercase mb-4"
-                style={{ backgroundColor: "inherit" }}
+                style={{
+                  backgroundColor: "inherit",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
               >
-                {teacherName}
-              </h5>
+                <h5>{teacherName}</h5>
+              </Link>
               <Small_hr></Small_hr>
               <p className="card-text">
-                Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Et rerum distinctio cumque quas.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
+                rerum distinctio cumque quas.
               </p>
               <button
+                onClick={() => toTeachersPage ()}
                 className="btn card-text  text-white d-flex gap-2 shadow py-2 px-2 border-0"
                 style={{ cursor: "pointer", backgroundColor: "inherit" }}
               >
@@ -47,9 +63,20 @@ const OrangeHouseTeachersCard = ({
               </button>
             </div>
             <div className="orange-footer d-flex flex-column justify-content-evenly col-lg-2 col-sm-12">
-              <i class="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM"><span>adeoluwa</span></i>
-              <i class="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT"></i>
-              <i class="fas fa-microphone shadow about-icon-mains" title="COURSES"></i>
+              <i
+                class="fas fa-paperclip shadow about-icon-mains"
+                title="CURRICULUM"
+              >
+                <span>adeoluwa</span>
+              </i>
+              <i
+                class="far fa-floppy-disk shadow about-icon-mains"
+                title="DOCUMENT"
+              ></i>
+              <i
+                class="fas fa-microphone shadow about-icon-mains"
+                title="COURSES"
+              ></i>
             </div>
           </div>
         </div>

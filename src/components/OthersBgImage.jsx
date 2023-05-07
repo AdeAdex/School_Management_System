@@ -1,16 +1,15 @@
 import React from "react";
-import ActivitiesHeader from "./ActivitiesHeader";
+// import ActivitiesHeader from "./ActivitiesHeader";
 
-const OthersBgImage = () => {
+const OthersBgImage = ({classes, name, content, hrStyle}) => {
   return (
     <>
       <div className="bg-image2-main center-div" style={{ height: "0%" }}>
-        <ActivitiesHeader
-          classes="activities activities-white-color"
-          name="our teachers"
-          content="know our best educators"
-          hrStyle={{ backgroundColor: "white" }}
-        ></ActivitiesHeader>
+      <div className={classes}>
+        <h2 className="">{name}</h2>
+        <p>{content}</p>
+        <div style={hrStyle}></div>
+      </div>
       </div>
     </>
   );
