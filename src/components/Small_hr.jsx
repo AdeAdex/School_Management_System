@@ -1,10 +1,10 @@
 import React from "react";
 
-const Small_hr = () => {
+const Small_hr = ({hr_style}) => {
   return (
     <>
       <div className="my-3"
-        style={{ height: "3px", backgroundColor: "white", width: "35px" }}
+        style={hr_style}
       ></div>
     </>
   );

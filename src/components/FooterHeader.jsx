@@ -1,11 +1,12 @@
 import React from 'react'
+import Small_hr from './Small_hr'
 
-const FooterHeader = ({headerName}) => {
+const FooterHeader = ({headerName, headerStyle}) => {
   return (
     <>
         <div>
-                <div className='text-uppercase text-white'>{headerName}</div>
-                <hr style={{backgroundColor: "white", height: "4px", width: '30px'}}/>
+                <h5 className='text-uppercase' style={headerStyle}>{headerName}</h5>
+               <Small_hr></Small_hr>
         </div>
     </>
   )
