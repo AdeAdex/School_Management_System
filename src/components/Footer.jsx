@@ -16,7 +16,7 @@ const Footer = () => {
       >
         <div className="top-footer mx-auto d-flex gap-4 w-75">
           <div className="each-footer text-white" style={{ width: "25%" }}>
-            <FooterHeader headerName="our primary school" headerStyle={{color: 'white'}}></FooterHeader>
+            <FooterHeader headerClasses="text-uppercase" headerName="our primary school" headerStyle={{color: 'white'}}></FooterHeader>
             <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}></Small_hr>
             <div>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="each-footer" style={{ width: "25%" }}>
-            <FooterHeader headerName="our tag" headerStyle={{color: 'white'}}></FooterHeader>
+            <FooterHeader headerClasses="text-uppercase" headerName="our tag" headerStyle={{color: 'white'}}></FooterHeader>
             <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}></Small_hr>
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3 flex-wrap w-100">
@@ -56,7 +56,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="each-footer" style={{ width: "25%" }}>
-            <FooterHeader headerName="school gallary" headerStyle={{color: 'white'}}></FooterHeader>
+            <FooterHeader headerClasses="text-uppercase" headerName="school gallary" headerStyle={{color: 'white'}}></FooterHeader>
             <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}></Small_hr>
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3">
@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="each-footer" style={{ width: "25%" }}>
-            <FooterHeader headerName="contact us" headerStyle={{color: 'white'}}></FooterHeader>
+            <FooterHeader headerClasses="text-uppercase" headerName="contact us" headerStyle={{color: 'white'}}></FooterHeader>
             <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}></Small_hr>
             <Contact_Us_Form></Contact_Us_Form>
           </div>
