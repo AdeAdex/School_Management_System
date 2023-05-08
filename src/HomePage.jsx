@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "./components/Carousel";
 import OurActivities from "./components/OurActivities";
-import "./Homepage.scss";
 import "./App.css";
+import './Homepage.scss'
 import OurEvents from "./components/OurEvents";
 import NavigatoContainer from "./components/NavigatoContainer";
 import BgImageInner2 from "./components/BgImageInner2";
