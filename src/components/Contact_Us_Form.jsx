@@ -7,7 +7,7 @@ const Contact_Us_Form = () => {
         <form>
           
           <input type="text" required="" placeholder="NAME" className="text-capitalize" />
-          <input type="email" id="email" name="email" required="" placeholder="EMAIL" autocomplete="off" />
+          <input type="email" id="email" name="email" required="" placeholder="EMAIL" autoComplete="off" />
           <textarea id="message" name="message" required="" placeholder="MESSAGE" className="text-capitalize"></textarea>
           <button type="submit">send</button>
         </form>

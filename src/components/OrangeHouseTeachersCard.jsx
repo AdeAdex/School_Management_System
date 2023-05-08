@@ -13,7 +13,7 @@ const OrangeHouseTeachersCard = ({
 }) => {
   const navigate = useNavigate();
   const toTeachersPage = () => {
-    navigate({para})
+    navigate(para)
   };
   return (
     <>
@@ -47,13 +47,13 @@ const OrangeHouseTeachersCard = ({
               >
                 <h5>{teacherName}</h5>
               </Link>
-              <Small_hr></Small_hr>
+              
               <p className="card-text">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
                 rerum distinctio cumque quas.
               </p>
               <button
-                onClick={() => toTeachersPage ()}
+                onClick={toTeachersPage}
                 className="btn card-text  text-white d-flex gap-2 shadow py-2 px-2 border-0"
                 style={{ cursor: "pointer", backgroundColor: "inherit" }}
               >
@@ -67,7 +67,6 @@ const OrangeHouseTeachersCard = ({
                 class="fas fa-paperclip shadow about-icon-mains"
                 title="CURRICULUM"
               >
-                <span>adeoluwa</span>
               </i>
               <i
                 class="far fa-floppy-disk shadow about-icon-mains"

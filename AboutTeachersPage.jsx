@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OthersBgImage from "./src/components/OthersBgImage";
 import ActivitiesHeader from "./src/components/ActivitiesHeader";
 import BgImageInner1 from "./src/components/BgImageInner1";
 import FooterHeader from "./src/components/FooterHeader";
 import Footer from "./src/components/Footer";
 import Small_hr from "./src/components/Small_hr";
+import Skills from "./src/components/Skills";
 
-const AboutTeachersPage = () => {
+const AboutTeachersPage = ({seconds}) => {
+  const [countdown, setCountdown] = useState(5);
+  
+
+  // useEffect(() => {
+  //   const timer =
+  //     countdown > 0 && setInterval(() => setCountdown(countdown - 1), 1000);
+  //   return () => clearInterval(timer);
+  // }, [countdown]);
+  
+  const countDown =()=>{
+    if (countdown > 0) {
+      setCountdown(countdown - 1);
+    } 
+  }
+  useEffect(() => {
+    
+    setTimeout(()=>countDown(), 1000)
+  }, [countdown]);
+  
   return (
     <>
       <div
@@ -22,6 +42,7 @@ const AboutTeachersPage = () => {
           ></OthersBgImage>
         </div>
         <div className=" d-flex w-75 mx-auto gap-4 py-5">
+        <div>{countdown}</div>
           <div className="" style={{ width: "33%" }}>
             <img
               src="pic/teacher10.jpg"
@@ -30,7 +51,10 @@ const AboutTeachersPage = () => {
             />
           </div>
           <div className="" style={{ width: "33%" }}>
-            <FooterHeader headerClasses="text-uppercase text-color" headerName="about me"></FooterHeader>
+            <FooterHeader
+              headerClasses="text-uppercase text-color"
+              headerName="about me"
+            ></FooterHeader>
             <Small_hr
               hr_class="my-3 skyblue"
               hr_style={{
@@ -59,14 +83,51 @@ const AboutTeachersPage = () => {
             </div>
           </div>
           <div className="" style={{ width: "33%" }}>
-            <FooterHeader headerClasses="text-uppercase text-color" headerName="my skills"></FooterHeader>
+            <FooterHeader
+              headerClasses="text-uppercase text-color"
+              headerName="my skills"
+            ></FooterHeader>
             <Small_hr
-            hr_class="my-3 yellow"
+              hr_class="my-3 yellow"
               hr_style={{
                 height: "3px",
                 width: "35px",
               }}
             ></Small_hr>
+            <div className="card p-3">
+              <div className="body w-100 d-flex flex-column gap-3">
+                <Skills
+                  skill_classes="skill-percent yellow d-flex gap-4 text-white px-4"
+                  skill_style={{ width: "95%" }}
+                  skills="HTML"
+                  skill_percent="95%"
+                ></Skills>
+                <Skills
+                  skill_classes="skill-percent skyblue d-flex gap-4 text-white px-4"
+                  skill_style={{ width: "85%" }}
+                  skills="CSS"
+                  skill_percent="85%"
+                ></Skills>
+                <Skills
+                  skill_classes="skill-percent green d-flex gap-4 text-white px-4"
+                  skill_style={{ width: "75%" }}
+                  skills="JavaScript"
+                  skill_percent="75%"
+                ></Skills>
+                <Skills
+                  skill_classes="skill-percent orange d-flex gap-4 text-white px-4"
+                  skill_style={{ width: "65%" }}
+                  skills="React"
+                  skill_percent="65%"
+                ></Skills>
+                <Skills
+                  skill_classes="skill-percent pink d-flex gap-4 text-white px-4"
+                  skill_style={{ width: "55%" }}
+                  skills="Node"
+                  skill_percent="55%"
+                ></Skills>
+              </div>
+            </div>
           </div>
         </div>
         <div className="bg image1 d-flex">
