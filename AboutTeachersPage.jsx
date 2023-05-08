@@ -6,6 +6,7 @@ import FooterHeader from "./src/components/FooterHeader";
 import Footer from "./src/components/Footer";
 import Small_hr from "./src/components/Small_hr";
 import Skills from "./src/components/Skills";
+import Parallax from "./src/components/Parallax";
 
 const AboutTeachersPage = ({seconds}) => {
   const [countdown, setCountdown] = useState(5);
@@ -130,6 +131,7 @@ const AboutTeachersPage = ({seconds}) => {
             </div>
           </div>
         </div>
+        <Parallax styles={{width: '100%', height: '30%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: 'url("pic/teacher23.jpg")'}}></Parallax>
         <div className="bg image1 d-flex">
           <BgImageInner1></BgImageInner1>
         </div>
