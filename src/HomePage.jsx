@@ -87,8 +87,16 @@ const HomePage = () => {
         />
         <div className="center-div">
           <OurNews></OurNews>
+          <div className="d-flex justify-content-center mt-5">
+          <button
+            className="btn text-white text-uppercase d-flex gap-3 px-4 py-2"
+            style={{ backgroundColor: "#74CEE4" }}
+          >
+            <i className="fas fa-border-all my-auto"></i> view more
+          </button>
+          </div>
+          
         </div>
-        <div className="bg image4"></div>
         <Footer />
       </div>
       {/* <div

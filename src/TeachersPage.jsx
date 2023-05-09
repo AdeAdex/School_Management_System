@@ -8,6 +8,7 @@ import BgImageInner3 from "./components/BgImageInner3";
 import BlueHouseTeachersCard from "./components/BlueHouseTeachersCard";
 import OrangeHouseTeachersCard from "./components/OrangeHouseTeachersCard";
 import Parallax from "./components/Parallax";
+import Parallax3 from "./components/Parallax3";
 
 const TeachersPage = () => {
   return (
@@ -17,7 +18,7 @@ const TeachersPage = () => {
         style={{ width: "100%", height: "100vh" }}
       >
         <Parallax
-        classes="bg"
+          classes="bg"
           styles={{
             flexDirection: "column",
             width: "100%",
@@ -31,7 +32,8 @@ const TeachersPage = () => {
           inner_classes="activities activities-white-color"
           name="our teacher"
           content="know our best educator"
-          hrStyle={{ backgroundColor: "white" }} />
+          hrStyle={{ backgroundColor: "white" }}
+        />
         <div className="center-div mt-4">
           <div className="teachers_type d-flex w-100 gap-4">
             <TeachersType
@@ -44,7 +46,7 @@ const TeachersPage = () => {
               icon="fas fa-1 shadow"
               userFeedbackName="PEDAGOGICAL STUDY"
               feedbackContent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eum dolor tempora fuga aliquam tenetur."
-            ></TeachersType>
+            />
             <TeachersType
               container_style={{
                 height: "160px",
@@ -55,7 +57,7 @@ const TeachersPage = () => {
               icon="fas fa-2 shadow"
               userFeedbackName="ASSISTANCE TO DISABLED"
               feedbackContent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eum dolor tempora fuga aliquam tenetur."
-            ></TeachersType>
+            />
             <TeachersType
               container_style={{
                 height: "160px",
@@ -66,16 +68,15 @@ const TeachersPage = () => {
               icon="fas fa-3 shadow"
               userFeedbackName="MONTESSORI TEACHING"
               feedbackContent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eum dolor tempora fuga aliquam tenetur."
-            ></TeachersType>
+            />
           </div>
 
-          <Previous_Next_Btn></Previous_Next_Btn>
           <ActivitiesHeader
             classes="activities activities-color"
             name="orange house"
             content="FULL TIME · AGE: 3-6 YEARS OLD"
             hrStyle={{ backgroundColor: "orange" }}
-          ></ActivitiesHeader>
+          />
           <div className="d-flex gap-4 w-100 flex-wrap position-relative">
             <OrangeHouseTeachersCard
               img="pic/teacher10.jpg"
@@ -83,40 +84,42 @@ const TeachersPage = () => {
               teacherName="juliet margaret"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-            ></OrangeHouseTeachersCard>
+            />
             <OrangeHouseTeachersCard
               img="pic/teacher9.jpg"
               bodyClassName="orange-body-main col-md-7 skyblue d-flex"
               teacherName="lucy faith"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-            ></OrangeHouseTeachersCard>
+            />
             <OrangeHouseTeachersCard
               img="pic/teacher5.png"
               bodyClassName="orange-body-main col-md-7 yellow d-flex"
               teacherName="john smith"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-            ></OrangeHouseTeachersCard>
+            />
             <OrangeHouseTeachersCard
               img="pic/teacher8.jpg"
               bodyClassName="orange-body-main col-md-7 purple d-flex"
               teacherName="oluwaseun adewale"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-            ></OrangeHouseTeachersCard>
+            />
           </div>
+          <Previous_Next_Btn />
         </div>
-        <div className="bg image3 d-flex">
-          <BgImageInner3 bg3_styles={{ height: "60%" }}></BgImageInner3>
-        </div>
+        <Parallax3
+          classes="bg"
+          styles={{ height: "40%", backgroundImage: "url(pic/bg-image-4.jpg)" }}
+        />
         <div className="center-div mt-4">
           <ActivitiesHeader
             classes="activities activities-color"
             name="blue house"
             content="FULL TIME · AGE: 0-3 YEARS OLD"
             hrStyle={{ backgroundColor: "orange" }}
-          ></ActivitiesHeader>
+          />
           <div class="card-group gap-4">
             <BlueHouseTeachersCard
               teacherName="promise joy"
@@ -129,7 +132,7 @@ const TeachersPage = () => {
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
               iconStyle={{ backgroundColor: "#74cee4" }}
-            ></BlueHouseTeachersCard>
+            />
             <BlueHouseTeachersCard
               teacherName="wale ayefele"
               img="pic/teacher12.png"
@@ -141,7 +144,7 @@ const TeachersPage = () => {
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
               iconStyle={{ backgroundColor: "#edbf47" }}
-            ></BlueHouseTeachersCard>
+            />
             <BlueHouseTeachersCard
               teacherName="george ramsey"
               img="pic/teacher11.jpg"
@@ -153,7 +156,7 @@ const TeachersPage = () => {
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
               iconStyle={{ backgroundColor: "#ec774b" }}
-            ></BlueHouseTeachersCard>
+            />
             <BlueHouseTeachersCard
               teacherName="evelyn rose"
               img="pic/teacher7.jpg"
@@ -165,7 +168,7 @@ const TeachersPage = () => {
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
               iconStyle={{ backgroundColor: "#e16c6c" }}
-            ></BlueHouseTeachersCard>
+            />
           </div>
         </div>
 
