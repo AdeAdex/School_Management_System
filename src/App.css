@@ -47,7 +47,7 @@ body {
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 600px) {
   #stickyNav {
     width: 100% !important;
     top: 75px !important;
