@@ -229,7 +229,7 @@ const AboutTeachersPage = ({ seconds }) => {
           classes="bg"
           styles={{
             height: "30%",
-            backgroundImage: 'url("pic/bg-image-1.jpg")',
+            backgroundImage: 'url("pic/gallary4.png")',
           }}
           inner_content_2="curriculum"
         />
