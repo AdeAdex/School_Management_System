@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OthersBgImage from "./src/components/OthersBgImage";
 import ActivitiesHeader from "./src/components/ActivitiesHeader";
-import BgImageInner1 from "./src/components/BgImageInner1";
 import FooterHeader from "./src/components/FooterHeader";
 import Footer from "./src/components/Footer";
 import Small_hr from "./src/components/Small_hr";
@@ -134,10 +133,7 @@ const AboutTeachersPage = ({ seconds }) => {
             </div>
           </div>
         </div>
-
-        <div className="bg image-one d-flex">
-          <BgImageInner1></BgImageInner1>
-        </div>
+        
         <Footer></Footer>
       </div>
     </>

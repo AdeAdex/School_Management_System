@@ -1,5 +1,4 @@
 import React from "react";
-import BgImageInner2 from "./components/BgImageInner2";
 import OurEvents from "./components/OurEvents";
 import Previous_Next_Btn from "./components/Previous_Next_Btn";
 import Footer from "./components/Footer";

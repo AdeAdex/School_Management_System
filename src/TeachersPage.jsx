@@ -1,10 +1,7 @@
 import React from "react";
-import Previous_Next_Btn from "./components/Previous_Next_Btn";
 import Footer from "./components/Footer";
-import OthersBgImage from "./components/OthersBgImage";
 import TeachersType from "./components/TeachersType";
 import ActivitiesHeader from "./components/ActivitiesHeader";
-import BgImageInner3 from "./components/BgImageInner3";
 import BlueHouseTeachersCard from "./components/BlueHouseTeachersCard";
 import OrangeHouseTeachersCard from "./components/OrangeHouseTeachersCard";
 import Parallax from "./components/Parallax";
@@ -102,7 +99,6 @@ const TeachersPage = () => {
               para="/aboutThisTeacher"
             />
           </div>
-          <Previous_Next_Btn />
         </div>
         <Parallax3
           classes="bg image3"

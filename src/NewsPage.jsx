@@ -1,5 +1,4 @@
 import React from "react";
-import BgImageInner3 from "./components/BgImageInner3";
 import OurNews from "./components/OurNews";
 import Previous_Next_Btn from "./components/Previous_Next_Btn";
 import Footer from "./components/Footer";
