@@ -4,7 +4,7 @@ import Countdown from './Countdown'
 const BgImageInner2 = ({}) => {
   return (
     <>
-        <p className="bg-image2-main center-div" style={{ height: "60%" }}>
+        <div className="bg-image2-main center-div" style={{ height: "60%" }}>
             <div className="text-center our-events-header">
               <span className="fs-3"> FIRST DAY AT SCHOOL !</span>
               <br />
@@ -32,7 +32,7 @@ const BgImageInner2 = ({}) => {
                 innerText="seconds"
               ></Countdown>
             </div>
-          </p>
+          </div>
     </>
   )
 }
