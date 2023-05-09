@@ -7,6 +7,7 @@ import ActivitiesHeader from "./components/ActivitiesHeader";
 import BgImageInner3 from "./components/BgImageInner3";
 import BlueHouseTeachersCard from "./components/BlueHouseTeachersCard";
 import OrangeHouseTeachersCard from "./components/OrangeHouseTeachersCard";
+import Parallax from "./components/Parallax";
 
 const TeachersPage = () => {
   return (
@@ -15,14 +16,22 @@ const TeachersPage = () => {
         className="teachers-container mx-aut"
         style={{ width: "100%", height: "100vh" }}
       >
-        <div className="bg image2 news-image2 d-flex flex-column">
-          <OthersBgImage
-            classes="activities activities-white-color"
-            name="our teachers"
-            content="know our best educators"
-            hrStyle={{ backgroundColor: "white" }}
-          ></OthersBgImage>
-        </div>
+        <Parallax
+        classes="bg"
+          styles={{
+            flexDirection: "column",
+            width: "100%",
+            height: "60%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            backgroundImage: 'url("pic/teacher24.jpg")',
+          }}
+          inner_classes="activities activities-white-color"
+          name="our teacher"
+          content="know our best educator"
+          hrStyle={{ backgroundColor: "white" }} />
         <div className="center-div mt-4">
           <div className="teachers_type d-flex w-100 gap-4">
             <TeachersType
