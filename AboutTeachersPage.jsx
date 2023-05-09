@@ -139,6 +139,10 @@ const AboutTeachersPage = ({ seconds }) => {
             backgroundAttachment: "fixed",
             backgroundImage: 'url("pic/teacher23.jpg")',
           }}
+          inner_classes="activities activities-white-color"
+          name="juliet margaret"
+          content="know juliet our math teacher"
+          hrStyle={{ backgroundColor: "white" }}
         ></Parallax>
         <div className="bg image-one d-flex">
           <BgImageInner1></BgImageInner1>
