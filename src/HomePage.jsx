@@ -12,6 +12,7 @@ import OurNews from "./components/OurNews";
 import Footer from "./components/Footer";
 import Parallax1 from "./components/Parallax1";
 import Parallax2 from "./components/Parallax2";
+import Parallax3 from "./components/Parallax3";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -80,9 +81,10 @@ const HomePage = () => {
         <div className="center-div">
           <OurEvents />
         </div>
-        <div className="bg image3 d-flex">
-          <BgImageInner3 bg3_styles={{ height: "60%" }}></BgImageInner3>
-        </div>
+        <Parallax3
+          classes="bg"
+          styles={{ height: "40%", backgroundImage: "url(pic/bg-image-4.jpg)" }}
+        />
         <div className="center-div">
           <OurNews></OurNews>
         </div>
