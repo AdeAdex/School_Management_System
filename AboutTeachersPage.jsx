@@ -168,7 +168,7 @@ const AboutTeachersPage = ({ seconds }) => {
           <div className="skill_content" style={{ width: "33%" }}>
             <FooterHeader
               headerClasses="text-uppercase text-color"
-              headerName="about me"
+              headerName="my lessons"
             />
             <Small_hr
               hr_class="my-3 skyblue"
@@ -212,10 +212,10 @@ const AboutTeachersPage = ({ seconds }) => {
           <div className="skill_content" style={{ width: "33%" }}>
             <FooterHeader
               headerClasses="text-uppercase text-color"
-              headerName="my skills"
+              headerName="contact me"
             />
             <Small_hr
-              hr_class="my-3 yellow"
+              hr_class="my-3 skyblue"
               hr_style={{
                 height: "3px",
                 width: "35px",
