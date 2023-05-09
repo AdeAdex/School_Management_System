@@ -7,6 +7,7 @@ import Parallax from "./src/components/Parallax";
 import EmptyParallax from "./src/components/EmptyParallax";
 import MyLessons from "./src/components/MyLessons";
 import Contact_Teacher_Form from "./src/components/Contact_Teacher_Form";
+import Parallax1 from "./src/components/Parallax1";
 
 const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
@@ -224,14 +225,22 @@ const AboutTeachersPage = ({ seconds }) => {
             <Contact_Teacher_Form/>
           </div>
         </div>
-        <EmptyParallax
+        <Parallax1
+          classes="bg"
+          styles={{
+            height: "30%",
+            backgroundImage: 'url("pic/bg-image-1.jpg")',
+          }}
+          inner_content_2="curriculum"
+        />
+        {/* <EmptyParallax
           classes="bg"
           styles={{
             height: "30%",
             backgroundImage: 'url("pic/gallary4.png")',
           }}
           inner_content_2="contact us"
-        />
+        /> */}
         <Footer></Footer>
       </div>
     </>
