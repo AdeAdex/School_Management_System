@@ -32,11 +32,13 @@ const AboutTeachersPage = ({ seconds }) => {
         className="teachers-container mx-aut"
         style={{ width: "100%", height: "100vh" }}
       >
-       <Parallax classes="bg other_parallax"
+        <Parallax
+          classes="bg other_parallax other_parallax-about_teachers_page_positioning"
           styles={{
             height: "60%",
-            backgroundImage: 'url("pic/teacher24.jpg"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
-            backgroundPosition: '100% 10%'
+            backgroundImage:
+              'url("pic/teacher24.jpg"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
+            backgroundPosition: "60% 10%",
           }}
           inner_classes="activities activities-white-color"
           name="juliet margaret"
@@ -132,7 +134,7 @@ const AboutTeachersPage = ({ seconds }) => {
             </div>
           </div>
         </div>
-        
+
         <div className="bg image-one d-flex">
           <BgImageInner1></BgImageInner1>
         </div>

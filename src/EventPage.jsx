@@ -3,14 +3,22 @@ import BgImageInner2 from "./components/BgImageInner2";
 import OurEvents from "./components/OurEvents";
 import Previous_Next_Btn from "./components/Previous_Next_Btn";
 import Footer from "./components/Footer";
+import Parallax2 from "./components/Parallax2";
 
 const EventPage = () => {
   return (
     <>
       <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
-        <div className="bg image2 event-image2 d-flex flex-column">
-          <BgImageInner2></BgImageInner2>
-        </div>
+      <Parallax2
+          classes="bg image2"
+          styles={{
+            flexDirection: "column",
+            height: "60%",
+            backgroundImage:
+              'linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8)), url("pic/bg-image-2.jpg")',
+          }}
+          content_styles={{marginTop: '70px'}}
+        />
         <div className="center-div">
           <OurEvents></OurEvents>
           <Previous_Next_Btn></Previous_Next_Btn>

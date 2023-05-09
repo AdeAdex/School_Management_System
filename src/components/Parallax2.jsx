@@ -1,11 +1,11 @@
 import React from "react";
 import Countdown from "./Countdown";
 
-const Parallax2 = ({ classes, styles }) => {
+const Parallax2 = ({ classes, styles, content_styles }) => {
   return (
     <>
       <div className={classes} style={styles}>
-        <div className="bg-image2-main center-div mx-auto my-0" style={{ height: "0%" }}>
+        <div className="bg-image2-main center-div mx-auto" style={content_styles}>
           <div className="text-center our-events-header">
             <span className="fs-3"> FIRST DAY AT SCHOOL !</span>
             <br />

@@ -171,6 +171,10 @@ body {
   .other_parallax {
     height: 70% !important;
   }
+
+  .other_parallax-about_teachers_page_positioning {
+    object-position: 40% 100% !important;
+  }
 }
 
 
