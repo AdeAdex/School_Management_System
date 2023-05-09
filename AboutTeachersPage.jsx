@@ -158,7 +158,7 @@ const AboutTeachersPage = ({ seconds }) => {
               }}
             ></Small_hr>
             <video
-              className="w-100"
+              className="w-100 shadow p-3"
               style={{ height: "300px" }}
               controls
               poster="pic/pic.jpg"
@@ -178,31 +178,31 @@ const AboutTeachersPage = ({ seconds }) => {
                 width: "35px",
               }}
             ></Small_hr>
-            <div className="text-color">
+            <div className="text-color shadow p-3">
               <MyLessons
                 text="DRAWING LESSON IN ALL CLASSES"
                 styles={{ backgroundColor: "skyblue" }}
                 btn_txt="8:00"
               />
-              <hr />
+              <hr style={{marginTop: '11px'}}/>
               <MyLessons
                 text="BASIC NICE ART VIDEOS"
                 styles={{ backgroundColor: "purple" }}
                 btn_txt="10:00"
               />
-              <hr />
+              <hr style={{marginTop: '11px'}}/>
               <MyLessons
                 text="SOME WATER COLOR PRACTICE"
                 styles={{ backgroundColor: "skyblue" }}
                 btn_txt="12:00"
               />
-              <hr />
+              <hr style={{marginTop: '11px'}}/>
               <MyLessons
                 text="WONDERFUL STENCIL TEST PAINTING"
                 styles={{ backgroundColor: "purple" }}
                 btn_txt="14:00"
               />
-              <hr />
+              <hr style={{marginTop: '11px'}}/>
               <MyLessons
                 text="COLOR WITH FRUIT AND VEGETABLES"
                 styles={{ backgroundColor: "skyblue" }}
