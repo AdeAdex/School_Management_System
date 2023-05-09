@@ -8,26 +8,24 @@ import Small_hr from "./src/components/Small_hr";
 import Skills from "./src/components/Skills";
 import Parallax from "./src/components/Parallax";
 
-const AboutTeachersPage = ({seconds}) => {
+const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
-  
 
   // useEffect(() => {
   //   const timer =
   //     countdown > 0 && setInterval(() => setCountdown(countdown - 1), 1000);
   //   return () => clearInterval(timer);
   // }, [countdown]);
-  
-  const countDown =()=>{
+
+  const countDown = () => {
     if (countdown > 0) {
       setCountdown(countdown - 1);
-    } 
-  }
+    }
+  };
   useEffect(() => {
-    
-    setTimeout(()=>countDown(), 1000)
+    setTimeout(() => countDown(), 1000);
   }, [countdown]);
-  
+
   return (
     <>
       <div
@@ -43,7 +41,7 @@ const AboutTeachersPage = ({seconds}) => {
           ></OthersBgImage>
         </div>
         <div className=" d-flex w-75 mx-auto gap-4 py-5">
-        <div>{countdown}</div>
+          <div>{countdown}</div>
           <div className="" style={{ width: "33%" }}>
             <img
               src="pic/teacher10.jpg"
@@ -131,8 +129,18 @@ const AboutTeachersPage = ({seconds}) => {
             </div>
           </div>
         </div>
-        <Parallax styles={{width: '100%', height: '30%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: 'url("pic/teacher23.jpg")'}}></Parallax>
-        <div className="bg image1 d-flex">
+        <Parallax
+          styles={{
+            width: "100%",
+            height: "30%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            backgroundImage: 'url("pic/teacher23.jpg")',
+          }}
+        ></Parallax>
+        <div className="bg image-one d-flex">
           <BgImageInner1></BgImageInner1>
         </div>
         <Footer></Footer>

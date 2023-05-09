@@ -55,7 +55,7 @@ const HomePage = () => {
         <div className="center-div">
           <NavigatoContainer></NavigatoContainer>
         </div>
-        <div className="bg image1 d-flex">
+        <div className="bg image-one d-flex">
           <BgImageInner1></BgImageInner1>
         </div>
         <div className="center-div">
