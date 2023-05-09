@@ -110,7 +110,7 @@ const TeachersPage = () => {
           <Previous_Next_Btn />
         </div>
         <Parallax3
-          classes="bg"
+          classes="bg image3"
           styles={{ height: "40%", backgroundImage: "url(pic/bg-image-4.jpg)" }}
         />
         <div className="center-div mt-4">

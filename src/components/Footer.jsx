@@ -6,15 +6,17 @@ import FooterReachBtn from "./FooterReachBtn";
 import Contact_Us_Form from "./Contact_Us_Form";
 import FooterHero from "./FooterHero";
 import Small_hr from "./Small_hr";
+import MulticolorLine from "./MulticolorLine";
 
 const Footer = () => {
   return (
     <>
       <div
         className=" w-100"
-        style={{ backgroundColor: "#495052", padding: "50px 0px" }}
+        style={{ backgroundColor: "#495052", paddingBottom: '50px' }}
       >
-        <div className="top-footer mx-auto d-flex gap-4 w-75">
+      <MulticolorLine/>
+        <div className="top-footer mx-auto d-flex gap-4 w-75" style={{paddingTop: '50px'}}>
           <div className="each-footer text-white" style={{ width: "25%" }}>
             <FooterHeader headerClasses="text-uppercase" headerName="our primary school" headerStyle={{color: 'white'}}></FooterHeader>
             <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}></Small_hr>

@@ -70,7 +70,7 @@ const HomePage = () => {
           <OurActivities />
         </div>
         <Parallax2
-          classes="bg"
+          classes="bg image2"
           styles={{
             flexDirection: "column",
             height: "50%",
@@ -82,7 +82,7 @@ const HomePage = () => {
           <OurEvents />
         </div>
         <Parallax3
-          classes="bg"
+          classes="bg image3"
           styles={{ height: "40%", backgroundImage: "url(pic/bg-image-4.jpg)" }}
         />
         <div className="center-div">
