@@ -32,24 +32,27 @@ const AboutTeachersPage = ({ seconds }) => {
         className="teachers-container mx-aut"
         style={{ width: "100%", height: "100vh" }}
       >
-        <div className="bg image5 news-image2 d-flex flex-column">
-          <OthersBgImage
-            classes="activities activities-white-color"
-            name="juliet margaret"
-            content="know juliet our math teacher"
-            hrStyle={{ backgroundColor: "white" }}
-          ></OthersBgImage>
-        </div>
-        <div className=" d-flex w-75 mx-auto gap-4 py-5">
-          <div>{countdown}</div>
-          <div className="" style={{ width: "33%" }}>
+       <Parallax classes="bg other_parallax"
+          styles={{
+            height: "60%",
+            backgroundImage: 'url("pic/teacher24.jpg"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
+            backgroundPosition: '100% 10%'
+          }}
+          inner_classes="activities activities-white-color"
+          name="juliet margaret"
+          content="know juliet our math teacher"
+          hrStyle={{ backgroundColor: "white" }}
+        />
+        <div className="teacher_skill d-flex w-75 mx-auto gap-4 py-5">
+          {/* <div>{countdown}</div> */}
+          <div className="skill_content" style={{ width: "33%" }}>
             <img
               src="pic/teacher10.jpg"
               alt=""
               style={{ height: "400px", width: "100%", borderRadius: "5px" }}
             />
           </div>
-          <div className="" style={{ width: "33%" }}>
+          <div className="skill_content" style={{ width: "33%" }}>
             <FooterHeader
               headerClasses="text-uppercase text-color"
               headerName="about me"
@@ -81,7 +84,7 @@ const AboutTeachersPage = ({ seconds }) => {
               </p>
             </div>
           </div>
-          <div className="" style={{ width: "33%" }}>
+          <div className="skill_content" style={{ width: "33%" }}>
             <FooterHeader
               headerClasses="text-uppercase text-color"
               headerName="my skills"
@@ -129,21 +132,7 @@ const AboutTeachersPage = ({ seconds }) => {
             </div>
           </div>
         </div>
-        <Parallax
-          styles={{
-            width: "100%",
-            height: "30%",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
-            backgroundImage: 'url("pic/teacher23.jpg")',
-          }}
-          inner_classes="activities activities-white-color"
-          name="juliet margaret"
-          content="know juliet our math teacher"
-          hrStyle={{ backgroundColor: "white" }}
-        ></Parallax>
+        
         <div className="bg image-one d-flex">
           <BgImageInner1></BgImageInner1>
         </div>

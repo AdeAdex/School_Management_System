@@ -119,7 +119,7 @@ body {
   .our-news-container,
   .top-footer,
   .footer-hero,
-  .teachers_type {
+  .teachers_type, .teacher_skill {
     flex-direction: column;
   }
 
@@ -128,7 +128,7 @@ body {
   .our-news-card-column-3,
   .each-footer,
   .footer-hero div,
-  .each-teachers-type {
+  .each-teachers-type, .skill_content {
     width: 100% !important;
   }
 
@@ -159,13 +159,17 @@ body {
     display:  none !important;
   }
 
-  .ornage-card-main img {
+  .orange-card-main img {
     height: 270px !important;
     object-position: 100% 10% !important;
   }
 
   .teachers-container {
     height: 70vh !important;
+  }
+
+  .other_parallax {
+    height: 70% !important;
   }
 }
 

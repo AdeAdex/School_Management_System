@@ -18,16 +18,11 @@ const TeachersPage = () => {
         style={{ width: "100%", height: "100vh" }}
       >
         <Parallax
-          classes="bg"
+          classes="bg other_parallax"
           styles={{
-            flexDirection: "column",
-            width: "100%",
             height: "60%",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
-            backgroundImage: 'url("pic/teacher24.jpg")',
+            backgroundImage: 'url("pic/teacher17.avif"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
+            backgroundPosition: '100% 10%'
           }}
           inner_classes="activities activities-white-color"
           name="our teacher"
