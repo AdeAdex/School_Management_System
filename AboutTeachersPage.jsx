@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import OthersBgImage from "./src/components/OthersBgImage";
-import ActivitiesHeader from "./src/components/ActivitiesHeader";
 import FooterHeader from "./src/components/FooterHeader";
 import Footer from "./src/components/Footer";
 import Small_hr from "./src/components/Small_hr";
 import Skills from "./src/components/Skills";
 import Parallax from "./src/components/Parallax";
+import EmptyParallax from "./src/components/EmptyParallax";
+import MyLessons from "./src/components/MyLessons";
+import Contact_Teacher_Form from "./src/components/Contact_Teacher_Form";
 
 const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
@@ -57,7 +58,7 @@ const AboutTeachersPage = ({ seconds }) => {
             <FooterHeader
               headerClasses="text-uppercase text-color"
               headerName="about me"
-            ></FooterHeader>
+            />
             <Small_hr
               hr_class="my-3 skyblue"
               hr_style={{
@@ -89,7 +90,7 @@ const AboutTeachersPage = ({ seconds }) => {
             <FooterHeader
               headerClasses="text-uppercase text-color"
               headerName="my skills"
-            ></FooterHeader>
+            />
             <Small_hr
               hr_class="my-3 yellow"
               hr_style={{
@@ -133,7 +134,104 @@ const AboutTeachersPage = ({ seconds }) => {
             </div>
           </div>
         </div>
-        
+        <EmptyParallax
+          classes="bg"
+          styles={{
+            height: "30%",
+            backgroundImage: 'url("pic/gallary6.jpg")',
+          }}
+          inner_content_2="contact us"
+        />
+        <div className="teacher_skill d-flex w-75 mx-auto gap-4 py-5">
+          {/* <div>{countdown}</div> */}
+          <div className="skill_content" style={{ width: "33%" }}>
+            <FooterHeader
+              headerClasses="text-uppercase text-color"
+              headerName="my videos"
+            />
+            <Small_hr
+              hr_class="my-3 skyblue"
+              hr_style={{
+                height: "3px",
+                width: "35px",
+              }}
+            ></Small_hr>
+            <video
+              className="w-100"
+              style={{ height: "300px" }}
+              controls
+              poster="pic/pic.jpg"
+            >
+              <source src="pic/video1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="skill_content" style={{ width: "33%" }}>
+            <FooterHeader
+              headerClasses="text-uppercase text-color"
+              headerName="about me"
+            />
+            <Small_hr
+              hr_class="my-3 skyblue"
+              hr_style={{
+                height: "3px",
+                width: "35px",
+              }}
+            ></Small_hr>
+            <div className="text-color">
+              <MyLessons
+                text="DRAWING LESSON IN ALL CLASSES"
+                styles={{ backgroundColor: "skyblue" }}
+                btn_txt="8:00"
+              />
+              <hr />
+              <MyLessons
+                text="BASIC NICE ART VIDEOS"
+                styles={{ backgroundColor: "purple" }}
+                btn_txt="10:00"
+              />
+              <hr />
+              <MyLessons
+                text="SOME WATER COLOR PRACTICE"
+                styles={{ backgroundColor: "skyblue" }}
+                btn_txt="12:00"
+              />
+              <hr />
+              <MyLessons
+                text="WONDERFUL STENCIL TEST PAINTING"
+                styles={{ backgroundColor: "purple" }}
+                btn_txt="14:00"
+              />
+              <hr />
+              <MyLessons
+                text="COLOR WITH FRUIT AND VEGETABLES"
+                styles={{ backgroundColor: "skyblue" }}
+                btn_txt="16:00"
+              />
+            </div>
+          </div>
+          <div className="skill_content" style={{ width: "33%" }}>
+            <FooterHeader
+              headerClasses="text-uppercase text-color"
+              headerName="my skills"
+            />
+            <Small_hr
+              hr_class="my-3 yellow"
+              hr_style={{
+                height: "3px",
+                width: "35px",
+              }}
+            ></Small_hr>
+            <Contact_Teacher_Form/>
+          </div>
+        </div>
+        <EmptyParallax
+          classes="bg"
+          styles={{
+            height: "30%",
+            backgroundImage: 'url("pic/gallary4.png")',
+          }}
+          inner_content_2="contact us"
+        />
         <Footer></Footer>
       </div>
     </>
