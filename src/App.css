@@ -53,7 +53,8 @@ body {
   }
 }
 
-@media screen and (min-width: 640px) {
+
+@media screen and (max-width: 768px) {
   #stickyNav {
     width: 100% !important;
     top: 75px !important;
@@ -71,133 +72,10 @@ body {
     background-color: #f1f1f1;
   }
 
-  .navbar-toggler:focus .navbar-toggler:active,
-  .navbar-toggler:hover {
-    box-shadow: none !important;
-    outline: 0 !important;
-    outline-width: 0 !important;
-  }
-
-  .sticky-container {
+  /* .navbar-collapse .navbar-nav, .collapse form {
     display: none !important;
-    /* margin-top: 0px !important; */
-  }
-
-  ul {
-    background-color: white;
-  }
-  .sign-in-lg {
-    display: flex !important;
-  }
-
-  .nav-item:hover {
-    background-color: rgb(219, 212, 212);
-  }
-
-  .carousel-inner {
-    height: 300px !important;
-  }
-  #carouselExampleDark {
-    margin-top: 140px !important;
-  }
-  .card {
-    min-width: 100% !important;
-  }
-
-  .image2 {
-    height: 100% !important;
-  }
-
-  .image3 {
-    height: auto !important;
-  }
-
-  .navigate_to {
-    flex-direction: row !important;
-  }
-
-  .our-events-container,
-  .bg-image1-container,
-  .bg-image2-container,
-  .bg-image3-container,
-  .our-news-container,
-  .top-footer,
-  .footer-hero,
-  .teachers_type, .teacher_skill {
-    flex-direction: column;
-  }
-
-  .our-news-card-column-1,
-  .our-news-card-column-2,
-  .our-news-card-column-3,
-  .each-footer,
-  .footer-hero div,
-  .each-teachers-type, .skill_content {
-    width: 100% !important;
-  }
-
-  .bg-image3-main {
-    margin-top: 30px !important;
-  }
-
-  .each-calculate-to-number {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .footer-hero {
-    height: 150px !important;
-  }
-
-  .orange-body-main {
-    display: flex;
-    flex-direction: column !important;
-    /* padding-bottom: 20px; */
-  }
-  .orange-body, .orange-footer {
-    width: 100% !important;
-  }
-
-  .orange-footer {
-    flex-direction: row !important;
-    display:  none !important;
-  }
-
-  .orange-card-main img {
-    height: 270px !important;
-    object-position: 100% 10% !important;
-  }
-
-  .teachers-container {
-    height: 70vh !important;
-  }
-
-  .other_parallax {
-    height: 70% !important;
-  }
-
-  .other_parallax-about_teachers_page_positioning {
-    object-position: 40% 100% !important;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  #stickyNav {
-    width: 100% !important;
-    top: 75px !important;
-    left: 0% !important;
-  }
-  .navbar {
-    height: unset !important;
-  }
-
-  .navbar-nav {
-  }
-
-  .logo-icon-div {
-    width: 100% !important;
-    background-color: #f1f1f1;
-  }
+    background-color: red;
+  } */
 
   .navbar-toggler:focus .navbar-toggler:active,
   .navbar-toggler:hover {

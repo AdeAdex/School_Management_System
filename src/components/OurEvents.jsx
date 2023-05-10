@@ -13,9 +13,9 @@ const OurEvents = () => {
           hrStyle={{ backgroundColor: "red" }}
         ></ActivitiesHeader>
       </div>
-      <div className="our-events-container d-flex flex-lg-row flex-sm-column col-12 gap-3">
+      <div className="our-events-container d-flex flex-lg-row flex-md-row flex-sm-column w-100 gap-3 flex-wrap justify-content-center align-items-center">
         <EventsCard
-          cardstyle={{ width: "18rem" }}
+          cardstyle={{ width: "22%" }}
           classes="our-events"
           img="pic/bg-image-3.jpg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
@@ -40,7 +40,7 @@ const OurEvents = () => {
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
         ></EventsCard>
         <EventsCard
-          cardstyle={{ width: "18rem" }}
+          cardstyle={{ width: "22%" }}
           classes="our-events"
           img="pic/bg-image-3.jpg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
@@ -65,7 +65,7 @@ const OurEvents = () => {
           btnstyle={{ backgroundColor: "#6FC4D9", textTransform: "uppercase" }}
         ></EventsCard>
         <EventsCard
-          cardstyle={{ width: "18rem" }}
+          cardstyle={{ width: "22%" }}
           classes="our-events"
           img="pic/bg-image-5.jpeg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
@@ -90,7 +90,7 @@ const OurEvents = () => {
           btnstyle={{ backgroundColor: "#E0B84E", textTransform: "uppercase" }}
         ></EventsCard>
         <EventsCard
-          cardstyle={{ width: "18rem" }}
+          cardstyle={{ width: "22%" }}
           classes="our-events"
           img="pic/bg-image-4.jpg"
           h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
