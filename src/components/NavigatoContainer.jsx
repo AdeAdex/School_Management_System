@@ -4,7 +4,7 @@ import NavigateTo from "./NavigateTo";
 const NavigatoContainer = () => {
   return (
     <>
-      <section className="d-flex flex-column flex-lg-row justify-content-center w-100 mt-3">
+      <section className="navigate_to d-flex flex-column flex-lg-row justify-content-center w-100 mt-3 flex-wrap gap-">
         <NavigateTo
           to_where="/ournews"
           txt="courses"
