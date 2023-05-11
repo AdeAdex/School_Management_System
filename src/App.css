@@ -53,8 +53,12 @@ body {
   }
 }
 
+<<<<<<< HEAD
 
 @media screen and (max-width: 768px) {
+=======
+@media screen and (max-width: 600px) {
+>>>>>>> 9bba8382c895f2521598fb55ed86ae0bf1f3e56a
   #stickyNav {
     width: 100% !important;
     top: 75px !important;
