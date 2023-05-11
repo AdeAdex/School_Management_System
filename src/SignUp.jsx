@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignUp.css";
+import axios from "axios";
 
 const SignUp = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [state, setState] = useState("");
+  const [password, setPassword] = useState("");
+  const [check, setCheck] = useState();
+
+  const createAccount = (e) => {
+    let myDetails = {
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      city: city,
+      age: age,
+      gender: gender,
+      email: email,
+      state: state,
+      password: password,
+      check: false,
+    };
+    e.preventDefault();
+    console.log(myDetails);
+    // axios.post(endpoint, myDetails);
+  };
+
   return (
-    <section className="d-flex mx-auto py-3" style={{width: '75%', height: "100vh" }}>
+    <section
+      className="d-flex mx-auto py-3"
+      style={{ width: "75%", height: "100vh" }}
+    >
       <div
         className="h-100 py-4 px-5 position-relative text-white"
         style={{
@@ -12,7 +45,12 @@ const SignUp = () => {
           borderRadius: "10px",
         }}
       >
-        <img src="pic/ade.png" className="mt-5 mb-lg-5" style={{width: '50px'}} alt="" />
+        <img
+          src="pic/ade.png"
+          className="mt-5 mb-lg-5"
+          style={{ width: "50px" }}
+          alt=""
+        />
         <h2 className="mt-lg-5" style={{ textTransform: "capitalize" }}>
           start your <br />
           journey with us.
@@ -153,7 +191,10 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div className="h-100 shadow bg-light" style={{ padding: "50px 100px", width: '70%'}}>
+      <div
+        className="h-100 shadow bg-light"
+        style={{ padding: "50px 100px", width: "70%" }}
+      >
         <h2 className="fw-bold" style={{ textTransform: "capitalize" }}>
           sign up
         </h2>
@@ -169,6 +210,7 @@ const SignUp = () => {
               id=""
               name="firstName"
               required
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               First Name
@@ -185,6 +227,7 @@ const SignUp = () => {
               id=""
               name="lastName"
               required
+              onChange={(e) => setLastName(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               Last Name
@@ -201,6 +244,7 @@ const SignUp = () => {
               id=""
               name="phoneNumber"
               required
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               Phone Number
@@ -217,6 +261,7 @@ const SignUp = () => {
               id=""
               name="city"
               required
+              onChange={(e) => setCity(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               City
@@ -233,6 +278,7 @@ const SignUp = () => {
               id=""
               name="age"
               required
+              onChange={(e) => setAge(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               Age
@@ -249,6 +295,7 @@ const SignUp = () => {
               id=""
               name="gender"
               required
+              onChange={(e) => setGender(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               Gender
@@ -265,6 +312,7 @@ const SignUp = () => {
               id=""
               name="email"
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               Email Address
@@ -283,6 +331,7 @@ const SignUp = () => {
               name="state"
               aria-describedby="validationServer04Feedback"
               required
+              onChange={(e) => setState(e.target.value)}
             >
               <option selected disabled>
                 Choose...
@@ -302,6 +351,7 @@ const SignUp = () => {
               id=""
               name="password"
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
             <label for="validationServer01" className="user-label">
               Password
@@ -318,6 +368,8 @@ const SignUp = () => {
                 id="invalidCheck3"
                 aria-describedby="invalidCheck3Feedback"
                 required
+                name="check"
+                onChange={(e) => setCheck(e.target.checked)}
               />
               <label className="form-check-label" for="invalidCheck3">
                 Agree to terms and conditions
@@ -328,7 +380,11 @@ const SignUp = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary" type="submit">
+            <button
+              className="btn btn-primary"
+              type="submit"
+              onClick={createAccount}
+            >
               Create Account
             </button>
           </div>
