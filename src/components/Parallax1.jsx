@@ -13,13 +13,13 @@ const Parallax1 = ({
           style={{ height: "", width: "75%" }}
         >
           <button
-            className="parallax1-btn btn text-white text-uppercase d-flex gap-3 px-4 py-2"
+            className="parallax1-btn btn text-white text-uppercase d-flex gap-3 px-4 py-2 justify-content-center"
             style={{ backgroundColor: "#74CEE4", boxShadow: 'inset 0px -4px #54CAE1' }}
           >
             <i className="fas fa-bars my-auto"></i> all courses
           </button>
           <button
-            className="parallax1-btn btn text-white text-uppercase d-flex gap-3 px-4 py-2"
+            className="parallax1-btn btn text-white text-uppercase d-flex gap-3 px-4 py-2 justify-content-center"
             style={{ backgroundColor: "#74CEE4", boxShadow: 'inset 0px -4px #54CAE1' }}
           >
             <i className="fas fa-edit my-auto"></i>{inner_content_2}

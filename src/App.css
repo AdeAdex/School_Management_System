@@ -47,12 +47,67 @@ body {
   box-shadow: none !important;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .our-events-header {
     margin-top: 100px;
   }
 }
 
+
+@media screen and (min-width: 768px) and  (max-width: 992px) {
+  .navigate_to {
+    width: 100%;
+  }
+
+  .navigate_to_compo {
+    width: 48% !important;
+  }
+
+  .navbar {
+    height: unset !important;
+  }
+  #stickyNav {
+    width: 100% !important;
+    top: 75px !important;
+    left: 0% !important;
+  }
+  .logo-icon-div {
+    width: 100% !important;
+    background-color: #f1f1f1;
+  }
+  .navbar-toggler:focus .navbar-toggler:active,
+  .navbar-toggler:hover {
+    box-shadow: none !important;
+    outline: 0 !important;
+    outline-width: 0 !important;
+  }
+
+  .sticky-container {
+    display: none !important;
+    /* margin-top: 0px !important; */
+  }
+
+  ul {
+    background-color: white;
+  }
+  .sign-in-lg {
+    display: flex !important;
+  }
+
+  .nav-item:hover {
+    background-color: rgb(219, 212, 212);
+  }
+
+  .carousel-inner {
+    height: 400px !important;
+  }
+  #carouselExampleDark {
+    margin-top: 140px !important;
+  }
+  .card {
+    min-width: 48% !important;
+  }
+}
 
 @media screen and (max-width: 768px) {
   #stickyNav {

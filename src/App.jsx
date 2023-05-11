@@ -14,8 +14,8 @@ import EventPage from './EventPage'
 import NewsPage from './NewsPage'
 import Footer from './components/Footer'
 import TeachersPage from './TeachersPage'
-import AboutTeachersPage from '../AboutTeachersPage'
 import './Homepage.scss'
+import AboutTeachersPage from './AboutTeachersPage'
 
 
 
