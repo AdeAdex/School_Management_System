@@ -29,7 +29,7 @@ const SignUp = () => {
     };
     e.preventDefault();
     const endpoint = "http://localhost:2000/student_account/signup"
-    console.log(myDetails);
+    // console.log(myDetails);
     axios.post(endpoint, myDetails);
   };
 
