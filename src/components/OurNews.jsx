@@ -17,7 +17,7 @@ const OurNews = () => {
         ></ActivitiesHeader>
       </div>
       <div
-        className="our-news-container d-flex flex-lg-row flex-sm-column col-12 gap-3"
+        className="our-news-container d-flex flex-lg-row flex-md-row flex-sm-column col-12 gap-3"
         style={{ width: "100%" }}
       >
         <OurNewsCardColumn1></OurNewsCardColumn1>

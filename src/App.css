@@ -108,16 +108,33 @@ body {
     min-width: 48% !important;
   }
 
-  .top-footer, .footer-hero {
+  .top-footer, .footer-hero, .our-news-container, .our-news-card-column-3 {
     flex-wrap: wrap;
   }
-  .each-footer {
+
+  .our-news-card-column-3 {
+    width: 100% !important;
+  }
+
+  .card-3 {
+    /* width: ; */
+  }
+
+
+  .each-footer,
+  .our-news-card-column-1,
+  .our-news-card-column-2 {
     width: 47.9% !important;
   }
 
   .footer-hero div {
     width: 100% !important;
     margin-bottom: 10px;
+  }
+
+  .card-3 {
+    width: 47.9% !important;
+    border: 2px solid red;
   }
 
 }

@@ -28,7 +28,7 @@ const OurNewsCardColumn2 = () => {
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "capitalize" }}
-        ></EventsCard_Content>
+        />
         <EventCard_Img
           cardstyle={{ width: "100%" }}
           classes="our-news"
@@ -41,7 +41,7 @@ const OurNewsCardColumn2 = () => {
           days_time="none"
           days_time_icon="fas fa-user my-auto"
           title="our school anniversary"
-        ></EventCard_Img>
+        />
         <EventsCard
           cardstyle={{ width: "100%" }}
           classes="our-news"
@@ -63,7 +63,7 @@ const OurNewsCardColumn2 = () => {
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"
           btnstyle={{ backgroundColor: "#E0B84E", textTransform: "capitalize" }}
-        ></EventsCard>
+        />
         <EventsCard_Content
           cardstyle={{ width: "100%" }}
           h5Classes="card-title py-3 text-uppercase px-3"
@@ -82,7 +82,7 @@ const OurNewsCardColumn2 = () => {
           content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
           btn="read more"
           btnstyle={{ backgroundColor: "#CA6969", textTransform: "capitalize" }}
-        ></EventsCard_Content>
+        />
       </div>
     </>
   );
