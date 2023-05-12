@@ -107,6 +107,16 @@ body {
   .card {
     min-width: 48% !important;
   }
+
+  .top-footer, .footer-hero {
+    flex-wrap: wrap;
+    background-color: red;
+  }
+  .each-footer,
+  .footer-hero div {
+    width: 47.9% !important;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
