@@ -110,11 +110,14 @@ body {
 
   .top-footer, .footer-hero {
     flex-wrap: wrap;
-    background-color: red;
   }
-  .each-footer,
-  .footer-hero div {
+  .each-footer {
     width: 47.9% !important;
+  }
+
+  .footer-hero div {
+    width: 100% !important;
+    margin-bottom: 10px;
   }
 
 }

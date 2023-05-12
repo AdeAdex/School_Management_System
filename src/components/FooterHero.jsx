@@ -7,7 +7,7 @@ const FooterHero = () => {
       <div
         className="footer-hero d-flex justify-content-between py-3"
         style={{
-          backgroundColor: "",
+          backgroundColor: "#404547",
           height: "100px",
           width: "100%",
           color: "white",
