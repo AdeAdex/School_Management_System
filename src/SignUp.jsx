@@ -28,8 +28,9 @@ const SignUp = () => {
       check: false,
     };
     e.preventDefault();
+    const endpoint = "http://localhost:2000/student_account/signup"
     console.log(myDetails);
-    // axios.post(endpoint, myDetails);
+    axios.post(endpoint, myDetails);
   };
 
   return (
@@ -201,7 +202,7 @@ const SignUp = () => {
         <h6 className="d-flex gap-5 mt-3">
           Have an account already <a href="/signin">Login</a>
         </h6>
-        <form className="row g-3 mt-4" action="/signup" method="post">
+        <form className="row g-3 mt-4" action="/student_account/signup" method="post">
           <div className="col-md-6 position-relative  flex-column mb-3">
             <input
               type="text"
