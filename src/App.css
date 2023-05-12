@@ -135,6 +135,9 @@ body {
   .navbar-nav {
   }
 
+  .navigate_to_compo {
+    width: 100% !important;
+  }
   .logo-icon-div {
     width: 100% !important;
     background-color: #f1f1f1;
