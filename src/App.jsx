@@ -6,13 +6,10 @@ import { Link, Navigate, Route, BrowserRouter as Router, Routes } from 'react-ro
 import HomePage from './HomePage'
 import Navbar from './components/Navbar'
 import ErrorPage from './ErrorPage'
-import NavigateTo from './components/NavigateTo'
-import FixedNav from './components/FixedNav'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 import EventPage from './EventPage'
 import NewsPage from './NewsPage'
-import Footer from './components/Footer'
 import TeachersPage from './TeachersPage'
 import './Homepage.scss'
 import AboutTeachersPage from './AboutTeachersPage'
@@ -42,7 +39,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>
-        <Route path='signup' element={<SignUp/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>
