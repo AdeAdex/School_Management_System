@@ -109,11 +109,11 @@ body {
     min-width: 48% !important;
   }
 
-  .top-footer, .footer-hero, .our-news-container, .our-news-card-column-3,  .teachers_type {
+  .top-footer, .footer-hero, .our-news-container, .our-news-card-column-3, .teachers_type, .teacher_skill {
     flex-wrap: wrap;
   }
 
-  .our-news-card-column-3 {
+  .our-news-card-column-3, .skill_content {
     width: 100% !important;
   }
 

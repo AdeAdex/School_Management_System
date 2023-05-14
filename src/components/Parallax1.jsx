@@ -9,7 +9,7 @@ const Parallax1 = ({
     <>
       <div className={classes} style={styles}>
         <div
-          className="bg-image1-container d-flex m-auto justify-content-center gap-4"
+          className="bg-image1-container d-flex flex-lg-row flex-md-column  m-auto justify-content-center gap-4"
           style={{ height: "", width: "75%" }}
         >
           <button
