@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./SignUp.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate()
+  
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -13,7 +16,8 @@ const SignUp = () => {
   const [state, setState] = useState("");
   const [password, setPassword] = useState("");
   const [check, setCheck] = useState();
-
+  
+  
   const createAccount = (e) => {
     let myDetails = {
       firstName: firstName,
@@ -29,8 +33,12 @@ const SignUp = () => {
     };
     e.preventDefault();
     const endpoint = "http://localhost:2000/student_account/signup"
-    // console.log(myDetails);
-    axios.post(endpoint, myDetails);
+    axios.post(endpoint, myDetails)
+    .then((response) => {
+      if (response.data == 'Information saved to the database') {
+        navigate("/signin");
+      }
+    })
   };
 
   return (
