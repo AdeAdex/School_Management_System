@@ -2,6 +2,10 @@ import React from "react";
 import "./SignIn.css";
 
 const SignIn = () => {
+
+  const login = () => {
+    
+  }
   return (
     <div className="d-flex gap-5 mx-auto main">
       <div className="main-container">
@@ -24,14 +28,14 @@ const SignIn = () => {
               <i></i>
             </div>
             <div className="check">
-              <span>
+              <span>  
                 <input type="checkbox" id="checkBox" /> Remember Me
               </span>
               <a href="" id="forgotPass">
                 Forgot password
               </a>
             </div>
-            <button className="btn btn-primary col-12" type="submit">
+            <button className="btn btn-primary col-12" type="submit" onClick={login}>
               Login
             </button>
             <h3 id="h3">or log in with</h3>
