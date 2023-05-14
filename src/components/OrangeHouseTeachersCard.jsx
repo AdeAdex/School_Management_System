@@ -21,7 +21,7 @@ const OrangeHouseTeachersCard = ({
         className="orange-card-main card mb-2 col-6"
         style={{ width: "48.95%" }}
       >
-        <div className="row g-0">
+        <div className=" row g-0">
           <div className="col-md-5">
             <img
               src={img}
