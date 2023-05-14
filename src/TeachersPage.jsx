@@ -69,31 +69,31 @@ const TeachersPage = () => {
             content="FULL TIME · AGE: 3-6 YEARS OLD"
             hrStyle={{ backgroundColor: "orange" }}
           />
-          <div className="d-flex gap-4 w-100 flex-wrap position-relative">
+          <div className="d-flex gap-lg-4 gap-md-4 w-100 flex-wrap position-relative">
             <OrangeHouseTeachersCard
               img="pic/teacher10.jpg"
-              bodyClassName="orange-body-main col-md-12 orange d-flex"
+              bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
               teacherName="juliet margaret"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
             />
             <OrangeHouseTeachersCard
               img="pic/teacher9.jpg"
-              bodyClassName="orange-body-main col-md-12 skyblue d-flex"
+              bodyClassName="orange-body-main col-lg-7 col-md-12 skyblue d-flex"
               teacherName="lucy faith"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
             />
             <OrangeHouseTeachersCard
               img="pic/teacher5.png"
-              bodyClassName="orange-body-main col-md-12 yellow d-flex"
+              bodyClassName="orange-body-main col-lg-7 col-md-12 yellow d-flex"
               teacherName="john smith"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
             />
             <OrangeHouseTeachersCard
               img="pic/teacher8.jpg"
-              bodyClassName="orange-body-main col-md-12 purple d-flex"
+              bodyClassName="orange-body-main col-lg-7 col-md-12 purple d-flex"
               teacherName="oluwaseun adewale"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"

@@ -51,6 +51,7 @@ body {
   .our-events-header {
     margin-top: 100px;
   }
+
 }
 
 
@@ -116,14 +117,9 @@ body {
     width: 100% !important;
   }
 
-  .card-3 {
-    /* width: ; */
-  }
-
-
   .each-footer,
   .our-news-card-column-1,
-  .our-news-card-column-2, .each-teachers-type, .orange-body-main {
+  .our-news-card-column-2, .each-teachers-type, .orange-card-main {
     width: 47.9% !important;
   }
 
