@@ -8,6 +8,11 @@
   "icons": [
     {
       "src": "ade.png",
+      "sizes": "193x192",
+      "type": "image/png"
+    },
+    {
+      "src": "ade.png",
       "sizes": "512x512",
       "type": "image/png"
     }
