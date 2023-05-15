@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignIn.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const navigate = useNavigate();
 
-  const login = () => {
-    
-  }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = (e) => {
+    let myDetails = {
+      email: email,
+      password: password,
+    };
+    e.preventDefault();
+    const endpoint = "http://localhost:2000/student_account/signin";
+    axios.post(endpoint, myDetails).then((res) => {
+      if (res.data == "pass") {
+        console.log(res.data);
+        navigate("/signup");
+      } else {
+        navigate("/signin");
+      }
+    });
+    // console.log(myDetails)
+  };
   return (
     <div className="d-flex gap-5 mx-auto main">
       <div className="main-container">
@@ -16,26 +36,40 @@ const SignIn = () => {
           <h1 id="h1">
             welcome <span>back!</span>
           </h1>
-          <form action="/signin" method="post">
+          <form action="/student_account/signin" method="post">
             <div className="inputbox">
-              <input required="required" type="text" name="em" />
+              <input
+                required="required"
+                type="text"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <span>Email</span>
               <i></i>
             </div>
             <div className="inputbox mb-4">
-              <input required="required" type="text" name="pass" />
+              <input
+                required="required"
+                type="text"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <span>Password</span>
               <i></i>
             </div>
             <div className="check">
-              <span>  
+              <span>
                 <input type="checkbox" id="checkBox" /> Remember Me
               </span>
               <a href="" id="forgotPass">
                 Forgot password
               </a>
             </div>
-            <button className="btn btn-primary col-12" type="submit" onClick={login}>
+            <button
+              className="btn btn-primary col-12"
+              type="submit"
+              onClick={login}
+            >
               Login
             </button>
             <h3 id="h3">or log in with</h3>
@@ -65,7 +99,7 @@ const SignIn = () => {
       >
         <div
           className="w-75 h-75 m-auto text-black p-5"
-          style={{backgroundColor: '#302bc8;'}}
+          style={{ backgroundColor: "#302bc8;" }}
         >
           digital platform for distance learning
         </div>

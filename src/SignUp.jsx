@@ -43,8 +43,8 @@ const SignUp = () => {
 
   return (
     <section
-      className="d-flex mx-auto py-3"
-      style={{ width: "75%", height: "100vh" }}
+      className="d-flex flex-lg-row flex-sm-column  mx-auto py-3"
+      style={{ width: "75%", height: "", marginTop: '150px' }}
     >
       <div
         className="h-100 py-4 px-5 position-relative text-white"
