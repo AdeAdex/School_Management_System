@@ -7,7 +7,7 @@
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "vite.svg",
+      "src": "ade.png",
       "sizes": "512x512",
       "type": "image/png"
     }
