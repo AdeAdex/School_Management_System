@@ -1,10 +1,10 @@
 {
   "name": "Adex School",
   "short_name": "Adex",
-  "start_url": "homepage.jsx",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#333333",
+  "theme_color": "blue",
   "icons": [
     {
       "src": "ade.png",
@@ -12,9 +12,7 @@
       "type": "image/png"
     },
     {
-      "src": "ade.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      
     }
   ]
 }
