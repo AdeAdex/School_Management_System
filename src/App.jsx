@@ -3,16 +3,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Link, Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import HomePage from './HomePage'
+import HomePage from './pages/HomePage'
 import Navbar from './components/Navbar'
-import ErrorPage from './ErrorPage'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
-import EventPage from './EventPage'
-import NewsPage from './NewsPage'
-import TeachersPage from './TeachersPage'
-import './Homepage.scss'
-import AboutTeachersPage from './AboutTeachersPage'
+import ErrorPage from './pages/ErrorPage'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import EventPage from './pages/EventPage'
+import NewsPage from './pages/NewsPage'
+import TeachersPage from './pages/TeachersPage'
+import './pages/Homepage.scss'
+import AboutTeachersPage from './pages/AboutTeachersPage'
+import Dashboard from './pages/Dashboard'
 
 
 
@@ -40,6 +41,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='dashboard' element={<Dashboard/>}/>
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>

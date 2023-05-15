@@ -1,8 +1,8 @@
 import React from "react";
-import OurNews from "./components/OurNews";
-import Previous_Next_Btn from "./components/Previous_Next_Btn";
-import Footer from "./components/Footer";
-import Parallax from "./components/Parallax";
+import OurNews from "../components/OurNews";
+import Previous_Next_Btn from "../components/Previous_Next_Btn";
+import Footer from "../components/Footer";
+import Parallax from "../components/Parallax";
 
 const NewsPage = () => {
   return (

@@ -2,30 +2,32 @@ import React, { useState } from "react";
 import "./SignIn.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  let formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
 
-  const login = (e) => {
-    let myDetails = {
-      email: email,
-      password: password,
-    };
-    e.preventDefault();
-    const endpoint = "http://localhost:2000/student_account/signin";
-    axios.post(endpoint, myDetails).then((res) => {
-      if (res.data == "pass") {
-        console.log(res.data);
-        navigate("/signup");
-      } else {
-        navigate("/signin");
-      }
-    });
-    // console.log(myDetails)
-  };
+    onSubmit: (values) => {
+      console.log(values);
+      const endpoint = "http://localhost:2000/student_account/signin";
+      axios.post(endpoint, values)
+      .then((res) => {
+        if (res.data == "pass") {
+          console.log(res.data);
+          navigate("/signup");
+        } else {
+          navigate("/signin");
+        }
+      });
+    },
+  });
+
   return (
     <div className="d-flex gap-5 mx-auto main">
       <div className="main-container">
@@ -36,13 +38,17 @@ const SignIn = () => {
           <h1 id="h1">
             welcome <span>back!</span>
           </h1>
-          <form action="/student_account/signin" method="post">
+          <form
+            onSubmit={formik.handleSubmit}
+            action="/student_account/signin"
+            method="post"
+          >
             <div className="inputbox">
               <input
                 required="required"
                 type="text"
                 name="email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={formik.handleChange}
               />
               <span>Email</span>
               <i></i>
@@ -52,7 +58,7 @@ const SignIn = () => {
                 required="required"
                 type="text"
                 name="password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={formik.handleChange}
               />
               <span>Password</span>
               <i></i>
@@ -68,7 +74,7 @@ const SignIn = () => {
             <button
               className="btn btn-primary col-12"
               type="submit"
-              onClick={login}
+              // onClick={login}
             >
               Login
             </button>

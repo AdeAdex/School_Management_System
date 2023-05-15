@@ -1,11 +1,11 @@
 import React from "react";
-import Footer from "./components/Footer";
-import TeachersType from "./components/TeachersType";
-import ActivitiesHeader from "./components/ActivitiesHeader";
-import BlueHouseTeachersCard from "./components/BlueHouseTeachersCard";
-import OrangeHouseTeachersCard from "./components/OrangeHouseTeachersCard";
-import Parallax from "./components/Parallax";
-import Parallax3 from "./components/Parallax3";
+import Footer from "../components/Footer";
+import TeachersType from "../components/TeachersType";
+import ActivitiesHeader from "../components/ActivitiesHeader";
+import BlueHouseTeachersCard from "../components/BlueHouseTeachersCard";
+import OrangeHouseTeachersCard from "../components/OrangeHouseTeachersCard";
+import Parallax from "../components/Parallax";
+import Parallax3 from "../components/Parallax3";
 
 const TeachersPage = () => {
   return (
