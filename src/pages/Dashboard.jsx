@@ -1,5 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Offcanvas from "../components/dashboardComponents/Offcanvas";
+import Navbar from "../components/dashboardComponents/Navbar";
+import '../pages/Dashboard.css'
 
 const Dashboard = () => {
   const [first, setfirst] = useState([]);
@@ -12,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div style={{ marginTop: "200px" }}>
+      {/* <div style={{ marginTop: "" }}>
         <h1 className="text-center text-capitalize my-3">
           Welcome to the dashboard
         </h1>
@@ -38,7 +41,11 @@ const Dashboard = () => {
             </tbody>
           ))}
         </table>
-      </div>
+      </div> */}
+      <section className="d-flex" style={{width: '100%'}}>
+        <Offcanvas/>
+        <Navbar/>
+      </section>
     </>
   );
 };

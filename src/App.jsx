@@ -36,7 +36,7 @@ function App() {
   return (
     <>
     <Router>
-    <Navbar/>
+    {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>
