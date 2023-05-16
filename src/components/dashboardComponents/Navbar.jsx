@@ -6,12 +6,14 @@ const Navbar = () => {
       offCan.style.width = "5%";
       nav.style.width = "95%";
       menu.style.setProperty("display", "none", "important");
-      canvasTitle.style.setProperty("opacity", "0", "important");
+      canvasTitle.classList.add("hide")
+//       canvasTitle.style.setProperty("opacity", "0", "important");
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
       menu.style.setProperty("display", "block", "important");
-      canvasTitle.style.setProperty("opacity", "1", "important");
+      canvasTitle.classList.remove("show")
+//       canvasTitle.style.setProperty("opacity", "1", "important");
     }
   };
 
