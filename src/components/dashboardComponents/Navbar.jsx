@@ -2,13 +2,16 @@ import React from "react";
 
 const Navbar = () => {
   const offCanvas = () => {
-    // offCanvas.classList.toggle
-    if (offCan.style.width === "20%") {
+    if (offCan.style.width == "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
+      menu.style.setProperty("display", "none", "important");
+      canvasTitle.style.setProperty("opacity", "0", "important");
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
+      menu.style.setProperty("display", "block", "important");
+      canvasTitle.style.setProperty("opacity", "1", "important");
     }
   };
 
@@ -17,7 +20,7 @@ const Navbar = () => {
       <div
         className="shadow d-flex"
         id="nav"
-        style={{ width: "80%", height: "60px" }}
+        style={{ width: "80%", height: "80px" }}
       >
         <div className="w-50 my-auto d-flex">
           <button className="btn my-auto offcanvas-btn" type="button" onClick={offCanvas}>
