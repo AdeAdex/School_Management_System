@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 const Navbar = () => {
   const offCanvas = () => {
+        const [isShown, setIsShown] = useState(false)
     if (offCan.style.width == "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
       menu.style.setProperty("display", "none", "important");
-      canvasTitle.classList.add("hide")
+      setIsShown(false)
+//       canvasTitle.classList.add("hide")
 //       canvasTitle.style.setProperty("opacity", "0", "important");
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
       menu.style.setProperty("display", "block", "important");
-      canvasTitle.classList.remove("show")
+      setIsShown(true)
+//       canvasTitle.classList.remove("show")
 //       canvasTitle.style.setProperty("opacity", "1", "important");
     }
   };
