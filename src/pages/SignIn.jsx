@@ -20,7 +20,7 @@ const SignIn = () => {
       .then((res) => {
         if (res.data == "pass") {
           console.log(res.data);
-          navigate("/signup");
+          navigate("/dashboard");
         } else {
           navigate("/signin");
         }
@@ -65,7 +65,7 @@ const SignIn = () => {
             </div>
             <div className="check">
               <span>
-                <input type="checkbox" id="checkBox" /> Remember Me
+                 <input type="checkbox" id="checkBox" /> Remember Me
               </span>
               <a href="" id="forgotPass">
                 Forgot password
