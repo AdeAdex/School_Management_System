@@ -6,7 +6,7 @@ const Parallax = ({ classes, styles, name, inner_classes, content, hrStyle }) =>
       <div className={classes} style={styles}>
         <div className="bg-image2-main center-div" style={{ height: "0%" }}>
           <div className={inner_classes}>
-            <h2 className="">{name}</h2>
+            <h2 className="fs-3">{name}</h2>
             <p>{content}</p>
             <div style={hrStyle}></div>
           </div>
