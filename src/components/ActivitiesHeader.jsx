@@ -6,7 +6,7 @@ const ActivitiesHeader = ({ name, content, hrStyle, classes}) => {
       <div className={classes}>
         <h2 className="fs-2">{name}</h2>
         <p className="fs-5">{content}</p>
-        <div style={hrStyle}></div>
+        <div className="mt-3" style={hrStyle}></div>
       </div>
     </>
   );
