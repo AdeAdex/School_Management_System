@@ -8,7 +8,7 @@ const Parallax = ({ classes, styles, name, inner_classes, content, hrStyle }) =>
           <div className={inner_classes}>
             <h2 className="fs-3">{name}</h2>
             <p>{content}</p>
-            <div style={hrStyle}></div>
+            <div className="mt-3" style={hrStyle}></div>
           </div>
         </div>
       </div>
