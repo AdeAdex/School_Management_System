@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Offcanvas from "../components/dashboardComponents/Offcanvas";
-import Navbar from "../components/dashboardComponents/Navbar";
 import "../pages/Dashboard.css";
 import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
 import 'react-calendar/dist/Calendar.css';
 import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
+import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 
 const Dashboard = () => {
   const [first, setfirst] = useState([]);
@@ -59,7 +59,7 @@ const Dashboard = () => {
           <Offcanvas />
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
-          <Navbar />
+        <DashboardNavbar/>
           <div className="flex">
             <div className="w-9/12">left</div>
             <div>

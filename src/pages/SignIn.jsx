@@ -3,6 +3,7 @@ import "./SignIn.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import PagesNavbar from "../components/PagesNavbar";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -29,6 +30,9 @@ const SignIn = () => {
   });
 
   return (
+    <>
+      
+    <PagesNavbar/>
     <div className="d-flex gap-5 mx-auto main">
       <div className="main-container">
         <div className="container">
@@ -111,6 +115,7 @@ const SignIn = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

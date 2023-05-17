@@ -32,7 +32,7 @@ const BlueHouseTeachersCard = ({
           <p className="card-text text-color">
             <div>{content}</div>
           </p>
-          <div className="d-flex justify-content-evenly">
+          <div className="d-flex justify-content-evenly mt-3">
           {/* <FontAwesomeIcon icon="fa-solid fa-user" />
           <FontAwesomeIcon icon="fa-solid fa-user" />
           <FontAwesomeIcon icon="fa-solid fa-user" />

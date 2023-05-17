@@ -47,14 +47,14 @@ const OrangeHouseTeachersCard = ({
               >
                 <h5>{teacherName}</h5>
               </Link>
-              
-              <p className="card-text">
+              <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}/>
+              <div className="card-text mt-4">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
                 rerum distinctio cumque quas.
-              </p>
+              </div>
               <button
                 onClick={toTeachersPage}
-                className="btn card-text  text-white d-flex gap-2 shadow py-2 px-2 border-0"
+                className="btn card-text mt-3 text-white d-flex gap-2 shadow py-2 px-2 border-0"
                 style={{ cursor: "pointer", backgroundColor: "inherit" }}
               >
                 <i className="fas fa-graduation-cap fs-5 my-auto"></i>

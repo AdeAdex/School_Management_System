@@ -4,7 +4,6 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Link, Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import Navbar from './components/Navbar'
 import ErrorPage from './pages/ErrorPage'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -36,7 +35,6 @@ function App() {
   return (
     <>
     <Router>
-    <Navbar/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>

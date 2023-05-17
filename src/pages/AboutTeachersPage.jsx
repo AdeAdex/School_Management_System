@@ -8,6 +8,7 @@ import EmptyParallax from "../components/EmptyParallax";
 import MyLessons from "../components/MyLessons";
 import Contact_Teacher_Form from "../components/Contact_Teacher_Form";
 import Parallax1 from "../components/Parallax1";
+import PagesNavbar from "../components/PagesNavbar";
 
 const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
@@ -29,6 +30,7 @@ const AboutTeachersPage = ({ seconds }) => {
 
   return (
     <>
+    <PagesNavbar/>
       <div
         className="teachers-container mx-aut"
         style={{ width: "100%", height: "100vh" }}

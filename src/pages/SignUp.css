@@ -10,6 +10,18 @@
         outline: none;
         transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
       }
+      
+   
+      .input:focus {
+        background-color: #F8F9FA;
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:focus {
+      transition: background-color 30000s 0s, color 600000s 0s;
+      }
+      input[data-autocompleted]{
+           background-color: transparent;
+      }
 
       .user-label {
         position: absolute;
@@ -32,7 +44,7 @@
       .input:focus ~ label,
       .input:valid ~ label {
         transform: translateY(-50%) scale(0.8);
-        background-color: white;
+        background-color: #F8F9FA;
         padding: 0 0.2em;
         color: #2196f3;
         top: 1px;

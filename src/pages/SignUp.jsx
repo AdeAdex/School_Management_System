@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import PagesNavbar from "../components/PagesNavbar";
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -42,6 +43,8 @@ const SignUp = () => {
   };
 
   return (
+    <>
+    <PagesNavbar/>
     <section
       className="d-flex flex-lg-row flex-sm-column  mx-auto py-3"
       style={{ width: "75%", height: "", marginTop: '150px' }}
@@ -204,7 +207,7 @@ const SignUp = () => {
         className="h-100 shadow bg-light"
         style={{ padding: "50px 100px", width: "70%" }}
       >
-        <h2 className="fw-bold" style={{ textTransform: "capitalize" }}>
+        <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
           sign up
         </h2>
         <h6 className="d-flex gap-5 mt-3">
@@ -400,6 +403,7 @@ const SignUp = () => {
         </form>
       </div>
     </section>
+    </>
   );
 };
 

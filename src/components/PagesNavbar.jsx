@@ -1,37 +1,34 @@
-import React from "react";
+import React from 'react'
 import StickyNav from "./StickyNav";
 import MulticolorLine from "./MulticolorLine";
 import Nav from "./Nav";
 import FixedNav from "./FixedNav";
 
-const Navbar = () => {
+const PagesNavbar = () => {
 
-  window.onscroll = function () {
-    scrollFunction();
-  };
-
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 100 ||
-      document.documentElement.scrollTop > 100
-    ) {
-      // stickyNav.style.setProperty("top", "25px", "important");
-      stickyNav.classList.add("scroll-animation");
-    } else if (
-      document.body.scrollTop < 100 ||
-      document.documentElement.scrollTop < 100
-    ) {
-      // stickyNav.style.setProperty("top", "50px", "important");
-      stickyNav.classList.remove("scroll-animation");
-    } else {
-    }
-  }
-  
-
-
+        window.onscroll = function () {
+                scrollFunction();
+              };
+            
+              function scrollFunction() {
+                if (
+                  document.body.scrollTop > 100 ||
+                  document.documentElement.scrollTop > 100
+                ) {
+                  // stickyNav.style.setProperty("top", "25px", "important");
+                  stickyNav.classList.add("scroll-animation");
+                } else if (
+                  document.body.scrollTop < 100 ||
+                  document.documentElement.scrollTop < 100
+                ) {
+                  // stickyNav.style.setProperty("top", "50px", "important");
+                  stickyNav.classList.remove("scroll-animation");
+                } else {
+                }
+              }
   return (
     <>
-    <FixedNav/>
+        <FixedNav/>
       <section className="animation"  id="stickyNav" style={{ width: "75%", height: "auto", position: 'fixed',  zIndex: '5', left: '12.5%'}}>
       <div
         className="sticky-container d-flex px-4 text-capitalize text-white"
@@ -57,9 +54,8 @@ const Navbar = () => {
         <MulticolorLine/>
         <Nav/>
       </section>
-    
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default PagesNavbar

@@ -4,8 +4,8 @@ const ActivitiesHeader = ({ name, content, hrStyle, classes}) => {
   return (
     <>
       <div className={classes}>
-        <h2 className="">{name}</h2>
-        <p>{content}</p>
+        <h2 className="fs-2">{name}</h2>
+        <p className="fs-5">{content}</p>
         <div style={hrStyle}></div>
       </div>
     </>

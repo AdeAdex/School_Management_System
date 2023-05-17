@@ -6,10 +6,12 @@ import BlueHouseTeachersCard from "../components/BlueHouseTeachersCard";
 import OrangeHouseTeachersCard from "../components/OrangeHouseTeachersCard";
 import Parallax from "../components/Parallax";
 import Parallax3 from "../components/Parallax3";
+import PagesNavbar from "../components/PagesNavbar";
 
 const TeachersPage = () => {
   return (
     <>
+    <PagesNavbar/>
       <div
         className="teachers-container mx-aut"
         style={{ width: "100%", height: "100vh" }}

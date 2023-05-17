@@ -3,10 +3,12 @@ import OurNews from "../components/OurNews";
 import Previous_Next_Btn from "../components/Previous_Next_Btn";
 import Footer from "../components/Footer";
 import Parallax from "../components/Parallax";
+import PagesNavbar from "../components/PagesNavbar";
 
 const NewsPage = () => {
   return (
     <>
+    <PagesNavbar/>
       <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
       <Parallax
           classes="bg"

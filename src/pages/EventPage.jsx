@@ -3,10 +3,12 @@ import OurEvents from "../components/OurEvents";
 import Previous_Next_Btn from "../components/Previous_Next_Btn";
 import Footer from "../components/Footer";
 import Parallax2 from "../components/Parallax2";
+import PagesNavbar from "../components/PagesNavbar";
 
 const EventPage = () => {
   return (
     <>
+    <PagesNavbar/>
       <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
       <Parallax2
           classes="bg image2"

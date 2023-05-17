@@ -41,7 +41,7 @@ const Nav = () => {
           </button>
         </div>
           <div
-            className="collapse navbar-collapse"
+            className="collaps navbar-collapse"
             id="navbarSupportedContent"
             style={{ height: "80px" }}
           >
