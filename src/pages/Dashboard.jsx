@@ -2,7 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import Offcanvas from "../components/dashboardComponents/Offcanvas";
 import Navbar from "../components/dashboardComponents/Navbar";
-import '../pages/Dashboard.css'
+import "../pages/Dashboard.css";
+import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
+import 'react-calendar/dist/Calendar.css';
+import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 
 const Dashboard = () => {
   const [first, setfirst] = useState([]);
@@ -42,9 +45,29 @@ const Dashboard = () => {
           ))}
         </table>
       </div> */}
-      <section className="d-flex" style={{width: '100%'}}>
-        <Offcanvas/>
-        <Navbar/>
+      <section id="" className="d-flex" style={{ width: "100%" }}>
+        <div
+          className="position-relative"
+          id="offCan"
+          style={{
+            width: "20%",
+            overflow: "hidden",
+            height: "100vh",
+            backgroundColor: "#030552",
+          }}
+        >
+          <Offcanvas />
+        </div>
+        <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
+          <Navbar />
+          <div className="flex">
+            <div className="w-9/12">left</div>
+            <div>
+            <DashboardCalendar/>
+            <DashboardPieChart/>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

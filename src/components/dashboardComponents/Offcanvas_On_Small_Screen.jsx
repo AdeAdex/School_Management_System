@@ -1,22 +1,22 @@
-import React from "react";
-import OffcanvasList from "./OffcanvasList";
-import OffcanvasTitle from "./OffcanvasTitle";
+import React from 'react'
+import OffcanvasTitle from './OffcanvasTitle'
+import OffcanvasList from './OffcanvasList'
 
-const Offcanvas = () => {
+const Offcanvas_On_Small_Screen = () => {
   return (
     <>
-      <div
-        className="position-relative"
-        id=""
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
+         <div
+        className="offcanvas offcanvas-start"
+        data-bs-scroll="true"
+        tabindex="-1"
+        id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel"
+        style={{ backgroundColor: "#030552", width: '75%'}}
       >
-        <div className="dashboard-offcanvas w-100 position-relative text-white">
+       <div className="dashboard-offcanvas w-100 position-relative text-white">
           <div
             className="w-full flex justify-center shadow border-b-2"
-            style={{ height: "80px", width: '100%' }}
+            style={{ height: "80px" }}
           >
             <img
               src="pic/ade.png"
@@ -46,7 +46,7 @@ const Offcanvas = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Offcanvas;
+export default Offcanvas_On_Small_Screen

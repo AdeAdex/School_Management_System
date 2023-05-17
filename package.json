@@ -14,7 +14,10 @@
     "fontawesome-free-v6": "^1.0.1",
     "formik": "^2.2.9",
     "react": "^18.2.0",
+    "react-calendar": "^4.2.1",
     "react-dom": "^18.2.0",
+    "react-minimal-pie-chart": "^8.4.0",
+    "react-pie3d": "^1.1.0",
     "react-router-dom": "^6.10.0",
     "sass": "^1.62.1",
     "video.js": "^8.3.0"
