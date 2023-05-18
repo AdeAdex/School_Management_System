@@ -7,16 +7,18 @@ const ErrorPage = () => {
     <>
       <PagesNavbar />
       <section
-        className="shadow signup-container d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto py-3 gap-3"
+        className="signup-container d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto gap-3"
         style={{
-          width: "75%",
+          width: "100%",
           height: "",
-          marginTop: "200px",
+          marginTop: "0px",
           backgroundColor: "#FFDBE1",
-          marginBottom: '60px'
+          marginBottom: '60px',
+          paddingTop: "200px",
         }}
       >
-        <div
+      <div className="d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto" style={{width: '75%'}}>
+      <div
           className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
           style={{
             width: "50%",
@@ -48,6 +50,8 @@ const ErrorPage = () => {
         >
           <img src="pic/error-img.png" style={{objectFit: "cover", width: '100%'}} alt="" />
         </div>
+      </div>
+        
       </section>
       <Footer/>
     </>
