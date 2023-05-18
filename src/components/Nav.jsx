@@ -75,17 +75,20 @@ const Nav = () => {
                 >
                   courses
                 </a>
-                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '3px solid #3fb8d7'}}>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <a className="dropdown-item" href="#">
                       jss 1
                     </a>
                   </li>
+                  <hr />
                   <li>
                     <a className="dropdown-item" href="#">
                       jss 2
                     </a>
                   </li>
+                  <hr />
+
                   {/* <li>
                     <hr className="dropdown-divider" />
                   </li> */}
@@ -94,16 +97,22 @@ const Nav = () => {
                       jss 3
                     </a>
                   </li>
+                  <hr />
+
                   <li>
                     <a className="dropdown-item" href="#">
                       sss 1
                     </a>
                   </li>
+                  <hr />
+
                   <li>
                     <a className="dropdown-item" href="#">
                       sss 2
                     </a>
                   </li>
+                  <hr />
+
                   <li>
                     <a className="dropdown-item" href="#">
                       sss 3
@@ -119,7 +128,7 @@ const Nav = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  pages
+                  portals
                 </a>
                 <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
@@ -145,11 +154,31 @@ const Nav = () => {
               <li className="nav-item">
                 <a className="nav-link">blog</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link">event</a>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  email
+                </a>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      teachers email
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      students email
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link">shop</a>
+                <a className="nav-link">more</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link">Contact US</a>
