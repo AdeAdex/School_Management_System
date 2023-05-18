@@ -44,9 +44,9 @@ const ErrorPage = () => {
         </div>
         <div
           className="bg-light signup-form"
-          style={{ padding: "50px 100px", width: "50%" }}
+          style={{ padding: "0px", width: "50%" }}
         >
-          <img src="pic/errorimg.png" alt="" />
+          <img src="pic/error-img.png" style={{objectFit: "cover", width: '100%'}} alt="" />
         </div>
       </section>
       <Footer/>
