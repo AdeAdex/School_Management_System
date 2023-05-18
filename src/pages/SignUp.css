@@ -55,7 +55,6 @@ input:valid {
 }
 
 @media screen and (min-width: 768px) {
-  
 }
 
 @media screen and (min-width: 0px) and (max-width: 768px) {
@@ -82,8 +81,21 @@ input:valid {
   .signup-header {
     border-radius: unset !important;
     position: fixed !important;
-    top: 0;
     height: auto !important;
+    padding: 10px 15px !important;
     z-index: 1;
+    background-image: radial-gradient(
+        circle at 20% -25%,
+        #3c37ff 35%, #3c37ff 35%
+      ),
+      url("pic/3.png");
+    transition: background-color 1ms;
+    background-position: 68% 40%;
+    background-repeat: no-repeat;
+    background-blend-mode: exclusion;
+  }
+
+  .header-text {
+    margin-top: 30px;
   }
 }

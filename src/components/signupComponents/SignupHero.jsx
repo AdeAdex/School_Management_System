@@ -21,7 +21,7 @@ const SignupHero = () => {
           style={{ width: "50px" }}
           alt=""
         />
-        <h2 className="mt-lg-5" style={{ textTransform: "capitalize" }}>
+        <h2 className="mt-lg-5 header-text" style={{ textTransform: "capitalize" }}>
           start your <br />
           journey with us.
         </h2>
