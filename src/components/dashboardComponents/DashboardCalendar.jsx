@@ -6,7 +6,7 @@ const DashboardCalendar = () => {
         const [myCalendar, setMyCalendar] = useState(new Date())
   return (
     <>
-    <Calendar onChange={setMyCalendar} value={myCalendar}/>
+    <Calendar className="shadow" onChange={setMyCalendar} value={myCalendar}/>
     </>
   )
 }

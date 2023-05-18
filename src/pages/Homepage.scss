@@ -95,6 +95,15 @@ $text-transform: uppercase;
   gap: 0px;
 }
 
+
+.dropdown-menu .dropdown-item {
+  text-transform: capitalize;
+  padding: 10px 10px 10px 25px;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+}
+
+
 .activities-color {
   h2 {
     color: $font-color_1;
@@ -165,43 +174,6 @@ html {
   background-blend-mode: darken;
 }
 
-// .image2 {
-//   height: 50%;
-// }
-
-// .event-image2 {
-//   height: 80%;
-// }
-
-// .news-image2 {
-//   height: 60%;
-// }
-
-// .image-one {
-//   background-image: url("pic/bg-image-1.jpg");
-// }
-// .image2 {
-//   background-image: linear-gradient(
-//       rgba(72, 72, 178, 0.5),
-//       rgba(116, 116, 124, 0.8)
-//     ),
-//     url("pic/bg-image-2.jpg");
-// }
-// .image3 {
-//   background-image: url("pic/bg-image-4.jpg");
-// }
-// .image4 {
-//   background-image: url("pic/bg-image-3.jpg");
-// }
-
-// .image5 {
-//   background-image: linear-gradient(
-//     rgba(136, 136, 219, 0.5),
-//     rgba(116, 116, 124, 0.8)
-//   ),
-//     url("pic/teacher24.jpg");
-//     background-position: 100% 10%;
-// }
 .text {
   height: 100%;
   background-color: rgba(125, 145, 244, 0.4);

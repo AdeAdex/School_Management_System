@@ -20,6 +20,10 @@
   background-color: blue !important;
 }
 
+#nav {
+  background-color: #EFF0F5;
+}
+
 #nav i:hover {
   cursor: pointer !important;
   background-color: red !important;

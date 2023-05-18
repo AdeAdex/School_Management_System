@@ -65,10 +65,51 @@ const Nav = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Courses
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  courses
                 </a>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '3px solid #3fb8d7'}}>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      jss 1
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      jss 2
+                    </a>
+                  </li>
+                  {/* <li>
+                    <hr className="dropdown-divider" />
+                  </li> */}
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      jss 3
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      sss 1
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      sss 2
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      sss 3
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -80,23 +121,23 @@ const Nav = () => {
                 >
                   pages
                 </a>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Action
+                      teachers
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Another action
+                      students
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <hr className="dropdown-divider" />
-                  </li>
+                  </li> */}
                   <li>
                     <a className="dropdown-item" href="#">
-                      Something else here
+                      excursions
                     </a>
                   </li>
                 </ul>

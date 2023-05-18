@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Offcanvas from "../components/dashboardComponents/Offcanvas";
 import "../pages/Dashboard.css";
 import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 
@@ -45,26 +45,26 @@ const Dashboard = () => {
           ))}
         </table>
       </div> */}
-      <section id="" className="d-flex" style={{ width: "100%" }}>
+      <section id="" className="d-flex" style={{ width: "100%", height: "100vh", overflow: "hidden" }}>
         <div
           className="position-relative"
           id="offCan"
           style={{
             width: "20%",
-            overflow: "hidden",
             height: "100vh",
             backgroundColor: "#030552",
+            overflowY: "scroll"
           }}
         >
           <Offcanvas />
         </div>
-        <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
-        <DashboardNavbar/>
-          <div className="flex">
+        <div className="" id="nav" style={{ width: "100%", height: "100%",  }}>
+          <DashboardNavbar />
+          <div className="flex p-5">
             <div className="w-9/12">left</div>
             <div>
-            <DashboardCalendar/>
-            <DashboardPieChart/>
+              <DashboardCalendar />
+              <DashboardPieChart />
             </div>
           </div>
         </div>
