@@ -92,7 +92,7 @@ input:valid {
     transition: background-color 1ms;
     background-position: 68% 40%;
     background-repeat: no-repeat;
-    background-blend-mode: exclusion;
+    background-blend-mode: multiply;
   }
 
   .header-text {

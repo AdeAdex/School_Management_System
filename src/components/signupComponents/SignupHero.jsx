@@ -8,11 +8,12 @@ const SignupHero = () => {
   return (
     <>
       <div
-        className="h-100 py-4 px-5 position-relative text-white signup-header"
+        className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
         style={{
           width: "30%",
           backgroundColor: "#3c37ff",
           borderRadius: "10px",
+          height: '100%'
         }}
       >
         <img
