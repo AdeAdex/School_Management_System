@@ -41,7 +41,7 @@ const SignupForm = () => {
   return (
     <>
       <div
-        className="h-100 shadow bg-light signup-form"
+        className="shadow bg-light signup-form"
         style={{ padding: "50px 100px", width: "70%" }}
       >
         <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>

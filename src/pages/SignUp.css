@@ -54,10 +54,36 @@ input:valid {
   display: none;
 }
 
+@media screen and (min-width: 768px) {
+  
+}
+
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .signup-container,
   .signup-header,
   .signup-form {
     width: 100% !important;
+  }
+
+  .signup-container {
+    flex-direction: column;
+    padding: unset !important;
+    position: relative;
+    height: auto !important;
+  }
+
+  .signup-form {
+    padding: 10px !important;
+    overflow-y: scroll;
+    margin-top: 250px;
+    /* position: relative; */
+  }
+
+  .signup-header {
+    border-radius: unset !important;
+    position: fixed !important;
+    top: 0;
+    height: auto !important;
+    z-index: 1;
   }
 }

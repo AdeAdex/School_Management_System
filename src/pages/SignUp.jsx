@@ -9,10 +9,10 @@ import SignupForm from "../components/signupComponents/SignupForm";
 const SignUp = () => {
   return (
     <>
-      <PagesNavbar />
+      {/* <PagesNavbar /> */}
       <section
-        className="signup-container d-flex flex-lg-row flex-sm-column  mx-auto py-3"
-        style={{ width: "75%", height: "", marginTop: "150px" }}
+        className="signup-container d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto py-3"
+        style={{ width: "75%", height: "" }}
       >
         <SignupHero />
         <SignupForm />
