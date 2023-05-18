@@ -88,11 +88,16 @@ input:valid {
         circle at 20% -25%,
         #3c37ff 35%, #3c37ff 35%
       ),
-      url("pic/3.png");
+      url("pic/signupimg.jpg");
     transition: background-color 1ms;
-    background-position: 68% 40%;
+    background-size: contain;
+    background-position: 100% 100%;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
+  }
+
+  .signup-btn  {
+    width: 100%;
   }
 
   .header-text {

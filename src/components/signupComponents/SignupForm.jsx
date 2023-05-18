@@ -237,7 +237,7 @@ const SignupForm = () => {
           </div>
           <div className="col-12">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary signup-btn"
               type="submit"
               onClick={createAccount}
             >
