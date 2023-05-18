@@ -1,20 +1,21 @@
 import React from "react";
 import PagesNavbar from "../components/PagesNavbar";
 import Footer from "../components/Footer";
+import './ErrorPage.css'
 
 const ErrorPage = () => {
   return (
     <>
       <PagesNavbar />
       <section
-        className="error-container d-flex"
+        className="error-section d-flex"
         style={{
           width: "100%",
           backgroundColor: "#FFDBE1",
           paddingTop: "200px",
         }}
       >
-      <div className="d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto" style={{width: '75%'}}>
+      <div className="error-container d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto" style={{width: '75%'}}>
       <div
           className="d-flex flex-column position-relative error-header"
           style={{
