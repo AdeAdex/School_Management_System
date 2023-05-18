@@ -7,23 +7,18 @@ const ErrorPage = () => {
     <>
       <PagesNavbar />
       <section
-        className="signup-container d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto gap-3"
+        className="error-container d-flex"
         style={{
           width: "100%",
-          height: "",
-          marginTop: "0px",
           backgroundColor: "#FFDBE1",
-          marginBottom: '60px',
           paddingTop: "200px",
         }}
       >
       <div className="d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto" style={{width: '75%'}}>
       <div
-          className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
+          className="d-flex flex-column position-relative error-header"
           style={{
             width: "50%",
-            // backgroundColor: "#3c37ff",
-            borderRadius: "10px",
             height: "100%",
           }}
         >
@@ -45,10 +40,10 @@ const ErrorPage = () => {
           </div>
         </div>
         <div
-          className="bg-light signup-form"
-          style={{ padding: "0px", width: "50%" }}
+          className="error-footer"
+          style={{width: "50%" }}
         >
-          <img src="pic/error-img.png" style={{objectFit: "cover", width: '100%'}} alt="" />
+          <img src="pic/error-img.png" style={{objectFit: "cover", width: '100%'}} alt="error image" />
         </div>
       </div>
         
