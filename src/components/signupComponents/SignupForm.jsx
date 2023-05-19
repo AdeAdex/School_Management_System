@@ -34,7 +34,7 @@ const SignupForm = () => {
           const endpoint = "http://localhost:2000/student_account/student_signup";
           axios.post(endpoint, myDetails).then((response) => {
             if (response.data == "Information saved to the database") {
-              navigate("/signin");
+              navigate("/student_signin");
             }
           });
         };
