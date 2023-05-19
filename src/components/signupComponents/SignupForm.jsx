@@ -50,7 +50,7 @@ const SignupForm = () => {
         </h2>
         <h6 className="d-flex gap-5 mt-3">
           <span className="mt-auto"> Have an account already </span>
-          <a href="/signin" className="fs-4 my-auto">
+          <a href="/student_signin" className="fs-4 my-auto">
             Login
           </a>
         </h6>

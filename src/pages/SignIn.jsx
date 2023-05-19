@@ -16,12 +16,12 @@ const SignIn = () => {
 
     onSubmit: (values) => {
       console.log(values);
-      const endpoint = "http://localhost:2000/student_account/signin";
+      const endpoint = "http://localhost:2000/student_account/student_signin";
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data == "pass") {
           console.log(res.data);
-          navigate("/dashboard");
+          navigate("/student_dashboard");
         } else {
           navigate("/signin");
         }
@@ -44,7 +44,7 @@ const SignIn = () => {
           </h1>
           <form
             onSubmit={formik.handleSubmit}
-            action="/student_account/signin"
+            action="/student_account/student_signin"
             method="post"
           >
             <div className="inputbox">
@@ -98,7 +98,7 @@ const SignIn = () => {
               </a>
             </div>
             <div className="sign-up-container">
-              <span>Not on Adex yet?</span> <a href="/signup">Sign Up</a>
+              <span>Not on Adex yet?</span> <a href="/student_signup">Sign Up</a>
             </div>
           </form>
         </div>
