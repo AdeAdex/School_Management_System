@@ -56,7 +56,7 @@ const SignupForm = () => {
         </h6>
         <form
           className="row g-3 mt-4"
-          action="/student_account/student-portal/signup"
+          action="/student_account/student_signup"
           method="post"
         >
           <div className="col-md-6 position-relative  flex-column mb-3">
