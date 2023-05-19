@@ -1,6 +1,6 @@
 import React from "react";
 import EventsCard from "./EventsCard";
-import ActivitiesHeader from "./ActivitiesHeader";
+import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
 
 const OurEvents = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import PagesNavbar from "../components/PagesNavbar";
-import Footer from "../components/Footer";
+import PagesNavbar from "../components/navbarComponents/PagesNavbar";
+import Footer from "../components/footerComponents/Footer";
 import './ErrorPage.css'
 
 const ErrorPage = () => {

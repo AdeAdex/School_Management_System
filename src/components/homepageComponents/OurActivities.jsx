@@ -1,6 +1,6 @@
 import React from "react";
-import ActivitiesHeader from "./ActivitiesHeader";
-import ActivitiesContainer from "./ActivitiesContainer";
+import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
+import ActivitiesContainer from "../generalComponents/ActivitiesContainer";
 
 const OurActivities = () => {
   return (

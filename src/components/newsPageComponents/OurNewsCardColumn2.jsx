@@ -1,7 +1,7 @@
 import React from "react";
-import EventsCard from "./EventsCard";
-import EventCard_Img from "./EventCard_Img";
-import EventsCard_Content from "./EventsCard_Content";
+import EventsCard from "../eventPageComponents/EventsCard";
+import EventCard_Img from "../eventPageComponents/EventCard_Img";
+import EventsCard_Content from "../eventPageComponents/EventsCard_Content";
 
 const OurNewsCardColumn2 = () => {
   return (

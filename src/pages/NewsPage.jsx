@@ -1,9 +1,9 @@
 import React from "react";
-import OurNews from "../components/OurNews";
-import Previous_Next_Btn from "../components/Previous_Next_Btn";
-import Footer from "../components/Footer";
-import Parallax from "../components/Parallax";
-import PagesNavbar from "../components/PagesNavbar";
+import OurNews from "../components/newsPageComponents/OurNews";
+import Previous_Next_Btn from "../components/generalComponents/Previous_Next_Btn";
+import Footer from "../components/footerComponents/Footer";
+import Parallax from "../components/generalComponents/Parallax";
+import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 
 const NewsPage = () => {
   return (

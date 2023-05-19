@@ -3,7 +3,7 @@ import "./SignIn.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import PagesNavbar from "../components/PagesNavbar";
+import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 
 const SignIn = () => {
   const navigate = useNavigate();

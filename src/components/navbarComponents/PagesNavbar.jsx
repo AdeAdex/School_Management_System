@@ -1,6 +1,6 @@
 import React from 'react'
 import StickyNav from "./StickyNav";
-import MulticolorLine from "./MulticolorLine";
+import MulticolorLine from "../generalComponents/MulticolorLine";
 import Nav from "./Nav";
 import FixedNav from "./FixedNav";
 

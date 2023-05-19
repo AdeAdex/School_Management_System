@@ -1,5 +1,5 @@
 import React from "react";
-import Small_hr from "./Small_hr";
+import Small_hr from "../generalComponents/Small_hr";
 
 const EventsCard = ({
   cardstyle,

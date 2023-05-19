@@ -5,8 +5,8 @@ import FooterGallary from "./FooterGallary";
 import FooterReachBtn from "./FooterReachBtn";
 import Contact_Us_Form from "./Contact_Us_Form";
 import FooterHero from "./FooterHero";
-import Small_hr from "./Small_hr";
-import MulticolorLine from "./MulticolorLine";
+import Small_hr from "../generalComponents/Small_hr";
+import MulticolorLine from "../generalComponents/MulticolorLine";
 
 const Footer = () => {
   return (

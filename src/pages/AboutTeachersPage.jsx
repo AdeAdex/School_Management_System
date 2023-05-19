@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import FooterHeader from "../components/FooterHeader";
-import Footer from "../components/Footer";
-import Small_hr from "../components/Small_hr";
-import Skills from "../components/Skills";
-import Parallax from "../components/Parallax";
-import EmptyParallax from "../components/EmptyParallax";
-import MyLessons from "../components/MyLessons";
-import Contact_Teacher_Form from "../components/Contact_Teacher_Form";
-import Parallax1 from "../components/Parallax1";
-import PagesNavbar from "../components/PagesNavbar";
+import FooterHeader from "../components/footerComponents/FooterHeader";
+import Footer from "../components/footerComponents/Footer";
+import Small_hr from "../components/generalComponents/Small_hr";
+import Skills from "../components/aboutTeachersPageComponents/Skills";
+import Parallax from "../components/generalComponents/Parallax";
+import EmptyParallax from "../components/aboutTeachersPageComponents/EmptyParallax";
+import MyLessons from "../components/aboutTeachersPageComponents/MyLessons";
+import Contact_Teacher_Form from "../components/aboutTeachersPageComponents/Contact_Teacher_Form";
+import Parallax1 from "../components/generalComponents/Parallax1";
+import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 
 const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Carousel from "../components/Carousel";
-import OurActivities from "../components/OurActivities";
-import OurEvents from "../components/OurEvents";
-import NavigatoContainer from "../components/NavigatoContainer";
-import OurNews from "../components/OurNews";
-import Footer from "../components/Footer";
-import Parallax1 from "../components/Parallax1";
-import Parallax2 from "../components/Parallax2";
-import Parallax3 from "../components/Parallax3";
-import PagesNavbar from "../components/PagesNavbar";
+import Carousel from "../components/carouselComponents/Carousel";
+import OurActivities from "../components/homepageComponents/OurActivities";
+import OurEvents from "../components/eventPageComponents/OurEvents";
+import NavigatoContainer from "../components/homepageComponents/NavigatoContainer";
+import OurNews from "../components/newsPageComponents/OurNews";
+import Footer from "../components/footerComponents/Footer";
+import Parallax1 from "../components/generalComponents/Parallax1";
+import Parallax2 from "../components/generalComponents/Parallax2";
+import Parallax3 from "../components/generalComponents/Parallax3";
+import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
