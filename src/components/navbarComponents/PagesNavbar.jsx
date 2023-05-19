@@ -46,7 +46,7 @@ const PagesNavbar = () => {
         </div>
         <div className="d-flex gap-5 w-50 justify-content-end">
         <StickyNav name="languages" icon="fas fa-language" to_where="/errorPage" styles={{width: "auto"}}></StickyNav>
-        <StickyNav name="register" icon="fas fa-circle-plus"  to_where="/SignUp" styles={{width: "auto"}}></StickyNav>
+        <StickyNav name="register" icon="fas fa-circle-plus"  to_where="/student_signup" styles={{width: "auto"}}></StickyNav>
         <StickyNav name="login" icon="fas fa-right-to-bracket" to_where="/SignIn" styles={{width: "auto"}}></StickyNav>
         </div>
       </div>

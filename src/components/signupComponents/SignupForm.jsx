@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +31,7 @@ const SignupForm = () => {
             check: false,
           };
           e.preventDefault();
-          const endpoint = "http://localhost:2000/student_account/signup";
+          const endpoint = "http://localhost:2000/student_account/student_signup";
           axios.post(endpoint, myDetails).then((response) => {
             if (response.data == "Information saved to the database") {
               navigate("/signin");
@@ -55,7 +56,7 @@ const SignupForm = () => {
         </h6>
         <form
           className="row g-3 mt-4"
-          action="/student_account/signup"
+          action="/student_account/student-portal/signup"
           method="post"
         >
           <div className="col-md-6 position-relative  flex-column mb-3">
