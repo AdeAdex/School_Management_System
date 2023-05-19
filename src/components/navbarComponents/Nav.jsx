@@ -137,9 +137,9 @@ const Nav = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="/student_dashboard">
                       students
-                    </a>
+                    </Link>
                   </li>
                   {/* <li>
                     <hr className="dropdown-divider" />
