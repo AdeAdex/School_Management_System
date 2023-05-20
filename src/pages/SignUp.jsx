@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-import { useNavigate } from "react-router-dom";
-import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import SignupHero from "../components/signupComponents/SignupHero";
 import SignupForm from "../components/signupComponents/SignupForm";
 
