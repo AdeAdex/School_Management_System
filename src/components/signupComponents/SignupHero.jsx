@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignupCarousel from "./SignupCarousel";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 const SignupHero = () => {
   const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
@@ -16,6 +17,8 @@ const SignupHero = () => {
           height: '100%'
         }}
       >
+        <Link to="/" style={{color: 'white'}}><i className="fas fa-circle-chevron-left" style={{ fontSize: "30px" }} ></i></Link> 
+
         <img
           src="pic/ade.png"
           className="mt-5 mb-lg-5"
