@@ -165,13 +165,14 @@
   .signin-container {
     flex-direction: column;
     padding: unset !important;
-    position: relative;
+    /* position: relative; */
+    position: fixed !important;
     height: 100%;
   }
 
   .signin-form {
     padding: 10px !important;
-    margin-top: 250px;
+    /* margin-top: 250px; */
     height: 70%;
   }
 
@@ -181,7 +182,7 @@
 
   .signin-header {
     border-radius: unset !important;
-    position: fixed !important;
+    /* position: fixed !important; */
     height: 30% !important;
     padding: 10px 15px !important;
     z-index: 1;
