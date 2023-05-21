@@ -58,8 +58,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
-  gap: 15px;
+  padding: 10px 5px;
+  width: 50%;
+  gap: 20px;
   background-color: #007ACC;
   outline: 3px #007ACC solid;
   outline-offset: -3px;
@@ -69,13 +70,11 @@
   transition: 400ms;
 }
 
-.button .text {
+.button .btn-text {
   color: white;
   font-weight: 700;
   font-size: 1em;
   transition: 400ms;
-  width: 100%;
-  background-color: unset;
 }
 
 .button .fa-arrow-right-to-bracket {
@@ -83,7 +82,7 @@
   font-weight: 700;
   font-size: 1em;
   animation: 1s both ease-in-out infinite;
-  /* transition: 400ms; */
+  transition: 400ms;
 }
 
 
@@ -91,7 +90,7 @@
   background-color: transparent;
 }
 
-.button:hover .text {
+.button:hover .btn-text {
   color: #007ACC;
 }
 

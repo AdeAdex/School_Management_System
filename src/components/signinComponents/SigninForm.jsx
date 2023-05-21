@@ -67,7 +67,7 @@ const SigninForm = () => {
             </a>
           </div>
           <button className="button">
-            <div className="text">Login</div>
+            <div className="btn-text">Login</div>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
           </button>
         </form>
