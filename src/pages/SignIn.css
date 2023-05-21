@@ -3,6 +3,7 @@
   margin: 40px 0 40px;
   width: 100%;
   border: none;
+  padding: 0;
   /* background-color: inherit; */
 }
 
@@ -13,7 +14,7 @@
   border-bottom: 2px gray solid;
   display: block;
   width: 100%;
-  padding: 5px 0;
+  padding: 8px 0;
   font-size: 18px;
   color: black;
 }
@@ -50,5 +51,82 @@
   color: rgb(4, 4, 226);
   transform: translateY(-30px);
 }
+
+
+
+.btn {
+  position: relative;
+  padding: 1rem 2.5rem;
+  color: #ffd739;
+  font-size: 1em;
+  background-color: #27045b;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition-property: all;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #6807f9;
+  box-shadow: 0px 14px 56px -11px #6807f9;
+}
+
+.btn::after {
+  content: "▶➡";
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  background-color: white;
+  border-radius: 100px;
+  right: 2rem;
+  bottom: 37%;
+  animation: 0.5s both ease-in-out infinite;
+}
+
+.btn:hover::after {
+  animation-name: bounce_591;
+  transition: all 0.3s ease;
+}
+
+@keyframes bounce_591 {
+  0% {
+    bottom: 37%;
+  }
+
+  50% {
+    bottom: 70%;
+  }
+
+  100% {
+    bottom: 37%;
+  }
+}
+
+/* button {
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgb(255, 56, 86);
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  transition: all .3s ease;
+  box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+ }
+ 
+ button:hover {
+  box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+ }
+ 
+ button:active {
+  background-color: rgb(255, 56, 86);
+  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
+ } */
 
 
