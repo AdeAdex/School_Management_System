@@ -1,10 +1,10 @@
 .form-control {
   position: relative;
-  margin: 40px 0 40px;
+  margin: 30px 0 30px;
   width: 100%;
   border: none;
   padding: 0;
-  /* background-color: inherit; */
+  background-color: inherit;
 }
 
 .form-control input {
@@ -15,7 +15,7 @@
   display: block;
   width: 100%;
   padding: 8px 0;
-  font-size: 18px;
+  font-size: 14px;
   color: black;
 }
 
