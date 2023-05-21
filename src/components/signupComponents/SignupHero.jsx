@@ -18,13 +18,15 @@ const SignupHero = () => {
         }}
       >
         <Link to="/" style={{color: 'white'}}><i className="fas fa-circle-chevron-left" style={{ fontSize: "30px" }} ></i></Link> 
-
+        <div className="d-flex justify-content-center w-100">
         <img
           src="pic/ade.png"
-          className="mt-5 mb-lg-5"
+          className="mt-5 mb-lg-5 d-flex align-items-center"
           style={{ width: "50px" }}
           alt=""
         />
+        </div>
+       
         <h2 className="mt-lg-5 header-text" style={{ textTransform: "capitalize" }}>
           start your <br />
           journey with us.

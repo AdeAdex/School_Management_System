@@ -31,7 +31,7 @@
   margin-top: 150px;
 }
 
-.form-control {
+.signin-form-control {
   position: relative;
   margin: 30px 0 30px;
   width: 100%;
@@ -40,7 +40,7 @@
   background-color: inherit;
 }
 
-.form-control input {
+.signin-form-control input {
   background-color: inherit;
   border: 0;
   outline: none;
@@ -52,8 +52,8 @@
   color: black;
 }
 
-.form-control input:focus,
-.form-control input:valid {
+.signin-form-control input:focus,
+.signin-form-control input:valid {
   outline: none;
   border-bottom: 4px solid #3c37ff;
   outline: none ;
@@ -62,11 +62,11 @@
   border-top: none;
   border-right: none;
 }
-.form-control input:focus::placeholder {
+.signin-form-control input:focus::placeholder {
   color: transparent;
 }
 
-.form-control label {
+.signin-form-control label {
   position: absolute;
   top: 15px;
   left: 0;
@@ -74,7 +74,7 @@
   border: none;
 }
 
-.form-control label span {
+.signin-form-control label span {
   display: inline-block;
   font-size: 18px;
   min-width: 5px;
@@ -82,8 +82,8 @@
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.form-control input:focus+label span,
-.form-control input:valid+label span {
+.signin-form-control input:focus+label span,
+.signin-form-control input:valid+label span {
   color: rgb(4, 4, 226);
   transform: translateY(-30px);
 }

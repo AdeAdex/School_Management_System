@@ -38,7 +38,7 @@ const SigninForm = () => {
           action="/student_account/student_signin"
           method="post"
         >
-          <div className="form-control">
+          <div className="form-control signin-form-control">
             <input
               type="text"
               required="required"
@@ -54,7 +54,7 @@ const SigninForm = () => {
               <span style={{ transitionDelay: "200ms" }}>l</span>
             </label>
           </div>
-          <div className="form-control">
+          <div className="form-control signin-form-control">
             <input
               type="password"
               required="required"
