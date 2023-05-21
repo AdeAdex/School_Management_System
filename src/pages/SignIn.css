@@ -168,6 +168,7 @@
     /* position: relative; */
     position: fixed !important;
     height: 100vh;
+    overflow: hidden;
   }
 
   .signin-form {
