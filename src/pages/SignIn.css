@@ -173,17 +173,31 @@
   .signin-form {
     padding: 10px !important;
     /* margin-top: 250px; */
-    height: 70%;
+    height: 65%;
+  }
+
+  .signin-form h1 {
+    background-color: #F8F9FA;
+    position: absolute;
+    top: 200px;
+    z-index: 1;
+    padding: 80px 20px 0px;
+    width: 95%;
+    left: 5;
+    right: 5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
   .signin-form form {
-    margin-top: 50px;
+    margin-top: 150px;
+    padding: 0px 20px;
   }
 
   .signin-header {
     border-radius: unset !important;
     /* position: fixed !important; */
-    height: 30% !important;
+    height: 35% !important;
     padding: 10px 15px !important;
     z-index: 1;
     background-image: url("pic/signin_img.png");
