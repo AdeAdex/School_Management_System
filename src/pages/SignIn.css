@@ -6,7 +6,7 @@
 .signin-header {
   width: 50%;
   border-radius: 10px;
-  background-image: url('pic/signin_img.png');
+  /* background-image: url('pic/signin_img.png'); */
   background-size: contain;
   background-position: 100% 100%;
   background-repeat: no-repeat;
@@ -172,7 +172,6 @@
 
   .signin-form {
     padding: 10px !important;
-    /* margin-top: 250px; */
     height: 65%;
   }
 
@@ -196,11 +195,10 @@
 
   .signin-header {
     border-radius: unset !important;
-    /* position: fixed !important; */
     height: 35% !important;
     padding: 10px 15px !important;
     z-index: 1;
-    background-image: url("pic/signin_img.png");
+    /* background-image: url("pic/signin_img.png"); */
     background-color: #3c37ff;
     transition: background-color 1ms;
     background-size: 100% 100%;
