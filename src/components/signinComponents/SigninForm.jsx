@@ -28,11 +28,10 @@ const SigninForm = () => {
   return (
     <>
       <div
-        className="shadow bg-light signup-form"
-        style={{ padding: "50px 100px", width: "50%" }}
+        className="signin-form shadow bg-light"
       >
-        <h1 id="h1">
-          welcome <span>back!</span>
+        <h1 className="fs-bolder">
+          welcome <br/>back!
         </h1>
         <form
           onSubmit={formik.handleSubmit}
@@ -45,6 +44,7 @@ const SigninForm = () => {
               required="required"
               name="email"
               onChange={formik.handleChange}
+              placeholder="Email"
             />
             <label>
               <span style={{ transitionDelay: "0ms" }}>E</span>
@@ -60,6 +60,7 @@ const SigninForm = () => {
               required="required"
               name="password"
               onChange={formik.handleChange}
+              placeholder="Password"
             />
             <label>
               <span style={{ transitionDelay: "0ms" }}>P</span>
@@ -73,7 +74,7 @@ const SigninForm = () => {
             </label>
           </div>
 
-          <div className="check">
+          <div className="d-flex justify-content-between my-5">
             <span>
               <input type="checkbox" id="checkBox" /> Remember Me
             </span>
@@ -81,7 +82,7 @@ const SigninForm = () => {
               Forgot password
             </a>
           </div>
-          <button className="button">
+          <button type="submit" className="button">
             <div className="btn-text">Login</div>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
           </button>
