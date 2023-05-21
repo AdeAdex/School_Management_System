@@ -66,12 +66,10 @@ const SigninForm = () => {
               Forgot password
             </a>
           </div>
-          <button className="btn"> Button</button>
-          <button>
-  <div class="svg-1">
-  </div>
-  <p>Button</p>
-</button>
+          <button className="button">
+            <div className="text">Login</div>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
         </form>
       </div>
     </>
