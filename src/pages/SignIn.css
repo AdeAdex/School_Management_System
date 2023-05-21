@@ -166,36 +166,35 @@
     flex-direction: column;
     padding: unset !important;
     position: relative;
-    height: auto !important;
+    height: 100vh;
   }
 
   .signin-form {
     padding: 10px !important;
-    overflow-y: scroll;
     margin-top: 250px;
-    /* position: relative; */
+    height: 70%;
+  }
+
+  .signin-form form {
+    margin-top: 50px;
   }
 
   .signin-header {
     border-radius: unset !important;
     position: fixed !important;
-    height: auto !important;
+    height: 30% !important;
     padding: 10px 15px !important;
     z-index: 1;
-    background-image: radial-gradient(
-        circle at 20% -25%,
-        #3c37ff 35%, #3c37ff 35%
-      ),
-      url("pic/signin_img.png");
+    background-image: url("pic/signin_img.png");
+    background-color: #3c37ff;
     transition: background-color 1ms;
-    background-size: cover;
-    background-position: 100% 100%;
+    background-size: 100% 100%;
+    background-position: center;
     background-repeat: no-repeat;
-    background-color: unset;
     background-blend-mode: multiply;
   }
 
-  .signin-btn  {
+  .button  {
     width: 100%;
   }
 }
