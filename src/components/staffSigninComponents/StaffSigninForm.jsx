@@ -13,12 +13,13 @@ const StaffSigninForm = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
+//       console.log(values);
       const endpoint = "http://localhost:2000/staff_account/staff_signin";
-      axios.post(endpoint, values).then((res) => {
+      axios.post(endpoint, values)
+      .then((res) => {
         if (res.data == "staff passed") {
           console.log(res.data);
-        //   navigate("/staff_dashboard");
+          navigate("/student_dashboard");
         } else {
           navigate("/signin");
         }
