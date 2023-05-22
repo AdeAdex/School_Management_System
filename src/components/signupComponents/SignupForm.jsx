@@ -62,7 +62,7 @@ const SignupForm = () => {
           <div className="col-md-6 position-relative  flex-column mb-3">
             <input
               type="text"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="firstName"
@@ -79,7 +79,7 @@ const SignupForm = () => {
           <div className="col-md-6 position-relative  flex-column mb-3">
             <input
               type="text"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="lastName"
@@ -96,7 +96,7 @@ const SignupForm = () => {
           <div className="col-md-6 position-relative d-flex flex-column mb-3">
             <input
               type="tel"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="phoneNumber"
@@ -113,7 +113,7 @@ const SignupForm = () => {
           <div className="col-md-6 position-relative d-flex flex-column mb-3">
             <input
               type="text"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="city"
@@ -130,7 +130,7 @@ const SignupForm = () => {
           <div className="col-md-6 position-relative d-flex flex-column mb-3">
             <input
               type="number"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="age"
@@ -147,7 +147,7 @@ const SignupForm = () => {
           <div className="col-md-6 position-relative d-flex flex-column mb-3">
             <input
               type="text"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="gender"
@@ -164,7 +164,7 @@ const SignupForm = () => {
           <div className="col-lg-12 position-relative d-flex flex-column mb-1">
             <input
               type="email"
-              autocomplete="on"
+              autoComplete="on"
               className="input form-control "
               id=""
               name="email"
@@ -190,7 +190,7 @@ const SignupForm = () => {
               required
               onChange={(e) => setState(e.target.value)}
             >
-              <option selected disabled>
+              <option select disabled>
                 Choose...
               </option>
               <option value="Oyo State">Oyo State</option>
@@ -203,7 +203,7 @@ const SignupForm = () => {
           <div className="col-lg-12 position-relative d-flex flex-column mb-3">
             <input
               type="text"
-              autocomplete="on"
+              autoomplete="on"
               className="input form-control "
               id=""
               name="password"
