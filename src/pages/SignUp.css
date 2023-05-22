@@ -55,6 +55,9 @@ input:valid {
 }
 
 @media screen and (min-width: 768px) {
+  .signup-header {
+    background-image: unset !important;
+  }
 }
 
 @media screen and (min-width: 0px) and (max-width: 768px) {

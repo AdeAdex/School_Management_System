@@ -45,7 +45,7 @@ const StaffSignupForm = () => {
     <>
       <div
         className="shadow bg-light signup-form"
-        style={{ padding: "50px 100px", width: "70%" }}
+        style={{ padding: "50px 100px 0px", width: "70%" }}
       >
         <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
           staff sign up
