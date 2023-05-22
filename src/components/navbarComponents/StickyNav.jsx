@@ -9,7 +9,7 @@ const StickyNav = (props) => {
     navigate(props.to_where);
     // alert("Hello" + myNumber);
     Swal.fire({
-      title: 'Custom animation with Animate.css',
+      title: 'Languages',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
       },
