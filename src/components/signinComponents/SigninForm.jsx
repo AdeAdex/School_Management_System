@@ -27,11 +27,10 @@ const SigninForm = () => {
   });
   return (
     <>
-      <div
-        className="signin-form shadow bg-light"
-      >
+      <div className="signin-form shadow bg-light">
         <h1 className="fs-bolder">
-          welcome <br/>back!
+          welcome <br />
+          back!
         </h1>
         <form
           onSubmit={formik.handleSubmit}
@@ -44,14 +43,19 @@ const SigninForm = () => {
               required="required"
               name="email"
               onChange={formik.handleChange}
-              placeholder="Email"
+              placeholder="Student ID"
             />
             <label>
-              <span style={{ transitionDelay: "0ms" }}>E</span>
-              <span style={{ transitionDelay: "50ms" }}>m</span>
-              <span style={{ transitionDelay: "100ms" }}>a</span>
-              <span style={{ transitionDelay: "150ms" }}>i</span>
-              <span style={{ transitionDelay: "200ms" }}>l</span>
+              <span style={{ transitionDelay: "0ms" }}>S</span>
+              <span style={{ transitionDelay: "50ms" }}>t</span>
+              <span style={{ transitionDelay: "100ms" }}>u</span>
+              <span style={{ transitionDelay: "150ms" }}>d</span>
+              <span style={{ transitionDelay: "200ms" }}>e</span>
+              <span style={{ transitionDelay: "250ms" }}>n</span>
+              <span style={{ transitionDelay: "300ms" }}>t</span>
+              <span></span>
+              <span style={{ transitionDelay: "350ms" }}>I</span>
+              <span style={{ transitionDelay: "400ms" }}>D</span>
             </label>
           </div>
           <div className="form-control signin-form-control">
