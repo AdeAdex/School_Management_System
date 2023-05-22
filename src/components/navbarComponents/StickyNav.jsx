@@ -8,16 +8,16 @@ const StickyNav = (props) => {
   const login = (myNumber) => {
     navigate(props.to_where);
     // alert("Hello" + myNumber);
-    // Swal.fire({
-    //   title: 'Custom animation with Animate.css',
-    //   showClass: {
-    //     popup: 'animate__animated animate__fadeInDown'
-    //   },
-    //   hideClass: {
-    //     popup: 'animate__animated animate__fadeOutUp'
-    //   },
-    //   text: 'hiiiiii'
-    // })
+    Swal.fire({
+      title: 'Custom animation with Animate.css',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      text: 'hiiiiii'
+    })
   };
 
   return (
@@ -30,6 +30,7 @@ const StickyNav = (props) => {
           ></i>
           <span
             className="text-uppercase"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
             style={{ fontSize: "17px", cursor: "pointer" }}
             onClick={()=>login(props.params)}
           >
