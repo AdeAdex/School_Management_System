@@ -11,7 +11,7 @@ const ErrorPage = () => {
         className="error-section d-flex"
         style={{
           width: "100%",
-          backgroundColor: "#FFDBE1",
+          backgroundColor: "#e2e2e2",
           paddingTop: "200px",
         }}
       >
@@ -44,7 +44,7 @@ const ErrorPage = () => {
           className="error-footer"
           style={{width: "50%" }}
         >
-          <img src="pic/error-img.png" style={{objectFit: "cover", width: '100%'}} alt="error image" />
+          <img src="pic/error-img2.png" style={{objectFit: "cover", width: '100%'}} alt="error image" />
         </div>
       </div>
         

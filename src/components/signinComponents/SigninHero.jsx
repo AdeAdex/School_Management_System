@@ -10,7 +10,7 @@ const SigninHero = () => {
       <div className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signin-header" style={{backgroundImage: "url('pic/signin_img.png')"}}>
         <Link to="/student_signup" style={{color: 'white'}}><i className="fas fa-circle-chevron-left" style={{ fontSize: "30px" }} ></i></Link> 
         <h2
-          className="mt-lg-5 header-text"
+          className="mt-lg-4 header-text"
           style={{ textTransform: "capitalize" }}
         >
           hi dear

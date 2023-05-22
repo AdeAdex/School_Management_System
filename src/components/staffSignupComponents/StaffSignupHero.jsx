@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import SignupCarousel from "./SignupCarousel";
-import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router-dom";
+import React from 'react'
+import SignupCarousel from '../signupComponents/SignupCarousel';
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
-const SignupHero = () => {
-  const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
 
+
+export const StaffSignupHero = () => {
+        const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <>
-      <div
+    <div
         className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
         style={{
           width: "30%",
           backgroundColor: "#3c37ff",
           borderRadius: "10px",
           height: "100%",
-          backgroundImage: "url('pic/signupimg.jpg')",
+        //   backgroundImage: "url('pic/signupimg.jpg')",
           backgroundRepeat: "no-repeat",
         }}
       >
@@ -36,12 +37,13 @@ const SignupHero = () => {
 
         <h2
           className="mt-lg-5 header-text"
-          style={{ textTransform: "capitalize" }}
+          style={{ textTransform: "capitaliz" }}
         >
-          start your <br />
-          journey with us.
+          Join us <br />
+          
         </h2>
-        <div>Discover the world best education</div>
+        <h4>be a part of us.</h4>
+        <div>Let build the world together</div>
         {isLargeScreen ? (
           <SignupCarousel
             carousel_content="This is a very nice school for any child who want the best
@@ -62,7 +64,5 @@ const SignupHero = () => {
         ) : null}
       </div>
     </>
-  );
-};
-
-export default SignupHero;
+  )
+}

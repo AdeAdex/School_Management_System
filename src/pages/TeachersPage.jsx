@@ -113,7 +113,7 @@ const TeachersPage = () => {
             content="FULL TIME · AGE: 0-3 YEARS OLD"
             hrStyle={{ backgroundColor: "orange" }}
           />
-          <div class="card-group gap-4">
+          <div className="card-group gap-4">
             <BlueHouseTeachersCard
               teacherName="promise joy"
               img="pic/teacher1.jpg"

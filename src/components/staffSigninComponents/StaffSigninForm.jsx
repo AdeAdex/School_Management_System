@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const SigninForm = () => {
+const StaffSigninForm = () => {
   const navigate = useNavigate();
 
   let formik = useFormik({
@@ -14,11 +14,11 @@ const SigninForm = () => {
 
     onSubmit: (values) => {
       console.log(values);
-      const endpoint = "http://localhost:2000/student_account/student_signin";
+      const endpoint = "http://localhost:2000/staff_account/staff_signin";
       axios.post(endpoint, values).then((res) => {
         if (res.data == "pass") {
           console.log(res.data);
-          navigate("/student_dashboard");
+          navigate("/staff_dashboard");
         } else {
           navigate("/signin");
         }
@@ -27,15 +27,14 @@ const SigninForm = () => {
   });
   return (
     <>
-      <div
-        className="signin-form shadow bg-light"
-      >
+      <div className="signin-form shadow bg-light">
         <h1 className="fs-bolder">
-          welcome <br/>back!
+          welcome <br />
+          back!
         </h1>
         <form
           onSubmit={formik.handleSubmit}
-          action="/student_account/student_signin"
+          action="/staff_account/staff_signin"
           method="post"
         >
           <div className="form-control signin-form-control">
@@ -92,4 +91,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default StaffSigninForm;

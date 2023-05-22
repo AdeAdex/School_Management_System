@@ -64,16 +64,16 @@ const OrangeHouseTeachersCard = ({
             </div>
             <div className="orange-footer d-flex flex-column justify-content-evenly col-lg-2 col-sm-12">
               <i
-                class="fas fa-paperclip shadow about-icon-mains"
+                className="fas fa-paperclip shadow about-icon-mains"
                 title="CURRICULUM"
               >
               </i>
               <i
-                class="far fa-floppy-disk shadow about-icon-mains"
+                className="far fa-floppy-disk shadow about-icon-mains"
                 title="DOCUMENT"
               ></i>
               <i
-                class="fas fa-microphone shadow about-icon-mains"
+                className="fas fa-microphone shadow about-icon-mains"
                 title="COURSES"
               ></i>
             </div>

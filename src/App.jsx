@@ -13,6 +13,8 @@ import TeachersPage from './pages/TeachersPage'
 import './pages/Homepage.scss'
 import AboutTeachersPage from './pages/AboutTeachersPage'
 import Dashboard from './pages/Dashboard'
+import StaffSignUp from './pages/StaffSignUp'
+import StaffSignIn from './pages/StaffSignIn'
 
 
 
@@ -40,6 +42,8 @@ function App() {
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}/>
         <Route path='/student_dashboard' element={<Dashboard/>}/>
+        <Route path='/staff_signup' element={<StaffSignUp/>}/>
+        <Route path='/staff_signin' element={<StaffSignIn/>}/>
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>

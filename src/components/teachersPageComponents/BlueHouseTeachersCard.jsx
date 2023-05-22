@@ -29,9 +29,9 @@ const BlueHouseTeachersCard = ({
           {title}
         </h5>
         <div className="card-body" style={styles}>
-          <p className="card-text text-color">
+          <div className="card-text text-color">
             <div>{content}</div>
-          </p>
+          </div>
           <div className="d-flex justify-content-evenly mt-3">
           {/* <FontAwesomeIcon icon="fa-solid fa-user" />
           <FontAwesomeIcon icon="fa-solid fa-user" />

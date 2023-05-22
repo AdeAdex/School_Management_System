@@ -8,7 +8,7 @@ const Offcanvas_On_Small_Screen = () => {
          <div
         className="offcanvas offcanvas-start"
         data-bs-scroll="true"
-        tabindex="-1"
+        tabIndex="-1"
         id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel"
         style={{ backgroundColor: "#030552", width: '75%'}}

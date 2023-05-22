@@ -2,42 +2,44 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignupForm = () => {
 
-        const navigate = useNavigate();
+const StaffSignupForm = () => {
+  const navigate = useNavigate();
 
-        const [firstName, setFirstName] = useState("");
-        const [lastName, setLastName] = useState("");
-        const [phoneNumber, setPhoneNumber] = useState("");
-        const [city, setCity] = useState("");
-        const [age, setAge] = useState("");
-        const [gender, setGender] = useState("");
-        const [email, setEmail] = useState("");
-        const [state, setState] = useState("");
-        const [password, setPassword] = useState("");
-        const [check, setCheck] = useState();
-      
-        const createAccount = (e) => {
-          let myDetails = {
-            firstName: firstName,
-            lastName: lastName,
-            phoneNumber: phoneNumber,
-            city: city,
-            age: age,
-            gender: gender,
-            email: email,
-            state: state,
-            password: password,
-            check: false,
-          };
-          e.preventDefault();
-          const endpoint = "http://localhost:2000/student_account/student_signup";
-          axios.post(endpoint, myDetails).then((response) => {
-            if (response.data == "Information saved to the student database") {
-              navigate("/student_signin");
-            }
-          });
-        };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [state, setState] = useState("");
+  const [password, setPassword] = useState("");
+  const [check, setCheck] = useState();
+
+  const createAccount = (e) => {
+    let myDetails = {
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      city: city,
+      age: age,
+      gender: gender,
+      email: email,
+      state: state,
+      password: password,
+      check: false,
+    };
+    e.preventDefault();
+    const endpoint = "http://localhost:2000/staff_account/staff_signup";
+    axios.post(endpoint, myDetails)
+    .then((response) => {
+      if (response.data == "Information saved to the staff database") {
+        // navigate("/staff_signin");
+        console.log(response.data);
+      }
+    });
+  };
 
   return (
     <>
@@ -46,17 +48,17 @@ const SignupForm = () => {
         style={{ padding: "50px 100px", width: "70%" }}
       >
         <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
-          student sign up
+          staff sign up
         </h2>
         <h6 className="d-flex gap-5 mt-3">
           <span className="mt-auto"> Have an account already </span>
-          <a href="/student_signin" className="fs-4 my-auto">
+          <a href="/staff_signin" className="fs-4 my-auto">
             Login
           </a>
         </h6>
         <form
           className="row g-3 mt-4"
-          action="/student_account/student_signup"
+          action="/staff_account/staff_signup"
           method="post"
         >
           <div className="col-md-6 position-relative  flex-column mb-3">
@@ -251,4 +253,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default StaffSignupForm;
