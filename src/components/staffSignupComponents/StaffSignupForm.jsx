@@ -35,7 +35,7 @@ const StaffSignupForm = () => {
     axios.post(endpoint, myDetails)
     .then((response) => {
       if (response.data == "Information saved to the staff database") {
-        // navigate("/staff_signin");
+        navigate("/staff_signin");
         console.log(response.data);
       }
     });
