@@ -14,7 +14,9 @@ const SignupHero = () => {
           width: "30%",
           backgroundColor: "#3c37ff",
           borderRadius: "10px",
-          height: '100%'
+          height: '100%',
+          backgroundImage: "url('pic/signupimg.jpg')",
+          backgroundRepeat: 'no-repeat'
         }}
       >
         <Link to="/" style={{color: 'white'}}><i className="fas fa-circle-chevron-left" style={{ fontSize: "30px" }} ></i></Link> 

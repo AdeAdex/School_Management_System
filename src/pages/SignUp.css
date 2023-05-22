@@ -84,11 +84,12 @@ input:valid {
     height: auto !important;
     padding: 10px 15px !important;
     z-index: 1;
-    background-image: radial-gradient(
+    /* background-image: radial-gradient(
         circle at 20% -25%,
         #3c37ff 35%, #3c37ff 35%
       ),
-      url("pic/signupimg.jpg");
+      url("pic/signupimg.jpg"); */
+    background-color: #3c37ff;
     transition: background-color 1ms;
     background-size: contain;
     background-position: 100% 100%;
