@@ -96,23 +96,33 @@ const PagesNavbar = () => {
                 icon="fas fa-right-to-bracket"
                 to_where="/student_signin"
                 styles={{ width: "auto" }}
-              ></StickyNav>
-              <button onClick={openModal} style={{padding: '0px'}}>Open Modal</button> */}
+              ></StickyNav> */}
               <StickyNav2
                 sticky2Name="language"
                 sticky2Icon="fas fa-language"
                 myFunc={openModal}
               />
-              <StickyNav2
+              {/* <StickyNav2
                 sticky2Name="register"
                 sticky2Icon="fas fa-circle-plus"
-                // myFunc={openSecond}
               />
               <StickyNav2
                 sticky2Name="login"
                 sticky2Icon="fas fa-right-to-bracket"
-                // myFunc={openSecond}
-              />
+              /> */}
+              <StickyNav
+                name="register"
+                icon="fas fa-circle-plus"
+                to_where="/account_type"
+                styles={{ width: "auto" }}
+              ></StickyNav>
+              <StickyNav
+                name="login"
+                icon="fas fa-right-to-bracket"
+                to_where="/account_type"
+                styles={{ width: "auto" }}
+              ></StickyNav>
+              
             </div>
           </div>
         </div>
