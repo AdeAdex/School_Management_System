@@ -15,6 +15,8 @@ import AboutTeachersPage from './pages/AboutTeachersPage'
 import Dashboard from './pages/Dashboard'
 import StaffSignUp from './pages/StaffSignUp'
 import StaffSignIn from './pages/StaffSignIn'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
