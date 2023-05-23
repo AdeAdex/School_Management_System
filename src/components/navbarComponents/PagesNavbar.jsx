@@ -4,8 +4,7 @@ import MulticolorLine from "../generalComponents/MulticolorLine";
 import Nav from "./Nav";
 import FixedNav from "./FixedNav";
 import LanguageModal from "../generalComponents/LanguageModal";
-
-
+import StickyNav2 from "./StickyNav2";
 
 const PagesNavbar = () => {
   window.onscroll = function () {
@@ -37,7 +36,6 @@ const PagesNavbar = () => {
     setModalOpen(false);
   };
 
- 
   return (
     <>
       <FixedNav />
@@ -81,10 +79,10 @@ const PagesNavbar = () => {
               ></StickyNav>
             </div>
             <div className="d-flex gap-5 w-50 justify-content-end">
-              <StickyNav
+              {/* <StickyNav
                 name="languages"
                 icon="fas fa-language"
-                to_where={openModal}
+                to_where=""
                 styles={{ width: "auto" }}
               ></StickyNav>
               <StickyNav
@@ -99,13 +97,28 @@ const PagesNavbar = () => {
                 to_where="/student_signin"
                 styles={{ width: "auto" }}
               ></StickyNav>
-              {/* <button onClick={openModal} style={{padding: '0px'}}>Open Modal</button> */}
+              <button onClick={openModal} style={{padding: '0px'}}>Open Modal</button> */}
+              <StickyNav2
+                sticky2Name="language"
+                sticky2Icon="fas fa-language"
+                myFunc={openModal}
+              />
+              <StickyNav2
+                sticky2Name="register"
+                sticky2Icon="fas fa-circle-plus"
+                // myFunc={openSecond}
+              />
+              <StickyNav2
+                sticky2Name="login"
+                sticky2Icon="fas fa-right-to-bracket"
+                // myFunc={openSecond}
+              />
             </div>
           </div>
         </div>
         <MulticolorLine />
         <Nav />
-        <LanguageModal isOpen={modalOpen} onClose={closeModal}/>
+        <LanguageModal isOpen={modalOpen} onClose={closeModal} />
       </section>
     </>
   );
