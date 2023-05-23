@@ -7,23 +7,33 @@ const AccountTypePage = () => {
   const setImage = (num) => {
     if (num === 1) {
       setfirst(
-        "Hello Staff you are welcome, kindly click the button below to create an account"
+        "Hello Staff" +
+          <br /> +
+          "you are welcome, kindly click the button below to create an account"
       );
     } else if (num === 2) {
       setfirst(
         "Hi Student you are welcome, kindly click the button below to create an account"
       );
     } else {
-
+      alert("hiiiii");
     }
   };
 
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
   const createAccount = () => {
-    if (first === "Hello Staff you are welcome, kindly click the button below to create an account") {
-      navigate("/staff_signup")
+    if (
+      first ===
+      "Hello Staff you are welcome, kindly click the button below to create an account"
+    ) {
+      navigate("/staff_signup");
+    } else if (
+      first ===
+      "Hi Student you are welcome, kindly click the button below to create an account"
+    ) {
+      navigate("/student_signup");
     } else {
-      navigate("/student_signup")
+      navigate("/account_type");
     }
   };
   return (
@@ -31,9 +41,9 @@ const AccountTypePage = () => {
       <PagesNavbar />
       <div
         className="d-flex flex-column justify-content-center w-100"
-        style={{ height: "100vh" }}
+        style={{ height: "100vh", backgroundColor: '#f1f1f1' }}
       >
-        <div className="m-auto w-50 shadow h-50 px-5 py-3 d-flex flex-column justify-content-center">
+        <div className="m-auto w-lg-50 w-sm-100 shadow px-5 py-5 d-flex flex-column justify-content-center">
           <h3
             className="text-capitalize text-center"
             style={{
@@ -44,26 +54,40 @@ const AccountTypePage = () => {
             choose account type
           </h3>
           <div className="d-flex gap-4 mx-auto mt-5">
-            <img
-              src="pic/avatar.png"
-              alt=""
+            <div
+              className="px-4 pt-4 pb-3"
               style={{
-                width: "100px",
+                width: "150px",
                 outline: "outset gray",
                 cursor: "pointer",
               }}
               onClick={() => setImage(1)}
-            />
-            <img
-              src="pic/ade.png"
-              alt=""
+            >
+              <img
+                src="pic/teacher_avatar6.jpg"
+                alt=""
+                style={{ width: "100%", objectFit: 'cover' }}
+              />
+              <hr />
+              <div className="text-center fw-bold">Staff</div>
+            </div>
+            <div
+              className="px-4 pt-4 pb-3"
               style={{
-                width: "100px",
+                width: "150px",
                 outline: "outset gray",
                 cursor: "pointer",
               }}
-              onClick={() => setImage(2)}
-            />
+            >
+              <img
+                src="pic/student_avatar.avif"
+                alt=""
+                style={{ width: "100%", objectFit: 'cover' }}
+                onClick={() => setImage(2)}
+              />
+              <hr />
+              <div className="text-center fw-bold">Student</div>
+            </div>
           </div>
           <div className="text-center mt-5">{first}</div>
           <button
