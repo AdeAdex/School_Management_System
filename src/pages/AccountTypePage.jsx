@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import { useNavigate } from "react-router-dom";
 
-const AccountTypePage = (props) => {
+const AccountTypePage = () => {
   const [first, setfirst] = useState("");
   const setImage = (num) => {
     if (num === 1) {
