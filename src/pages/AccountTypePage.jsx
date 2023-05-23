@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 
 const AccountTypePage = (props) => {
+  const [first, setfirst] = useState("")
        const setImage = (num) => {
-        console.log(num);
+        if (num === 1) {
+          setfirst("Hello Staff you are welcome, kindly click the button below to creat an account")
+        } else {
+          setfirst("Hi Student you are welcome, kindly click the button below to creat an account")
+        }
        } 
   return (
     <>
@@ -15,7 +20,7 @@ const AccountTypePage = (props) => {
             <img src="pic/avatar.png" alt=""  style={{ width: "100px", outline: 'outset gray', cursor: 'pointer' }} id="yummy" onClick={() => setImage(1)} />
             <img src="pic/ade.png" alt="" style={{ width: "100px", outline: 'outset gray', cursor: 'pointer' }} onClick={() => setImage(2)}/>
           </div>
-          <div className="text-center mt-5">jhsdjshwdjshdjh</div>
+          <div className="text-center mt-5">{first}</div>
         </div>
       </div>
     </>
