@@ -19,21 +19,18 @@ const StickyNav = (props) => {
           ></i>
           <span
             className="text-uppercase"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
             style={{ fontSize: "17px", cursor: "pointer" }}
             onClick={() => {
               if (props.to_where == "") {
-                Swal.fire({
-                  title: "Languages",
-                  showClass: {
-                    popup: "animate__animated animate__fadeInDown",
-                  },
-                  hideClass: {
-                    popup: "animate__animated animate__fadeOutUp",
-                  },
-                  text: "hiiiiii",
-                });
+                // Swal.fire({
+                //   title: "Languages",
+                //   showClass: {
+                //     popup: "animate__animated animate__fadeInDown",
+                //   },
+                //   hideClass: {
+                //     popup: "animate__animated animate__fadeOutUp",
+                //   },
+                // });
               } else {
                 login(props.params);
               }

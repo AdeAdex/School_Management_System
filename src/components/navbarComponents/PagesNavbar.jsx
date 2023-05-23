@@ -84,7 +84,7 @@ const PagesNavbar = () => {
               <StickyNav
                 name="languages"
                 icon="fas fa-language"
-                to_where=""
+                to_where={openModal}
                 styles={{ width: "auto" }}
               ></StickyNav>
               <StickyNav
@@ -99,7 +99,7 @@ const PagesNavbar = () => {
                 to_where="/student_signin"
                 styles={{ width: "auto" }}
               ></StickyNav>
-              <button onClick={openModal} style={{padding: '20px'}}>Open Modal</button>
+              {/* <button onClick={openModal} style={{padding: '0px'}}>Open Modal</button> */}
             </div>
           </div>
         </div>
