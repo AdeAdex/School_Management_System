@@ -28,14 +28,16 @@ const AccountTypePage = () => {
       "Hello Staff you are welcome, kindly click the button below to create an account"
     ) {
       navigate("/staff_signup");
+      textDiv.classList.remove('bg-danger')
     } else if (
       first ===
       "Hi Student you are welcome, kindly click the button below to create an account"
     ) {
       navigate("/student_signup");
+      textDiv.classList.remove('bg-danger')
     } else {
       setfirst("Kindly select an account to create an account");
-      first.style.backgroundColor = "red"
+      textDiv.classList.add('bg-danger')
       navigate("/account_type");
     }
   };
@@ -93,7 +95,7 @@ const AccountTypePage = () => {
               <div className="text-center fw-bold">Student</div>
             </div>
           </div>
-          <div className="text-center mt-5 text-div">{first}</div>
+          <div className="text-center mt-5 text-div" id="textDiv">{first}</div>
           <button
             className="btn btn-sm px-5 mt-4 bg-primary text-white mx-auto"
             onClick={createAccount}
