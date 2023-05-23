@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footerComponents/Footer";
 
 const AccountTypePage = () => {
   const [first, setfirst] = useState("");
@@ -33,6 +34,8 @@ const AccountTypePage = () => {
     ) {
       navigate("/student_signup");
     } else {
+      setfirst("Kindly select an account to create an account");
+      first.style.backgroundColor = "red"
       navigate("/account_type");
     }
   };
@@ -41,7 +44,7 @@ const AccountTypePage = () => {
       <PagesNavbar />
       <div
         className="d-flex flex-column justify-content-center w-100"
-        style={{ height: "100vh", backgroundColor: '#f1f1f1' }}
+        style={{ height: "100%", backgroundColor: '#f1f1f1', paddingTop: '170px' }}
       >
         <div className="m-auto w-lg-50 w-sm-100 shadow px-5 py-5 d-flex flex-column justify-content-center">
           <h3
@@ -66,7 +69,7 @@ const AccountTypePage = () => {
               <img
                 src="pic/teacher_avatar6.jpg"
                 alt=""
-                style={{ width: "100%", objectFit: 'cover' }}
+                style={{ width: "100%", objectFit: '10% 70%', }}
               />
               <hr />
               <div className="text-center fw-bold">Staff</div>
@@ -78,18 +81,19 @@ const AccountTypePage = () => {
                 outline: "outset gray",
                 cursor: "pointer",
               }}
+              onClick={() => setImage(2)}
             >
               <img
                 src="pic/student_avatar.avif"
                 alt=""
                 style={{ width: "100%", objectFit: 'cover' }}
-                onClick={() => setImage(2)}
+                
               />
               <hr />
               <div className="text-center fw-bold">Student</div>
             </div>
           </div>
-          <div className="text-center mt-5">{first}</div>
+          <div className="text-center mt-5 text-div">{first}</div>
           <button
             className="btn btn-sm px-5 mt-4 bg-primary text-white mx-auto"
             onClick={createAccount}
@@ -98,6 +102,7 @@ const AccountTypePage = () => {
           </button>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
