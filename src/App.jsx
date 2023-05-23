@@ -15,6 +15,7 @@ import AboutTeachersPage from './pages/AboutTeachersPage'
 import Dashboard from './pages/Dashboard'
 import StaffSignUp from './pages/StaffSignUp'
 import StaffSignIn from './pages/StaffSignIn'
+import AccountTypePage from './pages/AccountTypePage'
 
 
 
@@ -45,6 +46,7 @@ function App() {
         <Route path='/student_dashboard' element={<Dashboard/>}/>
         <Route path='/staff_signup' element={<StaffSignUp/>}/>
         <Route path='/staff_signin' element={<StaffSignIn/>}/>
+        <Route path='/account_type' element={<AccountTypePage/>}/>
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>
