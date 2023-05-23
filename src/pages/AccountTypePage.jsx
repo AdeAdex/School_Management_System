@@ -9,10 +9,12 @@ const AccountTypePage = () => {
       setfirst(
         "Hello Staff you are welcome, kindly click the button below to create an account"
       );
-    } else {
+    } else if (num === 2) {
       setfirst(
         "Hi Student you are welcome, kindly click the button below to create an account"
       );
+    } else {
+
     }
   };
 
