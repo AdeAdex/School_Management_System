@@ -7,24 +7,22 @@ const AccountTypePage = () => {
   const [first, setfirst] = useState(
     "Hello and welcome to the account type selections page, kindly select an account type to create an account"
   );
+
+  let h1;
   const setImage = (mySelect) => {
-    textDiv.innerHTML = ""
+    textDiv.innerHTML = "";
     if (mySelect === "staff") {
-      
       // "Hello Staff you are welcome, kindly click the button below to create an account"
-      const h1 = document.createElement("div");
+      h1 = document.createElement("div");
       const h2 = document.createElement("div");
-      const h3 = document.createElement("div");
       const h1textNode = document.createTextNode("Hello Staff");
-      const h2textNode = document.createTextNode("you are welcome, kindly click the button below to create an account");
-      const h3textNode = document.createTextNode("Hello World three");
+      const h2textNode = document.createTextNode(
+        "you are welcome, kindly click the button below to create an account"
+      );
       h1.appendChild(h1textNode);
       h2.appendChild(h2textNode);
-      h3.appendChild(h3textNode);
-      let x = textDiv.append(h1, h2, h3);
-      alert(h2.innerHTML)
-      // first = x
-      // setfirst(first);
+      let x = textDiv.append(h1, h2);
+      // alert(h2.innerHTML)
     } else if (mySelect === "student") {
       setfirst(
         "Hi Student you are welcome, kindly click the button below to create an account"
@@ -36,10 +34,7 @@ const AccountTypePage = () => {
 
   const navigate = useNavigate();
   const createAccount = () => {
-    if (
-      first ===
-      "Hello Staff you are welcome, kindly click the button below to create an account"
-    ) {
+    if (h1.innerHTML == "Hello Staff") {
       navigate("/staff_signup");
       textDiv.classList.add("bg-danger");
     } else if (
@@ -83,7 +78,7 @@ const AccountTypePage = () => {
                 outline: "outset gray",
                 cursor: "pointer",
               }}
-              onClick={() => setImage('staff')}
+              onClick={() => setImage("staff")}
             >
               <img
                 src="pic/teacher_avatar6.jpg"
@@ -100,7 +95,7 @@ const AccountTypePage = () => {
                 outline: "outset gray",
                 cursor: "pointer",
               }}
-              onClick={() => setImage('student')}
+              onClick={() => setImage("student")}
             >
               <img
                 src="pic/student_avatar.avif"
