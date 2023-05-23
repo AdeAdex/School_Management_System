@@ -4,7 +4,7 @@ import MulticolorLine from "../generalComponents/MulticolorLine";
 import Nav from "./Nav";
 import FixedNav from "./FixedNav";
 import LanguageModal from "../generalComponents/LanguageModal";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const PagesNavbar = () => {
@@ -17,13 +17,11 @@ const PagesNavbar = () => {
       document.body.scrollTop > 100 ||
       document.documentElement.scrollTop > 100
     ) {
-      // stickyNav.style.setProperty("top", "25px", "important");
       stickyNav.classList.add("scroll-animation");
     } else if (
       document.body.scrollTop < 100 ||
       document.documentElement.scrollTop < 100
     ) {
-      // stickyNav.style.setProperty("top", "50px", "important");
       stickyNav.classList.remove("scroll-animation");
     } else {
     }
@@ -101,14 +99,14 @@ const PagesNavbar = () => {
                 to_where="/student_signin"
                 styles={{ width: "auto" }}
               ></StickyNav>
-              <button onClick={openModal}>Open Modal</button>
+              <button onClick={openModal} style={{padding: '20px'}}>Open Modal</button>
             </div>
           </div>
         </div>
         <MulticolorLine />
         <Nav />
-      </section>
         <LanguageModal isOpen={modalOpen} onClose={closeModal}/>
+      </section>
     </>
   );
 };

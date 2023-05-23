@@ -1,23 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 const StickyNav = (props) => {
   const navigate = useNavigate();
   const login = (myNumber) => {
     navigate(props.to_where);
     // alert("Hello" + myNumber);
-    Swal.fire({
-      title: 'Languages',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      },
-      text: 'hiiiiii'
-    })
   };
 
   return (
@@ -30,9 +19,25 @@ const StickyNav = (props) => {
           ></i>
           <span
             className="text-uppercase"
-            data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
             style={{ fontSize: "17px", cursor: "pointer" }}
-            onClick={()=>login(props.params)}
+            onClick={() => {
+              if (props.to_where == "") {
+                Swal.fire({
+                  title: "Languages",
+                  showClass: {
+                    popup: "animate__animated animate__fadeInDown",
+                  },
+                  hideClass: {
+                    popup: "animate__animated animate__fadeOutUp",
+                  },
+                  text: "hiiiiii",
+                });
+              } else {
+                login(props.params);
+              }
+            }}
           >
             {props.name}
           </span>

@@ -1,12 +1,18 @@
 // import { Button, Modal } from "bootstrap";
 import React from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 
 
 const LanguageModal = ({ isOpen, onClose }) => {
   return (
     <>
-      <Modal show={isOpen} onHide={onClose}>
+    {/* <div
+      className="modal show"
+      style={{ display: 'block', position: 'initial' }}
+    > */}
+      <Modal show={isOpen} onHide={onClose} animation={true} >
         <Modal.Header closeButton>
           <Modal.Title>My Modal</Modal.Title>
         </Modal.Header>
@@ -20,6 +26,7 @@ const LanguageModal = ({ isOpen, onClose }) => {
           <Button variant="primary">Save Changes</Button>
         </Modal.Footer>
       </Modal>
+      {/* </div> */}
     </>
   );
 };
