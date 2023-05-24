@@ -51,11 +51,9 @@ body {
   .our-events-header {
     margin-top: 100px;
   }
-
 }
 
-
-@media screen and (min-width: 768px) and  (max-width: 992px) {
+@media screen and (min-width: 768px) and (max-width: 992px) {
   .navigate_to {
     width: 100%;
   }
@@ -109,33 +107,41 @@ body {
     min-width: 48% !important;
   }
 
-  .top-footer, .footer-hero, .our-news-container, .our-news-card-column-3, .teachers_type, .teacher_skill {
+  .top-footer,
+  .footer-hero,
+  .our-news-container,
+  .our-news-card-column-3,
+  .teachers_type,
+  .teacher_skill {
     flex-wrap: wrap;
   }
 
-  .our-news-card-column-3, .skill_content {
+  .our-news-card-column-3,
+  .skill_content {
     width: 100% !important;
   }
 
   .each-footer,
   .our-news-card-column-1,
-  .our-news-card-column-2, .each-teachers-type, .orange-card-main {
+  .our-news-card-column-2,
+  .each-teachers-type,
+  .orange-card-main {
     width: 47.9% !important;
   }
-
 
   .orange-container {
     display: flex;
     flex-direction: column !important;
-    width: 100%  !important;
+    width: 100% !important;
   }
-  .orange-body, .orange-footer {
+  .orange-body,
+  .orange-footer {
     width: 100% !important;
   }
 
   .orange-footer {
     flex-direction: row !important;
-    display:  none !important;
+    display: none !important;
   }
 
   .orange-card-main img {
@@ -147,8 +153,6 @@ body {
     height: 70vh !important;
   }
 
-
-
   .footer-hero div {
     width: 100% !important;
     margin-bottom: 10px;
@@ -158,7 +162,6 @@ body {
     width: 47.9% !important;
     border: 2px solid red;
   }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -235,7 +238,8 @@ body {
   .our-news-container,
   .top-footer,
   .footer-hero,
-  .teachers_type, .teacher_skill {
+  .teachers_type,
+  .teacher_skill {
     flex-direction: column;
   }
 
@@ -244,7 +248,8 @@ body {
   .our-news-card-column-3,
   .each-footer,
   .footer-hero div,
-  .each-teachers-type, .skill_content {
+  .each-teachers-type,
+  .skill_content {
     width: 100% !important;
   }
 
@@ -266,13 +271,14 @@ body {
     flex-direction: column !important;
     /* padding-bottom: 20px; */
   }
-  .orange-body, .orange-footer {
+  .orange-body,
+  .orange-footer {
     width: 100% !important;
   }
 
   .orange-footer {
     flex-direction: row !important;
-    display:  none !important;
+    display: none !important;
   }
 
   .orange-card-main img {
@@ -293,8 +299,6 @@ body {
   }
 }
 
-
-
 .animation {
   /* opacity: 0; */
   top: 75px;
@@ -314,7 +318,7 @@ body {
   background-color: red !important;
 }
 
-.about-icon-mains{
+.about-icon-mains {
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -322,8 +326,6 @@ body {
   padding: 12px;
   cursor: pointer;
 }
-
-
 
 .card {
   width: 100%;
@@ -354,32 +356,29 @@ body {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: inset 0px -4px 2px rgba(63, 62, 6, 0.2);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .skill-percent-number {
   font-size: 16px;
 }
 
-
 .skill-percent:hover {
   box-shadow: inset 0px 4px 2px rgba(63, 62, 6, 0.2);
 }
-
-
-
-
 
 .modal-backdrop {
   background-color: rgba(24, 24, 20, 0.7);
   opacity: 0.5 !important;
 }
 
-
-input[type='radio'] {
+input[type="radio"] {
   height: 20px;
   width: 20px;
   vertical-align: middle;
+  cursor: pointer;
+  float: right;
+  transition: all 0.2s ease;
 }
 
 input[type="radio"]:checked {
@@ -390,7 +389,6 @@ input[type="radio"]:checked {
 input[type="radio"]:checked::after {
   /* background-color: #04f600 !important; */
 }
-
 
 input[type="radio"]:focus {
   outline: none;

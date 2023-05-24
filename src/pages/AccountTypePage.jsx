@@ -97,10 +97,6 @@ const AccountTypePage = () => {
                 name="checkboxes"
                 id=""
                 className="mx-3 mb-3"
-                style={{
-                  float: "right",
-                  transition: "all .2s ease",
-                }}
               />
             </label>
             <label
@@ -125,10 +121,6 @@ const AccountTypePage = () => {
                 value
                 id=""
                 className="mx-3"
-                style={{
-                  float: "right",
-                  transition: "all .2s ease",
-                }}
               />
             </label>
           </div>
