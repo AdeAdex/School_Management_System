@@ -37,6 +37,7 @@ const AccountTypePage = () => {
       textDiv.append(h1, h2);
     } else {
       alert("hiiiii");
+      // textDiv.innerHTML = "";
     }
   };
 
@@ -53,7 +54,7 @@ const AccountTypePage = () => {
       textDiv.classList.add("bg-danger");
     } else {
       setfirst("Kindly select an account to create an account");
-      textDiv.classList.add("bg-red-500");
+      // textDiv.classList.add("bg-red-500");
       navigate("/account_type");
     }
   };
