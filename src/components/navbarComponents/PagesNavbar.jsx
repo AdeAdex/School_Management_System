@@ -102,14 +102,6 @@ const PagesNavbar = () => {
                 sticky2Icon="fas fa-language"
                 myFunc={openModal}
               />
-              {/* <StickyNav2
-                sticky2Name="register"
-                sticky2Icon="fas fa-circle-plus"
-              />
-              <StickyNav2
-                sticky2Name="login"
-                sticky2Icon="fas fa-right-to-bracket"
-              /> */}
               <StickyNav
                 name="register"
                 icon="fas fa-circle-plus"

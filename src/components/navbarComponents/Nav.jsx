@@ -50,13 +50,13 @@ const Nav = () => {
                 <StickyNav
                   name="register"
                   icon="fas fa-circle-plus"
-                  to_where="/student_signup"
+                  to_where="/account_type"
                   styles={{border: '1px solid gray', width: '50%', padding: '5px 0px', justifyContent: 'center'}}
                 ></StickyNav>
                 <StickyNav
                   name="login"
                   icon="fas fa-right-to-bracket"
-                  to_where="/student_signin"
+                  to_where="/account_type"
                   styles={{border: '1px solid gray', width: '50%', padding: '5px 0px', justifyContent: 'center'}}
                 ></StickyNav>
               </div>

@@ -52,10 +52,11 @@ const AccountTypePage = () => {
     ) {
       navigate("/student_signup");
       textDiv.classList.add("bg-danger");
-    } else {
+    } else /* if (h1.innerHTML == "") */ {
       setfirst("Kindly select an account to create an account");
       // textDiv.classList.add("bg-red-500");
       navigate("/account_type");
+      alert(h1.innerHTML)
     }
   };
   return (
