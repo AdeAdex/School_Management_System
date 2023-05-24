@@ -28,7 +28,8 @@ const AccountTypePage = () => {
       h4.appendChild(h4textNode);
       h2.appendChild(h2textNode);
       textDiv.append(h4, h2);
-      textDiv.classList.remove('text-danger')
+      textDiv.classList.remove("text-danger");
+      textDiv.classList.remove("background-color-red");
     } else if (mySelect == "student") {
       h4 = document.createElement("h4");
       const h2 = document.createElement("div");
@@ -39,7 +40,8 @@ const AccountTypePage = () => {
       h4.appendChild(h4textNode);
       h2.appendChild(h2textNode);
       textDiv.append(h4, h2);
-      textDiv.classList.remove('text-danger')
+      textDiv.classList.remove("text-danger");
+      textDiv.classList.remove("background-color-red");
     } else if (mySelect == "nothing") {
       console.log("There's nothing here!");
     }
@@ -54,9 +56,10 @@ const AccountTypePage = () => {
     } else if (h4.innerHTML == "Select an account above to continue") {
       navigate("/account_type");
       console.log(h4.innerHTML);
-      textDiv.innerHTML = "⚠ Kindly select an account above and then click the 'Continue' button below to proceed."
-      textDiv.classList.add('text-danger')
-      textDiv.classList.add('background-color-red')
+      textDiv.innerHTML =
+        "⚠ Kindly select an account above and then click the 'Continue' button below to proceed.";
+      textDiv.classList.add("text-danger");
+      textDiv.classList.add("background-color-red");
     }
   };
   return (

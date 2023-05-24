@@ -393,3 +393,8 @@ input[type="radio"]:checked::after {
 input[type="radio"]:focus {
   outline: none;
 }
+
+
+#textDiv {
+  transition: all 0.3s ease-in-out;
+}
