@@ -117,6 +117,7 @@ const AccountTypePage = () => {
           <div className="text-center mt-5 text-div" id="textDiv">
             {first}
           </div>
+          <div id="" className="position-absolute" style={{left: '47%', top: '60%'}}><i className="fas fa-circle-check text-success"></i></div>
           <button
             className="btn btn-sm px-5 mt-4 bg-primary text-white mx-auto"
             onClick={createAccount}
