@@ -71,7 +71,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setFirstName(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               First Name
             </label>
             <div className="invalid-feedback">
@@ -88,7 +88,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setLastName(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               Last Name
             </label>
             <div className="invalid-feedback">
@@ -105,7 +105,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               Phone Number
             </label>
             <div id="validationServer04Feedback" className="invalid-feedback">
@@ -122,7 +122,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setCity(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               City
             </label>
             <div id="validationServer04Feedback" className="invalid-feedback">
@@ -139,7 +139,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setAge(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               Age
             </label>
             <div id="validationServer04Feedback" className="invalid-feedback">
@@ -156,7 +156,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setGender(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               Gender
             </label>
             <div id="validationServer04Feedback" className="invalid-feedback">
@@ -173,7 +173,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               Email Address
             </label>
             <div id="validationServer04Feedback" className="invalid-feedback">
@@ -181,18 +181,19 @@ const StaffSignupForm = () => {
             </div>
           </div>
           <div className="col-md-12 mb-3">
-            <label for="validationServer04" className="form-label">
+            <label htmlFor="validationServer04" className="form-label">
               State
             </label>
+
+                 
             <select
-              className="form-select "
+              className="form-select"
               id="validationServer04"
               name="state"
-              aria-describedby="validationServer04Feedback"
               required
               onChange={(e) => setState(e.target.value)}
             >
-              <option select disabled>
+              <option  disabled>
                 Choose...
               </option>
               <option value="Oyo State">Oyo State</option>
@@ -212,7 +213,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label for="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label">
               Password
             </label>
             <div id="validationServer04Feedback" className="invalid-feedback">
@@ -230,7 +231,7 @@ const StaffSignupForm = () => {
                 name="check"
                 onChange={(e) => setCheck(e.target.checked)}
               />
-              <label className="form-check-label" for="invalidCheck3">
+              <label className="form-check-label" htmlFor="invalidCheck3">
                 Agree to terms and conditions
               </label>
               <div id="invalidCheck3Feedback" className="invalid-feedback">

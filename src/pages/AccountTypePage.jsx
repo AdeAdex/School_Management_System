@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/footerComponents/Footer";
 
 const AccountTypePage = () => {
-  const [first, setfirst] = useState(
-    "Hello and welcome to the account type selections page, kindly select an account type to create an account"
-  );
+  const [first, setfirst] = useState('');
 
   let h1;
-  const setImage = (mySelect) => {
+  useEffect(()=>{
+    h1 = document.createElement("div");
+    const h1textNode = document.createTextNode("kindly click the button below to create an account");
+    h1.appendChild(h1textNode);
+    textDiv.append(h1);
+  },[])
+
+  const setImage = (mySelect = 'nothing ') => {
     textDiv.innerHTML = "";
     if (mySelect == "staff") {
       h1 = document.createElement("div");
@@ -21,23 +26,18 @@ const AccountTypePage = () => {
       h1.appendChild(h1textNode);
       h2.appendChild(h2textNode);
       textDiv.append(h1, h2);
-      // textDiv.classList.add('fas fa-circle-check');
     } else if (mySelect == "student") {
-      // setfirst(
-      //   "Hi Student you are welcome, kindly click the button below to create an account"
-      // );
       h1 = document.createElement("div");
       const h2 = document.createElement("div");
       const h1textNode = document.createTextNode("Hi Student");
       const h2textNode = document.createTextNode(
-        "kindly click the button below to create an account"
+        "you are welcome, kindly click the button below to create an account"
       );
       h1.appendChild(h1textNode);
       h2.appendChild(h2textNode);
       textDiv.append(h1, h2);
-    } else {
-      alert("hiiiii");
-      // textDiv.innerHTML = "";
+    } else if(mySelect == "nothing"){
+      console.log("There's nothing here!")
     }
   };
 
@@ -45,18 +45,11 @@ const AccountTypePage = () => {
   const createAccount = () => {
     if (h1.innerHTML == "Hello Staff") {
       navigate("/staff_signup");
-      textDiv.classList.add("bg-danger");
-    } else if ( h1.innerHTML == "Hi Student"
-      // first ===
-      // "Hi Student you are welcome, kindly click the button below to create an account"
-    ) {
+    } else if (h1.innerHTML == "Hi Student") {
       navigate("/student_signup");
-      textDiv.classList.add("bg-danger");
-    } else /* if (h1.innerHTML == "") */ {
-      setfirst("Kindly select an account to create an account");
-      // textDiv.classList.add("bg-red-500");
+    } else if (h1.innerHTML == "nothing") {
+      console.log( h1.innerHTML == "There's nothing here!")
       navigate("/account_type");
-      alert(h1.innerHTML)
     }
   };
   return (
@@ -81,7 +74,7 @@ const AccountTypePage = () => {
             choose account type
           </h3>
           <div className="d-flex gap-4 mx-auto mt-5">
-            <div
+            <label
               className="px-4 pt-4 pb-3"
               style={{
                 width: "150px",
@@ -97,8 +90,9 @@ const AccountTypePage = () => {
               />
               <hr />
               <div className="text-center fw-bold">Staff</div>
-            </div>
-            <div
+              <input type="radio" name="checkboxes" id="" className="" />
+            </label>
+            <label
               className="px-4 pt-4 pb-3"
               style={{
                 width: "150px",
@@ -114,12 +108,19 @@ const AccountTypePage = () => {
               />
               <hr />
               <div className="text-center fw-bold">Student</div>
-            </div>
+              <input type="radio" name="checkboxes" value id="" className="" />
+            </label>
           </div>
           <div className="text-center mt-5 text-div" id="textDiv">
             {first}
           </div>
-          <div id="" className="position-absolute" style={{left: '47%', top: '60%'}}><i className="fas fa-circle-check text-success"></i></div>
+          {/* <div
+            id=""
+            className="position-absolute"
+            style={{ left: "47%", top: "60%" }}
+          >
+            <i className="fas fa-circle-check text-success"></i>
+          </div> */}
           <button
             className="btn btn-sm px-5 mt-4 bg-primary text-white mx-auto"
             onClick={createAccount}
