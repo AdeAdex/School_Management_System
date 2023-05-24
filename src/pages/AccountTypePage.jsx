@@ -21,6 +21,7 @@ const AccountTypePage = () => {
       h1.appendChild(h1textNode);
       h2.appendChild(h2textNode);
       textDiv.append(h1, h2);
+      // textDiv.classList.add('fas fa-circle-check');
     } else if (mySelect == "student") {
       // setfirst(
       //   "Hi Student you are welcome, kindly click the button below to create an account"
