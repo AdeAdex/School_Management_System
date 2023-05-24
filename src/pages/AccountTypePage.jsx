@@ -6,38 +6,38 @@ import Footer from "../components/footerComponents/Footer";
 const AccountTypePage = () => {
   const [first, setfirst] = useState("");
 
-  let h1;
+  let h4;
   useEffect(() => {
-    h1 = document.createElement("div");
-    const h1textNode = document.createTextNode(
-      "kindly click the button below to create an account"
+    h4 = document.createElement("div");
+    const h4textNode = document.createTextNode(
+      "Kindly select an account above and then click the 'Continue' button below to proceed."
     );
-    h1.appendChild(h1textNode);
-    textDiv.append(h1);
+    h4.appendChild(h4textNode);
+    textDiv.append(h4);
   }, []);
 
   const setImage = (mySelect = "nothing ") => {
     textDiv.innerHTML = "";
     if (mySelect == "staff") {
-      h1 = document.createElement("div");
+      h4 = document.createElement("h4");
       const h2 = document.createElement("div");
-      const h1textNode = document.createTextNode("Hello Staff");
+      const h4textNode = document.createTextNode("Hello Staff,");
       const h2textNode = document.createTextNode(
-        "you are welcome, kindly click the button below to create an account"
+        "You are welcome, Click the button below to create an account"
       );
-      h1.appendChild(h1textNode);
+      h4.appendChild(h4textNode);
       h2.appendChild(h2textNode);
-      textDiv.append(h1, h2);
+      textDiv.append(h4, h2);
     } else if (mySelect == "student") {
-      h1 = document.createElement("div");
+      h4 = document.createElement("h4");
       const h2 = document.createElement("div");
-      const h1textNode = document.createTextNode("Hi Student");
+      const h4textNode = document.createTextNode("Hi Student,");
       const h2textNode = document.createTextNode(
-        "you are welcome, kindly click the button below to create an account"
+        "Welcome to the account creation page, Click the button below to create your portal account"
       );
-      h1.appendChild(h1textNode);
+      h4.appendChild(h4textNode);
       h2.appendChild(h2textNode);
-      textDiv.append(h1, h2);
+      textDiv.append(h4, h2);
     } else if (mySelect == "nothing") {
       console.log("There's nothing here!");
     }
@@ -45,12 +45,12 @@ const AccountTypePage = () => {
 
   const navigate = useNavigate();
   const createAccount = () => {
-    if (h1.innerHTML == "Hello Staff") {
+    if (h4.innerHTML == "Hello Staff,") {
       navigate("/staff_signup");
-    } else if (h1.innerHTML == "Hi Student") {
+    } else if (h4.innerHTML == "Hi Student,") {
       navigate("/student_signup");
-    } else if (h1.innerHTML == "nothing") {
-      console.log(h1.innerHTML == "There's nothing here!");
+    } else if (h4.innerHTML == "nothing") {
+      console.log(h4.innerHTML == "There's nothing here!");
       navigate("/account_type");
     }
   };
