@@ -377,13 +377,15 @@ body {
 
 
 input[type="radio"]:checked {
-  background-color: red !important;
-  box-shadow: inset 0 0 0 1px blue;
-  accent-color: #04f600;
+  box-shadow: inset 0 0 0 1px rgb(248, 248, 250);
+  border: 1px solid red;
+  accent-color: rgb(25,100,0);
+  background-color: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%);
 }
 
 input[type="radio"]:checked::after {
   background-color: #04f600 !important;
+  accent-color: red;
 }
 
 
