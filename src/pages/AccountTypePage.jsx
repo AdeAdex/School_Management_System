@@ -6,6 +6,9 @@ import Footer from "../components/footerComponents/Footer";
 const AccountTypePage = () => {
   const [first, setfirst] = useState("");
 
+  setfirst = () => {
+    
+  }
   let h4;
   useEffect(() => {
     h4 = document.createElement("div");
