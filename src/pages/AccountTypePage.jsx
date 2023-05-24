@@ -133,7 +133,7 @@ const AccountTypePage = () => {
               />
             </label>
           </div>
-          <div className="text-center mt-5 text-div" id="textDiv">
+          <div className="text-center mt-5 text-div p-3" id="textDiv">
             {first}
           </div>
           {/* <div
