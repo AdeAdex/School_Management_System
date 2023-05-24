@@ -11,8 +11,7 @@ const AccountTypePage = () => {
   let h1;
   const setImage = (mySelect) => {
     textDiv.innerHTML = "";
-    if (mySelect === "staff") {
-      // "Hello Staff you are welcome, kindly click the button below to create an account"
+    if (mySelect == "staff") {
       h1 = document.createElement("div");
       const h2 = document.createElement("div");
       const h1textNode = document.createTextNode("Hello Staff");
@@ -21,12 +20,20 @@ const AccountTypePage = () => {
       );
       h1.appendChild(h1textNode);
       h2.appendChild(h2textNode);
-      let x = textDiv.append(h1, h2);
-      // alert(h2.innerHTML)
-    } else if (mySelect === "student") {
-      setfirst(
-        "Hi Student you are welcome, kindly click the button below to create an account"
+      textDiv.append(h1, h2);
+    } else if (mySelect == "student") {
+      // setfirst(
+      //   "Hi Student you are welcome, kindly click the button below to create an account"
+      // );
+      h1 = document.createElement("div");
+      const h2 = document.createElement("div");
+      const h1textNode = document.createTextNode("Hi Student");
+      const h2textNode = document.createTextNode(
+        "kindly click the button below to create an account"
       );
+      h1.appendChild(h1textNode);
+      h2.appendChild(h2textNode);
+      textDiv.append(h1, h2);
     } else {
       alert("hiiiii");
     }
@@ -37,9 +44,9 @@ const AccountTypePage = () => {
     if (h1.innerHTML == "Hello Staff") {
       navigate("/staff_signup");
       textDiv.classList.add("bg-danger");
-    } else if (
-      first ===
-      "Hi Student you are welcome, kindly click the button below to create an account"
+    } else if ( h1.innerHTML == "Hi Student"
+      // first ===
+      // "Hi Student you are welcome, kindly click the button below to create an account"
     ) {
       navigate("/student_signup");
       textDiv.classList.add("bg-danger");
