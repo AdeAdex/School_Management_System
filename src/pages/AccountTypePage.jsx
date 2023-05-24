@@ -98,10 +98,11 @@ const AccountTypePage = () => {
                 id=""
                 className="mx-3 mb-3"
                 style={{
-                  border: "2px solid red",
-                  backgroundColor: "#3197EE",
-                  boxShadow: "0 0 0 1px purple",
+                  // border: "2px solid red",
+                  // backgroundColor: "#3197EE",
+                  // boxShadow: "0 0 0 1px ",
                   float: "right",
+                  transition: "all .5s ease",
                 }}
               />
             </label>
@@ -128,10 +129,11 @@ const AccountTypePage = () => {
                 id=""
                 className="mx-3"
                 style={{
-                  border: "2px solid red",
-                  backgroundColor: "#3197EE",
-                  boxShadow: "0 0 0 1px purple",
+                  // border: "2px solid red",
+                  // backgroundColor: "#3197EE",
+                  // boxShadow: "0 0 0 1px ",
                   float: "right",
+                  transition: "all .5s ease",
                 }}
               />
             </label>
