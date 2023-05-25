@@ -19,7 +19,7 @@ const StaffSigninForm = () => {
       .then((res) => {
         if (res.data == "staff passed") {
           console.log(res.data);
-          navigate("/student_dashboard");
+          navigate("/staff_dashboard");
         } else {
           navigate("/signin");
         }

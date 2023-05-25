@@ -193,7 +193,7 @@ const StaffSignupForm = () => {
               required
               onChange={(e) => setState(e.target.value)}
             >
-              <option  disabled>
+              <option disabled>
                 Choose...
               </option>
               <option value="Oyo State">Oyo State</option>

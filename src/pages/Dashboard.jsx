@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Offcanvas from "../components/dashboardComponents/Offcanvas";
 import "../pages/Dashboard.css";
 import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
@@ -8,13 +8,19 @@ import DashboardPieChart from "../components/dashboardComponents/DashboardPieCha
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 
 const Dashboard = () => {
-  const [first, setfirst] = useState([]);
+  // const [first, setfirst] = useState([]);
 
-  const endpoint = "http://localhost:2000/student_account/dashboard";
-  axios.get(endpoint).then((response) => {
-    // console.log(response.data)
-    setfirst(response.data);
-  });
+  useEffect(() => {
+    const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
+    axios.get(endpoint)
+    .then((result) => {
+      if (result.message == "Information fetched") {
+        console.log(result.data);
+      }
+      // console.log(response.data)
+      // setfirst(response.data);
+    });
+  }, []);
 
   return (
     <>
@@ -45,7 +51,11 @@ const Dashboard = () => {
           ))}
         </table>
       </div> */}
-      <section id="" className="d-flex" style={{ width: "100%", height: "100vh", overflow: "hidden" }}>
+      <section
+        id=""
+        className="d-flex"
+        style={{ width: "100%", height: "100vh", overflow: "hidden" }}
+      >
         <div
           className="position-relative"
           id="offCan"
@@ -53,15 +63,15 @@ const Dashboard = () => {
             width: "20%",
             height: "100vh",
             backgroundColor: "#030552",
-            overflowY: "scroll"
+            overflowY: "scroll",
           }}
         >
           <Offcanvas />
         </div>
-        <div className="" id="nav" style={{ width: "100%", height: "100%",  }}>
+        <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <DashboardNavbar />
           <div className="flex p-5">
-            <div className="w-9/12">left</div>
+            <div className="w-9/12"></div>
             <div>
               <DashboardCalendar />
               <DashboardPieChart />
