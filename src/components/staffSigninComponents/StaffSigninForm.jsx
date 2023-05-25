@@ -18,7 +18,7 @@ const StaffSigninForm = () => {
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data == "staff passed") {
-          console.log(res.data);
+          // console.log(res.data);
           navigate("/staff_dashboard");
         } else {
           navigate("/signin");

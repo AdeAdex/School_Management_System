@@ -15,10 +15,8 @@ const Dashboard = () => {
     axios.get(endpoint)
     .then((result) => {
       if (result.message == "Information fetched") {
-        console.log(result.data);
+        console.log(result.message);
       }
-      // console.log(response.data)
-      // setfirst(response.data);
     });
   }, []);
 
