@@ -8,20 +8,38 @@ import DashboardPieChart from "../components/dashboardComponents/DashboardPieCha
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 
 const Dashboard = () => {
-  // const [first, setfirst] = useState([]);
+  const [first, setFirst] = useState([]);
+  const [hubby, sethubby] = useState("")
+  const [country, setcountry] = useState("")
+  const [lga, setlga] = useState("")
 
   useEffect(() => {
-    const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
+    const endpoint = "http://localhost:2000/staff_account/staff_dashboard"
     axios.get(endpoint)
-    .then((result) => {
-      if (result.message == "Information fetched") {
-        console.log(result.message);
-      }
+    .then((response) => {
+          setFirst(response.data.result)
+          console.log(first)     
     });
   }, []);
 
+  const update = () => {
+    myUpdate = {
+      hubby,
+      country,
+      lga,
+    }
+
+    console.log(myUpdate);
+    const endpoint = 'http://localhost:2000/staff_account/staff_dashboard'
+    axios.post(endpoint, myUpdate)
+    // .then((response) => {
+
+    // })
+  }
+
   return (
     <>
+     
       {/* <div style={{ marginTop: "" }}>
         <h1 className="text-center text-capitalize my-3">
           Welcome to the dashboard
@@ -69,7 +87,24 @@ const Dashboard = () => {
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <DashboardNavbar />
           <div className="flex p-5">
-            <div className="w-9/12"></div>
+            <div className="w-9/12 text-black">
+            { 
+                  first.map((eachStudent)=>(
+                    <div className="detail" key={eachStudent._id}>
+                    <h4>{eachStudent.firstName}</h4>
+                      <h2>{eachStudent.lastName}</h2>
+                    </div>
+                  ))
+                }
+              
+
+              <form action="" method="post" className="">
+                <input type="text" name="" id="" onChange={(e)=> sethubby(e.target.value)} />
+                <input type="text" name="" id="" onChange={(e)=> setcountry(e.target.value)} />
+                <input type="text" name="" id="" onChange={(e)=> setlga(e.target.value)}/>
+                <button type="submit" className="btn btn-primary" onClick={update}>Update</button>
+              </form>
+            </div>
             <div>
               <DashboardCalendar />
               <DashboardPieChart />
