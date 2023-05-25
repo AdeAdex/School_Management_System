@@ -22,12 +22,13 @@ const Dashboard = () => {
     });
   }, []);
 
-  const update = () => {
-    myUpdate = {
+  const updateDetails = (e) => {
+   const myUpdate = {
       hubby,
       country,
       lga,
     }
+    e.preventDefault();
 
     console.log(myUpdate);
     const endpoint = 'http://localhost:2000/staff_account/staff_dashboard'
@@ -98,12 +99,12 @@ const Dashboard = () => {
                 }
               
 
-              <form action="" method="post" className="">
+              {/* <form  className=""> */}
                 <input type="text" name="" id="" onChange={(e)=> sethubby(e.target.value)} />
                 <input type="text" name="" id="" onChange={(e)=> setcountry(e.target.value)} />
                 <input type="text" name="" id="" onChange={(e)=> setlga(e.target.value)}/>
-                <button type="submit" className="btn btn-primary" onClick={update}>Update</button>
-              </form>
+                <button type="submit" className="btn btn-primary" onClick={updateDetails}>Update</button>
+              {/* </form> */}
             </div>
             <div>
               <DashboardCalendar />
