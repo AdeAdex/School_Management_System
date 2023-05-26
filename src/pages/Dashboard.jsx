@@ -12,15 +12,21 @@ const Dashboard = () => {
   const [hubby, sethubby] = useState("")
   const [country, setcountry] = useState("")
   const [lga, setlga] = useState("")
+  const [savedEmail, setSavedEmail] = useState([])
 
+  let mumu = (localStorage.getItem("myStoredEmail"));
+  // console.log(mumu); 
+  // setSavedEmail(mumu)
   useEffect(() => {
+    console.log(mumu);
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard"
-    axios.get(endpoint)
+    axios.post(endpoint, mumu)
     .then((response) => {
-          setFirst(response.data.result)
-          console.log(first)     
+      console.log(response);
+          // setFirst(response.data.result)
+          // console.log(first)     
     });
-  }, []);
+  }, []);  
 
   const updateDetails = (e) => {
    const myUpdate = {
@@ -33,41 +39,13 @@ const Dashboard = () => {
     console.log(myUpdate);
     const endpoint = 'http://localhost:2000/staff_account/staff_dashboard'
     axios.post(endpoint, myUpdate)
-    // .then((response) => {
+    .then((response) => {
 
-    // })
+    })
   }
 
   return (
     <>
-     
-      {/* <div style={{ marginTop: "" }}>
-        <h1 className="text-center text-capitalize my-3">
-          Welcome to the dashboard
-        </h1>
-        <table className="table table-striped table-bordered table-responsive ">
-          <thead>
-            <tr className="text-center">
-              <td>S/N</td>
-              <td>FirstName</td>
-              <td>LastName</td>
-              <td>Email</td>
-              <td>PhoneNumber</td>
-            </tr>
-          </thead>
-          {first.map((eachStudent, index) => (
-            <tbody key={index}>
-              <tr>
-                <td>{index + 1}</td>
-                <td>{first[index].firstName}</td>
-                <td>{first[index].lastName}</td>
-                <td>{first[index].email}</td>
-                <td>{first[index].phoneNumber}</td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-      </div> */}
       <section
         id=""
         className="d-flex"
@@ -89,15 +67,14 @@ const Dashboard = () => {
           <DashboardNavbar />
           <div className="flex p-5">
             <div className="w-9/12 text-black">
-            { 
-                  first.map((eachStudent)=>(
+            {/* { 
+                  
                     <div className="detail" key={eachStudent._id}>
                     <h4>{eachStudent.firstName}</h4>
                       <h2>{eachStudent.lastName}</h2>
                       <h2>{eachStudent.phoneNumber}</h2>
                     </div>
-                  ))
-                }
+                } */}
               
 
               <form method="post" className="">
