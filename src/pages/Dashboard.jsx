@@ -12,15 +12,15 @@ const Dashboard = () => {
   const [hubby, sethubby] = useState("")
   const [country, setcountry] = useState("")
   const [lga, setlga] = useState("")
-  const [savedEmail, setSavedEmail] = useState([])
+  const [savedEmail, setSavedEmail] = useState(JSON.parse(localStorage.getItem("myStoredEmail")))
 
-  let mumu = (localStorage.getItem("myStoredEmail"));
+  // let mumu = (localStorage.getItem("myStoredEmail"));
   // console.log(mumu); 
   // setSavedEmail(mumu)
   useEffect(() => {
-    console.log(mumu);
+    // console.log(savedEmail);
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard"
-    axios.post(endpoint, mumu)
+    axios.post(endpoint, savedEmail)
     .then((response) => {
       console.log(response);
           // setFirst(response.data.result)
