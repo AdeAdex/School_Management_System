@@ -25,14 +25,14 @@ const Dashboard = () => {
         "Accept": "application/json"
       } 
     })
-    // .then((response) => {
-    //   console.log(response)
-    //   if (response.data.status) {
-    //     console.log(response)
-    //   } else {
-    //     navigate('/staff_signin')
-    //   }
-    // })
+    .then((response) => {
+      // console.log(response)
+      if (response.data.status) {
+        console.log(response.data.response)
+      } else {
+        navigate('/staff_signin')
+      }
+    })
   }, []);
 
   // const updateDetails = (e) => {
