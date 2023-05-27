@@ -18,8 +18,9 @@ const StaffSigninForm = () => {
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data.message == "successfully signed in") {
-          // console.log(res.data.response[0]);
-          localStorage.setItem("myStoredEmail", JSON.stringify(res.data.response[0].email));
+          console.log(res.data.response[0].email);
+          localStorage.setItem("myStoredEmail", res.data.response[0].email)
+          // localStorage.setItem("myStoredEmail", JSON.stringify(res.data.response[0].email));
           navigate("/staff_dashboard");
         } else {
           navigate("/signin");

@@ -12,37 +12,36 @@ const Dashboard = () => {
   const [hubby, sethubby] = useState("")
   const [country, setcountry] = useState("")
   const [lga, setlga] = useState("")
-  const [savedEmail, setSavedEmail] = useState(JSON.parse(localStorage.getItem("myStoredEmail")))
+  // const [savedEmail, setSavedEmail] = useState(JSON.parse(localStorage.getItem("myStoredEmail")))
 
-  // let mumu = (localStorage.getItem("myStoredEmail"));
-  // console.log(mumu); 
-  // setSavedEmail(mumu)
+  let myEmail = (localStorage.getItem("myStoredEmail"));
+
   useEffect(() => {
-    // console.log(savedEmail);
+    // console.log(myEmail);
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard"
-    axios.post(endpoint, savedEmail)
+    axios.post(endpoint, myEmail)
     .then((response) => {
       console.log(response);
           // setFirst(response.data.result)
           // console.log(first)     
     });
-  }, []);  
+  }, );  
 
-  const updateDetails = (e) => {
-   const myUpdate = {
-      hubby,
-      country,
-      lga,
-    }
-    e.preventDefault();
+  // const updateDetails = (e) => {
+  //  const myUpdate = {
+  //     hubby,
+  //     country,
+  //     lga,
+  //   }
+  //   e.preventDefault();
 
-    console.log(myUpdate);
-    const endpoint = 'http://localhost:2000/staff_account/staff_dashboard'
-    axios.post(endpoint, myUpdate)
-    .then((response) => {
+  //   console.log(myUpdate);
+  //   const endpoint = 'http://localhost:2000/staff_account/staff_dashboard'
+  //   axios.post(endpoint, myUpdate)
+  //   .then((response) => {
 
-    })
-  }
+  //   })
+  // }
 
   return (
     <>
@@ -77,12 +76,12 @@ const Dashboard = () => {
                 } */}
               
 
-              <form method="post" className="">
+              {/* <form method="post" className="">
                 <input type="text" name="" id="" onChange={(e)=> sethubby(e.target.value)} />
                 <input type="text" name="" id="" onChange={(e)=> setcountry(e.target.value)} />
                 <input type="text" name="" id="" onChange={(e)=> setlga(e.target.value)}/>
                 <button type="submit" className="btn btn-primary" onClick={updateDetails}>Update</button>
-              </form>
+              </form> */}
             </div>
             <div>
               <DashboardCalendar />
