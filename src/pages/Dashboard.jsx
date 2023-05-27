@@ -6,8 +6,10 @@ import DashboardCalendar from "../components/dashboardComponents/DashboardCalend
 import "react-calendar/dist/Calendar.css";
 import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  let navigate = useNavigate()
   const [first, setFirst] = useState([]);
   const [hubby, sethubby] = useState("");
   const [country, setcountry] = useState("");
@@ -25,6 +27,11 @@ const Dashboard = () => {
     })
     .then((response) => {
       console.log(response)
+      if (response.data.status) {
+        console.log("Welcome")
+      } else {
+        navigate('/staff_signin')
+      }
     })
   }, []);
 
