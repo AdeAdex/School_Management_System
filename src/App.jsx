@@ -36,6 +36,8 @@ function App() {
     }
   },[])
 
+  let token = localStorage.token
+
   return (
     <>
     <Router>
@@ -43,7 +45,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}/>
-        <Route path='/staff_dashboard' element={<Dashboard/>}/>
+        <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}/>
         <Route path='/staff_signup' element={<StaffSignUp/>}/>
         <Route path='/staff_signin' element={<StaffSignIn/>}/>
         <Route path='/account_type' element={<AccountTypePage/>}/>

@@ -20,8 +20,8 @@ const StaffSigninForm = () => {
       .then((res) => {
         if (res.data.message == "successfully signed in") {
           console.log(res.data.response[0].email);
-          localStorage.setItem("myStoredEmail", res.data.response[0].email)
-          // localStorage.setItem("myStoredEmail", JSON.stringify(res.data.response[0].email));
+          localStorage.token = res.data.token
+          console.log(localStorage.token);
           navigate("/staff_dashboard");
         } else {
           navigate("/signin");

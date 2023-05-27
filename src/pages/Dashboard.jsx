@@ -9,23 +9,24 @@ import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 
 const Dashboard = () => {
   const [first, setFirst] = useState([]);
-  const [hubby, sethubby] = useState("")
-  const [country, setcountry] = useState("")
-  const [lga, setlga] = useState("")
-  // const [savedEmail, setSavedEmail] = useState(JSON.parse(localStorage.getItem("myStoredEmail")))
-
-  let myEmail = (localStorage.getItem("myStoredEmail"));
+  const [hubby, sethubby] = useState("");
+  const [country, setcountry] = useState("");
+  const [lga, setlga] = useState("");
 
   useEffect(() => {
-    // console.log(myEmail);
-    const endpoint = "http://localhost:2000/staff_account/staff_dashboard"
-    axios.post(endpoint, myEmail)
+    const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
+    let token = localStorage.token
+    axios.get(endpoint, { 
+      headers: { 
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      } 
+    })
     .then((response) => {
-      console.log(response);
-          // setFirst(response.data.result)
-          // console.log(first)     
-    });
-  }, );  
+      console.log(response)
+    })
+  }, []);
 
   // const updateDetails = (e) => {
   //  const myUpdate = {
@@ -66,7 +67,7 @@ const Dashboard = () => {
           <DashboardNavbar />
           <div className="flex p-5">
             <div className="w-9/12 text-black">
-            {/* { 
+              {/* { 
                   
                     <div className="detail" key={eachStudent._id}>
                     <h4>{eachStudent.firstName}</h4>
@@ -74,7 +75,6 @@ const Dashboard = () => {
                       <h2>{eachStudent.phoneNumber}</h2>
                     </div>
                 } */}
-              
 
               {/* <form method="post" className="">
                 <input type="text" name="" id="" onChange={(e)=> sethubby(e.target.value)} />
