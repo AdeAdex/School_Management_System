@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const StaffSigninForm = () => {
   const navigate = useNavigate();
-  const [first, setfirst] = useState("")
+  const [first, setfirst] = useState("");
 
   let formik = useFormik({
     initialValues: {
@@ -14,19 +14,21 @@ const StaffSigninForm = () => {
     },
 
     onSubmit: (values) => {
-//       console.log(values);
       const endpoint = "http://localhost:2000/staff_account/staff_signin";
       axios.post(endpoint, values)
       .then((res) => {
-        if (res.data.message == "successfully signed in") {
-          console.log(res.data.response[0].email);
+        if (res.data.status) {
           localStorage.token = res.data.token
-          console.log(localStorage.token);
-          navigate("/staff_dashboard");
+          console.log(res.data.status);
+          // navigate("/staff_dashboard");
         } else {
+          console.log(res.data.status);
           navigate("/signin");
         }
-      });
+      })
+      .catch((err)=> {
+        console.log(err);
+      })
     },
   });
   return (
