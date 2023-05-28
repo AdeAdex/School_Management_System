@@ -9,7 +9,7 @@ import Parallax1 from "../components/generalComponents/Parallax1";
 import Parallax2 from "../components/generalComponents/Parallax2";
 import Parallax3 from "../components/generalComponents/Parallax3";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
-import MyCountUp from "../components/MyCountUp";
+// import MyCountUp from "../components/MyCountUp";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
