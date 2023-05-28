@@ -26,7 +26,6 @@ const Dashboard = () => {
       } 
     })
     .then((response) => {
-      // console.log(response)
       if (response.data.status) {
         console.log(response.data.response)
       } else {
