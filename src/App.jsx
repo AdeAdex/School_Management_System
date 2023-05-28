@@ -38,13 +38,14 @@ function App() {
   },[])
 
   let token = localStorage.token
+  let username = adex
 
   return (
     <>
     <Router>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/:username' element={<UserPage/>}/>
+        <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}/>
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}/>
