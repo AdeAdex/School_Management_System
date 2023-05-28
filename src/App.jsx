@@ -38,8 +38,7 @@ function App() {
   },[])
 
   let token = localStorage.token
-  let username = adex
-
+  let username = "Adex"
   return (
     <>
     <Router>
