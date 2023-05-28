@@ -1,14 +1,13 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-
+import React from "react";
+import { useParams } from "react-router-dom";
 
 const UserPage = () => {
-        let {username} = useParams()
+  let { username } = useParams();
   return (
     <>
-    <div>Username:  {username}</div>
+      <div>Welcome: {username}</div>
     </>
-  )
-}
+  );
+};
 
-export default UserPage
+export default UserPage;
