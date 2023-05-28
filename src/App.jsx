@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard'
 import StaffSignUp from './pages/StaffSignUp'
 import StaffSignIn from './pages/StaffSignIn'
 import AccountTypePage from './pages/AccountTypePage'
+import UserPage from './pages/UserPage'
 
 
 
@@ -43,6 +44,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='/:username' element={<UserPage/>}/>
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}/>
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}/>
