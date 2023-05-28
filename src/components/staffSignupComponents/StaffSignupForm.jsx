@@ -34,7 +34,7 @@ const StaffSignupForm = () => {
     const endpoint = "http://localhost:2000/staff_account/staff_signup";
     axios.post(endpoint, myDetails)
     .then((response) => {
-      if (response.data == "Information saved to the staff database") {
+      if (response.data.status) {
         navigate("/staff_signin");
         console.log(response.data);
       }

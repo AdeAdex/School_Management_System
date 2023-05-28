@@ -17,13 +17,14 @@ const StaffSigninForm = () => {
       const endpoint = "http://localhost:2000/staff_account/staff_signin";
       axios.post(endpoint, values)
       .then((res) => {
+        console.log(res.data);
         if (res.data.status) {
-          localStorage.token = res.data.token
           console.log(res.data.status);
+          localStorage.token = res.data.token
           navigate("/staff_dashboard");
         } else {
           console.log(res.data.status);
-          navigate("/signin");
+          navigate("/staff_signin");
         }
       })
       .catch((err)=> {
