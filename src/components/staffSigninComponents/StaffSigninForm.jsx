@@ -19,7 +19,7 @@ const StaffSigninForm = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.status) {
-          console.log(res.data.status);
+          // console.log(res.data.status);
           localStorage.token = res.data.token
           navigate("/staff_dashboard");
         } else {
