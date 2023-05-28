@@ -24,6 +24,7 @@
     "react-router-dom": "^6.10.0",
     "sass": "^1.62.1",
     "sweetalert2": "^11.4.8",
+    "use-count-up": "^3.0.1",
     "video.js": "^8.3.0"
   },
   "devDependencies": {
