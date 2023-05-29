@@ -18,6 +18,7 @@ import StaffSignIn from './pages/StaffSignIn'
 import AccountTypePage from './pages/AccountTypePage'
 import UserPage from './pages/UserPage'
 import { useSelector } from 'react-redux'
+import StaffProfile from './pages/StaffProfile'
 
 
 
@@ -51,7 +52,9 @@ function App() {
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}/>
-        <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}/>
+        <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
+          <Route path={'profile'} element={<StaffProfile/>}/>
+          </Route>
         <Route path='/staff_signup' element={<StaffSignUp/>}/>
         <Route path='/staff_signin' element={<StaffSignIn/>}/>
         <Route path='/account_type' element={<AccountTypePage/>}/>

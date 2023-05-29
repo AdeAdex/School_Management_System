@@ -1,8 +1,15 @@
 import React from "react";
 import OffcanvasList from "./OffcanvasList";
 import OffcanvasTitle from "./OffcanvasTitle";
+import { useNavigate } from "react-router-dom";
+
 
 const Offcanvas = () => {
+  const navigate = useNavigate()
+
+  const handleClick=()=>{
+    navigate(handleClick)
+  }
   return (
     <>
       <div
@@ -38,7 +45,7 @@ const Offcanvas = () => {
             </div>
             <div className="grid gap-y-5">
               <OffcanvasTitle title="profile" />
-              <OffcanvasList item="my profile" icons="fas fa-user" />
+              <OffcanvasList item="my profile" handleClick='/staff_dashboard/profile' icons="fas fa-user" />
               <OffcanvasList item="change password" icons="fas fa-lock" />
               <OffcanvasList item="edit details" icons="fas fa-edit" />
             </div>

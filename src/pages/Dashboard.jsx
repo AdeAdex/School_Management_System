@@ -6,13 +6,14 @@ import DashboardCalendar from "../components/dashboardComponents/DashboardCalend
 import "react-calendar/dist/Calendar.css";
 import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { newName } from "../redux/portalSlice";
+import StaffProfile from "./StaffProfile";
 
 const Dashboard = () => {
-  const dispatch = useDispatch()
-  let navigate = useNavigate()
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   const [first, setFirst] = useState([]);
   const [hubby, sethubby] = useState("");
   const [country, setcountry] = useState("");
@@ -22,28 +23,29 @@ const Dashboard = () => {
 
   useEffect(() => {
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
-    let token = localStorage.token
-    axios.get(endpoint, { 
-      headers: { 
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      } 
-    })
-    .then((response) => {
-      if (response.data.status) {
-        console.log(response.data.response)
-        // setMyFirstName(response.data.response.firstName)
-        // setMyLastName(response.data.response.lastName)
-        // dispatch(newName(
-        //   console.log("ade")
-        // ))
-        dispatch(newName(response.data.response))
-        // console.log(dispatch);
-      } else {
-        navigate('/staff_signin')
-      }
-    })
+    let token = localStorage.token;
+    axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.data.status) {
+          console.log(response.data.response);
+          // setMyFirstName(response.data.response.firstName)
+          // setMyLastName(response.data.response.lastName)
+          // dispatch(newName(
+          //   console.log("ade")
+          // ))
+          dispatch(newName(response.data.response));
+          // console.log(dispatch);
+        } else {
+          navigate("/staff_signin");
+        }
+      });
   }, []);
 
   // const updateDetails = (e) => {
@@ -85,7 +87,10 @@ const Dashboard = () => {
           <DashboardNavbar />
           <div className="flex p-5">
             <div className="w-9/12 text-black">
-             
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="profile" element={<StaffProfile />} />
+              </Routes>
             </div>
             <div>
               <DashboardCalendar />
