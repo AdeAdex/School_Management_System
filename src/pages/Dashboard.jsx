@@ -2,9 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Offcanvas from "../components/dashboardComponents/Offcanvas";
 import "../pages/Dashboard.css";
-import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
 import "react-calendar/dist/Calendar.css";
-import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -89,17 +87,11 @@ const Dashboard = () => {
           <DashboardNavbar />
           <div className="flex p-5 bg-green-300">
           <StaffDashboardHome/>
-            <div className="w-9/12 text-black">
               <Routes>
                 <Route path="staff_dashboard" element={<Dashboard />} />
                 <Route path="profile" element={<StaffProfile />} />
                 <Route path="change_password" element={<StaffChangePassword/>} />
               </Routes>
-            </div>
-            <div>
-              <DashboardCalendar />
-              <DashboardPieChart />
-            </div>
           </div>
         </div>
       </section>

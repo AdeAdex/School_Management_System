@@ -1,9 +1,19 @@
 import React from "react";
+import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
+import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 
 const StaffDashboardHome = () => {
   return (
     <>
-      <div>hello dashboard</div>
+      <div className="flex p-5 bg-green-300">
+      <div className="w-9/12 text-black">
+        hello dashboard
+      </div>
+      <div>
+        <DashboardCalendar/>
+        <DashboardPieChart/>
+      </div>
+      </div>
     </>
   );
 };
