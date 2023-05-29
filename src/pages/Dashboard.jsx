@@ -85,21 +85,7 @@ const Dashboard = () => {
           <DashboardNavbar />
           <div className="flex p-5">
             <div className="w-9/12 text-black">
-              {/* { 
-                  
-                    <div className="detail" key={eachStudent._id}>
-                    <h4>{eachStudent.firstName}</h4>
-                      <h2>{eachStudent.lastName}</h2>
-                      <h2>{eachStudent.phoneNumber}</h2>
-                    </div>
-                } */}
-
-              {/* <form method="post" className="">
-                <input type="text" name="" id="" onChange={(e)=> sethubby(e.target.value)} />
-                <input type="text" name="" id="" onChange={(e)=> setcountry(e.target.value)} />
-                <input type="text" name="" id="" onChange={(e)=> setlga(e.target.value)}/>
-                <button type="submit" className="btn btn-primary" onClick={updateDetails}>Update</button>
-              </form> */}
+             
             </div>
             <div>
               <DashboardCalendar />
