@@ -5,7 +5,7 @@ import DashboardPieChart from "../components/dashboardComponents/DashboardPieCha
 const StaffDashboardHome = () => {
   return (
     <>
-      <div className="flex p-5 bg-green-300">
+      <div className="flex p-5">
       <div className="w-9/12 text-black">
         hello dashboard
       </div>
