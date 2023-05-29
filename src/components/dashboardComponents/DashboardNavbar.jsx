@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Offcanvas_On_Small_Screen from "./Offcanvas_On_Small_Screen";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const DashboardNavbar = () => {
-  const globalState = useSelector((state)=>state.portalReducer.firstName)
+  const globalState = useSelector((state)=>state.portalReducer.staffInfo)
   const offCanvas = () => {
-    // const [isShown, setIsShown] = useState(false)
     if (offCan.style.width == "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
@@ -33,6 +32,7 @@ const DashboardNavbar = () => {
   const gooo = () => {
     alert("msg");
   };
+ 
   return (
     <>
       <div
@@ -62,7 +62,7 @@ const DashboardNavbar = () => {
             className="my-auto border-l-2 border-blue-600"
             style={{ height: "25px" }}
           ></div>
-          <div className="font-bold ml-4 my-auto text-lg">{globalState}</div>
+          <div className="font-bold ml-4 my-auto text-lg">{globalState.firstName} {globalState.lastName}</div>
         </div>
         <div className="w-50 my-auto flex justify-end gap-5 mr-7">
           <button onClick={gooo} className="">

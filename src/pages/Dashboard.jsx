@@ -7,15 +7,18 @@ import "react-calendar/dist/Calendar.css";
 import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
 import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { newName } from "../redux/portalSlice";
 
 const Dashboard = () => {
+  const dispatch = useDispatch()
   let navigate = useNavigate()
   const [first, setFirst] = useState([]);
   const [hubby, sethubby] = useState("");
   const [country, setcountry] = useState("");
   const [lga, setlga] = useState("");
-  const [myFirstName, setMyFirstName] = useState("");
-  const [myLastName, setMyLastName] = useState("");
+  // const [myFirstName, setMyFirstName] = useState("");
+  // const [myLastName, setMyLastName] = useState("");
 
   useEffect(() => {
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
@@ -30,9 +33,13 @@ const Dashboard = () => {
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.response)
-        setMyFirstName(response.data.response.firstName)
-        setMyLastName(response.data.response.lastName)
-        console.log(myFirstName);
+        // setMyFirstName(response.data.response.firstName)
+        // setMyLastName(response.data.response.lastName)
+        // dispatch(newName(
+        //   console.log("ade")
+        // ))
+        dispatch(newName(response.data.response))
+        // console.log(dispatch);
       } else {
         navigate('/staff_signin')
       }
