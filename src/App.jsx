@@ -19,6 +19,7 @@ import AccountTypePage from './pages/AccountTypePage'
 import UserPage from './pages/UserPage'
 import { useSelector } from 'react-redux'
 import StaffProfile from './pages/StaffProfile'
+import StaffChangePassword from './pages/StaffChangePassword'
 
 
 
@@ -54,7 +55,8 @@ function App() {
         <Route path='/student_signup' element={<SignUp/>}/>
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
           <Route path={'profile'} element={<StaffProfile/>}/>
-          </Route>
+          <Route path='change_password' element={<StaffChangePassword/>}/>
+        </Route>
         <Route path='/staff_signup' element={<StaffSignUp/>}/>
         <Route path='/staff_signin' element={<StaffSignIn/>}/>
         <Route path='/account_type' element={<AccountTypePage/>}/>

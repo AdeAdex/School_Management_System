@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 
 const Offcanvas = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const handleClick=()=>{
-    navigate(handleClick)
-  }
+  // const handleClick=()=>{
+  //   navigate('/staff_dashboard/profile')
+  // }
   return (
     <>
       <div
@@ -41,13 +41,13 @@ const Offcanvas = () => {
           <div className="px-4 grid gap-y-12">
             <div className="grid gap-y-5">
               <OffcanvasTitle title="main menu" />
-              <OffcanvasList item="dashboard" icons="fas fa-border-all" />
+              <OffcanvasList item="dashboard" params="/staff_dashboard" icons="fas fa-border-all" />
             </div>
             <div className="grid gap-y-5">
               <OffcanvasTitle title="profile" />
-              <OffcanvasList item="my profile" handleClick='/staff_dashboard/profile' icons="fas fa-user" />
-              <OffcanvasList item="change password" icons="fas fa-lock" />
-              <OffcanvasList item="edit details" icons="fas fa-edit" />
+              <OffcanvasList item="my profile" params="/staff_dashboard/profile" icons="fas fa-user" />
+              <OffcanvasList item="change password" params="/staff_dashboard/change_password" icons="fas fa-lock" />
+              <OffcanvasList item="edit details" params="/staff_dashboard/edit_details" icons="fas fa-edit" />
             </div>
             <div className="grid gap-y-5">
               <OffcanvasTitle title="academics" />

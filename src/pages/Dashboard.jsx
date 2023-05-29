@@ -10,6 +10,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { newName } from "../redux/portalSlice";
 import StaffProfile from "./StaffProfile";
+import StaffChangePassword from "./StaffChangePassword";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -88,8 +89,9 @@ const Dashboard = () => {
           <div className="flex p-5">
             <div className="w-9/12 text-black">
               <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="staff_dashboard" element={<Dashboard />} />
                 <Route path="profile" element={<StaffProfile />} />
+                <Route path="change_password" element={<StaffChangePassword/>} />
               </Routes>
             </div>
             <div>
