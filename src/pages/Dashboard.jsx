@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { newName } from "../redux/portalSlice";
 import StaffProfile from "./StaffProfile";
 import StaffChangePassword from "./StaffChangePassword";
+import StaffDashboardHome from "./StaffDashboardHome";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -86,7 +87,8 @@ const Dashboard = () => {
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <DashboardNavbar />
-          <div className="flex p-5">
+          <div className="flex p-5 bg-green-300">
+          <StaffDashboardHome/>
             <div className="w-9/12 text-black">
               <Routes>
                 <Route path="staff_dashboard" element={<Dashboard />} />
