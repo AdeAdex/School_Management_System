@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Offcanvas_On_Small_Screen from "./Offcanvas_On_Small_Screen";
+import { useSelector } from "react-redux";
 
 const DashboardNavbar = () => {
+  const globalState = useSelector((state)=>state.portalReducer.firstName)
   const offCanvas = () => {
     // const [isShown, setIsShown] = useState(false)
     if (offCan.style.width == "20%") {
@@ -60,7 +62,7 @@ const DashboardNavbar = () => {
             className="my-auto border-l-2 border-blue-600"
             style={{ height: "25px" }}
           ></div>
-          <div className="font-bold ml-4 my-auto text-lg"></div>
+          <div className="font-bold ml-4 my-auto text-lg">{globalState}</div>
         </div>
         <div className="w-50 my-auto flex justify-end gap-5 mr-7">
           <button onClick={gooo} className="">

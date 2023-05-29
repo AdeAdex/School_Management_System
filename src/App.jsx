@@ -17,11 +17,15 @@ import StaffSignUp from './pages/StaffSignUp'
 import StaffSignIn from './pages/StaffSignIn'
 import AccountTypePage from './pages/AccountTypePage'
 import UserPage from './pages/UserPage'
+import { useSelector } from 'react-redux'
+
 
 
 
 
 function App() {
+  const globalState = useSelector((state)=>state.portalReducer.firstName)
+  console.log(globalState);
   const [count, setCount] = useState(0)
   useEffect(()=> {
     if ('serviceWorker' in navigator) {
