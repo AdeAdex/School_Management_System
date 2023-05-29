@@ -41,7 +41,7 @@ const Offcanvas = () => {
           <div className="px-4 grid gap-y-12">
             <div className="grid gap-y-5">
               <OffcanvasTitle title="main menu" />
-              <OffcanvasList item="dashboard" params="/staff_dashboard/home" icons="fas fa-border-all" />
+              <OffcanvasList item="dashboard" params="/staff_dashboard" icons="fas fa-border-all" />
             </div>
             <div className="grid gap-y-5">
               <OffcanvasTitle title="profile" />

@@ -22,7 +22,7 @@ const Dashboard = () => {
   // const [myLastName, setMyLastName] = useState("");
 
   useEffect(() => {
-    const endpoint = "http://localhost:2000/staff_account/staff_dashboard/home";
+    const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
     let token = localStorage.token;
     axios
       .get(endpoint, {
@@ -86,7 +86,7 @@ const Dashboard = () => {
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <DashboardNavbar />
           <div className="flex p-5 bg-green-300">
-            {/* <StaffDashboardHome /> */}
+            <StaffDashboardHome />
             <Routes>
               <Route path="home" element={<StaffDashboardHome/>} />
               <Route path="profile" element={<StaffProfile />} />
