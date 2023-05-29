@@ -14,6 +14,8 @@ const Dashboard = () => {
   const [hubby, sethubby] = useState("");
   const [country, setcountry] = useState("");
   const [lga, setlga] = useState("");
+  const [myFirstName, setMyFirstName] = useState("");
+  const [myLastName, setMyLastName] = useState("");
 
   useEffect(() => {
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
@@ -28,6 +30,9 @@ const Dashboard = () => {
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.response)
+        setMyFirstName(response.data.response.firstName)
+        setMyLastName(response.data.response.lastName)
+        console.log(myFirstName);
       } else {
         navigate('/staff_signin')
       }
@@ -73,6 +78,7 @@ const Dashboard = () => {
           <DashboardNavbar />
           <div className="flex p-5">
             <div className="w-9/12 text-black">
+            Welcome {myFirstName} {myLastName}
               {/* { 
                   
                     <div className="detail" key={eachStudent._id}>

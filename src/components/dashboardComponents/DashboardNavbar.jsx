@@ -60,7 +60,7 @@ const DashboardNavbar = () => {
             className="my-auto border-l-2 border-blue-600"
             style={{ height: "25px" }}
           ></div>
-          <div className="font-bold ml-4 my-auto text-lg">Adeolu Amole</div>
+          <div className="font-bold ml-4 my-auto text-lg"></div>
         </div>
         <div className="w-50 my-auto flex justify-end gap-5 mr-7">
           <button onClick={gooo} className="">
