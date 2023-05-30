@@ -7,11 +7,12 @@ import { newName } from "../redux/portalSlice";
 
 const StaffEditDetails = () => {
   const globalState = useSelector((state)=>state.portalReducer.staffInfo)
+  let myEmail = globalState.email
 
   useEffect(() => {
         console.log(globalState);
 //     let endpoint = "http://localhost:2000/staff_account/edit_details";
-//     axios.get(endpoint )
+//     axios.get(endpoint, myEmail )
 //     .then((response) => {
 // //       dispatch(newName(response.data.response));
 // //       console.log(response.data.response);
@@ -24,7 +25,7 @@ const StaffEditDetails = () => {
       country: "",
       lga: "",
       hubby: "",
-      email: "",
+      email: myEmail,
     },
 
     onSubmit: (values) => {
