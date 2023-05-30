@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import "../pages/StaffEditDetails.css";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { newName } from "../redux/portalSlice";
 
 const StaffEditDetails = () => {
-  const [first, setfirst] = useState("");
-  let dispatch = useDispatch();
+//   const globalState = useSelector((state)=>state.portalReducer.staffInfo)
 
-  useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/edit_details";
-    axios.get(endpoint)
-    .then((response) => {
-      dispatch(newName(response.data.response));
-      console.log(response.data.response);
-    });
-  }, []);
+//   useEffect(() => {
+//         // console.log(globalState.firstName);
+// //     let endpoint = "http://localhost:2000/staff_account/edit_details";
+// //     axios.get(endpoint )
+// //     .then((response) => {
+// // //       dispatch(newName(response.data.response));
+// // //       console.log(response.data.response);
+// //     });
+//   }, );
 
   let formik = useFormik({
     initialValues: {
