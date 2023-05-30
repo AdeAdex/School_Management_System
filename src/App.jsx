@@ -21,6 +21,7 @@ import { useSelector } from 'react-redux'
 import StaffProfile from './pages/StaffProfile'
 import StaffChangePassword from './pages/StaffChangePassword'
 import StaffDashboardHome from './pages/StaffDashboardHome'
+import StaffEditDetails from './pages/StaffEditDetails'
 
 
 
@@ -58,6 +59,7 @@ function App() {
           <Route path='home' element={<StaffDashboardHome/>} />
           <Route path='profile' element={<StaffProfile/>}/>
           <Route path='change_password' element={<StaffChangePassword/>}/>
+          <Route path='edit_details' element={<StaffEditDetails/>}/>
         </Route>
         <Route path='/staff_signup' element={<StaffSignUp/>}/>
         <Route path='/staff_signin' element={<StaffSignIn/>}/>

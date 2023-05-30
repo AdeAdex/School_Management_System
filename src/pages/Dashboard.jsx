@@ -10,6 +10,7 @@ import { newName } from "../redux/portalSlice";
 import StaffProfile from "./StaffProfile";
 import StaffChangePassword from "./StaffChangePassword";
 import StaffDashboardHome from "./StaffDashboardHome";
+import StaffEditDetails from "./StaffEditDetails";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -91,6 +92,7 @@ const Dashboard = () => {
               <Route path="home" element={<StaffDashboardHome/>} />
               <Route path="profile" element={<StaffProfile />} />
               <Route path="change_password" element={<StaffChangePassword />} />
+              <Route path="edit_details" element={<StaffEditDetails/>}/>
             </Routes>
           </div>
         </div>
