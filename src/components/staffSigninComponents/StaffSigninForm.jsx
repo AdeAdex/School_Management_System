@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const StaffSigninForm = () => {
   const navigate = useNavigate();
-  const [first, setfirst] = useState("");
+  const [myMessage, setMyMessage] = useState("");
 
   let formik = useFormik({
     initialValues: {
@@ -19,12 +19,14 @@ const StaffSigninForm = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.status) {
-          // console.log(res.data.status);
+          console.log(res.data.status);
           localStorage.token = res.data.token
           navigate("/staff_dashboard");
         } else {
-          console.log(res.data.status);
+          setMyMessage(res.data.message)
+          console.log(res.data.message);
           navigate("/staff_signin");
+          console.log(myMessage);
         }
       })
       .catch((err)=> {
@@ -35,6 +37,7 @@ const StaffSigninForm = () => {
   return (
     <>
       <div className="signin-form shadow bg-light">
+      <div className="fs-3 fw-bold" style={{backgroundColor: 'red !important'}}>{myMessage}</div>
         <h1 className="fs-bolder">
           welcome <br />
           back!
