@@ -11,7 +11,7 @@ const StaffEditDetails = () => {
 
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/edit_details";
-    axios.get(endpoint, values)
+    axios.get(endpoint)
     .then((response) => {
       dispatch(newName(response.data.response));
       console.log(response.data.response);
