@@ -25,7 +25,7 @@ const StaffEditDetails = () => {
       country: "",
       lga: "",
       hubby: "",
-      email: myEmail,
+      receivedEmail: myEmail,
     },
 
     onSubmit: (values) => {
