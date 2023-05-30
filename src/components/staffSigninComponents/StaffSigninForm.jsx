@@ -37,7 +37,7 @@ const StaffSigninForm = () => {
   return (
     <>
       <div className="signin-form shadow bg-light">
-      <div className="fs-3 fw-bold" style={{backgroundColor: 'red !important'}}>{myMessage}</div>
+      <div className="fs-3 fw-bold bg-red-300" >{myMessage}</div>
         <h1 className="fs-bolder">
           welcome <br />
           back!
