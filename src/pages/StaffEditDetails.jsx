@@ -6,17 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { newName } from "../redux/portalSlice";
 
 const StaffEditDetails = () => {
-//   const globalState = useSelector((state)=>state.portalReducer.staffInfo)
+  const globalState = useSelector((state)=>state.portalReducer.staffInfo)
 
-//   useEffect(() => {
-//         // console.log(globalState.firstName);
-// //     let endpoint = "http://localhost:2000/staff_account/edit_details";
-// //     axios.get(endpoint )
-// //     .then((response) => {
-// // //       dispatch(newName(response.data.response));
-// // //       console.log(response.data.response);
-// //     });
-//   }, );
+  useEffect(() => {
+        console.log(globalState);
+//     let endpoint = "http://localhost:2000/staff_account/edit_details";
+//     axios.get(endpoint )
+//     .then((response) => {
+// //       dispatch(newName(response.data.response));
+// //       console.log(response.data.response);
+//     });
+  }, );
 
   let formik = useFormik({
     initialValues: {
