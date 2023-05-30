@@ -22,7 +22,7 @@ const Dashboard = () => {
   // const [myLastName, setMyLastName] = useState("");
 
   useEffect(() => {
-    const endpoint = "https://school-potal-back-end-adex2210.vercel.app/staff_account/staff_dashboard";   
+    const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
     let token = localStorage.token;
     axios
       .get(endpoint, {
