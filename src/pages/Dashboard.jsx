@@ -17,7 +17,7 @@ const Dashboard = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
+    const endpoint = "https://school-potal-back-end-adex2210.vercel.app/staff_account/staff_dashboard";
     let token = localStorage.token;
     axios
       .get(endpoint, {
