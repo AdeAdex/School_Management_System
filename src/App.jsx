@@ -70,7 +70,6 @@ function App() {
         <Route path='/aboutThisTeacher' element={<AboutTeachersPage/>}/>
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
-      {/* <Footer/> */}
     </Router>
     
     </>

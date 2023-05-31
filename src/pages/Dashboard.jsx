@@ -59,7 +59,6 @@ const Dashboard = () => {
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <DashboardNavbar />
           <div className="flex p-5 bg-green-300">
-            {/* <StaffDashboardHome /> */}
             <Routes>
               <Route path="home" element={<StaffDashboardHome/>} />
               <Route path="profile" element={<StaffProfile />} />
