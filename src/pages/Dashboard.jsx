@@ -31,28 +31,11 @@ const Dashboard = () => {
         if (response.data.status) {
           console.log(response.data.response);
           dispatch(newName(response.data.response));
-          // console.log(dispatch);
         } else {
           navigate("/staff_signin");
         }
       });
   }, []);
-
-  // const updateDetails = (e) => {
-  //  const myUpdate = {
-  //     hubby,
-  //     country,
-  //     lga,
-  //   }
-  //   e.preventDefault();
-
-  //   console.log(myUpdate);
-  //   const endpoint = 'http://localhost:2000/staff_account/staff_dashboard'
-  //   axios.post(endpoint, myUpdate)
-  //   .then((response) => {
-
-  //   })
-  // }
 
   return (
     <>
