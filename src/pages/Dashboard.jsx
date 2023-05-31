@@ -30,11 +30,6 @@ const Dashboard = () => {
       .then((response) => {
         if (response.data.status) {
           console.log(response.data.response);
-          // setMyFirstName(response.data.response.firstName)
-          // setMyLastName(response.data.response.lastName)
-          // dispatch(newName(
-          //   console.log("ade")
-          // ))
           dispatch(newName(response.data.response));
           // console.log(dispatch);
         } else {
