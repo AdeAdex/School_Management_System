@@ -15,12 +15,6 @@ import StaffEditDetails from "./StaffEditDetails";
 const Dashboard = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const [first, setFirst] = useState([]);
-  const [hubby, sethubby] = useState("");
-  const [country, setcountry] = useState("");
-  const [lga, setlga] = useState("");
-  // const [myFirstName, setMyFirstName] = useState("");
-  // const [myLastName, setMyLastName] = useState("");
 
   useEffect(() => {
     const endpoint = "http://localhost:2000/staff_account/staff_dashboard";
