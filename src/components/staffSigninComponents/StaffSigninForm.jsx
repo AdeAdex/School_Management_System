@@ -14,7 +14,7 @@ const StaffSigninForm = () => {
     },
 
     onSubmit: (values) => {
-      const endpoint = "https://school-potal-back-end-adex2210.vercel.app";
+      const endpoint = "https://school-potal-back-end-adex2210.vercel.app/staff_account/staff_signin";
       axios.post(endpoint, values)
       .then((res) => {
         console.log(res.data);
