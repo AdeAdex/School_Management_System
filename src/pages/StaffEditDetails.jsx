@@ -7,10 +7,9 @@ import { newName } from "../redux/portalSlice";
 
 const StaffEditDetails = () => {
   const globalState = useSelector((state)=>state.portalReducer.staffInfo)
-  let myEmail = globalState.email
 
   useEffect(() => {
-        console.log(globalState);
+        // console.log(globalState);
 //     let endpoint = "http://localhost:2000/staff_account/edit_details";
 //     axios.get(endpoint, myEmail )
 //     .then((response) => {
@@ -25,13 +24,16 @@ const StaffEditDetails = () => {
       country: "",
       lga: "",
       hubby: "",
-      receivedEmail: myEmail,
+      receivedEmail: ""
     },
 
     onSubmit: (values) => {
-      console.log(values);
+      console.log(globalState);
+      const newValues = {...values,receivedEmail:globalState.email};
+      console.log(newValues);
       let endpoint = "http://localhost:2000/staff_account/edit_details";
-      axios.post(endpoint, values).then((response) => {
+      axios.post(endpoint, newValues)
+      .then((response) => {
         console.log(response);
       });
     },
@@ -41,7 +43,7 @@ const StaffEditDetails = () => {
       <div className="edit-container">
         <div className="edit-card">
           <h3 className="edit-login">Edit Your Details</h3>
-          <form onSubmit={formik.handleSubmit} method="post">
+          <form onSubmit={formik.handleSubmit} action="/staff_account/edit_details" method="post">
             <div className="edit-inputBox">
               <input
                 type="text"
