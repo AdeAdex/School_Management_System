@@ -14,10 +14,10 @@ const StaffSigninForm = () => {
     },
 
     onSubmit: (values) => {
-      const endpoint = "http://localhost:2000/staff_account/staff_signin";
+      const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_signin";
       axios.post(endpoint, values)
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.status);
         if (res.data.status) {
           console.log(res.data.status);
           localStorage.token = res.data.token

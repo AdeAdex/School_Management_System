@@ -17,7 +17,7 @@ const Dashboard = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const endpoint = "https://school-potal-back-end-adex2210.vercel.app/staff_account/staff_dashboard";
+    const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_dashboard";
     let token = localStorage.token;
     axios
       .get(endpoint, {
@@ -28,6 +28,7 @@ const Dashboard = () => {
         },
       })
       .then((response) => {
+        console.log(response);
         if (response.data.status) {
           console.log(response.data.response);
           dispatch(newName(response.data.response));
