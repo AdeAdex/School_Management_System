@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Offcanvas from "../components/dashboardComponents/Offcanvas";
-import "../pages/Dashboard.css";
+import Offcanvas from "../../components/dashboardComponents/Offcanvas";
+import "../Staff/Dashboard.css";
 import "react-calendar/dist/Calendar.css";
-import DashboardNavbar from "../components/dashboardComponents/DashboardNavbar";
+import DashboardNavbar from "../../components/dashboardComponents/DashboardNavbar";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { newName } from "../redux/portalSlice";
+import { newName } from "../../redux/portalSlice";
 import StaffProfile from "./StaffProfile";
 import StaffChangePassword from "./StaffChangePassword";
 import StaffDashboardHome from "./StaffDashboardHome";

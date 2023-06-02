@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-import SignupHero from "../components/signupComponents/SignupHero";
-import SignupForm from "../components/signupComponents/SignupForm";
+import SignupHero from "../../components/signupComponents/SignupHero";
+import SignupForm from "../../components/signupComponents/SignupForm";
 
 const SignUp = () => {
   return (

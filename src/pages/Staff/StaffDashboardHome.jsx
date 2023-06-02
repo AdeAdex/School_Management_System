@@ -1,6 +1,6 @@
 import React from "react";
-import DashboardCalendar from "../components/dashboardComponents/DashboardCalendar";
-import DashboardPieChart from "../components/dashboardComponents/DashboardPieChart";
+import DashboardCalendar from "../../components/dashboardComponents/DashboardCalendar";
+import DashboardPieChart from "../../components/dashboardComponents/DashboardPieChart";
 
 const StaffDashboardHome = () => {
   return (

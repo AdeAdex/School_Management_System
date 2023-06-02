@@ -1,6 +1,6 @@
 import React from 'react'
-import StaffSignupForm from '../components/staffSignupComponents/StaffSignupForm'
-import { StaffSignupHero } from '../components/staffSignupComponents/StaffSignupHero'
+import StaffSignupForm from '../../components/staffSignupComponents/StaffSignupForm'
+import { StaffSignupHero } from '../../components/staffSignupComponents/StaffSignupHero'
 
 
 const StaffSignUp = () => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../pages/StaffEditDetails.css";
+import "../Staff/StaffEditDetails.css";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { newName } from "../redux/portalSlice";
+import { newName } from "../../redux/portalSlice";
 
 const StaffEditDetails = () => {
   const globalState = useSelector((state)=>state.portalReducer.staffInfo)
