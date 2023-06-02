@@ -22,6 +22,9 @@ import StaffProfile from './pages/Staff/StaffProfile'
 import StaffChangePassword from './pages/Staff/StaffChangePassword'
 import StaffDashboardHome from './pages/Staff/StaffDashboardHome'
 import StaffEditDetails from './pages/Staff/StaffEditDetails'
+import PickClass from './pages/Student/PickClass'
+import PersonalInformation from './pages/Student/PersonalInformation'
+
 
 
 
@@ -55,7 +58,8 @@ function App() {
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}>
-          {/* <Route path="pick_class" element={<PickClass/>} /> */}
+          <Route path="pick_class" element={<PickClass/>} />
+          <Route path='personal_information' element={<PersonalInformation/>}/>
         </Route>
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
           <Route path='home' element={<StaffDashboardHome/>} />

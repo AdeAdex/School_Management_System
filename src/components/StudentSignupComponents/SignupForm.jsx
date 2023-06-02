@@ -7,6 +7,7 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
+import CreateAccount from "../../pages/Student/CreateAccount";
 import PickClass from "../../pages/Student/PickClass";
 
 const SignupForm = () => {
@@ -37,7 +38,7 @@ const SignupForm = () => {
       // state: state,
       // matricNo: "",
     };
-    navigate("/pick_class");
+    navigate("pick_class");
 
     // e.preventDefault();
     // const endpoint = "http://localhost:2000/student_account/student_signup";
@@ -53,12 +54,12 @@ const SignupForm = () => {
     <>
       <div
         className="shadow bg-light signup-form"
-        style={{ padding: "100px 100px 0px", width: "70%" }}
+        style={{ padding: "60px 100px 0px", width: "70%" }}
       >
-        <PickClass />
-        <Routes>
-          <Route path="pick_class" element={<PickClass/>} />
-        </Routes>
+        {/* <Routes>
+          <Route path="create_account" element={<createAccount />} />
+          <Route path="pick_class" element={<PickClass />} />
+        </Routes> */}
       </div>
     </>
   );
