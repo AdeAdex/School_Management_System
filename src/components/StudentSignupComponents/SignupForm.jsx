@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
 
@@ -29,6 +29,8 @@ const SignupForm = () => {
             state: state,
             password: password,
             check: false,
+            matricNo: "",
+            
           };
           e.preventDefault();
           const endpoint = "http://localhost:2000/student_account/student_signup";
@@ -46,6 +48,14 @@ const SignupForm = () => {
         className="shadow bg-light signup-form"
         style={{ padding: "50px 100px 0px", width: "70%" }}
       >
+      <div>
+        <Link to=""></Link>
+        <Link to=""></Link>
+        <Link to=""></Link>
+        <Link to=""></Link>
+        <Link to=""></Link>
+      </div>
+      <hr />
         <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
           student sign up
         </h2>

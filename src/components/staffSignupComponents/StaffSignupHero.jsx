@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupCarousel from '../signupComponents/SignupCarousel';
+import SignupCarousel from '../StudentSignupComponents/SignupCarousel';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
