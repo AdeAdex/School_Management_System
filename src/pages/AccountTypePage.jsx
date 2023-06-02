@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
-import {  Router, useNavigate, Redirect } from "react-router-dom";
+import {  Router, useNavigate } from "react-router-dom";
 import Footer from "../components/footerComponents/Footer";
+
+
 
 
 
@@ -59,10 +61,10 @@ const AccountTypePage = () => {
     if (h4.innerHTML == "Hello Staff,") {
       navigate("/staff_signup");
     } else if (h4.innerHTML == "Hi Student,") {
-      setRedirectToCreateAccount(true)
-      if (redirectToCreateAccount) {
-        return <Redirect to="/create_account"/>
-      }
+      // setRedirectToCreateAccount(true)
+      // if (redirectToCreateAccount) {
+      //   return < to="/create_account"/>
+      // }
       // navigate("/student_signup");
     } else if (h4.innerHTML == "Select an account above to continue") {
       navigate("/account_type");
