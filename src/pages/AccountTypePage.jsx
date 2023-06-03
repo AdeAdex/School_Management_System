@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
-import {  Router, useNavigate } from "react-router-dom";
+import {  Router, redirect, useNavigate } from "react-router-dom";
 import Footer from "../components/footerComponents/Footer";
-
 
 
 
@@ -11,24 +10,23 @@ import Footer from "../components/footerComponents/Footer";
 const AccountTypePage = () => {
   const [first, setfirst] = useState("");
   const [redirectToCreateAccount, setRedirectToCreateAccount] = useState(false)
+  const navigate = useNavigate();
 
-  // setfirst = () => {
-
-  // }
+ 
   let h4;
   useEffect(() => {
     h4 = document.createElement("div");
     const h4textNode = document.createTextNode(
       "Select an account above to continue"
-    );
-    h4.appendChild(h4textNode);
-    textDiv.append(h4);
-  }, []);
-
-  const setImage = (mySelect = "nothing ") => {
-    textDiv.innerHTML = "";
-    if (mySelect == "staff") {
-      h4 = document.createElement("h4");
+      );
+      h4.appendChild(h4textNode);
+      textDiv.append(h4);
+    }, []);
+    
+    const setImage = (mySelect = "nothing ") => {
+      textDiv.innerHTML = "";
+      if (mySelect == "staff") {
+        h4 = document.createElement("h4");
       const h2 = document.createElement("div");
       const h4textNode = document.createTextNode("Hello Staff,");
       const h2textNode = document.createTextNode(
@@ -56,16 +54,15 @@ const AccountTypePage = () => {
     }
   };
 
-  const navigate = useNavigate();
   const createAccount = () => {
     if (h4.innerHTML == "Hello Staff,") {
       navigate("/staff_signup");
     } else if (h4.innerHTML == "Hi Student,") {
       // setRedirectToCreateAccount(true)
       // if (redirectToCreateAccount) {
-      //   return < to="/create_account"/>
-      // }
-      // navigate("/student_signup");
+        // }
+          navigate("/student_signup/create_account")
+      // navigate("/student_signup/create_account");
     } else if (h4.innerHTML == "Select an account above to continue") {
       navigate("/account_type");
       console.log(h4.innerHTML);

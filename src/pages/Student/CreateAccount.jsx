@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Router, Routes, useNavigate } from 'react-router-dom';
+import { Route, Router, Routes, redirect, useNavigate } from 'react-router-dom';
 
 const CreateAccount = () => {
 
@@ -17,20 +17,20 @@ const CreateAccount = () => {
   // const [state, setState] = useState("");
 
   const createAccount = (e) => {
-    let myDetails = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phoneNumber: phoneNumber,
-      password: password,
-      check: false,
-      // city: city,
-      // age: age,
-      // gender: gender,
-      // state: state,
-      // matricNo: "",
-    };
-    navigate("pick_class");
+//     let myDetails = {
+//       firstName: firstName,
+//       lastName: lastName,
+//       email: email,
+//       phoneNumber: phoneNumber,
+//       password: password,
+//       check: false,
+//       // city: city,
+//       // age: age,
+//       // gender: gender,
+//       // state: state,
+//       // matricNo: "",
+//     };
+    navigate("/student_signup/pick_class");
 
     // e.preventDefault();
     // const endpoint = "http://localhost:2000/student_account/student_signup";
@@ -68,11 +68,7 @@ const CreateAccount = () => {
             Login
           </a>
         </h6>
-        <form
-          className="row g-3 mt-4"
-          action="/student_account/student_signup"
-          method="post"
-        >
+       
           <div className="col-md-6 position-relative  flex-column mb-3">
             <input
               type="text"
@@ -260,7 +256,6 @@ const CreateAccount = () => {
               Create Account
             </button>
           </div>
-        </form>
     </>
   )
 }

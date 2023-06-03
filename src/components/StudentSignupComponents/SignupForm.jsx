@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import CreateAccount from "../../pages/Student/CreateAccount";
 import PickClass from "../../pages/Student/PickClass";
+import Admission from "../../pages/Student/Admission";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -56,10 +57,12 @@ const SignupForm = () => {
         className="shadow bg-light signup-form"
         style={{ padding: "60px 100px 0px", width: "70%" }}
       >
-        {/* <Routes>
-          <Route path="create_account" element={<createAccount />} />
+      {/* <CreateAccount/> */}
+      <Admission/>
+        <Routes>
+          <Route path="create_account" element={<CreateAccount />} />
           <Route path="pick_class" element={<PickClass />} />
-        </Routes> */}
+        </Routes>
       </div>
     </>
   );
