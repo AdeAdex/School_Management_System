@@ -71,8 +71,9 @@ const SignupForm = () => {
         <NavLink style={navLinkStyles} to="/admission">
           Admission
         </NavLink>
-        {/* <CreateAccount/> */}
-        {/* <Admission/> */}
+
+        <CreateAccount/>
+        <Admission/>
         {/* <Routes>
           <Route path="create_account" element={<CreateAccount />} />
           <Route path="admission" element={<Admission/>}/>
