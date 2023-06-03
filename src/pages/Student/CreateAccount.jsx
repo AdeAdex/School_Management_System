@@ -30,7 +30,8 @@ const CreateAccount = () => {
 //       // state: state,
 //       // matricNo: "",
 //     };
-    navigate("admission");
+    
+navigate('/student_signup/admission')
 
     // e.preventDefault();
     // const endpoint = "http://localhost:2000/student_account/student_signup";
@@ -44,16 +45,7 @@ const CreateAccount = () => {
 
   return (
     <>
-         {/* <div className="d-flex gap-4" style={{width: '100%', overflowX: 'auto'}}>
-      <Link to="pick_class">Pick Class</Link>
-        <Link to="payment">Payment</Link>
-        <Link to="personal_information">Personal Information</Link>
-        <Link to="education">Education</Link>
-        <Link to="referees">Referees</Link>
-        <Link to="credential_uploads">Credential Uploads</Link>
-        
-      </div>
-      <hr /> */}
+    
       {/* <Router>
           <Routes>
             <Route path="pick_class" element={<></>}/>
