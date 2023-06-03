@@ -59,10 +59,11 @@ const SignupForm = () => {
       >
       {/* <CreateAccount/> */}
       {/* <Admission/> */}
-        <Routes>
+        {/* <Routes>
           <Route path="create_account" element={<CreateAccount />} />
-          <Route path="pick_class" element={<PickClass />} />
-        </Routes>
+          <Route path="admission" element={<Admission/>}/>
+            <Route path="pick_class" element={<PickClass />} />
+        </Routes> */}
       </div>
     </>
   );

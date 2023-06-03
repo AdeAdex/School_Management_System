@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Router, Routes } from "react-router-dom";
+import PickClass from "./PickClass";
 
 const Admission = () => {
   return (
@@ -16,6 +17,11 @@ const Admission = () => {
         <Link to="credential_uploads">Credential Uploads</Link>
       </div>
       <hr />
+      <div>
+          <Routes>
+            <Route path="pick_class" element={<PickClass />} />
+          </Routes>
+      </div>
     </>
   );
 };

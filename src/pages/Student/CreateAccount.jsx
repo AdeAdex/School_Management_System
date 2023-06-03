@@ -30,7 +30,7 @@ const CreateAccount = () => {
 //       // state: state,
 //       // matricNo: "",
 //     };
-    navigate("/student_signup/pick_class");
+    navigate("student_signup/admission/pick_class");
 
     // e.preventDefault();
     // const endpoint = "http://localhost:2000/student_account/student_signup";
