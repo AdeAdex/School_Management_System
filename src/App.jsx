@@ -26,6 +26,7 @@ import PickClass from './pages/Student/PickClass'
 import PersonalInformation from './pages/Student/PersonalInformation'
 import CreateAccount from './pages/Student/CreateAccount'
 import Admission from './pages/Student/Admission'
+import Payment from './pages/Student/Payment'
 
 
 
@@ -63,6 +64,7 @@ function App() {
           <Route path='create_account' element={<CreateAccount/>}/>
           <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
+            <Route path='payment' element={<Payment/>} />
           </Route>
         </Route>
             

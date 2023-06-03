@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink, Route, Router, Routes } from "react-router-dom";
 import PickClass from "./PickClass";
+import Payment from "./Payment";
 
 const Admission = () => {
   const navLinkStyles = ({ isActive }) => {
@@ -18,7 +19,7 @@ const Admission = () => {
         <NavLink style={navLinkStyles} to="pick_class" className="active">
           Pick Class
         </NavLink>
-        <NavLink style={navLinkStyles} to="admission">
+        <NavLink style={navLinkStyles} to="payment">
           Payment
         </NavLink>
       </div>
@@ -26,6 +27,7 @@ const Admission = () => {
       <div>
         <Routes>
           <Route path="pick_class" element={<PickClass />} />
+          <Route path="payment" element={<Payment/>} />
         </Routes>
       </div>
     </>
