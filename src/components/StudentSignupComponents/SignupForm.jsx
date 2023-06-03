@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Link,
   NavLink,
@@ -59,16 +59,23 @@ const SignupForm = () => {
     };
   };
 
+  const [activePage, setActivePage] = useState('create_account');
+
+  // useEffect((page) => {
+  //   setActivePage(page)
+  // }, [])
+  
+
   return (
     <>
       <div
         className="shadow bg-light signup-form"
         style={{ padding: "60px 100px 0px", width: "70%" }}
       >
-        <NavLink style={navLinkStyles} to="create_account" className="active">
+        <NavLink style={navLinkStyles} to="create_account" className={activePage === 'create_account' ? 'active' : ""}>
           Create
         </NavLink>
-        <NavLink style={navLinkStyles} to="admission">
+        <NavLink style={navLinkStyles} to="admission" className={activePage === 'admission' ? 'active' : ""}>
           Admission
         </NavLink>
 
