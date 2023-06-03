@@ -32,12 +32,12 @@ const CreateAccount = () => {
     };
 
     e.preventDefault();
-    const endpoint = "http://localhost:2000/student_account/student_signup";
+    const endpoint = "http://localhost:2000/student_account/student";
     axios.post(endpoint, myDetails)
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.status);
-        // navigate("/student_signup/admission");
+        navigate("/student/admission");
       }
     });
   };
