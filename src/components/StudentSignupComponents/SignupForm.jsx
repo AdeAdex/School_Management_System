@@ -65,20 +65,20 @@ const SignupForm = () => {
         className="shadow bg-light signup-form"
         style={{ padding: "60px 100px 0px", width: "70%" }}
       >
-        <NavLink style={navLinkStyles} to="/create_account">
+        <NavLink style={navLinkStyles} to="create_account" className="active">
           Create
         </NavLink>
-        <NavLink style={navLinkStyles} to="/admission">
+        <NavLink style={navLinkStyles} to="admission">
           Admission
         </NavLink>
 
-        <CreateAccount/>
-        <Admission/>
-        {/* <Routes>
+        {/* <CreateAccount/> */}
+        {/* <Admission/> */}
+        <Routes>
           <Route path="create_account" element={<CreateAccount />} />
           <Route path="admission" element={<Admission/>}/>
-            <Route path="pick_class" element={<PickClass />} />
-        </Routes> */}
+            {/* <Route path="pick_class" element={<PickClass />} /> */}
+        </Routes>
       </div>
     </>
   );

@@ -61,11 +61,10 @@ function App() {
         <Route path='/student_signin' element={<SignIn/>}/>
         <Route path='/student_signup' element={<SignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
+          <Route path='admission' element={<Admission/>}/>
           
         </Route>
-        <Route path='admission' element={<Admission/>}>
-            <Route path='pick_class' element={<PickClass/>}/>
-          </Route>
+            
         
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
           <Route path='home' element={<StaffDashboardHome/>} />
