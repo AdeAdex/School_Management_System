@@ -1,26 +1,32 @@
 import React from "react";
-import { Link, Route, Router, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Router, Routes } from "react-router-dom";
 import PickClass from "./PickClass";
 
 const Admission = () => {
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+      textDecoration: isActive ? "none" : "underline",
+    };
+  };
   return (
     <>
       <div
         className="d-flex gap-4"
         style={{ width: "100%", overflowX: "auto" }}
       >
-        <Link to="pick_class">Pick Class</Link>
-        <Link to="payment">Payment</Link>
-        <Link to="personal_information">Personal Information</Link>
-        <Link to="education">Education</Link>
-        <Link to="referees">Referees</Link>
-        <Link to="credential_uploads">Credential Uploads</Link>
+        <NavLink style={navLinkStyles} to="pick_class" className="active">
+          Pick Class
+        </NavLink>
+        <NavLink style={navLinkStyles} to="admission">
+          Payment
+        </NavLink>
       </div>
       <hr />
       <div>
-          <Routes>
-            <Route path="pick_class" element={<PickClass />} />
-          </Routes>
+        <Routes>
+          <Route path="pick_class" element={<PickClass />} />
+        </Routes>
       </div>
     </>
   );
