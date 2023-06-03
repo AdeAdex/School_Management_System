@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Route, Router, Routes, redirect, useNavigate } from "react-router-dom";
 
@@ -16,27 +17,27 @@ const CreateAccount = () => {
   // const [state, setState] = useState("");
 
   const createAccount = (e) => {
-        let myDetails = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          phoneNumber: phoneNumber,
-          password: password,
-          check: false,
-          // city: city,
-          // age: age,
-          // gender: gender,
-          // state: state,
-          // matricNo: "",
-        };
+    let myDetails = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+      check: false,
+      // city: city,
+      // age: age,
+      // gender: gender,
+      // state: state,
+      // matricNo: "",
+    };
 
-        
-        e.preventDefault();
-        const endpoint = "http://localhost:2000/student_account/student_signup";
-        axios.post(endpoint, myDetails)
-        .then((response) => {
-          if (response.data == "Information saved to the student database") {
-            navigate("/student_signup/admission");
+    e.preventDefault();
+    const endpoint = "http://localhost:2000/student_account/student_signup";
+    axios.post(endpoint, myDetails)
+    .then((response) => {
+      if (response.data.status) {
+        console.log(response.data.status);
+        // navigate("/student_signup/admission");
       }
     });
   };
@@ -52,7 +53,11 @@ const CreateAccount = () => {
           Login
         </a>
       </h6>
-      <form action="" method="post">
+      <form
+        className="row g-3 mt-4"
+        action=""
+        method="post"
+      >
         <div className="col-md-6 position-relative  flex-column mb-3">
           <input
             type="text"
