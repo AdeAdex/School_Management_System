@@ -61,7 +61,7 @@ const AccountTypePage = () => {
       // setRedirectToCreateAccount(true)
       // if (redirectToCreateAccount) {
         // }
-          navigate("/student_signup/create_account")
+          navigate("/student_signup")
       // navigate("/student_signup/create_account");
     } else if (h4.innerHTML == "Select an account above to continue") {
       navigate("/account_type");

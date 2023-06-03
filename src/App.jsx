@@ -59,9 +59,9 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
         <Route path='/student_signin' element={<SignIn/>}/>
-        <Route path='/student_signup' element={<SignUp/>}>
+        <Route path='/student_signup/*' element={<SignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
-          <Route path='admission' element={<Admission/>}>
+          <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
           </Route>
         </Route>
