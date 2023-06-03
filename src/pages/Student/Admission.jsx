@@ -16,12 +16,8 @@ const Admission = () => {
         className="d-flex gap-4"
         style={{ width: "100%", overflowX: "auto" }}
       >
-        <NavLink style={navLinkStyles} to="pick_class" className="active">
-          Pick Class
-        </NavLink>
-        <NavLink style={navLinkStyles} to="payment">
-          Payment
-        </NavLink>
+        <NavLink style={navLinkStyles} to="pick_class" className="">Pick Class</NavLink>
+        <NavLink style={navLinkStyles} to="payment">Payment</NavLink>
       </div>
       <hr />
       <div>
