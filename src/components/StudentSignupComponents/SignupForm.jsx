@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import {
   Link,
+  NavLink,
   Route,
   BrowserRouter as Router,
   Routes,
@@ -51,14 +52,27 @@ const SignupForm = () => {
     // });
   };
 
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+      textDecoration: isActive ? "none" : "underline",
+    };
+  };
+
   return (
     <>
       <div
         className="shadow bg-light signup-form"
         style={{ padding: "60px 100px 0px", width: "70%" }}
       >
-      {/* <CreateAccount/> */}
-      {/* <Admission/> */}
+        <NavLink style={navLinkStyles} to="/create_account">
+          Create
+        </NavLink>
+        <NavLink style={navLinkStyles} to="/admission">
+          Admission
+        </NavLink>
+        {/* <CreateAccount/> */}
+        {/* <Admission/> */}
         {/* <Routes>
           <Route path="create_account" element={<CreateAccount />} />
           <Route path="admission" element={<Admission/>}/>
