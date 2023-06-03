@@ -58,7 +58,7 @@ const SignupForm = () => {
         style={{ padding: "60px 100px 0px", width: "70%" }}
       >
       {/* <CreateAccount/> */}
-      <Admission/>
+      {/* <Admission/> */}
         <Routes>
           <Route path="create_account" element={<CreateAccount />} />
           <Route path="pick_class" element={<PickClass />} />
