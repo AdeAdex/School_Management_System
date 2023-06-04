@@ -1,6 +1,7 @@
 import axios from "axios";
+import { yupToFormErrors } from "formik";
 import React, { useState } from "react";
-import { Route, Router, Routes, redirect, useNavigate } from "react-router-dom";
+import * as yup from 'yup'
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ const CreateAccount = () => {
       // state: state,
       // matricNo: "",
     };
+
+    myDetails: yup.object({
+
+    })
 
     e.preventDefault();
     const endpoint = "http://localhost:2000/student_account/student";
