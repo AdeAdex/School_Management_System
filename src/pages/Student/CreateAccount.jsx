@@ -1,6 +1,7 @@
 import axios from "axios";
-import { yupToFormErrors } from "formik";
+import { useFormik } from "formik";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as yup from 'yup'
 
 const CreateAccount = () => {
@@ -17,41 +18,38 @@ const CreateAccount = () => {
   // const [gender, setGender] = useState("");
   // const [state, setState] = useState("");
 
-  const createAccount = (e) => {
-    let myDetails = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phoneNumber: phoneNumber,
-      password: password,
+  let formik = useFormik({
+    initialValues : {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password:"",
       check: false,
-      // city: city,
-      // age: age,
-      // gender: gender,
-      // state: state,
-      // matricNo: "",
-    };
+    },
 
-    schema: yup.object({
-      firstName: yup.string().required("firstName is required to create account"),
-      lastName: yup.string().required("lastName is required to create account"),
-      email: yup.string().required("email is required to create account").email("Please enter a valid email address"),
-      phoneNumber: yup.string().required("phoneNumber is required to create account"),
-      password: yup.password().required("password is required to create account")
-    })
-
-    schema.values(myDetails);
-
-    e.preventDefault();
-    const endpoint = "http://localhost:2000/student_account/student";
-    axios.post(endpoint, myDetails)
+    onSubmit: (values) => {
+      const endpoint = "http://localhost:2000/student_account/student";
+    axios.post(endpoint, values)
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.status);
         navigate("/student/admission");
       }
     });
-  };
+    },
+
+    validationSchema: yup.object({
+      firstName: yup.string().required("firstName is required to create account"),
+      lastName: yup.string().required("lastName is required to create account"),
+      email: yup.string().required("email is required to create account").email("Please enter a valid email address"),
+      phoneNumber: yup.string().required("phoneNumber is required to create account"),
+      password: yup.string().required("password is required to create account")
+    }),
+
+  })
+
+    
 
   return (
     <>
@@ -68,43 +66,46 @@ const CreateAccount = () => {
         className="row g-3 mt-4"
         action=""
         method="post"
+        onSubmit={formik.handleSubmit}
       >
-        <div className="col-md-6 position-relative  flex-column mb-3">
+        <div className="col-md-6 position-relative  flex-column mb-4">
           <input
             type="text"
             autoComplete="on"
-            className="input form-control "
+            className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
             id=""
             name="firstName"
             required
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <label htmlFor="validationServer01" className="user-label">
             First Name
           </label>
-          <div className="invalid-feedback">Please provide your firstName!</div>
+          <div className="invalid-feedback">Please provide your firstname!</div>
         </div>
         <div className="col-md-6 position-relative  flex-column mb-3">
           <input
             type="text"
             autoComplete="on"
-            className="input form-control "
+            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
             id=""
             name="lastName"
             required
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <label htmlFor="validationServer01" className="user-label">
             Last Name
           </label>
-          <div className="invalid-feedback">Please provide your lastName!</div>
+          <div className="invalid-feedback">Please provide your lastname!</div>
         </div>
 
         {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
             <input
               type="text"
               autoComplete="on"
-              className="input form-control "
+              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
               id=""
               name="city"
               required
@@ -121,7 +122,7 @@ const CreateAccount = () => {
             <input
               type="number"
               autoComplete="on"
-              className="input form-control "
+              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
               id=""
               name="age"
               required
@@ -138,7 +139,7 @@ const CreateAccount = () => {
             <input
               type="text"
               autoComplete="on"
-              className="input form-control "
+              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
               id=""
               name="gender"
               required
@@ -155,11 +156,12 @@ const CreateAccount = () => {
           <input
             type="email"
             autoComplete="on"
-            className="input form-control "
+            className={formik.touched.email && formik.errors.email ? "input form-control is-invalid" : "input form-control"}
             id=""
             name="email"
             required
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <label htmlFor="validationServer01" className="user-label">
             Email Address
@@ -194,11 +196,12 @@ const CreateAccount = () => {
           <input
             type="tel"
             autoComplete="on"
-            className="input form-control "
+            className={formik.touched.phoneNumber && formik.errors.phoneNumber ? "input form-control is-invalid" : "input form-control"}
             id=""
             name="phoneNumber"
             required
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <label htmlFor="validationServer01" className="user-label">
             Phone Number
@@ -211,11 +214,12 @@ const CreateAccount = () => {
           <input
             type="text"
             autoomplete="on"
-            className="input form-control "
+            className={formik.touched.password && formik.errors.password ? "input form-control is-invalid" : "input form-control"}
             id=""
             name="password"
             required
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <label htmlFor="validationServer01" className="user-label">
             Password
@@ -227,13 +231,14 @@ const CreateAccount = () => {
         <div className="col-12">
           <div className="form-check">
             <input
-              className="form-check-input is-invalid"
+              className={formik.touched.check && formik.errors.check ? "form-check-input is-invalid" : "form-check-input"}
               type="checkbox"
               id="invalidCheck3"
               aria-describedby="invalidCheck3Feedback"
               required
               name="check"
-              onChange={(e) => setCheck(e.target.checked)}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
             />
             <label className="form-check-label" htmlFor="invalidCheck3">
               Agree to terms and conditions
@@ -247,7 +252,6 @@ const CreateAccount = () => {
           <button
             className="btn btn-primary signup-btn"
             type="submit"
-            onClick={createAccount}
           >
             Create Account
           </button>
