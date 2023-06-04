@@ -55,7 +55,7 @@ const StaffSigninForm = () => {
         >
           <div className="form-control signin-form-control">
             <input
-            className={formik.touched.email && formik.errors.email ? "form-control my-2 is-invalid" : "form-control my-2" }
+            className={formik.touched.email && formik.errors.email ? " my-2 is-invalid" : "form-control my-2" }
               type="text"
               required="required"
               name="email"
@@ -75,7 +75,7 @@ const StaffSigninForm = () => {
           </div>
           <div className="form-control signin-form-control">
             <input
-            className={formik.touched.password && formik.errors.password ? "form-control my-2 is-invalid" : "form-control my-2"}
+            className={formik.touched.password && formik.errors.password ? " my-2 is-invalid" : "form-control my-2"}
               type="password"
               required="required"
               name="password"
