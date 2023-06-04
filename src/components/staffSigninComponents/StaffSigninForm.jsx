@@ -2,6 +2,8 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as yup from 'yup';
+
 
 const StaffSigninForm = () => {
   const navigate = useNavigate();
@@ -33,6 +35,10 @@ const StaffSigninForm = () => {
         console.log(err);
       })
     },
+    validationSchema: yup.object({
+      email: yup.string().required("This field is required").email("Please enter a valid email address"),
+      password: yup.string().required("This field is required").min(4, "Password must be greater than 4 input")
+    })
   });
   return (
     <>
@@ -49,12 +55,16 @@ const StaffSigninForm = () => {
         >
           <div className="form-control signin-form-control">
             <input
+            className={formik.touched.email && formik.errors.email ? "form-control my-2 is-invalid" : "form-control my-2" }
               type="text"
               required="required"
               name="email"
               onChange={formik.handleChange}
               placeholder="Email"
+              onBlur={formik.handleBlur}
+
             />
+            <small className="text-danger">{formik.touched.email && formik.errors.email}</small>
             <label>
               <span style={{ transitionDelay: "0ms" }}>E</span>
               <span style={{ transitionDelay: "50ms" }}>m</span>
@@ -65,12 +75,15 @@ const StaffSigninForm = () => {
           </div>
           <div className="form-control signin-form-control">
             <input
+            className={formik.touched.password && formik.errors.password ? "form-control my-2 is-invalid" : "form-control my-2"}
               type="password"
               required="required"
               name="password"
               onChange={formik.handleChange}
               placeholder="Password"
+              onBlur={formik.handleBlur}
             />
+            <small className="text-danger">{formik.touched.password && formik.errors.password}</small>
             <label>
               <span style={{ transitionDelay: "0ms" }}>P</span>
               <span style={{ transitionDelay: "50ms" }}>a</span>

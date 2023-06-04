@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 const PickClass = () => {
+  const [first, setfirst] = useState(second)
+
   return (
     <>
       <div>
