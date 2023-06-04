@@ -32,9 +32,15 @@ const CreateAccount = () => {
       // matricNo: "",
     };
 
-    myDetails: yup.object({
-
+    schema: yup.object({
+      firstName: yup.string().required("firstName is required to create account"),
+      lastName: yup.string().required("lastName is required to create account"),
+      email: yup.string().required("email is required to create account").email("Please enter a valid email address"),
+      phoneNumber: yup.string().required("phoneNumber is required to create account"),
+      password: yup.password().required("password is required to create account")
     })
+
+    schema.values(myDetails);
 
     e.preventDefault();
     const endpoint = "http://localhost:2000/student_account/student";
