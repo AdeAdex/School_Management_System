@@ -68,11 +68,11 @@ const CreateAccount = () => {
         method="post"
         onSubmit={formik.handleSubmit}
       >
-        <div className="col-md-6 position-relative  flex-column mb-4">
+        <div className="col-md-6 position-relative  flex-column ">
           <input
             type="text"
             autoComplete="on"
-            className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
+            className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control is-vali"}
             id=""
             name="firstName"
             required
@@ -83,8 +83,9 @@ const CreateAccount = () => {
             First Name
           </label>
           <div className="invalid-feedback">Please provide your firstname!</div>
+          <div className="valid-feedback">Looks good</div>
         </div>
-        <div className="col-md-6 position-relative  flex-column mb-3">
+        <div className="col-md-6 position-relative  flex-column">
           <input
             type="text"
             autoComplete="on"
@@ -101,7 +102,7 @@ const CreateAccount = () => {
           <div className="invalid-feedback">Please provide your lastname!</div>
         </div>
 
-        {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
+        {/* <div className="col-md-6 position-relative d-flex flex-column">
             <input
               type="text"
               autoComplete="on"
@@ -118,7 +119,7 @@ const CreateAccount = () => {
               Please provide a valid city.
             </div>
           </div> */}
-        {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
+        {/* <div className="col-md-6 position-relative d-flex flex-column">
             <input
               type="number"
               autoComplete="on"
@@ -135,7 +136,7 @@ const CreateAccount = () => {
               Please provide a your age.
             </div>
           </div> */}
-        {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
+        {/* <div className="col-md-6 position-relative d-flex flex-column">
             <input
               type="text"
               autoComplete="on"
@@ -152,7 +153,7 @@ const CreateAccount = () => {
               Please provide a your gender.
             </div>
           </div> */}
-        <div className="col-lg-12 position-relative d-flex flex-column mb-3">
+        <div className="col-lg-12 position-relative d-flex flex-column">
           <input
             type="email"
             autoComplete="on"
@@ -170,7 +171,7 @@ const CreateAccount = () => {
             Please provide a valid email address.
           </div>
         </div>
-        {/* <div className="col-md-12 mb-3">
+        {/* <div className="col-md-12">
             <label htmlFor="validationServer04" className="form-label">
               State
             </label>
@@ -192,7 +193,7 @@ const CreateAccount = () => {
               Please select a valid state.
             </div>
           </div> */}
-        <div className="col-md-6 position-relative d-flex flex-column mb-3">
+        <div className="col-md-6 position-relative d-flex flex-column">
           <input
             type="tel"
             autoComplete="on"
@@ -210,7 +211,7 @@ const CreateAccount = () => {
             Please provide a valid phone number.
           </div>
         </div>
-        <div className="col-lg-6 position-relative d-flex flex-column mb-3">
+        <div className="col-lg-6 position-relative d-flex flex-column">
           <input
             type="text"
             autoomplete="on"
