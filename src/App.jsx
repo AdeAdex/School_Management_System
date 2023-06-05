@@ -29,6 +29,7 @@ import Admission from './pages/Student/Admission'
 import Payment from './pages/Student/Payment'
 import Education from './pages/Student/Education'
 import Referees from './pages/Student/Referees'
+import Login from './pages/Student/Login'
 
 
 
@@ -72,6 +73,7 @@ function App() {
             <Route path='referees' element={<Referees/>} />
           </Route>
         </Route>
+        <Route path='student_login' element={<Login/>}/>
             
         
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>

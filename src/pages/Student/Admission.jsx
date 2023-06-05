@@ -22,9 +22,9 @@ const Admission = () => {
   useEffect(() => {
     let endpoint = "http://localhost:2000/student_account/student"
     axios.get(endpoint)
-    .then((res) => {
-      dispatch(newStudent(res.data.response));
-      console.log(res.data.response)
+    .then((response) => {
+      // dispatch(newStudent(res.data.response));
+      // console.log(response.data.response)
     })
    
   }, [])

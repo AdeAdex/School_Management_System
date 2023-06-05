@@ -25,7 +25,7 @@ const CreateAccount = () => {
       if (response.data.status) {
         console.log(response.data.status);
         console.log(response.data.response);
-        navigate("/student/admission/pick_class");
+        navigate("/student_login");
       }
       else {
         const Toast = Swal.mixin({
@@ -73,7 +73,7 @@ const CreateAccount = () => {
       </h2>
       <h6 className="d-flex gap-5 mt-3">
         <span className="mt-auto"> Have an account already </span>
-        <Link to="/student/admission/pick_class" className="fs-4 my-auto">
+        <Link to="/student_login" className="fs-4 my-auto">
           Login
         </Link>
       </h6>
