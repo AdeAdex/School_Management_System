@@ -9,6 +9,8 @@ const PersonalInformation = () => {
     initialValues: {
       firstName: globalState.firstName,
       lastName: globalState.lastName,
+      middleName: globalState.middleName,
+      address: globalState.address,
       city: globalState.city,
       age: globalState.age,
       gender: globalState.gender,
@@ -60,6 +62,40 @@ const PersonalInformation = () => {
             Last Name
           </label>
           <div className="invalid-feedback">Please provide your Lastname!</div>
+        </div>
+        <div className="col-md-6 position-relative  flex-column mb-3">
+          <input
+            type="text"
+            autoComplete="on"
+            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
+            id=""
+            name="middleName"
+            required
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.middleName}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Middle Name
+          </label>
+          <div className="invalid-feedback">Please provide your Middlename!</div>
+        </div>
+        <div className="col-md-6 position-relative  flex-column mb-3">
+          <input
+            type="text"
+            autoComplete="on"
+            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
+            id=""
+            name="address"
+            required
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.address}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Address
+          </label>
+          <div className="invalid-feedback">Please provide your Address!</div>
         </div>
 
         <div className="col-md-6 position-relative d-flex flex-column mb-3">
