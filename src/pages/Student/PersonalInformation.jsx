@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useFormik } from 'formik'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
@@ -22,8 +23,18 @@ const PersonalInformation = () => {
       state: globalState.state,
       country: globalState.country,
       phoneNumber: globalState.phoneNumber,
+    },
+
+    onSubmit: (values) => {
+      const endpoint = "http://localhost:2000/student_account/student_update";
+      axios.post(endpoint, values)
+      .then((response) => {
+        console.log(response);
+      })
     }
   })
+
+  
   return (
     <>
       <form
