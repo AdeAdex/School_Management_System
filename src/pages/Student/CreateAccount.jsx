@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from 'yup'
+
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const CreateAccount = () => {
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.status);
-        navigate("/student/admission");
+        navigate("/student/admission/pick_class");
       }
       else {
         const Toast = Swal.mixin({
@@ -82,9 +83,9 @@ const CreateAccount = () => {
       </h2>
       <h6 className="d-flex gap-5 mt-3">
         <span className="mt-auto"> Have an account already </span>
-        <a href="/student_signin" className="fs-4 my-auto">
+        <Link to="/student/admission" className="fs-4 my-auto">
           Login
-        </a>
+        </Link>
       </h6>
       <form
         className="row g-3 mt-4"
