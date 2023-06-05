@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 
 const PickClass = () => {
-  const [state, setState] = useState(second)
+  const [state, setState] = useState("")
 
   return (
     <>
