@@ -2,8 +2,11 @@ import React from "react";
 import { Link, NavLink, Route, Router, Routes } from "react-router-dom";
 import PickClass from "./PickClass";
 import Payment from "./Payment";
+import { useSelector } from "react-redux";
+
 
 const Admission = () => {
+  const globalState = useSelector((state)=>state.portalReducer.staffInfo)
   const navLinkStyles = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
@@ -12,6 +15,7 @@ const Admission = () => {
   };
   return (
     <>
+      <div className="font-bold ml-4 my-auto text-lg text-danger">{globalState.firstName} {globalState.lastName}</div>
       <div
         className="d-flex gap-4"
         style={{ width: "100%", overflowX: "auto" }}
