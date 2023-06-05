@@ -18,10 +18,43 @@ const Login = () => {
       const endpoint = "http://localhost:2000/student_account/student_login";
       axios.post(endpoint, values)
       .then((response) => {
-        console.log(response.data.result);
+        // console.log(response.data.result);
         if (response.data.result) {
           localStorage.studentToken = response.data.studentToken;
-          navigate('/student')
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully",
+          });
+          navigate("/student/admission/pick_class");
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "error",
+            title: "Incorrect email or password",
+          });
         }
       });
     },

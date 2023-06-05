@@ -2,72 +2,74 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import * as yup from 'yup'
-
+import * as yup from "yup";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
 
   let formik = useFormik({
-    initialValues : {
+    initialValues: {
       firstName: "",
       lastName: "",
       email: "",
       phoneNumber: "",
-      password:"",
+      password: "",
       check: false,
     },
 
     onSubmit: (values) => {
       const endpoint = "http://localhost:2000/student_account/student";
-    axios.post(endpoint, values)
-    .then((response) => {
-      if (response.data.status) {
-        console.log(response.data.status);
-        console.log(response.data.response);
-        navigate("/student_login");
-      }
-      else {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        
-        Toast.fire({
-          icon: 'error',
-          title: response.data.message
-        })
-      }
-    })
-    // .catch((err) => {
-    //   console.log(response.data.message);
-    //   if (err.code === 11000) {
-    //     // alert(err.message);r
-    //   }
-    // })
+      axios.post(endpoint, values).then((response) => {
+        if (response.data.status) {
+          console.log(response.data.status);
+          console.log(response.data.response);
+          navigate("/student_login");
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "error",
+            title: response.data.message,
+          });
+        }
+      });
+      // .catch((err) => {
+      //   console.log(response.data.message);
+      //   if (err.code === 11000) {
+      //     // alert(err.message);r
+      //   }
+      // })
     },
 
     validationSchema: yup.object({
-      firstName: yup.string().required("firstName is required to create account"),
+      firstName: yup
+        .string()
+        .required("firstName is required to create account"),
       lastName: yup.string().required("lastName is required to create account"),
-      email: yup.string().required("email is required to create account").email("Please enter a valid email address"),
-      phoneNumber: yup.string().required("phoneNumber is required to create account"),
-      password: yup.string().required("password is required to create account")
+      email: yup
+        .string()
+        .required("email is required to create account")
+        .email("Please enter a valid email address"),
+      phoneNumber: yup
+        .string()
+        .required("phoneNumber is required to create account"),
+      password: yup.string().required("password is required to create account"),
     }),
-
-  })
-
-    
+  });
 
   return (
     <>
+      <div  style={{ padding: "60px 100px 0px", width: "100%" }}>
       <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
         student sign up
       </h2>
@@ -273,6 +275,7 @@ const CreateAccount = () => {
           </button>
         </div>
       </form>
+      </div>
     </>
   );
 };
