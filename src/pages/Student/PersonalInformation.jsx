@@ -1,9 +1,13 @@
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 
 
 const PersonalInformation = () => {
+  useEffect(() => {
+   
+  }, [])
+  
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
     initialValues: {
