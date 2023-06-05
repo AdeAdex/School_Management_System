@@ -2,8 +2,11 @@ import React from "react";
 import "../Student/Login.css";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  let navigate = useNavigate();
+
   let formik = useFormik({
     initialValues: {
       email: "",
@@ -11,11 +14,15 @@ const Login = () => {
     },
 
     onSubmit: (values) => {
-        // console.log(values);
+      // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_login";
       axios.post(endpoint, values)
       .then((response) => {
         console.log(response.data.result);
+        if (response.data.result) {
+          localStorage.studentToken = response.data.studentToken;
+          navigate('/student')
+        }
       });
     },
   });
