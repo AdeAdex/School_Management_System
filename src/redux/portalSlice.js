@@ -4,6 +4,7 @@ export const portalSlice = createSlice({
   name: "counter",
   initialState: {
     staffInfo: {},
+    studentInfo: {},
     firstName: "",
     lastName: "",
   },
@@ -11,8 +12,11 @@ export const portalSlice = createSlice({
     newName: (state, action) => {
       state.staffInfo = action.payload;
     },
+    newStudent: (state, action) => {
+      state.studentInfo = action.payload;
+    }
   },
 });
 
-export const { newName } = portalSlice.actions;
+export const { newName, newStudent } = portalSlice.actions;
 export default portalSlice.reducer;

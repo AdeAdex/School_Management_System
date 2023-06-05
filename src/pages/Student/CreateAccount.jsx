@@ -8,17 +8,6 @@ import * as yup from 'yup'
 const CreateAccount = () => {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [check, setCheck] = useState();
-  // const [city, setCity] = useState("");
-  // const [age, setAge] = useState("");
-  // const [gender, setGender] = useState("");
-  // const [state, setState] = useState("");
-
   let formik = useFormik({
     initialValues : {
       firstName: "",
@@ -35,6 +24,7 @@ const CreateAccount = () => {
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.status);
+        console.log(response.data.response);
         navigate("/student/admission/pick_class");
       }
       else {
