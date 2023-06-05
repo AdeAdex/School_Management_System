@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 const Payment = () => {
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
   useEffect(() => {
+    console.log(globalState.email);
   payWithPaystack()
   }, [])
   
   function payWithPaystack() {
     let handler = PaystackPop.setup({
       key: "pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537",
-      email: "adex@gmail.com",
+      email: globalState.email,
       amount: 5000 * 100,
       ref: "Adex" + Math.floor(Math.random() * 1000000000 + 1),
       onClose: function () {

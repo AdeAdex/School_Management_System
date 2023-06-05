@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+// const dotenv = require('dotenv');
+// const dotenvExpand = require('dotenv-expand');
 
+
+// dotenvExpand(dotenv.config());
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,6 +28,8 @@ export default defineConfig({
     port: 5173,
     hostname: '0.0.0.0'
   }
+
+  
   
 })
 

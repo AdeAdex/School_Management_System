@@ -31,7 +31,7 @@ const Admission = () => {
       })
       .then((res) => {
         if (res.data.status) {
-          console.log(res.data.response);
+          // console.log(res.data.response);
           dispatch(newStudent(res.data.response));
         }
       });

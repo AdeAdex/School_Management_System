@@ -11,7 +11,7 @@ const PickClass = () => {
 
     onSubmit: (values) => {
       console.log(values);
-      // const endpoint = "http://localhost:2000/student_account/student"
+      const endpoint = "http://localhost:2000/student_account/student_dashboard2"
       // axios.post(endpoint, values)
       // .then((response) => {
       //   console.log(response)
