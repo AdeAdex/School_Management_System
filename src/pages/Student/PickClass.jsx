@@ -24,7 +24,7 @@ const PickClass = () => {
       <div className="shadow p-4 mt-4">
         <form action="" method="post" onSubmit={formik.handleSubmit}>
           <div className="col-md-12 mb-3">
-            <label htmlFor="validationServer04" className="form-label">
+            <label htmlFor="validationServer04" className="form-label fw-bold text-secondary">
               Course
             </label>
             <select
@@ -50,7 +50,7 @@ const PickClass = () => {
             </div>
           </div>
           <div className="col-md-12 mb-3">
-            <label htmlFor="validationServer04" className="form-label">
+            <label htmlFor="validationServer04" className="form-label fw-bold text-secondary">
               Course
             </label>
             <select
@@ -73,7 +73,7 @@ const PickClass = () => {
             </div>
           </div>
           <div className="col-md-12 mb-3">
-            <label htmlFor="validationServer04" className="form-label">
+            <label htmlFor="validationServer04" className="form-label fw-bold text-secondary">
               Level
             </label>
             <select

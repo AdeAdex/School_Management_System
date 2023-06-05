@@ -27,6 +27,8 @@ import PersonalInformation from './pages/Student/PersonalInformation'
 import CreateAccount from './pages/Student/CreateAccount'
 import Admission from './pages/Student/Admission'
 import Payment from './pages/Student/Payment'
+import Education from './pages/Student/Education'
+import Referees from './pages/Student/Referees'
 
 
 
@@ -65,6 +67,9 @@ function App() {
           <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
             <Route path='payment' element={<Payment/>} />
+            <Route path='personal_information' element={<PersonalInformation/>} />
+            <Route path='education' element={<Education/>} />
+            <Route path='referees' element={<Referees/>} />
           </Route>
         </Route>
             
