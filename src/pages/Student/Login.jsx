@@ -1,15 +1,24 @@
 import React from "react";
-import '../Student/Login.css'
+import "../Student/Login.css";
 import { useFormik } from "formik";
-
+import axios from "axios";
 
 const Login = () => {
-        let formik = useFormik({
-               initialValues: {
-                email: "",
-                password: ""
-               } 
-        })
+  let formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+
+    onSubmit: (values) => {
+        // console.log(values);
+      const endpoint = "http://localhost:2000/student_account/student_login";
+      axios.post(endpoint, values)
+      .then((response) => {
+        console.log(response.data.result);
+      });
+    },
+  });
   return (
     <>
       <div className="container">
@@ -34,7 +43,12 @@ const Login = () => {
               placeholder="Password"
               onChange={formik.handleChange}
             />
-            <button type="submit" className="btn btn-primary btn-sm text-white px-4 py-2">Login</button>
+            <button
+              type="submit"
+              className="btn btn-primary btn-sm text-white px-4 py-2"
+            >
+              Login
+            </button>
             <p className="forgotten">
               Forgotten your login details ?{" "}
               <a href="#">Get help with signing in.</a>
