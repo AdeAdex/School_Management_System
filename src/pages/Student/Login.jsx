@@ -36,7 +36,7 @@ const Login = () => {
             icon: "success",
             title: "Signed in successfully",
           });
-          navigate("/student/admission/pick_className");
+          navigate("/student/admission/pick_class");
         } else {
           const Toast = Swal.mixin({
             toast: true,
