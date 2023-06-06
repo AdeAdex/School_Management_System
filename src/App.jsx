@@ -73,7 +73,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
 
-        <Route path='/student_signin' element={studentSignInToken ? <Navigate to="/student_dashboard"/> : <StudentSignIn/>}/>
+        <Route path='/student_signin' element={<StudentSignIn/>}/> 
         <Route path='/student/*' element={ <StudentSignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
           {/* <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/> */}
@@ -118,3 +118,5 @@ function App() {
 }
 
 export default App
+
+// studentSignInToken ? <Navigate to="/student_dashboard"/> : 
