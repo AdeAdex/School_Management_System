@@ -15,10 +15,11 @@ const SigninForm = () => {
     onSubmit: (values) => {
       console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_signin";
-      axios.post(endpoint, values).then((res) => {
-        if (res.data == "student pass") {
-          console.log(res.data);
-          navigate("/student_dashboard");
+      axios.post(endpoint, values)
+      .then((res) => {
+        if (res.data.status) {
+          console.log(res.data.status);
+          navigate("/staff_dashboard");
         } else {
           navigate("/signin");
         }

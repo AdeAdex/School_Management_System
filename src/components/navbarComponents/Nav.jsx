@@ -137,7 +137,7 @@ const Nav = () => {
                     </a>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/student_dashboard">
+                    <Link className="dropdown-item" to="/student_signin">
                       students
                     </Link>
                   </li>
