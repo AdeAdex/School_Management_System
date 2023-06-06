@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const StudentDashboardOffcanvasList = ({icons, item}) => {
+const StudentDashboardOffcanvasList = ({icons, item, params}) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate(params)

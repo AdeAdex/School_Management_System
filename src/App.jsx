@@ -86,11 +86,12 @@ function App() {
         </Route>
         <Route exact path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <SignUp/>}/>
         <Route path='student_login' element={<Login/>}/>
+        <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>
-          <Route path='student_home' element={<StudentDashboardHome/>}/>
-          <Route path='student_profile' element={<StudentProfile/>} />
-          <Route path='student_change_password' element={<StudentChangePassword/>} />
-          <Route path='student_edit_details' element={<StudentEditDetails/>} />
+          <Route path='home' element={<StudentDashboardHome/>}/>
+          <Route path='profile' element={<StudentProfile/>} />
+          <Route path='change_password' element={<StudentChangePassword/>} />
+          <Route path='edit_details' element={<StudentEditDetails/>} />
         </Route>
             
         

@@ -34,13 +34,13 @@ const StudentDashboardOffcanvas = () => {
           <div className="px-4 grid gap-y-12">
             <div className="grid gap-y-5">
               <StudentDashboardOffcanvasTitle title="main menu" />
-              <StudentDashboardOffcanvasList item="dashboard" params="/staff_dashboard/home" icons="fas fa-border-all" />
+              <StudentDashboardOffcanvasList item="dashboard" params="/student_dashboard/home" icons="fas fa-border-all" />
             </div>
             <div className="grid gap-y-5">
               <StudentDashboardOffcanvasTitle title="profile" />
-              <StudentDashboardOffcanvasList item="my profile" params="/staff_dashboard/profile" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList item="change password" params="/staff_dashboard/change_password" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList item="edit details" params="/staff_dashboard/edit_details" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList item="my profile" params="/student_dashboard/profile" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList item="change password" params="/student_dashboard/change_password" icons="fas fa-lock" />
+              <StudentDashboardOffcanvasList item="edit details" params="/student_dashboard/edit_details" icons="fas fa-edit" />
             </div>
             <div className="grid gap-y-5">
               <StudentDashboardOffcanvasTitle title="academics" />
