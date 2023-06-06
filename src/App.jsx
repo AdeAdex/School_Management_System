@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-// import './App.css'
+import './App.css'
 import './index.css'
 import { Link, Navigate, Route, BrowserRouter as Router, Routes, redirect} from 'react-router-dom'
 import HomePage from './pages/HomePage'
@@ -74,10 +74,10 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
 
-        <Route path='/student_signin' element={<StudentSignIn/>}/> 
+        <Route path='/student_signin' element={studentSignInToken ? <Navigate to="/student_dashboard"/> : <StudentSignIn/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
-          {/* <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/> */}
+          <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/>
           <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
             <Route path='payment' element={<Payment/>} />
@@ -119,5 +119,3 @@ function App() {
 }
 
 export default App
-
-// studentSignInToken ? <Navigate to="/student_dashboard"/> : 
