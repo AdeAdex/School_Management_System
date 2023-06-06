@@ -76,6 +76,7 @@ function App() {
         <Route path='/student_signin' element={studentSignInToken ? <Navigate to="/student_dashboard"/> : <StudentSignIn/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
+          {/* <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/> */}
           <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
             <Route path='payment' element={<Payment/>} />
