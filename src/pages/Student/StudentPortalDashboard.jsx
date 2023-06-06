@@ -27,13 +27,13 @@ const StudentPortalDashboard = () => {
         },
       })
       .then((response) => {
-        console.log(response);
-        // if (response.data.status) {
-        //   // console.log(response.data.response);
-        //   dispatch(newStudent(response.data.response));
-        // } else {
-        //   navigate("/student_signin");
-        // }
+        // console.log(response);
+        if (response.data.status) {
+          // console.log(response.data.response);
+          dispatch(newStudent(response.data.response));
+        } else {
+          navigate("/student_signin");
+        }
       });
   }, []);
   return (
