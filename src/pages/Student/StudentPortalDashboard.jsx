@@ -4,27 +4,32 @@ import "../Student/StudentPortalDashboard.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { newStudent } from "../../redux/portalSlice";
+import StudentDashboardNavbar from "../../components/studentDashboardComponents/StudentDashboardNavbar";
+import StudentDashboardOffcanvas from "../../components/studentDashboardComponents/StudentDashboardOffcanvas";
+import StudentProfile from "./StudentProfile";
+import StudentChangePassword from "./StudentChangePassword";
+import StudentEditDetails from "./StudentEditDetails";
+import StudentDashboardHome from "./StudentDashboardHome";
 
 const StudentPortalDashboard = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
   useEffect(() => {
-    const endpoint =
-      "http://localhost:2000/student_account/student_dashboard";
-    let token = localStorage.token;
+    const endpoint = "http://localhost:2000/student_account/student_dashboard";
+    let studentToken = localStorage.studentToken;
     axios
       .get(endpoint, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${studentToken}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.data.status) {
-          console.log(response.data.response);
+          // console.log(response.data.response);
           dispatch(newStudent(response.data.response));
         } else {
           navigate("/student_signin");
@@ -48,16 +53,16 @@ const StudentPortalDashboard = () => {
             overflowY: "scroll",
           }}
         >
-          <Offcanvas />
+          <StudentDashboardOffcanvas />
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
-          <DashboardNavbar />
+          <StudentDashboardNavbar />
           <div className="flex p-5 bg-green-300">
             <Routes>
-              <Route path="home" element={<StaffDashboardHome />} />
-              <Route path="profile" element={<StaffProfile />} />
-              <Route path="change_password" element={<StaffChangePassword />} />
-              <Route path="edit_details" element={<StaffEditDetails />} />
+              <Route path="home" element={<StudentDashboardHome />} />
+              <Route path="profile" element={<StudentProfile />} />
+              <Route path="change_password" element={<StudentChangePassword />} />
+              <Route path="edit_details" element={<StudentEditDetails />} />
             </Routes>
           </div>
         </div>

@@ -28,6 +28,9 @@ const StudentDashboardNavbar = () => {
         } else {
         }
       };
+      const gooo = () => {
+        alert("msg");
+      };
 
   return (
     <>

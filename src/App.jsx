@@ -30,6 +30,13 @@ import Payment from './pages/Student/Payment'
 import Education from './pages/Student/Education'
 import Referees from './pages/Student/Referees'
 import Login from './pages/Student/Login'
+import StudentSignIn from './pages/Student/StudentSignIn'
+import StudentSignUp from './pages/Student/StudentSignUp'
+import StudentPortalDashboard from './pages/Student/StudentPortalDashboard'
+import StudentDashboardHome from './pages/Student/StudentDashboardHome'
+import StudentProfile from './pages/Student/StudentProfile'
+import StudentChangePassword from './pages/Student/StudentChangePassword'
+import StudentEditDetails from './pages/Student/StudentEditDetails'
 
 
 
@@ -55,6 +62,7 @@ function App() {
   },[])
 
   let token = localStorage.token
+  let studentToken = localStorage.studentToken
   let username = "Adex";
   let shouldRedirect = true;
   return (
@@ -63,9 +71,9 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
-        <Route path='/student_signin' element={<SignIn/>}/>
-        
-        <Route path='/student/*' element={ <SignUp/>}>
+
+        <Route path='/student_signin' element={<StudentSignIn/>}/>
+        <Route path='/student/*' element={ <StudentSignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
           <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
@@ -75,9 +83,14 @@ function App() {
             <Route path='referees' element={<Referees/>} />
           </Route>
         </Route>
-        <Route exact path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <SignUp/>}> /</Route>
-        
+        <Route exact path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <SignUp/>}/>
         <Route path='student_login' element={<Login/>}/>
+        <Route path='/student_dashboard/*' element={studentToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>
+          <Route path='student_home' element={<StudentDashboardHome/>}/>
+          <Route path='student_profile' element={<StudentProfile/>} />
+          <Route path='student_change_password' element={<StudentChangePassword/>} />
+          <Route path='student_edit_details' element={<StudentEditDetails/>} />
+        </Route>
             
         
         <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>

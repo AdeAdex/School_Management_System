@@ -18,8 +18,9 @@ const SigninForm = () => {
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data.status) {
-          console.log(res.data.status);
-          navigate("/staff_dashboard");
+          localStorage.studentToken = res.data.studentToken;
+          // console.log(res.data.status);
+          navigate("/student_dashboard");
         } else {
           navigate("/signin");
         }
@@ -35,7 +36,7 @@ const SigninForm = () => {
         </h1>
         <form
           onSubmit={formik.handleSubmit}
-          action="/student_account/student_signin"
+          action=""
           method="post"
         >
           <div className="form-control signin-form-control">
