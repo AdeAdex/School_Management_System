@@ -95,6 +95,62 @@ const PersonalInformation = () => {
           </label>
           <div className="invalid-feedback">Please provide your Middlename!</div>
         </div>
+        <div className="col-lg-6 position-relative  flex-column mb-3">
+          <input
+            type="email"
+            autoComplete="on"
+            className={formik.touched.email && formik.errors.email ? "input form-control is-invalid" : "input form-control"}
+            id=""
+            name="email"
+            required
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Email Address
+          </label>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please provide a valid Email address.
+          </div>
+        </div>
+        <div className="col-md-6 position-relative  flex-column mb-3">
+          <input
+            type="tel"
+            autoComplete="on"
+            className={formik.touched.phoneNumber && formik.errors.phoneNumber ? "input form-control is-invalid" : "input form-control"}
+            id=""
+            name="phoneNumber"
+            required
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.phoneNumber}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Phone Number
+          </label>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please provide a valid Phone number.
+          </div>
+        </div>
+        <div className="col-lg-6 position-relative  flex-column mb-3">
+          <input
+            type="text"
+            autoomplete="on"
+            className={formik.touched.password && formik.errors.password ? "input form-control is-invalid" : "input form-control"}
+            id=""
+            name="title"
+            required
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Title
+          </label>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please provide a valid Title.
+          </div>
+        </div>
         <div className="col-md-6 position-relative  flex-column mb-3">
           <input
             type="text"
@@ -167,25 +223,7 @@ const PersonalInformation = () => {
               Please provide a your gender.
             </div>
           </div>
-        <div className="col-lg-6 position-relative  flex-column mb-3">
-          <input
-            type="email"
-            autoComplete="on"
-            className={formik.touched.email && formik.errors.email ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="email"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Email Address
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid Email address.
-          </div>
-        </div>
+       
         <div className="col-md-6 mb-3">
             <label htmlFor="validationServer04" className="form-label">
               State
@@ -234,43 +272,7 @@ const PersonalInformation = () => {
               Please select a valid state.
             </div>
           </div>
-        <div className="col-md-6 position-relative  flex-column mb-3">
-          <input
-            type="tel"
-            autoComplete="on"
-            className={formik.touched.phoneNumber && formik.errors.phoneNumber ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="phoneNumber"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.phoneNumber}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Phone Number
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid Phone number.
-          </div>
-        </div>
-        <div className="col-lg-6 position-relative  flex-column mb-3">
-          <input
-            type="text"
-            autoomplete="on"
-            className={formik.touched.password && formik.errors.password ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="password"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Password
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid password.
-          </div>
-        </div>
+        
         <div className="col-12">
           <div className="form-check">
             <input

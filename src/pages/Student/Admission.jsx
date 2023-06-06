@@ -43,7 +43,7 @@ const Admission = () => {
         <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
         </div>
-        <div style={{ padding: "40px 100px 0px", width: "100%" }}>
+        <div style={{ padding: "20px 100px 0px", width: "100%" }}>
         <div
           className="d-flex gap-4"
           style={{ width: "100%", overflowX: "auto" }}
