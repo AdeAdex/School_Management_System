@@ -1,11 +1,11 @@
 .login-main-container {
   width: 100%;
   height: 100vh;
-  background-image: url("pic/loginImage.jpg");
-  background-color: rgba(2, 2, 144, 0.5);
+  background-image: url("pic/loginImages.jpg");
+  /* background-color: rgba(2, 2, 144, 0.4); */
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 10% 30%;
+  background-position: 100% 20%;
   background-blend-mode: multiply;
   display: flex;
 }
@@ -13,11 +13,11 @@
 .login-content {
   width: 30%;
   height: auto;
-  margin: auto;
+  margin: auto auto auto 45%;
   padding: 40px 30px;
   background: #d1d5dc;
   border-radius: 10px;
-  box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);
+  box-shadow: -3px -3px 7px #3e15d373, 2px 2px 5px rgba(12, 132, 192, 0.288);
 }
 
 @media screen and (max-width: 600px){
@@ -31,7 +31,7 @@
   font-size: 33px;
   font-weight: 600;
   margin-bottom: 35px;
-  color: #595959;
+  color: #100db7;
 }
 
 .login-field {
