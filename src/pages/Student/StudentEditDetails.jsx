@@ -16,14 +16,14 @@ const StudentEditDetails = () => {
     },
 
     onSubmit: (values) => {
-      console.log(globalState);
+      // console.log(globalState);
       const newValues = {...values,receivedEmail:globalState.email};
       console.log(newValues);
-      // let endpoint = "http://localhost:2000/student_account/edit_details";
-      // axios.post(endpoint, newValues)
-      // .then((response) => {
-      //   console.log(response);
-      // });
+      let endpoint = "http://localhost:2000/student_account/edit_details";
+      axios.post(endpoint, newValues)
+      .then((response) => {
+        console.log(response);
+      });
     },
   });
 

@@ -22,7 +22,7 @@ const SigninForm = () => {
           // console.log(res.data.status);
           navigate("/student_dashboard");
         } else {
-          navigate("/signin");
+          navigate("/student_signin");
         }
       });
     },
