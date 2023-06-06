@@ -27,7 +27,7 @@ const StudentPortalDashboard = () => {
           console.log(response.data.response);
           dispatch(newStudent(response.data.response));
         } else {
-          navigate("/staff_signin");
+          navigate("/student_signin");
         }
       });
   }, []);
