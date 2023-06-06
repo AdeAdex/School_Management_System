@@ -62,10 +62,10 @@ const Login = () => {
     <>
       <div className="login-main-container">
         <div className="login-content">
-          <div className="login-text">Login</div>
+          <div className="login-text text-center">Login</div>
           <form action="#">
             <div className="login-field">
-              <input required="" type="text" className="login-input" />
+              <input required="" type="text" className="login-input" placeholder="Email or Phone" />
               <span className="login-span">
                 <svg
                   className=""
@@ -93,7 +93,7 @@ const Login = () => {
               <label className="login-label">Email or Phone</label>
             </div>
             <div className="login-field">
-              <input required="" type="password" className="login-input" />
+              <input required="" type="password" className="login-input" placeholder="Password" />
               <span className="login-span">
                 <svg
                   className=""
