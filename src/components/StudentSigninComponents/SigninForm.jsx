@@ -13,13 +13,11 @@ const SigninForm = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_signin";
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data.status) {
           localStorage.studentSignInToken = res.data.studentSignInToken;
-          // console.log(res.data.status);
           navigate("/student_dashboard");
         } else {
           navigate("/student_signin");
