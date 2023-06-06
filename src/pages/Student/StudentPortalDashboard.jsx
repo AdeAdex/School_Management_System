@@ -1,6 +1,14 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import "../Student/StudentPortalDashboard.css"
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { newStudent } from '../../redux/portalSlice'
+
 
 const StudentPortalDashboard = () => {
+        const dispatch = useDispatch();
+  let navigate = useNavigate();
   return (
     <>
         <section
