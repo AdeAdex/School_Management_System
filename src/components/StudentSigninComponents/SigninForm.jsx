@@ -18,7 +18,7 @@ const SigninForm = () => {
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data.status) {
-          localStorage.studentToken = res.data.studentToken;
+          localStorage.studentSignInToken = res.data.studentSignInToken;
           // console.log(res.data.status);
           navigate("/student_dashboard");
         } else {

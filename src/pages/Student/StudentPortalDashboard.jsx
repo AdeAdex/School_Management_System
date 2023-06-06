@@ -17,11 +17,11 @@ const StudentPortalDashboard = () => {
 
   useEffect(() => {
     const endpoint = "http://localhost:2000/student_account/student_dashboard";
-    let studentToken = localStorage.studentToken;
+    let studentSignInToken = localStorage.studentSignInToken;
     axios
       .get(endpoint, {
         headers: {
-          Authorization: `Bearer ${studentToken}`,
+          Authorization: `Bearer ${studentSignInToken}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },

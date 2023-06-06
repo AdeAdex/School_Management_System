@@ -20,7 +20,7 @@ const Login = () => {
       .then((response) => {
         // console.log(response.data.result);
         if (response.data.result) {
-          localStorage.studentToken = response.data.studentToken;
+          localStorage.studentLoginToken = response.data.studentLoginToken;
           const Toast = Swal.mixin({
             toast: true,
             position: "top",
