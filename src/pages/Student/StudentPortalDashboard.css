@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#offCan {
+        transition: all 0.3s ease-in-out;
+      }
+      
+      .show {
+        display: block !important;
+        opacity: 1 !important;
+      }
+      
+      .hide {
+        display: none !important;
+        opacity: 0 !important;
+      }
+      
+      .new-class {
+        background-color: blue !important;
+      }
+      
+      #nav {
+        background-color: #EFF0F5;
+      }
+      
+      #nav i:hover {
+        cursor: pointer !important;
+        background-color: red !important;
+      }
+      
+      @media screen and (min-width: 768px) {
+        .offcanvas-btn2 {
+          display: none !important;
+        }
+      }
+      
+      @media screen and (max-width: 768px) {
+        #offCan {
+          display: none !important;
+        }
+      
+        #nav {
+          width: 100% !important;
+        }
+      
+        .offcanvas-btn {
+          display: none !important;
+        }
+      }
+      
