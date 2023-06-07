@@ -66,8 +66,8 @@ const Admission = () => {
         </div>
         <div className="" style={{width: "100%" }}>
           <div
-            className="d-flex justify-content-between"
-            style={{ width: "100%", overflowX: "auto", height: '40px', borderBottom: '1px solid gray' }}
+            className="d-flex justify-content-between px-lg-4"
+            style={{ width: "100%", overflowX: "auto", overflowY: 'hidden', height: '40px', borderBottom: '1px solid gray' }}
           >
             <NavLink style={navLinkStyles} to="pick_class" className="nav-link">
               Pick Class
