@@ -64,9 +64,9 @@ const Admission = () => {
         <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
         </div>
-        <div style={{ padding: "20px 100px 0px", width: "100%" }}>
+        <div className="" style={{width: "100%" }}>
           <div
-            className="d-flex gap-4"
+            className="d-flex justify-content-between"
             style={{ width: "100%", overflowX: "auto", height: '40px', borderBottom: '1px solid gray' }}
           >
             <NavLink style={navLinkStyles} to="pick_class" className="nav-link">
@@ -99,7 +99,7 @@ const Admission = () => {
             </NavLink>
           </div>
           {/* <hr /> */}
-          <div>
+          <div style={{padding: "20px 100px 0px",}}>
             <Routes>
               <Route path="pick_class" element={<PickClass />} />
               <Route path="payment" element={<Payment />} />

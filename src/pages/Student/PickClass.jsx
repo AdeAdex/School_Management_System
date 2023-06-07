@@ -98,7 +98,7 @@ const PickClass = () => {
               Please select a valid state.
             </div>
           </div>
-          <button type="submit">Continue</button>
+          <button type="submit" className="btn btn-primary d-flex justify-content-center w-25 mx-auto">Continue</button>
         </form>
       </div>
     </>
