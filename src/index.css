@@ -395,3 +395,23 @@
       #textDiv {
         transition: all 0.3s ease-in-out;
       }
+
+      .nav-link {
+      }
+      .nav-link:after {
+        position: relative;
+        top: 12px;
+        display: block;
+        content: "";
+        border-bottom: 3px solid #3C37FF;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+      }
+      
+      .nav-link:hover:after {
+        transform: scaleX(1);
+      }
+      
+      .nav-link:focus:after {
+        transform: scaleX(1);
+      }

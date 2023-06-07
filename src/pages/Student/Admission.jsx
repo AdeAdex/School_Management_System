@@ -22,7 +22,7 @@ const Admission = () => {
   const navLinkStyles = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
-      textDecoration: isActive ? "none" : "underline",
+      textDecoration: isActive ? "none" : "none",
     };
   };
   useEffect(() => {
@@ -67,9 +67,9 @@ const Admission = () => {
         <div style={{ padding: "20px 100px 0px", width: "100%" }}>
           <div
             className="d-flex gap-4"
-            style={{ width: "100%", overflowX: "auto" }}
+            style={{ width: "100%", overflowX: "auto", height: '40px', borderBottom: '1px solid gray' }}
           >
-            <NavLink style={navLinkStyles} to="pick_class" className="">
+            <NavLink style={navLinkStyles} to="pick_class" className="nav-link">
               Pick Class
             </NavLink>
             {/* {pay ? (
@@ -85,20 +85,20 @@ const Admission = () => {
                 Pick Class
               </NavLink>
             )} */}
-            <NavLink style={navLinkStyles} to="payment">
+            <NavLink style={navLinkStyles} to="payment" className="nav-link">
               Payment
             </NavLink>
-            <NavLink style={navLinkStyles} to="personal_information">
+            <NavLink style={navLinkStyles} to="personal_information" className="nav-link">
               Personal Information
             </NavLink>
-            <NavLink style={navLinkStyles} to="education">
+            <NavLink style={navLinkStyles} to="education" className="nav-link">
               Education
             </NavLink>
-            <NavLink style={navLinkStyles} to="referees">
+            <NavLink style={navLinkStyles} to="referees" className="nav-link">
               Referees
             </NavLink>
           </div>
-          <hr />
+          {/* <hr /> */}
           <div>
             <Routes>
               <Route path="pick_class" element={<PickClass />} />
