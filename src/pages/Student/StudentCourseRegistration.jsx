@@ -6,18 +6,18 @@ import axios from "axios";
 const StudentCourseRegistration = () => {
 //   let dispatch = useDispatch();
 const globalState = useSelector((state)=>state.portalReducer.staffInfo)
-//   useEffect(() => {
-//     let endpoint = "http://localhost:2000/staff_account/edit_details";
-//     axios.get(endpoint)
-//     .then((res) => {
-//         dispatch(newName(res.data.response))
-//         // console.log(globalState.firstName);
-//     })
-//   }, []);
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/staff_account/edit_details";
+    axios.get(endpoint)
+    .then((res) => {
+        dispatch(newName(res.data.response))
+        // console.log(globalState.firstName);
+    })
+  }, []);
 
   return (
     <>
-      <div>{globalState.firstName}</div>
+      <div>Course Registration</div>
     </>
   );
 };

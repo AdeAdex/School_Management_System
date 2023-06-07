@@ -18,23 +18,21 @@ const Payment = () => {
         let message = "You just cancel this transaction";
         Swal.fire({
           icon: "error",
-          title: "Dear " + Adex,
+          title: "Dear " + globalState.firstName,
           text: message,
           footer:
             "For further assistance, please call us at +2347033959586 or email us at adeoluamole@gmail.com",
         });
       },
       callback: function (response) {
-        allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
         let message =
           "Payment completed! Your Reference Number is: " + response.reference;
         Swal.fire({
           icon: "success",
-          title: "Thank You " + Adex,
+          title: "Thank You " + globalState.firstName,
           text: message,
           footer:
-            'Your Order is on the way Click <a href="#">here</a>' +
-            "to track your order",
+            '',
         });
       },
     });

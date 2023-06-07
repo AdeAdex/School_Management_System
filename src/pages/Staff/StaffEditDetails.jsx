@@ -8,15 +8,25 @@ import { newName } from "../../redux/portalSlice";
 const StaffEditDetails = () => {
   const globalState = useSelector((state)=>state.portalReducer.staffInfo)
 
-  useEffect(() => {
-        // console.log(globalState);
+//   useEffect(() => {
+//         // console.log(globalState);
 //     let endpoint = "http://localhost:2000/staff_account/edit_details";
-//     axios.get(endpoint, myEmail )
+//     axios.get(endpoint)
 //     .then((response) => {
 // //       dispatch(newName(response.data.response));
 // //       console.log(response.data.response);
 //     });
-  }, );
+//   }, );
+
+const tryGet = () => {
+  console.log(globalState.email);
+  let myEmail = globalState.email
+  let endpoint = "http://localhost:2000/staff_account/edit_details";
+    axios.get(endpoint, myEmail)
+    .then((response) => {
+      console.log(response);
+    })
+}
 
   let formik = useFormik({
     initialValues: {
@@ -28,13 +38,13 @@ const StaffEditDetails = () => {
     },
 
     onSubmit: (values) => {
-      console.log(globalState);
+      // console.log(globalState);
       const newValues = {...values,receivedEmail:globalState.email};
       // console.log(newValues);
       let endpoint = "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues)
       .then((response) => {
-        // console.log(response.data.response.staffArray);
+        console.log(response.data.response.staffArray);
       });
     },
   });
@@ -88,6 +98,7 @@ const StaffEditDetails = () => {
               Enter
             </button>
           </form>
+            <button type="submit" onClick={tryGet}>Get Info</button>
         </div>
       </div>
     </>
