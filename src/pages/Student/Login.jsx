@@ -14,7 +14,6 @@ const Login = () => {
     },
 
     onSubmit: (values) => {
-      // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_login";
       axios.post(endpoint, values).then((response) => {
         // console.log(response.data.result);
@@ -52,7 +51,7 @@ const Login = () => {
 
           Toast.fire({
             icon: "error",
-            title: "Incorrect email or password",
+            title: response.data.message,
           });
         }
       });
@@ -137,7 +136,7 @@ const Login = () => {
             <div className="login-forgot-pass">
               <a href="#">Forgot Password?</a>
             </div>
-            <button className="login-button">Sign in</button>
+            <button className="login-button" type="submit">Sign in</button>
             <div className="login-sign-up">
               Not a member?
               <a href="#">signup now</a>

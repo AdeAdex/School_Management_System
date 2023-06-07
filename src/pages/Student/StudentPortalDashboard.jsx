@@ -16,7 +16,7 @@ const StudentPortalDashboard = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const endpoint = "http://localhost:2000/student_account/student_dashboard";
+    const endpoint = "http://localhost:2000/student_account/student_portal_dashboard";
     let studentSignInToken = localStorage.studentSignInToken;
     axios
       .get(endpoint, {

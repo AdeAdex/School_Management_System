@@ -26,12 +26,12 @@ const Admission = () => {
     };
   };
   useEffect(() => {
-    let studentToken = localStorage.studentToken;
-    let endpoint = "http://localhost:2000/student_account/student_dashboard2";
+    let studentLoginToken = localStorage.studentLoginToken;
+    let endpoint = "http://localhost:2000/student_account/student__admission_dashboard";
     axios
       .get(endpoint, {
         headers: {
-          Authorization: `Bearer ${studentToken}`,
+          Authorization: `Bearer ${studentLoginToken}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },
