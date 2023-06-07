@@ -38,6 +38,7 @@ import StudentDashboardHome from './pages/Student/StudentDashboardHome'
 import StudentProfile from './pages/Student/StudentProfile'
 import StudentChangePassword from './pages/Student/StudentChangePassword'
 import StudentEditDetails from './pages/Student/StudentEditDetails'
+import StudentCourseRegistration from './pages/Student/StudentCourseRegistration'
 
 
 
@@ -74,7 +75,8 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
 
-        <Route path='/student_signin' element={studentSignInToken ? <Navigate to="/student_dashboard"/> : <StudentSignIn/>}/>
+        {/* studentSignInToken ? <Navigate to="/student_dashboard"/> :  */}
+        <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
           <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/>
@@ -94,6 +96,7 @@ function App() {
           <Route path='profile' element={<StudentProfile/>} />
           <Route path='change_password' element={<StudentChangePassword/>} />
           <Route path='edit_details' element={<StudentEditDetails/>} />
+          <Route path='course_registration' element={<StudentCourseRegistration/>} />
         </Route>
             
         

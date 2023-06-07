@@ -1,11 +1,21 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
+
 const CreateAccount = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/student_account/mail"
+    axios.get(endpoint)
+    .then((res) => {
+      console.log(res.data.message);
+    })
+  }, [])
+  
 
   let formik = useFormik({
     initialValues: {
@@ -19,7 +29,8 @@ const CreateAccount = () => {
 
     onSubmit: (values) => {
       const endpoint = "http://localhost:2000/student_account/student";
-      axios.post(endpoint, values).then((response) => {
+      axios.post(endpoint, values)
+      .then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
           console.log(response.data.response);

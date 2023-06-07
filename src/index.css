@@ -398,7 +398,7 @@
 
       .nav-link {
       }
-      .nav-link:after {
+      .nav-links:after {
         position: relative;
         top: 12px;
         display: block;
@@ -408,10 +408,10 @@
         transition: transform 250ms ease-in-out;
       }
       
-      .nav-link:hover:after {
+      .nav-links:hover:after {
         transform: scaleX(1);
       }
       
-      .nav-link:focus:after {
+      .nav-links:focus:after {
         transform: scaleX(1);
       }

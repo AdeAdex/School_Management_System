@@ -69,7 +69,7 @@ const Admission = () => {
             className="d-flex justify-content-between px-lg-4"
             style={{ width: "100%", overflowX: "auto", overflowY: 'hidden', height: '40px', borderBottom: '1px solid gray' }}
           >
-            <NavLink style={navLinkStyles} to="pick_class" className="nav-link">
+            <NavLink style={navLinkStyles} to="pick_class" className="nav-links">
               Pick Class
             </NavLink>
             {/* {pay ? (
