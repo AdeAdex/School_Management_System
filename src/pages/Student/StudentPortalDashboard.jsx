@@ -10,6 +10,7 @@ import StudentProfile from "./StudentProfile";
 import StudentChangePassword from "./StudentChangePassword";
 import StudentEditDetails from "./StudentEditDetails";
 import StudentDashboardHome from "./StudentDashboardHome";
+import StudentCourseRegistration from "./StudentCourseRegistration";
 
 const StudentPortalDashboard = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const StudentPortalDashboard = () => {
               <Route path="profile" element={<StudentProfile />} />
               <Route path="change_password" element={<StudentChangePassword />} />
               <Route path="edit_details" element={<StudentEditDetails />} />
+              <Route path="course_registration" element={<StudentCourseRegistration/>} />
             </Routes>
           </div>
         </div>

@@ -28,9 +28,9 @@ const Dashboard = () => {
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.data.status) {
-          console.log(response.data.response);
+          // console.log(response.data.response);
           dispatch(newName(response.data.response));
         } else {
           navigate("/staff_signin");
