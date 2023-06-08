@@ -1,14 +1,11 @@
-import axios from 'axios';
-import { useFormik } from 'formik'
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
-
+import axios from "axios";
+import { useFormik } from "formik";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const PersonalInformation = () => {
-  useEffect(() => {
-   
-  }, [])
-  
+  useEffect(() => {}, []);
+
   var globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
     initialValues: {
@@ -27,18 +24,16 @@ const PersonalInformation = () => {
     },
 
     onSubmit: (values) => {
-      globalState = {...globalState,...values}
-      console.log(globalState)
+      globalState = { ...globalState, ...values };
+      console.log(globalState);
       // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_update";
-      axios.post(endpoint, globalState)
-      .then((response) => {
+      axios.post(endpoint, globalState).then((response) => {
         console.log(response);
-      })
-    }
-  })
+      });
+    },
+  });
 
-  
   return (
     <>
       <form
@@ -51,7 +46,11 @@ const PersonalInformation = () => {
           <input
             type="text"
             autoComplete="on"
-            className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control is-vali"}
+            className={
+              formik.touched.firstName && formik.errors.firstName
+                ? "input form-control is-invalid"
+                : "input form-control is-vali"
+            }
             id=""
             name="firstName"
             required
@@ -69,7 +68,11 @@ const PersonalInformation = () => {
           <input
             type="text"
             autoComplete="on"
-            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
+            className={
+              formik.touched.lastName && formik.errors.lastName
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
             id=""
             name="lastName"
             required
@@ -86,7 +89,11 @@ const PersonalInformation = () => {
           <input
             type="text"
             autoComplete="on"
-            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
+            className={
+              formik.touched.middleName && formik.errors.middleName
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
             id=""
             name="middleName"
             required
@@ -97,13 +104,19 @@ const PersonalInformation = () => {
           <label htmlFor="validationServer01" className="user-label">
             Middle Name
           </label>
-          <div className="invalid-feedback">Please provide your Middlename!</div>
+          <div className="invalid-feedback">
+            Please provide your Middlename!
+          </div>
         </div>
         <div className="col-lg-6 position-relative  flex-column mb-3">
           <input
             type="email"
             autoComplete="on"
-            className={formik.touched.email && formik.errors.email ? "input form-control is-invalid" : "input form-control"}
+            className={
+              formik.touched.email && formik.errors.email
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
             id=""
             name="email"
             required
@@ -122,7 +135,11 @@ const PersonalInformation = () => {
           <input
             type="tel"
             autoComplete="on"
-            className={formik.touched.phoneNumber && formik.errors.phoneNumber ? "input form-control is-invalid" : "input form-control"}
+            className={
+              formik.touched.phoneNumber && formik.errors.phoneNumber
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
             id=""
             name="phoneNumber"
             required
@@ -140,8 +157,12 @@ const PersonalInformation = () => {
         <div className="col-lg-6 position-relative  flex-column mb-3">
           <input
             type="text"
-            autoomplete="on"
-            className={formik.touched.password && formik.errors.password ? "input form-control is-invalid" : "input form-control"}
+            autoComplete="on"
+            className={
+              formik.touched.title && formik.errors.title
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
             id=""
             name="title"
             required
@@ -159,7 +180,11 @@ const PersonalInformation = () => {
           <input
             type="text"
             autoComplete="on"
-            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
+            className={
+              formik.touched.address && formik.errors.address
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
             id=""
             name="address"
             required
@@ -174,113 +199,127 @@ const PersonalInformation = () => {
         </div>
 
         <div className="col-md-6 position-relative d-flex flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
-              id=""
-              name="city"
-              required
-              onChange={formik.handleChange}
-              value={formik.values.city}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              City
-            </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a valid city.
-            </div>
+          <input
+            type="text"
+            autoComplete="on"
+            className={
+              formik.touched.city && formik.errors.city
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
+            id=""
+            name="city"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.city}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            City
+          </label>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please provide a valid city.
           </div>
+        </div>
         <div className="col-md-6 position-relative d-flex flex-column mb-3">
-            <input
-              type="number"
-              autoComplete="on"
-              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
-              id=""
-              name="age"
-              required
-              onChange={formik.handleChange}
-              value={formik.values.age}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              Age
-            </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a your age.
-            </div>
+          <input
+            type="number"
+            autoComplete="on"
+            className={
+              formik.touched.age && formik.errors.age
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
+            id=""
+            name="age"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.age}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Age
+          </label>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please provide a your age.
           </div>
+        </div>
         <div className="col-md-6 position-relative d-flex flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
-              id=""
-              name="gender"
-              required
-              onChange={formik.handleChange}
-              value={formik.values.gender}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              Gender
-            </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a your gender.
-            </div>
+          <input
+            type="text"
+            autoComplete="on"
+            className={
+              formik.touched.gender && formik.errors.gender
+                ? "input form-control is-invalid"
+                : "input form-control"
+            }
+            id=""
+            name="gender"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.gender}
+          />
+          <label htmlFor="validationServer01" className="user-label">
+            Gender
+          </label>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please provide a your gender.
           </div>
-       
+        </div>
+
         <div className="col-md-6 mb-3">
-            <label htmlFor="validationServer04" className="form-label">
-              State
-            </label>
-            <select
-              className="form-select "
-              id="validationServer04"
-              name="state"
-              aria-describedby="validationServer04Feedback"
-              required
-              onChange={formik.handleChange}
-              value={formik.values.state}
-            >
-              <option disabled>
-                Choose...
-              </option>
-              <option value="Oyo State">Oyo State</option>
-              <option value="Lagos State">Lagos State</option>
-            </select>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please select a valid state.
-            </div>
+          <label htmlFor="validationServer04" className="form-label">
+            State
+          </label>
+          <select
+            autoComplete="on"
+            className="form-select "
+            id="validationServer04"
+            name="state"
+            aria-describedby="validationServer04Feedback"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.state}
+          >
+            <option disabled>Choose...</option>
+            <option value="Oyo State">Oyo State</option>
+            <option value="Lagos State">Lagos State</option>
+          </select>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please select a valid state.
           </div>
-          <div className="col-md-6 mb-3">
-            <label htmlFor="validationServer04" className="form-label">
-              Country
-            </label>
-            <select
-              className="form-select "
-              id="validationServer04"
-              name="country"
-              aria-describedby="validationServer04Feedback"
-              required
-              onChange={formik.handleChange}
-              value={formik.values.country}
-            >
-              <option disabled>
-                Choose...
-              </option>
-              <option value="Nigeria">Nigeria</option>
-              <option value="Uk">United Kingdom</option>
-              <option value="USA">United State of America</option>
-              <option value="Canada">Canada</option>
-            </select>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please select a valid state.
-            </div>
+        </div>
+        <div className="col-md-6 mb-3">
+          <label htmlFor="validationServer04" className="form-label">
+            Country
+          </label>
+          <select
+            autoComplete="on"
+            className="form-select "
+            id="validationServer04"
+            name="country"
+            aria-describedby="validationServer04Feedback"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.country}
+          >
+            <option disabled>Choose...</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Uk">United Kingdom</option>
+            <option value="USA">United State of America</option>
+            <option value="Canada">Canada</option>
+          </select>
+          <div id="validationServer04Feedback" className="invalid-feedback">
+            Please select a valid state.
           </div>
-        
+        </div>
+
         <div className="col-12">
           <div className="form-check">
             <input
-              className={formik.touched.check && formik.errors.check ? "form-check-input is-invalid" : "form-check-input"}
+              className={
+                formik.touched.check && formik.errors.check
+                  ? "form-check-input is-invalid"
+                  : "form-check-input"
+              }
               type="checkbox"
               id="invalidCheck3"
               aria-describedby="invalidCheck3Feedback"
@@ -298,16 +337,13 @@ const PersonalInformation = () => {
           </div>
         </div>
         <div className="col-12">
-          <button
-            className="btn btn-primary signup-btn"
-            type="submit"
-          >
+          <button className="btn btn-primary signup-btn" type="submit">
             Create Account
           </button>
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default PersonalInformation
+export default PersonalInformation;

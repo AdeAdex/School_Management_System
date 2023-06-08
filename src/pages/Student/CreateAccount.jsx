@@ -130,57 +130,6 @@ const CreateAccount = () => {
           <div className="invalid-feedback">Please provide your Lastname!</div>
         </div>
 
-        {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
-              id=""
-              name="city"
-              required
-              onChange={(e) => setCity(e.target.value)}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              City
-            </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div> */}
-        {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
-            <input
-              type="number"
-              autoComplete="on"
-              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
-              id=""
-              name="age"
-              required
-              onChange={(e) => setAge(e.target.value)}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              Age
-            </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a your age.
-            </div>
-          </div> */}
-        {/* <div className="col-md-6 position-relative d-flex flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control"}
-              id=""
-              name="gender"
-              required
-              onChange={(e) => setGender(e.target.value)}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              Gender
-            </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a your gender.
-            </div>
-          </div> */}
         <div className="col-lg-12 position-relative  flex-column mb-3">
           <input
             type="email"
@@ -199,28 +148,6 @@ const CreateAccount = () => {
             Please provide a valid Email address.
           </div>
         </div>
-        {/* <div className="col-md-12 mb-3">
-            <label htmlFor="validationServer04" className="form-label">
-              State
-            </label>
-            <select
-              className="form-select "
-              id="validationServer04"
-              name="state"
-              aria-describedby="validationServer04Feedback"
-              required
-              onChange={(e) => setState(e.target.value)}
-            >
-              <option disabled>
-                Choose...
-              </option>
-              <option value="Oyo State">Oyo State</option>
-              <option value="Lagos State">Lagos State</option>
-            </select>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please select a valid state.
-            </div>
-          </div> */}
         <div className="col-md-6 position-relative  flex-column mb-3">
           <input
             type="tel"
