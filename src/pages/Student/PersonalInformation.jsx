@@ -266,7 +266,7 @@ const PersonalInformation = () => {
         </div>
 
         <div className="col-md-6 mb-3">
-          <label htmlFor="validationServer04" className="form-label">
+          <label htmlFor="validationServer04" className="user-label">
             State
           </label>
           <select
@@ -288,7 +288,7 @@ const PersonalInformation = () => {
           </div>
         </div>
         <div className="col-md-6 mb-3">
-          <label htmlFor="validationServer04" className="form-label">
+          <label htmlFor="validationServer04" className="user-label">
             Country
           </label>
           <select
