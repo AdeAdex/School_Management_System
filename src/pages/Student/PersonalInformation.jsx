@@ -37,12 +37,12 @@ const PersonalInformation = () => {
   return (
     <>
       <form
-        className="row g-3 mt-4"
+        className="row  g-3 mt-4"
         action=""
         method="post"
         onSubmit={formik.handleSubmit}
       >
-        <div className="col-md-6 position-relative  flex-column mb-3">
+        <div className="col-sm-12 col-md-6 position-relative  flex-column mb-3">
           <input
             type="text"
             autoComplete="on"
@@ -311,34 +311,9 @@ const PersonalInformation = () => {
             Please select a valid state.
           </div>
         </div>
-
         <div className="col-12">
-          <div className="form-check">
-            <input
-              className={
-                formik.touched.check && formik.errors.check
-                  ? "form-check-input is-invalid"
-                  : "form-check-input"
-              }
-              type="checkbox"
-              id="invalidCheck3"
-              aria-describedby="invalidCheck3Feedback"
-              required
-              name="check"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label className="form-check-label" htmlFor="invalidCheck3">
-              Agree to terms and conditions
-            </label>
-            <div id="invalidCheck3Feedback" className="invalid-feedback">
-              You must agree before submitting.
-            </div>
-          </div>
-        </div>
-        <div className="col-12">
-          <button className="btn btn-primary signup-btn" type="submit">
-            Create Account
+          <button className="btn btn-primary signup-btn px-5" type="submit">
+            Save
           </button>
         </div>
       </form>

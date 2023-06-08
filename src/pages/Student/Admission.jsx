@@ -99,7 +99,7 @@ const Admission = () => {
             </NavLink>
           </div>
           {/* <hr /> */}
-          <div style={{padding: "20px 100px 0px",}}>
+          <div className="admission" style={{padding: "20px 100px 0px",}}>
             <Routes>
               <Route path="pick_class" element={<PickClass />} />
               <Route path="payment" element={<Payment />} />
