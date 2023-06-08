@@ -168,7 +168,7 @@ const CreateAccount = () => {
         </div>
         <div className="col-lg-6 position-relative  flex-column mb-3">
           <input
-            type="text"
+            type="password"
             autoomplete="on"
             className={formik.touched.password && formik.errors.password ? "input form-control is-invalid" : "input form-control"}
             id=""
