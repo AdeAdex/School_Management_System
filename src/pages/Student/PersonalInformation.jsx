@@ -9,25 +9,29 @@ const PersonalInformation = () => {
    
   }, [])
   
-  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  var globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
     initialValues: {
       firstName: globalState.firstName,
       lastName: globalState.lastName,
+      email: globalState.email,
+      phoneNumber: globalState.phoneNumber,
       middleName: globalState.middleName,
       address: globalState.address,
+      title: globalState.title,
       city: globalState.city,
       age: globalState.age,
       gender: globalState.gender,
-      email: globalState.email,
       state: globalState.state,
       country: globalState.country,
-      phoneNumber: globalState.phoneNumber,
     },
 
     onSubmit: (values) => {
+      globalState = {...globalState,...values}
+      console.log(globalState)
+      // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_update";
-      axios.post(endpoint, values)
+      axios.post(endpoint, globalState)
       .then((response) => {
         console.log(response);
       })

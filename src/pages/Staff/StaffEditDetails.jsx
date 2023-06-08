@@ -21,7 +21,7 @@ const StaffEditDetails = () => {
 const tryGet = () => {
   console.log(globalState.email);
   let myEmail = globalState.email
-  let endpoint = "http://localhost:2000/staff_account/edit_details";
+  let endpoint = "http://localhost:2000/staff_account/details";
     axios.get(endpoint, myEmail)
     .then((response) => {
       console.log(response);
@@ -97,8 +97,8 @@ const tryGet = () => {
             <button type="submit" className="edit-enter">
               Enter
             </button>
-          </form>
             <button type="submit" onClick={tryGet}>Get Info</button>
+          </form>
         </div>
       </div>
     </>
