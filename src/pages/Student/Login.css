@@ -67,7 +67,7 @@
   position: absolute;
   color: #595959;
   width: 50px;
-  line-height: 55px;
+  line-height: 45px;
 }
 
 .login-field .login-label {
@@ -85,7 +85,7 @@
 
 .login-forgot-pass {
   text-align: left;
-  margin: 10px 0 10px 5px;
+  margin: 20px 0 10px 5px;
 }
 
 .login-forgot-pass a {
