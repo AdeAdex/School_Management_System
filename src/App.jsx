@@ -73,7 +73,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/>
+        {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
 
         {/* studentSignInToken ? <Navigate to="/student_dashboard"/> :  */}
         <Route path='/student_signin' element={<StudentSignIn/>}/>

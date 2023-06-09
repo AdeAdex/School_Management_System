@@ -4,18 +4,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
-
 const CreateAccount = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/student_account/mail"
-    axios.get(endpoint)
-    .then((res) => {
+    let endpoint = "http://localhost:2000/student_account/mail";
+    axios.get(endpoint).then((res) => {
       console.log(res.data.message);
-    })
-  }, [])
-  
+    });
+  }, []);
 
   let formik = useFormik({
     initialValues: {
@@ -29,8 +26,7 @@ const CreateAccount = () => {
 
     onSubmit: (values) => {
       const endpoint = "http://localhost:2000/student_account/student";
-      axios.post(endpoint, values)
-      .then((response) => {
+      axios.post(endpoint, values).then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
           console.log(response.data.response);
@@ -66,7 +62,9 @@ const CreateAccount = () => {
       firstName: yup
         .string()
         .required("firstName is required to create account"),
-      lastName: yup.string().required("lastName is required to create account"),
+      lastName: yup
+        .string()
+        .required("lastName is required to create account"),
       email: yup
         .string()
         .required("email is required to create account")
@@ -74,145 +72,172 @@ const CreateAccount = () => {
       phoneNumber: yup
         .string()
         .required("phoneNumber is required to create account"),
-      password: yup.string().required("password is required to create account"),
+      password: yup
+        .string()
+        .required("password is required to create account"),
     }),
   });
 
   return (
     <>
-      <div  style={{ padding: "60px 100px 0px", width: "100%" }}>
-      <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
-        student sign up
-      </h2>
-      <h6 className="d-flex gap-5 mt-3">
-        <span className="mt-auto"> Have an account already </span>
-        <Link to="/student_login" className="fs-4 my-auto">
-          Login
-        </Link>
-      </h6>
-      <form
-        className="row g-3 mt-4"
-        action=""
-        method="post"
-        onSubmit={formik.handleSubmit}
-      >
-        <div className="col-md-6 position-relative  flex-column mb-3">
-          <input
-            type="text"
-            autoComplete="on"
-            className={formik.touched.firstName && formik.errors.firstName ? "input form-control is-invalid" : "input form-control is-vali"}
-            id=""
-            name="firstName"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            First Name
-          </label>
-          <div className="invalid-feedback">Please provide your Firstname!</div>
-          <div className="valid-feedback">Looks good</div>
-        </div>
-        <div className="col-md-6 position-relative  flex-column mb-3">
-          <input
-            type="text"
-            autoComplete="on"
-            className={formik.touched.lastName && formik.errors.lastName ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="lastName"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Last Name
-          </label>
-          <div className="invalid-feedback">Please provide your Lastname!</div>
-        </div>
-
-        <div className="col-lg-12 position-relative  flex-column mb-3">
-          <input
-            type="text"
-            autoComplete="on"
-            className={formik.touched.email && formik.errors.email ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="email"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Email Address
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid Email address.
-          </div>
-        </div>
-        <div className="col-md-6 position-relative  flex-column mb-3">
-          <input
-            type="tel"
-            autoComplete="on"
-            className={formik.touched.phoneNumber && formik.errors.phoneNumber ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="phoneNumber"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Phone Number
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid Phone number.
-          </div>
-        </div>
-        <div className="col-lg-6 position-relative  flex-column mb-3">
-          <input
-            type="password"
-            autoomplete="on"
-            className={formik.touched.password && formik.errors.password ? "input form-control is-invalid" : "input form-control"}
-            id=""
-            name="password"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Password
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid password.
-          </div>
-        </div>
-        <div className="col-12">
-          <div className="form-check">
+      <div className="create-account" style={{ padding: "60px 100px 0px", width: "100%" }}>
+        <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
+          student sign up
+        </h2>
+        <h6 className="d-flex gap-5 mt-3">
+          <span className="mt-auto"> Have an account already </span>
+          <Link to="/student_login" className="fs-4 my-auto">
+            Login
+          </Link>
+        </h6>
+        <form
+          className="row g-3 mt-4"
+          action=""
+          method="post"
+          onSubmit={formik.handleSubmit}
+        >
+          <div className="col-md-6 position-relative  flex-column mb-3">
             <input
-              className={formik.touched.check && formik.errors.check ? "form-check-input is-invalid" : "form-check-input"}
-              type="checkbox"
-              id="invalidCheck3"
-              aria-describedby="invalidCheck3Feedback"
+              type="text"
+              autoComplete="on"
+              className={
+                formik.touched.firstName && formik.errors.firstName
+                  ? "input form-control is-invalid"
+                  : "input form-control is-vali"
+              }
+              id=""
+              name="firstName"
               required
-              name="check"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            <label className="form-check-label" htmlFor="invalidCheck3">
-              Agree to terms and conditions
+            <label htmlFor="validationServer01" className="user-label">
+              First Name
             </label>
-            <div id="invalidCheck3Feedback" className="invalid-feedback">
-              You must agree before submitting.
+            <div className="invalid-feedback">
+              Please provide your Firstname!
+            </div>
+            <div className="valid-feedback">Looks good</div>
+          </div>
+          <div className="col-md-6 position-relative  flex-column mb-3">
+            <input
+              type="text"
+              autoComplete="on"
+              className={
+                formik.touched.lastName && formik.errors.lastName
+                  ? "input form-control is-invalid"
+                  : "input form-control"
+              }
+              id=""
+              name="lastName"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="validationServer01" className="user-label">
+              Last Name
+            </label>
+            <div className="invalid-feedback">
+              Please provide your Lastname!
             </div>
           </div>
-        </div>
-        <div className="col-12">
-          <button
-            className="btn btn-primary signup-btn"
-            type="submit"
-          >
-            Create Account
-          </button>
-        </div>
-      </form>
+
+          <div className="col-lg-12 position-relative  flex-column mb-3">
+            <input
+              type="email"
+              autoComplete="on"
+              className={
+                formik.touched.email && formik.errors.email
+                  ? "input form-control is-invalid"
+                  : "input form-control"
+              }
+              id=""
+              name="email"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="validationServer01" className="user-label">
+              Email Address
+            </label>
+            <div id="validationServer04Feedback" className="invalid-feedback">
+              Please provide a valid Email address.
+            </div>
+          </div>
+          <div className="col-md-6 position-relative  flex-column mb-3">
+            <input
+              type="tel"
+              autoComplete="on"
+              className={
+                formik.touched.phoneNumber && formik.errors.phoneNumber
+                  ? "input form-control is-invalid"
+                  : "input form-control"
+              }
+              id=""
+              name="phoneNumber"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="validationServer01" className="user-label">
+              Phone Number
+            </label>
+            <div id="validationServer04Feedback" className="invalid-feedback">
+              Please provide a valid Phone number.
+            </div>
+          </div>
+          <div className="col-lg-6 position-relative  flex-column mb-3">
+            <input
+              type="password"
+              autoomplete="on"
+              className={
+                formik.touched.password && formik.errors.password
+                  ? "input form-control is-invalid"
+                  : "input form-control"
+              }
+              id=""
+              name="password"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="validationServer01" className="user-label">
+              Password
+            </label>
+            <div id="validationServer04Feedback" className="invalid-feedback">
+              Please provide a valid password.
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="form-check">
+              <input
+                className={
+                  formik.touched.check && formik.errors.check
+                    ? "form-check-input is-invalid"
+                    : "form-check-input"
+                }
+                type="checkbox"
+                id="invalidCheck3"
+                aria-describedby="invalidCheck3Feedback"
+                required
+                name="check"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              <label className="form-check-label" htmlFor="invalidCheck3">
+                Agree to terms and conditions
+              </label>
+              <div id="invalidCheck3Feedback" className="invalid-feedback">
+                You must agree before submitting.
+              </div>
+            </div>
+          </div>
+          <div className="col-12">
+            <button className="btn btn-primary signup-btn" type="submit">
+              Create Account
+            </button>
+          </div>
+        </form>
       </div>
     </>
   );

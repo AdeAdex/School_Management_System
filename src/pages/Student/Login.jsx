@@ -59,7 +59,7 @@ const Login = () => {
   });
   return (
     <>
-      <div className="login-main-container">
+      <div className="login-main-container" style={{backgroundImage: 'url("pic/loginImage7.png")'}}>
         <div className="login-content">
           <div className="login-text text-center">Login</div>
           <form action="#" onSubmit={formik.handleSubmit}>
