@@ -16,7 +16,7 @@ const PersonalInformation = () => {
       phoneNumber: globalState.phoneNumber,
       middleName: globalState.middleName,
       address: globalState.address,
-      title: globalState.title,
+      myTitle: globalState.myTitle,
       city: globalState.city,
       age: globalState.age,
       gender: globalState.gender,
@@ -160,12 +160,12 @@ const PersonalInformation = () => {
             type="text"
             autoComplete="on"
             className={
-              formik.touched.title && formik.errors.title
+              formik.touched.myTitle && formik.errors.myTitle
                 ? "input form-control is-invalid"
                 : "input form-control"
             }
             id=""
-            name="title"
+            name="myTitle"
             required
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
