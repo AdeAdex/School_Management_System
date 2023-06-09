@@ -136,7 +136,7 @@ const Login = () => {
             <div className="login-forgot-pass">
               <a href="#">Forgot Password?</a>
             </div>
-            <button className="login-button" type="submit">Sign in</button>
+            <button className="login-button btn btn-primary" type="submit">Sign in</button>
             <div className="login-sign-up">
               Not a member?
               <a href="#">signup now</a>
