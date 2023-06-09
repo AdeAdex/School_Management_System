@@ -97,7 +97,7 @@ const AccountTypePage = () => {
             <label
               className=""
               style={{
-                width: "150px",
+                width: "100px",
                 outline: "outset gray",
                 cursor: "pointer",
               }}
@@ -121,7 +121,7 @@ const AccountTypePage = () => {
             <label
               className=""
               style={{
-                width: "150px",
+                width: "100px",
                 outline: "outset gray",
                 cursor: "pointer",
               }}
