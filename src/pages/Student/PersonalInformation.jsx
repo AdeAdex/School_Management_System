@@ -2,6 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import './StudentSignUp.css'
 
 const PersonalInformation = () => {
   useEffect(() => {}, []);

@@ -1,7 +1,7 @@
 import React from 'react'
 import SignupHero from '../../components/StudentSignupComponents/SignupHero'
 import SignupForm from '../../components/StudentSignupComponents/SignupForm'
-import "../Student/StudentSignUp.css"
+// import "../Student/StudentSignUp.css"
 
 const StudentSignUp = () => {
   return (

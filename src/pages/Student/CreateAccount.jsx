@@ -132,7 +132,7 @@ const CreateAccount = () => {
 
         <div className="col-lg-12 position-relative  flex-column mb-3">
           <input
-            type="email"
+            type="text"
             autoComplete="on"
             className={formik.touched.email && formik.errors.email ? "input form-control is-invalid" : "input form-control"}
             id=""
