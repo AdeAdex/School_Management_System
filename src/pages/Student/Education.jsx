@@ -11,14 +11,21 @@ const Education = () => {
             <span>Username</span>
             <i></i>
           </div>
-          {/* <div class="education-user-box">
-            <input required="" name="" className="education-input" type="text" />
-            <label className="education-label">Email</label>
+          <div class="education-input-box">
+            <input required="required" className="education-input" type="text" />
+            <span>Username</span>
+            <i></i>
           </div>
-          <div class="education-user-box">
-            <input required="" name="" className="education-input" type="password" />
-            <label className="education-label">Password</label>
-          </div> */}
+          <div class="education-input-box">
+            <input required="required" className="education-input" type="text" />
+            <span>Username</span>
+            <i></i>
+          </div>
+          <div class="education-input-box">
+            <input required="required" className="education-input" type="text" />
+            <span>Username</span>
+            <i></i>
+          </div>
           <a href="#">
             <span></span>
             <span></span>

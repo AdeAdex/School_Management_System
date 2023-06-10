@@ -1,12 +1,22 @@
+.education-login-box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.education-form {
+        width: 100%;
+}
+
 .education-input-box {
   position: relative;
-  width: 196px;
+  width: 100%;
 }
 
 .education-input-box .education-input {
   position: relative;
   width: 100%;
-  padding: 20px 10px 10px;
+  padding: 25px 10px 10px;
   background: transparent;
   outline: none;
   box-shadow: none;
@@ -21,7 +31,7 @@
 .education-input-box span {
   position: absolute;
   left: 0;
-  padding: 20px 10px 10px;
+  padding: 25px 10px 10px;
   font-size: 1em;
   color: #8f8f8f;
   letter-spacing: 00.05em;
@@ -32,7 +42,7 @@
 .education-input-box .education-input:valid ~ span,
 .education-input-box .education-input:focus ~ span {
   /* color: #45f3ff; */
-  transform: translateX(-10px) translateY(-34px);
+  transform: translateX(-10px) translateY(-20px);
   font-size: 0, 75em;
 }
 
@@ -51,5 +61,5 @@
 
 .education-input-box .education-input:valid ~ i,
 .education-input-box .education-input:focus ~ i {
-  height: 44px;
+  height: 2px;
 }
