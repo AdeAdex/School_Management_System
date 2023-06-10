@@ -4,47 +4,24 @@ import "./Education.css";
 const Education = () => {
   return (
     <>
-      <div className="education-form row g-3">
-        <div className="education-input-container ic1">
-          <input
-            placeholder=""
-            type="text"
-            className="education-input"
-            id="firstname"
-          />
-          <div className="education-cut"></div>
-          <label className="education-iLabel" for="firstname">
-            First name
-          </label>
-        </div>
-
-        <div className="education-input-container ic2">
-          <input
-            placeholder=""
-            type="text"
-            className="education-input"
-            id="lastname"
-          />
-          <div className="education-cut"></div>
-          <label className="education-iLabel" for="lastname">
-            Last name
-          </label>
-        </div>
-        <div className="education-input-container ic2">
-          <input
-            placeholder=""
-            type="text"
-            className="education-input"
-            id="email"
-          />
-          <div className="education-cut cut-short"></div>
-          <label className="education-iLabel" for="email">
-            Email
-          </label>
-        </div>
-        <button className="education-submit" type="text">
-          submit
-        </button>
+      <div class="education-login-box">
+        <form className="education-form">
+          <div class="education-user-box">
+            <input required="" name="" className="education-input" type="text" />
+            <label className="education-label">Email</label>
+          </div>
+          <div class="education-user-box">
+            <input required="" name="" className="education-input" type="password" />
+            <label className="education-label">Password</label>
+          </div>
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </a>
+        </form>
       </div>
     </>
   );
