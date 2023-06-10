@@ -1,0 +1,99 @@
+.education-form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.education-input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.education-ic1 {
+  margin-top: 40px;
+}
+
+.education-ic2 {
+  margin-top: 30px;
+}
+
+.education-input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.education-cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.education-cut-short {
+  width: 50px;
+}
+
+.education-iLabel {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.education-input:focus ~ .education-cut {
+  transform: translateY(8px);
+}
+
+.education-input:focus ~ .education-iLabel {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.education-input:not(:focus) ~ .education-iLabel {
+  color: #808097;
+}
+
+.education-input:focus ~ .education-iLabel {
+  color: #dc2f55;
+}
+
+.education-submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.education-submit:active {
+  background-color: #06b;
+}
