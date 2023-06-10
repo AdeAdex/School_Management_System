@@ -70,6 +70,7 @@ const CreateAccount = () => {
         .required("lastName is required to create account"),
       email: yup
         .string()
+        .lowercase()
         .required("email is required to create account")
         .email("Please enter a valid email address"),
       phoneNumber: yup
@@ -77,7 +78,8 @@ const CreateAccount = () => {
         .required("phoneNumber is required to create account"),
       password: yup
         .string()
-        .required("password is required to create account"),
+        .required("password is required to create account")
+        .min(4, "must be at least 4 characters long"),
       checkbox: yup
         .boolean()
         .oneOf([true]),
