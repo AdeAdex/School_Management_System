@@ -26,34 +26,34 @@ const CreateAccount = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
-      // const endpoint = "http://localhost:2000/student_account/student";
-      // axios
-      // .post(endpoint, values)
-      // .then((response) => {
-      //   if (response.data.status) {
-      //     console.log(response.data.status);
-      //     console.log(response.data.response);
-      //     navigate("/student_login");
-      //   } else {
-      //     const Toast = Swal.mixin({
-      //       toast: true,
-      //       position: "top",
-      //       showConfirmButton: false,
-      //       timer: 3000,
-      //       timerProgressBar: true,
-      //       didOpen: (toast) => {
-      //         toast.addEventListener("mouseenter", Swal.stopTimer);
-      //         toast.addEventListener("mouseleave", Swal.resumeTimer);
-      //       },
-      //     });
+      // console.log(values);
+      const endpoint = "http://localhost:2000/student_account/student";
+      axios
+      .post(endpoint, values)
+      .then((response) => {
+        if (response.data.status) {
+          console.log(response.data.status);
+          console.log(response.data.response);
+          navigate("/student_login");
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
 
-      //     Toast.fire({
-      //       icon: "error",
-      //       title: response.data.message,
-      //     });
-      //   }
-      // });
+          Toast.fire({
+            icon: "error",
+            title: response.data.message,
+          });
+        }
+      });
       // .catch((err) => {
       //   console.log(response.data.message);
       //   if (err.code === 11000) {
