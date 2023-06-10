@@ -7,12 +7,12 @@ import * as yup from "yup";
 const CreateAccount = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let endpoint = "http://localhost:2000/student_account/mail";
-    axios.get(endpoint).then((res) => {
-      console.log(res.data.message);
-    });
-  }, []);
+  // useEffect(() => {
+  //   let endpoint = "http://localhost:2000/student_account/mail";
+  //   axios.get(endpoint).then((res) => {
+  //     console.log(res.data.message);
+  //   });
+  // }, []);
 
   let formik = useFormik({
     initialValues: {
@@ -25,8 +25,11 @@ const CreateAccount = () => {
     },
 
     onSubmit: (values) => {
+      // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student";
-      axios.post(endpoint, values).then((response) => {
+      axios
+      .post(endpoint, values)
+      .then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
           console.log(response.data.response);
@@ -75,12 +78,18 @@ const CreateAccount = () => {
       password: yup
         .string()
         .required("password is required to create account"),
+      checkbox: yup
+        .boolean()
+        .oneOf([true]),
     }),
   });
 
   return (
     <>
-      <div className="create-account" style={{ padding: "60px 100px 0px", width: "100%" }}>
+      <div
+        className="create-account"
+        style={{ padding: "60px 100px 0px", width: "100%" }}
+      >
         <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
           student sign up
         </h2>
@@ -217,7 +226,7 @@ const CreateAccount = () => {
                     : "form-check-input"
                 }
                 type="checkbox"
-                id="invalidCheck3"
+                id="invalidCheck2"
                 aria-describedby="invalidCheck3Feedback"
                 required
                 name="check"
