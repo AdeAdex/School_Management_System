@@ -3,8 +3,10 @@ import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import './StudentSignUp.css'
+import { useNavigate } from "react-router-dom";
 
 const PersonalInformation = () => {
+  let navigate = useNavigate()
   useEffect(() => {}, []);
 
   var globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -29,8 +31,26 @@ const PersonalInformation = () => {
       console.log(globalState);
       // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_update";
-      axios.post(endpoint, globalState).then((response) => {
+      axios.post(endpoint, globalState)
+      .then((response) => {
         console.log(response);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: response.data.message,
+        });
+        navigate('/student/admission/personal_information')
       });
     },
   });
