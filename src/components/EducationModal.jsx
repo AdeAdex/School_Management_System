@@ -3,8 +3,11 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const EducationModal = ({ isOpen, onClose }) => {
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+
   let formik = useFormik({
     initialValues: {
       exam: "",
@@ -13,12 +16,14 @@ const EducationModal = ({ isOpen, onClose }) => {
       year: "",
       examNo: "",
       candidateNo: "",
+      receivedEmail: "",
     },
 
     onSubmit: (values) => {
-      console.log(values);
+      const newValues = { ...values, receivedEmail: globalState.email };
+      console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/student_education";
-      axios.post(endpoint, values)
+      axios.post(endpoint, newValues)
       .then((response) => {
         console.log(response);
       });
