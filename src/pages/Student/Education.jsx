@@ -1,32 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Education.css";
+import EducationModal from "../../components/EducationModal";
+
 
 const Education = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   return (
     <>
-      <div class="education-login-box">
+      <button onClick={openModal}>Add Result</button>
+      <EducationModal isOpen={modalOpen} onClose={closeModal}/>
+    </>
+  );
+};
+
+export default Education;
+
+
+{/* <div class="education-login-box">
         <form className="education-form">
           <div class="education-input-box">
             <input required="required" className="education-input" type="text" />
-            <span>Username</span>
+            <span>exam</span>
             <i></i>
           </div>
           <div class="education-input-box">
             <input required="required" className="education-input" type="text" />
-            <span>Username</span>
+            <span>subject</span>
             <i></i>
           </div>
           <div class="education-input-box">
             <input required="required" className="education-input" type="text" />
-            <span>Username</span>
+            <span>grade</span>
             <i></i>
           </div>
           <div class="education-input-box">
             <input required="required" className="education-input" type="text" />
-            <span>Username</span>
+            <span>year</span>
             <i></i>
           </div>
-          <a href="#">
+          <div class="education-input-box">
+            <input required="required" className="education-input" type="text" />
+            <span>exam no</span>
+            <i></i>
+          </div>
+          <div class="education-input-box">
+            <input required="required" className="education-input" type="text" />
+            <span>candidate number</span>
+            <i></i>
+          </div>
+          <a className="submit-btn bg-primary" href="#">
             <span></span>
             <span></span>
             <span></span>
@@ -34,9 +64,4 @@ const Education = () => {
             Submit
           </a>
         </form>
-      </div>
-    </>
-  );
-};
-
-export default Education;
+      </div> */}
