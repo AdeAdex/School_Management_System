@@ -25,7 +25,24 @@ const EducationModal = ({ isOpen, onClose }) => {
       let endpoint = "http://localhost:2000/student_account/student_education";
       axios.post(endpoint, newValues)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: response.data.message,
+        });
+        // console.log(response.data.response.previousEducation[0].exam);
       });
     },
   });

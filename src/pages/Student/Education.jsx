@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Education.css";
 import EducationModal from "../../components/EducationModal";
 
 
 const Education = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [preEdu, setPreEdu] = useState([])
 
   const openModal = () => {
     setModalOpen(true);
@@ -13,8 +14,38 @@ const Education = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    setPreEdu(response.data.response.previousEducation)
+    console.log(response.data.response.previousEducation[0].exam);
+  }, [])
+  
+
+
   return (
     <>
+    <table className="table table-borderd table-striped">
+      <thead>
+        <tr className="text-uppercase">
+          <td>exam</td>
+          <td>subject</td>
+          <td>examNo</td>
+          <td>year</td>
+          <td>grade</td>
+          <td>candidateNo</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="text-uppercase">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
       <button onClick={openModal}>Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal}/>
     </>
