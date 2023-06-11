@@ -42,7 +42,7 @@ const EducationModal = ({ isOpen, onClose }) => {
           icon: "success",
           title: response.data.message,
         });
-        // console.log(response.data.response.previousEducation[0].exam);
+        console.log(response.data.response.previousEducation[0].exam);
       });
     },
   });

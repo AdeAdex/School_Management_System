@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Education.css";
 import EducationModal from "../../components/EducationModal";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 
 const Education = () => {
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [modalOpen, setModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([])
 
@@ -16,9 +19,17 @@ const Education = () => {
   };
 
   useEffect(() => {
-    setPreEdu(response.data.response.previousEducation)
-    console.log(response.data.response.previousEducation[0].exam);
-  }, [])
+    // console.log(globalState.email);
+    // setPreEdu(response.data.response.previousEducation)
+    let endpoint = "http://localhost:2000/student_account/student_education"
+    axios.get(endpoint, globalState.email)
+    .then((response) => {
+      console.log(response);
+      // console.log(response.data.response.previousEducation[0].exam);
+
+    })
+
+  },)
   
 
 
