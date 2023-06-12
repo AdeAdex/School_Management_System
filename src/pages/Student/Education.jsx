@@ -21,8 +21,9 @@ const Education = () => {
   useEffect(() => {
     // console.log(globalState.email);
     // setPreEdu(response.data.response.previousEducation)
+    let myEmail = globalState.email
     let endpoint = "http://localhost:2000/student_account/student_education"
-    axios.get(endpoint, globalState.email)
+    axios.get(endpoint, myEmail)
     .then((response) => {
       console.log(response);
       // console.log(response.data.response.previousEducation[0].exam);
