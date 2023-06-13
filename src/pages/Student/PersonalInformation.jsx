@@ -189,6 +189,7 @@ const PersonalInformation = () => {
             required
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            value={formik.values.myTitle}
           />
           <label htmlFor="validationServer01" className="user-label">
             Title
