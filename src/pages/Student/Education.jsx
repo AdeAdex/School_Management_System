@@ -9,7 +9,7 @@ const Education = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [modalOpen, setModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([])
-  const [ind, setInd] = useState("")
+  const [myIndex, setMyIndex] = useState("")
 
   const openModal = () => {
     setModalOpen(true);
@@ -42,7 +42,7 @@ const Education = () => {
     // let endpoint = "http://localhost:2000/student_account/student_education"
     // axios.post(endpoint, )
     // ind: ind
-    console.log(ind);
+    console.log(myIndex);
   }
 
   return (
@@ -70,7 +70,7 @@ const Education = () => {
           <td>{items.candidateNo}</td>
           <td className="d-flex gap-2">
           {/* <form action="" method="post"> */}
-          <input type="text" name="ind" value={index} onChange={(e) => setInd(e.target.value)} />
+          <input type="text" name="ind"  onChange={(e) => setMyIndex(e.target.value)} />
             <button type="submit" className="btn btn-white shadow" onClick={del}>edit</button>
           {/* </form> */}
           <form action="">
