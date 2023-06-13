@@ -21,11 +21,19 @@ const Education = () => {
   useEffect(() => {
     // console.log(globalState.email);
     // let myEmail = globalState.email
+    let studentLoginToken = localStorage.studentLoginToken;
     let endpoint = "http://localhost:2000/student_account/student_education"
-    axios.get(endpoint)
-    .then((response) => {
-      // console.log(response.data.response.previousEducation);
-      setPreEdu(response.data.response.previousEducation)
+    axios
+    .get(endpoint, {
+      headers: {
+        Authorization: `Bearer ${studentLoginToken}`,
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+    .then((result) => {
+      // console.log(result);
+      // setPreEdu(result.data.response.previousEducation)
 
     })
 
@@ -46,19 +54,7 @@ const Education = () => {
           <td>candidateNo</td>
         </tr>
       </thead>
-      { preEdu.map((items, index) => (
-      <tbody key={index}>
-        <tr className="text-uppercase">
-          <td>{items.exam}</td>
-          <td>{items.subject}</td>
-          <td>{items.examNo}</td>
-          <td>{items.year}</td>
-          <td>{items.grade}</td>
-          <td>{items.candidateNo}</td>
-        </tr>
-      </tbody>
-      ))
-      }
+      
     </table>
       <button onClick={openModal}>Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal}/>

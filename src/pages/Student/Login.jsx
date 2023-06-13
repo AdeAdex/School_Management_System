@@ -71,6 +71,7 @@ const Login = () => {
                 onChange={formik.handleChange}
                 className="login-input"
                 placeholder="Email or Phone"
+                autoComplete="on"
               />
               <span className="login-span">
                 <svg
@@ -106,6 +107,7 @@ const Login = () => {
                 onChange={formik.handleChange}
                 className="login-input"
                 placeholder="Password"
+                autoComplete="on"
               />
               <span className="login-span">
                 <svg
