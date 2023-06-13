@@ -26,7 +26,6 @@ const Education = () => {
     .then((response) => {
       // console.log(response.data.response.previousEducation);
       setPreEdu(response.data.response.previousEducation)
-      // console.log(response.data.response.previousEducation[0].exam);
 
     })
 
