@@ -120,7 +120,6 @@ const CreateAccount = () => {
                   ? "input form-control is-invalid"
                   : "input form-control is-vali"
               }
-              id=""
               name="firstName"
               required
               onChange={formik.handleChange}
@@ -143,7 +142,6 @@ const CreateAccount = () => {
                   ? "input form-control is-invalid"
                   : "input form-control"
               }
-              id=""
               name="lastName"
               required
               onChange={formik.handleChange}
@@ -166,7 +164,6 @@ const CreateAccount = () => {
                   ? "input form-control is-invalid"
                   : "input form-control"
               }
-              id=""
               name="email"
               required
               onChange={formik.handleChange}
@@ -188,7 +185,6 @@ const CreateAccount = () => {
                   ? "input form-control is-invalid"
                   : "input form-control"
               }
-              id=""
               name="phoneNumber"
               required
               onChange={formik.handleChange}
@@ -204,13 +200,12 @@ const CreateAccount = () => {
           <div className="col-lg-6 position-relative  flex-column mb-3">
             <input
               type="password"
-              autoomplete="on"
+              autoComplete="on"
               className={
                 formik.touched.password && formik.errors.password
                   ? "input form-control is-invalid"
                   : "input form-control"
               }
-              id=""
               name="password"
               required
               onChange={formik.handleChange}
