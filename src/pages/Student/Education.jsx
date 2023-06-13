@@ -38,11 +38,10 @@ const Education = () => {
   },)
   
 
-  const del = () => {
+  const del = (myId) => {
     // let endpoint = "http://localhost:2000/student_account/student_education"
     // axios.post(endpoint, )
     // ind: ind
-    console.log(myIndex);
   }
 
   return (
@@ -70,11 +69,11 @@ const Education = () => {
           <td>{items.candidateNo}</td>
           <td className="d-flex gap-2">
           {/* <form action="" method="post"> */}
-          <input type="text" name="ind"  onChange={(e) => setMyIndex(e.target.value)} />
-            <button type="submit" className="btn btn-white shadow" onClick={del}>edit</button>
+          <input type="text" name="myIndex" value={index} onChange={(e) => setMyIndex(e.target.value)} style={{width: '30px'}} className="text-center" />
+            <button type="submit" className="btn btn-white shadow" >edit</button>
           {/* </form> */}
           <form action="">
-            <button type="submit" className="btn btn-white shadow">delete</button>
+            <button type="submit" className="btn btn-white shadow" onClick={()=>{del(items.id)}}>delete</button>
           </form>
           </td>
         </tr>

@@ -18,10 +18,11 @@ const EducationModal = ({ isOpen, onClose }) => {
       examNo: "",
       candidateNo: "",
       receivedEmail: "",
+      identificationNo: ""
     },
 
     onSubmit: (values) => {
-      const newValues = { ...values, receivedEmail: globalState.email };
+      const newValues = { ...values, receivedEmail: globalState.email ,id:crypto.randomUUID()};
       console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/student_education";
       axios.post(endpoint, newValues)
@@ -127,6 +128,17 @@ const EducationModal = ({ isOpen, onClose }) => {
                   className="education-input"
                   type="text"
                   name="candidateNo"
+                  onChange={formik.handleChange}
+                />
+                <span>candidate number</span>
+                <i></i>
+              </div>
+              <div className="education-input-box">
+                <input
+                  required="required"
+                  className="education-input"
+                  type="text"
+                  name="identificationNo"
                   onChange={formik.handleChange}
                 />
                 <span>candidate number</span>
