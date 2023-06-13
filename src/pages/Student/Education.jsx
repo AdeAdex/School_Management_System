@@ -39,10 +39,11 @@ const Education = () => {
   
 
   const del = (myId) => {
+    console.log(myId);
     let endpoint = "http://localhost:2000/student_account/delete"
     axios.post(endpoint, myId)
     .then((response) => {
-      
+
     })
     // alert("ID:" + myId)
   }
