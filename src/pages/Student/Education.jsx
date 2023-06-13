@@ -9,6 +9,7 @@ const Education = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [modalOpen, setModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([])
+  const [ind, setInd] = useState("")
 
   const openModal = () => {
     setModalOpen(true);
@@ -19,8 +20,6 @@ const Education = () => {
   };
 
   useEffect(() => {
-    // console.log(globalState.email);
-    // let myEmail = globalState.email
     let studentLoginToken = localStorage.studentLoginToken;
     let endpoint = "http://localhost:2000/student_account/student_education"
     axios
@@ -32,7 +31,6 @@ const Education = () => {
       }
     })
     .then((response) => {
-      // console.log(response.data.response.previousEducation);
       setPreEdu(response.data.response.previousEducation)
 
     })
@@ -40,6 +38,12 @@ const Education = () => {
   },)
   
 
+  const del = () => {
+    // let endpoint = "http://localhost:2000/student_account/student_education"
+    // axios.post(endpoint, )
+    // ind: ind
+    console.log(ind);
+  }
 
   return (
     <>
@@ -52,6 +56,7 @@ const Education = () => {
           <td>year</td>
           <td>grade</td>
           <td>candidateNo</td>
+          <td>options</td>
         </tr>
       </thead>
       { preEdu.map((items, index) => (
@@ -63,6 +68,15 @@ const Education = () => {
           <td>{items.year}</td>
           <td>{items.grade}</td>
           <td>{items.candidateNo}</td>
+          <td className="d-flex gap-2">
+          {/* <form action="" method="post"> */}
+          <input type="text" name="ind" value={index} onChange={(e) => setInd(e.target.value)} />
+            <button type="submit" className="btn btn-white shadow" onClick={del}>edit</button>
+          {/* </form> */}
+          <form action="">
+            <button type="submit" className="btn btn-white shadow">delete</button>
+          </form>
+          </td>
         </tr>
       </tbody>
       ))
@@ -75,46 +89,3 @@ const Education = () => {
 };
 
 export default Education;
-
-
-{/* <div class="education-login-box">
-        <form className="education-form">
-          <div class="education-input-box">
-            <input required="required" className="education-input" type="text" />
-            <span>exam</span>
-            <i></i>
-          </div>
-          <div class="education-input-box">
-            <input required="required" className="education-input" type="text" />
-            <span>subject</span>
-            <i></i>
-          </div>
-          <div class="education-input-box">
-            <input required="required" className="education-input" type="text" />
-            <span>grade</span>
-            <i></i>
-          </div>
-          <div class="education-input-box">
-            <input required="required" className="education-input" type="text" />
-            <span>year</span>
-            <i></i>
-          </div>
-          <div class="education-input-box">
-            <input required="required" className="education-input" type="text" />
-            <span>exam no</span>
-            <i></i>
-          </div>
-          <div class="education-input-box">
-            <input required="required" className="education-input" type="text" />
-            <span>candidate number</span>
-            <i></i>
-          </div>
-          <a className="submit-btn bg-primary" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </a>
-        </form>
-      </div> */}
