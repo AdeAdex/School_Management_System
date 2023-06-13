@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const EducationModal = ({ isOpen, onClose }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const [val, setVal] = useState([])
 
   let formik = useFormik({
     initialValues: {
@@ -43,12 +44,14 @@ const EducationModal = ({ isOpen, onClose }) => {
           title: response.data.message,
         });
         console.log(response.data.response.previousEducation[0].exam);
+        setVal(response.data.response.previousEducation)
       });
     },
   });
 
   return (
     <>
+    
       <Modal show={isOpen} onHide={onClose} animation={true}>
         <Modal.Header className="bg-white text-dark">
           <Modal.Title className="text-uppercase text-center mx-auto">
