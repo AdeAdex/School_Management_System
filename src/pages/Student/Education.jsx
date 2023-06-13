@@ -19,13 +19,13 @@ const Education = () => {
   };
 
   useEffect(() => {
-    console.log(globalState.email);
-    let myEmail = globalState.email
+    // console.log(globalState.email);
+    // let myEmail = globalState.email
     let endpoint = "http://localhost:2000/student_account/student_education"
-    axios.get(endpoint, myEmail)
+    axios.get(endpoint)
     .then((response) => {
-      console.log(response);
-      // setPreEdu(response.data.response.previousEducation)
+      // console.log(response.data.response.previousEducation);
+      setPreEdu(response.data.response.previousEducation)
       // console.log(response.data.response.previousEducation[0].exam);
 
     })
@@ -47,7 +47,7 @@ const Education = () => {
           <td>candidateNo</td>
         </tr>
       </thead>
-      {/* { val.map((items, index) => (
+      { preEdu.map((items, index) => (
       <tbody key={index}>
         <tr className="text-uppercase">
           <td>{items.exam}</td>
@@ -59,7 +59,7 @@ const Education = () => {
         </tr>
       </tbody>
       ))
-      } */}
+      }
     </table>
       <button onClick={openModal}>Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal}/>
