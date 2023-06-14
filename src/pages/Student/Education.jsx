@@ -24,11 +24,14 @@ const Education = () => {
     // setEditModalOpen(true);
     console.log(myId);
     let endpoint = "http://localhost:2000/student_account/edit";
-    axios.put(endpoint, {
+    axios.get(endpoint, {
       headers: {
         Authorization: `${myId}`,
         "Content-Type": "application/json",
       },
+    })
+    .then((response) => {
+      console.log(response.data.response);
     })
 
   };
