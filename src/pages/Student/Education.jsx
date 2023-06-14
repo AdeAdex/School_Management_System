@@ -8,10 +8,10 @@ const Education = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [modalOpen, setModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
-  const [myIndex, setMyIndex] = useState("");
 
   const openModal = () => {
     setModalOpen(true);
+    
   };
 
   const closeModal = () => {
@@ -85,19 +85,6 @@ const Education = () => {
     });
   };
 
-  // const del = (myId) => {
-  //   console.log(myId);
-  //   let endpoint = "http://localhost:2000/student_account/delete";
-  //   axios.delete(endpoint, {
-  //     headers: {
-  //       Authorization: `${myId}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   // .then((response) => {
-
-  //   // })
-  // };
 
   return (
     <>
@@ -123,7 +110,7 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow">
+                <button type="submit" className="btn btn-white shadow" onClick={openModal}>
                   edit
                 </button>
                 <button
