@@ -36,13 +36,18 @@ const Education = () => {
 
   const openConfirmDeleteModal = (myId) => {
     Swal.fire({
-      title: "Do you really want to delete this?",
+      title: "Do you really want to delete your result?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup",
+        title: "my-title",
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myId);

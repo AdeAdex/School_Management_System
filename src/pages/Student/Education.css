@@ -174,3 +174,18 @@ form .submit-btn {
     bottom: 100%;
   }
 }
+
+.my-swal .my-popup {
+  width: 40%;
+}
+
+.my-swal .my-title {
+  font-size: 25px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .my-swal .my-popup {
+    width: 100%;
+  }
+}
