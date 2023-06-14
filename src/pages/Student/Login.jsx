@@ -53,6 +53,7 @@ const Login = () => {
             icon: "error",
             title: response.data.message,
           });
+          navigate('/student_login');
         }
       });
     },

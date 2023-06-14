@@ -41,7 +41,12 @@ const Education = () => {
   const del = (myId) => {
     console.log(myId);
     let endpoint = "http://localhost:2000/student_account/delete"
-    axios.delete(endpoint, myId)
+    axios.delete(endpoint, {
+      headers: {
+        Authorization: `${myId}`,
+        'Content-Type': "application/json"
+      }
+    })
     // .then((response) => {
 
     // })
