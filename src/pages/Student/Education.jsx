@@ -3,20 +3,40 @@ import "./Education.css";
 import EducationModal from "../../components/EducationModal";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import EditEducationModal from "../../components/EditEducationModal";
 
 const Education = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [modalOpen, setModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
 
   const openModal = () => {
     setModalOpen(true);
-    
+
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const openEditModal = (myId) => {
+    // setEditModalOpen(true);
+    console.log(myId);
+    let endpoint = "http://localhost:2000/student_account/edit";
+    axios.put(endpoint, {
+      headers: {
+        Authorization: `${myId}`,
+        "Content-Type": "application/json",
+      },
+    })
+
+  };
+
+  const closeEditModal = () => {
+    setEditModalOpen(false);
+  };
+
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
@@ -33,6 +53,8 @@ const Education = () => {
         setPreEdu(response.data.response.previousEducation);
       });
   });
+
+  
 
   const openConfirmDeleteModal = (myId) => {
     Swal.fire({
@@ -110,7 +132,7 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow" onClick={openModal}>
+                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id)}}>
                   edit
                 </button>
                 <button
@@ -127,6 +149,7 @@ const Education = () => {
       </table>
       <button onClick={openModal}>Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal} />
+      <EditEducationModal isOpen={editModalOpen} onClose={closeEditModal} />
     </>
   );
 };
