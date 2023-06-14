@@ -36,7 +36,7 @@ const Education = () => {
 
   const openConfirmDeleteModal = (myId) => {
     Swal.fire({
-      title: "Are you sure you want to delete your result?",
+      title: "Do you really want to delete this?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -52,8 +52,31 @@ const Education = () => {
             Authorization: `${myId}`,
             "Content-Type": "application/json",
           },
-        });
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        })
+        .then((response) => {
+          if (response.data.status) {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top",
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+    
+            Toast.fire({
+              icon: "success",
+              title: response.data.message,
+            });
+          } else {
+
+          }
+         
+        })
+        
       }
     });
   };

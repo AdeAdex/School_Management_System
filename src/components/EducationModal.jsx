@@ -50,7 +50,11 @@ const EducationModal = ({ isOpen, onClose }) => {
     },
   });
 
-  const
+  // const onClose = () => {
+  //   if (condition) {
+      
+  //   }
+  // }
 
   return (
     <>
