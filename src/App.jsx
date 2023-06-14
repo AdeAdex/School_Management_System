@@ -64,7 +64,7 @@ function App() {
   },[])
 
   let token = localStorage.token
-  // let studentLoginToken = localStorage.studentLoginToken
+  let studentLoginToken = localStorage.studentLoginToken
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
   let shouldRedirect = true;
@@ -79,8 +79,8 @@ function App() {
         <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
+          <Route path='admission/*' element={studentLoginToken ?  <Admission/> : <Navigate to="/student_login"/>}>
           <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/>
-          <Route path='admission/*' element={<Admission/>}>
             <Route path='pick_class' element={<PickClass/>}/>
             <Route path='payment' element={<Payment/>} />
             <Route path='personal_information' element={<PersonalInformation/>} />
@@ -88,7 +88,7 @@ function App() {
             <Route path='referees' element={<Referees/>} />
           </Route>
         </Route>
-        <Route exact path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
+        <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='student_login' element={<Login/>}/>
         <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>
