@@ -36,9 +36,8 @@ const Education = () => {
 
   const openConfirmDeleteModal = (myId) => {
     Swal.fire({
+      position: "bottom",
       title: "Do you really want to delete your result?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
