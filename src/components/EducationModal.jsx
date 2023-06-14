@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 
 const EducationModal = ({ isOpen, onClose }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const [val, setVal] = useState([])
+  // const [val, setVal] = useState([])
+ 
 
   let formik = useFormik({
     initialValues: {
@@ -44,10 +45,12 @@ const EducationModal = ({ isOpen, onClose }) => {
           icon: "success",
           title: response.data.message,
         });
-        setVal(response.data.response.previousEducation)
+        // setVal(response.data.response.previousEducation)
       });
     },
   });
+
+  const
 
   return (
     <>
@@ -143,7 +146,7 @@ const EducationModal = ({ isOpen, onClose }) => {
                 <span>candidate number</span>
                 <i></i>
               </div>
-              <button className="submit-btn bg-primary" type="submit" href="#">
+              <button className="submit-btn bg-primary" type="submit" onClick={onClose}>
                 <span></span>
                 <span></span>
                 <span></span>
