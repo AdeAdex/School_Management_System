@@ -24,7 +24,7 @@ const EducationModal = ({ isOpen, onClose }) => {
 
     onSubmit: (values) => {
       const newValues = { ...values, receivedEmail: globalState.email ,id:crypto.randomUUID()};
-      console.log(newValues);
+      // console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/student_education";
       axios.post(endpoint, newValues)
       .then((response) => {
