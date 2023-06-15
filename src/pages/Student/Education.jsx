@@ -26,7 +26,7 @@ const Education = () => {
     let endpoint = "http://localhost:2000/student_account/edit";
     axios.get(endpoint, {
       headers: {
-        Authorization: `Bearer ${myId}`,
+        Authorization: `${myId}`,
         "Content-Type": "application/json",
         Accept: "application/json"
       },
