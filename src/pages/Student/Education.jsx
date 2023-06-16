@@ -10,7 +10,7 @@ const Education = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
-  const [arrayId, setArrayId] = useState("");
+  const [modalValue, setModalValue] = useState('');
 
   const openModal = () => {
     setModalOpen(true);
@@ -21,10 +21,9 @@ const Education = () => {
     setModalOpen(false);
   };
 
-  const openEditModal = (myId) => {
+  const openEditModal = (value) => {
+    setModalValue(value)
     setEditModalOpen(true);
-    // setArrayId(myId);
-    console.log(arrayId);
 
   };
 
@@ -144,7 +143,7 @@ const Education = () => {
       </table>
       <button onClick={openModal}>Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal} />
-      <EditEducationModal isOpen={editModalOpen} onClose={closeEditModal} />
+      <EditEducationModal myId={modalValue} isOpen={editModalOpen}  onClose={closeEditModal} />
     </>
   );
 };
