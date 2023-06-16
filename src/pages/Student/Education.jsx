@@ -10,6 +10,7 @@ const Education = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
+  const [arrayId, setArrayId] = useState("");
 
   const openModal = () => {
     setModalOpen(true);
@@ -21,19 +22,9 @@ const Education = () => {
   };
 
   const openEditModal = (myId) => {
-    // setEditModalOpen(true);
-    console.log(myId);
-    let endpoint = "http://localhost:2000/student_account/edit";
-    axios.get(endpoint, {
-      headers: {
-        Authorization: `${myId}`,
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-    })
-    .then((response) => {
-      console.log(response.data.response);
-    })
+    setEditModalOpen(true);
+    // setArrayId(myId);
+    console.log(arrayId);
 
   };
 

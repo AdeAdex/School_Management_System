@@ -1,11 +1,16 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 
 const EditEducationModal = ({ isOpen, onClose }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+
+// useEffect(() => {
+//   console.log(arrayId);
+// }, )
+
 
   let formik = useFormik({
     initialValues: {
@@ -21,6 +26,18 @@ const EditEducationModal = ({ isOpen, onClose }) => {
 
     onSubmit: (values) => {
         console.log(values);
+        console.log(myId);
+        let endpoint = "http://localhost:2000/student_account/edit";
+        axios.put(endpoint, {
+          headers: {
+            Authorization: `${myId}`,
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+        })
+        .then((response) => {
+          console.log(response.data.response);
+        })
     },
   });
 
