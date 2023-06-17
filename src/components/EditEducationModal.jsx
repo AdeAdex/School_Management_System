@@ -127,7 +127,7 @@ const EditEducationModal = ({ isOpen, onClose, myId}) => {
               <button
                 className="submit-btn bg-primary"
                 type="submit"
-                
+                onClick={onClose}
               >
                 <span></span>
                 <span></span>
