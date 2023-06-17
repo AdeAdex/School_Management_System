@@ -17,24 +17,17 @@ const EditEducationModal = ({ isOpen, onClose, myId}) => {
       year: "",
       examNo: "",
       candidateNo: "",
-      receivedEmail: "",
       identificationNo: "",
     },
 
     onSubmit: (values) => {
-        console.log(values);
-        console.log(myId);
-        // let endpoint = "http://localhost:2000/student_account/edit";
-        // axios.put(endpoint, {
-        //   headers: {
-        //     Authorization: `${myId}`,
-        //     "Content-Type": "application/json",
-        //     Accept: "application/json"
-        //   },
-        // })
-        // .then((response) => {
-        //   console.log(response.data.response);
-        // })
+        let newValues = {...values, myId: myId}
+        console.log(newValues);
+        let endpoint = "http://localhost:2000/student_account/edit";
+        axios.put(endpoint, newValues)
+        .then((response) => {
+          console.log(response.data.response);
+        })
     },
   });
 
@@ -47,7 +40,6 @@ const EditEducationModal = ({ isOpen, onClose, myId}) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
-        <p>Value: {myId}</p>
           <div className="education-login-box">
             <form
               className="education-form"
@@ -129,7 +121,7 @@ const EditEducationModal = ({ isOpen, onClose, myId}) => {
                   name="identificationNo"
                   onChange={formik.handleChange}
                 />
-                <span>candidate number</span>
+                <span>Identification number</span>
                 <i></i>
               </div>
               <button

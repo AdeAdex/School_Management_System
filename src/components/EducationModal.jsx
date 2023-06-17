@@ -147,7 +147,7 @@ const EducationModal = ({ isOpen, onClose }) => {
                   name="identificationNo"
                   onChange={formik.handleChange}
                 />
-                <span>candidate number</span>
+                <span>Identification number</span>
                 <i></i>
               </div>
               <button className="submit-btn bg-primary" type="submit" onClick={onClose}>
