@@ -29,7 +29,13 @@ const Education = () => {
     setModalIdValue(myId)
     setModalEmailValue(myEmail)
     setEditModalOpen(true);
-
+    let endpoints = "http://localhost:2000/student_account/edit"
+   axios.get(endpoints, {
+    headers: {
+      Authorization: `${myId} ${myEmail}`,
+      'Content-Type' : 'application/json'
+    }
+   })
   };
 
   const closeEditModal = () => {

@@ -7,6 +7,10 @@ import { useSelector } from "react-redux";
 const EditEducationModal = ({ isOpen, onClose, myId, myEmail}) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
 
+  useEffect(() => {
+   
+  }, [])
+  
 
 
   let formik = useFormik({
