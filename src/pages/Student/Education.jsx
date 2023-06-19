@@ -15,6 +15,7 @@ const Education = () => {
   const [modalIdValue, setModalIdValue] = useState('');
   const [modalEmailValue, setModalEmailValue] = useState('');
   const [myEmail, setMyEmail] = useState('');
+  const [l, setL] = useState('');
 
   const openModal = () => {
     setModalOpen(true);
@@ -25,20 +26,22 @@ const Education = () => {
     setModalOpen(false);
   };
 
-  const openEditModal = (myId, myEmail) => {
+  const openEditModal = (myId, myEmail, items) => {
     setModalIdValue(myId)
     setModalEmailValue(myEmail)
     setEditModalOpen(true);
-    let endpoints = "http://localhost:2000/student_account/edit"
-   axios.get(endpoints, {
-    headers: {
-      Authorization: `${myId} ${myEmail}`,
-      'Content-Type' : 'application/json'
-    }
-   })
-   .then((response) => {
-    console.log(response.data.response.previousEducation);
-   })
+    setL(items)
+    console.log(l);
+  //   let endpoints = "http://localhost:2000/student_account/edit"
+  //  axios.get(endpoints, {
+  //   headers: {
+  //     Authorization: `${myId} ${myEmail}`,
+  //     'Content-Type' : 'application/json'
+  //   }
+  //  })
+  //  .then((response) => {
+  //   console.log(response.data.response.previousEducation);
+  //  })
   };
 
   const closeEditModal = () => {
@@ -141,7 +144,7 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id, myEmail)}}>
+                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id, myEmail, items)}}>
                   edit
                 </button>
                 <button
