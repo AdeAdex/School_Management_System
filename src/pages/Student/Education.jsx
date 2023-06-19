@@ -6,11 +6,14 @@ import { useSelector } from "react-redux";
 import EditEducationModal from "../../components/EditEducationModal";
 
 const Education = () => {
-  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  // const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  var globalState = useSelector((state) => state.portalReducer.studentInfo);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
   const [modalValue, setModalValue] = useState('');
+  const [myEmail, setMyEmail] = useState('');
 
   const openModal = () => {
     setModalOpen(true);
@@ -44,14 +47,14 @@ const Education = () => {
         },
       })
       .then((response) => {
-        // console.log(response.data.response);
         setPreEdu(response.data.response.previousEducation);
+        setMyEmail(response.data.response.email)
       });
   });
 
   
 
-  const openConfirmDeleteModal = (myId) => {
+  const openConfirmDeleteModal = (myId, myEmail) => {
     Swal.fire({
       position: "bottom",
       title: "Do you really want to delete your result?",
@@ -66,11 +69,11 @@ const Education = () => {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(myId);
+        console.log(myId, myEmail);
         let endpoint = "http://localhost:2000/student_account/delete";
         axios.delete(endpoint, {
           headers: {
-            Authorization: `${myId}`,
+            Authorization: `${myId} ${myEmail}`,
             "Content-Type": "application/json",
           },
         })
@@ -133,7 +136,7 @@ const Education = () => {
                 <button
                   type="submit"
                   className="btn btn-white shadow"
-                  onClick={()=> {openConfirmDeleteModal(items.id)}}
+                  onClick={()=> {openConfirmDeleteModal(items._id, myEmail)}}
                 >
                   delete
                 </button>

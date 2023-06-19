@@ -24,11 +24,11 @@ const EditEducationModal = ({ isOpen, onClose, myId}) => {
     onSubmit: (values) => {
         let newValues = {...values, myId: myId}
         console.log(newValues);
-        // let endpoint = "http://localhost:2000/student_account/edit";
-        // axios.put(endpoint, newValues)
-        // .then((response) => {
-        //   console.log(response.data.response);
-        // })
+        let endpoint = "http://localhost:2000/student_account/edit";
+        axios.put(endpoint, newValues)
+        .then((response) => {
+          console.log(response.data.response);
+        })
     },
   });
 
