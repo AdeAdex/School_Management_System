@@ -127,13 +127,13 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items._id)}}>
+                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id)}}>
                   edit
                 </button>
                 <button
                   type="submit"
                   className="btn btn-white shadow"
-                  onClick={()=> {openConfirmDeleteModal(items._id)}}
+                  onClick={()=> {openConfirmDeleteModal(items.id)}}
                 >
                   delete
                 </button>
