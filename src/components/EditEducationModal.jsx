@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 
-const EditEducationModal = ({ isOpen, onClose, myId}) => {
+const EditEducationModal = ({ isOpen, onClose, myId, myEmail}) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
 
 
@@ -17,12 +17,11 @@ const EditEducationModal = ({ isOpen, onClose, myId}) => {
       year: "",
       examNo: "",
       candidateNo: "",
-      receivedEmail: "",
       identificationNo: "",
     },
 
     onSubmit: (values) => {
-        let newValues = {...values, myId: myId}
+        let newValues = {...values, myId: myId, myEmail: myEmail}
         console.log(newValues);
         let endpoint = "http://localhost:2000/student_account/edit";
         axios.put(endpoint, newValues)

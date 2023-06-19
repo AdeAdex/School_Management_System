@@ -12,7 +12,8 @@ const Education = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
-  const [modalValue, setModalValue] = useState('');
+  const [modalIdValue, setModalIdValue] = useState('');
+  const [modalEmailValue, setModalEmailValue] = useState('');
   const [myEmail, setMyEmail] = useState('');
 
   const openModal = () => {
@@ -24,8 +25,9 @@ const Education = () => {
     setModalOpen(false);
   };
 
-  const openEditModal = (value) => {
-    setModalValue(value)
+  const openEditModal = (myId, myEmail) => {
+    setModalIdValue(myId)
+    setModalEmailValue(myEmail)
     setEditModalOpen(true);
 
   };
@@ -69,7 +71,7 @@ const Education = () => {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(myId, myEmail);
+        // console.log(myId, myEmail);
         let endpoint = "http://localhost:2000/student_account/delete";
         axios.delete(endpoint, {
           headers: {
@@ -130,13 +132,13 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id)}}>
+                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id, myEmail)}}>
                   edit
                 </button>
                 <button
                   type="submit"
                   className="btn btn-white shadow"
-                  onClick={()=> {openConfirmDeleteModal(items._id, myEmail)}}
+                  onClick={()=> {openConfirmDeleteModal(items.id, myEmail)}}
                 >
                   delete
                 </button>
@@ -147,7 +149,7 @@ const Education = () => {
       </table>
       <button onClick={openModal}>Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal} />
-      <EditEducationModal myId={modalValue} isOpen={editModalOpen}  onClose={closeEditModal} />
+      <EditEducationModal myId={modalIdValue} myEmail={modalEmailValue} isOpen={editModalOpen}  onClose={closeEditModal} />
     </>
   );
 };
