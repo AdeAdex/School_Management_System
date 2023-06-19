@@ -24,9 +24,10 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail}) => {
         let newValues = {...values, myId: myId, myEmail: myEmail}
         console.log(newValues);
         let endpoint = "http://localhost:2000/student_account/edit";
-        axios.put(endpoint, newValues)
+        axios
+        .put(endpoint, newValues)
         .then((response) => {
-          console.log(response.data.response);
+          // console.log(response.data.response.previousEducation[index].exam);
         })
     },
   });
