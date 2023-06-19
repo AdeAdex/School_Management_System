@@ -37,7 +37,7 @@ const Education = () => {
     }
    })
    .then((response) => {
-    console.log(response.data.response);
+    console.log(response.data.response.previousEducation);
    })
   };
 
