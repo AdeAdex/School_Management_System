@@ -44,6 +44,7 @@ const Education = () => {
         },
       })
       .then((response) => {
+        // console.log(response.data.response);
         setPreEdu(response.data.response.previousEducation);
       });
   });
@@ -126,13 +127,13 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id)}}>
+                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items._id)}}>
                   edit
                 </button>
                 <button
                   type="submit"
                   className="btn btn-white shadow"
-                  onClick={()=> {openConfirmDeleteModal(items.id)}}
+                  onClick={()=> {openConfirmDeleteModal(items._id)}}
                 >
                   delete
                 </button>
