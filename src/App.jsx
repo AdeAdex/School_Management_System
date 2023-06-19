@@ -88,6 +88,7 @@ function App() {
           </Route>
         </Route>
         <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
+        <Route path='/student/*' element={studentLoginToken ? <Navigate to="/student/create_account"/> : <Navigate to="/student_login"/>}/>
         <Route path='student_login' element={<Login/>}/>
         <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>
