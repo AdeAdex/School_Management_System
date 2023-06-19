@@ -36,6 +36,9 @@ const Education = () => {
       'Content-Type' : 'application/json'
     }
    })
+   .then((response) => {
+    console.log(response.data.response);
+   })
   };
 
   const closeEditModal = () => {
