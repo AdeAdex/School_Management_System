@@ -8,6 +8,12 @@ const ForgotPassword = () => {
   let location = useLocation();
   let myOTP = location.state.myOTP;
   const [myEmail, setMyEmail] = useState("")
+  const [typedNo, setTypedNo] = useState({
+        one: "",
+        two: "",
+        three: "",
+        four: "",
+  })
 
   let formik = useFormik({
     initialValues: {
@@ -42,13 +48,18 @@ const ForgotPassword = () => {
         otpValue4: "",
     },
 
+    
     onSubmit: (values) => {
+            setTypedNo({
+               one: [values.otpValue1], two: [values.otpValue2], three: [values.otpValue3], four: [values.otpValue4],
+            })
         console.log(values);
-        if (values.otpValue1, values.otpValue2, values.otpValue3, values.otpValue4 == myOTP) {
-                alert('yess')
-        } else {
-                alert('nooo')
-        }
+        console.log(typedNo)
+        // if (typedNo == myOTP) {
+        //         alert('yess')
+        // } else {
+        //         alert('nooo')
+        // }
 //       let endpoint = "http://localhost:2000/student_account/otp";
 //       axios
 //       .get(endpoint, {
