@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import './index.css'
-import { Link, Navigate, Route, BrowserRouter as Router, Routes, redirect} from 'react-router-dom'
+import { Link, Navigate, Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ErrorPage from './pages/ErrorPage'
 import SignIn from './pages/Staff/SignIn'
@@ -76,10 +76,11 @@ function App() {
         {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
 
         <Route path='/student_signin' element={<StudentSignIn/>}/>
+        <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='/student/*' element={studentLoginToken ? <StudentSignUp/> : <Navigate to="/student_login"/>}>
           <Route path='create_account' element={<CreateAccount/>}/>
           <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/>
-          <Route path='admission/*' element={studentLoginToken ?  <Navigate to="student/admission/pick_class"/> : <Navigate to="/student_login"/>}>
+          <Route path='admission/*' element={shouldRedirect ?  <Navigate to="student/admission/pick_class"/> : <Navigate to="/student_login"/>}>
             <Route path='pick_class' element={<PickClass/>}/>
             <Route path='payment' element={<Payment/>} />
             <Route path='personal_information' element={<PersonalInformation/>} />
@@ -87,7 +88,6 @@ function App() {
             <Route path='referees' element={<Referees/>} />
           </Route>
         </Route>
-        <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='student_login' element={<Login/>}/>
         <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>

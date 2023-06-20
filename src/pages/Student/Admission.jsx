@@ -6,6 +6,7 @@ import {
   Route,
   Router,
   Routes,
+  useNavigate,
 } from "react-router-dom";
 import PickClass from "./PickClass";
 import Payment from "./Payment";
@@ -16,7 +17,9 @@ import Referees from "./Referees";
 import axios from "axios";
 import { newStudent } from "../../redux/portalSlice";
 
+
 const Admission = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const navLinkStyles = ({ isActive }) => {
@@ -39,8 +42,20 @@ const Admission = () => {
       .then((res) => {
         if (res.data.status) {
           dispatch(newStudent(res.data.response));
+          console.log(res.data.message);
+        } else {
+          console.log(res.data.message);
+          console.log(res.data.status);
+          navigate('/student_login');
         }
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+        // navigate('/student_login');
+        // console.log(err.data.message);
+        // console.log(err.data.status);
+
+      })
   }, []);
 
   const pay = true;
