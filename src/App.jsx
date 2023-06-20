@@ -39,6 +39,7 @@ import StudentProfile from './pages/Student/StudentProfile'
 import StudentChangePassword from './pages/Student/StudentChangePassword'
 import StudentEditDetails from './pages/Student/StudentEditDetails'
 import StudentCourseRegistration from './pages/Student/StudentCourseRegistration'
+import ForgotPassword from './pages/Student/ForgotPassword'
 
 
 
@@ -88,6 +89,7 @@ function App() {
             <Route path='referees' element={<Referees/>} />
           </Route>
         </Route>
+        <Route path='/forgot_password' element={<ForgotPassword/>}/>
         <Route path='student_login' element={<Login/>}/>
         <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>

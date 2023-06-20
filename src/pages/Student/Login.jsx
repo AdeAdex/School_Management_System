@@ -2,7 +2,7 @@ import React from "react";
 import "../Student/Login.css";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -58,6 +58,13 @@ const Login = () => {
       });
     },
   });
+
+
+  const myOTP = Math.floor(Math.random() * 9000 + 1000)
+  const navigateToOTP = () => {
+    // console.log(myOTP);
+    navigate('/forgot_password', {state: {myOTP: myOTP}});
+  }
   return (
     <>
       <div className="login-main-container" style={{backgroundImage: 'url("pic/loginImage7.png")'}}>
@@ -137,7 +144,7 @@ const Login = () => {
               <label className="login-label">Password</label>
             </div>
             <div className="login-forgot-pass">
-              <a href="#">Forgot Password?</a>
+              <div onClick={()=> navigateToOTP()}>Forgot Password?</div>
             </div>
             <button className="login-button btn btn-primary" type="submit">Sign in</button>
             <div className="login-sign-up gap-4">
