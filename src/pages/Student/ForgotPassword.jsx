@@ -2,10 +2,12 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import '../Student/ForgotPassword.css'
+import "../Student/ForgotPassword.css";
 
 const ForgotPassword = () => {
   let location = useLocation();
+  let myOTP = location.state.myOTP;
+  const [myEmail, setMyEmail] = useState("")
 
   let formik = useFormik({
     initialValues: {
@@ -13,18 +15,50 @@ const ForgotPassword = () => {
     },
 
     onSubmit: (values) => {
-      let myOTP = location.state.myOTP;
       const newValues = { ...values, myOTP };
       console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/forgot_password";
-      axios.post(endpoint, newValues).then((response) => {
+      axios
+      .post(endpoint, newValues)
+      .then((response) => {
         // console.log(response.data.response[0]);
         if (response.data.status) {
           console.log(response.data.message);
+          console.log(response.data.response[0]);
+          setMyEmail(response.data.response[0])
+          console.log(myEmail);
         } else {
           console.log(response.data.message);
         }
       });
+    },
+  });
+
+  let otp = useFormik({
+    initialValues: {
+        otpValue1: "",
+        otpValue2: "",
+        otpValue3: "",
+        otpValue4: "",
+    },
+
+    onSubmit: (values) => {
+        console.log(values);
+        if (values.otpValue1, values.otpValue2, values.otpValue3, values.otpValue4 == myOTP) {
+                alert('yess')
+        } else {
+                alert('nooo')
+        }
+//       let endpoint = "http://localhost:2000/student_account/otp";
+//       axios
+//       .get(endpoint, {
+//         headers: {
+//           Authorization: `${values}`,
+//         },
+//       })
+//       .then((response) => {
+
+//       })
     },
   });
   return (
@@ -33,25 +67,27 @@ const ForgotPassword = () => {
         <input type="email" name="email" id="" onChange={formik.handleChange} />
         <button type="submit">Submit</button>
       </form>
+ 
 
-      <form className="otp-verification-form">
+      <form className="otp-verification-form" action="" method="get" onSubmit={otp.handleSubmit}>
         <span className="otp-verification-close">X</span>
 
         <div className="otp-verification-info">
           <span className="otp-verification-title">OTP Verification</span>
-          <p className="otp-verification-description">Please enter the code we have sent you. </p>
+          <p className="otp-verification-description">
+            Please enter the code we just sent to. {myEmail}
+          </p>
         </div>
         <div className="otp-verification-inputs">
-          <input placeholder="" type="tel" maxLength="1" />
-          <input placeholder="" type="tel" maxLength="1" />
-          <input placeholder="" type="tel" maxLength="1" />
-          <input placeholder="" type="tel" maxLength="1" />
+          <input placeholder="" type="tel" maxLength="1" name="otpValue1" onChange={otp.handleChange} />
+          <input placeholder="" type="tel" maxLength="1" name="otpValue2" onChange={otp.handleChange} />
+          <input placeholder="" type="tel" maxLength="1" name="otpValue3" onChange={otp.handleChange} />
+          <input placeholder="" type="tel" maxLength="1" name="otpValue4" onChange={otp.handleChange} />
         </div>
-        <a className="otp-verification-validate" href="#">
-          Verify
-        </a>
+        <button className="otp-verification-validate" type="submit">Verify</button>
         <p className="otp-verification-resend">
-          You don't receive the code ?<a className="otp-verification-resend-action">resend</a>
+          You don't receive the code ?
+          <a className="otp-verification-resend-action">resend</a>
         </p>
       </form>
     </>
