@@ -50,11 +50,11 @@ const ForgotPassword = () => {
 
     
     onSubmit: (values) => {
-            setTypedNo({
-               one: [values.otpValue1], two: [values.otpValue2], three: [values.otpValue3], four: [values.otpValue4],
+          let newNo =  setTypedNo({
+               ...typedNo, one: [values.otpValue1], two: [values.otpValue2], three: [values.otpValue3], four: [values.otpValue4],
             })
         console.log(values);
-        console.log(typedNo)
+        console.log(newNo)
         // if (typedNo == myOTP) {
         //         alert('yess')
         // } else {
