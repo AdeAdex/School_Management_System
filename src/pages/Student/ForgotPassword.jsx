@@ -9,6 +9,7 @@ const ForgotPassword = () => {
   let myOTP = location.state.myOTP;
   const [myEmail, setMyEmail] = useState("");
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
+  const [myMessage, setMyMessage] = useState("");
 
   let formik = useFormik({
     initialValues: {
@@ -48,14 +49,14 @@ const ForgotPassword = () => {
     },
 
     onSubmit: (values) => {
-       let  newValues = { ...values, myEmail };
-       console.log(newValues)
-        let endpoint = "http://localhost:2000/student_account/change_password";
-        axios
-        .post(endpoint, newValues)
-        // .then((response) => {
-        //         console.log(response.data.response);
-        // })
+      let newValues = { ...values, myEmail };
+      console.log(newValues);
+      let endpoint = "http://localhost:2000/student_account/change_password";
+      axios
+      .post(endpoint, newValues)
+      .then((response) => {
+        setMyMessage(response.data.message);
+      });
     },
   });
 
@@ -142,6 +143,7 @@ const ForgotPassword = () => {
         </p>
       </form>
 
+        <div>{myMessage}</div>
       <form action="" method="post" onSubmit={changePass.handleSubmit}>
         <input
           type="text"
