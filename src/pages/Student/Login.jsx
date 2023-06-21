@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Student/Login.css";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   let navigate = useNavigate();
+  const [enteredEmail, setEnteredEmail] = useState("")
 
   let formik = useFormik({
     initialValues: {
@@ -15,7 +16,8 @@ const Login = () => {
 
     onSubmit: (values) => {
       const endpoint = "http://localhost:2000/student_account/student_login";
-      axios.post(endpoint, values).then((response) => {
+      axios.post(endpoint, values)
+      .then((response) => {
         // console.log(response.data.result);
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
@@ -62,8 +64,8 @@ const Login = () => {
 
   const myOTP = Math.floor(Math.random() * 9000 + 1000)
   const navigateToOTP = () => {
-    // console.log(myOTP);
-    navigate('/forgot_password', {state: {myOTP: myOTP}});
+    // console.log(enteredEmail);
+    navigate('/forgot_password', {state: {myOTP: myOTP/* , email: enteredEmail */ }});
   }
   return (
     <>
@@ -80,6 +82,7 @@ const Login = () => {
                 className="login-input"
                 placeholder="Email or Phone"
                 autoComplete="on"
+                
               />
               <span className="login-span">
                 <svg
