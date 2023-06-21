@@ -36,12 +36,28 @@ const ForgotPassword = () => {
   function handleSubmit(e) {
     console.log(OTPInput);
     if (Number(OTPInput.join("")) === myOTP) {
-      alert("yess");
     } else {
-      alert("nooo");
     }
     e.preventDefault();
   }
+
+  const changePass = useFormik({
+    initialValues: {
+      password: "",
+      confirmPassword: "",
+    },
+
+    onSubmit: (values) => {
+       let  newValues = { ...values, myEmail };
+       console.log(newValues)
+        let endpoint = "http://localhost:2000/student_account/change_password";
+        axios
+        .post(endpoint, newValues)
+        // .then((response) => {
+        //         console.log(response.data.response);
+        // })
+    },
+  });
 
   return (
     <>
@@ -124,6 +140,22 @@ const ForgotPassword = () => {
           You don't receive the code ?
           <a className="otp-verification-resend-action">resend</a>
         </p>
+      </form>
+
+      <form action="" method="post" onSubmit={changePass.handleSubmit}>
+        <input
+          type="text"
+          name="password"
+          id=""
+          onChange={changePass.handleChange}
+        />
+        <input
+          type="text"
+          name="confirmPassword"
+          id=""
+          onChange={changePass.handleChange}
+        />
+        <button type="submit">Change Password</button>
       </form>
     </>
   );
