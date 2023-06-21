@@ -33,7 +33,6 @@ const ForgotPassword = () => {
   return (
     <>
     <EmailVerification myOTP={location.state.myOTP} isOpen={modalOpen} onClose={closeModal}  />
-    <OTPVerification/>
     </>
   );
 };

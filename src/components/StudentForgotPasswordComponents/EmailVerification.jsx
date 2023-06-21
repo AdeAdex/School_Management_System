@@ -53,7 +53,7 @@ const EmailVerification = ({ isOpen, onClose, myOTP }) => {
       </form>
     </Modal.Body>
     </Modal>
-      <OTPVerification isOpen={modalOpen}/>
+      <OTPVerification isOpen={modalOpen} myOTP={myOTP}/>
     </>
   );
 };

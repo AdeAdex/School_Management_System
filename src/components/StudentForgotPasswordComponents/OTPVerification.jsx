@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import ChangePasswordForm from "./ChangePasswordForm";
 
 
-const OTPVerification = ({ isOpen, onClose}) => {
+const OTPVerification = ({ isOpen, onClose, myOTP}) => {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
   const [myEmail, setMyEmail] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+
 
 
   function handleSubmit(e) {
-    console.log(OTPInput);
+        console.log(myOTP);
+    console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
+        setModalOpen(true);
     } else {
+        console.log('nooo');
     }
     e.preventDefault();
   }
@@ -95,7 +101,7 @@ const OTPVerification = ({ isOpen, onClose}) => {
       </form>
     </Modal.Body>
     </Modal>
-     
+     <ChangePasswordForm isOpen={modalOpen}/>
     </>
   );
 };

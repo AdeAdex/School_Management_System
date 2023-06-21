@@ -1,8 +1,12 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
-const ChangePasswordForm = () => {
+
+const ChangePasswordForm = ({ isOpen, onClose, myOTP }) => {
+  const [myMessage, setMyMessage] = useState("");
+
   const changePass = useFormik({
     initialValues: {
       password: "",
@@ -21,8 +25,14 @@ const ChangePasswordForm = () => {
   });
   return (
     <>
-      <div>{myMessage}</div>
-      <form action="" method="post" onSubmit={changePass.handleSubmit}>
+    <Modal show={isOpen} onHide={onClose} >
+    <Modal.Header className="bg-white text-dark">
+          <Modal.Title className="text-uppercase text-center mx-auto">
+            {myMessage}
+          </Modal.Title>
+        </Modal.Header>
+    <Modal.Body className="text-uppercase">
+    <form action="" method="post" onSubmit={changePass.handleSubmit}>
         <input
           type="text"
           name="password"
@@ -37,6 +47,8 @@ const ChangePasswordForm = () => {
         />
         <button type="submit">Change Password</button>
       </form>
+    </Modal.Body>
+    </Modal>
     </>
   );
 };
