@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const EmailVerification = () => {
-  
+const EmailVerification = (myOTP) => {
+  const [myEmail, setMyEmail] = useState("");
+
 
   let formik = useFormik({
     initialValues: {
@@ -11,10 +12,11 @@ const EmailVerification = () => {
     },
 
     onSubmit: (values) => {
-      const newValues = { ...values, myOTP };
-      console.log(newValues);
+      const newValues = { ...values, myOTP: myOTP.myOTP };
+      console.log(newValues.myOTP);
       let endpoint = "http://localhost:2000/student_account/forgot_password";
-      axios.post(endpoint, newValues).then((response) => {
+      axios.post(endpoint, newValues)
+      .then((response) => {
         // console.log(response.data.response[0]);
         if (response.data.status) {
           console.log(response.data.message);

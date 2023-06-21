@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const OTPVerification = () => {
+  const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
+
   function handleSubmit(e) {
     console.log(OTPInput);
     if (Number(OTPInput.join("")) === myOTP) {
