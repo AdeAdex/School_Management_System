@@ -55,13 +55,15 @@ const OTPVerification = ({ isOpen, onClose, myOTP }) => {
             <span className="otp-verification-close">X</span>
 
             <div className="otp-verification-info">
-              <span className="otp-verification-title">OTP Verification</span>
+              <span className="otp-verification-title">Two-Factor Verification</span>
               <p className="otp-verification-description">
-                Please enter the code we just sent to. {/* {myEmail} */}
+                {" "}
+                Please enter the code we just sent to. {/* {myEmail} */}{" "}
               </p>
             </div>
-            <div className="otp-verification-inputs">
+            <div className="otp-verification-input-fields">
               <input
+              className="otp-verification-input"
                 placeholder=""
                 type="tel"
                 maxLength="1"
@@ -70,6 +72,7 @@ const OTPVerification = ({ isOpen, onClose, myOTP }) => {
                 onChange={handleChangeInput1}
               />
               <input
+              className="otp-verification-input"
                 placeholder=""
                 type="tel"
                 maxLength="1"
@@ -78,6 +81,7 @@ const OTPVerification = ({ isOpen, onClose, myOTP }) => {
                 onChange={handleChangeInput2}
               />
               <input
+              className="otp-verification-input"
                 placeholder=""
                 type="tel"
                 maxLength="1"
@@ -86,6 +90,7 @@ const OTPVerification = ({ isOpen, onClose, myOTP }) => {
                 onChange={handleChangeInput3}
               />
               <input
+              className="otp-verification-input"
                 placeholder=""
                 type="tel"
                 maxLength="1"
@@ -101,9 +106,15 @@ const OTPVerification = ({ isOpen, onClose, myOTP }) => {
                 }
               />
             </div>
-            <button className="otp-verification-validate" type="submit">
-              Verify
-            </button>
+
+            <div className="otp-verification-action-btns">
+              <button className="otp-verification-verify" type="submit">
+                Verify
+              </button>
+              <button className="otp-verification-clear" type="reset">
+                Clear
+              </button>
+            </div>
             <p className="otp-verification-resend">
               You don't receive the code ?
               <a className="otp-verification-resend-action">resend</a>

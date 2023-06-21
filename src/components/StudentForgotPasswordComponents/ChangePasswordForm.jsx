@@ -32,7 +32,7 @@ const ChangePasswordForm = ({ isOpen, onClose, myOTP }) => {
           </Modal.Title>
         </Modal.Header>
     <Modal.Body className="text-uppercase">
-    <form action="" method="post" onSubmit={changePass.handleSubmit}>
+    <form action="" className="changepass-form" method="post" onSubmit={changePass.handleSubmit}>
         <input
           type="text"
           name="password"

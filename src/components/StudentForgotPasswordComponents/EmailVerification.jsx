@@ -42,7 +42,7 @@ const EmailVerification = ({ isOpen, onClose, myOTP }) => {
     <>
     <Modal show={isOpen} onHide={onClose} >
     <Modal.Body className="text-uppercase">
-    <form action="" method="post" onSubmit={formik.handleSubmit}>
+    <form action="" className="email-verification-from" method="post" onSubmit={formik.handleSubmit}>
         <input
           type="email"
           name="email"
