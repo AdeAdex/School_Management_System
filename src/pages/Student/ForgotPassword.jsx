@@ -16,19 +16,24 @@ const ForgotPassword = () => {
   const [confirm, setConfirm] = useState(false);
   const [yes, setYes] = useState(true)
   const [toReset, setToReset] = useState(true);
-  useEffect(() => {
-    setConfirm(true);
-    setYes(false)
-    setToReset(false);
-  });
+  const [modalOpen, setModalOpen] = useState(true);
+ 
+
+//   const openModal = () => {
+//         setModalOpen(true);
+    
+//       };
+    
+      const closeModal = () => {
+        setModalOpen(false);
+      };
 
  
 
   return (
     <>
-    {confirm ? <EmailVerification myOTP={location.state.myOTP} /> : null}
-    {confirm && yes ? <OTPVerification/> : null}
-    {confirm && toReset ? <ChangePasswordForm/> : null}
+    <EmailVerification myOTP={location.state.myOTP} isOpen={modalOpen} onClose={closeModal}  />
+    <OTPVerification/>
     </>
   );
 };

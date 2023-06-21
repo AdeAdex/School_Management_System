@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
-const OTPVerification = () => {
+
+const OTPVerification = ({ isOpen, onClose}) => {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
+  const [myEmail, setMyEmail] = useState("");
+
 
   function handleSubmit(e) {
     console.log(OTPInput);
@@ -12,13 +16,15 @@ const OTPVerification = () => {
   }
   return (
     <>
-      <form className="otp-verification-form" onSubmit={handleSubmit}>
+    <Modal show={isOpen} onHide={onClose} >
+    <Modal.Body className="text-uppercase">
+    <form className="otp-verification-form" onSubmit={handleSubmit}>
         <span className="otp-verification-close">X</span>
 
         <div className="otp-verification-info">
           <span className="otp-verification-title">OTP Verification</span>
           <p className="otp-verification-description">
-            Please enter the code we just sent to. {myEmail}
+            Please enter the code we just sent to. {/* {myEmail} */}
           </p>
         </div>
         <div className="otp-verification-inputs">
@@ -87,6 +93,9 @@ const OTPVerification = () => {
           <a className="otp-verification-resend-action">resend</a>
         </p>
       </form>
+    </Modal.Body>
+    </Modal>
+     
     </>
   );
 };
