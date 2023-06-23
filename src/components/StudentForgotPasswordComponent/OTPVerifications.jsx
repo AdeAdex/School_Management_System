@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import React, { useRef, useState } from "react";
+import "./OTPVerification.css"
 
 
 const OTPVerifications = ({myOTP: myOTP}) => {
