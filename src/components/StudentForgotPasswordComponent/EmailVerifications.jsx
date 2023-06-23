@@ -15,14 +15,16 @@ const EmailVerifications = ({myOTP: myOTP}) => {
       const newValues = { ...values, myOTP: myOTP };
       console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/forgot_password";
-      axios.post(endpoint, newValues).then((response) => {
+      axios
+      .post(endpoint, newValues)
+      .then((response) => {
         if (response.data.status) {
           console.log(response.data.message);
           console.log(response.data.response[0]);
           setMyEmail(response.data.response[0]);
           console.log(myEmail);
           if (response.data.status) {
-            setModalOpen(true);
+                
           }
         } else {
           console.log(response.data.message);

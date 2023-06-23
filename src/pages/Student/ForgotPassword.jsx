@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import "../Student/ForgotPassword.css";
 import { Stepper, Button, Group } from "@mantine/core";
 import EmailVerifications from "../../components/StudentForgotPasswordComponent/EmailVerifications";
+import OTPVerifications from "../../components/StudentForgotPasswordComponent/OTPVerifications";
 
 const ForgotPassword = () => {
   let location = useLocation();
@@ -23,7 +24,7 @@ const ForgotPassword = () => {
           <EmailVerifications myOTP={sentOTP} />
         </Stepper.Step>
         <Stepper.Step label="Second step" description="Verify email">
-          Step 2 content: Verify email
+          <OTPVerifications  myOTP={sentOTP}/>
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Get full access">
           Step 3 content: Get full access
@@ -39,7 +40,6 @@ const ForgotPassword = () => {
         </Button>
         <Button onClick={nextStep}>Next step</Button>
       </Group>
-      {/* <EmailVerification myOTP={location.state.myOTP} isOpen={modalOpen} onClose={closeModal}  /> */}
     </>
   );
 };

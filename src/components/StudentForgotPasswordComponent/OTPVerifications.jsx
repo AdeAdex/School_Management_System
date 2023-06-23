@@ -1,13 +1,15 @@
-import React from "react";
+import { useFormik } from "formik";
+import React, { useRef, useState } from "react";
 
-const OTPVerifications = (myOTP) => {
+
+const OTPVerifications = ({myOTP: myOTP}) => {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
 
   function handleSubmit(e) {
-    console.log(myOTP);
+    console.log(OTPInput);
     console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
-      setModalOpen(true);
+        console.log("yess");
     } else {
       console.log("nooo");
     }
