@@ -6,18 +6,25 @@ import "../Student/ForgotPassword.css";
 import { Stepper, Button, Group } from "@mantine/core";
 import EmailVerifications from "../../components/StudentForgotPasswordComponent/EmailVerifications";
 import OTPVerifications from "../../components/StudentForgotPasswordComponent/OTPVerifications";
+import { useSelector } from "react-redux";
+
 
 const ForgotPassword = () => {
   let location = useLocation();
   let sentOTP = location.state.myOTP;
+  const myEmailResponse = useSelector((state) => state.portalReducer.emailVerify)
 
   const [active, setActive] = useState(0);
-  const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
+  const nextStep = () => {
+    if (myEmailResponse) {
+      console.log("yess");
+      setActive((current) => (current < 3 ? current + 1 : current));
+    } else {
+      console.log("nooo");
+    }
+  }
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
-  // const nextStep = () =>
-  //   setActive((current) => (current < 3 ? current + 1 : current));
-  // const prevStep = () =>
-  //   setActive((current) => (current > 0 ? current - 1 : current));
+
 
   return (
     <>

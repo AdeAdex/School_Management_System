@@ -2,8 +2,12 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { myEmailVerify } from "../../redux/portalSlice";
+import { useDispatch } from "react-redux";
+
 
 const EmailVerifications = ({myOTP: myOTP}) => {
+  const dispatch = useDispatch();
   const [myEmail, setMyEmail] = useState("");
 
   let formik = useFormik({
@@ -24,7 +28,7 @@ const EmailVerifications = ({myOTP: myOTP}) => {
           setMyEmail(response.data.response[0]);
           console.log(myEmail);
           if (response.data.status) {
-                
+                dispatch(myEmailVerify(true));
           }
         } else {
           console.log(response.data.message);
