@@ -7,7 +7,7 @@ export const portalSlice = createSlice({
     studentInfo: {},
     firstName: "",
     lastName: "",
-    emailVerify: false,
+    emailVerify: 0,
   },
   reducers: {
     newName: (state, action) => {

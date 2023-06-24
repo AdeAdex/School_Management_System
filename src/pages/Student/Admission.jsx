@@ -16,10 +16,53 @@ import Education from "./Education";
 import Referees from "./Referees";
 import axios from "axios";
 import { newStudent } from "../../redux/portalSlice";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
+  };
+}
 
 const Admission = () => {
-  const navigate = useNavigate()
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const navLinkStyles = ({ isActive }) => {
@@ -30,7 +73,8 @@ const Admission = () => {
   };
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
-    let endpoint = "http://localhost:2000/student_account/student__admission_dashboard";
+    let endpoint =
+      "http://localhost:2000/student_account/student__admission_dashboard";
     axios
       .get(endpoint, {
         headers: {
@@ -46,7 +90,7 @@ const Admission = () => {
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
-          navigate('/student_login');
+          navigate("/student_login");
         }
       })
       .catch((err) => {
@@ -54,11 +98,11 @@ const Admission = () => {
         // navigate('/student_login');
         // console.log(err.data.message);
         // console.log(err.data.status);
-
-      })
+      });
   }, []);
 
   const pay = true;
+
   return (
     <>
       {/* <nav>
@@ -79,7 +123,7 @@ const Admission = () => {
         <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
         </div>
-        <div className="" style={{width: "100%" }}>
+        {/* <div className="" style={{width: "100%" }}>
           <div
             className="d-flex justify-content-between px-lg-4"
             style={{ width: "100%", overflowX: "auto", overflowY: 'hidden', height: '40px', borderBottom: '1px solid gray' }}
@@ -87,19 +131,6 @@ const Admission = () => {
             <NavLink style={navLinkStyles} to="pick_class" className="nav-links">
               Pick Class
             </NavLink>
-            {/* {pay ? (
-              <NavLink exact to="/student/admission" style={navLinkStyles}>
-                Yhea
-              </NavLink>
-            ) : (
-              <NavLink
-                exact
-                to="/student/admission/pick_class"
-                style={navLinkStyles}
-              >
-                Pick Class
-              </NavLink>
-            )} */}
             <NavLink style={navLinkStyles} to="payment" className="nav-link">
               Payment
             </NavLink>
@@ -113,7 +144,6 @@ const Admission = () => {
               Referees
             </NavLink>
           </div>
-          {/* <hr /> */}
           <div className="admission" style={{padding: "20px 100px 0px",}}>
             <Routes>
               <Route path="pick_class" element={<PickClass />} />
@@ -126,7 +156,54 @@ const Admission = () => {
               <Route path="referees" element={<Referees />} />
             </Routes>
           </div>
-        </div>
+        </div> */}
+
+        <Box
+          sx={{
+            flexGrow: 1,
+            width: '100% ',
+            bgcolor: "background.paper",
+          }}
+        >
+          <Tabs
+            orientation="horizontal"
+            value={value}
+            onChange={handleChange}
+            variant="scrollable"
+            scrollButtons
+            aria-label="visible arrows tabs example"
+            sx={{ borderRight: 1, borderColor: "divider" }}
+          >
+            <Tab label="Item One" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
+            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="Item Four" {...a11yProps(3)} />
+            <Tab label="Item Five" {...a11yProps(4)} />
+            <Tab label="Item Six" {...a11yProps(5)} />
+            <Tab label="Item Seven" {...a11yProps(6)} />
+          </Tabs>
+          <TabPanel value={value} index={0}>
+            Item One
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            Item Two
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            Item Three
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            Item Four
+          </TabPanel>
+          <TabPanel value={value} index={4}>
+            Item Five
+          </TabPanel>
+          <TabPanel value={value} index={5}>
+            Item Six
+          </TabPanel>
+          <TabPanel value={value} index={6}>
+            Item Seven
+          </TabPanel>
+        </Box>
       </div>
     </>
   );

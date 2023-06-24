@@ -45,7 +45,7 @@ const EmailVerifications = ({myOTP: myOTP}) => {
         onSubmit={formik.handleSubmit}
       >
         <input type="email" name="email" id="" onChange={formik.handleChange} />
-        <button type="submit">Submit</button>
+        {/* <button type="submit">Submit</button> */}
       </form>
     </>
   );
