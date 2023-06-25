@@ -33,7 +33,7 @@ const EmailVerifications = ({ myOTP: myOTP }) => {
           console.log(response.data.message);
           const Toast = Swal.mixin({
                 toast: true,
-                position: "bottom",
+                position: "top",
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: false,

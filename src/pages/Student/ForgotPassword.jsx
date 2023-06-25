@@ -14,7 +14,7 @@ import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const ForgotPassword = () => {
   return (
-    <SnackbarProvider maxSnack={3}>
+    <SnackbarProvider maxSnack={3} className="bg-danger">
       <MyApp/>
     </SnackbarProvider>
   )
@@ -37,7 +37,7 @@ function MyApp() {
       console.log("yess");
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
-      enqueueSnackbar('This is a success message!', { variant });
+      enqueueSnackbar("Enter and submit your email address before continue", { variant });
     }
   };
   const prevStep = () =>setActive((current) => (current > 0 ? current - 1 : current));
