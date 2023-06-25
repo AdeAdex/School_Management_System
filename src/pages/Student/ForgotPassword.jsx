@@ -7,47 +7,46 @@ import { Stepper, Button, Group } from "@mantine/core";
 import EmailVerifications from "../../components/StudentForgotPasswordComponent/EmailVerifications";
 import OTPVerifications from "../../components/StudentForgotPasswordComponent/OTPVerifications";
 import { useSelector } from "react-redux";
+// import { SnackbarProvider, enqueueSnackbar } from 'notistack'
+import { SnackbarProvider, useSnackbar } from 'notistack';
+
+
 
 const ForgotPassword = () => {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <MyApp/>
+    </SnackbarProvider>
+  )
+  
+};
+
+function MyApp() {
   let location = useLocation();
   let sentOTP = location.state.myOTP;
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
   );
+  const {enqueueSnackbar} = useSnackbar();
+
+
 
   const [active, setActive] = useState(0);
-  const nextStep = () => {
+  const nextStep = (variant) => {
     if (myEmailResponse) {
       console.log("yess");
-      document.getElementsByClassName("pop-btn-1").style.visibility = "visible";
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-
-      Toast.fire({
-        icon: "warning",
-        title: "You haven't  done anything",
-      });
+      enqueueSnackbar('This is a success message!', { variant });
     }
   };
-  const prevStep = () =>
-    setActive((current) => (current > 0 ? current - 1 : current));
+  const prevStep = () =>setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
     <>
-      <Stepper active={active} onStepClick={setActive} breakpoint="sm">
-        <Stepper.Step label="First step" description="Create an account">
-          <EmailVerifications myOTP={sentOTP} />
+      <Stepper active={active} onStepClick={setActive} breakpoint="sm" className="p-4">
+        <Stepper.Step label="First step" description="Email Verification">
+          <EmailVerifications myOTP={sentOTP}/>
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
               Back
@@ -55,7 +54,7 @@ const ForgotPassword = () => {
             <Button onClick={nextStep}>Next step</Button>
           </Group>
         </Stepper.Step>
-        <Stepper.Step label="Second step" description="Verify email">
+        <Stepper.Step label="Second step" description="OTP Verification">
           <OTPVerifications myOTP={sentOTP} />
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Get full access">
@@ -65,8 +64,10 @@ const ForgotPassword = () => {
           Completed, click back button to get to previous step
         </Stepper.Completed>
       </Stepper>
+      
     </>
   );
-};
+}
+
 
 export default ForgotPassword;
