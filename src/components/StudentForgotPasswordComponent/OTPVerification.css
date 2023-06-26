@@ -1,5 +1,5 @@
 .otp-verification-form {
-  --glow-color: rgb(176, 255, 251);
+  --glow-color: rgb(176, 194, 255);
   --glow-spread-color: rgba(123, 246, 255, 0.781);
   --enhanced-glow-color: rgb(182, 71, 71);
   --btn-color: whiteSmoke;
@@ -62,7 +62,11 @@
   color: #fff;
   border-radius: 12px;
   border: 2.5px solid rgba(253, 253, 253, 0.363);
-  background-color: #93a9f259;
+  background-color: rgb(235, 235, 235);
+  box-shadow: inset 3px 3px 6px #d1d1d1,
+            inset -3px -3px 6px #ffffff;
+
+
 }
 
 .otp-verification-form
