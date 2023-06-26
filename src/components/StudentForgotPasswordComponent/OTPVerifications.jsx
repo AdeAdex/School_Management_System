@@ -23,9 +23,15 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
     console.log(OTPInput);
     console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
-        console.log('yess');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '',
+        showConfirmButton: false,
+        timer: 1500
+      })
     } else {
-      console.log('noo');
+      enqueueSnackbar('The provided OTP does not match. Please try again', {variant: 'error'});
     }
     e.preventDefault();
   }
