@@ -2,18 +2,30 @@ import { useFormik } from "formik";
 import React, { useRef, useState } from "react";
 import "./OTPVerification.css"
 import { Link } from "react-router-dom";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 
 const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
+  return (
+    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'bottom', horizontal: 'center'}} >
+      <MyApp myOTP={myOTP} sentEmail={sentEmail}/>
+    </SnackbarProvider>
+  )
+}
+
+
+function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
+  const {enqueueSnackbar} = useSnackbar();
+
 
   function handleSubmit(e) {
     console.log(OTPInput);
     console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
-        console.log("yess");
+        console.log('yess');
     } else {
-      console.log("nooo");
+      console.log('noo');
     }
     e.preventDefault();
   }
@@ -120,6 +132,6 @@ const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
       </form>
     </>
   );
-};
+}
 
 export default OTPVerifications;

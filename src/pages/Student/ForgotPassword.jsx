@@ -35,7 +35,6 @@ function MyApp() {
   const [active, setActive] = useState(0);
   const nextStep = (variant) => {
     if (myEmailResponse) {
-      console.log("yess");
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
       enqueueSnackbar("Enter your email address and submit before continue", { variant: 'error' });
