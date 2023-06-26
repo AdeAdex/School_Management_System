@@ -24,6 +24,7 @@ const ForgotPassword = () => {
 function MyApp() {
   let location = useLocation();
   let sentOTP = location.state.myOTP;
+  let sentEmail = location.state.email
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
   );
@@ -46,16 +47,16 @@ function MyApp() {
     <>
       <Stepper active={active} onStepClick={setActive} breakpoint="sm" className="p-4">
         <Stepper.Step label="First step" description="Email Verification">
-          <EmailVerifications myOTP={sentOTP}/>
+          <EmailVerifications myOTP={sentOTP} sentEmail={sentEmail}/>
           <Group position="center" mt="xl">
-            <Button variant="default" onClick={prevStep}>
+            {/* <Button variant="default" onClick={prevStep}>
               Back
-            </Button>
-            <Button onClick={nextStep}>Next step</Button>
+            </Button> */}
+            <Button onClick={nextStep} style={{position: 'relative', top: '-75px', left: '120px'}}>Next step</Button>
           </Group>
         </Stepper.Step>
         <Stepper.Step label="Second step" description="OTP Verification">
-          <OTPVerifications myOTP={sentOTP} />
+          <OTPVerifications myOTP={sentOTP} sentEmail={sentEmail} />
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Get full access">
           Step 3 content: Get full access

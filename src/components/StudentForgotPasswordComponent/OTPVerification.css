@@ -1,151 +1,159 @@
 .otp-verification-form {
-        --glow-color: rgb(176, 255, 251);
-        --glow-spread-color: rgba(123, 246, 255, 0.781);
-        --enhanced-glow-color: rgb(182, 71, 71);
-        --btn-color: rgba(65, 65, 65, 0.508);
-        border: 2px solid var(--glow-color);
-        padding: 25px;
-        display: flex;
-        max-width: 420px;
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden;
-        color: var(--glow-color);
-        background-color: var(--btn-color);
-        border-radius: 20px;
-        position: relative;
-      }
-      
-      /*----heading and description-----*/
-      
-      .otp-verification-info {
-        margin-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      
-      .otp-verification-title {
-        color: #fff;
-        font-size: 1.6rem;
-        font-weight: 900;
-      }
-      
-      .otp-verification-description {
-        color: #fff;
-        margin-top: 10px;
-        font-size: 1rem;
-      }
-      
-      /*----input-fields------*/
-      
-      .otp-verification-form .otp-verification-input-fields {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-      }
-      
-      .otp-verification-form .otp-verification-input-fields .otp-verification-input {
-        height: 2.5em;
-        width: 2.5em;
-        outline: none;
-        text-align: center;
-        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
-        font-size: 1.5rem;
-        color: #fff;
-        border-radius: 12px;
-        border: 2.5px solid rgba(253, 253, 253, 0.363);
-        background-color: rgb(255 255 255 / 0.05);
-      }
-      
-      .otp-verification-form .otp-verification-input-fields .otp-verification-input:focus {
-        border: 1px solid rgb(99, 236, 241);
-        box-shadow: inset -1px -1px 5px rgba(255, 255, 255, 0.6),
-          inset 10px 10px 10px rgba(0, 0, 0, 0.25);
-        transform: scale(1.05);
-        transition: 0.5s;
-      }
-      
-      /*-----verify and clear buttons-----*/
-      
-      .otp-verification-action-btns {
-        display: flex;
-        margin-top: 12px;
-        gap: 0.5rem;
-      }
-      
-      .otp-verification-verify {
-        padding: 10px 20px;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 500;
-        color: #00f7ff;
-        text-shadow: none;
-        background: transparent;
-        box-shadow: transparent;
-        border: 1px solid #ffffff80;
-        transition: 0.5s ease;
-        user-select: none;
-      }
-      
-      .otp-verification-verify:hover, .otp-verification-verify:focus {
-        color: #ffffff;
-        background: #00eeff;
-        border: 1px solid #00e1ff;
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-        box-shadow: 0 0 5px #00e1ff, 0 0 20px #00e1ff, 0 0 50px #00e1ff,
-          0 0 100px #00e1ff;
-      }
-      
-      .otp-verification-clear {
-        padding: 10px 20px;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 500;
-        color: #ff0000;
-        text-shadow: none;
-        background: transparent;
-        box-shadow: transparent;
-        border: 1px solid #ffffff80;
-        transition: 0.5s ease;
-        user-select: none;
-      }
-      
-      .otp-verification-clear:hover, .otp-verification-clear:focus {
-        color: #ffffff;
-        background: #ff0000;
-        border: 1px solid #ff0000;
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-        box-shadow: 0 0 5px #ff0000, 0 0 20px #ff0000, 0 0 50px #ff0000,
-          0 0 100px #ff0000;
-      }
-      
-      /*-----close button------*/
-      
-      .otp-verification-close {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        background-color: #494949;
-        color: #ff0000;
-        height: 30px;
-        width: 30px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        cursor: pointer;
-        font-weight: 600;
-        transition: 0.5s ease;
-      }
-      
-      .otp-verification-close:hover {
-        background-color: rgba(255, 0, 0, 0.644);
-        color: #fff;
-      }
-      
+  --glow-color: rgb(176, 255, 251);
+  --glow-spread-color: rgba(123, 246, 255, 0.781);
+  --enhanced-glow-color: rgb(182, 71, 71);
+  --btn-color: whiteSmoke;
+  border: 2px solid var(--glow-color);
+  padding: 25px;
+  display: flex;
+  max-width: 720px;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  color: var(--glow-color);
+  background-color: var(--btn-color);
+  border-radius: 20px;
+  position: relative;
+  margin-top: 20px;
+}
+
+/*----heading and description-----*/
+
+.otp-verification-info {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+}
+
+
+
+.otp-verification-title {
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  border-bottom: 2px solid blue;
+}
+
+.otp-verification-description {
+  color: black;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/*----input-fields------*/
+
+.otp-verification-form .otp-verification-input-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.otp-verification-form .otp-verification-input-fields .otp-verification-input {
+  height: 2.5em;
+  width: 2.5em;
+  outline: none;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  border-radius: 12px;
+  border: 2.5px solid rgba(253, 253, 253, 0.363);
+  background-color: rgb(255 255 255 / 0.05);
+}
+
+.otp-verification-form
+  .otp-verification-input-fields
+  .otp-verification-input:focus {
+  border: 1px solid rgb(99, 236, 241);
+  box-shadow: inset -1px -1px 5px rgba(255, 255, 255, 0.6),
+    inset 10px 10px 10px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+
+/*-----verify and clear buttons-----*/
+
+.otp-verification-action-btns {
+  display: flex;
+  margin-top: 12px;
+  gap: 0.5rem;
+}
+
+.otp-verification-verify {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00f7ff;
+  text-shadow: none;
+  background: transparent;
+  box-shadow: transparent;
+  border: 1px solid #ffffff80;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+.otp-verification-verify:hover,
+.otp-verification-verify:focus {
+  color: #ffffff;
+  background: #00eeff;
+  border: 1px solid #00e1ff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow: 0 0 3px #00e1ff, 0 0 3px #00e1ff, 0 0 3px #00e1ff,
+    0 0 0px #00e1ff;
+}
+
+.otp-verification-clear {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ff0000;
+  text-shadow: none;
+  background: transparent;
+  box-shadow: transparent;
+  border: 1px solid #ffffff80;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+.otp-verification-clear:hover,
+.otp-verification-clear:focus {
+  color: #ffffff;
+  background: #ff0000;
+  border: 1px solid #ff0000;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow: 0 0 5px #ff0000, 0 0 20px #ff0000, 0 0 50px #ff0000,
+    0 0 100px #ff0000;
+}
+
+/*-----close button------*/
+
+.otp-verification-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #494949;
+  color: #ff0000;
+  height: 30px;
+  width: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.5s ease;
+}
+
+.otp-verification-close:hover {
+  background-color: rgba(255, 0, 0, 0.644);
+  color: #fff;
+}

@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import "./OTPVerification.css"
 
 
-const OTPVerifications = ({myOTP: myOTP}) => {
+const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
 
   function handleSubmit(e) {
@@ -47,16 +47,15 @@ const OTPVerifications = ({myOTP: myOTP}) => {
   };
   return (
     <>
-      <form className="otp-verification-form" onSubmit={handleSubmit}>
-        <span className="otp-verification-close">X</span>
+      <form className="otp-verification-form mx-auto shadow" onSubmit={handleSubmit}>
 
         <div className="otp-verification-info">
-          <span className="otp-verification-title">
+          <span className="otp-verification-title pb-3">
             Two-Factor Verification
           </span>
           <p className="otp-verification-description">
             {" "}
-            Please enter the code we just sent to. {/* {myEmail} */}{" "}
+            Please enter the code we just sent to {sentEmail}{" "}
           </p>
         </div>
         <div className="otp-verification-input-fields">

@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { myEmailVerify } from "../../redux/portalSlice";
 import { useDispatch } from "react-redux";
 
 
-const EmailVerifications = ({ myOTP: myOTP }) => {
+const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
   const dispatch = useDispatch();
   const [myEmail, setMyEmail] = useState("");
 
 
   let formik = useFormik({
     initialValues: {
-      email: "",
+      email: sentEmail,
     },
 
     onSubmit: (values) => {
@@ -28,6 +28,24 @@ const EmailVerifications = ({ myOTP: myOTP }) => {
           console.log(myEmail);
           if (response.data.status) {
             dispatch(myEmailVerify(true));
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: false,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+            
+      
+            Toast.fire({
+              icon: "success",
+              title: response.data.message,
+              
+            });
           }
         } else {
           console.log(response.data.message);
@@ -58,19 +76,20 @@ const EmailVerifications = ({ myOTP: myOTP }) => {
     <>
       <form
         action=""
-        className="email-verification-from mx-auto d-flex border"
+        className="email-verification-from mx-auto d-flex border shadow"
         method="post"
         onSubmit={formik.handleSubmit}
       >
-        <div className="pt-5">
+        <div className="pt-4">
+        <img src="pic/ade.png" alt="" style={{width: '50px'}} className="mx-auto d-flex mb-4" />
           <h3 className="text-center">Forgot Password?</h3>
           <hr />
         </div>
         <div className="d-flex flex-column pt-2 px-5">
           <small className="pb-4 text-center">
-            To reset your password, kindly enter your email address below and you will receive an email
+            To reset your password, kindly enter your email address below, submit it and click Next step to continue
           </small>
-          <div className="col-lg-12 position-relative  flex-column mb-3">
+          <div className="col-lg-12 position-relative  flex-column mb-3 mt-3">
             <input
               type="email"
               autoComplete="on"
@@ -83,6 +102,7 @@ const EmailVerifications = ({ myOTP: myOTP }) => {
               required
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              defaultValue={sentEmail}
             />
             <label htmlFor="validationServer01" className="user-label">
               Email Address
@@ -94,6 +114,7 @@ const EmailVerifications = ({ myOTP: myOTP }) => {
           <button type="submit" className="btn btn-success btn-sm my-4">
             Submit
           </button>
+          <Link to="/student_login" className="fw-bold mb-4 mt-2" style={{textDecoration: 'none'}}>Sign in</Link>
         </div>
       </form>
     </>

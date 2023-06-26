@@ -13,8 +13,10 @@ const Login = () => {
       email: "",
       password: "",
     },
+   
 
     onSubmit: (values) => {
+      setEnteredEmail(values.email);
       const endpoint = "http://localhost:2000/student_account/student_login";
       axios.post(endpoint, values)
       .then((response) => {
@@ -65,7 +67,7 @@ const Login = () => {
   const myOTP = Math.floor(Math.random() * 9000 + 1000)
   const navigateToOTP = () => {
     // console.log(enteredEmail);
-    navigate('/forgot_password', {state: {myOTP: myOTP/* , email: enteredEmail */ }});
+    navigate('/forgot_password', {state: {myOTP: myOTP , email: enteredEmail }});
   }
   return (
     <>
@@ -82,6 +84,7 @@ const Login = () => {
                 className="login-input"
                 placeholder="Email or Phone"
                 autoComplete="on"
+                // setEnteredEmail(formik.value.entered)
                 
               />
               <span className="login-span">
@@ -147,12 +150,12 @@ const Login = () => {
               <label className="login-label">Password</label>
             </div>
             <div className="login-forgot-pass">
-              <div onClick={()=> navigateToOTP()} className="text-primary my-4">Forgot Password?</div>
+              <div onClick={()=> navigateToOTP()} className="text-primary my-4 forgotpassword">Forgot Password?</div>
             </div>
             <button className="login-button btn btn-primary" type="submit">Sign in</button>
             <div className="login-sign-up gap-4">
               Not a member?
-              <a href="#">signup now</a>
+              <Link to="/student/create_account">Signup now</Link>
             </div>
           </form>
         </div>

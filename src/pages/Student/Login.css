@@ -134,3 +134,7 @@
 .login-sign-up a:hover {
   text-decoration: underline;
 }
+
+.forgotpassword:hover {
+  cursor: pointer;
+}
