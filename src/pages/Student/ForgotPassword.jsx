@@ -9,6 +9,7 @@ import OTPVerifications from "../../components/StudentForgotPasswordComponent/OT
 import { useSelector } from "react-redux";
 // import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import ChangePasswordForms from "../../components/StudentForgotPasswordComponent/ChangePasswordForms";
 
 
 
@@ -44,7 +45,7 @@ function MyApp() {
 
   return (
     <>
-      <Stepper active={active} onStepClick={setActive} breakpoint="sm" className="p-4">
+      <Stepper active={active} onStepClick={0} breakpoint="sm" className="p-4">
         <Stepper.Step label="First step" description="Email Verification">
           <EmailVerifications myOTP={sentOTP} sentEmail={sentEmail}/>
           <Group position="center" mt="xl">
@@ -63,8 +64,8 @@ function MyApp() {
             <Button onClick={nextStep} >Next step</Button>
           </Group>
         </Stepper.Step>
-        <Stepper.Step label="Final step" description="Get full access">
-          Step 3 content: Get full access
+        <Stepper.Step label="Final step" description="Change Password">
+          <ChangePasswordForms/>
         </Stepper.Step>
         <Stepper.Completed>
           Completed, click back button to get to previous step

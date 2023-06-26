@@ -23,13 +23,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
     console.log(OTPInput);
     console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: '',
-        showConfirmButton: false,
-        timer: 1500
-      })
+      enqueueSnackbar('Verification successful. Click Nest step button to proceed', {variant: 'success'});
     } else {
       enqueueSnackbar('The provided OTP does not match. Please try again', {variant: 'error'});
     }
@@ -81,7 +75,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
           <input
             className="otp-verification-input"
             placeholder=""
-            type="tel"
+            type="password"
             maxLength="1"
             name="otpValue1"
             ref={input1Ref}
@@ -90,7 +84,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
           <input
             className="otp-verification-input"
             placeholder=""
-            type="tel"
+            type="password"
             maxLength="1"
             name="otpValue2"
             ref={input2Ref}
@@ -99,7 +93,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
           <input
             className="otp-verification-input"
             placeholder=""
-            type="tel"
+            type="password"
             maxLength="1"
             name="otpValue3"
             ref={input3Ref}
@@ -108,7 +102,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
           <input
             className="otp-verification-input"
             placeholder=""
-            type="tel"
+            type="password"
             maxLength="1"
             name="otpValue4"
             ref={input4Ref}
