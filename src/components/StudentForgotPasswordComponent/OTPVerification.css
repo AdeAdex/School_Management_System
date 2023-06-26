@@ -4,7 +4,7 @@
   --enhanced-glow-color: rgb(182, 71, 71);
   --btn-color: whiteSmoke;
   border: 2px solid var(--glow-color);
-  padding: 25px;
+  padding: 25px 25px 50px;
   display: flex;
   max-width: 720px;
   flex-direction: column;
@@ -62,7 +62,7 @@
   color: #fff;
   border-radius: 12px;
   border: 2.5px solid rgba(253, 253, 253, 0.363);
-  background-color: rgb(255 255 255 / 0.05);
+  background-color: #93a9f259;
 }
 
 .otp-verification-form
@@ -79,8 +79,8 @@
 
 .otp-verification-action-btns {
   display: flex;
-  margin-top: 12px;
-  gap: 0.5rem;
+  margin-top: 20px;
+  gap: 1rem;
 }
 
 .otp-verification-verify {
@@ -94,7 +94,7 @@
   text-shadow: none;
   background: transparent;
   box-shadow: transparent;
-  border: 1px solid #ffffff80;
+  border: 1px solid #00f7ff;
   transition: 0.5s ease;
   user-select: none;
 }
@@ -102,11 +102,8 @@
 .otp-verification-verify:hover,
 .otp-verification-verify:focus {
   color: #ffffff;
-  background: #00eeff;
-  border: 1px solid #00e1ff;
-  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-  box-shadow: 0 0 3px #00e1ff, 0 0 3px #00e1ff, 0 0 3px #00e1ff,
-    0 0 0px #00e1ff;
+  background: #00edfe8f;
+  border: none;
 }
 
 .otp-verification-clear {
@@ -120,7 +117,7 @@
   text-shadow: none;
   background: transparent;
   box-shadow: transparent;
-  border: 1px solid #ffffff80;
+  border: 1px solid #ff0000;
   transition: 0.5s ease;
   user-select: none;
 }
@@ -129,31 +126,12 @@
 .otp-verification-clear:focus {
   color: #ffffff;
   background: #ff0000;
-  border: 1px solid #ff0000;
-  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  border: none;
+  /* text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
   box-shadow: 0 0 5px #ff0000, 0 0 20px #ff0000, 0 0 50px #ff0000,
-    0 0 100px #ff0000;
+    0 0 100px #ff0000; */
 }
 
-/*-----close button------*/
-
-.otp-verification-close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background-color: #494949;
-  color: #ff0000;
-  height: 30px;
-  width: 30px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.5s ease;
-}
-
-.otp-verification-close:hover {
-  background-color: rgba(255, 0, 0, 0.644);
-  color: #fff;
+.otp-verification-resend {
+  color: black;
 }

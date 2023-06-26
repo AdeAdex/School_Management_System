@@ -57,6 +57,12 @@ function MyApp() {
         </Stepper.Step>
         <Stepper.Step label="Second step" description="OTP Verification">
           <OTPVerifications myOTP={sentOTP} sentEmail={sentEmail} />
+          <Group position="center" mt="xl" style={{position: 'relative', top: '-75px', left: ''}}>
+            <Button variant="default" onClick={prevStep}>
+              Back
+            </Button>
+            <Button onClick={nextStep} >Next step</Button>
+          </Group>
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Get full access">
           Step 3 content: Get full access

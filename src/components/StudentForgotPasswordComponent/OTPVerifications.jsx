@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import React, { useRef, useState } from "react";
 import "./OTPVerification.css"
+import { Link } from "react-router-dom";
 
 
 const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
@@ -51,7 +52,7 @@ const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
 
         <div className="otp-verification-info">
           <span className="otp-verification-title pb-3">
-            Two-Factor Verification
+            OTP Verification
           </span>
           <p className="otp-verification-description">
             {" "}
@@ -112,9 +113,9 @@ const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
             Clear
           </button>
         </div>
-        <p className="otp-verification-resend">
+        <p className="otp-verification-resend my-4">
           You don't receive the code ?
-          <a className="otp-verification-resend-action">resend</a>
+          <Link className="otp-verification-resend-action ms-4">Resend</Link>
         </p>
       </form>
     </>
