@@ -30,6 +30,9 @@ function MyApp() {
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
   );
+  const myOTPResponse = useSelector(
+    (state) => state.portalReducer.OTPVerify
+  );
   const {enqueueSnackbar} = useSnackbar();
 
 
@@ -40,11 +43,20 @@ function MyApp() {
     if (myEmailResponse) {
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
-      
+
       enqueueSnackbar("Enter your email address and submit before continue", { variant: 'error' });
     }
   };
   const prevStep = () =>setActive((current) => (current > 0 ? current - 1 : current));
+
+  const nextStep2 = (variant) => {
+    console.log(myOTPResponse);
+    if (myOTPResponse) {
+      setActive((current) => (current < 3 ? current + 1 : current));
+    } else {
+      enqueueSnackbar("Enter the correct OTP sent to your email address before continue", { variant: 'error' });
+    }
+  }
 
   return (
     <>
@@ -52,9 +64,6 @@ function MyApp() {
         <Stepper.Step label="First step" description="Email Verification">
           <EmailVerifications myOTP={sentOTP} sentEmail={sentEmail}/>
           <Group position="center" mt="xl">
-            {/* <Button variant="default" onClick={prevStep}>
-              Back
-            </Button> */}
             <Button onClick={nextStep} style={{position: 'relative', top: '-75px', left: '120px'}}>Next step</Button>
           </Group>
         </Stepper.Step>
@@ -64,7 +73,7 @@ function MyApp() {
             <Button variant="default" onClick={prevStep}>
               Back
             </Button>
-            <Button onClick={nextStep} >Next step</Button>
+            <Button onClick={nextStep2} >Next step</Button>
           </Group>
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">

@@ -3,7 +3,8 @@ import React, { useRef, useState } from "react";
 import "./OTPVerification.css"
 import { Link } from "react-router-dom";
 import { SnackbarProvider, useSnackbar } from 'notistack';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { myOTPVerify } from "../../redux/portalSlice";
 
 
 const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
@@ -18,6 +19,8 @@ const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
 function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
   const {enqueueSnackbar} = useSnackbar();
+  const dispatch = useDispatch();
+
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
   );
@@ -27,6 +30,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
     console.log(OTPInput);
     console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
+      dispatch(myOTPVerify(true))
       enqueueSnackbar('Verification successful. Click Nest step button to proceed', {variant: 'success'});
     } else {
       enqueueSnackbar('The provided OTP does not match. Please try again', {variant: 'error'});
