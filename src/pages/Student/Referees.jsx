@@ -2,7 +2,9 @@ import React from 'react'
 
 const Referees = () => {
   return (
-    <div>Referees</div>
+    <>
+      <div>Referees</div>
+    </>
   )
 }
 

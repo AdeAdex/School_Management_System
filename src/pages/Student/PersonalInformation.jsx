@@ -13,11 +13,16 @@ const PersonalInformation = () => {
   let navigate = useNavigate();
   useEffect(() => {}, []);
 
-  const [state, setState] = useState('');
+  // const [state, setState] = useState('');
+  // const [country, setCountry] = useState('');
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  // const handleChangeState = (event) => {
+  //   setState(event.target.value);
+  // };
+
+  // const handleChangeCountry = (event) => {
+  //   setCountry(event.target.value);
+  // };
 
   var globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
@@ -322,21 +327,22 @@ const PersonalInformation = () => {
           <Select
             labelId="demo-select-small-label"
             id="demo-select-small"
-            value={state}
+            value={formik.values.state}
             label="State"
-            onChange={handleChange}
+            onChange={formik.handleChange}
+            name="state"
           >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value="Oyo State">Oyo State</MenuItem>
+            <MenuItem value="Lagos State">Lagos State</MenuItem>
+            <MenuItem value="Osun State">Osun State</MenuItem>
           </Select>
           </FormControl>
         </div>
         <div className="col-md-6 mb-3">
-          <label htmlFor="validationServer04" className="user-label">
+          {/* <label htmlFor="validationServer04" className="user-label">
             Country
           </label>
           <select
@@ -357,7 +363,27 @@ const PersonalInformation = () => {
           </select>
           <div id="validationServer04Feedback" className="invalid-feedback">
             Please select a valid state.
-          </div>
+          </div> */}
+
+          <FormControl sx={{ m: 0, width: '100%' }} size="small">
+          <InputLabel id="demo-select-small-label">Country</InputLabel>
+          <Select
+            labelId="demo-select-small-label"
+            id="demo-select-small"
+            value={formik.values.country}
+            label="Country"
+            onChange={formik.handleChange}
+            name="country"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value="Nigeria">Nigeria</MenuItem>
+            <MenuItem value="UK">United Kingdom</MenuItem>
+            <MenuItem value="US">United State of America</MenuItem>
+            <MenuItem value="Canada">Canada</MenuItem>
+          </Select>
+          </FormControl>
         </div>
         <div className="col-12">
           <button className="btn btn-primary signup-btn px-5" type="submit">

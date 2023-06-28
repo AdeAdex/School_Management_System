@@ -27,6 +27,7 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
+    <>
     <div
       role="tabpanel"
       hidden={value !== index}
@@ -40,6 +41,8 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
+    </>
+    
   );
 }
 
@@ -66,12 +69,12 @@ const Admission = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const navLinkStyles = ({ isActive }) => {
-    return {
-      fontWeight: isActive ? "bold" : "normal",
-      textDecoration: isActive ? "none" : "none",
-    };
-  };
+  // const navLinkStyles = ({ isActive }) => {
+  //   return {
+  //     fontWeight: isActive ? "bold" : "normal",
+  //     textDecoration: isActive ? "none" : "none",
+  //   };
+  // };
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
     let endpoint =
@@ -155,7 +158,7 @@ const Admission = () => {
           <Route path="education" element={<Education />} />
           <Route path="referees" element={<Referees />} />
         </Routes> */}
-
+        <div>
         <Box
           sx={{
             flexGrow: 1,
@@ -188,7 +191,7 @@ const Admission = () => {
             <Tab label="Referees" component={Link}
               to="/student/admission/referees" />
             <Tab label="Credential Upload" component={Link}
-              to="/student/admission/credential_upload" />
+              to="/student/admission/credential" />
             <Tab label="Item Seven" {...a11yProps(6)} />
           </Tabs>
           <TabPanel value={value} index={0}>
@@ -213,6 +216,8 @@ const Admission = () => {
             Item Seven
           </TabPanel>
         </Box>
+        </div>
+        
       </div>
     </>
   );
