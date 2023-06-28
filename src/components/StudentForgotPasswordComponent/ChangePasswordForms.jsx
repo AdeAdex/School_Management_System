@@ -3,7 +3,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-const ChangePasswordForms = () => {
+const ChangePasswordForms = ({myEmail: myEmail}) => {
   const [myMessage, setMyMessage] = useState("");
 
   const changePass = useFormik({
@@ -64,7 +64,7 @@ const ChangePasswordForms = () => {
               className={
                 changePass.touched.password && changePass.errors.password
                   ? "input form-control is-invalid"
-                  : "input form-control is-valid"
+                  : "input form-control is-vali"
               }
               onChange={changePass.handleChange}
               onBlur={changePass.handleBlur}
@@ -83,7 +83,7 @@ const ChangePasswordForms = () => {
                 changePass.touched.confirmPassword &&
                 changePass.errors.confirmPassword
                   ? "input form-control is-invalid"
-                  : "input form-control is-valid"
+                  : "input form-control is-vali"
               }
               onChange={changePass.handleChange}
               onBlur={changePass.handleBlur}

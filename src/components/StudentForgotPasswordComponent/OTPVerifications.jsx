@@ -27,8 +27,8 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
 
 
   function handleSubmit(e) {
-    console.log(OTPInput);
-    console.log(myOTP);
+    // console.log(OTPInput);
+    // console.log(myOTP);
     if (Number(OTPInput.join("")) === myOTP) {
       dispatch(myOTPVerify(true))
       enqueueSnackbar('Verification successful. Click Nest step button to proceed', {variant: 'success'});

@@ -39,7 +39,7 @@ function MyApp() {
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) => {
-    console.log(myEmailResponse);
+    // console.log(myEmailResponse);
     if (myEmailResponse) {
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
@@ -50,17 +50,17 @@ function MyApp() {
   const prevStep = () =>setActive((current) => (current > 0 ? current - 1 : current));
 
   const nextStep2 = (variant) => {
-    console.log(myOTPResponse);
+    // console.log(myOTPResponse);
     if (myOTPResponse) {
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
-      enqueueSnackbar("Enter the correct OTP sent to your email address before continue", { variant: 'error' });
+      enqueueSnackbar("Enter the correct OTP sent to your email address and then verify before continue", { variant: 'error' });
     }
   }
 
   return (
     <>
-      <Stepper active={active} onStepClick={0} breakpoint="sm" className="p-4">
+      <Stepper active={active} onStepClick={active} breakpoint="sm" className="p-4">
         <Stepper.Step label="First step" description="Email Verification">
           <EmailVerifications myOTP={sentOTP} sentEmail={sentEmail}/>
           <Group position="center" mt="xl">
@@ -77,7 +77,7 @@ function MyApp() {
           </Group>
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">
-          <ChangePasswordForms/>
+          <ChangePasswordForms myEmail={myEmailResponse}/>
           <Button variant="default" onClick={prevStep}>
               Back
             </Button>

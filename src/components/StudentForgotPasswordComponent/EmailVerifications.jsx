@@ -22,10 +22,10 @@ const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
       let endpoint = "http://localhost:2000/student_account/forgot_password";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
-          console.log(response.data.message);
-          console.log(response.data.response[0]);
+          // console.log(response.data.message);
+          // console.log(response.data.response[0]);
           setMyEmail(response.data.response[0]);
-          console.log(myEmail);
+          // console.log(myEmail);
           if (response.data.status) {
             dispatch(myEmailVerify(response.data.response[0]));
             const Toast = Swal.mixin({
