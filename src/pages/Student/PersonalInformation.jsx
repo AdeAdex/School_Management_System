@@ -317,7 +317,7 @@ const PersonalInformation = () => {
           <div id="validationServer04Feedback" className="invalid-feedback">
             Please select a valid state.
           </div> */}
-
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">Age</InputLabel>
           <Select
             labelId="demo-select-small-label"
@@ -333,6 +333,7 @@ const PersonalInformation = () => {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
+          </FormControl>
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="validationServer04" className="user-label">
