@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import "./OTPVerification.css"
 import { Link } from "react-router-dom";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useSelector } from "react-redux";
 
 
 const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
@@ -17,6 +18,9 @@ const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
 function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
   const {enqueueSnackbar} = useSnackbar();
+  const myEmailResponse = useSelector(
+    (state) => state.portalReducer.emailVerify
+  );
 
 
   function handleSubmit(e) {
@@ -68,7 +72,7 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
           </span>
           <p className="otp-verification-description">
             {" "}
-            Please enter the code we just sent to {sentEmail}{" "}
+            Please enter the code we just sent to {myEmailResponse}{" "}
           </p>
         </div>
         <div className="otp-verification-input-fields">
