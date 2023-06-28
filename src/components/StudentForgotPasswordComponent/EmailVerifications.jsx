@@ -13,7 +13,7 @@ const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
 
   let formik = useFormik({
     initialValues: {
-      email: sentEmail,
+      email: sentEmail || "",
     },
 
     onSubmit: (values) => {
@@ -27,7 +27,7 @@ const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
           setMyEmail(response.data.response[0]);
           console.log(myEmail);
           if (response.data.status) {
-            dispatch(myEmailVerify(true));
+            dispatch(myEmailVerify(response.data.response[0]));
             const Toast = Swal.mixin({
               toast: true,
               position: "top",

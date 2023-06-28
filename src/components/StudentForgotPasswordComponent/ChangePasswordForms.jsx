@@ -5,7 +5,6 @@ import * as yup from "yup";
 
 const ChangePasswordForms = () => {
   const [myMessage, setMyMessage] = useState("");
-  const [validationError, setValidationError] = useState("");
 
   const changePass = useFormik({
     initialValues: {

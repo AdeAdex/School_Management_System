@@ -26,6 +26,7 @@ function MyApp() {
   let location = useLocation();
   let sentOTP = location.state.myOTP;
   let sentEmail = location.state.email
+
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
   );
@@ -35,9 +36,11 @@ function MyApp() {
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) => {
+    console.log(myEmailResponse);
     if (myEmailResponse) {
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
+      
       enqueueSnackbar("Enter your email address and submit before continue", { variant: 'error' });
     }
   };
@@ -66,6 +69,9 @@ function MyApp() {
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">
           <ChangePasswordForms/>
+          <Button variant="default" onClick={prevStep}>
+              Back
+            </Button>
         </Stepper.Step>
         <Stepper.Completed>
           Completed, click back button to get to previous step
