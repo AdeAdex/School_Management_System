@@ -2,12 +2,22 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import './StudentSignUp.css'
+import "./StudentSignUp.css";
 import { useNavigate } from "react-router-dom";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const PersonalInformation = () => {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   useEffect(() => {}, []);
+
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   var globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
@@ -31,8 +41,7 @@ const PersonalInformation = () => {
       console.log(globalState);
       // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student_update";
-      axios.post(endpoint, globalState)
-      .then((response) => {
+      axios.post(endpoint, globalState).then((response) => {
         console.log(response);
         const Toast = Swal.mixin({
           toast: true,
@@ -50,7 +59,7 @@ const PersonalInformation = () => {
           icon: "success",
           title: response.data.message,
         });
-        navigate('/student/admission/personal_information')
+        navigate("/student/admission/personal_information");
       });
     },
   });
@@ -288,7 +297,7 @@ const PersonalInformation = () => {
         </div>
 
         <div className="col-md-6 mb-3">
-          <label htmlFor="validationServer04" className="user-label">
+          {/* <label htmlFor="validationServer04" className="user-label">
             State
           </label>
           <select
@@ -307,7 +316,23 @@ const PersonalInformation = () => {
           </select>
           <div id="validationServer04Feedback" className="invalid-feedback">
             Please select a valid state.
-          </div>
+          </div> */}
+
+          <InputLabel id="demo-select-small-label">Age</InputLabel>
+          <Select
+            labelId="demo-select-small-label"
+            id="demo-select-small"
+            value={age}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="validationServer04" className="user-label">

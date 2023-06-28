@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Link,
   NavLink,
@@ -56,7 +56,7 @@ function a11yProps(index) {
 }
 
 const Admission = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -105,20 +105,6 @@ const Admission = () => {
 
   return (
     <>
-      {/* <nav>
-        <NavLink exact to="/" activeClassName="active">
-          Home
-        </NavLink>
-        {condition ? (
-          <NavLink exact to="/special" activeClassName="active">
-            Special
-          </NavLink>
-        ) : (
-          <NavLink exact to="/regular" activeClassName="active">
-            Regular
-          </NavLink>
-        )}
-      </nav> */}
       <div>
         <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
@@ -158,10 +144,21 @@ const Admission = () => {
           </div>
         </div> */}
 
+        {/* <Routes>
+          <Route path="pick_class" element={<PickClass />} />
+          <Route path="payment" element={<Payment />} />
+          <Route
+            path="personal_information"
+            element={<PersonalInformation />}
+          />
+          <Route path="education" element={<Education />} />
+          <Route path="referees" element={<Referees />} />
+        </Routes> */}
+
         <Box
           sx={{
             flexGrow: 1,
-            width: '100% ',
+            width: "100% ",
             bgcolor: "background.paper",
           }}
         >
@@ -174,28 +171,38 @@ const Admission = () => {
             aria-label="visible arrows tabs example"
             sx={{ borderRight: 1, borderColor: "divider" }}
           >
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
-            <Tab label="Item Four" {...a11yProps(3)} />
-            <Tab label="Item Five" {...a11yProps(4)} />
+            <Tab
+              label="Pick Class"
+              component={Link}
+              to="/student/admission/pick_class"
+            />
+            <Tab label="Payment" component={Link} to="/student/admission/payment" />
+            <Tab
+              label="Personal Information"
+              component={Link}
+              to="/student/admission/personal_information"
+            />
+            <Tab label="Education" component={Link}
+              to="/student/admission/education"/>
+            <Tab label="Referees" component={Link}
+              to="/student/admission/referees" />
             <Tab label="Item Six" {...a11yProps(5)} />
             <Tab label="Item Seven" {...a11yProps(6)} />
           </Tabs>
           <TabPanel value={value} index={0}>
-            Item One
+            <PickClass />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Two
+            <Payment />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Item Three
+            <PersonalInformation />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            Item Four
+            <Education />
           </TabPanel>
           <TabPanel value={value} index={4}>
-            Item Five
+            <Referees />
           </TabPanel>
           <TabPanel value={value} index={5}>
             Item Six

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const ChangePasswordForms = ({myEmail: myEmail}) => {
   const [myMessage, setMyMessage] = useState("");
+  let navigate = useNavigate();
 
   const changePass = useFormik({
     initialValues: {
@@ -15,10 +17,14 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
     onSubmit: (values) => {
       let newValues = { ...values, myEmail };
       console.log(newValues);
-      // let endpoint = "http://localhost:2000/student_account/change_password";
-      // axios.post(endpoint, newValues).then((response) => {
-      //   setMyMessage(response.data.message);
-      // });
+      let endpoint = "http://localhost:2000/student_account/change_password";
+      axios
+      .post(endpoint, newValues)
+      .then((response) => {
+        setMyMessage(response.data.message);
+        console.log(response.data.message);
+        navigate('/student_login')
+      });
     },
 
     validationSchema: yup.object({
