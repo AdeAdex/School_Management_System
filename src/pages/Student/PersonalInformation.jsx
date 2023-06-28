@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./StudentSignUp.css";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const PersonalInformation = () => {
   let navigate = useNavigate();
   useEffect(() => {}, []);
 
-  const [age, setAge] = React.useState('');
+  const [state, setState] = useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -317,13 +317,13 @@ const PersonalInformation = () => {
           <div id="validationServer04Feedback" className="invalid-feedback">
             Please select a valid state.
           </div> */}
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="demo-select-small-label">Age</InputLabel>
+          <FormControl sx={{ m: 0, width: '100%' }} size="small">
+          <InputLabel id="demo-select-small-label">State</InputLabel>
           <Select
             labelId="demo-select-small-label"
             id="demo-select-small"
-            value={age}
-            label="Age"
+            value={state}
+            label="State"
             onChange={handleChange}
           >
             <MenuItem value="">

@@ -21,6 +21,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import CredentialUpload from "./CredentialUpload";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -186,7 +187,8 @@ const Admission = () => {
               to="/student/admission/education"/>
             <Tab label="Referees" component={Link}
               to="/student/admission/referees" />
-            <Tab label="Item Six" {...a11yProps(5)} />
+            <Tab label="Credential Upload" component={Link}
+              to="/student/admission/credential_upload" />
             <Tab label="Item Seven" {...a11yProps(6)} />
           </Tabs>
           <TabPanel value={value} index={0}>
@@ -205,7 +207,7 @@ const Admission = () => {
             <Referees />
           </TabPanel>
           <TabPanel value={value} index={5}>
-            Item Six
+            <CredentialUpload/>
           </TabPanel>
           <TabPanel value={value} index={6}>
             Item Seven
