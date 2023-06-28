@@ -113,3 +113,7 @@ input:valid {
     padding: 20px 20px !important;
   }
 }
+
+/* #demo-select-small-label:focus, #demo-select-small-label:active {
+  color: red;
+} */

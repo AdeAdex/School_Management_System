@@ -65,10 +65,10 @@ const CreateAccount = () => {
     validationSchema: yup.object({
       firstName: yup
         .string()
-        .required("firstName is required to create account"),
+        .required("firstname is required to create account"),
       lastName: yup
         .string()
-        .required("lastName is required to create account"),
+        .required("lastname is required to create account"),
       email: yup
         .string()
         .lowercase()
@@ -76,11 +76,15 @@ const CreateAccount = () => {
         .email("Please enter a valid email address"),
       phoneNumber: yup
         .string()
-        .required("phoneNumber is required to create account"),
+        .required("phone number is required to create account"),
       password: yup
         .string()
         .required("password is required to create account")
-        .min(4, "must be at least 4 characters long"),
+        .min(8, "Password must be at least 8 characters long")
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
+          "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+        ),
       checkbox: yup
         .boolean()
         .oneOf([true]),
@@ -128,9 +132,11 @@ const CreateAccount = () => {
             <label htmlFor="validationServer01" className="user-label">
               First Name
             </label>
-            <div className="invalid-feedback">
-              Please provide your Firstname!
-            </div>
+            {formik.touched.firstName && formik.errors.firstName ? (
+              <small className="error text-danger">
+                {formik.errors.firstName}
+              </small>
+            ) : null}
             <div className="valid-feedback">Looks good</div>
           </div>
           <div className="col-md-6 position-relative  flex-column mb-3">
@@ -150,9 +156,11 @@ const CreateAccount = () => {
             <label htmlFor="validationServer01" className="user-label">
               Last Name
             </label>
-            <div className="invalid-feedback">
-              Please provide your Lastname!
-            </div>
+            {formik.touched.lastName && formik.errors.lastName ? (
+              <small className="error text-danger">
+                {formik.errors.lastName}
+              </small>
+            ) : null}
           </div>
 
           <div className="col-lg-12 position-relative  flex-column mb-3">
@@ -172,9 +180,11 @@ const CreateAccount = () => {
             <label htmlFor="validationServer01" className="user-label">
               Email Address
             </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a valid Email address.
-            </div>
+            {formik.touched.email && formik.errors.email ? (
+              <small className="error text-danger">
+                {formik.errors.email}
+              </small>
+            ) : null}
           </div>
           <div className="col-md-6 position-relative  flex-column mb-3">
             <input
@@ -193,9 +203,11 @@ const CreateAccount = () => {
             <label htmlFor="validationServer01" className="user-label">
               Phone Number
             </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a valid Phone number.
-            </div>
+            {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+              <small className="error text-danger">
+                {formik.errors.phoneNumber}
+              </small>
+            ) : null}
           </div>
           <div className="col-lg-6 position-relative  flex-column mb-3">
             <input
@@ -214,9 +226,11 @@ const CreateAccount = () => {
             <label htmlFor="validationServer01" className="user-label">
               Password
             </label>
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please provide a valid password.
-            </div>
+            {formik.touched.password && formik.errors.password ? (
+              <small className="error text-danger">
+                {formik.errors.password}
+              </small>
+            ) : null}
           </div>
           <div className="col-12">
             <div className="form-check">

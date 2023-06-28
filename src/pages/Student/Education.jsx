@@ -159,7 +159,7 @@ const Education = () => {
           </tbody>
         ))}
       </table>
-      <button onClick={openModal}>Add Result</button>
+      <button onClick={openModal} className="btn btn-primary">Add Result</button>
       <EducationModal isOpen={modalOpen} onClose={closeModal} />
       <EditEducationModal myId={modalIdValue} myEmail={modalEmailValue} isOpen={editModalOpen}  onClose={closeEditModal} />
     </>
