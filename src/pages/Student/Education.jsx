@@ -122,8 +122,8 @@ const Education = () => {
 
   return (
     <>
-      <table className="table table-borderd table-striped">
-        <thead>
+      <table className="table gap-2">
+        <thead className="text-white table-head mb-3">
           <tr className="text-uppercase">
             <td>exam</td>
             <td>subject</td>
@@ -135,8 +135,8 @@ const Education = () => {
           </tr>
         </thead>
         {preEdu.map((items, index) => (
-          <tbody key={index}>
-            <tr className="text-uppercase">
+          <tbody key={index} className="tbody">
+            <tr className="text-uppercase table-tr">
               <td>{items.exam}</td>
               <td>{items.subject}</td>
               <td>{items.examNo}</td>
@@ -144,15 +144,15 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow" onClick={()=> {openEditModal(items.id, myEmail, items)}}>
-                  edit
+                <button type="submit" className="btn btn-white shadow edit-btn" onClick={()=> {openEditModal(items.id, myEmail, items)}}>
+                  Edit
                 </button>
                 <button
                   type="submit"
-                  className="btn btn-white shadow"
+                  className="btn btn-white shadow delete-btn"
                   onClick={()=> {openConfirmDeleteModal(items.id, myEmail)}}
                 >
-                  delete
+                  Delete
                 </button>
               </td>
             </tr>

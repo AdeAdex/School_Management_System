@@ -1,9 +1,24 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const PickClass = () => {
   // const [state, setState] = useState("")
+
+  useEffect(() => {
+    const endpoint = "http://localhost:2000/staff_account/details"
+
+    axios.get(endpoint, {
+      headers: {
+        Authorization: `${'staffArray'}`,
+        "Content-Type": "application/json",
+      }
+    })
+    .then((response) => {
+      console.log(response.data.response);
+    })
+  }, [])
+  
   let formik = useFormik({
     initialValues: {
       state: "",
@@ -11,11 +26,11 @@ const PickClass = () => {
 
     onSubmit: (values) => {
       console.log(values);
-      const endpoint = "http://localhost:2000/student_account/student_dashboard2"
-      // axios.post(endpoint, values)
-      // .then((response) => {
-      //   console.log(response)
-      // })
+      const endpoint = "http://localhost:2000/staff_account/details"
+      axios.get(endpoint, values)
+      .then((response) => {
+        console.log(response)
+      })
     },
   });
 
@@ -49,6 +64,9 @@ const PickClass = () => {
               Please select a valid state.
             </div>
           </div>
+          <button type="submit" className="btn btn-primary d-flex justify-content-center w-25 mx-auto">Continue</button>
+        </form>
+
           <div className="col-md-12 mb-3">
             <label htmlFor="validationServer04" className="form-label fw-bold text-secondary">
               Course
@@ -98,8 +116,7 @@ const PickClass = () => {
               Please select a valid state.
             </div>
           </div>
-          <button type="submit" className="btn btn-primary d-flex justify-content-center w-25 mx-auto">Continue</button>
-        </form>
+         
       </div>
     </>
   );

@@ -1,3 +1,15 @@
+.table, .edit-btn, .delete-btn {
+  font-size: 12px;
+}
+
+tbody{
+  margin-top: 2px !important;
+  /* margin-bottom: auto; */
+}
+
+.table-head {
+  background-color: #3C37FF;
+}
 .education-login-box {
   width: 100%;
   display: flex;

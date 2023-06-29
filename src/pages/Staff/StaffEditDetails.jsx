@@ -6,27 +6,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { newName } from "../../redux/portalSlice";
 
 const StaffEditDetails = () => {
-  const globalState = useSelector((state)=>state.portalReducer.staffInfo)
+  const globalState = useSelector((state) => state.portalReducer.staffInfo);
 
-//   useEffect(() => {
-//         // console.log(globalState);
-//     let endpoint = "http://localhost:2000/staff_account/edit_details";
-//     axios.get(endpoint)
-//     .then((response) => {
-// //       dispatch(newName(response.data.response));
-// //       console.log(response.data.response);
-//     });
-//   }, );
+  //   useEffect(() => {
+  //         // console.log(globalState);
+  //     let endpoint = "http://localhost:2000/staff_account/edit_details";
+  //     axios.get(endpoint)
+  //     .then((response) => {
+  // //       dispatch(newName(response.data.response));
+  // //       console.log(response.data.response);
+  //     });
+  //   }, );
 
-const tryGet = () => {
-  console.log(globalState.email);
-  let myEmail = globalState.email
-  let endpoint = "http://localhost:2000/staff_account/details";
-    axios.get(endpoint, myEmail)
-    .then((response) => {
+  const tryGet = () => {
+    console.log(globalState.email);
+    let myEmail = globalState.email;
+    let endpoint = "http://localhost:2000/staff_account/details";
+    axios.get(endpoint, myEmail).then((response) => {
       console.log(response);
-    })
-}
+    });
+  };
 
   let formik = useFormik({
     initialValues: {
@@ -34,16 +33,20 @@ const tryGet = () => {
       country: "",
       lga: "",
       hubby: "",
-      receivedEmail: ""
+      receivedEmail: "",
+      class: "",
     },
 
     onSubmit: (values) => {
       // console.log(globalState);
-      const newValues = {...values,receivedEmail: globalState.email};
+      const newValues = {
+        ...values,
+        receivedEmail: globalState.email,
+        id: crypto.randomUUID(),
+      };
       console.log(newValues);
       let endpoint = "http://localhost:2000/staff_account/edit_details";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      axios.post(endpoint, newValues).then((response) => {
         console.log(response.data.response.staffArray);
       });
     },
@@ -53,7 +56,26 @@ const tryGet = () => {
       <div className="edit-container">
         <div className="edit-card">
           <h3 className="edit-login">Edit Your Details</h3>
-          <form onSubmit={formik.handleSubmit} action="/staff_account/edit_details" method="post">
+          <form
+            onSubmit={formik.handleSubmit}
+            action="/staff_account/edit_details"
+            method="post"
+          >
+            <div className="edit-inputBox">
+              <select
+                name="class"
+                id=""
+                required="required"
+                onChange={formik.handleChange}
+              >
+                <option value="JSS1">JSS1</option>
+                <option value="JSS2">JSS2</option>
+                <option value="JSS3">JSS3</option>
+                <option value="SSS1">SSS1</option>
+                <option value="SSS2">SSS2</option>
+                <option value="SSS3">SSS3</option>
+              </select>
+            </div>
             <div className="edit-inputBox">
               <input
                 type="text"
@@ -98,7 +120,9 @@ const tryGet = () => {
               Enter
             </button>
           </form>
-            <button type="submit" onClick={tryGet}>Get Info</button>
+          <button type="submit" onClick={tryGet}>
+            Get Info
+          </button>
         </div>
       </div>
     </>
