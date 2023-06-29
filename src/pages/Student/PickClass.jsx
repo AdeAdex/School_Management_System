@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 const PickClass = () => {
   // const [state, setState] = useState("")
   const [responseArray, setResponseArray] = useState({
-    array1: '',
-    array2: '',
-    array3: ''
+    array1: [],
+    array2: [],
+    array3: []
   });
 
   // const response = {
@@ -33,16 +33,17 @@ const PickClass = () => {
       })
       .then((response) => {
         console.log(response.data.response[0].staffArray);
-        // setResponseArray(response.data.response[0].staffArray[0]);
+        setResponseArray(response.data.response[0].staffArray);
       });
   }, []);
 
   const handleResponseChange = (event) => {
     const { name, value } = event.target;
-    setResponses((prevResponses) => ({
+    setResponseArray((prevResponses) => ({
       ...prevResponses,
       [name]: value
     }));
+    console.log(name, value);
   };
 
   // console.log(responseArray);
@@ -65,21 +66,24 @@ const PickClass = () => {
 
 <div>
       <h1>Response Form</h1>
-      <select name="array1" value={responses.array1} onChange={handleResponseChange}>
-        <option value="">Select an option for Array 1</option>
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-        <option value="Option 3">Option 3</option>
+      <select name="array1" value={responseArray.array1} onChange={handleResponseChange}>
+      <option value="">Select an option for Array 1</option>
+        {/* {responseArray.array1.map((option, index) => (
+          <option key={index} value={option}>
+            {option}
+          </option>
+        ))} */}
+        <option value={responseArray.array1}></option>
       </select>
 
-      <select name="array2" value={responses.array2} onChange={handleResponseChange}>
+      <select name="array2" value={responseArray.array2} onChange={handleResponseChange}>
         <option value="">Select an option for Array 2</option>
         <option value="Option A">Option A</option>
         <option value="Option B">Option B</option>
         <option value="Option C">Option C</option>
       </select>
 
-      <select name="array3" value={responses.array3} onChange={handleResponseChange}>
+      <select name="array3" value={responseArray.array3} onChange={handleResponseChange}>
         <option value="">Select an option for Array 3</option>
         <option value="Value X">Value X</option>
         <option value="Value Y">Value Y</option>
