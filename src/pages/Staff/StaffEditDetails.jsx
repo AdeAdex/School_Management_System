@@ -39,8 +39,8 @@ const tryGet = () => {
 
     onSubmit: (values) => {
       // console.log(globalState);
-      const newValues = {...values,receivedEmail:globalState.email};
-      // console.log(newValues);
+      const newValues = {...values,receivedEmail: globalState.email};
+      console.log(newValues);
       let endpoint = "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues)
       .then((response) => {
@@ -97,8 +97,8 @@ const tryGet = () => {
             <button type="submit" className="edit-enter">
               Enter
             </button>
-            <button type="submit" onClick={tryGet}>Get Info</button>
           </form>
+            <button type="submit" onClick={tryGet}>Get Info</button>
         </div>
       </div>
     </>
