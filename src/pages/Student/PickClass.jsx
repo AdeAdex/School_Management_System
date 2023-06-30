@@ -95,6 +95,7 @@ const PickClass = () => {
           >
             <option disabled>Choose...</option>
             {responseArray.map((option, index) => (
+              responseArray.sort(),
             <option key={index} value={option.class}>
               {option.class}
             </option>
