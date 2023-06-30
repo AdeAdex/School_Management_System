@@ -53,8 +53,19 @@ const PickClass = () => {
     <>
 
 <div>
+<h1>Response Form</h1>
+      <select name="address"
+            // value={response.address}
+            onChange={(event) => handleResponseChange(index, event)}>
+      <option value="">Select an option for Array 1</option>
+        {responseArray.map((option, index) => (
+          <option key={index} value={option.address}>
+            {option.address}
+          </option>
+        ))}
+      </select>
 
-{responseArray.map((response, index) => (
+{/* {responseArray.map((response, index) => (
         <div key={index}>
           <h3>Response {index}</h3>
           <select
@@ -63,9 +74,9 @@ const PickClass = () => {
             onChange={(event) => handleResponseChange(index, event)}
           >
             <option value="">Select an address</option>
-            <option value="A">Address A</option>
-            <option value="B">Address B</option>
-            <option value="C">Address C</option>
+            <option value={response.address}>
+            {response.address}
+          </option>
           </select>
 
           <select
@@ -80,7 +91,7 @@ const PickClass = () => {
           </select>
 
         </div>
-      ))}
+      ))} */}
 
 
       {/* <h1>Response Form</h1>
