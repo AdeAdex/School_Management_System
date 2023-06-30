@@ -83,25 +83,25 @@ const PickClass = () => {
             htmlFor="validationServer04"
             className="form-label fw-bold text-secondary"
           >
-            Course
+            Class
           </label>
           <select
             className="form-select "
             id="validationServer04"
-            name="state"
+            name="class"
             aria-describedby="validationServer04Feedback"
             required
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
             <option disabled>Choose...</option>
-            <option value="JSS 1">Science</option>
-            <option value="JSS 2">Commercial</option>
-            <option value="JSS 3">Art</option>
+            {responseArray.map((option, index) => (
+            <option key={index} value={option.class}>
+              {option.class}
+            </option>
+          ))}
           </select>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please select a valid state.
-          </div>
+          
         </div>
         <div className="col-md-12 mb-3">
           <label
