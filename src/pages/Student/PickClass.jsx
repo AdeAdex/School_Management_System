@@ -24,37 +24,36 @@ const PickClass = () => {
       });
   }, []);
 
-  const handleResponseChange = (event) => {
-    const { name, value } = event.target;
-    setResponseArray((prevResponses) => ({
-      ...prevResponses,
-      [name]: value,
-    }));
-    console.log(name, value);
-  };
+  // const handleResponseChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setResponseArray((prevResponses) => ({
+  //     ...prevResponses,
+  //     [name]: value,
+  //   }));
+  //   console.log(name, value);
+  // };
 
   // console.log(responseArray);
   let formik = useFormik({
     initialValues: {
-      state: "",
+      class: "",
     },
 
     onSubmit: (values) => {
       console.log(values);
-      const endpoint = "http://localhost:2000/staff_account/details";
-      axios.get(endpoint, values).then((response) => {
-        console.log(response);
-      });
+      // const endpoint = "http://localhost:2000/staff_account/details";
+      // axios.get(endpoint, values).then((response) => {
+      //   console.log(response);
+      // });
     },
   });
 
   return (
     <>
       <div>
-        <h1>Response Form</h1>
+        {/* <h1>Response Form</h1>
         <select
           name="address"
-          // value={option.address}
           onChange={(event) => handleResponseChange(index, event)}
         >
           <option value="">Select an option for Array 1</option>
@@ -67,7 +66,6 @@ const PickClass = () => {
 
         <select
           name="country"
-          // value={option.address}
           onChange={(event) => handleResponseChange(index, event)}
         >
           <option value="">Select an option for Array 2</option>
@@ -76,8 +74,9 @@ const PickClass = () => {
               {option.class}
             </option>
           ))}
-        </select>
+        </select> */}
 
+<form action="" onSubmit={formik.handleSubmit}>
         <div className="col-md-12 mb-3">
           <label
             htmlFor="validationServer04"
@@ -132,7 +131,10 @@ const PickClass = () => {
             Please select a valid state.
           </div>
         </div>
+        <button type="submit">Submit</button>
+        </form>
       </div>
+      
     </>
   );
 };
