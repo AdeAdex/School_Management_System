@@ -6,7 +6,6 @@ const PickClass = () => {
   // const [state, setState] = useState("")
   const [responseArray, setResponseArray] = useState([]);
 
-
   useEffect(() => {
     const endpoint = "http://localhost:2000/staff_account/details";
 
@@ -20,7 +19,7 @@ const PickClass = () => {
       .then((response) => {
         console.log(response.data.response[0].staffArray);
         // setResponseArray(response.data.response[0].staffArray);
-        const responseData = response.data.response[0].staffArray
+        const responseData = response.data.response[0].staffArray;
         setResponseArray(responseData);
       });
   }, []);
@@ -29,7 +28,7 @@ const PickClass = () => {
     const { name, value } = event.target;
     setResponseArray((prevResponses) => ({
       ...prevResponses,
-      [name]: value
+      [name]: value,
     }));
     console.log(name, value);
   };
@@ -51,151 +50,33 @@ const PickClass = () => {
 
   return (
     <>
+      <div>
+        <h1>Response Form</h1>
+        <select
+          name="address"
+          // value={option.address}
+          onChange={(event) => handleResponseChange(index, event)}
+        >
+          <option value="">Select an option for Array 1</option>
+          {responseArray.map((option, index) => (
+            <option key={index} value={option.address}>
+              {option.address}
+            </option>
+          ))}
+        </select>
 
-<div>
-<h1>Response Form</h1>
-      <select name="address"
-            // value={response.address}
-            onChange={(event) => handleResponseChange(index, event)}>
-      <option value="">Select an option for Array 1</option>
-        {responseArray.map((option, index) => (
-          <option key={index} value={option.address}>
-            {option.address}
-          </option>
-        ))}
-      </select>
-
-{/* {responseArray.map((response, index) => (
-        <div key={index}>
-          <h3>Response {index}</h3>
-          <select
-            name="address"
-            value={response.address}
-            onChange={(event) => handleResponseChange(index, event)}
-          >
-            <option value="">Select an address</option>
-            <option value={response.address}>
-            {response.address}
-          </option>
-          </select>
-
-          <select
-            name="country"
-            value={response.country}
-            onChange={(event) => handleResponseChange(index, event)}
-          >
-            <option value="">Select a country</option>
-            <option value="Nig">Nigeria</option>
-            <option value="USA">United States</option>
-            <option value="UK">United Kingdom</option>
-          </select>
-
-        </div>
-      ))} */}
-
-
-      {/* <h1>Response Form</h1>
-      <select name="array1" value={responseArray.array1} onChange={handleResponseChange}>
-      <option value="">Select an option for Array 1</option>
-        {responseArray.array1.map((option, index) => (
-          console.log(option, index)
-          
-        ))}
-      </select>
-
-      <select name="array2" value={responseArray.array2} onChange={handleResponseChange}>
-        <option value="">Select an option for Array 2</option>
-        <option value="Option A">Option A</option>
-        <option value="Option B">Option B</option>
-        <option value="Option C">Option C</option>
-      </select>
-
-      <select name="array3" value={responseArray.array3} onChange={handleResponseChange}>
-        <option value="">Select an option for Array 3</option>
-        <option value="Value X">Value X</option>
-        <option value="Value Y">Value Y</option>
-        <option value="Value Z">Value Z</option>
-      </select> */}
-    </div>
-
-{/* <div>
-      <h1>Select Options</h1>
-      <select name="array1" onChange={handleSelectChange}>
-        <option value="">Select an option</option>
-        {responseArray.array1.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      <br />
-      <select name="array2" onChange={handleSelectChange}>
-        <option value="">Select a choice</option>
-        {response.array2.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      <br />
-      <select name="array3" onChange={handleSelectChange}>
-        <option value="">Select an item</option>
-        {response.array3.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </div> */}
-
-
-
-
-
-       {/* <div className="shadow p-4 mt-4">
-        <form action="" method="post" onSubmit={formik.handleSubmit}>
-          <div className="col-md-12 mb-3">
-            <label
-              htmlFor="validationServer04"
-              className="form-label fw-bold text-secondary"
-            >
-              Course
-            </label>
-             <select>
-              {responseArray.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select> 
-             <select
-              className="form-select "
-              id="validationServer04"
-              name="state"
-              aria-describedby="validationServer04Feedback"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            >
-              <option disabled>Choose...</option>
-              <option value="JSS 1">JSS 1</option>
-              <option value="JSS 2">JSS 2</option>
-              <option value="JSS 3">JSS 3</option>
-              <option value="SSS 1">SSS 1</option>
-              <option value="SSS 2">SSS 2</option>
-              <option value="SSS 3">SSS 3</option>
-            </select> 
-            <div id="validationServer04Feedback" className="invalid-feedback">
-              Please select a valid state.
-            </div>
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary d-flex justify-content-center w-25 mx-auto"
-          >
-            Continue
-          </button>
-        </form>
+        <select
+          name="country"
+          // value={option.address}
+          onChange={(event) => handleResponseChange(index, event)}
+        >
+          <option value="">Select an option for Array 2</option>
+          {responseArray.map((option, index) => (
+            <option key={index} value={option.class}>
+              {option.class}
+            </option>
+          ))}
+        </select>
 
         <div className="col-md-12 mb-3">
           <label
@@ -251,7 +132,7 @@ const PickClass = () => {
             Please select a valid state.
           </div>
         </div>
-      </div>  */}
+      </div>
     </>
   );
 };
