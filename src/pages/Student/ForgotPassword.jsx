@@ -78,7 +78,7 @@ function MyApp() {
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">
           <ChangePasswordForms myEmail={myEmailResponse}/>
-          <Button variant="default" onClick={prevStep}>
+          <Button variant="default" onClick={prevStep} className="step3-back-btn" style={{position: 'relative', top: '-62px', left: '39%'}}>
               Back
             </Button>
         </Stepper.Step>

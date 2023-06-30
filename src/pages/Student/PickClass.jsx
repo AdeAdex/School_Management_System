@@ -4,22 +4,8 @@ import React, { useEffect, useState } from "react";
 
 const PickClass = () => {
   // const [state, setState] = useState("")
-  const [responseArray, setResponseArray] = useState({
-    array1: [],
-    array2: [],
-    array3: []
-  });
+  const [responseArray, setResponseArray] = useState([]);
 
-  // const response = {
-  //   array1: ['Option 1', 'Option 2', 'Option 3'],
-  //   array2: ['Choice 1', 'Choice 2', 'Choice 3'],
-  //   array3: ['Item 1', 'Item 2', 'Item 3'],
-  // }; // Replace with your response object
-
-  // const handleSelectChange = (event) => {
-  //   // Handle the select change here
-  //   console.log(event.target.name, event.target.value);
-  // };
 
   useEffect(() => {
     const endpoint = "http://localhost:2000/staff_account/details";
@@ -33,7 +19,9 @@ const PickClass = () => {
       })
       .then((response) => {
         console.log(response.data.response[0].staffArray);
-        setResponseArray(response.data.response[0].staffArray);
+        // setResponseArray(response.data.response[0].staffArray);
+        const responseData = response.data.response[0].staffArray
+        setResponseArray(responseData);
       });
   }, []);
 
@@ -65,15 +53,43 @@ const PickClass = () => {
     <>
 
 <div>
-      <h1>Response Form</h1>
+
+{responseArray.map((response, index) => (
+        <div key={index}>
+          <h3>Response {index}</h3>
+          <select
+            name="address"
+            value={response.address}
+            onChange={(event) => handleResponseChange(index, event)}
+          >
+            <option value="">Select an address</option>
+            <option value="A">Address A</option>
+            <option value="B">Address B</option>
+            <option value="C">Address C</option>
+          </select>
+
+          <select
+            name="country"
+            value={response.country}
+            onChange={(event) => handleResponseChange(index, event)}
+          >
+            <option value="">Select a country</option>
+            <option value="Nig">Nigeria</option>
+            <option value="USA">United States</option>
+            <option value="UK">United Kingdom</option>
+          </select>
+
+        </div>
+      ))}
+
+
+      {/* <h1>Response Form</h1>
       <select name="array1" value={responseArray.array1} onChange={handleResponseChange}>
       <option value="">Select an option for Array 1</option>
-        {/* {responseArray.array1.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))} */}
-        <option value={responseArray.array1}></option>
+        {responseArray.array1.map((option, index) => (
+          console.log(option, index)
+          
+        ))}
       </select>
 
       <select name="array2" value={responseArray.array2} onChange={handleResponseChange}>
@@ -88,7 +104,7 @@ const PickClass = () => {
         <option value="Value X">Value X</option>
         <option value="Value Y">Value Y</option>
         <option value="Value Z">Value Z</option>
-      </select>
+      </select> */}
     </div>
 
 {/* <div>

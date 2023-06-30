@@ -67,6 +67,7 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
             <input
               type="password"
               name="password"
+              placeholder="Enter New Password"
               className={
                 changePass.touched.password && changePass.errors.password
                   ? "input form-control is-invalid"
@@ -85,6 +86,7 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
             <input
               type="password"
               name="confirmPassword"
+              placeholder="Enter New Confirm Password"
               className={
                 changePass.touched.confirmPassword &&
                 changePass.errors.confirmPassword
@@ -101,7 +103,7 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
               </small>
             ) : null}
           </div>
-        <button type="submit" className="btn btn-primary my-4" disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
+        <button type="submit" className="btn btn-primary my-4 w-50" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
         </div>
 
       </form>
