@@ -4,6 +4,11 @@ import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { YearCalendar } from '@mui/x-date-pickers/YearCalendar';
+import { MonthCalendar } from '@mui/x-date-pickers/MonthCalendar';
 
 const EducationModal = ({ isOpen, onClose }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -63,6 +68,16 @@ const EducationModal = ({ isOpen, onClose }) => {
           <Modal.Title className="text-uppercase text-center mx-auto">
             o level result
           </Modal.Title>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['YearCalendar', 'MonthCalendar']}>
+        <DemoItem label="YearCalendar">
+          <YearCalendar />
+        </DemoItem>
+        <DemoItem label="MonthCalendar">
+          <MonthCalendar />
+        </DemoItem>
+      </DemoContainer>
+    </LocalizationProvider>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
           <div className="education-login-box">

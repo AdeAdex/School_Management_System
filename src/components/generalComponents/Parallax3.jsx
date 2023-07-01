@@ -11,7 +11,7 @@ const Parallax3 = ({ classes, styles, bg3_styles }) => {
               classes="each-calculate-to-number"
               innerText="teachers"
               styles={{ backgroundColor: "#74CEE4" }}
-              text="54" />
+              text={count } />
             <CalculateTotalNumber
               classes="each-calculate-to-number"
               innerText="courses"
