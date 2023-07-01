@@ -68,16 +68,7 @@ const EducationModal = ({ isOpen, onClose }) => {
           <Modal.Title className="text-uppercase text-center mx-auto">
             o level result
           </Modal.Title>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['YearCalendar', 'MonthCalendar']}>
-        <DemoItem label="YearCalendar">
-          <YearCalendar />
-        </DemoItem>
-        <DemoItem label="MonthCalendar">
-          <MonthCalendar />
-        </DemoItem>
-      </DemoContainer>
-    </LocalizationProvider>
+       
         </Modal.Header>
         <Modal.Body className="text-uppercase">
           <div className="education-login-box">
