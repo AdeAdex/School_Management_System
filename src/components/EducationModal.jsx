@@ -56,12 +56,6 @@ const EducationModal = ({ isOpen, onClose }) => {
   });
 
 
-  // const [grade, setGrade] = useState('');
-
-  // const handleChange = (event) => {
-  //   setGrade(event.target.value);
-  // };
-
   const [selectedYear, setSelectedYear] = useState("");
 
   const handleChange = (event) => {

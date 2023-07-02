@@ -19,6 +19,8 @@ const Education = () => {
 
   const openModal = () => {
     setModalOpen(true);
+    let endpoint = ""
+    axios.get()
 
   };
 
