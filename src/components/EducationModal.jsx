@@ -105,15 +105,25 @@ const EducationModal = ({ isOpen, onClose }) => {
               onSubmit={formik.handleSubmit}
             >
               <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="exam"
-                  onChange={formik.handleChange}
-                />
-                <span>exam</span>
-                <i></i>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    exam
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    onChange={formik.handleChange}
+                    label="exam"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value='WAEC'>WAEC</MenuItem>
+                    <MenuItem value='NECO'>NECO</MenuItem>
+                    <MenuItem value='NABTEB'>NABTEB</MenuItem>
+                    <MenuItem value='GCE'>GCE</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
               <div className="education-input-box">
                 <input
