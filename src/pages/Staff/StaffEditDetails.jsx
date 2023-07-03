@@ -51,6 +51,24 @@ const StaffEditDetails = () => {
       });
     },
   });
+
+
+
+
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    // Code to handle the upload of the selected file
+    if (selectedFile) {
+      // Perform the upload using an API or any other logic
+      console.log('Uploading file:', selectedFile);
+    }
+  };
   return (
     <>
       <div className="edit-container">
@@ -124,6 +142,18 @@ const StaffEditDetails = () => {
             Get Info
           </button>
         </div>
+      </div>
+      <div>
+        <select name="" id="">
+          <option value="JSS1">JSS1</option>
+          <option value="JSS2">JSS2</option>
+          <option value="JSS3">JSS3</option>
+          <option value="SSS1">SSS1</option>
+          <option value="SSS2">SSS2</option>
+          <option value="SSS3">SSS3</option>
+        </select>
+        <input type="file" onChange={handleFileChange} accept="video/*" />
+      <button onClick={handleUpload}>Upload</button>
       </div>
     </>
   );

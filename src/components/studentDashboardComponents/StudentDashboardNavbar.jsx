@@ -1,40 +1,75 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import StudentDashboardOffcanvas_On_Small_Screen from './StudentDashboardOffcanvas_On_Small_Screen';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanvas_On_Small_Screen";
+import axios from "axios";
 
 const StudentDashboardNavbar = () => {
-  const globalState = useSelector((state)=>state.portalReducer.studentInfo)
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const offCanvas = () => {
-        if (offCan.style.width == "20%") {
-          offCan.style.width = "5%";
-          nav.style.width = "95%";
-          menu.style.setProperty("display", "none", "important");
-          //       setIsShown(false)
-          //       canvasTitle.classList.add("hide")
-          //       canvasTitle.style.setProperty("opacity", "0", "important");
-        } else {
-          offCan.style.width = "20%";
-          nav.style.width = "80%";
-          menu.style.setProperty("display", "block", "important");
-          //       setIsShown(true)
-          //       canvasTitle.classList.remove("show")
-          //       canvasTitle.style.setProperty("opacity", "1", "important");
-        }
-    
-        var x = window.matchMedia("(max-width: 768px)");
-    
-        if (x.matches) {
-          ourBody.classList.add("new-class");
-        } else {
-        }
-      };
-      const gooo = () => {
-        alert("msg");
-      };
+    if (offCan.style.width == "20%") {
+      offCan.style.width = "5%";
+      nav.style.width = "95%";
+      menu.style.setProperty("display", "none", "important");
+      //       setIsShown(false)
+      //       canvasTitle.classList.add("hide")
+      //       canvasTitle.style.setProperty("opacity", "0", "important");
+    } else {
+      offCan.style.width = "20%";
+      nav.style.width = "80%";
+      menu.style.setProperty("display", "block", "important");
+      //       setIsShown(true)
+      //       canvasTitle.classList.remove("show")
+      //       canvasTitle.style.setProperty("opacity", "1", "important");
+    }
+
+    var x = window.matchMedia("(max-width: 768px)");
+
+    if (x.matches) {
+      ourBody.classList.add("new-class");
+    } else {
+    }
+  };
+  const gooo = () => {
+    alert("msg");
+  };
+
+
+
+
+
+
+
+
+
+  const [myImage, setMyImage] = useState("");
+  const [cloudImage, setCloudImage] = useState()
+
+  const changeFile = (e) => {
+    console.log(e.target.files[0]);
+    let myImage = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(myImage);
+    reader.onload = () => {
+      setMyImage(reader.result);
+    };
+  };
+
+  const saveFile = () => {
+    const endpoint = "http://localhost:2000/student_account/upload_profile_pic";
+    axios.post(endpoint, { myImage })
+    .then((response) => {
+      console.log(response.data)
+      setCloudImage(response.data.cloudLink);
+      console.log(response.data.cloudLink);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  };
 
   return (
     <>
-    <div
+      <div
         className="shadow d-flex"
         id="nav"
         style={{ width: "100%", height: "80px" }}
@@ -61,7 +96,9 @@ const StudentDashboardNavbar = () => {
             className="my-auto border-l-2 border-blue-600"
             style={{ height: "25px" }}
           ></div>
-          <div className="font-bold ml-4 my-auto text-lg">{globalState.firstName} {globalState.lastName}</div>
+          <div className="font-bold ml-4 my-auto text-lg">
+            {globalState.firstName} {globalState.lastName}
+          </div>
         </div>
         <div className="w-50 my-auto flex justify-end gap-5 mr-7">
           <button onClick={gooo} className="">
@@ -79,12 +116,15 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="">
             <img src="pic/avatar.png" style={{ width: "50px" }} alt="" />
           </button>
+          <input type="file" name="" id="" onChange={(e) => changeFile(e)} />
+          <button onClick={saveFile}>Upload</button>
+          <img src={cloudImage} alt="" style={{ width: "50px" }} />
         </div>
       </div>
 
-      <StudentDashboardOffcanvas_On_Small_Screen/>
+      <StudentDashboardOffcanvas_On_Small_Screen />
     </>
-  )
-}
+  );
+};
 
-export default StudentDashboardNavbar
+export default StudentDashboardNavbar;
