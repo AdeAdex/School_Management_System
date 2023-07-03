@@ -35,27 +35,32 @@ function MyApp() {
         breakpoint="sm"
         className="p-4"
       >
-        <Stepper.Step label="First step"  description="Email Verification">
-          <Personal/>
+        <Stepper.Step label="First step" description="Email Verification">
+          <Personal />
+          <Group position="center" mt="xl">
+            <Button onClick={nextStep}>Next step</Button>
+          </Group>
         </Stepper.Step>
         <Stepper.Step label="Second step" description="OTP Verification">
           <div>2</div>
+          <Group position="center" mt="xl">
+            <Button variant="default" onClick={prevStep}>
+              Back
+            </Button>
+            <Button onClick={nextStep}>Next step</Button>
+          </Group>
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">
           <div>3</div>
+          <Group position="center" mt="xl">
+        <Button variant="default" onClick={prevStep}>
+          Back
+        </Button>
+      </Group>
         </Stepper.Step>
-        <Stepper.Completed>
-          Completed
-        </Stepper.Completed>
+        <Stepper.Completed>Completed</Stepper.Completed>
       </Stepper>
-      <Group position="center" mt="xl">
-            <Button
-              onClick={nextStep}
-              style={{ position: "relative", top: "", left: "" }}
-            >
-              Next step
-            </Button>
-          </Group>
+      
     </>
   );
 }
