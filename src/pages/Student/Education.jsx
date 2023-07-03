@@ -193,6 +193,7 @@ const Education = () => {
       </button>
       <EducationModal isOpen={modalOpen} myResponse={subject}  onClose={closeModal} />
       <EditEducationModal
+        myResponse={subject}
         myId={modalIdValue}
         myEmail={modalEmailValue}
         isOpen={editModalOpen}

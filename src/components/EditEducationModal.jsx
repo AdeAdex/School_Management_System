@@ -3,8 +3,12 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-const EditEducationModal = ({ isOpen, onClose, myId, myEmail}) => {
+const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
 
 
@@ -31,6 +35,26 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail}) => {
         })
     },
   });
+
+  const generateYearOptions = () => {
+    const currentYear = new Date().getFullYear();
+    const startYear = 1950;
+    const years = [];
+
+    // for (let year = startYear; year <= currentYear; year++) {
+    //   years.push(year);
+    // }
+
+    for (let year = currentYear; year >= startYear; year--) {
+      years.push(year);
+    }
+
+    return years.map((year) => (
+      <MenuItem key={year} value={year}>
+        {year}
+      </MenuItem>
+    ));
+  };
 
   return (
     <>
