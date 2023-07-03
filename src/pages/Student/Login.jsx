@@ -23,22 +23,22 @@ const Login = () => {
         // console.log(response.data.result);
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+          // const Toast = Swal.mixin({
+          //   toast: true,
+          //   position: "top",
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          //   timerProgressBar: true,
+          //   didOpen: (toast) => {
+          //     toast.addEventListener("mouseenter", Swal.stopTimer);
+          //     toast.addEventListener("mouseleave", Swal.resumeTimer);
+          //   },
+          // });
 
-          Toast.fire({
-            icon: "success",
-            title: "Signed in successfully",
-          });
+          // Toast.fire({
+          //   icon: "success",
+          //   title: "Signed in successfully",
+          // });
           navigate("/student/admission/pick_class");
         } else {
           const Toast = Swal.mixin({

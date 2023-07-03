@@ -17,7 +17,7 @@ const SignupForm = () => {
     <>
       <div
         className="shadow bg-light signup-form"
-        style={{ padding: "", width: "70%" }}
+        style={{ padding: "", width: "70%", }}
       >
       
         <Routes>

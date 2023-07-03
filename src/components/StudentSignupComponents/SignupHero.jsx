@@ -28,14 +28,14 @@ const SignupHero = () => {
         <div className="d-flex justify-content-center w-100">
           <img
             src="pic/ade.png"
-            className="mt-5 mb-lg-5 d-flex align-items-center"
+            className="mt-5 mb-lg-1 d-flex align-items-center"
             style={{ width: "50px" }}
             alt=""
           />
         </div>
 
         <h2
-          className="mt-lg-5 header-text"
+          className="mt-lg-1 header-text"
           style={{ textTransform: "capitalize" }}
         >
           start your <br />

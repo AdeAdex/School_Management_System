@@ -96,6 +96,10 @@ const Education = () => {
           setMyEmail(response.data.response2.email);
           setDescription('')
         } else {
+          // const timeout = setTimeout(() => {
+          // setDescription(response.data.message)
+          // }, 5000);
+          // return () => clearTimeout(timeout);
           setDescription(response.data.message)
           setPreEdu([])
         }
