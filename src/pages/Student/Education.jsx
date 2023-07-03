@@ -58,6 +58,21 @@ const Education = () => {
     //  .then((response) => {
     //   console.log(response.data.response.previousEducation);
     //  })
+
+    let endpoint = "http://localhost:2000/student_account/student_subject";
+    axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `hello`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setSubject(response.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   const closeEditModal = () => {
