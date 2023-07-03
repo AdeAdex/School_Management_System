@@ -8,11 +8,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import {useNavigate } from "react-router-dom";
+
 
 const EducationModal = ({ isOpen, onClose, myResponse }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  // const [val, setVal] = useState([])
-
+  let navigate = useNavigate()
   let formik = useFormik({
     initialValues: {
       exam: "",
@@ -32,8 +33,8 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
         id: crypto.randomUUID(),
       };
       let endpoint = "http://localhost:2000/student_account/student_education";
-      axios.post(endpoint, newValues).then((response) => {
-        // console.log(response);
+      axios.post(endpoint, newValues)
+      .then((response) => {
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -50,17 +51,17 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
           icon: "success",
           title: response.data.message,
         });
-        // setVal(response.data.response.previousEducation)
       });
+      navigate('/student/admission/education')
     },
   });
 
 
   const [selectedYear, setSelectedYear] = useState("");
 
-  const handleChange = (event) => {
-    setSelectedYear(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setSelectedYear(event.target.value);
+  // };
 
   const generateYearOptions = () => {
     const currentYear = new Date().getFullYear();
@@ -182,8 +183,8 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                   <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
-                    value={selectedYear}
-                    onChange={handleChange}
+                    // value={selectedYear}
+                    onChange={formik.handleChange}
                     label="Year"
                     name="year"
                   >

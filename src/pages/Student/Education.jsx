@@ -17,6 +17,7 @@ const Education = () => {
   const [myEmail, setMyEmail] = useState("");
   const [l, setL] = useState("");
   const [subject, setSubject] = useState([]);
+  const [description, setDescription] = useState('')
 
   const openModal = (val) => {
     let endpoint = "http://localhost:2000/student_account/student_subject";
@@ -75,9 +76,18 @@ const Education = () => {
         },
       })
       .then((response) => {
-        setPreEdu(response.data.response.previousEducation);
-        setMyEmail(response.data.response.email);
-      });
+        if (response.data.status) {
+          setPreEdu(response.data.response);
+          setMyEmail(response.data.response2.email);
+        } else {
+          setDescription(response.data.message)
+          console.log(response.data.message);
+        }
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   });
 
   const openConfirmDeleteModal = (myId, myEmail) => {
@@ -95,7 +105,7 @@ const Education = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // console.log(myId, myEmail);
+        console.log(myId, myEmail);
         let endpoint = "http://localhost:2000/student_account/delete";
         axios
           .delete(endpoint, {
@@ -122,8 +132,7 @@ const Education = () => {
                 icon: "success",
                 title: response.data.message,
               });
-            } else {
-            }
+            } 
           });
       }
     });
@@ -176,6 +185,11 @@ const Education = () => {
           </tbody>
         ))}
       </table>
+      {/* {
+        description ? <div>{description}</div> : null
+      } */}
+      <div>{description}</div>
+      
       <button onClick={openModal} className="btn btn-primary" style={{marginTop: '200px'}}>
         Add Result
       </button>
@@ -192,4 +206,3 @@ const Education = () => {
 
 export default Education;
 
-// onClick={()=>{del(items.id)}}
