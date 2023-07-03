@@ -49,48 +49,100 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail}) => {
               onSubmit={formik.handleSubmit}
             >
               <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="exam"
-                  onChange={formik.handleChange}
-                />
-                <span>exam</span>
-                <i></i>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    exam
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    onChange={formik.handleChange}
+                    label="exam"
+                    name="exam"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value='WAEC'>WAEC</MenuItem>
+                    <MenuItem value='NECO'>NECO</MenuItem>
+                    <MenuItem value='NABTEB'>NABTEB</MenuItem>
+                    <MenuItem value='GCE'>GCE</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
               <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="subject"
-                  onChange={formik.handleChange}
-                />
-                <span>subject</span>
-                <i></i>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Subject
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={selectedYear}
+                    onChange={formik.handleChange}
+                    label="Subject"
+                    name="subject"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {
+                    myResponse.map((sub, index) => (
+                    <MenuItem  key={index} value={sub.subject}>
+                    {sub.subject}
+                    </MenuItem>
+                    ))
+                    }
+                  </Select>
+                </FormControl>
               </div>
               <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="grade"
-                  onChange={formik.handleChange}
-                />
-                <span>grade</span>
-                <i></i>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Grade
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={10}
+                    onChange={formik.handleChange}
+                    label="Grade"
+                    name="grade"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value='A1'>A1</MenuItem>
+                    <MenuItem value='B2'>B2</MenuItem>
+                    <MenuItem value='B3'>B3</MenuItem>
+                    <MenuItem value='C4'>C4</MenuItem>
+                    <MenuItem value='C5'>C5</MenuItem>
+                    <MenuItem value='C6'>C6</MenuItem>
+                    <MenuItem value='D7'>D7</MenuItem>
+                    <MenuItem value='E8'>E8</MenuItem>
+                    <MenuItem value='F9'>F9</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
               <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="year"
-                  onChange={formik.handleChange}
-                />
-                <span>year</span>
-                <i></i>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Year
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={selectedYear}
+                    onChange={formik.handleChange}
+                    label="Year"
+                    name="year"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {generateYearOptions()}
+                  </Select>
+                </FormControl>
               </div>
               <div className="education-input-box">
                 <input

@@ -79,9 +79,10 @@ const Education = () => {
         if (response.data.status) {
           setPreEdu(response.data.response);
           setMyEmail(response.data.response2.email);
+          setDescription('')
         } else {
           setDescription(response.data.message)
-          console.log(response.data.message);
+          setPreEdu([])
         }
         
       })
@@ -185,10 +186,7 @@ const Education = () => {
           </tbody>
         ))}
       </table>
-      {/* {
-        description ? <div>{description}</div> : null
-      } */}
-      <div>{description}</div>
+      <div className="text-center">{description}</div>
       
       <button onClick={openModal} className="btn btn-primary" style={{marginTop: '200px'}}>
         Add Result
