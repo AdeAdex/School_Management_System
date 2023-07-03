@@ -12,16 +12,27 @@ const Education = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [preEdu, setPreEdu] = useState([]);
-  const [modalIdValue, setModalIdValue] = useState('');
-  const [modalEmailValue, setModalEmailValue] = useState('');
-  const [myEmail, setMyEmail] = useState('');
-  const [l, setL] = useState('');
+  const [modalIdValue, setModalIdValue] = useState("");
+  const [modalEmailValue, setModalEmailValue] = useState("");
+  const [myEmail, setMyEmail] = useState("");
+  const [l, setL] = useState("");
 
   const openModal = () => {
-    setModalOpen(true);
-    let endpoint = ""
-    axios.get()
-
+    let endpoint = "http://localhost:2000/student_account/student_subject";
+    axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `hello`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setModalOpen(true, response.data);
+        // console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   const closeModal = () => {
@@ -29,27 +40,26 @@ const Education = () => {
   };
 
   const openEditModal = (myId, myEmail, items) => {
-    setModalIdValue(myId)
-    setModalEmailValue(myEmail)
+    setModalIdValue(myId);
+    setModalEmailValue(myEmail);
     setEditModalOpen(true);
-    setL(items)
+    setL(items);
     console.log(l);
-  //   let endpoints = "http://localhost:2000/student_account/edit"
-  //  axios.get(endpoints, {
-  //   headers: {
-  //     Authorization: `${myId} ${myEmail}`,
-  //     'Content-Type' : 'application/json'
-  //   }
-  //  })
-  //  .then((response) => {
-  //   console.log(response.data.response.previousEducation);
-  //  })
+    //   let endpoints = "http://localhost:2000/student_account/edit"
+    //  axios.get(endpoints, {
+    //   headers: {
+    //     Authorization: `${myId} ${myEmail}`,
+    //     'Content-Type' : 'application/json'
+    //   }
+    //  })
+    //  .then((response) => {
+    //   console.log(response.data.response.previousEducation);
+    //  })
   };
 
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
-
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
@@ -64,11 +74,9 @@ const Education = () => {
       })
       .then((response) => {
         setPreEdu(response.data.response.previousEducation);
-        setMyEmail(response.data.response.email)
+        setMyEmail(response.data.response.email);
       });
   });
-
-  
 
   const openConfirmDeleteModal = (myId, myEmail) => {
     Swal.fire({
@@ -82,45 +90,42 @@ const Education = () => {
         container: "my-swal",
         popup: "my-popup",
         title: "my-title",
-      }
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log(myId, myEmail);
         let endpoint = "http://localhost:2000/student_account/delete";
-        axios.delete(endpoint, {
-          headers: {
-            Authorization: `${myId} ${myEmail}`,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          if (response.data.status) {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: "top",
-              showConfirmButton: false,
-              timer: 1500,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener("mouseenter", Swal.stopTimer);
-                toast.addEventListener("mouseleave", Swal.resumeTimer);
-              },
-            });
-    
-            Toast.fire({
-              icon: "success",
-              title: response.data.message,
-            });
-          } else {
+        axios
+          .delete(endpoint, {
+            headers: {
+              Authorization: `${myId} ${myEmail}`,
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            if (response.data.status) {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
 
-          }
-         
-        })
-        
+              Toast.fire({
+                icon: "success",
+                title: response.data.message,
+              });
+            } else {
+            }
+          });
       }
     });
   };
-
 
   return (
     <>
@@ -146,13 +151,21 @@ const Education = () => {
               <td>{items.grade}</td>
               <td>{items.candidateNo}</td>
               <td className="d-flex gap-2">
-                <button type="submit" className="btn btn-white shadow edit-btn" onClick={()=> {openEditModal(items.id, myEmail, items)}}>
+                <button
+                  type="submit"
+                  className="btn btn-white shadow edit-btn"
+                  onClick={() => {
+                    openEditModal(items.id, myEmail, items);
+                  }}
+                >
                   Edit
                 </button>
                 <button
                   type="submit"
                   className="btn btn-white shadow delete-btn"
-                  onClick={()=> {openConfirmDeleteModal(items.id, myEmail)}}
+                  onClick={() => {
+                    openConfirmDeleteModal(items.id, myEmail);
+                  }}
                 >
                   Delete
                 </button>
@@ -161,9 +174,16 @@ const Education = () => {
           </tbody>
         ))}
       </table>
-      <button onClick={openModal} className="btn btn-primary">Add Result</button>
+      <button onClick={openModal} className="btn btn-primary">
+        Add Result
+      </button>
       <EducationModal isOpen={modalOpen} onClose={closeModal} />
-      <EditEducationModal myId={modalIdValue} myEmail={modalEmailValue} isOpen={editModalOpen}  onClose={closeEditModal} />
+      <EditEducationModal
+        myId={modalIdValue}
+        myEmail={modalEmailValue}
+        isOpen={editModalOpen}
+        onClose={closeEditModal}
+      />
     </>
   );
 };

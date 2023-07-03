@@ -120,15 +120,29 @@ const EducationModal = ({ isOpen, onClose }) => {
                 </FormControl>
               </div>
               <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="subject"
-                  onChange={formik.handleChange}
-                />
-                <span>subject</span>
-                <i></i>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Subject
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={selectedYear}
+                    onChange={handleChange}
+                    label="Subject"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {
+                    response.data.map((sub, index) => (
+                    <MenuItem  key={index} value={sub}>
+                    {sub}
+                    </MenuItem>
+                    ))
+                    }
+                  </Select>
+                </FormControl>
               </div>
               <div className="education-input-box">
                 <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
