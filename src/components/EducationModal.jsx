@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const EducationModal = ({ isOpen, onClose }) => {
+const EducationModal = ({ isOpen, onClose, myResponse }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   // const [val, setVal] = useState([])
 
@@ -108,6 +108,7 @@ const EducationModal = ({ isOpen, onClose }) => {
                     id="demo-simple-select-standard"
                     onChange={formik.handleChange}
                     label="exam"
+                    name="exam"
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -128,16 +129,17 @@ const EducationModal = ({ isOpen, onClose }) => {
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
                     // value={selectedYear}
-                    onChange={handleChange}
+                    onChange={formik.handleChange}
                     label="Subject"
+                    name="subject"
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
                     {
-                    response.data.map((sub, index) => (
-                    <MenuItem  key={index} value={sub}>
-                    {sub}
+                    myResponse.map((sub, index) => (
+                    <MenuItem  key={index} value={sub.subject}>
+                    {sub.subject}
                     </MenuItem>
                     ))
                     }
@@ -155,6 +157,7 @@ const EducationModal = ({ isOpen, onClose }) => {
                     // value={10}
                     onChange={formik.handleChange}
                     label="Grade"
+                    name="grade"
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -182,6 +185,7 @@ const EducationModal = ({ isOpen, onClose }) => {
                     value={selectedYear}
                     onChange={handleChange}
                     label="Year"
+                    name="year"
                   >
                     <MenuItem value="">
                       <em>None</em>

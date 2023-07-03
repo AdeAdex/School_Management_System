@@ -16,8 +16,9 @@ const Education = () => {
   const [modalEmailValue, setModalEmailValue] = useState("");
   const [myEmail, setMyEmail] = useState("");
   const [l, setL] = useState("");
+  const [subject, setSubject] = useState([]);
 
-  const openModal = () => {
+  const openModal = (val) => {
     let endpoint = "http://localhost:2000/student_account/student_subject";
     axios
       .get(endpoint, {
@@ -27,7 +28,8 @@ const Education = () => {
         },
       })
       .then((response) => {
-        setModalOpen(true, response.data);
+        setModalOpen(true);
+        setSubject(response.data)
         // console.log(response.data);
       })
       .catch((err) => {
@@ -174,10 +176,10 @@ const Education = () => {
           </tbody>
         ))}
       </table>
-      <button onClick={openModal} className="btn btn-primary">
+      <button onClick={openModal} className="btn btn-primary" style={{marginTop: '200px'}}>
         Add Result
       </button>
-      <EducationModal isOpen={modalOpen} onClose={closeModal} />
+      <EducationModal isOpen={modalOpen} myResponse={subject}  onClose={closeModal} />
       <EditEducationModal
         myId={modalIdValue}
         myEmail={modalEmailValue}
