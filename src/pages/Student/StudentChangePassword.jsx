@@ -3,12 +3,22 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import * as yup from "yup";
+import { SnackbarProvider, useSnackbar } from 'notistack';
+
 
 
 const StudentChangePassword = ({myEmail: myEmail}) => {
+  return (
+    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'top', horizontal: 'center'}} >
+      <MyApp myEmail={myEmail}/>
+    </SnackbarProvider>
+  ) 
+}
 
+function MyApp({myEmail: myEmail}) {
   const [myMessage, setMyMessage] = useState("");
   let navigate = useNavigate();
+  const {enqueueSnackbar} = useSnackbar();
 
   const changePass = useFormik({
     initialValues: {
@@ -23,11 +33,11 @@ const StudentChangePassword = ({myEmail: myEmail}) => {
       let endpoint = "http://localhost:2000/student_account/change_student_password";
       axios
       .post(endpoint, newValues)
-      // .then((response) => {
-      //   setMyMessage(response.data.message);
-      //   console.log(response.data.message);
-      //   navigate('/student_login')
-      // });
+      .then((response) => {
+        setMyMessage(response.data.message);
+        enqueueSnackbar(response.data.message, { variant: 'error' });
+        // navigate('/student_login')
+      });
     },
 
     validationSchema: yup.object({

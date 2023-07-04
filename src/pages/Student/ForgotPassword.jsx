@@ -7,7 +7,6 @@ import { Stepper, Button, Group } from "@mantine/core";
 import EmailVerifications from "../../components/StudentForgotPasswordComponent/EmailVerifications";
 import OTPVerifications from "../../components/StudentForgotPasswordComponent/OTPVerifications";
 import { useSelector } from "react-redux";
-// import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import ChangePasswordForms from "../../components/StudentForgotPasswordComponent/ChangePasswordForms";
 
