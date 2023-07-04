@@ -48,3 +48,8 @@
     display: none !important;
   }
 }
+
+.custom-stepper .completed-step {
+  color: red !important;
+  background-color: aqua !important;
+}

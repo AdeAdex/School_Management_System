@@ -59,7 +59,7 @@ const StudentPortalDashboard = () => {
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <StudentDashboardNavbar />
-          <div className="flex p-5 bg-green-300">
+          <div className="flex p-5">
             <Routes>
               <Route path="home" element={<StudentDashboardHome />} />
               <Route path="profile" element={<StudentProfile />} />
