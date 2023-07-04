@@ -20,14 +20,14 @@ const StudentChangePassword = ({myEmail: myEmail}) => {
     onSubmit: (values) => {
       let newValues = { ...values, myEmail };
       console.log(newValues);
-      let endpoint = "http://localhost:2000/student_account/change_password";
+      let endpoint = "http://localhost:2000/student_account/change_student_password";
       axios
       .post(endpoint, newValues)
-      .then((response) => {
-        setMyMessage(response.data.message);
-        console.log(response.data.message);
-        navigate('/student_login')
-      });
+      // .then((response) => {
+      //   setMyMessage(response.data.message);
+      //   console.log(response.data.message);
+      //   navigate('/student_login')
+      // });
     },
 
     validationSchema: yup.object({
