@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
 import Personal from "../../components/studentProfileComponents.jsx/Personal";
+import { FaUserCheck } from 'react-icons/fa';
+import { FaAddressCard } from 'react-icons/fa';
 
 const StudentProfile = () => {
   return (
@@ -34,14 +36,15 @@ function MyApp() {
         onStepClick={setActive}
         breakpoint="sm"
         className="p-4"
+        style={{backgroundColor: ""}}
       >
-        <Stepper.Step label="" description="Personal">
+        <Stepper.Step label="" color="" icon={<FaUserCheck size="1.1rem" />} description="Personal">
           <Personal />
           <Group position="center" mt="xl">
             <Button onClick={nextStep}>Next step</Button>
           </Group>
         </Stepper.Step>
-        <Stepper.Step label="" description="Contact">
+        <Stepper.Step label="" icon={<FaAddressCard size="1.1rem" />} description="Contact" >
           <div>2</div>
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
