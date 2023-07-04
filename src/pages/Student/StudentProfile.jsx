@@ -4,6 +4,8 @@ import { Stepper, Button, Group } from "@mantine/core";
 import Personal from "../../components/studentProfileComponents.jsx/Personal";
 import { FaUserCheck } from "react-icons/fa";
 import { FaAddressCard } from "react-icons/fa";
+import Contact from "../../components/studentProfileComponents.jsx/Contact";
+import Referee from "../../components/studentProfileComponents.jsx/Referee";
 
 const StudentProfile = () => {
   return (
@@ -53,7 +55,7 @@ function MyApp() {
           icon={<FaAddressCard size="1.1rem" />}
           description="Contact"
         >
-          <div>2</div>
+          <Contact/>
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
               Back
@@ -61,8 +63,8 @@ function MyApp() {
             <Button onClick={nextStep}>Next step</Button>
           </Group>
         </Stepper.Step>
-        <Stepper.Step label="" description="Reference">
-          <div>3</div>
+        <Stepper.Step label="" description="Referee">
+          <Referee/>
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
               Back

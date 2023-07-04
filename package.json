@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mantine/core": "^6.0.14",
     "@mantine/hooks": "^6.0.14",
+    "@mui/icons-material": "^5.13.7",
     "@mui/material": "^5.13.6",
     "@mui/x-date-pickers": "^6.9.0",
     "@reduxjs/toolkit": "^1.9.5",

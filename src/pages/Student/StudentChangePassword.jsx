@@ -1,8 +1,143 @@
-import React from 'react'
+import { useFormik } from 'formik';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import * as yup from "yup";
 
-const StudentChangePassword = () => {
+
+const StudentChangePassword = ({myEmail: myEmail}) => {
+
+  const [myMessage, setMyMessage] = useState("");
+  let navigate = useNavigate();
+
+  const changePass = useFormik({
+    initialValues: {
+      oldPassword: "",
+      password: "",
+      confirmPassword: "",
+    },
+
+    onSubmit: (values) => {
+      let newValues = { ...values, myEmail };
+      console.log(newValues);
+      let endpoint = "http://localhost:2000/student_account/change_password";
+      axios
+      .post(endpoint, newValues)
+      .then((response) => {
+        setMyMessage(response.data.message);
+        console.log(response.data.message);
+        navigate('/student_login')
+      });
+    },
+
+    validationSchema: yup.object({
+      oldPassword: yup
+        .string()
+        .required("Old Password is required")
+        .min(8, "Password must be at least 8 characters long")
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
+          "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+        ),
+      password: yup
+        .string()
+        .required("Password is required")
+        .min(8, "Password must be at least 8 characters long")
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
+          "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+        ),
+      confirmPassword: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Passwords must match")
+        .required("Confirm Password is required"),
+    }),
+  });
+
+
   return (
-    <div>StudentChangePassword</div>
+    <>
+      <form
+        action=""
+        className="email-verification-fro mx-auto d-flex flex-column border shadow"
+        method="post"
+        onSubmit={changePass.handleSubmit}
+      >
+        <div className="pt-4">
+          <img
+            src="pic/ade.png"
+            alt=""
+            style={{ width: "50px" }}
+            className="mx-auto d-flex mb-4"
+          />
+          <h3 className="text-center">Change Password?</h3>
+          <hr />
+        </div>
+        <div className="d-flex flex-column pt-2 px-5">
+        <div className="col-lg-12 position-relative d-flex gap- flex-column mb-3 mt-3">
+            <input
+              type="password"
+              name="oldPassword"
+              placeholder="Enter Old Password"
+              className={
+                changePass.touched.oldPassword && changePass.errors.oldPassword
+                  ? "input form-control is-invalid"
+                  : "input form-control is-vali"
+              }
+              onChange={changePass.handleChange}
+              onBlur={changePass.handleBlur}
+            />
+            {changePass.touched.oldPassword&& changePass.errors.oldPassword? (
+              <small className="error text-danger">
+                {changePass.errors.oldPassword}
+              </small>
+            ) : null}
+          </div>
+          <div className="col-lg-12 position-relative d-flex gap- flex-column mb-3 mt-3">
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter New Password"
+              className={
+                changePass.touched.password && changePass.errors.password
+                  ? "input form-control is-invalid"
+                  : "input form-control is-vali"
+              }
+              onChange={changePass.handleChange}
+              onBlur={changePass.handleBlur}
+            />
+            {changePass.touched.password && changePass.errors.password ? (
+              <small className="error text-danger">
+                {changePass.errors.password}
+              </small>
+            ) : null}
+          </div>
+          <div className="col-lg-12 position-relative d-flex gap- flex-column mb-3 mt-3">
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Enter New Confirm Password"
+              className={
+                changePass.touched.confirmPassword &&
+                changePass.errors.confirmPassword
+                  ? "input form-control is-invalid"
+                  : "input form-control is-vali"
+              }
+              onChange={changePass.handleChange}
+              onBlur={changePass.handleBlur}
+            />
+            {changePass.touched.confirmPassword &&
+            changePass.errors.confirmPassword ? (
+              <small className="error text-danger">
+                {changePass.errors.confirmPassword}
+              </small>
+            ) : null}
+          </div>
+        <button type="submit" className="btn btn-primary my-4 w-50" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
+        </div>
+
+      </form>
+    </>
   )
 }
 

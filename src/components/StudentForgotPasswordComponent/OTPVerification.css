@@ -6,7 +6,7 @@
   border: 2px solid var(--glow-color);
   padding: 25px 25px 50px;
   display: flex;
-  max-width: 720px;
+  max-width: 600px;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
