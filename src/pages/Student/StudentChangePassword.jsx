@@ -44,9 +44,13 @@ function MyApp({myEmail: myEmail}) {
       axios
       .post(endpoint, newValues)
       .then((response) => {
-        setIsLoading(false);
-        setMyMessage(response.data.message);
-        enqueueSnackbar(response.data.message, { variant: 'error' });
+        if (response.data.status) {
+          setIsLoading(false);
+          enqueueSnackbar(response.data.message, { variant: 'success' });
+        } else {
+          setIsLoading(false);
+          enqueueSnackbar(response.data.message, { variant: 'error' });
+        }
         // navigate('/student_login')
       });
         setIsLoading(false);
