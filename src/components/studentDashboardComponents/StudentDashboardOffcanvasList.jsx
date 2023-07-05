@@ -19,7 +19,7 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
         setIsLoading(false);
       setOpen(false);
       navigate(params)
-      }, 2000);
+      }, 1000);
   }
   return (
     <>
@@ -33,7 +33,7 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
         open={open}
         onClick={handleClose}
       >
-      {isLoading && <div class="loader">Loadings..........................</div>}
+      {isLoading && <div class="lds-hourglass"></div>}
       </Backdrop>
       </div>
     </>
