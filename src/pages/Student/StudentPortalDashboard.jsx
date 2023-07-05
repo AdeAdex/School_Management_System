@@ -121,6 +121,7 @@ const StudentPortalDashboard = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const endpoint =

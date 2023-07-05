@@ -1,5 +1,4 @@
-import React from "react";
-// import useCountUp from "use-count-up";
+import React, { useRef } from "react";
 
 const CalculateTotalNumber = ({id, innerText, styles, text, classes}) => {
   return (
