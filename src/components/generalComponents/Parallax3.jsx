@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import CalculateTotalNumber from "./CalculateTotalNumber";
 import MyCountUp from "../countupComponents/MyCountUp";
+import CoursesCountUp from "../countupComponents/CoursesCountUp";
+import StudentCountUp from "../countupComponents/StudentCountUp";
+import ActivityCountUp from "../countupComponents/ActivityCountUp";
 
 const Parallax3 = ({ classes, styles, bg3_styles }) => {
   const targetRef = useRef(null);
@@ -49,6 +52,9 @@ const Parallax3 = ({ classes, styles, bg3_styles }) => {
         <div className="bg-image3-main center-div" style={bg3_styles}>
           <div className="bg-image3-container center-div2 d-flex col-lg-10 justify-content-between">
           <MyCountUp/>
+          <CoursesCountUp/>
+          <StudentCountUp/>
+          <ActivityCountUp/>
             {/* <CalculateTotalNumber
               classes="each-calculate-to-number"
               innerText="teachers"
