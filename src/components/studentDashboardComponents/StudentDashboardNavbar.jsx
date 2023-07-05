@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanvas_On_Small_Screen";
 import axios from "axios";
-import { useDisclosure } from '@mantine/hooks';
-import { Burger } from '@mantine/core';
+import { useDisclosure } from "@mantine/hooks";
+import { Burger, Avatar } from "@mantine/core";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const offCanvas = () => {
-    toggle()
+    toggle();
     if (offCan.style.width == "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
@@ -30,16 +30,8 @@ const StudentDashboardNavbar = () => {
     alert("msg");
   };
 
-
-
-
-
-
-
-
-
   const [myImage, setMyImage] = useState("");
-  const [cloudImage, setCloudImage] = useState()
+  const [cloudImage, setCloudImage] = useState();
 
   const changeFile = (e) => {
     console.log(e.target.files[0]);
@@ -53,19 +45,20 @@ const StudentDashboardNavbar = () => {
 
   const saveFile = () => {
     const endpoint = "http://localhost:2000/student_account/upload_profile_pic";
-    axios.post(endpoint, { myImage })
-    .then((response) => {
-      console.log(response.data)
-      setCloudImage(response.data.cloudLink);
-      console.log(response.data.cloudLink);
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    axios
+      .post(endpoint, { myImage })
+      .then((response) => {
+        console.log(response.data);
+        setCloudImage(response.data.cloudLink);
+        console.log(response.data.cloudLink);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const [opened, { toggle }] = useDisclosure(false);
-  const label = opened ? 'Close navigation' : 'Open navigation';
+  const label = opened ? "Close navigation" : "Open navigation";
 
   return (
     <>
@@ -83,7 +76,12 @@ const StudentDashboardNavbar = () => {
           >
             <i className="fas fa-bars fs-3 px-2"></i>
           </button> */}
-          <Burger opened={opened} className="my-auto offcanvas-btn px-2 mx-3" onClick={offCanvas} aria-label={label}  />
+          <Burger
+            opened={opened}
+            className="my-auto offcanvas-btn px-2 mx-3"
+            onClick={offCanvas}
+            aria-label={label}
+          />
           <button
             className="btn my-auto offcanvas-btn2"
             type="button"
@@ -120,6 +118,15 @@ const StudentDashboardNavbar = () => {
           <input type="file" name="" id="" onChange={(e) => changeFile(e)} />
           <button onClick={saveFile}>Upload</button>
           <img src={cloudImage} alt="" style={{ width: "50px" }} />
+          <Avatar
+            component="a"
+            href=""
+            target="_blank"
+            src="/pic/avatar.png"
+            alt="it's me"
+            size="lg" 
+            radius="xl"
+          />
         </div>
       </div>
 

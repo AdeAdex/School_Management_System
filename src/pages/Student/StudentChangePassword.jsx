@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import * as yup from "yup";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import Backdrop from '@mui/material/Backdrop';
 
 
 
@@ -21,6 +22,11 @@ function MyApp({myEmail: myEmail}) {
   const {enqueueSnackbar} = useSnackbar();
   const [isLoading, setIsLoading] = useState(false);
 
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const changePass = useFormik({
     initialValues: {
       oldPassword: "",
@@ -29,6 +35,7 @@ function MyApp({myEmail: myEmail}) {
     },
 
     onSubmit: (values) => {
+      setOpen(true);
       setIsLoading(true);
       let newValues = { ...values, myEmail };
       console.log(newValues);
@@ -43,6 +50,7 @@ function MyApp({myEmail: myEmail}) {
         // navigate('/student_login')
       });
         setIsLoading(false);
+        setOpen(false);
       }, 2000);
       
     },
@@ -81,7 +89,7 @@ function MyApp({myEmail: myEmail}) {
         onSubmit={changePass.handleSubmit}
       >
         <div className="pt-4">
-        {isLoading && <div class="loader"></div>}
+        
           <img
             src="pic/ade.png"
             alt=""
@@ -152,6 +160,14 @@ function MyApp({myEmail: myEmail}) {
             ) : null}
           </div>
         <button type="submit" className="btn btn-primary my-4 w-50" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
+
+        <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+      {isLoading && <div class="loader"></div>}
+      </Backdrop>
         </div>
 
       </form>
