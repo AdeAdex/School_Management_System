@@ -9,7 +9,7 @@ import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const StudentChangePassword = ({myEmail: myEmail}) => {
   return (
-    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'top', horizontal: 'center'}} >
+    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'bottom', horizontal: 'center'}} >
       <MyApp myEmail={myEmail}/>
     </SnackbarProvider>
   ) 
@@ -19,6 +19,7 @@ function MyApp({myEmail: myEmail}) {
   const [myMessage, setMyMessage] = useState("");
   let navigate = useNavigate();
   const {enqueueSnackbar} = useSnackbar();
+  const [isLoading, setIsLoading] = useState(false);
 
   const changePass = useFormik({
     initialValues: {
@@ -28,16 +29,22 @@ function MyApp({myEmail: myEmail}) {
     },
 
     onSubmit: (values) => {
+      setIsLoading(true);
       let newValues = { ...values, myEmail };
       console.log(newValues);
-      let endpoint = "http://localhost:2000/student_account/change_student_password";
+      setTimeout(() => {
+        let endpoint = "http://localhost:2000/student_account/change_student_password";
       axios
       .post(endpoint, newValues)
       .then((response) => {
+        setIsLoading(false);
         setMyMessage(response.data.message);
         enqueueSnackbar(response.data.message, { variant: 'error' });
         // navigate('/student_login')
       });
+        setIsLoading(false);
+      }, 2000);
+      
     },
 
     validationSchema: yup.object({
@@ -74,6 +81,7 @@ function MyApp({myEmail: myEmail}) {
         onSubmit={changePass.handleSubmit}
       >
         <div className="pt-4">
+        {isLoading && <div class="loader"></div>}
           <img
             src="pic/ade.png"
             alt=""

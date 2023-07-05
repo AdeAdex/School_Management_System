@@ -2,24 +2,21 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanvas_On_Small_Screen";
 import axios from "axios";
+import { useDisclosure } from '@mantine/hooks';
+import { Burger } from '@mantine/core';
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const offCanvas = () => {
+    toggle()
     if (offCan.style.width == "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
       menu.style.setProperty("display", "none", "important");
-      //       setIsShown(false)
-      //       canvasTitle.classList.add("hide")
-      //       canvasTitle.style.setProperty("opacity", "0", "important");
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
       menu.style.setProperty("display", "block", "important");
-      //       setIsShown(true)
-      //       canvasTitle.classList.remove("show")
-      //       canvasTitle.style.setProperty("opacity", "1", "important");
     }
 
     var x = window.matchMedia("(max-width: 768px)");
@@ -67,6 +64,9 @@ const StudentDashboardNavbar = () => {
     })
   };
 
+  const [opened, { toggle }] = useDisclosure(false);
+  const label = opened ? 'Close navigation' : 'Open navigation';
+
   return (
     <>
       <div
@@ -75,14 +75,15 @@ const StudentDashboardNavbar = () => {
         style={{ width: "100%", height: "80px" }}
       >
         <div className="w-50 my-auto d-flex">
-          <button
+          {/* <button
             className="btn my-auto offcanvas-btn"
             type="button"
             onClick={offCanvas}
             id="offcanvasBtn"
           >
             <i className="fas fa-bars fs-3 px-2"></i>
-          </button>
+          </button> */}
+          <Burger opened={opened} className="my-auto offcanvas-btn px-2 mx-3" onClick={offCanvas} aria-label={label}  />
           <button
             className="btn my-auto offcanvas-btn2"
             type="button"
