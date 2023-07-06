@@ -56,7 +56,6 @@ const HomePage = () => {
       <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
         <div className="center-div">
           <NavigatoContainer />
-          {/* <MyCountUp/> */}
         </div>
         <Parallax1
           classes="bg"

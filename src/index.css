@@ -299,7 +299,7 @@
       
       .animation {
         /* opacity: 0; */
-        top: 75px;
+        top: 80px;
         transform: translateY(-25px);
         transition: all 0.5s ease-out;
         transition-delay: 0.2s;

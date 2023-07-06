@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import FixedNav from "./FixedNav";
 import LanguageModal from "../generalComponents/LanguageModal";
 import StickyNav2 from "./StickyNav2";
+import ScrollProgress from "../generalComponents/ScrollProgress";
 
 const PagesNavbar = () => {
   window.onscroll = function () {
@@ -35,10 +36,11 @@ const PagesNavbar = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  
   return (
     <>
       <FixedNav />
+    <ScrollProgress/>
       <section
         className="animation"
         id="stickyNav"
