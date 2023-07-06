@@ -38,7 +38,7 @@ const ScrollProgress = () => {
               offset={-70}
               duration={500}
             >
-              Section 1
+              our activities
             </Link>
           </li>
           <li>
@@ -50,7 +50,7 @@ const ScrollProgress = () => {
               offset={-70}
               duration={500}
             >
-              Section 2
+              our events
             </Link>
           </li>
           <li>
@@ -62,7 +62,7 @@ const ScrollProgress = () => {
               offset={-70}
               duration={500}
             >
-              Section 3
+              our news
             </Link>
           </li>
         </ul>

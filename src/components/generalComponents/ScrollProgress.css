@@ -26,6 +26,9 @@
       
       .scroll-links li {
         margin-bottom: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #007bff;
       }
       
       .scroll-links a {
@@ -35,6 +38,8 @@
       }
       
       .scroll-links a.active {
-        color: #007bff;
+        color: #6FC191;
         font-weight: bold;
       }
+
+     
