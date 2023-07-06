@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../generalComponents/ScrollProgress.css'
-import { Link } from "react-router-dom";
-// import { Link } from 'react-scroll';
+// import { Link } from "react-router-dom";
+import { Link } from 'react-scroll';
 
 const ScrollProgress = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -28,7 +28,7 @@ const ScrollProgress = () => {
           className="scroll-progress"
           style={{ width: scrollProgress }}
         ></div>
-        {/* <ul className="scroll-links">
+        <ul className="scroll-links">
           <li>
             <Link
               activeClass="active"
@@ -65,7 +65,7 @@ const ScrollProgress = () => {
               Section 3
             </Link>
           </li>
-        </ul> */}
+        </ul>
       </div>
     </>
   );

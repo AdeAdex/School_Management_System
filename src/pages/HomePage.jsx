@@ -66,7 +66,9 @@ const HomePage = () => {
           inner_content_2="contact us"
         />
         <div className="center-div">
+        <section name="section1">
           <OurActivities />
+        </section>
         </div>
         <Parallax2
           classes="bg image2"
@@ -78,14 +80,18 @@ const HomePage = () => {
           }}
         />
         <div className="center-div">
+        <section name="section2">
           <OurEvents />
+          </section>
         </div>
         <Parallax3
           classes="bg image3"
           styles={{ height: "40%", backgroundImage: "url(pic/bg-image-4.jpg)" }}
         />
         <div className="center-div">
+        <section name="section3">
           <OurNews></OurNews>
+        </section>
           <div className="d-flex justify-content-center mt-5">
             <button
               className="btn text-white text-uppercase d-flex gap-3 px-4 py-2"
