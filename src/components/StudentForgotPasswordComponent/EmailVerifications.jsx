@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
   const dispatch = useDispatch();
   const [myEmail, setMyEmail] = useState("");
+  const [myHarshOTP, setMyHarshOTP] = useState('')
 
 
   let formik = useFormik({
@@ -20,13 +21,14 @@ const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
       const newValues = { ...values, myOTP: myOTP };
       console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/forgot_password";
-      axios.post(endpoint, newValues).then((response) => {
+      axios.post(endpoint, newValues)
+      .then((response) => {
         if (response.data.status) {
-          // console.log(response.data.message);
-          // console.log(response.data.response[0]);
+          localStorage.secret = response.data.secret;
+          // setMyHarshOTP(response.data.token)
           setMyEmail(response.data.response[0]);
-          // console.log(myEmail);
           if (response.data.status) {
+            console.log(myHarshOTP);
             dispatch(myEmailVerify(response.data.response[0]));
             const Toast = Swal.mixin({
               toast: true,

@@ -39,6 +39,10 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
       console.log(response.data.message);
       setConfirmNewOTP(true)
       setMyLatestOTP(myNewOTP)
+      enqueueSnackbar(
+        response.data.message,
+        { variant: "success" }
+      );
     });
   };
 
@@ -57,17 +61,38 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
         });
       }
     } else {
-      if (Number(OTPInput.join("")) === myOTP) {
-        dispatch(myOTPVerify(true));
-        enqueueSnackbar(
-          "Verification successful. Click Nest step button to proceed",
-          { variant: "success" }
-        );
-      } else {
-        enqueueSnackbar("The provided OTP does not match. Please try again", {
-          variant: "error",
-        });
-      }
+      const endpoint =
+      "http://localhost:2000/student_account/confirm_otp";
+    let secret = localStorage.secret;
+    axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${secret}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.data.status) {
+          if (Number(OTPInput.join("")) === myOTP) {
+            dispatch(myOTPVerify(true));
+            enqueueSnackbar(
+              "Verification successful. Click Nest step button to proceed",
+              { variant: "success" }
+            );
+          } else {
+            enqueueSnackbar("The provided OTP does not match. Please try again", {
+              variant: "error",
+            });
+          }
+        } else {
+          enqueueSnackbar(response.data.message, {
+            variant: "error",
+          });
+        }
+        
+      })
+      
     }
   }
 
