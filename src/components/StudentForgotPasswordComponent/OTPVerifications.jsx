@@ -23,7 +23,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
-  const [newOTP, setNewOTP] = useState(false)
+  const [confirmNewOTP, setConfirmNewOTP] = useState(false)
   const [myLatestOTP, setMyLatestOTP] = useState('')
 
   const myEmailResponse = useSelector(
@@ -36,45 +36,40 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
     let endpoint = "http://localhost:2000/student_account/otp";
     axios.post(endpoint, yess)
     .then((response) => {
-      // console.log(response);
-      setNewOTP(true)
-      // setMyLatestOTP(response.data.)
+      console.log(response.data.message);
+      setConfirmNewOTP(true)
+      setMyLatestOTP(myNewOTP)
     });
   };
 
   function handleSubmit(e) {
-    // e.preventDefault();
-    if (newOTP) {
-      if (Number(OTPInput.join("")) === myNewOTP) {
-        alert(myNewOTP)
-        // dispatch(myOTPVerify(true));
-        // enqueueSnackbar(
-        //   "Verification successful. Click Nest step button to proceed",
-        //   { variant: "success" }
-        // );
+    e.preventDefault();
+    if (confirmNewOTP) {
+      if (Number(OTPInput.join("")) === myLatestOTP) {
+        dispatch(myOTPVerify(true));
+        enqueueSnackbar(
+          "Verification successful. Click Nest step button to proceed",
+          { variant: "success" }
+        );
       } else {
-        alert('not the new otp')
-        // enqueueSnackbar("The provided OTP does not match. Please try again", {
-        //   variant: "error",
-        // });
+        enqueueSnackbar("The provided OTP does not match. Please try again", {
+          variant: "error",
+        });
       }
     } else {
       if (Number(OTPInput.join("")) === myOTP) {
-        alert(myOTP)
-        // dispatch(myOTPVerify(true));
-        // enqueueSnackbar(
-        //   "Verification successful. Click Nest step button to proceed",
-        //   { variant: "success" }
-        // );
+        dispatch(myOTPVerify(true));
+        enqueueSnackbar(
+          "Verification successful. Click Nest step button to proceed",
+          { variant: "success" }
+        );
       } else {
-        alert('not the otp')
-        // enqueueSnackbar("The provided OTP does not match. Please try again", {
-        //   variant: "error",
-        // });
+        enqueueSnackbar("The provided OTP does not match. Please try again", {
+          variant: "error",
+        });
       }
     }
-    e.preventDefault();
-    
+    // e.preventDefault();
   }
 
   const input1Ref = useRef(null);
@@ -186,7 +181,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
         <p className="otp-verification-resend my-4">
           You don't receive the code ?
           <button
-            onClick={(e)=> {resendNewOTP}}
+            onClick={resendNewOTP}
             className="otp-verification-resend-action ms-4"
           >
             Resend

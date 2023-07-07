@@ -68,12 +68,12 @@ function MyApp() {
         </Stepper.Step>
         <Stepper.Step label="Second step" description="OTP Verification">
           <OTPVerifications myOTP={sentOTP} sentEmail={sentEmail} />
-          <Group position="center" mt="xl" style={{position: 'relative', top: '-75px', left: ''}}>
+          {/* <Group position="center" mt="xl" style={{position: 'relative', top: '-75px', left: ''}}>
             <Button variant="default" onClick={prevStep}>
               Back
             </Button>
             <Button onClick={nextStep2} >Next step</Button>
-          </Group>
+          </Group> */}
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">
           <ChangePasswordForms myEmail={myEmailResponse}/>
