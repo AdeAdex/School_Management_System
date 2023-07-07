@@ -9,6 +9,7 @@ export const portalSlice = createSlice({
     lastName: "",
     emailVerify: "",
     OTPVerify: false,
+    otp: ''
   },
   reducers: {
     newName: (state, action) => {
@@ -22,9 +23,12 @@ export const portalSlice = createSlice({
     },
     myOTPVerify: (state, action) => {
       state.OTPVerify = action.payload;
+    },
+    mySentOTP: (state, action) => {
+      state.otp = action.payload
     }
   },
 });
 
-export const { newName, newStudent, myEmailVerify, myOTPVerify } = portalSlice.actions;
+export const { newName, newStudent, myEmailVerify, myOTPVerify, mySentOTP } = portalSlice.actions;
 export default portalSlice.reducer;

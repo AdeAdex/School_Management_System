@@ -73,7 +73,7 @@ const Login = () => {
 
   const myOTP = Math.floor(Math.random() * 9000 + 1000)
   const navigateToOTP = () => {
-    navigate('/forgot_password', {state: {myOTP: myOTP , email: enteredEmail }});
+    navigate('/forgot_password', {state: {email: enteredEmail }});
   }
   return (
     <>

@@ -2,11 +2,11 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { myEmailVerify } from "../../redux/portalSlice";
+import { myEmailVerify, mySentOTP } from "../../redux/portalSlice";
 import { useDispatch } from "react-redux";
 
 
-const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
+const EmailVerifications = ({sentEmail: sentEmail }) => {
   const dispatch = useDispatch();
   const [myEmail, setMyEmail] = useState("");
   const [myHarshOTP, setMyHarshOTP] = useState('')
@@ -18,18 +18,18 @@ const EmailVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
     },
 
     onSubmit: (values) => {
-      const newValues = { ...values, myOTP: myOTP };
+      const myOTP = Math.floor(Math.random() * 9000 + 1000)
+      const newValues = { ...values, myOTP };
       console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/forgot_password";
       axios.post(endpoint, newValues)
       .then((response) => {
         if (response.data.status) {
           localStorage.secret = response.data.secret;
-          // setMyHarshOTP(response.data.token)
           setMyEmail(response.data.response[0]);
           if (response.data.status) {
-            console.log(myHarshOTP);
             dispatch(myEmailVerify(response.data.response[0]));
+            dispatch(mySentOTP(myOTP))
             const Toast = Swal.mixin({
               toast: true,
               position: "top",

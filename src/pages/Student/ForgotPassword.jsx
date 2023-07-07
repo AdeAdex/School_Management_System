@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
 function MyApp() {
   let location = useLocation();
-  let sentOTP = location.state.myOTP;
+  // let sentOTP = location.state.myOTP;
   let sentEmail = location.state.email
 
   const myEmailResponse = useSelector(
@@ -32,10 +32,13 @@ function MyApp() {
   const myOTPResponse = useSelector(
     (state) => state.portalReducer.OTPVerify
   );
+  const sentOTP = useSelector(
+    (state) => state.portalReducer.otp
+    );
+
+
+
   const {enqueueSnackbar} = useSnackbar();
-
-
-
   const [active, setActive] = useState(0);
   const nextStep = (variant) => {
     // console.log(myEmailResponse);
