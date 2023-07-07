@@ -31,9 +31,9 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
 
   const resendNewOTP = () => {
     const myNewOTP = Math.floor(Math.random() * 9000 + 1000);
-    const yess = { myNewOTP, sentEmail };
+    const myNewValues = { myNewOTP, sentEmail };
     let endpoint = "http://localhost:2000/student_account/otp";
-    axios.post(endpoint, yess)
+    axios.post(endpoint, myNewValues)
     .then((response) => {
       localStorage.secret = response.data.secret;
       console.log(response.data.message);
