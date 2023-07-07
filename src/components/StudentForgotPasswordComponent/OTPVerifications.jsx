@@ -178,12 +178,12 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
       </form>
       <p className="otp-verification-resend mt-2">
           You don't receive the code ?
-          <button
+          <a style={{cursor: 'pointer'}}
             onClick={resendNewOTP}
             className="otp-verification-resend-action ms-4"
           >
             Resend
-          </button>
+          </a>
         </p>
     </div>
       
