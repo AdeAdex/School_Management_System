@@ -19,7 +19,7 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
         setIsLoading(false);
       setOpen(false);
       navigate(params)
-      }, 1000);
+      }, 1200);
   }
   return (
     <>

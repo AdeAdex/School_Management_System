@@ -138,3 +138,16 @@
 .forgotpassword:hover {
   cursor: pointer;
 }
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+}

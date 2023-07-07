@@ -1,41 +1,80 @@
 import { useFormik } from "formik";
 import React, { useRef, useState } from "react";
-import "./OTPVerification.css"
+import "./OTPVerification.css";
 import { Link } from "react-router-dom";
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { SnackbarProvider, useSnackbar } from "notistack";
 import { useDispatch, useSelector } from "react-redux";
 import { myOTPVerify } from "../../redux/portalSlice";
+import axios from "axios";
 
 
-const OTPVerifications = ({myOTP: myOTP, sentEmail: sentEmail }) => {
+const OTPVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
   return (
-    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'bottom', horizontal: 'center'}} >
-      <MyApp myOTP={myOTP} sentEmail={sentEmail}/>
+    <SnackbarProvider
+      maxSnack={1}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
+      <MyApp myOTP={myOTP} sentEmail={sentEmail} />
     </SnackbarProvider>
-  )
-}
+  );
+};
 
-
-function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
+function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
+  const [newOTP, setNewOTP] = useState(false)
+  const [myLatestOTP, setMyLatestOTP] = useState('')
 
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
   );
 
+  const resendNewOTP = () => {
+    const myNewOTP = Math.floor(Math.random() * 9000 + 1000);
+    const yess = {myNewOTP, sentEmail}
+    let endpoint = "http://localhost:2000/student_account/otp";
+    axios.post(endpoint, yess)
+    .then((response) => {
+      // console.log(response);
+      setNewOTP(true)
+      // setMyLatestOTP(response.data.)
+    });
+  };
 
   function handleSubmit(e) {
-    // console.log(OTPInput);
-    // console.log(myOTP);
-    if (Number(OTPInput.join("")) === myOTP) {
-      dispatch(myOTPVerify(true))
-      enqueueSnackbar('Verification successful. Click Nest step button to proceed', {variant: 'success'});
+    // e.preventDefault();
+    if (newOTP) {
+      if (Number(OTPInput.join("")) === myNewOTP) {
+        alert(myNewOTP)
+        // dispatch(myOTPVerify(true));
+        // enqueueSnackbar(
+        //   "Verification successful. Click Nest step button to proceed",
+        //   { variant: "success" }
+        // );
+      } else {
+        alert('not the new otp')
+        // enqueueSnackbar("The provided OTP does not match. Please try again", {
+        //   variant: "error",
+        // });
+      }
     } else {
-      enqueueSnackbar('The provided OTP does not match. Please try again', {variant: 'error'});
+      if (Number(OTPInput.join("")) === myOTP) {
+        alert(myOTP)
+        // dispatch(myOTPVerify(true));
+        // enqueueSnackbar(
+        //   "Verification successful. Click Nest step button to proceed",
+        //   { variant: "success" }
+        // );
+      } else {
+        alert('not the otp')
+        // enqueueSnackbar("The provided OTP does not match. Please try again", {
+        //   variant: "error",
+        // });
+      }
     }
     e.preventDefault();
+    
   }
 
   const input1Ref = useRef(null);
@@ -68,15 +107,20 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
   };
   return (
     <>
-      <form className="otp-verification-form mx-auto shadow" onSubmit={handleSubmit}>
-
+      <form
+        className="otp-verification-form mx-auto shadow"
+        onSubmit={handleSubmit}
+      >
         <div className="otp-verification-info">
-          <span className="otp-verification-title pb-3">
-            OTP Verification
-          </span>
+          <span className="otp-verification-title pb-3">OTP Verification</span>
           <p className="otp-verification-description">
-            {" "}
-            Please enter the code we just sent to {myEmailResponse}{" "}
+            Please enter the code we just sent to{" "}
+            <a
+              href=""
+              style={{ fontStyle: "italic", color: "", fontWeight: "bold" }}
+            >
+              {myEmailResponse}
+            </a>
           </p>
         </div>
         <div className="otp-verification-input-fields">
@@ -133,11 +177,22 @@ function MyApp({myOTP: myOTP, sentEmail: sentEmail }) {
             Clear
           </button>
         </div>
+        
+        
+      </form>
+
+
+      {/* <form action=""> */}
         <p className="otp-verification-resend my-4">
           You don't receive the code ?
-          <Link className="otp-verification-resend-action ms-4">Resend</Link>
+          <button
+            onClick={(e)=> {resendNewOTP}}
+            className="otp-verification-resend-action ms-4"
+          >
+            Resend
+          </button>
         </p>
-      </form>
+        {/* </form> */}
     </>
   );
 }

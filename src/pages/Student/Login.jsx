@@ -3,10 +3,17 @@ import "../Student/Login.css";
 import { useFormik } from "formik";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+
 
 const Login = () => {
   let navigate = useNavigate();
   const [enteredEmail, setEnteredEmail] = useState("")
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   let formik = useFormik({
     initialValues: {
@@ -66,7 +73,6 @@ const Login = () => {
 
   const myOTP = Math.floor(Math.random() * 9000 + 1000)
   const navigateToOTP = () => {
-    // console.log(enteredEmail);
     navigate('/forgot_password', {state: {myOTP: myOTP , email: enteredEmail }});
   }
   return (
@@ -116,13 +122,16 @@ const Login = () => {
             <div className="login-field">
               <input
                 required=""
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 onChange={formik.handleChange}
                 className="login-input"
                 placeholder="Password"
                 autoComplete="on"
               />
+              <div className="password-toggle" onClick={togglePasswordVisibility}>
+              {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+            </div>
               <span className="login-span">
                 <svg
                   className=""

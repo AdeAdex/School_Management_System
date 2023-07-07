@@ -4,16 +4,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
-
 const CreateAccount = () => {
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   let endpoint = "http://localhost:2000/student_account/mail";
-  //   axios.get(endpoint).then((res) => {
-  //     console.log(res.data.message);
-  //   });
-  // }, []);
 
   let formik = useFormik({
     initialValues: {
@@ -28,9 +20,7 @@ const CreateAccount = () => {
     onSubmit: (values) => {
       // console.log(values);
       const endpoint = "http://localhost:2000/student_account/student";
-      axios
-      .post(endpoint, values)
-      .then((response) => {
+      axios.post(endpoint, values).then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
           console.log(response.data.response);
@@ -66,9 +56,7 @@ const CreateAccount = () => {
       firstName: yup
         .string()
         .required("firstname is required to create account"),
-      lastName: yup
-        .string()
-        .required("lastname is required to create account"),
+      lastName: yup.string().required("lastname is required to create account"),
       email: yup
         .string()
         .lowercase()
@@ -85,12 +73,10 @@ const CreateAccount = () => {
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
           "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
         ),
-      checkbox: yup
-        .boolean()
-        .oneOf([true]),
-        // createdOn: 
-        // date()
-        // .default(() => new Date()),
+      checkbox: yup.boolean().oneOf([true]),
+      // createdOn:
+      // date()
+      // .default(() => new Date()),
     }),
   });
 
@@ -181,9 +167,7 @@ const CreateAccount = () => {
               Email Address
             </label>
             {formik.touched.email && formik.errors.email ? (
-              <small className="error text-danger">
-                {formik.errors.email}
-              </small>
+              <small className="error text-danger">{formik.errors.email}</small>
             ) : null}
           </div>
           <div className="col-md-6 position-relative  flex-column mb-3">
