@@ -1,10 +1,10 @@
-.otp-verification-form {
+.otp-verification-container {
   --glow-color: rgb(176, 194, 255);
   --glow-spread-color: rgba(123, 246, 255, 0.781);
   --enhanced-glow-color: rgb(182, 71, 71);
   --btn-color: whiteSmoke;
   border: 2px solid var(--glow-color);
-  padding: 25px 25px 50px;
+  padding: 20px 20px 50px;
   display: flex;
   max-width: 600px;
   flex-direction: column;
@@ -15,6 +15,18 @@
   border-radius: 20px;
   position: relative;
   margin-top: 20px;
+}
+
+
+
+.otp-verification-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  color: var(--glow-color);
+  background-color: var(--btn-color);
+  position: relative;
 }
 
 /*----heading and description-----*/

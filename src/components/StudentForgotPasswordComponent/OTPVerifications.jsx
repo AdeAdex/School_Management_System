@@ -69,7 +69,6 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
         });
       }
     }
-    // e.preventDefault();
   }
 
   const input1Ref = useRef(null);
@@ -100,18 +99,20 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
       input4Ref.current.focus();
     }
   };
+ 
+
   return (
     <>
-      <form
-        className="otp-verification-form mx-auto shadow"
+    <div className="otp-verification-container mx-auto shadow">
+    <form
+        className="otp-verification-form"
         onSubmit={handleSubmit}
       >
         <div className="otp-verification-info">
           <span className="otp-verification-title pb-3">OTP Verification</span>
           <p className="otp-verification-description">
             Please enter the code we just sent to{" "}
-            <a
-              href=""
+            <a href={`https://mail.google.com/mail/u/0/#inbox`} target="_blank" rel="noopener noreferrer"
               style={{ fontStyle: "italic", color: "", fontWeight: "bold" }}
             >
               {myEmailResponse}
@@ -175,10 +176,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
         
         
       </form>
-
-
-      {/* <form action=""> */}
-        <p className="otp-verification-resend my-4">
+      <p className="otp-verification-resend mt-2">
           You don't receive the code ?
           <button
             onClick={resendNewOTP}
@@ -187,6 +185,12 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
             Resend
           </button>
         </p>
+    </div>
+      
+
+
+      {/* <form action=""> */}
+        
         {/* </form> */}
     </>
   );
