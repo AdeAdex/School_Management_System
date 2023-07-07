@@ -89,6 +89,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
           enqueueSnackbar(response.data.message, {
             variant: "error",
           });
+          dispatch(myOTPVerify(false));
         }
         
       })
