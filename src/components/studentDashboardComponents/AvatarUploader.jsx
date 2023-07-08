@@ -14,7 +14,7 @@ const AvatarUploader = () => {
             setMyImage(reader.result);
             const endpoint = "http://localhost:2000/student_account/upload_profile_pic";
             axios
-              .post(endpoint, { myImage: reader.result })
+              .post(endpoint, { myImage: reader.result})
               .then((response) => {
                 console.log(response.data);
                 const cloudLink = response.data.cloudLink;
@@ -27,11 +27,7 @@ const AvatarUploader = () => {
               });
           };
         };
-      
-        useEffect(() => {
-                console.log(cloudImage);
-        }, [])
-        
+  
         return (
           <>
             <div>
@@ -41,7 +37,7 @@ const AvatarUploader = () => {
                 ) : (
                   <div className="avatar-placeholder d-flex flex-column justify-content-center border">
                     <img src="../pic/avatar.png" className="mx-auto" alt="" style={{ width: '50px', height: '50px' }} />
-                    <small>Click to upload</small>
+                    <small className='dp'>Click to upload</small>
                   </div>
                 )}
               </label>
