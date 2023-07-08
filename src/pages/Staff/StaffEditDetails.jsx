@@ -9,6 +9,7 @@ const StaffEditDetails = () => {
   const globalState = useSelector((state) => state.portalReducer.staffInfo);
   const [responseArray, setResponseArray] = useState([]);
   const [myEmail, setMyEmail] = useState("");
+  const [myImage, setMyImage] = useState("")
 
 
 
@@ -61,6 +62,34 @@ useEffect(() => {
       });
     },
   });
+
+
+
+  const handleVideoFileChange = (e) => {
+    // videoUpload.setFieldValue('video_data', event.currentTarget.files[0]);
+    let myImage = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(myImage);
+    reader.onload = () => {
+      setMyImage(reader.result);
+    };
+  };
+
+  let videoUpload = useFormik({
+    initialValues: {
+      uploader_name: '',
+      video_title: '',
+      video_length: '',
+      video_duration: ''
+    },
+
+    onSubmit: (values) => {
+      let newValues = {...values, myImage}
+      console.log(newValues);
+      let endpoint = "http://localhost:2000/staff_account/"
+      axios.post(endpoint, newValues)
+    }
+  })
 
 
 
@@ -247,21 +276,23 @@ useEffect(() => {
           </button>
         </div>
       </div>
-      {/* <div>
-        <select name="" id="">
-          <option value="JSS1">JSS1</option>
-          <option value="JSS2">JSS2</option>
-          <option value="JSS3">JSS3</option>
-          <option value="SSS1">SSS1</option>
-          <option value="SSS2">SSS2</option>
-          <option value="SSS3">SSS3</option>
-        </select>
-        <input type="file" onChange={handleFileChange} accept="video/*" />
-      <button onClick={handleUpload}>Upload</button>
-      </div> */}
+
+      <div>
+        <form action="" onSubmit={videoUpload.handleSubmit}>
+          <h3>Upload video</h3>
+          <input type="file" name="video_data" id="" onChange={handleVideoFileChange} />
+          <input type="text" name="uploader_name" id="" placeholder="video uploader name" onChange={videoUpload.handleChange}/>
+          <input type="text" name="video_title" id="" placeholder="video title" onChange={videoUpload.handleChange}/>
+          <input type="text" name="video_length" id="" placeholder="video length" onChange={videoUpload.handleChange}/>
+          <input type="text" name="video_duration" id="" placeholder="video duration" onChange={videoUpload.handleChange}/>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
     </>
   );
 };
 
 export default StaffEditDetails;
+
+

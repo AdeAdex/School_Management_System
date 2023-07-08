@@ -43,7 +43,7 @@ const Dashboard = () => {
       <section
         id=""
         className="d-flex"
-        style={{ width: "100%", height: "100vh", overflow: "hidden" }}
+        style={{ width: "100%", height: "100%", overflow: "hidden" }}
       >
         <div
           className="position-relative"
