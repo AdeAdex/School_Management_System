@@ -81,7 +81,7 @@ useEffect(() => {
   };
 
 
-  const openConfirmDeleteModal = (myId, myEmail) => {
+  const openConfirmDeleteModal = (myClass, myEmail) => {
     Swal.fire({
       position: "bottom",
       title: "Do you really want to delete your result?",
@@ -96,12 +96,12 @@ useEffect(() => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(myId, myEmail);
-        let endpoint = "http://localhost:2000/student_account/delete";
+        console.log(myClass, myEmail);
+        let endpoint = "http://localhost:2000/staff/delete";
         axios
           .delete(endpoint, {
             headers: {
-              Authorization: `${myId} ${myEmail}`,
+              Authorization: `${myClass} ${myEmail}`,
               "Content-Type": "application/json",
             },
           })
@@ -164,7 +164,7 @@ useEffect(() => {
                   type="submit"
                   className="btn btn-white shadow delete-btn"
                   onClick={() => {
-                    openConfirmDeleteModal(option.id, myEmail);
+                    openConfirmDeleteModal(option.class, myEmail);
                   }}
                 >
                   Delete
