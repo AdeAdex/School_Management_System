@@ -4,6 +4,7 @@ import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanv
 import axios from "axios";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger, Avatar } from "@mantine/core";
+import AvatarUploader from "./AvatarUploader";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -115,7 +116,8 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="">
             <img src="pic/avatar.png" style={{ width: "50px" }} alt="" />
           </button>
-          <input type="file" name="" id="" onChange={(e) => changeFile(e)} />
+          <AvatarUploader/>
+          {/* <input type="file" className="bg-info" name="" id="" onChange={(e) => changeFile(e)} />
           <button onClick={saveFile}>Upload</button>
           <img src={cloudImage} alt="" style={{ width: "50px" }} />
           <Avatar
@@ -124,9 +126,8 @@ const StudentDashboardNavbar = () => {
             target="_blank"
             src="/pic/avatar.png"
             alt="it's me"
-            size="lg" 
-            radius="xl"
-          />
+            size="lg" radius="xl"
+          /> */}
         </div>
       </div>
 
