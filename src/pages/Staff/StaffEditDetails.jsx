@@ -7,16 +7,26 @@ import { newName } from "../../redux/portalSlice";
 
 const StaffEditDetails = () => {
   const globalState = useSelector((state) => state.portalReducer.staffInfo);
+  const [responseArray, setResponseArray] = useState([]);
+  const [myEmail, setMyEmail] = useState("");
 
-  //   useEffect(() => {
-  //         // console.log(globalState);
-  //     let endpoint = "http://localhost:2000/staff_account/edit_details";
-  //     axios.get(endpoint)
-  //     .then((response) => {
-  // //       dispatch(newName(response.data.response));
-  // //       console.log(response.data.response);
-  //     });
-  //   }, );
+
+
+useEffect(() => {
+  let endpoint = "http://localhost:2000/staff_account/details"
+  axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `${"staffArray"}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        const responseData = response.data.response[0].staffArray;
+        setResponseArray(responseData);
+      });
+}, )
+
 
   const tryGet = () => {
     console.log(globalState.email);
@@ -69,8 +79,102 @@ const StaffEditDetails = () => {
       console.log('Uploading file:', selectedFile);
     }
   };
+
+
+  const openConfirmDeleteModal = (myId, myEmail) => {
+    Swal.fire({
+      position: "bottom",
+      title: "Do you really want to delete your result?",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup",
+        title: "my-title",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(myId, myEmail);
+        let endpoint = "http://localhost:2000/student_account/delete";
+        axios
+          .delete(endpoint, {
+            headers: {
+              Authorization: `${myId} ${myEmail}`,
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            if (response.data.status) {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+
+              Toast.fire({
+                icon: "success",
+                title: response.data.message,
+              });
+            } 
+          });
+      }
+    });
+  };
   return (
     <>
+    <div className="d-flex flex-column">
+    <table className="table gap-2" >
+          <thead className="text-white table-head mb-3">
+            <tr className="text-uppercase">
+              <td>class</td>
+              <td>country</td>
+              <td>lga</td>
+              <td>address</td>
+              <td>hubby</td>
+              <td>action</td>
+            </tr>
+          </thead>
+          {responseArray.map((option, index) => (
+          <tbody key={index}>
+            <tr>
+              <td>{option.class}</td>
+              <td>{option.country}</td>
+              <td>{option.lga}</td>
+              <td>{option.address}</td>
+              <td>{option.hubby}</td>
+              <td className="d-flex gap-2">
+                <button
+                  type="submit"
+                  className="btn btn-white shadow edit-btn"
+                  onClick={() => {
+                    openEditModal(items.id, myEmail, items);
+                  }}
+                >
+                  Edit
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-white shadow delete-btn"
+                  onClick={() => {
+                    openConfirmDeleteModal(option.id, myEmail);
+                  }}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          ))}
+            
+        </table>
       <div className="edit-container">
         <div className="edit-card">
           <h3 className="edit-login">Edit Your Details</h3>
@@ -143,7 +247,7 @@ const StaffEditDetails = () => {
           </button>
         </div>
       </div>
-      <div>
+      {/* <div>
         <select name="" id="">
           <option value="JSS1">JSS1</option>
           <option value="JSS2">JSS2</option>
@@ -154,7 +258,8 @@ const StaffEditDetails = () => {
         </select>
         <input type="file" onChange={handleFileChange} accept="video/*" />
       <button onClick={handleUpload}>Upload</button>
-      </div>
+      </div> */}
+    </div>
     </>
   );
 };

@@ -7,11 +7,9 @@ const StaffDashboardHome = () => {
     <>
       <div className="flex p-5">
       <div className="w-9/12 text-black">
-        hello dashboard
+        Dashbord
       </div>
       <div>
-        <DashboardCalendar/>
-        <DashboardPieChart/>
       </div>
       </div>
     </>
