@@ -86,7 +86,7 @@ useEffect(() => {
     onSubmit: (values) => {
       let newValues = {...values, myImage}
       console.log(newValues);
-      let endpoint = "http://localhost:2000/staff_account/"
+      let endpoint = "http://localhost:2000/staff_account/upload_resources"
       axios.post(endpoint, newValues)
     }
   })
@@ -294,5 +294,3 @@ useEffect(() => {
 };
 
 export default StaffEditDetails;
-
-
