@@ -97,7 +97,7 @@ useEffect(() => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail);
-        let endpoint = "http://localhost:2000/staff/delete";
+        let endpoint = "http://localhost:2000/staff_account/delete_class";
         axios
           .delete(endpoint, {
             headers: {
