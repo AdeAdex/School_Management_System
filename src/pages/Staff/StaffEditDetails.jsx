@@ -10,7 +10,7 @@ const StaffEditDetails = () => {
   const [responseArray, setResponseArray] = useState([]);
   const [myEmail, setMyEmail] = useState("");
   const [myImage, setMyImage] = useState("")
-  const [receivedVideo, setReceivedVideo] = useState("");
+  const [receivedVideo, setReceivedVideo] = useState([]);
 
 
 
@@ -26,6 +26,8 @@ useEffect(() => {
       .then((response) => {
         const responseData = response.data.response[0].staffArray;
         setResponseArray(responseData);
+        // console.log(response.data.response[0].Resources);
+        setReceivedVideo(response.data.response[0].Resources)
       });
 }, )
 
@@ -91,6 +93,7 @@ useEffect(() => {
       axios.post(endpoint, newValues)
       .then((response) => {
         console.log(response.data.response);
+        setReceivedVideo(response.data.response)
       })
     }
   })
@@ -284,6 +287,11 @@ useEffect(() => {
       <div>
         <form action="" onSubmit={videoUpload.handleSubmit}>
           <h3>Upload video</h3>
+          {
+            receivedVideo.map((eachVideo, index) => (
+              <video src={eachVideo.myImage} key={index}>{eachVideo.title}</video>
+            ))
+          }
           <input type="file" name="video_data" id="" onChange={handleVideoFileChange} />
           <input type="text" name="uploader_name" id="" placeholder="video uploader name" onChange={videoUpload.handleChange}/>
           <input type="text" name="video_title" id="" placeholder="video title" onChange={videoUpload.handleChange}/>
