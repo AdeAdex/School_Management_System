@@ -287,7 +287,7 @@ useEffect(() => {
       <div>
         <form action="" onSubmit={videoUpload.handleSubmit}>
           <h3>Upload video</h3>
-          {receivedVideo && receivedVideo.length > 0
+          {receivedVideo.length > 0
             ? receivedVideo.map((eachVideo, index) => (
                 <video
                   className="w-100 shadow"
