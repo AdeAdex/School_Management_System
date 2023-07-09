@@ -10,6 +10,7 @@ const StaffEditDetails = () => {
   const [responseArray, setResponseArray] = useState([]);
   const [myEmail, setMyEmail] = useState("");
   const [myImage, setMyImage] = useState("")
+  const [receivedVideo, setReceivedVideo] = useState("");
 
 
 
@@ -88,6 +89,9 @@ useEffect(() => {
       console.log(newValues);
       let endpoint = "http://localhost:2000/staff_account/upload_resources"
       axios.post(endpoint, newValues)
+      .then((response) => {
+        console.log(response.data.response);
+      })
     }
   })
 
