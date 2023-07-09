@@ -16,7 +16,8 @@ const StudentResources = () => {
       .then((response) => {
         // const responseData = response.data.response[0].staffArray;
         // setResponseArray(responseData);
-        setReceivedVideo(response.data.response[0].Resources);
+        console.log(response.data.response[0].Resources[0]);
+        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
   }, []);
 

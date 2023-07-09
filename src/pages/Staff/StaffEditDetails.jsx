@@ -27,7 +27,7 @@ useEffect(() => {
         const responseData = response.data.response[0].staffArray;
         setResponseArray(responseData);
         // console.log(response.data.response[0].Resources);
-        setReceivedVideo(response.data.response[0].Resources)
+        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources)
       });
 }, )
 
@@ -92,8 +92,8 @@ useEffect(() => {
       let endpoint = "http://localhost:2000/staff_account/upload_resources"
       axios.post(endpoint, newValues)
       .then((response) => {
-        console.log(response.data.response);
-        setReceivedVideo(response.data.response)
+        // console.log(response.data.response);
+        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources)
       })
     }
   })
