@@ -206,7 +206,7 @@ const StudentPortalDashboard = () => {
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <StudentDashboardNavbar />
-          <div className="flex p-5">
+          <div className="flex p-5 bg-inf" style={{overflowY: 'scroll', height: '100%'}}>
           {isLoading ? (
             <div>loadings</div>
           ) : (
