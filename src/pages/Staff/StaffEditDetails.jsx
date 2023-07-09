@@ -289,7 +289,14 @@ useEffect(() => {
           <h3>Upload video</h3>
           {
             receivedVideo.map((eachVideo, index) => (
-              <video src={eachVideo.myImage} key={index}>{eachVideo.title}</video>
+              <video
+              className="w-100 shadow p-3"
+              style={{ height: "300px" }}
+              controls
+              poster="pic/pic.jpg"
+            >
+              <source src={eachVideo.myImage} type="video/mp4" />
+            </video>
             ))
           }
           <input type="file" name="video_data" id="" onChange={handleVideoFileChange} />

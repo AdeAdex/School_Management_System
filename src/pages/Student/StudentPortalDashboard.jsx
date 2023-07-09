@@ -11,6 +11,7 @@ import StudentChangePassword from "./StudentChangePassword";
 import StudentEditDetails from "./StudentEditDetails";
 import StudentDashboardHome from "./StudentDashboardHome";
 import StudentCourseRegistration from "./StudentCourseRegistration";
+import StudentResources from "./StudentResources";
 
 // import { styled, useTheme } from '@mui/material/styles';
 // import Box from '@mui/material/Box';
@@ -217,6 +218,7 @@ const StudentPortalDashboard = () => {
                 element={<StudentChangePassword myEmail={globalState.email} />}
               />
               <Route path="edit_details" element={<StudentEditDetails />} />
+              <Route path="resources" element={<StudentResources/>} />
               <Route
                 path="course_registration"
                 element={<StudentCourseRegistration />}
