@@ -22,13 +22,14 @@ const StudentResources = () => {
 
   return (
     <>
-      <div>
+      <div className="pb-5">
         <h3>Resources</h3>
+        <div className="d-flex">
         {
             receivedVideo.map((eachVideo, index) => (
               <video
-              className="w-100 shadow p-3"
-              style={{ height: "300px" }}
+              className="w-100 shadow"
+              style={{ height: "200px" }}
               controls
               poster="pic/pic.jpg"
             >
@@ -36,6 +37,7 @@ const StudentResources = () => {
             </video>
             ))
           }
+          </div>
       </div>
     </>
   );
