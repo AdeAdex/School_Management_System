@@ -287,7 +287,8 @@ useEffect(() => {
       <div>
         <form action="" onSubmit={videoUpload.handleSubmit}>
           <h3>Upload video</h3>
-          {receivedVideo.length > 0
+          <div className="d-flex flex-column gap-4" style={{width: '400px'}}>
+          {receivedVideo && receivedVideo.length > 0
             ? receivedVideo.map((eachVideo, index) => (
                 <video
                   className="w-100 shadow"
@@ -300,6 +301,7 @@ useEffect(() => {
                 </video>
               ))
             : null}
+        </div>
           <input type="file" name="video_data" id="" onChange={handleVideoFileChange} />
           <input type="text" name="uploader_name" id="" placeholder="video uploader name" onChange={videoUpload.handleChange}/>
           <input type="text" name="video_title" id="" placeholder="video title" onChange={videoUpload.handleChange}/>
