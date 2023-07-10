@@ -20,6 +20,15 @@ const StaffDashboardHome = () => {
 
   }, []);
 
+  const upgrade = (personEmail) => {
+    let studentEmail = personEmail
+    let endpoint = "http://localhost:2000/student_account/upgrade_level"
+    axios.post(endpoint, {studentEmail})
+    .then((response) => {
+
+    })
+  }
+
   return (
     <>
       <div className="flex p-5 flex-column w-100">
@@ -32,7 +41,8 @@ const StaffDashboardHome = () => {
                 <td>last name</td>
                 <td>email</td>
                 <td>matric No</td>
-                <td>level</td>
+                <td>class</td>
+                <td>action</td>
               </tr>
             </thead>
             { allStudent.map((student, index) => (
@@ -43,6 +53,9 @@ const StaffDashboardHome = () => {
                 <td>{student.email}</td>
                 <td>{student.matric}</td>
                 <td>{student.level}</td>
+                <td>
+                  <button onClick={()=> {upgrade(student.email)}}>Upgrade</button>
+                </td>
               </tr>
             </tbody>
             ))}
