@@ -63,7 +63,8 @@ const StaffDashboardHome = () => {
                   <td>{student.matric}</td>
                   <td>{student.level}</td>
                   <td>
-                    <button
+                    <button 
+                    className="btn btn-primary btn-sm"
                       onClick={() => {
                         upgrade(student.email, student.level, student.prefix);
                       }}
