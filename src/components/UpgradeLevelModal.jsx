@@ -19,7 +19,7 @@ const UpgradeLevelModal = ({
     onSubmit: (values) => {
       let studentEmail = personEmail;
       let newValues = { ...values, studentEmail };
-      console.log(newValues);
+//       console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/upgrade_level";
       axios.post(endpoint, newValues)
       .then((response) => {
@@ -40,9 +40,9 @@ const UpgradeLevelModal = ({
             icon: "success",
             title: response.data.message,
           });
-          setModalOpen(false);
         }
       });
+      onClose(false);
     },
   });
   return (
