@@ -99,7 +99,9 @@ const StudentDashboardNavbar = () => {
           <div className="font-bold ml-4 my-auto text-lg">
             {globalState.firstName} {globalState.lastName}
           </div>
+          <div className="my-auto ms-auto fw-bold">Class: {globalState.level}</div>
         </div>
+          
         <div className="w-50 my-auto flex justify-end gap-5 mr-7">
           <button onClick={gooo} className="">
             <i className="fas fa-bell fs-4 my-auto"></i>
