@@ -32,9 +32,6 @@ const StaffDashboardHome = () => {
     setPersonEmail(personEmail);
     setStudentClass(studentClass);
     setClassPrefix(classPrefix);
-    let studentEmail = personEmail;
-    let endpoint = "http://localhost:2000/student_account/upgrade_level";
-    axios.post(endpoint, { studentEmail }).then((response) => {});
   };
 
   const closeModal = () => {
