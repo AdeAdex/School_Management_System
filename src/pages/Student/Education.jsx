@@ -20,7 +20,7 @@ const Education = () => {
   const [description, setDescription] = useState('')
 
   const openModal = (val) => {
-    let endpoint = "http://localhost:2000/student_account/student_subject";
+    let endpoint = "/student_account/student_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -59,7 +59,7 @@ const Education = () => {
     //   console.log(response.data.response.previousEducation);
     //  })
 
-    let endpoint = "http://localhost:2000/student_account/student_subject";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -81,7 +81,7 @@ const Education = () => {
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
-    let endpoint = "http://localhost:2000/student_account/student_education";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_education";
     axios
       .get(endpoint, {
         headers: {
