@@ -17,7 +17,7 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
     onSubmit: (values) => {
       let newValues = { ...values, myEmail };
       console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/change_password";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.ap/student_account/change_password";
       axios
       .post(endpoint, newValues)
       .then((response) => {
