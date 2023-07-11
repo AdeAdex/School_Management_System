@@ -20,7 +20,7 @@ const Education = () => {
   const [description, setDescription] = useState('')
 
   const openModal = (val) => {
-    let endpoint = "/student_account/student_subject";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
     axios
       .get(endpoint, {
         headers: {
