@@ -26,7 +26,7 @@ const StaffDashboardHome = () => {
       });
   }, []);
 
-  const upgrade = (personEmail, studentClass, classPrefix) => {
+  const upgrade = (personEmail, studentClass) => {
     setModalOpen(true);
     setPersonEmail(personEmail);
     setStudentClass(studentClass);
@@ -39,6 +39,7 @@ const StaffDashboardHome = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [matchedNames, setMatchedNames] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
 
   const handleSearch = (event) => {
@@ -52,6 +53,13 @@ const StaffDashboardHome = () => {
     setMatchedNames(matched);
   };
 
+
+  const handleSelectStudent = (event) => {
+    const selectedFirstName = event.target.value;
+    const selectedStudent = allStudent.find(student => student.firstName === selectedFirstName);
+    setSelectedStudent(selectedStudent);
+  };
+
   return (
     <>
       <div className="flex p-5 flex-column w-100">
@@ -63,7 +71,8 @@ const StaffDashboardHome = () => {
         value={searchTerm}
         onChange={handleSearch}
       />
-      <select>
+      <select onChange={handleSelectStudent}>
+      <option value="">Select a student</option>
         {matchedNames.map((student, index) => (
           <option key={index} value={student.firstName}>
             {student.firstName}
@@ -72,7 +81,7 @@ const StaffDashboardHome = () => {
       </select>
     </div>
         <div className="w-100">
-          <table className="table table-border table-stripped gap-2 w-100">
+          {/* <table className="table table-border table-stripped gap-2 w-100">
             <thead>
               <tr className="text-uppercase">
                 <td>first name</td>
@@ -104,7 +113,64 @@ const StaffDashboardHome = () => {
                 </tr>
               </tbody>
             ))}
+          </table> */}
+
+
+
+          {selectedStudent && (
+          <table className="table table-border table-stripped gap-2 w-100">
+            <thead>
+              <tr className="text-uppercase">
+                <td>first name</td>
+                <td>last name</td>
+                <td>email</td>
+                <td>matric No</td>
+                <td>class</td>
+                <td>action</td>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>{selectedStudent.firstName}</td>
+                  <td>{selectedStudent.lastName}</td>
+                  <td>{selectedStudent.email}</td>
+                  <td>{selectedStudent.matric}</td>
+                  <td>{selectedStudent.level}</td>
+                  <td>
+                    <button 
+                    className="btn btn-primary btn-sm"
+                      onClick={() => {
+                        upgrade(selectedStudent.email, selectedStudent.level);
+                      }}
+                    >
+                      Upgrade
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
           </table>
+
+      )}
+
+
+          {/* {selectedStudent && (
+        <table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{selectedStudent.firstName}</td>
+              <td>{selectedStudent.lastName}</td>
+              <td>{selectedStudent.email}</td>
+            </tr>
+          </tbody>
+        </table>
+      )} */}
         </div>
         <UpgradeLevelModal
           isOpen={modalOpen}
