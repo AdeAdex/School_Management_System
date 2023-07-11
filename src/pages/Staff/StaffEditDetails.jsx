@@ -211,72 +211,45 @@ useEffect(() => {
           ))}
             
         </table>
-      <div className="edit-container">
-        <div className="edit-card">
-          <h3 className="edit-login">Edit Your Details</h3>
-          <form
-            onSubmit={formik.handleSubmit}
-            action="/staff_account/edit_details"
-            method="post"
-          >
-            <div className="edit-inputBox">
-              <select
-                name="class"
-                id=""
-                required="required"
-                onChange={formik.handleChange}
-              >
-                <option value="JSS1">JSS1</option>
+      <div className="w-100">
+        <div className="w-100">
+          <h3 className="edit-login text-center my-3">Upload Class Subject</h3>
+          <form action="" onSubmit={formik.handleSubmit}>
+          <div className="col-md-12 mb-3">
+            <label
+              htmlFor="validationServer04"
+              className="form-label fw-bold text-secondary"
+            >
+              Class
+            </label>
+            <select
+              className="form-select "
+              id="validationServer04"
+              name="class"
+              aria-describedby="validationServer04Feedback"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <option disabled>Choose...</option>
+              <option value="JSS1">JSS1</option>
                 <option value="JSS2">JSS2</option>
                 <option value="JSS3">JSS3</option>
                 <option value="SSS1">SSS1</option>
                 <option value="SSS2">SSS2</option>
                 <option value="SSS3">SSS3</option>
-              </select>
-            </div>
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="address"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span className="edit-user">Address</span>
-            </div>
-
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="country"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span className="edit-user">Country</span>
-            </div>
-
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="lga"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span className="edit-user">LGA</span>
-            </div>
-
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="hubby"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span>Hubby</span>
-            </div>
-
-            <button type="submit" className="edit-enter">
-              Enter
-            </button>
+              {/* {responseArray.map(
+                (option, index) => (
+                  responseArray.sort(),
+                  (
+                    <option key={index} value={option.class}>
+                      {option.class}
+                    </option>
+                  )
+                )
+              )} */}
+            </select>
+          </div>
           </form>
           <button type="submit" onClick={tryGet}>
             Get Info

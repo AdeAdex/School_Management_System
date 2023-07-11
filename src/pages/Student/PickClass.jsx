@@ -8,7 +8,6 @@ const PickClass = () => {
 
   useEffect(() => {
     const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
-
     axios
       .get(endpoint, {
         headers: {
@@ -18,7 +17,6 @@ const PickClass = () => {
       })
       .then((response) => {
         console.log(response.data.response[0].staffArray);
-        // setResponseArray(response.data.response[0].staffArray);
         const responseData = response.data.response[0].staffArray;
         setResponseArray(responseData);
       });
