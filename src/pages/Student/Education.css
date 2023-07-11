@@ -201,4 +201,8 @@ form .submit-btn {
   .my-swal .my-popup {
     width: 100%;
   }
+
+  .table-head {
+    display: none;
+  }
 }
