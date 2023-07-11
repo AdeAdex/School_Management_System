@@ -7,7 +7,7 @@ const PickClass = () => {
   const [responseArray, setResponseArray] = useState([]);
 
   useEffect(() => {
-    const endpoint = "http://localhost:2000/staff_account/details";
+    const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
 
     axios
       .get(endpoint, {
@@ -41,7 +41,7 @@ const PickClass = () => {
 
     onSubmit: (values) => {
       console.log(values);
-      // const endpoint = "http://localhost:2000/staff_account/details";
+      // const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
       // axios.get(endpoint, values).then((response) => {
       //   console.log(response);
       // });

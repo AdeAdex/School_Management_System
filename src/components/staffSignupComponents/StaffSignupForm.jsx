@@ -31,7 +31,7 @@ const StaffSignupForm = () => {
       check: false,
     };
     e.preventDefault();
-    const endpoint = "http://localhost:2000/staff_account/staff_signup";
+    const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_signup";
     axios.post(endpoint, myDetails)
     .then((response) => {
       if (response.data.status) {

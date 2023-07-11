@@ -19,7 +19,7 @@ const StudentEditDetails = () => {
       // console.log(globalState);
       const newValues = {...values,receivedEmail:globalState.email};
       console.log(newValues);
-      let endpoint = "http://localhost:2000/student_account/edit_details";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/edit_details";
       axios.post(endpoint, newValues)
       .then((response) => {
         console.log(response);

@@ -45,7 +45,7 @@ const StudentDashboardNavbar = () => {
   };
 
   const saveFile = () => {
-    const endpoint = "http://localhost:2000/student_account/upload_profile_pic";
+    const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
     axios
       .post(endpoint, { myImage })
       .then((response) => {

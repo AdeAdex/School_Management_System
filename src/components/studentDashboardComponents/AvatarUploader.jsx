@@ -12,7 +12,7 @@ const AvatarUploader = () => {
           reader.readAsDataURL(selectedImage);
           reader.onload = () => {
             setMyImage(reader.result);
-            const endpoint = "http://localhost:2000/student_account/upload_profile_pic";
+            const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
             axios
               .post(endpoint, { myImage: reader.result})
               .then((response) => {

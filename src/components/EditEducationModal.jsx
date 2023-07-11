@@ -27,7 +27,7 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
     onSubmit: (values) => {
         let newValues = {...values, myId: myId, myEmail: myEmail}
         console.log(newValues);
-        let endpoint = "http://localhost:2000/student_account/edit";
+        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
         axios
         .put(endpoint, newValues)
         .then((response) => {

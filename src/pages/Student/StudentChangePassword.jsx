@@ -40,7 +40,7 @@ function MyApp({myEmail: myEmail}) {
       let newValues = { ...values, myEmail };
       console.log(newValues);
       setTimeout(() => {
-        let endpoint = "http://localhost:2000/student_account/change_student_password";
+        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/change_student_password";
       axios
       .post(endpoint, newValues)
       .then((response) => {

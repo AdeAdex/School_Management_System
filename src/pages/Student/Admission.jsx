@@ -78,7 +78,7 @@ const Admission = () => {
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
     let endpoint =
-      "http://localhost:2000/student_account/student__admission_dashboard";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
     axios
       .get(endpoint, {
         headers: {

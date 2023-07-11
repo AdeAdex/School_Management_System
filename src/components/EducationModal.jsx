@@ -32,7 +32,7 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
         receivedEmail: globalState.email,
         id: crypto.randomUUID(),
       };
-      let endpoint = "http://localhost:2000/student_account/student_education";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_education";
       axios.post(endpoint, newValues)
       .then((response) => {
         const Toast = Swal.mixin({

@@ -15,7 +15,7 @@ const StaffEditDetails = () => {
 
 
 useEffect(() => {
-  let endpoint = "http://localhost:2000/staff_account/details"
+  let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details"
   axios
       .get(endpoint, {
         headers: {

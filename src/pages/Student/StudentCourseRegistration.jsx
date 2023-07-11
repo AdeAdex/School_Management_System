@@ -7,7 +7,7 @@ const StudentCourseRegistration = () => {
 //   let dispatch = useDispatch();
 const globalState = useSelector((state)=>state.portalReducer.staffInfo)
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/edit_details";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
     axios.get(endpoint)
     .then((res) => {
         dispatch(newName(res.data.response))

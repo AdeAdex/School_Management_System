@@ -13,7 +13,7 @@ const StaffDashboardHome = () => {
   const [classPrefix, setClassPrefix] = useState("");
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/student_account/allStudent";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
     axios
       .get(endpoint, {
         headers: {

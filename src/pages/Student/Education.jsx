@@ -126,7 +126,7 @@ const Education = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myId, myEmail);
-        let endpoint = "http://localhost:2000/student_account/delete";
+        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/delete";
         axios
           .delete(endpoint, {
             headers: {

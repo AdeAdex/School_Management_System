@@ -128,7 +128,7 @@ const StudentPortalDashboard = () => {
 
   useEffect(() => {
     const endpoint =
-      "http://localhost:2000/student_account/student_portal_dashboard";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_portal_dashboard";
     let studentSignInToken = localStorage.studentSignInToken;
     axios
       .get(endpoint, {
