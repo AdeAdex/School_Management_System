@@ -21,7 +21,7 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
       const myOTP = Math.floor(Math.random() * 9000 + 1000)
       const newValues = { ...values, myOTP };
       console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/forgot_password";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/forgot_password";
       axios.post(endpoint, newValues)
       .then((response) => {
         if (response.data.status) {
