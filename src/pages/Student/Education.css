@@ -205,4 +205,13 @@ form .submit-btn {
   .table-head {
     display: none;
   }
+
+  .table-tr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .table-tr td{
+    width: 50%;
+  }
 }
