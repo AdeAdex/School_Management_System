@@ -209,9 +209,10 @@ form .submit-btn {
   .table-tr {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
   }
 
   .table-tr td{
-    width: 50%;
+    width: 48%;
   }
 }
