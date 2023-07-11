@@ -22,7 +22,6 @@ const StaffDashboardHome = () => {
         },
       })
       .then((response) => {
-        // console.log(response.data);
         setAllStudent(response.data.response);
       });
   }, []);
@@ -38,10 +37,40 @@ const StaffDashboardHome = () => {
     setModalOpen(false);
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [matchedNames, setMatchedNames] = useState([]);
+
+
+  const handleSearch = (event) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+
+    // Filter names that match the search term
+    const matched = allStudent.filter(student =>
+      student.firstName.toLowerCase().includes(term.toLowerCase())
+    );
+    setMatchedNames(matched);
+  };
+
   return (
     <>
       <div className="flex p-5 flex-column w-100">
         <div className="w-100 text-black">Dashbord</div>
+        <div className="d-flex flex-column">
+      <input
+        type="search"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+      <select>
+        {matchedNames.map((student, index) => (
+          <option key={index} value={student.firstName}>
+            {student.firstName}
+          </option>
+        ))}
+      </select>
+    </div>
         <div className="w-100">
           <table className="table table-border table-stripped gap-2 w-100">
             <thead>
@@ -90,3 +119,4 @@ const StaffDashboardHome = () => {
 };
 
 export default StaffDashboardHome;
+
