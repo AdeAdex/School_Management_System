@@ -35,7 +35,7 @@ useEffect(() => {
   const tryGet = () => {
     console.log(globalState.email);
     let myEmail = globalState.email;
-    let endpoint = "http://localhost:2000/staff_account/details";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
     axios.get(endpoint, myEmail).then((response) => {
       console.log(response);
     });
@@ -59,7 +59,7 @@ useEffect(() => {
         id: crypto.randomUUID(),
       };
       console.log(newValues);
-      let endpoint = "http://localhost:2000/staff_account/edit_details";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
       axios.post(endpoint, newValues).then((response) => {
         console.log(response.data.response.staffArray);
       });
@@ -89,7 +89,7 @@ useEffect(() => {
     onSubmit: (values) => {
       let newValues = {...values, myImage}
       console.log(newValues);
-      let endpoint = "http://localhost:2000/staff_account/upload_resources"
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources"
       axios.post(endpoint, newValues)
       .then((response) => {
         // console.log(response.data.response);
@@ -133,7 +133,7 @@ useEffect(() => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail);
-        let endpoint = "http://localhost:2000/staff_account/delete_class";
+        let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
         axios
           .delete(endpoint, {
             headers: {

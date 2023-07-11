@@ -19,7 +19,7 @@ const Education = () => {
   const [subject, setSubject] = useState([]);
   const [description, setDescription] = useState('')
 
-  const openModal = (val) => {
+  const openModal = () => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
     axios
       .get(endpoint, {
