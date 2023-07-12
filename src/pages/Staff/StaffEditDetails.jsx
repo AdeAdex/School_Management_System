@@ -102,13 +102,13 @@ const StaffEditDetails = () => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = () => {
-    // Code to handle the upload of the selected file
-    if (selectedFile) {
-      // Perform the upload using an API or any other logic
-      console.log("Uploading file:", selectedFile);
-    }
-  };
+  // const handleUpload = () => {
+  //   // Code to handle the upload of the selected file
+  //   if (selectedFile) {
+  //     // Perform the upload using an API or any other logic
+  //     console.log("Uploading file:", selectedFile);
+  //   }
+  // };
 
   const openConfirmDeleteModal = (myClass, myEmail) => {
     Swal.fire({
