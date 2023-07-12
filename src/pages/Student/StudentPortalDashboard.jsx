@@ -221,7 +221,7 @@ const StudentPortalDashboard = () => {
               <Route path="resources" element={<StudentResources/>} />
               <Route
                 path="course_registration"
-                element={<StudentCourseRegistration />}
+                element={<StudentCourseRegistration myClass={globalState.level}/>}
               />
             </Routes>
           )}

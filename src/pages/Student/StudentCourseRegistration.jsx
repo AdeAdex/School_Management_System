@@ -8,23 +8,20 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const StudentCourseRegistration = () => {
+const StudentCourseRegistration = ({ myClass: myClass }) => {
   const [classSubject, setClassSubject] = useState([]);
   const [subject, setSubject] = useState("");
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const divRef = useRef();
 
+  const formContent = myClass;
   useEffect(() => {
     // const divValue = divRef.current.innerHTML;
     // console.log(divValue);
-    const formContent = 'JSS3';
     console.log(formContent);
 
     let endpoint = "http://localhost:2000/staff_account/student_class_subject";
     axios.post(endpoint, { formContent }).then((res) => {
-      // dispatch(newName(res.data.response))
-      // console.log(res.data.response[0].staffArray);
-      console.log(res.data.selectedSubjects);
       setClassSubject(res.data.selectedSubjects);
     });
   }, [globalState]);
@@ -65,7 +62,19 @@ const StudentCourseRegistration = () => {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {classSubject.map(
+            {classSubject
+              ? classSubject.map(
+                  (option, index) => (
+                    classSubject.sort(),
+                    (
+                      <MenuItem key={index} value={option}>
+                        {option}
+                      </MenuItem>
+                    )
+                  )
+                )
+              : null}
+            {/* {classSubject.map(
               (option, index) => (
                 classSubject.sort(),
                 (
@@ -74,7 +83,7 @@ const StudentCourseRegistration = () => {
                   </MenuItem>
                 )
               )
-            )}
+            )} */}
           </Select>
         </FormControl>
         <button className="btn btn-primary my-auto">Add Subject</button>
