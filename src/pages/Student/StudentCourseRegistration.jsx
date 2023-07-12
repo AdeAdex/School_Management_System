@@ -65,7 +65,6 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
             {classSubject
               ? classSubject.map(
                   (option, index) => (
-                    classSubject.sort(),
                     (
                       <MenuItem key={index} value={option}>
                         {option}
@@ -74,16 +73,6 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
                   )
                 )
               : null}
-            {/* {classSubject.map(
-              (option, index) => (
-                classSubject.sort(),
-                (
-                  <MenuItem key={index} value={option}>
-                    {option}
-                  </MenuItem>
-                )
-              )
-            )} */}
           </Select>
         </FormControl>
         <button className="btn btn-primary my-auto">Add Subject</button>
