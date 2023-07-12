@@ -4,19 +4,20 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { newName } from "../../redux/portalSlice";
+import { MultiSelect } from "@mantine/core";
 
 const StaffEditDetails = () => {
   const globalState = useSelector((state) => state.portalReducer.staffInfo);
   const [responseArray, setResponseArray] = useState([]);
   const [myEmail, setMyEmail] = useState("");
-  const [myImage, setMyImage] = useState("")
+  const [myImage, setMyImage] = useState("");
   const [receivedVideo, setReceivedVideo] = useState([]);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
 
-
-
-useEffect(() => {
-  let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details"
-  axios
+  useEffect(() => {
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
+    axios
       .get(endpoint, {
         headers: {
           Authorization: `${"staffArray"}`,
@@ -27,26 +28,22 @@ useEffect(() => {
         const responseData = response.data.response[0].staffArray;
         setResponseArray(responseData);
         // console.log(response.data.response[0].Resources);
-        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources)
+        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
-}, )
+  });
 
-
-  const tryGet = () => {
-    console.log(globalState.email);
-    let myEmail = globalState.email;
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
-    axios.get(endpoint, myEmail).then((response) => {
-      console.log(response);
-    });
-  };
+  // const tryGet = () => {
+  //   console.log(globalState.email);
+  //   let myEmail = globalState.email;
+  //   let endpoint =
+  //     "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
+  //   axios.get(endpoint, myEmail).then((response) => {
+  //     console.log(response);
+  //   });
+  // };
 
   let formik = useFormik({
     initialValues: {
-      address: "",
-      country: "",
-      lga: "",
-      hubby: "",
       receivedEmail: "",
       class: "",
     },
@@ -57,16 +54,17 @@ useEffect(() => {
         ...values,
         receivedEmail: globalState.email,
         id: crypto.randomUUID(),
+        selectedSubjects: selectedSubjects,
       };
-      console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
-      axios.post(endpoint, newValues).then((response) => {
+      // console.log(newValues);
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+      axios.post(endpoint, newValues)
+      .then((response) => {
         console.log(response.data.response.staffArray);
       });
     },
   });
-
-
 
   const handleVideoFileChange = (e) => {
     // videoUpload.setFieldValue('video_data', event.currentTarget.files[0]);
@@ -80,27 +78,23 @@ useEffect(() => {
 
   let videoUpload = useFormik({
     initialValues: {
-      uploader_name: '',
-      video_title: '',
-      video_length: '',
-      video_duration: ''
+      uploader_name: "",
+      video_title: "",
+      video_length: "",
+      video_duration: "",
     },
 
     onSubmit: (values) => {
-      let newValues = {...values, myImage}
+      let newValues = { ...values, myImage };
       console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources"
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
+      axios.post(endpoint, newValues).then((response) => {
         // console.log(response.data.response);
-        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources)
-      })
-    }
-  })
-
-
-
-
+        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
+      });
+    },
+  });
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -112,10 +106,9 @@ useEffect(() => {
     // Code to handle the upload of the selected file
     if (selectedFile) {
       // Perform the upload using an API or any other logic
-      console.log('Uploading file:', selectedFile);
+      console.log("Uploading file:", selectedFile);
     }
   };
-
 
   const openConfirmDeleteModal = (myClass, myEmail) => {
     Swal.fire({
@@ -133,7 +126,8 @@ useEffect(() => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail);
-        let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
+        let endpoint =
+          "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
         axios
           .delete(endpoint, {
             headers: {
@@ -159,15 +153,15 @@ useEffect(() => {
                 icon: "success",
                 title: response.data.message,
               });
-            } 
+            }
           });
       }
     });
   };
   return (
     <>
-    <div className="d-flex flex-column">
-    <table className="table gap-2" >
+      <div className="d-flex flex-column">
+        <table className="table gap-2">
           <thead className="text-white table-head mb-3">
             <tr className="text-uppercase">
               <td>class</td>
@@ -179,111 +173,163 @@ useEffect(() => {
             </tr>
           </thead>
           {responseArray.map((option, index) => (
-          <tbody key={index}>
-            <tr>
-              <td>{option.class}</td>
-              <td>{option.country}</td>
-              <td>{option.lga}</td>
-              <td>{option.address}</td>
-              <td>{option.hubby}</td>
-              <td className="d-flex gap-2">
-                <button
-                  type="submit"
-                  className="btn btn-white shadow edit-btn"
-                  onClick={() => {
-                    openEditModal(items.id, myEmail, items);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-white shadow delete-btn"
-                  onClick={() => {
-                    openConfirmDeleteModal(option.class, myEmail);
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
+            <tbody key={index}>
+              <tr>
+                <td>{option.class}</td>
+                <td>{option.country}</td>
+                <td>{option.lga}</td>
+                <td>{option.address}</td>
+                <td>{option.hubby}</td>
+                <td className="d-flex gap-2">
+                  <button
+                    type="submit"
+                    className="btn btn-white shadow edit-btn"
+                    onClick={() => {
+                      openEditModal(items.id, myEmail, items);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn-white shadow delete-btn"
+                    onClick={() => {
+                      openConfirmDeleteModal(option.class, myEmail);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
           ))}
-            
         </table>
-      <div className="w-100">
         <div className="w-100">
-          <h3 className="edit-login text-center my-3">Upload Class Subject</h3>
-          <form action="" onSubmit={formik.handleSubmit}>
-          <div className="col-md-12 mb-3">
-            <label
-              htmlFor="validationServer04"
-              className="form-label fw-bold text-secondary"
-            >
-              Class
-            </label>
-            <select
-              className="form-select "
-              id="validationServer04"
-              name="class"
-              aria-describedby="validationServer04Feedback"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            >
-              <option disabled>Choose...</option>
-              <option value="JSS1">JSS1</option>
-                <option value="JSS2">JSS2</option>
-                <option value="JSS3">JSS3</option>
-                <option value="SSS1">SSS1</option>
-                <option value="SSS2">SSS2</option>
-                <option value="SSS3">SSS3</option>
-              {/* {responseArray.map(
-                (option, index) => (
-                  responseArray.sort(),
-                  (
-                    <option key={index} value={option.class}>
-                      {option.class}
-                    </option>
-                  )
-                )
-              )} */}
-            </select>
-          </div>
-          </form>
-          <button type="submit" onClick={tryGet}>
-            Get Info
-          </button>
-        </div>
-      </div>
-
-      <div>
-        <form action="" onSubmit={videoUpload.handleSubmit}>
-          <h3>Upload video</h3>
-          <div className="d-flex flex-column gap-4" style={{width: '400px'}}>
-          {receivedVideo && receivedVideo.length > 0
-            ? receivedVideo.map((eachVideo, index) => (
-                <video
-                  className="w-100 shadow"
-                  style={{ height: "200px" }}
-                  controls
-                  poster="../pic/pic.jpg"
-                  key={index} // Added a key prop for each video
+          <div className="w-100">
+            <h3 className="edit-login text-center my-3">
+              Upload Class Subject
+            </h3>
+            <form action="" onSubmit={formik.handleSubmit}>
+              <div className="col-md-12 mb-3">
+                <label
+                  htmlFor="validationServer04"
+                  className="form-label fw-bold text-secondary"
                 >
-                  <source src={eachVideo.myImage} type="video/mp4" />
-                </video>
-              ))
-            : null}
+                  Class
+                </label>
+                <select
+                  className="form-select "
+                  id="validationServer04"
+                  name="class"
+                  aria-describedby="validationServer04Feedback"
+                  required
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                >
+                  <option disabled>Choose...</option>
+                  <option value="JSS1">JSS1</option>
+                  <option value="JSS2">JSS2</option>
+                  <option value="JSS3">JSS3</option>
+                  <option value="SSS1">SSS1</option>
+                  <option value="SSS2">SSS2</option>
+                  <option value="SSS3">SSS3</option>
+                </select>
+              </div>
+
+              <MultiSelect
+                data={[
+                  "Mathematics",
+                  "English Language",
+                  "Yoruba",
+                  "Basic Science",
+                  "Social Studies",
+                  "Fine Arts/Creative Art",
+                  "Agricultural Science",
+                  "Civic Education",
+                  "Christian Religion Studies",
+                  "Physical and Health Education",
+                  "Business Studies",
+                  "French",
+                  "Computer Studies",
+                  "Home Economics",
+                  "Music",
+                  "Basic Technology",
+                ]}
+                label="Your Picked Subjects here"
+                placeholder="Pick all that you like"
+                searchable
+                nothingFound="Nothing found"
+                onChange={setSelectedSubjects}
+              />
+              <button type="submit" className="edit-enter">
+                Enter
+              </button>
+            </form>
+            {/* <button type="submit" onClick={tryGet}>
+              Get Info
+            </button> */}
+          </div>
         </div>
-          <input type="file" name="video_data" id="" onChange={handleVideoFileChange} />
-          <input type="text" name="uploader_name" id="" placeholder="video uploader name" onChange={videoUpload.handleChange}/>
-          <input type="text" name="video_title" id="" placeholder="video title" onChange={videoUpload.handleChange}/>
-          <input type="text" name="video_length" id="" placeholder="video length" onChange={videoUpload.handleChange}/>
-          <input type="text" name="video_duration" id="" placeholder="video duration" onChange={videoUpload.handleChange}/>
-          <button type="submit">Submit</button>
-        </form>
+
+        <div>
+          <form action="" onSubmit={videoUpload.handleSubmit}>
+            <h3>Upload video</h3>
+            <div
+              className="d-flex flex-column gap-4"
+              style={{ width: "400px" }}
+            >
+              {receivedVideo && receivedVideo.length > 0
+                ? receivedVideo.map((eachVideo, index) => (
+                    <video
+                      className="w-100 shadow"
+                      style={{ height: "200px" }}
+                      controls
+                      poster="../pic/pic.jpg"
+                      key={index} // Added a key prop for each video
+                    >
+                      <source src={eachVideo.myImage} type="video/mp4" />
+                    </video>
+                  ))
+                : null}
+            </div>
+            <input
+              type="file"
+              name="video_data"
+              id=""
+              onChange={handleVideoFileChange}
+            />
+            <input
+              type="text"
+              name="uploader_name"
+              id=""
+              placeholder="video uploader name"
+              onChange={videoUpload.handleChange}
+            />
+            <input
+              type="text"
+              name="video_title"
+              id=""
+              placeholder="video title"
+              onChange={videoUpload.handleChange}
+            />
+            <input
+              type="text"
+              name="video_length"
+              id=""
+              placeholder="video length"
+              onChange={videoUpload.handleChange}
+            />
+            <input
+              type="text"
+              name="video_duration"
+              id=""
+              placeholder="video duration"
+              onChange={videoUpload.handleChange}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };
