@@ -179,10 +179,7 @@ const StaffEditDetails = () => {
           <thead className="text-white table-head mb-3">
             <tr className="text-uppercase">
               <td>class</td>
-              <td>country</td>
-              <td>lga</td>
-              <td>address</td>
-              <td>hubby</td>
+              <td>subject</td>
               <td>action</td>
             </tr>
           </thead>
@@ -191,9 +188,6 @@ const StaffEditDetails = () => {
               <tr>
                 <td>{option.class}</td>
                 <td>{option.country}</td>
-                <td>{option.lga}</td>
-                <td>{option.address}</td>
-                <td>{option.hubby}</td>
                 <td className="d-flex gap-2">
                   <button
                     type="submit"
@@ -252,8 +246,8 @@ const StaffEditDetails = () => {
 
               <MultiSelect
                 data={subjectToRegister.map((subject) => ({
-                  label: subject,
-                  value: subject,
+                  label: subject.subject,
+                  value: subject.subject,
                 }))}
                 // data={[
 

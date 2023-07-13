@@ -35,11 +35,18 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
     event.preventDefault();
     const selectedSubject = classSubject.find((option) => option === subject);
 
+    // if (selectedSubject) {
+    //   const subjectDetails = getSubjectDetails(selectedSubject);
+    //   setSelectedSubjectsDetails([
+    //     ...selectedSubjectsDetails,
+    //     subjectDetails,
+    //   ]);
+    // }
+
     if (selectedSubject) {
-      const subjectDetails = getSubjectDetails(selectedSubject);
       setSelectedSubjectsDetails([
         ...selectedSubjectsDetails,
-        subjectDetails,
+        selectedSubject,
       ]);
     }
 
@@ -74,8 +81,8 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
             <tbody>
               {selectedSubjectsDetails.map((subject, index) => (
                 <tr key={index}>
-                  <td>{subject.subject}</td>
-                  <td>{subject.description}</td>
+                  <td>{subject}</td>
+                  <td>{subject}</td>
                   <td>Action</td>
                 </tr>
               ))}
@@ -106,8 +113,8 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
             </MenuItem>
             {classSubject
               ? classSubject.map((option, index) => (
-                  <MenuItem key={index} value={option.subject}>
-                    {option.subject}
+                  <MenuItem key={index} value={option}>
+                    {option}
                   </MenuItem>
                 ))
               : null}
