@@ -33,21 +33,16 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(subject);
     const selectedSubject = classSubject.find((option) => option === subject);
-
-    // if (selectedSubject) {
-    //   const subjectDetails = getSubjectDetails(selectedSubject);
-    //   setSelectedSubjectsDetails([
-    //     ...selectedSubjectsDetails,
-    //     subjectDetails,
-    //   ]);
-    // }
 
     if (selectedSubject) {
       setSelectedSubjectsDetails([
         ...selectedSubjectsDetails,
         selectedSubject,
       ]);
+      let endpoint = ""
+      axios.post(endpoint, selectedSubject)
     }
 
     setSubject(""); // Reset the selected subject
@@ -59,8 +54,7 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
   //   },
 
   //   onSubmit: (values) => {
-  //     const subjectDetails = getSubjectDetails(classSubject);
-  //     setSelectedSubjectsDetails([...values, subjectDetails]);
+  //     console.log(values);
   //   },
   // });
 
