@@ -30,6 +30,17 @@ const StaffEditDetails = () => {
         // console.log(response.data.response[0].Resources);
         setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
+
+      let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject"
+      axios.get(endpoint2, {
+        headers: {
+          Authorization: `${"staffArray"}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
   });
 
   // const tryGet = () => {
@@ -59,8 +70,7 @@ const StaffEditDetails = () => {
       // console.log(newValues);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      axios.post(endpoint, newValues).then((response) => {
         console.log(response.data.response.staffArray);
       });
     },
@@ -238,22 +248,21 @@ const StaffEditDetails = () => {
 
               <MultiSelect
                 data={[
-                  "Mathematics",
-                  "English Language",
-                  "Yoruba",
-                  "Basic Science",
-                  "Social Studies",
-                  "Fine Arts/Creative Art",
-                  "Agricultural Science",
-                  "Civic Education",
-                  "Christian Religion Studies",
-                  "Physical and Health Education",
-                  "Business Studies",
-                  "French",
-                  "Computer Studies",
-                  "Home Economics",
-                  "Music",
-                  "Basic Technology",
+                  
+                  // "Yoruba",
+                  // "Basic Science",
+                  // "Social Studies",
+                  // "Fine Arts/Creative Art",
+                  // "Agricultural Science",
+                  // "Civic Education",
+                  // "Christian Religion Studies",
+                  // "Physical and Health Education",
+                  // "Business Studies",
+                  // "French",
+                  // "Computer Studies",
+                  // "Home Economics",
+                  // "Music",
+                  // "Basic Technology",
                 ]}
                 label="Your Picked Subjects here"
                 placeholder="Pick all that you like"
