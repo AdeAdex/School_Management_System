@@ -41,7 +41,7 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
         ...selectedSubjectsDetails,
         selectedSubject,
       ]);
-      let endpoint = ""
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
       axios.post(endpoint, selectedSubject)
     }
 
