@@ -13,6 +13,7 @@ const StaffEditDetails = () => {
   const [myImage, setMyImage] = useState("");
   const [receivedVideo, setReceivedVideo] = useState([]);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [subjectToRegister, setSubjectToRegister] = useState([]);
 
   useEffect(() => {
     let endpoint =
@@ -31,16 +32,19 @@ const StaffEditDetails = () => {
         setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
 
-      let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject"
-      axios.get(endpoint2, {
+    let endpoint2 =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
+    axios
+      .get(endpoint2, {
         headers: {
           Authorization: `${"staffArray"}`,
           "Content-Type": "application/json",
         },
       })
       .then((res) => {
-        console.log(res);
-      })
+        // console.log(res.data);
+        setSubjectToRegister(res.data);
+      });
   });
 
   // const tryGet = () => {
@@ -247,23 +251,27 @@ const StaffEditDetails = () => {
               </div>
 
               <MultiSelect
-                data={[
-                  
-                  // "Yoruba",
-                  // "Basic Science",
-                  // "Social Studies",
-                  // "Fine Arts/Creative Art",
-                  // "Agricultural Science",
-                  // "Civic Education",
-                  // "Christian Religion Studies",
-                  // "Physical and Health Education",
-                  // "Business Studies",
-                  // "French",
-                  // "Computer Studies",
-                  // "Home Economics",
-                  // "Music",
-                  // "Basic Technology",
-                ]}
+                data={subjectToRegister.map((subject) => ({
+                  label: subject,
+                  value: subject,
+                }))}
+                // data={[
+
+                //   // "Yoruba",
+                //   // "Basic Science",
+                //   // "Social Studies",
+                //   // "Fine Arts/Creative Art",
+                //   // "Agricultural Science",
+                //   // "Civic Education",
+                //   // "Christian Religion Studies",
+                //   // "Physical and Health Education",
+                //   // "Business Studies",
+                //   // "French",
+                //   // "Computer Studies",
+                //   // "Home Economics",
+                //   // "Music",
+                //   // "Basic Technology",
+                // ]}
                 label="Your Picked Subjects here"
                 placeholder="Pick all that you like"
                 searchable

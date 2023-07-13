@@ -17,16 +17,15 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
 
   const formContent = myClass;
   useEffect(() => {
-    // console.log(formContent);
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
     axios.post(endpoint, { formContent })
     .then((res) => {
+      // console.log(res.data.selectedSubjects);
       setClassSubject(res.data.selectedSubjects);
     });
   }, [globalState]);
 
-  // https://school-portal-backend-adex2210.vercel.app
 
   const handleChange = (event) => {
     setSubject(event.target.value);
@@ -75,8 +74,8 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
             <tbody>
               {selectedSubjectsDetails.map((subject, index) => (
                 <tr key={index}>
-                  <td>{subject}</td>
-                  <td>{subject}</td>
+                  <td>{subject.subject}</td>
+                  <td>{subject.description}</td>
                   <td>Action</td>
                 </tr>
               ))}
@@ -107,8 +106,8 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
             </MenuItem>
             {classSubject
               ? classSubject.map((option, index) => (
-                  <MenuItem key={index} value={option}>
-                    {option}
+                  <MenuItem key={index} value={option.subject}>
+                    {option.subject}
                   </MenuItem>
                 ))
               : null}
