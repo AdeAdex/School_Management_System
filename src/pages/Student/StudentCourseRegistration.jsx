@@ -41,8 +41,8 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
         ...selectedSubjectsDetails,
         selectedSubject,
       ]);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
-      axios.post(endpoint, selectedSubject)
+      let endpoint = "http://localhost:2000/student_account/student_term_subject"
+      axios.post(endpoint, {selectedSubject})
     }
 
     setSubject(""); // Reset the selected subject
