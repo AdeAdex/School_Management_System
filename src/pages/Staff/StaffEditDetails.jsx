@@ -59,6 +59,7 @@ const StaffEditDetails = () => {
 
 
   // https://school-portal-backend-adex2210.vercel.app
+  // http://localhost:2000
 
   let formik = useFormik({
     initialValues: {
@@ -72,15 +73,15 @@ const StaffEditDetails = () => {
       const newValues = {
         ...values,
         receivedEmail: globalState.email,
-        id: crypto.randomUUID(),
+        // id: crypto.randomUUID(),
         selectedSubjects: selectedSubjects,
       };
       console.log(newValues);
-      let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
-      axios.post(endpoint, newValues).then((response) => {
-        console.log(response.data.response.staffArray);
-      });
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+      axios.post(endpoint, newValues)
+      // .then((response) => {
+      //   console.log(response.data.response.staffArray);
+      // });
     },
   });
 
