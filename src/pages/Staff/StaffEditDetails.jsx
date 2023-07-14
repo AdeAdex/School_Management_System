@@ -57,6 +57,9 @@ const StaffEditDetails = () => {
   //   });
   // };
 
+
+  // https://school-portal-backend-adex2210.vercel.app
+
   let formik = useFormik({
     initialValues: {
       receivedEmail: "",
@@ -74,7 +77,7 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+        "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues).then((response) => {
         console.log(response.data.response.staffArray);
       });
