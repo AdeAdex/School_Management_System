@@ -61,6 +61,7 @@ const StaffEditDetails = () => {
     initialValues: {
       receivedEmail: "",
       class: "",
+      term: "",
     },
 
     onSubmit: (values) => {
@@ -243,6 +244,32 @@ const StaffEditDetails = () => {
                   <option value="SSS3">SSS3</option>
                 </select>
               </div>
+              <div className="col-md-12 mb-3">
+                <label
+                  htmlFor="validationServer04"
+                  className="form-label fw-bold text-secondary"
+                >
+                  Term
+                </label>
+                <select
+                  className="form-select "
+                  id="validationServer04"
+                  name="term"
+                  aria-describedby="validationServer04Feedback"
+                  required
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                >
+                  <option disabled>Choose...</option>
+                  <option value="Term1">First Term</option>
+                  <option value="Term2">Second Term</option>
+                  <option value="Term3">Third Term</option>
+                  {/* <option value="SSS1">SSS1</option>
+                  <option value="SSS2">SSS2</option>
+                  <option value="SSS3">SSS3</option> */}
+                </select>
+              </div>
+
 
               <MultiSelect
                 data={subjectToRegister.map((subject) => ({
