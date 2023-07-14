@@ -17,7 +17,7 @@ const StaffEditDetails = () => {
 
   useEffect(() => {
     let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
+      "http://localhost:2000/staff_account/details";
     axios
       .get(endpoint, {
         headers: {
@@ -33,7 +33,7 @@ const StaffEditDetails = () => {
       });
 
     let endpoint2 =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
+      "http://localhost:2000/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
@@ -106,7 +106,7 @@ const StaffEditDetails = () => {
       let newValues = { ...values, myImage };
       console.log(newValues);
       let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
+        "http://localhost:2000/staff_account/upload_resources";
       axios.post(endpoint, newValues).then((response) => {
         // console.log(response.data.response);
         setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
@@ -145,7 +145,7 @@ const StaffEditDetails = () => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail);
         let endpoint =
-          "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
+          "http://localhost:2000/staff_account/delete_class";
         axios
           .delete(endpoint, {
             headers: {
