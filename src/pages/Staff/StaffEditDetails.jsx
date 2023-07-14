@@ -72,7 +72,7 @@ const StaffEditDetails = () => {
         id: crypto.randomUUID(),
         selectedSubjects: selectedSubjects,
       };
-      // console.log(newValues);
+      console.log(newValues);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
       axios.post(endpoint, newValues).then((response) => {
