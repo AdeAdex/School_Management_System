@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const StudentCourseRegistration = ({ myClass: myClass }) => {
+const StudentCourseRegistration = ({ myClass: myClass, myTerm: myTerm, myOption: myOption }) => {
   const [classSubject, setClassSubject] = useState([]);
   const [subject, setSubject] = useState("");
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
