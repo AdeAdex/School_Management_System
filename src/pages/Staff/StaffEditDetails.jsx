@@ -65,7 +65,7 @@ const StaffEditDetails = () => {
       receivedEmail: "",
       class: "",
       term: "",
-      options: "", 
+      options: "",
     },
 
     onSubmit: (values) => {
@@ -241,12 +241,12 @@ const StaffEditDetails = () => {
                   onBlur={formik.handleBlur}
                 >
                   <option disabled>Choose...</option>
-                  <option value="JSS1">JSS1</option>
-                  <option value="JSS2">JSS2</option>
-                  <option value="JSS3">JSS3</option>
-                  <option value="SSS1">SSS1</option>
-                  <option value="SSS2">SSS2</option>
-                  <option value="SSS3">SSS3</option>
+                  <option value="JSS1">JSS 1</option>
+                  <option value="JSS2">JSS 2</option>
+                  <option value="JSS3">JSS 3</option>
+                  <option value="SSS1">SSS 1</option>
+                  <option value="SSS2">SSS 2</option>
+                  <option value="SSS3">SSS 3</option>
                 </select>
               </div>
               <div className="col-md-12 mb-3">
@@ -266,38 +266,38 @@ const StaffEditDetails = () => {
                   onBlur={formik.handleBlur}
                 >
                   <option disabled>Choose...</option>
-                  <option value="Term1">First Term</option>
-                  <option value="Term2">Second Term</option>
-                  <option value="Term3">Third Term</option>
+                  <option value="First Term">First Term</option>
+                  <option value="Second Term">Second Term</option>
+                  <option value="Third Term3">Third Term</option>
                 </select>
               </div>
 
               {formik.values.class === "SSS1" ||
-  formik.values.class === "SSS2" ||
-  formik.values.class === "SSS3" ? (
-    <div className="col-md-12 mb-3">
-      <label
-        htmlFor="validationServer04"
-        className="form-label fw-bold text-secondary"
-      >
-        Options
-      </label>
-      <select
-        className="form-select"
-        id="validationServer04"
-        name="options"
-        aria-describedby="validationServer04Feedback"
-        required
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      >
-        <option disabled>Choose...</option>
-        <option value="Science">Science Option</option>
-        <option value="Commercial">Commercial Option</option>
-        <option value="Art">Art Option</option>
-      </select>
-    </div>
-  ) : null}
+              formik.values.class === "SSS2" ||
+              formik.values.class === "SSS3" ? (
+                <div className="col-md-12 mb-3">
+                  <label
+                    htmlFor="validationServer04"
+                    className="form-label fw-bold text-secondary"
+                  >
+                    Options
+                  </label>
+                  <select
+                    className="form-select"
+                    id="validationServer04"
+                    name="options"
+                    aria-describedby="validationServer04Feedback"
+                    required
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  >
+                    <option disabled>Choose...</option>
+                    <option value="Science">Science Option</option>
+                    <option value="Commercial">Commercial Option</option>
+                    <option value="Art">Art Option</option>
+                  </select>
+                </div>
+              ) : null}
 
               <MultiSelect
                 data={subjectToRegister.map((subject) => ({
