@@ -8,13 +8,14 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const StudentCourseRegistration = ({ myClass: myClass, myTerm: myTerm, myOption: myOption }) => {
+const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm: myTerm, myOption: myOption }) => {
   const [classSubject, setClassSubject] = useState([]);
   const [subject, setSubject] = useState("");
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const divRef = useRef();
   const [selectedSubjectsDetails, setSelectedSubjectsDetails] = useState([]);
 
+  const receivedEmail = myEmail;
   const formClass = myClass;
   const formTerm = myTerm;
   const formOption = myOption
