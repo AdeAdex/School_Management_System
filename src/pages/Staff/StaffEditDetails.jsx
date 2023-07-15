@@ -78,7 +78,7 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+        "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues);
       // .then((response) => {
       //   console.log(response.data.response.staffArray);
@@ -130,7 +130,7 @@ const StaffEditDetails = () => {
   //   }
   // };
 
-  const openConfirmDeleteModal = (myClass, myEmail) => {
+  const openConfirmDeleteModal = (myClass, myEmail, myTerm, myOptions) => {
     Swal.fire({
       position: "bottom",
       title: "Do you really want to delete your result?",
@@ -145,13 +145,13 @@ const StaffEditDetails = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(myClass, myEmail);
+        console.log(myClass, myEmail, myTerm, myOptions);
         let endpoint =
-          "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
+          "http://localhost:2000/staff_account/delete_class";
         axios
           .delete(endpoint, {
             headers: {
-              Authorization: `${myClass} ${myEmail}`,
+              Authorization: `${myClass} ${myEmail} ${myTerm} ${myOptions}`,
               "Content-Type": "application/json",
             },
           })
@@ -185,7 +185,9 @@ const StaffEditDetails = () => {
           <thead className="text-white table-head mb-3">
             <tr className="text-uppercase">
               <td>class</td>
+              <td>Term</td>
               <td>subject</td>
+              <td>Option</td>
               <td>action</td>
             </tr>
           </thead>
@@ -193,7 +195,9 @@ const StaffEditDetails = () => {
             <tbody key={index}>
               <tr>
                 <td>{option.class}</td>
-                <td>{option.country}</td>
+                <td>{option.term}</td>
+                <td>{option.mySubjects}</td>
+                <td>{option.options}</td>
                 <td className="d-flex gap-2">
                   <button
                     type="submit"
@@ -208,7 +212,7 @@ const StaffEditDetails = () => {
                     type="submit"
                     className="btn btn-white shadow delete-btn"
                     onClick={() => {
-                      openConfirmDeleteModal(option.class, myEmail);
+                      openConfirmDeleteModal(option.class, myEmail, option.term, option.options);
                     }}
                   >
                     Delete
