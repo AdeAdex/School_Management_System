@@ -23,8 +23,8 @@ const StudentCourseRegistration = ({ myClass: myClass, myTerm: myTerm, myOption:
     let endpoint = "http://localhost:2000/staff_account/student_class_subject";
     axios.post(endpoint, {data: { formClass, formTerm, formOption }})
     .then((res) => {
-      // console.log(res);
-      setClassSubject(res);
+      console.log(res.data.selectedSubjects);
+      setClassSubject(res.data.selectedSubjects);
     });
   }, [globalState]);
 
