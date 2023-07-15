@@ -65,11 +65,7 @@ const StaffEditDetails = () => {
       receivedEmail: "",
       class: "",
       term: "",
-<<<<<<< HEAD
-      options: "",
-=======
       options: "", 
->>>>>>> fe91ded51c6270fcf08616f2c8d7482a229c1b80
     },
 
     onSubmit: (values) => {
