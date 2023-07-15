@@ -149,7 +149,7 @@ const StaffEditDetails = () => {
         let endpoint =
           "http://localhost:2000/staff_account/delete_class";
         axios
-          .delete(endpoint, {myClass, myTerm, myOptions})
+          .delete(endpoint, { data: { myClass, myTerm, myOptions } })
           .then((response) => {
             if (response.data.status) {
               const Toast = Swal.mixin({
