@@ -78,7 +78,7 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        "http://localhost:2000/staff_account/edit_details";
+        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
       axios.post(endpoint, newValues);
       // .then((response) => {
       //   console.log(response.data.response.staffArray);
@@ -149,12 +149,7 @@ const StaffEditDetails = () => {
         let endpoint =
           "http://localhost:2000/staff_account/delete_class";
         axios
-          .delete(endpoint, {
-            headers: {
-              Authorization: `${myClass} ${myEmail} ${myTerm} ${myOptions}`,
-              "Content-Type": "application/json",
-            },
-          })
+          .delete(endpoint, {myClass, myTerm, myOptions})
           .then((response) => {
             if (response.data.status) {
               const Toast = Swal.mixin({
@@ -272,7 +267,7 @@ const StaffEditDetails = () => {
                   <option disabled>Choose...</option>
                   <option value="First Term">First Term</option>
                   <option value="Second Term">Second Term</option>
-                  <option value="Third Term3">Third Term</option>
+                  <option value="Third Term">Third Term</option>
                 </select>
               </div>
 
