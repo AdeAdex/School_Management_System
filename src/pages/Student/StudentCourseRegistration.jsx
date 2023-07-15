@@ -44,7 +44,7 @@ const StudentCourseRegistration = ({ myClass: myClass, myTerm: myTerm, myOption:
         selectedSubject,
       ]);
       let endpoint = "http://localhost:2000/student_account/student_term_subject"
-      axios.post(endpoint, {selectedSubject})
+      axios.post(endpoint, {selectedSubject, formTerm, formOption})
     }
 
     setSubject(""); // Reset the selected subject
