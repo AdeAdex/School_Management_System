@@ -19,7 +19,7 @@ const CreateAccount = () => {
 
     onSubmit: (values) => {
       // console.log(values);
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
+      const endpoint = "http://localhost:2000/student_account/student";
       axios.post(endpoint, values).then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
