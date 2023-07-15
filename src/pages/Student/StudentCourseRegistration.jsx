@@ -20,7 +20,7 @@ const StudentCourseRegistration = ({ myClass: myClass, myTerm: myTerm, myOption:
   const formOption = myOption
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/student_class_subject";
+    let endpoint = "/staff_account/student_class_subject";
     axios.post(endpoint, {data: { formClass, formTerm, formOption }})
     .then((res) => {
       console.log(res.data.selectedSubjects);

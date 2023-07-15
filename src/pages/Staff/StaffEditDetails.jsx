@@ -78,7 +78,7 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        "http://localhost:2000/staff_account/edit_details";
+        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
       axios.post(endpoint, newValues);
       // .then((response) => {
       //   console.log(response.data.response.staffArray);
