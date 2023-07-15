@@ -15,15 +15,16 @@ const StudentCourseRegistration = ({ myClass: myClass, myTerm: myTerm, myOption:
   const divRef = useRef();
   const [selectedSubjectsDetails, setSelectedSubjectsDetails] = useState([]);
 
-  const formContent = myClass;
-  const form = ""
+  const formClass = myClass;
+  const formTerm = myTerm;
+  const formOption = myOption
+
   useEffect(() => {
-    let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
-    axios.post(endpoint, { formContent })
+    let endpoint = "http://localhost:2000/staff_account/student_class_subject";
+    axios.post(endpoint, {data: { formClass, formTerm, formOption }})
     .then((res) => {
-      // console.log(res.data.selectedSubjects);
-      setClassSubject(res.data.selectedSubjects);
+      // console.log(res);
+      setClassSubject(res);
     });
   }, [globalState]);
 

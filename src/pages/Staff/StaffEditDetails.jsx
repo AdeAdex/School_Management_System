@@ -78,7 +78,7 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+        "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues);
       // .then((response) => {
       //   console.log(response.data.response.staffArray);
@@ -147,7 +147,7 @@ const StaffEditDetails = () => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail, myTerm, myOptions);
         let endpoint =
-          "http://localhost:2000/staff_account/delete_class";
+          "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
         axios
           .delete(endpoint, { data: { myClass, myTerm, myOptions } })
           .then((response) => {
@@ -240,12 +240,12 @@ const StaffEditDetails = () => {
                   onBlur={formik.handleBlur}
                 >
                   <option disabled>Choose...</option>
-                  <option value="JSS1">JSS 1</option>
-                  <option value="JSS2">JSS 2</option>
-                  <option value="JSS3">JSS 3</option>
-                  <option value="SSS1">SSS 1</option>
-                  <option value="SSS2">SSS 2</option>
-                  <option value="SSS3">SSS 3</option>
+                  <option value="JSS 1">JSS 1</option>
+                  <option value="JSS 2">JSS 2</option>
+                  <option value="JSS 3">JSS 3</option>
+                  <option value="SSS 1">SSS 1</option>
+                  <option value="SSS 2">SSS 2</option>
+                  <option value="SSS 3">SSS 3</option>
                 </select>
               </div>
               <div className="col-md-12 mb-3">

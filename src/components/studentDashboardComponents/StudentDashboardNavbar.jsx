@@ -100,8 +100,8 @@ const StudentDashboardNavbar = () => {
             {globalState.firstName} {globalState.lastName}
           </div>
           <div className="my-auto ms-auto fw-bold">Class: {globalState.level}</div>
-          <div className="my-auto ms-auto fw-bold">Class: {globalState.term}</div>
-          <div className="my-auto ms-auto fw-bold">Class: {globalState.options}</div>
+          <div className="my-auto ms-auto fw-bold">Term: {globalState.term}</div>
+          <div className="my-auto ms-auto fw-bold">Option: {globalState.options}</div>
         </div>
           
         <div className="w-50 my-auto flex justify-end gap-5 mr-7">
