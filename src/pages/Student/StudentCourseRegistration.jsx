@@ -22,7 +22,7 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
 
   useEffect(() => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
-    axios.post(endpoint, {data: { formClass, formTerm, formOption }})
+    axios.post(endpoint, {data: { formClass, formTerm, formOption, receivedEmail }})
     .then((res) => {
       console.log(res.data.selectedSubjects);
       setClassSubject(res.data.selectedSubjects);
