@@ -16,6 +16,7 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
   const [selectedSubjectsDetails, setSelectedSubjectsDetails] = useState([]);
 
   const formContent = myClass;
+  const form = ""
   useEffect(() => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
@@ -67,7 +68,9 @@ const StudentCourseRegistration = ({ myClass: myClass }) => {
           <thead>
             <tr>
               <td>Subject Title</td>
-              <td>Subject Description</td>
+              <td>Term</td>
+              {/* <td>Class</td> */}
+              <td>Options</td>
               <td>Action</td>
             </tr>
           </thead>
