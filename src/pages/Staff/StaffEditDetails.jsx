@@ -65,7 +65,11 @@ const StaffEditDetails = () => {
       receivedEmail: "",
       class: "",
       term: "",
+<<<<<<< HEAD
       options: "",
+=======
+      options: "", 
+>>>>>>> fe91ded51c6270fcf08616f2c8d7482a229c1b80
     },
 
     onSubmit: (values) => {
@@ -273,31 +277,31 @@ const StaffEditDetails = () => {
               </div>
 
               {formik.values.class === "SSS1" ||
-              formik.values.class === "SSS2" ||
-              formik.values.class === "SSS3" ? (
-                <div className="col-md-12 mb-3">
-                  <label
-                    htmlFor="validationServer04"
-                    className="form-label fw-bold text-secondary"
-                  >
-                    Options
-                  </label>
-                  <select
-                    className="form-select"
-                    id="validationServer04"
-                    name="options"
-                    aria-describedby="validationServer04Feedback"
-                    required
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  >
-                    <option disabled>Choose...</option>
-                    <option value="Science">Science Option</option>
-                    <option value="Commercial">Commercial Option</option>
-                    <option value="Art">Art Option</option>
-                  </select>
-                </div>
-              ) : null}
+  formik.values.class === "SSS2" ||
+  formik.values.class === "SSS3" ? (
+    <div className="col-md-12 mb-3">
+      <label
+        htmlFor="validationServer04"
+        className="form-label fw-bold text-secondary"
+      >
+        Options
+      </label>
+      <select
+        className="form-select"
+        id="validationServer04"
+        name="options"
+        aria-describedby="validationServer04Feedback"
+        required
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+      >
+        <option disabled>Choose...</option>
+        <option value="Science">Science Option</option>
+        <option value="Commercial">Commercial Option</option>
+        <option value="Art">Art Option</option>
+      </select>
+    </div>
+  ) : null}
 
               <MultiSelect
                 data={subjectToRegister.map((subject) => ({
