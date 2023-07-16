@@ -26,7 +26,23 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
     .then((res) => {
       console.log(res.data.selectedSubjects);
       setClassSubject(res.data.selectedSubjects);
+    })
+    .catch((err) => {
+      consloe.log(err)
     });
+
+
+    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/"
+    axios.get(endpoint2, {
+      headers: {
+        Authorization: `${myEmail, myTerm}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+    .then((response) => {
+
+    })
   }, [globalState]);
 
 
