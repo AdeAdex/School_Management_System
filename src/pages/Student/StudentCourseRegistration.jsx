@@ -25,9 +25,6 @@ const StudentCourseRegistration = () => {
   const formOption = globalState.options
 
   useEffect(() => {
-
-    // console.log(receivedEmail, formClass, formTerm, formOption);
-    // console.log(myEmail, myClass, myTerm, myOption);
     // console.log(receivedEmail, formClass, formTerm, formOption);
     let endpoint = "http://localhost:2000/staff_account/student_class_subject";
     axios.post(endpoint, {data: { formClass, formTerm, formOption, receivedEmail }})
