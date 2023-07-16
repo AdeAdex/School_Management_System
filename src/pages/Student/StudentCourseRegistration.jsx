@@ -35,7 +35,7 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
     let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
     axios.get(endpoint2, {
       headers: {
-        Authorization: `${myEmail, formTerm, formOption, receivedEmail}`,
+        Authorization: `${ formClass, formTerm, formOption, receivedEmail}`,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
