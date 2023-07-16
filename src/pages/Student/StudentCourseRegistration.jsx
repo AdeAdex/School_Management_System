@@ -26,7 +26,7 @@ const StudentCourseRegistration = () => {
 
   useEffect(() => {
     // console.log(receivedEmail, formClass, formTerm, formOption);
-    let endpoint = "http://localhost:2000/staff_account/student_class_subject";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
     axios.post(endpoint, {data: { formClass, formTerm, formOption, receivedEmail }})
     .then((res) => {
       // console.log(res.data.selectedSubjects);
@@ -38,7 +38,7 @@ const StudentCourseRegistration = () => {
 
 
     // https://school-portal-backend-adex2210.vercel.app
-    let endpoint2 = "http://localhost:2000/student_account/student_term_subject"
+    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
     axios.get(endpoint2, {
       headers: {
         Authorization: JSON.stringify({ receivedEmail, formClass, formTerm, formOption }),
@@ -66,7 +66,7 @@ const StudentCourseRegistration = () => {
         ...selectedSubjectsDetails,
         selectedSubject,
       ]);
-      let endpoint = "http://localhost:2000/student_account/student_term_subject"
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
       axios.post(endpoint, {selectedSubject, formTerm, formOption, receivedEmail})
       .then((response) => {
         console.log(response);
