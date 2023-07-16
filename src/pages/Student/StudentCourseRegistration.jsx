@@ -29,7 +29,7 @@ const StudentCourseRegistration = () => {
     // console.log(receivedEmail, formClass, formTerm, formOption);
     // console.log(myEmail, myClass, myTerm, myOption);
     // console.log(receivedEmail, formClass, formTerm, formOption);
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
+    let endpoint = "http://localhost:2000/staff_account/student_class_subject";
     axios.post(endpoint, {data: { formClass, formTerm, formOption, receivedEmail }})
     .then((res) => {
       // console.log(res.data.selectedSubjects);
@@ -50,7 +50,7 @@ const StudentCourseRegistration = () => {
       },
     })
     .then((response) => {
-      // console.log(response);
+      console.log(response);
     })
   }, [globalState]);
 
