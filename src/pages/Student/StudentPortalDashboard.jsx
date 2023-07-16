@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../Student/StudentPortalDashboard.css";
-import { Route, Routes, useLocation, useNavigate,  } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { newStudent } from "../../redux/portalSlice";
 import StudentDashboardNavbar from "../../components/studentDashboardComponents/StudentDashboardNavbar";
@@ -32,11 +32,6 @@ import StudentResources from "./StudentResources";
 // import ListItemText from '@mui/material/ListItemText';
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
-
-
-
-
-
 
 // const drawerWidth = 240;
 
@@ -105,28 +100,27 @@ import StudentResources from "./StudentResources";
 //   }),
 // );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const StudentPortalDashboard = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
-  const [content, setContent] = useState('Initial Content');
+  // const location = useLocation();
+  const [content, setContent] = useState("Initial Content");
 
   useEffect(() => {
+    const url = `/course_registration?myEmail=${encodeURIComponent(
+      globalState.email
+    )}&myClass=${encodeURIComponent(
+      globalState.level
+    )}&myTerm=${encodeURIComponent(
+      globalState.term
+    )}&myOption=${encodeURIComponent(globalState.options)}`;
+
+    if (window.location.pathname === "/course_registration") {
+      navigate(url);
+    }
+
     const endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student_portal_dashboard";
     let studentSignInToken = localStorage.studentSignInToken;
@@ -141,14 +135,14 @@ const StudentPortalDashboard = () => {
       .then((response) => {
         if (response.data.status) {
           // console.log(response.data.response);
-          console.log(response.data.message);
+          // console.log(response.data.message);
           dispatch(newStudent(response.data.response));
         } else {
           console.log(response.data.message);
           navigate("/student_signin");
         }
       });
-  }, []);
+  }, [globalState, navigate]);
 
   // const theme = useTheme();
   // const [open, setOpen] = useState(false);
@@ -160,8 +154,6 @@ const StudentPortalDashboard = () => {
   // const handleDrawerClose = () => {
   //   setOpen(false);
   // };
-
-
 
   // const handleItemClick = (text) => {
   //   switch (text) {
@@ -206,31 +198,40 @@ const StudentPortalDashboard = () => {
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <StudentDashboardNavbar />
-          <div className="flex p-5" style={{overflowY: 'scroll', height: '100%'}}>
-          {isLoading ? (
-            <div>loadings</div>
-          ) : (
-            <Routes>
-              <Route path="home" element={<StudentDashboardHome />} />
-              <Route path="profile" element={<StudentProfile />} />
-              <Route
-                path="change_password"
-                element={<StudentChangePassword myEmail={globalState.email} />}
-              />
-              <Route path="edit_details" element={<StudentEditDetails />} />
-              <Route path="resources" element={<StudentResources/>} />
-              <Route
-                path="course_registration"
-                element={<StudentCourseRegistration myEmail={globalState.email} myClass={globalState.level} myTerm={globalState.term} myOption={globalState.options}/>}
-              />
-            </Routes>
-          )}
-            
+          <div
+            className="flex p-5"
+            style={{ overflowY: "scroll", height: "100%" }}
+          >
+            {isLoading ? (
+              <div>loadings</div>
+            ) : (
+              <Routes>
+                <Route path="home" element={<StudentDashboardHome />} />
+                <Route path="profile" element={<StudentProfile />} />
+                <Route
+                  path="change_password"
+                  element={
+                    <StudentChangePassword myEmail={globalState.email} />
+                  }
+                />
+                <Route path="edit_details" element={<StudentEditDetails />} />
+                <Route path="resources" element={<StudentResources />} />
+                <Route
+                  path="course_registration"
+                  element={
+                    <StudentCourseRegistration
+                      myEmail={globalState.email}
+                      myClass={globalState.level}
+                      myTerm={globalState.term}
+                      myOption={globalState.options}
+                    />
+                  }
+                />
+              </Routes>
+            )}
           </div>
         </div>
       </section>
-
-
 
       {/* <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -331,9 +332,12 @@ const StudentPortalDashboard = () => {
         </Typography>
       </Box>
     </Box> */}
-    
     </>
   );
 };
 
 export default StudentPortalDashboard;
+
+// studentCourseRegistration
+
+

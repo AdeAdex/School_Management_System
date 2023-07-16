@@ -7,24 +7,32 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm: myTerm, myOption: myOption }) => {
+const StudentCourseRegistration = () => {
   const [classSubject, setClassSubject] = useState([]);
   const [subject, setSubject] = useState("");
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const divRef = useRef();
   const [selectedSubjectsDetails, setSelectedSubjectsDetails] = useState([]);
+  // const location = useLocation();
+  // const { myEmail, myClass, myTerm, myOption } = useParams();
+  const navigate = useNavigate();
 
-  const receivedEmail = myEmail;
-  const formClass = myClass;
-  const formTerm = myTerm;
-  const formOption = myOption
+  const receivedEmail = globalState.email;
+  const formClass = globalState.level;
+  const formTerm = globalState.term;
+  const formOption = globalState.options
 
   useEffect(() => {
+
+    // console.log(receivedEmail, formClass, formTerm, formOption);
+    // console.log(myEmail, myClass, myTerm, myOption);
+    // console.log(receivedEmail, formClass, formTerm, formOption);
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
     axios.post(endpoint, {data: { formClass, formTerm, formOption, receivedEmail }})
     .then((res) => {
-      console.log(res.data.selectedSubjects);
+      // console.log(res.data.selectedSubjects);
       setClassSubject(res.data.selectedSubjects);
     })
     .catch((err) => {
@@ -32,10 +40,11 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
     });
 
 
-    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
+    // https://school-portal-backend-adex2210.vercel.app
+    let endpoint2 = "http://localhost:2000/student_account/student_term_subject"
     axios.get(endpoint2, {
       headers: {
-        Authorization: `${ formClass, formTerm, formOption, receivedEmail}`,
+        Authorization: JSON.stringify({ receivedEmail, formClass, formTerm, formOption }),
         "Content-Type": "application/json",
         Accept: "application/json",
       },
@@ -60,7 +69,7 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
         ...selectedSubjectsDetails,
         selectedSubject,
       ]);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
+      let endpoint = "http://localhost:2000/student_account/student_term_subject"
       axios.post(endpoint, {selectedSubject, formTerm, formOption, receivedEmail})
     }
 
