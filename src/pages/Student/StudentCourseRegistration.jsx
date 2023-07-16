@@ -32,10 +32,10 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
     });
 
 
-    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/"
+    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
     axios.get(endpoint2, {
       headers: {
-        Authorization: `${myEmail, myTerm}`,
+        Authorization: `${myEmail, formTerm, formOption, receivedEmail}`,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
@@ -60,7 +60,7 @@ const StudentCourseRegistration = ({ myEmail: myEmail, myClass: myClass, myTerm:
         ...selectedSubjectsDetails,
         selectedSubject,
       ]);
-      let endpoint = "http://localhost:2000/student_account/student_term_subject"
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
       axios.post(endpoint, {selectedSubject, formTerm, formOption, receivedEmail})
     }
 
