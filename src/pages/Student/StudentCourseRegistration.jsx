@@ -41,10 +41,10 @@ const StudentCourseRegistration = () => {
     let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
     axios.get(endpoint2, {
   params: {
-    receivedEmail: receivedEmail,
-    formClass: formClass,
-    formTerm: formTerm,
-    formOption: formOption
+    receivedEmail,  
+    formClass,
+    formTerm,
+    formOption
   },
      })
     .then((response) => {
