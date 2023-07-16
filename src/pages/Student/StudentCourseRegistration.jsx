@@ -50,7 +50,7 @@ const StudentCourseRegistration = () => {
       },
     })
     .then((response) => {
-
+      // console.log(response);
     })
   }, [globalState]);
 
@@ -71,6 +71,9 @@ const StudentCourseRegistration = () => {
       ]);
       let endpoint = "http://localhost:2000/student_account/student_term_subject"
       axios.post(endpoint, {selectedSubject, formTerm, formOption, receivedEmail})
+      .then((response) => {
+        console.log(response);
+      })
     }
 
     setSubject(""); // Reset the selected subject
