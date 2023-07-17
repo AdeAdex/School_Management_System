@@ -56,7 +56,7 @@ const StudentCourseRegistration = () => {
       })
       .then((response) => {
         setYhea(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       });
   }, [globalState]);
 
