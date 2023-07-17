@@ -37,7 +37,7 @@ const StudentCourseRegistration = () => {
         setClassSubject(res.data.selectedSubjects);
       })
       .catch((err) => {
-        consloe.log(err);
+        console.log(err);
       });
 
     // https://school-portal-backend-adex2210.vercel.app
@@ -52,9 +52,9 @@ const StudentCourseRegistration = () => {
           formOption,
         },
       })
-      // .then((response) => {
-      //   console.log(response);
-      // });
+      .then((response) => {
+        console.log(response);
+      });
   }, [globalState]);
 
   const handleChange = (event) => {
