@@ -115,7 +115,7 @@ const StaffEditDetails = () => {
         "http://localhost:2000/staff_account/upload_resources";
       axios.post(endpoint, newValues).then((response) => {
         // console.log(response.data.response);
-        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
+        // setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
     },
   });
