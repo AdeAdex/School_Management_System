@@ -1,24 +1,35 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const StudentResources = () => {
   const [receivedVideo, setReceivedVideo] = useState([]);
-
+  
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
-    axios
-      .get(endpoint, {
-        params: {
-          
-        }
-      })
-      .then((response) => {
-        // const responseData = response.data.response[0].staffArray;
-        // setResponseArray(responseData);
-        console.log(response.data.response[0].Resources[0]);
-        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
-      });
-  }, []);
+    
+
+    const receivedEmail = globalState.email;
+  const formClass = globalState.level;
+  const formTerm = globalState.term;
+  const formOption = globalState.options;
+
+    console.log(receivedEmail, formClass, formTerm, formOption);
+    // let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
+    // axios
+    //   .get(endpoint, {
+    //     params: {
+
+    //     }
+    //   })
+    //   .then((response) => {
+    //     // const responseData = response.data.response[0].staffArray;
+    //     // setResponseArray(responseData);
+    //     console.log(response.data.response[0].Resources[0]);
+    //     setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
+    //   });
+  }, [globalState]);
 
   return (
     <>
