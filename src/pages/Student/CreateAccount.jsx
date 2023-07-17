@@ -23,7 +23,7 @@ const CreateAccount = () => {
       axios.post(endpoint, values).then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
-          console.log(response.data.response);
+          // console.log(response.data.response);
           navigate("/student_login");
         } else {
           const Toast = Swal.mixin({

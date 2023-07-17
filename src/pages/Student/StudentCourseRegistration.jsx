@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newName } from "../../redux/portalSlice";
+import { mySubSub, newName } from "../../redux/portalSlice";
 import axios from "axios";
 import { useFormik } from "formik";
 import InputLabel from "@mui/material/InputLabel";
@@ -13,16 +13,21 @@ const StudentCourseRegistration = () => {
   const [classSubject, setClassSubject] = useState([]);
   const [subject, setSubject] = useState("");
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const globalState2 = useSelector((state) => state.portalReducer.mySubSub);
   const divRef = useRef();
   const [selectedSubjectsDetails, setSelectedSubjectsDetails] = useState([]);
   // const location = useLocation();
   // const { myEmail, myClass, myTerm, myOption } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   const receivedEmail = globalState.email;
   const formClass = globalState.level;
   const formTerm = globalState.term;
   const formOption = globalState.options;
+
+  const [yhea, setYhea] = useState([])
 
   useEffect(() => {
     // console.log(receivedEmail, formClass, formTerm, formOption);
@@ -40,6 +45,15 @@ const StudentCourseRegistration = () => {
         console.log(err);
       });
 
+
+      // if (globalState2 && globalState2.length > 0) {
+      //   console.log(globalState2);
+      //   setYhea(globalState2)
+      //   console.log(yhea);
+      //   // globalState2.map((sub, index) => {
+
+      //   // })
+      // }
     // https://school-portal-backend-adex2210.vercel.app
     let endpoint2 =
       "http://localhost:2000/student_account/student_term_subject";
@@ -53,7 +67,8 @@ const StudentCourseRegistration = () => {
         },
       })
       .then((response) => {
-        // console.log(response);
+        setYhea(response.data)
+        // console.log(response.data);
       });
   }, [globalState]);
 
@@ -61,6 +76,7 @@ const StudentCourseRegistration = () => {
     setSubject(event.target.value);
   };
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(subject);
@@ -78,7 +94,8 @@ const StudentCourseRegistration = () => {
           receivedEmail,
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data.selectedArray);
+          dispatch(mySubSub(response.data.selectedArray));
         });
     }
 
@@ -112,10 +129,10 @@ const StudentCourseRegistration = () => {
           </thead>
           {
             <tbody>
-              {selectedSubjectsDetails.map((subject, index) => (
+              {yhea.map((subject, index) => (
                 <tr key={index}>
-                  <td>{subject}</td>
-                  <td>{subject}</td>
+                  <td>{subject.mySubject}</td>
+                  <td>{subject.newTerm}</td>
                   <td>Action</td>
                 </tr>
               ))}
