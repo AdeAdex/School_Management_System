@@ -22,35 +22,40 @@ const StudentCourseRegistration = () => {
   const receivedEmail = globalState.email;
   const formClass = globalState.level;
   const formTerm = globalState.term;
-  const formOption = globalState.options
+  const formOption = globalState.options;
 
   useEffect(() => {
     // console.log(receivedEmail, formClass, formTerm, formOption);
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
-    axios.post(endpoint, {data: { formClass, formTerm, formOption, receivedEmail }})
-    .then((res) => {
-      // console.log(res.data.selectedSubjects);
-      setClassSubject(res.data.selectedSubjects);
-    })
-    .catch((err) => {
-      consloe.log(err)
-    });
-
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
+    axios
+      .post(endpoint, {
+        data: { formClass, formTerm, formOption, receivedEmail },
+      })
+      .then((res) => {
+        // console.log(res.data.selectedSubjects);
+        setClassSubject(res.data.selectedSubjects);
+      })
+      .catch((err) => {
+        consloe.log(err);
+      });
 
     // https://school-portal-backend-adex2210.vercel.app
-    // let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
-    // axios.get(endpoint2, {
-    //   headers: {
-    //     Authorization: JSON.stringify({ receivedEmail, formClass, formTerm, formOption }),
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    // })
-    // .then((response) => {
-    //   console.log(response);
-    // })
+    let endpoint2 =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
+    axios
+      .get(endpoint2, {
+        params: {
+          receivedEmail,
+          formClass,
+          formTerm,
+          formOption,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }, [globalState]);
-
 
   const handleChange = (event) => {
     setSubject(event.target.value);
@@ -62,15 +67,19 @@ const StudentCourseRegistration = () => {
     const selectedSubject = classSubject.find((option) => option === subject);
 
     if (selectedSubject) {
-      setSelectedSubjectsDetails([
-        ...selectedSubjectsDetails,
-        selectedSubject,
-      ]);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
-      axios.post(endpoint, {selectedSubject, formTerm, formOption, receivedEmail})
-      .then((response) => {
-        console.log(response);
-      })
+      setSelectedSubjectsDetails([...selectedSubjectsDetails, selectedSubject]);
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
+      axios
+        .post(endpoint, {
+          selectedSubject,
+          formTerm,
+          formOption,
+          receivedEmail,
+        })
+        .then((response) => {
+          console.log(response);
+        });
     }
 
     setSubject(""); // Reset the selected subject
@@ -144,7 +153,9 @@ const StudentCourseRegistration = () => {
               : null}
           </Select>
         </FormControl>
-        <button type="submit" className="btn btn-primary my-auto">Add Subject</button>
+        <button type="submit" className="btn btn-primary my-auto">
+          Add Subject
+        </button>
       </form>
     </>
   );
