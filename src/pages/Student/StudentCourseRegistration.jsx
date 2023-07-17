@@ -96,6 +96,9 @@ const StudentCourseRegistration = () => {
     let endpoint = "http://localhost:2000/student_account/delete_selected_subject";
         axios
           .delete(endpoint, {data: { id, formClass, formTerm, formOption, receivedEmail }})
+          .then((response) => {
+            console.log(response.data.message);
+          })
   }
 
 
