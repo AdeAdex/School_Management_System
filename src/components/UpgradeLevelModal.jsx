@@ -27,26 +27,26 @@ const UpgradeLevelModal = ({
       axios.post(endpoint, newValues)
       .then((response) => {
         if (response.status) {
-          console.log(response.data.message);
-          // const Toast = Swal.mixin({
-          //   toast: true,
-          //   position: "top",
-          //   showConfirmButton: false,
-          //   timer: 1500,
-          //   timerProgressBar: true,
-          //   didOpen: (toast) => {
-          //     toast.addEventListener("mouseenter", Swal.stopTimer);
-          //     toast.addEventListener("mouseleave", Swal.resumeTimer);
-          //   },
-          // });
+          // console.log(response.data.message);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
 
-          // Toast.fire({
-          //   icon: "success",
-          //   title: response.data.message,
-          // });
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
         }
       });
-      onClose(false);
+      onClose(true);
     },
   });
   return (

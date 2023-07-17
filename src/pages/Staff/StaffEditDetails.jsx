@@ -79,7 +79,7 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        " http://localhost:2000/staff_account/edit_details";
+        "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues);
       // .then((response) => {
       //   console.log(response.data.response.staffArray);
@@ -105,13 +105,14 @@ const StaffEditDetails = () => {
       video_title: "",
       video_length: "",
       video_duration: "",
+      upload_class: ""
     },
 
     onSubmit: (values) => {
       let newValues = { ...values, myImage };
       console.log(newValues);
       let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
+        "http://localhost:2000/staff_account/upload_resources";
       axios.post(endpoint, newValues).then((response) => {
         // console.log(response.data.response);
         setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
@@ -308,23 +309,6 @@ const StaffEditDetails = () => {
                   label: subject.subject,
                   value: subject.subject,
                 }))}
-                // data={[
-
-                //   // "Yoruba",
-                //   // "Basic Science",
-                //   // "Social Studies",
-                //   // "Fine Arts/Creative Art",
-                //   // "Agricultural Science",
-                //   // "Civic Education",
-                //   // "Christian Religion Studies",
-                //   // "Physical and Health Education",
-                //   // "Business Studies",
-                //   // "French",
-                //   // "Computer Studies",
-                //   // "Home Economics",
-                //   // "Music",
-                //   // "Basic Technology",
-                // ]}
                 label="Your Picked Subjects here"
                 placeholder="Pick all that you like"
                 searchable
@@ -362,10 +346,36 @@ const StaffEditDetails = () => {
                   ))
                 : null}
             </div>
+            <div className="col-md-12 mb-3">
+                <label
+                  htmlFor="validationServer04"
+                  className="form-label fw-bold text-secondary"
+                >
+                  Upload to Class
+                </label>
+                <select
+                  className="form-select "
+                  id="validationServer04"
+                  name="upload_class"
+                  aria-describedby="validationServer04Feedback"
+                  required
+                  onChange={videoUpload.handleChange}
+                  onBlur={videoUpload.handleBlur}
+                >
+                  <option disabled>Choose...</option>
+                  <option value="JSS 1">JSS 1</option>
+                  <option value="JSS 2">JSS 2</option>
+                  <option value="JSS 3">JSS 3</option>
+                  <option value="SSS 1">SSS 1</option>
+                  <option value="SSS 2">SSS 2</option>
+                  <option value="SSS 3">SSS 3</option>
+                </select>
+              </div>
             <input
               type="file"
               name="video_data"
               id=""
+              accept="video/*"
               onChange={handleVideoFileChange}
             />
             <input
