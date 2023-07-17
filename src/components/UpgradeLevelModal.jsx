@@ -13,15 +13,15 @@ const UpgradeLevelModal = ({
 }) => {
   let formik = useFormik({
     initialValues: {
-      //       classType: "",
       class: "",
+      options: ""
     },
 
     onSubmit: (values) => {
       let studentEmail = personEmail;
       // let student;
       let newValues = { ...values, studentEmail };
-//       console.log(newValues);
+      console.log(newValues);
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/upgrade_level";
       axios.post(endpoint, newValues)
       .then((response) => {
@@ -122,6 +122,33 @@ const UpgradeLevelModal = ({
                     Please select a valid state.
                   </div>
                 </div>
+
+                {formik.values.class === "SSS 1" ||
+              formik.values.class === "SSS 2" ||
+              formik.values.class === "SSS 3" ? (
+                <div className="col-md-12 mb-3">
+                  <label
+                    htmlFor="validationServer04"
+                    className="form-label fw-bold text-secondary"
+                  >
+                    Options
+                  </label>
+                  <select
+                    className="form-select"
+                    id="validationServer04"
+                    name="options"
+                    aria-describedby="validationServer04Feedback"
+                    required
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  >
+                    <option disabled>Choose...</option>
+                    <option value="Science">Science Option</option>
+                    <option value="Commercial">Commercial Option</option>
+                    <option value="Art">Art Option</option>
+                  </select>
+                </div>
+              ) : null}
                 <button type="submit" className="btn btn-success">
                   Confirm
                 </button>

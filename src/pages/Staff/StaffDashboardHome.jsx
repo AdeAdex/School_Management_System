@@ -24,7 +24,7 @@ const StaffDashboardHome = () => {
       })
       .then((response) => {
         setAllStudent(response.data.response);
-        console.log(response.data.response);
+        // console.log(response.data.response);
       });
   }, []);
 
