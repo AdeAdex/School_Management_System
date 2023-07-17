@@ -130,6 +130,8 @@ const StaffEditDetails = () => {
   //   }
   // };
 
+  //https://school-portal-backend-adex2210.vercel.app
+
   const openConfirmDeleteModal = (myClass, myEmail, myTerm, myOptions) => {
     Swal.fire({
       position: "bottom",
@@ -146,30 +148,30 @@ const StaffEditDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail, myTerm, myOptions);
-        let endpoint =
-          "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
-        axios
-          .delete(endpoint, { data: { myClass, myTerm, myOptions } })
-          .then((response) => {
-            if (response.data.status) {
-              const Toast = Swal.mixin({
-                toast: true,
-                position: "top",
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener("mouseenter", Swal.stopTimer);
-                  toast.addEventListener("mouseleave", Swal.resumeTimer);
-                },
-              });
+        // let endpoint =
+        //   "/staff_account/delete_class";
+        // axios
+        //   .delete(endpoint, { data: { myClass, myTerm, myOptions } })
+        //   .then((response) => {
+        //     if (response.data.status) {
+        //       const Toast = Swal.mixin({
+        //         toast: true,
+        //         position: "top",
+        //         showConfirmButton: false,
+        //         timer: 1500,
+        //         timerProgressBar: true,
+        //         didOpen: (toast) => {
+        //           toast.addEventListener("mouseenter", Swal.stopTimer);
+        //           toast.addEventListener("mouseleave", Swal.resumeTimer);
+        //         },
+        //       });
 
-              Toast.fire({
-                icon: "success",
-                title: response.data.message,
-              });
-            }
-          });
+        //       Toast.fire({
+        //         icon: "success",
+        //         title: response.data.message,
+        //       });
+        //     }
+        //   });
       }
     });
   };
