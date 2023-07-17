@@ -18,7 +18,7 @@ const StaffEditDetails = () => {
 
   useEffect(() => {
     let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
+      "http://localhost:2000/staff_account/details";
     axios
       .get(endpoint, {
         headers: {
@@ -34,7 +34,7 @@ const StaffEditDetails = () => {
       });
 
     let endpoint2 =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
+      "http://localhost:2000/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
