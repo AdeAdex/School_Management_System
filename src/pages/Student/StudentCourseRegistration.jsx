@@ -21,13 +21,12 @@ const StudentCourseRegistration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const receivedEmail = globalState.email;
   const formClass = globalState.level;
   const formTerm = globalState.term;
   const formOption = globalState.options;
 
-  const [yhea, setYhea] = useState([])
+  const [yhea, setYhea] = useState([]);
 
   useEffect(() => {
     let endpoint =
@@ -56,7 +55,7 @@ const StudentCourseRegistration = () => {
         },
       })
       .then((response) => {
-        setYhea(response.data)
+        setYhea(response.data);
         // console.log(response.data);
       });
   }, [globalState]);
@@ -65,7 +64,6 @@ const StudentCourseRegistration = () => {
     setSubject(event.target.value);
   };
 
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     const selectedSubject = classSubject.find((option) => option === subject);
@@ -90,18 +88,17 @@ const StudentCourseRegistration = () => {
     setSubject(""); // Reset the selected subject
   };
 
-
-
   const deleteSelectedSubject = (id) => {
-    let endpoint = "http://localhost:2000/student_account/delete_selected_subject";
-        axios
-          .delete(endpoint, {data: { id, formClass, formTerm, formOption, receivedEmail }})
-          .then((response) => {
-            console.log(response.data.message);
-          })
-  }
-
-
+    let endpoint =
+      "http://localhost:2000/student_account/delete_selected_subject";
+    axios
+      .delete(endpoint, {
+        data: { id, formClass, formTerm, formOption, receivedEmail },
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      });
+  };
 
   return (
     <>
@@ -117,28 +114,30 @@ const StudentCourseRegistration = () => {
               <td>Action</td>
             </tr>
           </thead>
-          {
-            <tbody>
-              {yhea.map((subject, index) => (
+          <tbody>
+            {yhea && yhea.length > 0 ? (
+              yhea.map((subject, index) => (
                 <tr key={index}>
                   <td>{subject.mySubject}</td>
                   <td>{subject.newTerm}</td>
                   <td>{subject.myOption}</td>
                   <td>
-                  <button
-                  type="submit"
-                  className="btn btn-white shadow delete-btn"
-                  onClick={() => {
-                    deleteSelectedSubject(subject._id,);
-                  }}
-                >
-                  Delete
-                </button>
+                    <button
+                      type="button"
+                      className="btn btn-white shadow delete-btn"
+                      onClick={() => deleteSelectedSubject(subject._id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          }
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="text-center">No Results Found. Add subjects.</td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
       <form
