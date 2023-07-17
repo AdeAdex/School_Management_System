@@ -30,18 +30,18 @@ const StudentCourseRegistration = () => {
 
   useEffect(() => {
     console.log(formClass, formTerm, formOption, receivedEmail);
-    // let endpoint =
-    //   "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
-    // axios
-    //   .post(endpoint, {
-    //     data: { formClass, formTerm, formOption, receivedEmail },
-    //   })
-    //   .then((res) => {
-    //     setClassSubject(res.data.selectedSubjects);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
+    axios
+      .post(endpoint, {
+        data: { formClass, formTerm, formOption, receivedEmail },
+      })
+      .then((res) => {
+        setClassSubject(res.data.selectedSubjects);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     // https://school-portal-backend-adex2210.vercel.app
     let endpoint2 =
