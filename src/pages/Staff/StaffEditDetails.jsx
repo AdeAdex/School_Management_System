@@ -246,12 +246,12 @@ const StaffEditDetails = () => {
                   onBlur={formik.handleBlur}
                 >
                   <option disabled>Choose...</option>
-                  <option value="JSS1Resources">JSS 1</option>
-                  <option value="JSS2Resources">JSS 2</option>
-                  <option value="JSS3Resources">JSS 3</option>
-                  <option value="SSS1Resources">SSS 1</option>
-                  <option value="SSS2Resources">SSS 2</option>
-                  <option value="SSS3Resources">SSS 3</option>
+                  <option value="JSS 1">JSS 1</option>
+                  <option value="JSS 2">JSS 2</option>
+                  <option value="JSS 3">JSS 3</option>
+                  <option value="SSS 1">SSS 1</option>
+                  <option value="SSS 2">SSS 2</option>
+                  <option value="SSS 3">SSS 3</option>
                 </select>
               </div>
               <div className="col-md-12 mb-3">
@@ -363,12 +363,12 @@ const StaffEditDetails = () => {
                   onBlur={videoUpload.handleBlur}
                 >
                   <option disabled>Choose...</option>
-                  <option value="JSS 1">JSS 1</option>
-                  <option value="JSS 2">JSS 2</option>
-                  <option value="JSS 3">JSS 3</option>
-                  <option value="SSS 1">SSS 1</option>
-                  <option value="SSS 2">SSS 2</option>
-                  <option value="SSS 3">SSS 3</option>
+                  <option value="JSS1Resources">JSS 1</option>
+                  <option value="JSS2Resources">JSS 2</option>
+                  <option value="JSS3Resources">JSS 3</option>
+                  <option value="SSS1Resources">SSS 1</option>
+                  <option value="SSS2Resources">SSS 2</option>
+                  <option value="SSS3Resources">SSS 3</option>
                 </select>
               </div>
             <input
