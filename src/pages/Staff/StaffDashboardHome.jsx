@@ -10,7 +10,8 @@ const StaffDashboardHome = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [personEmail, setPersonEmail] = useState("");
   const [studentClass, setStudentClass] = useState("");
-  const [classPrefix, setClassPrefix] = useState("");
+  const [studentTerm, setStudentTerm] = useState("");
+  const [studentOption, setStudentOption] = useState("")
 
   useEffect(() => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
@@ -23,14 +24,17 @@ const StaffDashboardHome = () => {
       })
       .then((response) => {
         setAllStudent(response.data.response);
+        console.log(response.data.response);
       });
   }, []);
 
-  const upgrade = (personEmail, studentClass) => {
+  const upgrade = (personEmail, studentClass, studentTerm, studentOption) => {
     setModalOpen(true);
     setPersonEmail(personEmail);
     setStudentClass(studentClass);
-    setClassPrefix(classPrefix);
+    setStudentTerm(studentTerm);
+    setStudentOption(studentOption);
+    
   };
 
   const closeModal = () => {
@@ -126,6 +130,8 @@ const StaffDashboardHome = () => {
                 <td>email</td>
                 <td>matric No</td>
                 <td>class</td>
+                <td>term</td>
+                <td>option</td>
                 <td>action</td>
               </tr>
             </thead>
@@ -136,11 +142,13 @@ const StaffDashboardHome = () => {
                   <td>{selectedStudent.email}</td>
                   <td>{selectedStudent.matric}</td>
                   <td>{selectedStudent.level}</td>
+                  <td>{selectedStudent.term}</td>
+                  <td>{selectedStudent.options}</td>
                   <td>
                     <button 
                     className="btn btn-primary btn-sm"
                       onClick={() => {
-                        upgrade(selectedStudent.email, selectedStudent.level);
+                        upgrade(selectedStudent.email, selectedStudent.level, selectedStudent.term, selectedStudent.options);
                       }}
                     >
                       Upgrade
@@ -176,7 +184,8 @@ const StaffDashboardHome = () => {
           isOpen={modalOpen}
           personEmail={personEmail}
           studentClass={studentClass}
-          classPrefix={classPrefix}
+          studentTerm={studentTerm}
+          studentOption={studentOption}
           onClose={closeModal}
         />
       </div>

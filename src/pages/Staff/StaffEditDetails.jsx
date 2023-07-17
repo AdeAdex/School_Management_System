@@ -135,7 +135,7 @@ const StaffEditDetails = () => {
 
   //https://school-portal-backend-adex2210.vercel.app
 
-  const openConfirmDeleteModal = (myClass, myEmail, myTerm, myOptions) => {
+  const openConfirmDeleteModal = (myClass, myEmail, myTerm, myOptions, id) => {
     Swal.fire({
       position: "bottom",
       title: "Do you really want to delete your result?",
@@ -150,11 +150,11 @@ const StaffEditDetails = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(myClass, myEmail, myTerm, myOptions);
+        console.log(myClass, myEmail, myTerm, myOptions, id);
         let endpoint =
           "http://localhost:2000/staff_account/delete_class";
         axios
-          .delete(endpoint, { data: { myClass, myEmail, myTerm, myOptions } })
+          .delete(endpoint, { data: { myClass, myEmail, myTerm, myOptions, id } })
           .then((response) => {
             if (response.data.status) {
               const Toast = Swal.mixin({
@@ -212,7 +212,7 @@ const StaffEditDetails = () => {
                     type="submit"
                     className="btn btn-white shadow delete-btn"
                     onClick={() => {
-                      openConfirmDeleteModal(option.class, myEmail, option.term, option.options);
+                      openConfirmDeleteModal(option.class, myEmail, option.term, option.options, option._id);
                     }}
                   >
                     Delete

@@ -8,7 +8,8 @@ const UpgradeLevelModal = ({
   onClose,
   personEmail,
   studentClass,
-  classPrefix,
+  studentTerm,
+  studentOption
 }) => {
   let formik = useFormik({
     initialValues: {
@@ -18,6 +19,7 @@ const UpgradeLevelModal = ({
 
     onSubmit: (values) => {
       let studentEmail = personEmail;
+      // let student;
       let newValues = { ...values, studentEmail };
 //       console.log(newValues);
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/upgrade_level";
@@ -52,7 +54,9 @@ const UpgradeLevelModal = ({
           <Modal.Header className="bg-white text-dark">
             <Modal.Title className="text-uppercase text-center mx-auto">
               upgrade class
-              <div>Present Class: {studentClass}</div>
+              <div className="" style={{fontSize: '12px'}}>current Class: {studentClass}</div>
+              <div className="" style={{fontSize: '12px'}}>current term: {studentTerm}</div>
+              <div className="" style={{fontSize: '12px'}}>current option: {studentOption}</div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body className="text-uppercase">
