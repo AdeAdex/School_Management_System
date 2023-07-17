@@ -30,7 +30,6 @@ const StudentCourseRegistration = () => {
   const [yhea, setYhea] = useState([])
 
   useEffect(() => {
-    // console.log(receivedEmail, formClass, formTerm, formOption);
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
     axios
@@ -38,22 +37,12 @@ const StudentCourseRegistration = () => {
         data: { formClass, formTerm, formOption, receivedEmail },
       })
       .then((res) => {
-        // console.log(res.data.selectedSubjects);
         setClassSubject(res.data.selectedSubjects);
       })
       .catch((err) => {
         console.log(err);
       });
 
-
-      // if (globalState2 && globalState2.length > 0) {
-      //   console.log(globalState2);
-      //   setYhea(globalState2)
-      //   console.log(yhea);
-      //   // globalState2.map((sub, index) => {
-
-      //   // })
-      // }
     // https://school-portal-backend-adex2210.vercel.app
     let endpoint2 =
       "http://localhost:2000/student_account/student_term_subject";
@@ -79,7 +68,6 @@ const StudentCourseRegistration = () => {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(subject);
     const selectedSubject = classSubject.find((option) => option === subject);
 
     if (selectedSubject) {
@@ -102,15 +90,13 @@ const StudentCourseRegistration = () => {
     setSubject(""); // Reset the selected subject
   };
 
-  // let formik = useFormik({
-  //   initialValues: {
-  //     registerSubject: "",
-  //   },
 
-  //   onSubmit: (values) => {
-  //     console.log(values);
-  //   },
-  // });
+
+  const deleteSelectedSubject = (id) => {
+    alert(id)
+  }
+
+
 
   return (
     <>
@@ -122,7 +108,6 @@ const StudentCourseRegistration = () => {
             <tr>
               <td>Subject Title</td>
               <td>Term</td>
-              {/* <td>Class</td> */}
               <td>Options</td>
               <td>Action</td>
             </tr>
@@ -133,7 +118,18 @@ const StudentCourseRegistration = () => {
                 <tr key={index}>
                   <td>{subject.mySubject}</td>
                   <td>{subject.newTerm}</td>
-                  <td>Action</td>
+                  <td>{subject.myOption}</td>
+                  <td>
+                  <button
+                  type="submit"
+                  className="btn btn-white shadow delete-btn"
+                  onClick={() => {
+                    deleteSelectedSubject(subject._id,);
+                  }}
+                >
+                  Delete
+                </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
