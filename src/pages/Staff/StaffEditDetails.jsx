@@ -9,11 +9,12 @@ import { MultiSelect } from "@mantine/core";
 const StaffEditDetails = () => {
   const globalState = useSelector((state) => state.portalReducer.staffInfo);
   const [responseArray, setResponseArray] = useState([]);
-  const [myEmail, setMyEmail] = useState("");
+  // const [myEmail, setMyEmail] = useState("");
   const [myImage, setMyImage] = useState("");
   const [receivedVideo, setReceivedVideo] = useState([]);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [subjectToRegister, setSubjectToRegister] = useState([]);
+  const myEmail = globalState.email
 
   useEffect(() => {
     let endpoint =
@@ -45,7 +46,7 @@ const StaffEditDetails = () => {
         // console.log(res.data);
         setSubjectToRegister(res.data);
       });
-  });
+  }, [globalState]);
 
   // const tryGet = () => {
   //   console.log(globalState.email);
@@ -78,13 +79,15 @@ const StaffEditDetails = () => {
       };
       console.log(newValues);
       let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+        " http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues);
       // .then((response) => {
       //   console.log(response.data.response.staffArray);
       // });
     },
   });
+
+  // https://school-portal-backend-adex2210.vercel.app
 
   const handleVideoFileChange = (e) => {
     // videoUpload.setFieldValue('video_data', event.currentTarget.files[0]);
@@ -148,30 +151,30 @@ const StaffEditDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail, myTerm, myOptions);
-        // let endpoint =
-        //   "/staff_account/delete_class";
-        // axios
-        //   .delete(endpoint, { data: { myClass, myTerm, myOptions } })
-        //   .then((response) => {
-        //     if (response.data.status) {
-        //       const Toast = Swal.mixin({
-        //         toast: true,
-        //         position: "top",
-        //         showConfirmButton: false,
-        //         timer: 1500,
-        //         timerProgressBar: true,
-        //         didOpen: (toast) => {
-        //           toast.addEventListener("mouseenter", Swal.stopTimer);
-        //           toast.addEventListener("mouseleave", Swal.resumeTimer);
-        //         },
-        //       });
+        let endpoint =
+          "http://localhost:2000/staff_account/delete_class";
+        axios
+          .delete(endpoint, { data: { myClass, myEmail, myTerm, myOptions } })
+          .then((response) => {
+            if (response.data.status) {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
 
-        //       Toast.fire({
-        //         icon: "success",
-        //         title: response.data.message,
-        //       });
-        //     }
-        //   });
+              Toast.fire({
+                icon: "success",
+                title: response.data.message,
+              });
+            }
+          });
       }
     });
   };
@@ -273,9 +276,9 @@ const StaffEditDetails = () => {
                 </select>
               </div>
 
-              {formik.values.class === "SSS1" ||
-              formik.values.class === "SSS2" ||
-              formik.values.class === "SSS3" ? (
+              {formik.values.class === "SSS 1" ||
+              formik.values.class === "SSS 2" ||
+              formik.values.class === "SSS 3" ? (
                 <div className="col-md-12 mb-3">
                   <label
                     htmlFor="validationServer04"
