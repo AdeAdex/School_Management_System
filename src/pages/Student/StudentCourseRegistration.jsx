@@ -38,17 +38,17 @@ const StudentCourseRegistration = () => {
 
 
     // https://school-portal-backend-adex2210.vercel.app
-    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
-    axios.get(endpoint2, {
-      headers: {
-        Authorization: JSON.stringify({ receivedEmail, formClass, formTerm, formOption }),
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-    .then((response) => {
-      console.log(response);
-    })
+    // let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject"
+    // axios.get(endpoint2, {
+    //   headers: {
+    //     Authorization: JSON.stringify({ receivedEmail, formClass, formTerm, formOption }),
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //   },
+    // })
+    // .then((response) => {
+    //   console.log(response);
+    // })
   }, [globalState]);
 
 
