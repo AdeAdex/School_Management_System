@@ -8,10 +8,9 @@ const StudentResources = () => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
     axios
       .get(endpoint, {
-        headers: {
-          Authorization: `${"staffArray"}`,
-          "Content-Type": "application/json",
-        },
+        params: {
+          
+        }
       })
       .then((response) => {
         // const responseData = response.data.response[0].staffArray;
