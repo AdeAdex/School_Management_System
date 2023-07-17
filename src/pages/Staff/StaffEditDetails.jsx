@@ -16,37 +16,37 @@ const StaffEditDetails = () => {
   const [subjectToRegister, setSubjectToRegister] = useState([]);
   const myEmail = globalState.email
 
-  useEffect(() => {
-    let endpoint =
-      "http://localhost:2000/staff_account/details";
-    axios
-      .get(endpoint, {
-        headers: {
-          Authorization: `${"staffArray"}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        const responseData = response.data.response[0].staffArray;
-        setResponseArray(responseData);
-        // console.log(response.data.response[0].Resources);
-        setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
-      });
+  // useEffect(() => {
+  //   let endpoint =
+  //     "http://localhost:2000/staff_account/details";
+  //   axios
+  //     .get(endpoint, {
+  //       headers: {
+  //         Authorization: `${"staffArray"}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((response) => {
+  //       const responseData = response.data.response[0].staffArray;
+  //       setResponseArray(responseData);
+  //       // console.log(response.data.response[0].Resources);
+  //       setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
+  //     });
 
-    let endpoint2 =
-      "http://localhost:2000/staff_account/student_subject";
-    axios
-      .get(endpoint2, {
-        headers: {
-          Authorization: `${"staffArray"}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        // console.log(res.data);
-        setSubjectToRegister(res.data);
-      });
-  }, [globalState]);
+  //   let endpoint2 =
+  //     "http://localhost:2000/staff_account/student_subject";
+  //   axios
+  //     .get(endpoint2, {
+  //       headers: {
+  //         Authorization: `${"staffArray"}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       setSubjectToRegister(res.data);
+  //     });
+  // }, [globalState]);
 
   // const tryGet = () => {
   //   console.log(globalState.email);
