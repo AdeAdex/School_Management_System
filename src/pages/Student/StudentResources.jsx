@@ -15,20 +15,23 @@ const StudentResources = () => {
   const formTerm = globalState.term;
   const formOption = globalState.options;
 
-    console.log(receivedEmail, formClass, formTerm, formOption);
-    // let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
-    // axios
-    //   .get(endpoint, {
-    //     params: {
-
-    //     }
-    //   })
-    //   .then((response) => {
-    //     // const responseData = response.data.response[0].staffArray;
-    //     // setResponseArray(responseData);
-    //     console.log(response.data.response[0].Resources[0]);
-    //     setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
-    //   });
+    // console.log(receivedEmail, formClass, formTerm, formOption);
+    let endpoint = "http://localhost:2000/staff_account/details";
+    axios
+      .get(endpoint, {
+        params: {
+          receivedEmail,
+          formClass,
+          formTerm,
+          formOption,
+        },
+      })
+      // .then((response) => {
+      //   // const responseData = response.data.response[0].staffArray;
+      //   // setResponseArray(responseData);
+      //   console.log(response.data.response[0].Resources[0]);
+      //   setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
+      // });
   }, [globalState]);
 
   return (
