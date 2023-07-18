@@ -27,8 +27,8 @@ const StaffEditDetails = () => {
         },
       })
       .then((response) => {
-        // const responseData = response;
-        // setResponseArray(responseData);
+        const responseData = response.data.response[0].staffArray;
+        setResponseArray(responseData);
         console.log(response);
         // setReceivedVideo(response);
       });
