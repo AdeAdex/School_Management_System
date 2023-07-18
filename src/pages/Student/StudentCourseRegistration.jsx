@@ -31,7 +31,7 @@ const StudentCourseRegistration = () => {
   useEffect(() => {
     // console.log(formClass, formTerm, formOption, receivedEmail);
     let endpoint =
-      "http://localhost:2000/staff_account/student_class_subject";
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_class_subject";
     axios
       .post(endpoint, {
         data: { formClass, formTerm, formOption, receivedEmail },
@@ -45,7 +45,7 @@ const StudentCourseRegistration = () => {
 
     // https://school-portal-backend-adex2210.vercel.app
     let endpoint2 =
-      "http://localhost:2000/student_account/student_term_subject";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
     axios
       .get(endpoint2, {
         params: {
@@ -91,7 +91,7 @@ const StudentCourseRegistration = () => {
 
   const deleteSelectedSubject = (id) => {
     let endpoint =
-      "http://localhost:2000/student_account/delete_selected_subject";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/delete_selected_subject";
     axios
       .delete(endpoint, {
         data: { id, formClass, formTerm, formOption, receivedEmail },
