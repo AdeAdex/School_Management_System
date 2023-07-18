@@ -18,7 +18,7 @@ const StaffEditDetails = () => {
 
   useEffect(() => {
     let endpoint =
-      "http://localhost:2000/staff_account/details";
+      "http://localhost:2000/staff_account/uploaded_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -27,9 +27,8 @@ const StaffEditDetails = () => {
         },
       })
       .then((response) => {
-        console.log(response);
-        // const responseData = response.data.response[0].staffArray;
-        // setResponseArray(responseData);
+        const responseData = response.data.response;
+        setResponseArray(responseData);
         // console.log(response.data.response[0].Resources);
         // setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
@@ -44,7 +43,6 @@ const StaffEditDetails = () => {
         },
       })
       .then((res) => {
-        // console.log(res.data);
         setSubjectToRegister(res.data);
       });
   }, [globalState]);
@@ -71,7 +69,6 @@ const StaffEditDetails = () => {
     },
 
     onSubmit: (values) => {
-      // console.log(globalState);
       const newValues = {
         ...values,
         receivedEmail: globalState.email,
@@ -193,7 +190,8 @@ const StaffEditDetails = () => {
               <td>action</td>
             </tr>
           </thead>
-          {responseArray.map((option, index) => (
+          { responseArray && responseArray.length > 0 ?
+            responseArray.map((option, index) => (
             <tbody key={index}>
               <tr>
                 <td>{option.class}</td>
@@ -222,7 +220,7 @@ const StaffEditDetails = () => {
                 </td>
               </tr>
             </tbody>
-          ))}
+          )) : null}
         </table>
         <div className="w-100">
           <div className="w-100">
