@@ -26,12 +26,12 @@ const StudentResources = () => {
           formOption,
         },
       })
-      // .then((response) => {
-      //   // const responseData = response.data.response[0].staffArray;
-      //   // setResponseArray(responseData);
-      //   console.log(response.data.response[0].Resources[0]);
-      //   setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
-      // });
+      .then((response) => {
+        // const responseData = response.data.response[0].staffArray;
+        // setResponseArray(responseData);
+        // console.log(response.data);
+        setReceivedVideo(response.data);
+      });
   }, [globalState]);
 
   return (
@@ -41,7 +41,8 @@ const StudentResources = () => {
         <div className="d-flex flex-column gap-4">
           {receivedVideo && receivedVideo.length > 0
             ? receivedVideo.map((eachVideo, index) => (
-                <video
+                
+              <video
                   className="w-100 shadow"
                   style={{ height: "200px" }}
                   controls
