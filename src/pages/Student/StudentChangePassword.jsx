@@ -46,6 +46,7 @@ function MyApp({myEmail: myEmail}) {
       .then((response) => {
         if (response.data.status) {
           setIsLoading(false);
+          console.log(response.data.message);
           enqueueSnackbar(response.data.message, { variant: 'success' });
         } else {
           setIsLoading(false);
