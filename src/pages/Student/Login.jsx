@@ -26,7 +26,7 @@ const Login = () => {
 
     onSubmit: (values) => {
       setEnteredEmail(values.email);
-      const endpoint = "http://localhost:2000/student_account/student_login";
+      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_login";
       axios.post(endpoint, values)
       .then((response) => {
         // console.log(response.data.result);

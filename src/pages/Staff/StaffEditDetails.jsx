@@ -18,7 +18,7 @@ const StaffEditDetails = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/uploaded_subject";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/uploaded_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -33,7 +33,7 @@ const StaffEditDetails = () => {
         // setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
 
-    let endpoint2 = "http://localhost:2000/staff_account/student_subject";
+    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
@@ -57,7 +57,7 @@ const StaffEditDetails = () => {
   // };
 
   // https://school-portal-backend-adex2210.vercel.app
-  // http://localhost:2000
+  // https://school-portal-backend-adex2210.vercel.app
 
 
   const handleOptionChange = async (selectedOption) => {
@@ -66,9 +66,9 @@ const StaffEditDetails = () => {
   
       let response;
       if (selectedOption === 'Science') {
-        response = await axios.get('http://localhost:2000/staff_account/science_option_endpoint');
+        response = await axios.get('https://school-portal-backend-adex2210.vercel.app/staff_account/science_option_endpoint');
       } else if (selectedOption === 'Commercial') {
-        response = await axios.get('http://localhost:2000/staff_account/commercial_option_endpoint');
+        response = await axios.get('https://school-portal-backend-adex2210.vercel.app/staff_account/commercial_option_endpoint');
       } else {
         return; 
       }
@@ -97,7 +97,7 @@ const StaffEditDetails = () => {
         options: selectedOption,
       };
       // console.log(newValues);
-      let endpoint = "http://localhost:2000/staff_account/edit_details";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
           const Toast = Swal.mixin({
@@ -145,7 +145,7 @@ const StaffEditDetails = () => {
     onSubmit: (values) => {
       let newValues = { ...values, myImage };
       console.log(newValues);
-      let endpoint = "http://localhost:2000/staff_account/upload_resources";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
       axios.post(endpoint, newValues).then((response) => {
         console.log(response);
       });
@@ -184,7 +184,7 @@ const StaffEditDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail, myTerm, myOptions, id);
-        let endpoint = "http://localhost:2000/staff_account/delete_class";
+        let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
         axios
           .delete(endpoint, {
             data: { myClass, myEmail, myTerm, myOptions, id },
