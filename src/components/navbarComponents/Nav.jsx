@@ -152,7 +152,7 @@ const Nav = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link">blog</a>
+                <Link to="" className="nav-link">blog</Link>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -178,10 +178,10 @@ const Nav = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link">more</a>
+                <Link to="" className="nav-link">more</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Contact US</a>
+                <Link to="" className="nav-link">Contact US</Link>
               </li>
             </ul>
             <form className="d-flex" role="search">

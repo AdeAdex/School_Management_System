@@ -14,11 +14,11 @@ const StaffEditDetails = () => {
   const [receivedVideo, setReceivedVideo] = useState([]);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [subjectToRegister, setSubjectToRegister] = useState([]);
-  const myEmail = globalState.email
+  const myEmail = globalState.email;
+  const [selectedOption, setSelectedOption] = useState('');
 
   useEffect(() => {
-    let endpoint =
-      "http://localhost:2000/staff_account/uploaded_subject";
+    let endpoint = "http://localhost:2000/staff_account/uploaded_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -33,8 +33,7 @@ const StaffEditDetails = () => {
         // setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
 
-    let endpoint2 =
-      "http://localhost:2000/staff_account/student_subject";
+    let endpoint2 = "http://localhost:2000/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
@@ -60,6 +59,27 @@ const StaffEditDetails = () => {
   // https://school-portal-backend-adex2210.vercel.app
   // http://localhost:2000
 
+
+  const handleOptionChange = async (selectedOption) => {
+    try {
+      setSubjectToRegister([]);
+  
+      let response;
+      if (selectedOption === 'Science') {
+        response = await axios.get('http://localhost:2000/staff_account/science_option_endpoint');
+      } else if (selectedOption === 'Commercial') {
+        response = await axios.get('http://localhost:2000/staff_account/commercial_option_endpoint');
+      } else {
+        return; 
+      }
+  
+      setSubjectToRegister(response.data);
+      setSelectedOption(selectedOption);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   let formik = useFormik({
     initialValues: {
       receivedEmail: "",
@@ -74,12 +94,11 @@ const StaffEditDetails = () => {
         receivedEmail: globalState.email,
         // id: crypto.randomUUID(),
         selectedSubjects: selectedSubjects,
+        options: selectedOption,
       };
-      console.log(newValues);
-      let endpoint =
-        "http://localhost:2000/staff_account/edit_details";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      // console.log(newValues);
+      let endpoint = "http://localhost:2000/staff_account/edit_details";
+      axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
           const Toast = Swal.mixin({
             toast: true,
@@ -120,16 +139,14 @@ const StaffEditDetails = () => {
       video_title: "",
       video_length: "",
       video_duration: "",
-      upload_class: ""
+      upload_class: "",
     },
 
     onSubmit: (values) => {
       let newValues = { ...values, myImage };
       console.log(newValues);
-      let endpoint =
-        "http://localhost:2000/staff_account/upload_resources";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      let endpoint = "http://localhost:2000/staff_account/upload_resources";
+      axios.post(endpoint, newValues).then((response) => {
         console.log(response);
       });
     },
@@ -167,10 +184,11 @@ const StaffEditDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail, myTerm, myOptions, id);
-        let endpoint =
-          "http://localhost:2000/staff_account/delete_class";
+        let endpoint = "http://localhost:2000/staff_account/delete_class";
         axios
-          .delete(endpoint, { data: { myClass, myEmail, myTerm, myOptions, id } })
+          .delete(endpoint, {
+            data: { myClass, myEmail, myTerm, myOptions, id },
+          })
           .then((response) => {
             if (response.data.status) {
               const Toast = Swal.mixin({
@@ -207,37 +225,44 @@ const StaffEditDetails = () => {
               <td>action</td>
             </tr>
           </thead>
-          { responseArray && responseArray.length > 0 ?
-            responseArray.map((option, index) => (
-            <tbody key={index}>
-              <tr>
-                <td>{option.class}</td>
-                <td>{option.term}</td>
-                <td>{option.mySubjects}</td>
-                <td>{option.options}</td>
-                <td className="d-flex gap-2">
-                  <button
-                    type="submit"
-                    className="btn btn-white shadow edit-btn"
-                    onClick={() => {
-                      openEditModal(items.id, myEmail, items);
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="submit"
-                    className="btn btn-white shadow delete-btn"
-                    onClick={() => {
-                      openConfirmDeleteModal(option.class, myEmail, option.term, option.options, option._id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          )) : null}
+          {responseArray && responseArray.length > 0
+            ? responseArray.map((option, index) => (
+                <tbody key={index}>
+                  <tr>
+                    <td>{option.class}</td>
+                    <td>{option.term}</td>
+                    <td>{option.mySubjects}</td>
+                    <td>{option.options}</td>
+                    <td className="d-flex gap-2">
+                      <button
+                        type="submit"
+                        className="btn btn-white shadow edit-btn"
+                        onClick={() => {
+                          openEditModal(items.id, myEmail, items);
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="submit"
+                        className="btn btn-white shadow delete-btn"
+                        onClick={() => {
+                          openConfirmDeleteModal(
+                            option.class,
+                            myEmail,
+                            option.term,
+                            option.options,
+                            option._id
+                          );
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              ))
+            : null}
         </table>
         <div className="w-100">
           <div className="w-100">
@@ -309,8 +334,13 @@ const StaffEditDetails = () => {
                     name="options"
                     aria-describedby="validationServer04Feedback"
                     required
-                    onChange={formik.handleChange}
+                    // onChange={formik.handleChange}
+                    // onBlur={formik.handleBlur}
+                    onChange={(event) => {
+                      handleOptionChange(event.target.value); // Call the new handler when option changes
+                    }}
                     onBlur={formik.handleBlur}
+                    // value={formik.values.options} // Set the value attribute to formik value
                   >
                     <option disabled>Choose...</option>
                     <option value="Science">Science Option</option>
@@ -331,7 +361,7 @@ const StaffEditDetails = () => {
                 nothingFound="Nothing found"
                 onChange={setSelectedSubjects}
               />
-              <button type="submit" className="edit-enter">
+              <button type="submit" className="edit-enter" onClick={() => formik.handleSubmit(selectedOption)}>
                 Enter
               </button>
             </form>
@@ -363,30 +393,30 @@ const StaffEditDetails = () => {
                 : null}
             </div>
             <div className="col-md-12 mb-3">
-                <label
-                  htmlFor="validationServer04"
-                  className="form-label fw-bold text-secondary"
-                >
-                  Upload to Class
-                </label>
-                <select
-                  className="form-select "
-                  id="validationServer04"
-                  name="upload_class"
-                  aria-describedby="validationServer04Feedback"
-                  required
-                  onChange={videoUpload.handleChange}
-                  onBlur={videoUpload.handleBlur}
-                >
-                  <option disabled>Choose...</option>
-                  <option value="JSS1">JSS 1</option>
-                  <option value="JSS2">JSS 2</option>
-                  <option value="JSS3">JSS 3</option>
-                  <option value="SSS1">SSS 1</option>
-                  <option value="SSS2">SSS 2</option>
-                  <option value="SSS3">SSS 3</option>
-                </select>
-              </div>
+              <label
+                htmlFor="validationServer04"
+                className="form-label fw-bold text-secondary"
+              >
+                Upload to Class
+              </label>
+              <select
+                className="form-select "
+                id="validationServer04"
+                name="upload_class"
+                aria-describedby="validationServer04Feedback"
+                required
+                onChange={videoUpload.handleChange}
+                onBlur={videoUpload.handleBlur}
+              >
+                <option disabled>Choose...</option>
+                <option value="JSS1">JSS 1</option>
+                <option value="JSS2">JSS 2</option>
+                <option value="JSS3">JSS 3</option>
+                <option value="SSS1">SSS 1</option>
+                <option value="SSS2">SSS 2</option>
+                <option value="SSS3">SSS 3</option>
+              </select>
+            </div>
             <input
               type="file"
               name="video_data"
