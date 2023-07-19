@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities; 
 
+}
+
 #offCan {
   transition: all 0.3s ease-in-out;
 }
@@ -200,4 +202,4 @@
   100% { opacity: 1; }
 }
 
-} 
+ 
