@@ -27,12 +27,13 @@ const Login = () => {
     // https://school-portal-backend-adex2210.vercel.app
 
     onSubmit: (values) => {
-      setIsloading(true)
+      setIsLoading(true)
       setEnteredEmail(values.email);
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_login";
       axios.post(endpoint, values)
       .then((response) => {
         // console.log(response.data.result);
+        setIsLoading(false)
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
           // const Toast = Swal.mixin({
@@ -166,7 +167,7 @@ const Login = () => {
             <div className="login-forgot-pass">
               <div onClick={()=> navigateToOTP()} className="text-primary my-4 forgotpassword">Forgot Password?</div>
             </div>
-            <button className="login-button btn btn-primary" type="submit">Sign in {isLoading ? ( <div class="loade">loading</div> ) : null }</button>
+            <button className="login-button btn btn-primary" type="submit">{isLoading ? ( <div class="loade">loading</div> ) : ( <div>Sign in </div> ) }</button>
             <div className="login-sign-up gap-4">
               Not a member?
               <Link to="/student/create_account">Signup now</Link>
