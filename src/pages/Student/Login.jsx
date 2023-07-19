@@ -167,7 +167,7 @@ const Login = () => {
             <div className="login-forgot-pass">
               <div onClick={()=> navigateToOTP()} className="text-primary my-4 forgotpassword">Forgot Password?</div>
             </div>
-            <button className="login-button btn btn-primary" type="submit">{isLoading ? ( <div class="loade">loading</div> ) : ( <div>Sign in </div> ) }</button>
+            <button className="login-button btn btn-primary" type="submit">{isLoading ? ( <div class="spinner"></div> ) : ( <div>Sign in </div> ) }</button>
             <div className="login-sign-up gap-4">
               Not a member?
               <Link to="/student/create_account">Signup now</Link>
