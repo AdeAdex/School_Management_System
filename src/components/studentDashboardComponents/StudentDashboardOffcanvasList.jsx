@@ -33,7 +33,7 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
         open={open}
         onClick={handleClose}
       >
-      {isLoading && <div className="loader2"></div>}
+      {isLoading && <div class="loader"></div>}
       </Backdrop>
       </div>
     </>
