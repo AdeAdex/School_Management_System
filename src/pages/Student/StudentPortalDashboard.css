@@ -1,9 +1,7 @@
-.tailwind-page {
-  
+.tailwind-page { 
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
-
 }
 
 #offCan {
