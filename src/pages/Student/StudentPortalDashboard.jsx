@@ -203,7 +203,7 @@ const StudentPortalDashboard = () => {
             style={{ overflowY: "scroll", height: "100%" }}
           >
             {isLoading ? (
-              
+              <div class="loader"></div>
             ) : (
               <Routes>
                 <Route path="home" element={<StudentDashboardHome />} />
