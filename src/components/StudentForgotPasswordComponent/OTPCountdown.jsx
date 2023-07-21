@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-const OTPCountdown = ({ setIsCountdownActive }) => {
-  const [minutes, setMinutes] = useState(10);
+const OTPCountdown = ({startCountdown, onCountdownComplete }) => {
+  const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
-//   const [isCountdownActive, setIsCountdownActive] = useState(false);
+//   const [startCountdown, setStartCountdown] = useState(false);
+  
 
-//   const handleStartClick = () => {
-//     setIsCountdownActive(true);
-//   };
 
   useEffect(() => {
     let countdownInterval;
 
-    if (isCountdownActive) {
+    if (startCountdown) {
+        
       countdownInterval = setInterval(() => {
         if (seconds > 0) {
           setSeconds((prevSeconds) => prevSeconds - 1);
@@ -22,24 +21,28 @@ const OTPCountdown = ({ setIsCountdownActive }) => {
             setSeconds(59);
           } else {
             // Countdown is complete, reset the state
-            setIsCountdownActive(false);
-            setMinutes(10);
+            setMinutes(1);
             setSeconds(0);
             clearInterval(countdownInterval);
+            onCountdownComplete();
           }
         }
       }, 1000);
     }
 
+
     return () => clearInterval(countdownInterval);
-  }, [isCountdownActive, minutes, seconds, setIsCountdownActive ]);
+  }, [startCountdown, minutes, seconds, onCountdownComplete]);
+
+
+//  
 
   return (
     <>
       <div>
         <div>
-          {minutes < 10 ? `0${minutes}` : minutes}:
-          {seconds < 10 ? `0${seconds}` : seconds}
+          {minutes < 1 ? `0${minutes}` : minutes}:
+          {seconds < 1 ? `0${seconds}` : seconds}
         </div>
       </div>
     </>

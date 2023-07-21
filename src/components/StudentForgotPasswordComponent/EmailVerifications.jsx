@@ -14,6 +14,7 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
   const dispatch = useDispatch();
   const [myEmail, setMyEmail] = useState("");
   const [myHarshOTP, setMyHarshOTP] = useState('')
+  const [startCountdown, setStartCountdown] = useState(false);
   const [isCountdownActive, setIsCountdownActive] = useState(false);
 
 
@@ -33,7 +34,8 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
           localStorage.secret = response.data.secret;
           setMyEmail(response.data.response[0]);
           if (response.data.status) {
-            setIsCountdownActive(true);
+            setStartCountdown(true);
+            setIsCountdownActive(true)
             dispatch(myEmailVerify(response.data.response[0]));
             dispatch(mySentOTP(myOTP))
             const Toast = Swal.mixin({
@@ -80,6 +82,11 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
     },
   });
 
+  const handleCountdownComplete = () => {
+    setIsCountdownActive(false);
+    setStartCountdown(false); 
+  };
+
   return (
     <>
       <form
@@ -119,11 +126,14 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
               Please provide a valid Email address.
             </div>
           </div>
-          <button type="submit" className="btn btn-success btn-sm my-4">
+          <button type="submit" className="btn btn-success btn-sm my-4" disabled={isCountdownActive}>
             Submit
           </button>
           <Link to="/student_login" className="fw-bold mb-4 mt-2" style={{textDecoration: 'none'}}>Sign in</Link>
-          <OTPCountdown setIsCountdownActive={setIsCountdownActive}/>
+          <OTPCountdown 
+            startCountdown={startCountdown}
+            onCountdownComplete={handleCountdownComplete}
+          />
         </div>
       </form>
     </>
