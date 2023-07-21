@@ -181,7 +181,7 @@ const StudentPortalDashboard = () => {
     <>
       <section
         id=""
-        className="d-flex"
+        className="d-flex tailwind-page"
         style={{ width: "100%", height: "100vh", overflow: "hidden" }}
       >
         <div

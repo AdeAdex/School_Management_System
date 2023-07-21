@@ -6,7 +6,7 @@ const StudentDashboardOffcanvas = () => {
   return (
     <>
       <div
-        className="position-relative"
+        className="position-relative tailwind-page"
         id=""
         style={{
           width: "100%",

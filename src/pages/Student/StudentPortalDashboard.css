@@ -1,6 +1,8 @@
-/* @tailwind base;
+.tailwind-page { 
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities; 
+}
 
 #offCan {
   transition: all 0.3s ease-in-out;
@@ -197,3 +199,5 @@
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+ 
