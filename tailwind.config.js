@@ -10,24 +10,18 @@
 //   plugins: [],
 // }
 
-
 module.exports = {
-  mode: "jit", // Enable JIT mode
-  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"], // Purge unused styles during build
+  mode: "jit",
+  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"],
   theme: {
-    // Your theme configuration here (customize your colors, typography, spacing, etc.)
-    extend: {
-      // Add any additional custom styles here
-    },
+    // Your theme configuration here
   },
   variants: {
-    extend: {
-      // Add any custom variants here (e.g., to override default behavior)
-    },
+    // Your variants configuration here
   },
   plugins: [
-    // Add any custom plugins here (if required)
+    // Your plugins configuration here
   ],
+  prefix: "tw-", // Add a prefix to Tailwind CSS classes
 };
-
 
