@@ -64,7 +64,7 @@ const StudentDashboardNavbar = () => {
   return (
     <>
       <div
-        className="shadow d-flex tailwind-page"
+        className="shadow d-flex"
         id="nav"
         style={{ width: "100%", height: "80px" }}
       >
