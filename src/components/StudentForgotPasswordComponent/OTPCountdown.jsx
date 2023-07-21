@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const OTPCountdown = ({startCountdown, onCountdownComplete }) => {
-  const [minutes, setMinutes] = useState(1);
+  const [minutes, setMinutes] = useState(10);
   const [seconds, setSeconds] = useState(0);
 //   const [startCountdown, setStartCountdown] = useState(false);
   
@@ -21,7 +21,7 @@ const OTPCountdown = ({startCountdown, onCountdownComplete }) => {
             setSeconds(59);
           } else {
             // Countdown is complete, reset the state
-            setMinutes(1);
+            setMinutes(10);
             setSeconds(0);
             clearInterval(countdownInterval);
             onCountdownComplete();
@@ -41,8 +41,8 @@ const OTPCountdown = ({startCountdown, onCountdownComplete }) => {
     <>
       <div>
         <div>
-          {minutes < 1 ? `0${minutes}` : minutes}:
-          {seconds < 1 ? `0${seconds}` : seconds}
+          {minutes < 10 ? `0${minutes}` : minutes}:
+          {seconds < 10 ? `0${seconds}` : seconds}
         </div>
       </div>
     </>

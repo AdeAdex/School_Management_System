@@ -1,8 +1,8 @@
-.tailwind-page { 
-@tailwind base;
+
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities; 
-}
+@tailwind utilities;  */
+
 
 #offCan {
   transition: all 0.3s ease-in-out;
