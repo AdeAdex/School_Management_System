@@ -6,16 +6,16 @@ const StudentDashboardOffcanvas = () => {
   return (
     <>
       <div
-        className="position-relative tailwind-page"
+        className="position-relative"
         id=""
         style={{
           width: "100%",
           height: "100%",
         }}
       >
-        <div className="dashboard-offcanvas w-100 position-relative text-white">
+        <div className="dashboard-offcanvas tw-w-full position-relative text-white">
           <div
-            className="w-full flex justify-center shadow border-b-2"
+            className="tw-w-full tw-flex tw-justify-center tw-shadow tw-border-b-2"
             style={{ height: "80px", width: "100%" }}
           >
             <img
