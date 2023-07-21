@@ -6,6 +6,7 @@ import { SnackbarProvider, useSnackbar } from "notistack";
 import { useDispatch, useSelector } from "react-redux";
 import { myOTPVerify } from "../../redux/portalSlice";
 import axios from "axios";
+import OTPCountdown from "./OTPCountdown";
 
 const OTPVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
   return (
@@ -218,6 +219,8 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
             Resend
           </a>
         </p>
+
+        <OTPCountdown/>
       </div>
 
       {/* <form action=""> */}

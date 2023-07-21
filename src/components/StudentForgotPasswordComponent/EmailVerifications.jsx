@@ -4,12 +4,17 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { myEmailVerify, mySentOTP } from "../../redux/portalSlice";
 import { useDispatch } from "react-redux";
+import OTPCountdown from "./OTPCountdown";
+
+
+
 
 
 const EmailVerifications = ({sentEmail: sentEmail }) => {
   const dispatch = useDispatch();
   const [myEmail, setMyEmail] = useState("");
   const [myHarshOTP, setMyHarshOTP] = useState('')
+  const [isCountdownActive, setIsCountdownActive] = useState(false);
 
 
   let formik = useFormik({
@@ -28,6 +33,7 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
           localStorage.secret = response.data.secret;
           setMyEmail(response.data.response[0]);
           if (response.data.status) {
+            setIsCountdownActive(true);
             dispatch(myEmailVerify(response.data.response[0]));
             dispatch(mySentOTP(myOTP))
             const Toast = Swal.mixin({
@@ -117,6 +123,7 @@ const EmailVerifications = ({sentEmail: sentEmail }) => {
             Submit
           </button>
           <Link to="/student_login" className="fw-bold mb-4 mt-2" style={{textDecoration: 'none'}}>Sign in</Link>
+          <OTPCountdown setIsCountdownActive={setIsCountdownActive}/>
         </div>
       </form>
     </>
