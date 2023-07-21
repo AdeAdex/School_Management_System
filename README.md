@@ -1,10 +1,30 @@
 # School_Portal
-I am developing this school progressive web application (PWAs) and once am done, it will be my first MERN stack web application . It is intended to work on any platform with a standards-compliant browser, including desktop and mobile devices. The progressive web application will use service workers, manifests, and other web-platform features in combination with progressive enhancement to give users an experience on par with native apps.
-I will be using Vite + React as the front-end and will also be using Express.js as a layer built on the top of the Node.js that will helps manage servers and routes and will handle HTTP requests asynchronously. So also I will be using mongoDB as the Database.
-This school portal web application will be able to perform the following when am done.
-1. Installable, responsively designed, linkable discoverable, re-engageable.
-1. Register an Account and received Registration Number and Matric Number.  
-2. Login successfully to your School Portal.  
-3. Create a database for the school.  
-4. Access your school portal and make some available changes on your portal.  
-5. Register Course and receive results on your portal. etc.
+I am developing a school Progressive Web Application (PWAs), which will be my first MERN stack web application. The application is intended to be cross-platform and compatible with any standards-compliant browser, including desktop and mobile devices. It will leverage progressive enhancement, service workers, manifests, and other web-platform features to provide users with a native app-like experience.
+
+The front-end of the application will be built using Vite + React, a modern build tool and a popular JavaScript library for building user interfaces. Express.js, a framework built on top of Node.js, will be used as the back-end layer to manage servers, routes, and handle HTTP requests asynchronously.
+
+For data storage, I will be using MongoDB, a NoSQL database, to efficiently store and manage the application's data.
+
+Once completed, the school portal web application will have the following functionalities:
+
+User Authentication: Users will be able to sign up and log in securely to access personalized features and data.
+
+Dashboard: After logging in, users will have access to their personalized dashboard, where they can view important information and perform various actions.
+
+Course Registration: Students will be able to register for their courses online, making the process more convenient and efficient.
+
+Profile Management: Users will have the ability to update and manage their profile information, such as contact details and preferences.
+
+Resource Access: Students will be able to access learning resources, study materials, and other educational content relevant to their courses.
+
+Password Reset: Users will have the option to reset their passwords in case they forget them.
+
+Responsive Design: The application will be responsive, providing an optimal viewing experience across different devices and screen sizes.
+
+Offline Support: The use of service workers will enable the application to work offline or with limited connectivity, allowing users to access certain features even without an internet connection.
+
+Push Notifications: Users may receive notifications and alerts related to their courses, updates, and important announcements.
+
+Database Management: The application will efficiently manage and organize data using MongoDB, ensuring data integrity and security.
+
+Overall, the school portal web application will offer a user-friendly, seamless, and efficient experience for students, teachers, and administrators, facilitating various tasks and enhancing the learning process within the school community.
