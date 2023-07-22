@@ -64,11 +64,11 @@ const StudentDashboardNavbar = () => {
   return (
     <>
       <div
-        className="tw-shadow-xl tw-flex"
+        className="shadow d-flex"
         id="nav"
         style={{ width: "100%", height: "80px" }}
       >
-        <div className="tw-w-1/2 tw-my-auto tw-flex">
+        <div className="w-50 my-auto d-flex">
           {/* <button
             className="btn my-auto offcanvas-btn"
             type="button"
@@ -79,45 +79,45 @@ const StudentDashboardNavbar = () => {
           </button> */}
           <Burger
             opened={opened}
-            className="tw-my-auto offcanvas-btn tw-px-2 tw-mx-3"
+            className="my-auto offcanvas-btn px-2 mx-3"
             onClick={offCanvas}
             aria-label={label}
           />
           <button
-            className="btn tw-my-auto offcanvas-btn2"
+            className="btn my-auto offcanvas-btn2"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions"
             aria-controls="offcanvasWithBothOptions"
           >
-            <i className="fas fa-bars tw-fs-3 tw-px-2"></i>
+            <i className="fas fa-bars fs-3 px-2"></i>
           </button>
           <div
-            className="tw-my-auto tw-border-l-2 tw-border-blue-600"
-            style={{ height: "25px" }}
+            className="my-auto"
+            style={{ height: "25px", border: '1px solid blue' }}
           ></div>
-          <div className="tw-font-bold tw-ml-4 tw-my-auto tw-text-lg">
+          <div className="font-bold ml-4 my-auto text-lg">
             {globalState.firstName} {globalState.lastName}
           </div>
-          <div className="tw-my-auto tw-ms-auto fw-bold">Class: {globalState.level}</div>
-          <div className="tw-my-auto tw-ms-auto fw-bold">Term: {globalState.term}</div>
-          <div className="tw-my-auto tw-ms-auto fw-bold">Option: {globalState.options}</div>
+          <div className="my-auto ms-auto fw-bold">Class: {globalState.level}</div>
+          <div className="my-auto ms-auto fw-bold">Term: {globalState.term}</div>
+          <div className="my-auto ms-auto fw-bold">Option: {globalState.options}</div>
         </div>
           
-        <div className="tw-w-1/2 tw-my-auto tw-flex tw-justify-end tw-gap-16 tw-mr-7">
-          <button onClick={gooo} className="">
-            <i className="fas fa-bell tw-fs-4 tw-my-auto"></i>
+        <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4">
+          <button onClick={gooo} className="border-0">
+            <i className="fas fa-bell fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="">
-            <i className="fas fa-user tw-fs-4 tw-my-auto"></i>
+          <button onClick={gooo} className="border-0">
+            <i className="fas fa-user fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="">
-            <i className="fas fa-envelope tw-fs-4 tw-my-auto"></i>
+          <button onClick={gooo} className="border-0">
+            <i className="fas fa-envelope fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="">
-            <i className="fas fa-gear tw-fs-4 tw-my-auto"></i>
+          <button onClick={gooo} className="border-0">
+            <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="">
+          <button onClick={gooo} className="border-0">
             <img src="pic/avatar.png" style={{ width: "50px" }} alt="" />
           </button>
           <AvatarUploader/>

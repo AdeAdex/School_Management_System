@@ -181,11 +181,11 @@ const StudentPortalDashboard = () => {
     <>
       <section
         id=""
-        className="tw-flex"
+        className="d-flex"
         style={{ width: "100%", height: "100vh", overflow: "hidden" }}
       >
         <div
-          className="tw-relative"
+          className="position-relative"
           id="offCan"
           style={{
             width: "20%",
@@ -199,7 +199,7 @@ const StudentPortalDashboard = () => {
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <StudentDashboardNavbar />
           <div
-            className="tw-flex tw-p-5"
+            className="d-flex p-5"
             style={{ overflowY: "scroll", height: "100%" }}
           >
             {isLoading ? (
