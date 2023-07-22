@@ -79,18 +79,18 @@ const StudentDashboardNavbar = () => {
           </button> */}
           <Burger
             opened={opened}
-            className="my-auto offcanvas-btn px-2 mx-3"
+            className="tw-my-auto offcanvas-btn tw-px-2 tw-mx-3"
             onClick={offCanvas}
             aria-label={label}
           />
           <button
-            className="btn my-auto offcanvas-btn2"
+            className="btn tw-my-auto offcanvas-btn2"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions"
             aria-controls="offcanvasWithBothOptions"
           >
-            <i className="fas fa-bars fs-3 px-2"></i>
+            <i className="fas fa-bars tw-fs-3 tw-px-2"></i>
           </button>
           <div
             className="tw-my-auto tw-border-l-2 tw-border-blue-600"
@@ -104,18 +104,18 @@ const StudentDashboardNavbar = () => {
           <div className="tw-my-auto tw-ms-auto fw-bold">Option: {globalState.options}</div>
         </div>
           
-        <div className="tw-w-1/2 tw-my-auto tw-flex tw-justify-end tw-gap-5 tw-mr-7">
+        <div className="tw-w-1/2 tw-my-auto tw-flex tw-justify-end tw-gap-16 tw-mr-7">
           <button onClick={gooo} className="">
-            <i className="fas fa-bell fs-4 my-auto"></i>
+            <i className="fas fa-bell tw-fs-4 tw-my-auto"></i>
           </button>
           <button onClick={gooo} className="">
-            <i className="fas fa-user fs-4 my-auto"></i>
+            <i className="fas fa-user tw-fs-4 tw-my-auto"></i>
           </button>
           <button onClick={gooo} className="">
-            <i className="fas fa-envelope fs-4 my-auto"></i>
+            <i className="fas fa-envelope tw-fs-4 tw-my-auto"></i>
           </button>
           <button onClick={gooo} className="">
-            <i className="fas fa-gear fs-4 my-auto"></i>
+            <i className="fas fa-gear tw-fs-4 tw-my-auto"></i>
           </button>
           <button onClick={gooo} className="">
             <img src="pic/avatar.png" style={{ width: "50px" }} alt="" />
