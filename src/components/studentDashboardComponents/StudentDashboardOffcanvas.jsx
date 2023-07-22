@@ -19,7 +19,7 @@ const StudentDashboardOffcanvas = () => {
             style={{ height: "80px", width: "100%", borderBottom: '2px solid white' }}
           >
             <img
-              src="pic/ade.png"
+              src="/pic/ade.png"
               alt=""
               className="my-auto"
               style={{ width: "60px", height: "60px" }}
@@ -55,8 +55,9 @@ const StudentDashboardOffcanvas = () => {
               <StudentDashboardOffcanvasList item="payment history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
             </div>
-            <div className="d-grid gap-3">
-              <StudentDashboardOffcanvasTitle title="" />
+            <div className="d-grid gap-3 mb-5">
+              {/* <StudentDashboardOffcanvasTitle title="" /> */}
+              <StudentDashboardOffcanvasList item="logout" icons="fas fa-user" />
             </div>
           </div>
         </div>

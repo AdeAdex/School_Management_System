@@ -19,7 +19,7 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
             style={{ height: "80px", width: "100%", borderBottom: '2px solid white' }}
           >
             <img
-              src="pic/ade.png"
+              src="/pic/ade.png"
               alt=""
               className="my-auto"
               style={{ width: "60px", height: "60px" }}
