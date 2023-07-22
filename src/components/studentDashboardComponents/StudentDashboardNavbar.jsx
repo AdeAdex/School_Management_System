@@ -96,7 +96,7 @@ const StudentDashboardNavbar = () => {
             className="my-auto"
             style={{ height: "25px", border: '1px solid blue' }}
           ></div>
-          <div className="font-bold ml-4 my-auto text-lg">
+          <div className="fw-bold ms-3 my-auto fs-5">
             {globalState.firstName} {globalState.lastName}
           </div>
           <div className="my-auto ms-auto fw-bold">Class: {globalState.level}</div>
