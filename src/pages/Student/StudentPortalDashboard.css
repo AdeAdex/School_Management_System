@@ -31,6 +31,10 @@
   background-color: red !important;
 }
 
+.offcanvas-on-small-screen {
+  display: none !important;
+}
+
 @media screen and (min-width: 768px) {
   .offcanvas-btn2 {
     display: none !important;
@@ -49,6 +53,12 @@
   .offcanvas-btn {
     display: none !important;
   }
+
+  .offcanvas-on-small-screen {
+    display: block !important;
+  }
+
+
 }
 
 .custom-stepper .completed-step {

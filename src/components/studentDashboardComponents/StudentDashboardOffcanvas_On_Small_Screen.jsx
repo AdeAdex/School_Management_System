@@ -6,12 +6,12 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
   return (
     <>
       <div
-        className="offcanvas offcanvas-start"
+        className="offcanvas offcanvas-start offcanvas-on-small-screen"
         data-bs-scroll="true"
         tabIndex="-1"
         id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel"
-        style={{ backgroundColor: "#030552", width: '75%'}}
+        style={{ backgroundColor: "#030552", width: '75%', overflowY: 'scroll'}}
       >
        <div className="dashboard-offcanvas w-100 position-relative text-white">
           <div
@@ -55,8 +55,9 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
               <StudentDashboardOffcanvasList item="payment history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
             </div>
-            <div className="d-grid gap-3">
-              <StudentDashboardOffcanvasTitle title="" />
+            <div className="d-grid gap-3 mb-5">
+              {/* <StudentDashboardOffcanvasTitle title="" /> */}
+              <StudentDashboardOffcanvasList item="logout" icons="fas fa-user" />
             </div>
           </div>
         </div>
