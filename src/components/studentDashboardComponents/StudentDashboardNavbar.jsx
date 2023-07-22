@@ -10,7 +10,12 @@ const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offcanvasVisible, setOffcanvasVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
-  const { toggle } = useDisclosure();
+  // const { toggle } = useDisclosure();
+  const [opened, { toggle }] = useDisclosure(false);
+  const label = opened ? "Close navigation" : "Open navigation";
+
+
+  
   // const offCanvas = () => {
   //   toggle();
   //   if (offCan.style.width == "20%") {
@@ -108,8 +113,7 @@ const StudentDashboardNavbar = () => {
       });
   };
 
-  const [opened, { toggle }] = useDisclosure(false);
-  const label = opened ? "Close navigation" : "Open navigation";
+  
 
   return (
     <>
