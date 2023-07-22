@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;  */
 
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .offcanvas-backdrop {
   background-color: rgba(3, 5, 82, 0.7); /* Change the color and opacity as desired */
 }

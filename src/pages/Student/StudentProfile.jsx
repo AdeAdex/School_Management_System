@@ -36,8 +36,8 @@ function MyApp() {
         active={active}
         onStepClick={setActive}
         breakpoint="sm"
-        className="p-4"
-        style={{ backgroundColor: "" }}
+        className="p-"
+        style={{ backgroundColor: "", width: '100%' }}
         color=""
       >
         <Stepper.Step
@@ -47,7 +47,7 @@ function MyApp() {
         >
           <Personal />
           <Group position="center" mt="xl">
-            <Button onClick={nextStep}>Next step</Button>
+            <Button onClick={nextStep} className="">Next step</Button>
           </Group>
         </Stepper.Step>
         <Stepper.Step
