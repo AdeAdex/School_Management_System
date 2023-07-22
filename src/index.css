@@ -1,3 +1,15 @@
+/* Import Bootstrap styles */
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+
+/* Import Tailwind CSS styles */
+@import '~tailwindcss/base';
+@import '~tailwindcss/components';
+@import '~tailwindcss/utilities';
+
+/* Your custom CSS styles can go here */
+/* ... */
+
+
 
 * {
         margin: 0;

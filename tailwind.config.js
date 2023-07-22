@@ -10,24 +10,34 @@
 //   plugins: [],
 // }
 
-
 module.exports = {
-  mode: "jit", // Enable JIT mode
-  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"], // Purge unused styles during build
+  purge: ['./src/**/*.html', './src/**/*.js', './src/**/*.jsx'], // Add your HTML and JavaScript files
+  darkMode: false,
   theme: {
-    // Your theme configuration here (customize your colors, typography, spacing, etc.)
-    extend: {
-      // Add any additional custom styles here
-    },
+    extend: {},
   },
-  variants: {
-    extend: {
-      // Add any custom variants here (e.g., to override default behavior)
-    },
-  },
-  plugins: [
-    // Add any custom plugins here (if required)
-  ],
+  variants: {},
+  plugins: [],
 };
+
+
+// module.exports = {
+//   mode: "jit", // Enable JIT mode
+//   purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"], // Purge unused styles during build
+//   theme: {
+//     // Your theme configuration here (customize your colors, typography, spacing, etc.)
+//     extend: {
+//       // Add any additional custom styles here
+//     },
+//   },
+//   variants: {
+//     extend: {
+//       // Add any custom variants here (e.g., to override default behavior)
+//     },
+//   },
+//   plugins: [
+//     // Add any custom plugins here (if required)
+//   ],
+// };
 
 
