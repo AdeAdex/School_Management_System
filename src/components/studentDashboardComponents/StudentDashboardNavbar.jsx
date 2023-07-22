@@ -8,16 +8,63 @@ import AvatarUploader from "./AvatarUploader";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const offCanvas = () => {
+  const [offcanvasVisible, setOffcanvasVisible] = useState(false);
+  const [titleVisible, setTitleVisible] = useState(true);
+  const { toggle } = useDisclosure();
+  // const offCanvas = () => {
+  //   toggle();
+  //   if (offCan.style.width == "20%") {
+  //     offCan.style.width = "5%";
+  //     nav.style.width = "95%";
+  //     // menu.style.setProperty("display", "none", "important");
+  //   } else {
+  //     offCan.style.width = "20%";
+  //     nav.style.width = "80%";
+  //     // menu.style.setProperty("display", "block", "important");
+  //   }
+
+  //   var x = window.matchMedia("(max-width: 768px)");
+
+  //   if (x.matches) {
+  //     ourBody.classList.add("new-class");
+  //   } else {
+  //   }
+  // };
+
+  // const toggleOffcanvas = () => {
+  //   setOffcanvasVisible((prevVisible) => !prevVisible);
+  //   toggle();
+  //   if (offCan.style.width == "20%") {
+  //     offCan.style.width = "5%";
+  //     nav.style.width = "95%";
+  //     // menu.style.setProperty("display", "none", "important");
+  //   } else {
+  //     offCan.style.width = "20%";
+  //     nav.style.width = "80%";
+  //     // menu.style.setProperty("display", "block", "important");
+  //   }
+
+  //   var x = window.matchMedia("(max-width: 768px)");
+
+  //   if (x.matches) {
+  //     ourBody.classList.add("new-class");
+  //   } else {
+  //   }
+  // };
+
+
+  const toggleOffcanvas = () => {
+    setOffcanvasVisible((prevVisible) => !prevVisible);
     toggle();
-    if (offCan.style.width == "20%") {
+
+    if (offCan.style.width === "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
-      menu.style.setProperty("display", "none", "important");
+      setTitleVisible(false);
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
-      menu.style.setProperty("display", "block", "important");
+      setTitleVisible(true);
     }
 
     var x = window.matchMedia("(max-width: 768px)");
@@ -25,8 +72,11 @@ const StudentDashboardNavbar = () => {
     if (x.matches) {
       ourBody.classList.add("new-class");
     } else {
+      ourBody.classList.remove("new-class");
     }
   };
+
+
   const gooo = () => {
     alert("msg");
   };
@@ -77,11 +127,17 @@ const StudentDashboardNavbar = () => {
           >
             <i className="fas fa-bars fs-3 px-2"></i>
           </button> */}
-          <Burger
+          {/* <Burger
             opened={opened}
             className="my-auto offcanvas-btn px-2 mx-3"
             onClick={offCanvas}
             aria-label={label}
+          /> */}
+          <Burger
+            opened={offcanvasVisible}
+            className="my-auto offcanvas-btn px-2 mx-3"
+            onClick={toggleOffcanvas}
+            aria-label={offcanvasVisible ? "Close navigation" : "Open navigation"}
           />
           <button
             className="btn my-auto offcanvas-btn2"
@@ -135,7 +191,8 @@ const StudentDashboardNavbar = () => {
         </div>
       </div>
 
-      <StudentDashboardOffcanvas_On_Small_Screen />
+      {/* <StudentDashboardOffcanvas_On_Small_Screen /> */}
+      {offcanvasVisible && <StudentDashboardOffcanvas_On_Small_Screen toggleOffcanvas={toggleOffcanvas} />}
     </>
   );
 };
