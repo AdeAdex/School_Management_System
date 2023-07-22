@@ -12,7 +12,7 @@
 
 module.exports = {
   mode: "jit",
-  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"],
+  content: ['./src/**/*.html', './src/**/*.js', './src/**/*.jsx'],
   theme: {
     // Your theme configuration here
   },
