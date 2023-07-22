@@ -62,14 +62,30 @@ const StudentDashboardNavbar = () => {
     setOffcanvasVisible((prevVisible) => !prevVisible);
     toggle();
 
-    if (offCan.style.width === "20%") {
-      offCan.style.width = "5%";
-      nav.style.width = "95%";
-      setTitleVisible(false);
-    } else {
-      offCan.style.width = "20%";
-      nav.style.width = "80%";
-      setTitleVisible(true);
+    const offCan = document.getElementById("offcanvasWithBothOptions"); // Replace "offcanvasWithBothOptions" with the actual ID of your off-canvas element
+  const nav = document.getElementById("nav"); // Replace "nav" with the actual ID of your nav element
+  const ourBody = document.body; // Get the body element of the document
+
+    // if (offCan.style.width === "20%") {
+    //   offCan.style.width = "5%";
+    //   nav.style.width = "95%";
+    //   setTitleVisible(false);
+    // } else {
+    //   offCan.style.width = "20%";
+    //   nav.style.width = "80%";
+    //   setTitleVisible(true);
+    // }
+
+    if (offCan && nav) {
+      if (offCan.style.width === "20%") {
+        offCan.style.width = "5%";
+        nav.style.width = "95%";
+        setTitleVisible(false);
+      } else {
+        offCan.style.width = "20%";
+        nav.style.width = "80%";
+        setTitleVisible(true);
+      }
     }
 
     var x = window.matchMedia("(max-width: 768px)");
