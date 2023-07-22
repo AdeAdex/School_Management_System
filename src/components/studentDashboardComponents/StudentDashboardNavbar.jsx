@@ -64,11 +64,11 @@ const StudentDashboardNavbar = () => {
   return (
     <>
       <div
-        className="shadow d-flex"
+        className="tw-shadow-xl tw-flex"
         id="nav"
         style={{ width: "100%", height: "80px" }}
       >
-        <div className="w-50 my-auto d-flex">
+        <div className="tw-w-1/2 tw-my-auto tw-flex">
           {/* <button
             className="btn my-auto offcanvas-btn"
             type="button"
@@ -93,18 +93,18 @@ const StudentDashboardNavbar = () => {
             <i className="fas fa-bars fs-3 px-2"></i>
           </button>
           <div
-            className="my-auto border-l-2 border-blue-600"
+            className="tw-my-auto tw-border-l-2 tw-border-blue-600"
             style={{ height: "25px" }}
           ></div>
-          <div className="font-bold ml-4 my-auto text-lg">
+          <div className="tw-font-bold tw-ml-4 tw-my-auto tw-text-lg">
             {globalState.firstName} {globalState.lastName}
           </div>
-          <div className="my-auto ms-auto fw-bold">Class: {globalState.level}</div>
-          <div className="my-auto ms-auto fw-bold">Term: {globalState.term}</div>
-          <div className="my-auto ms-auto fw-bold">Option: {globalState.options}</div>
+          <div className="tw-my-auto tw-ms-auto fw-bold">Class: {globalState.level}</div>
+          <div className="tw-my-auto tw-ms-auto fw-bold">Term: {globalState.term}</div>
+          <div className="tw-my-auto tw-ms-auto fw-bold">Option: {globalState.options}</div>
         </div>
           
-        <div className="w-50 my-auto flex justify-end gap-5 mr-7">
+        <div className="tw-w-1/2 tw-my-auto tw-flex tw-justify-end tw-gap-5 tw-mr-7">
           <button onClick={gooo} className="">
             <i className="fas fa-bell fs-4 my-auto"></i>
           </button>

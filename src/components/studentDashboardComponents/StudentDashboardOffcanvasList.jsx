@@ -26,14 +26,14 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
     <div className="tw-grid tw-gap-y-3" onClick={()=> handleClick()} style={{cursor: "pointer"}}>
         <div className="tw-flex tw-gap-5">
           <i className={icons} style={{marginTop: 'auto', marginBottom: 'auto'}}></i>
-          <div className="capitalize">{item}</div>
+          <div className="tw-capitalize">{item}</div>
         </div>
         <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         onClick={handleClose}
       >
-      {isLoading && <div class="loader"></div>}
+      {isLoading && <div className="loader"></div>}
       </Backdrop>
       </div>
     </>
