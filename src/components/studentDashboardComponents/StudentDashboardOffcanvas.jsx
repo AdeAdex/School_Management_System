@@ -6,14 +6,14 @@ const StudentDashboardOffcanvas = () => {
   return (
     <>
       <div
-        className="position-relative"
+        className="tw-relative"
         id=""
         style={{
           width: "100%",
           height: "100%",
         }}
       >
-        <div className="dashboard-offcanvas tw-w-full position-relative text-white">
+        <div className="dashboard-offcanvas tw-w-full tw-relative tw-text-white">
           <div
             className="tw-w-full tw-flex tw-justify-center tw-shadow tw-border-b-2"
             style={{ height: "80px", width: "100%" }}
@@ -26,36 +26,36 @@ const StudentDashboardOffcanvas = () => {
             />
           </div>
           <div
-            className="capitalize text-center py-6 text-lg font-bold"
+            className="tw-capitalize tw-text-center tw-py-6 tw-text-lg tw-font-bold"
             id="menu"
           >
             personal menu
           </div>
-          <div className="px-4 grid gap-y-12">
-            <div className="grid gap-y-5">
+          <div className="tw-px-4 tw-grid tw-gap-y-12">
+            <div className="tw-grid tw-gap-y-5">
               <StudentDashboardOffcanvasTitle title="main menu" />
               <StudentDashboardOffcanvasList item="dashboard" params="/student_dashboard/home" icons="fas fa-border-all" />
             </div>
-            <div className="grid gap-y-5">
+            <div className="tw-grid tw-gap-y-5">
               <StudentDashboardOffcanvasTitle title="profile" />
               <StudentDashboardOffcanvasList item="my profile" params="/student_dashboard/profile" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="change password" params="/student_dashboard/change_password" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="edit details" params="/student_dashboard/edit_details" icons="fas fa-edit" />
             </div>
-            <div className="grid gap-y-5">
+            <div className="tw-grid tw-gap-y-5">
               <StudentDashboardOffcanvasTitle title="academics" />
               <StudentDashboardOffcanvasList item="resources" params="/student_dashboard/resources" icons="fas fa-file"/>
               <StudentDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="registration history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
             </div>
-            <div className="grid gap-y-5">
+            <div className="tw-grid tw-gap-y-5">
               <StudentDashboardOffcanvasTitle title="payment" />
               <StudentDashboardOffcanvasList item="pay tuition" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="payment history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
             </div>
-            <div className="grid gap-y-5">
+            <div className="tw-grid tw-gap-y-5">
               <StudentDashboardOffcanvasTitle title="" />
             </div>
           </div>

@@ -23,8 +23,8 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
   }
   return (
     <>
-    <div className="grid gap-y-3" onClick={()=> handleClick()} style={{cursor: "pointer"}}>
-        <div className="flex gap-5">
+    <div className="tw-grid tw-gap-y-3" onClick={()=> handleClick()} style={{cursor: "pointer"}}>
+        <div className="tw-flex tw-gap-5">
           <i className={icons} style={{marginTop: 'auto', marginBottom: 'auto'}}></i>
           <div className="capitalize">{item}</div>
         </div>
