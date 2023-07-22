@@ -11,33 +11,17 @@
 // }
 
 module.exports = {
-  purge: ['./src/**/*.html', './src/**/*.js', './src/**/*.jsx'], // Add your HTML and JavaScript files
-  darkMode: false,
+  mode: "jit",
+  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"],
   theme: {
-    extend: {},
+    // Your theme configuration here
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    // Your variants configuration here
+  },
+  plugins: [
+    // Your plugins configuration here
+  ],
+  prefix: "tw-", // Add a prefix to Tailwind CSS classes
 };
-
-
-// module.exports = {
-//   mode: "jit", // Enable JIT mode
-//   purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"], // Purge unused styles during build
-//   theme: {
-//     // Your theme configuration here (customize your colors, typography, spacing, etc.)
-//     extend: {
-//       // Add any additional custom styles here
-//     },
-//   },
-//   variants: {
-//     extend: {
-//       // Add any custom variants here (e.g., to override default behavior)
-//     },
-//   },
-//   plugins: [
-//     // Add any custom plugins here (if required)
-//   ],
-// };
-
 

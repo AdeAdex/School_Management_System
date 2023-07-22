@@ -181,7 +181,7 @@ const StudentPortalDashboard = () => {
     <>
       <section
         id=""
-        className="d-flex tailwind-page"
+        className="tw-flex"
         style={{ width: "100%", height: "100vh", overflow: "hidden" }}
       >
         <div
@@ -199,11 +199,11 @@ const StudentPortalDashboard = () => {
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
           <StudentDashboardNavbar />
           <div
-            className="flex p-5"
+            className="tw-flex tw-p-5"
             style={{ overflowY: "scroll", height: "100%" }}
           >
             {isLoading ? (
-              <div class="loader"></div>
+              <div className="loader"></div>
             ) : (
               <Routes>
                 <Route path="home" element={<StudentDashboardHome />} />
