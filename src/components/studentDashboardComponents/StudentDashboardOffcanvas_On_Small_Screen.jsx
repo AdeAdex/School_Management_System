@@ -13,9 +13,9 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
         aria-labelledby="offcanvasWithBothOptionsLabel"
         style={{ backgroundColor: "#030552", width: '75%'}}
       >
-       <div className="dashboard-offcanvas w-100 position-relative text-white">
+       <div className="dashboard-offcanvas tw-w-full tw-relative tw-text-white">
           <div
-            className="w-full flex justify-center shadow border-b-2"
+            className="tw-w-full tw-flex tw-justify-center tw-shadow-xl tw-border-b-2"
             style={{ height: "80px" }}
           >
             <img
