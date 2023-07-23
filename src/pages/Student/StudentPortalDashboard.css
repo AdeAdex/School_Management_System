@@ -84,10 +84,9 @@
   }
 
   .centered-container {
-    /* background-color: green; */
     padding: unset !important;
-    /* padding-bottom: 150px; */
     overflow-y: unset !important;
+    margin-top: 100px;
   }
 
   .each-info {
