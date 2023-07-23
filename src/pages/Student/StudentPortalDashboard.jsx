@@ -197,7 +197,9 @@ const StudentPortalDashboard = () => {
           <StudentDashboardOffcanvas />
         </div>
         <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
+        <div className="nav-container">
           <StudentDashboardNavbar />
+        </div>
           <div
             className="d-flex p-5 centered-container"
             style={{ overflowY: "scroll", height: "100%" }}
