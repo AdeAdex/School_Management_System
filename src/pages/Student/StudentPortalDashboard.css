@@ -48,12 +48,15 @@
     display: none !important;
   }
 
-  .dashboard {
+  #dashboard {
     height: 100% !important;
+    /* padding-bottom: 100px !important; */
+    overflow-y: scroll !important;
   }
 
   #nav {
     width: 100% !important;
+    /* position: fixed; */
   }
 
   .offcanvas-btn {
@@ -75,6 +78,7 @@
     /* background-color: green; */
     padding: unset !important;
     padding-bottom: 150px;
+    overflow-y: unset !important;
   }
 
   .each-info {
