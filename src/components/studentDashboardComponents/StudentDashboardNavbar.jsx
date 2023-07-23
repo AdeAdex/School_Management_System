@@ -5,45 +5,28 @@ import axios from "axios";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger, Avatar } from "@mantine/core";
 import AvatarUploader from "./AvatarUploader";
+import StudentDashboardOffcanvas from "./StudentDashboardOffcanvas";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  // const offCanvas = () => {
-  //   toggle();
-  //   if (offCan.style.width == "20%") {
-  //     offCan.style.width = "5%";
-  //     nav.style.width = "95%";
-  //     menu.style.setProperty("display", "none", "important");
-  //   } else {
-  //     offCan.style.width = "20%";
-  //     nav.style.width = "80%";
-  //     menu.style.setProperty("display", "block", "important");
-  //   }
-
-  //   var x = window.matchMedia("(max-width: 768px)");
-
-  //   if (x.matches) {
-  //     ourBody.classList.add("new-class");
-  //   } else {
-  //   }
-  // };
-
+  const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
     const nav = document.getElementById("nav");
-    // const menu = document.getElementById("menu");
+    const menu = document.getElementById("menu");
     toggle();
-
 
     if (offCan.style.width === "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
-      // menu.style.setProperty("display", "none", "important");
+      menu.style.setProperty("display", "none", "important");
+      setOffCanvasTitleVisible(false);
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
-      // menu.style.setProperty("display", "block", "important");
+      menu.style.setProperty("display", "block", "important");
+      setOffCanvasTitleVisible(true);
     }
 
     var x = window.matchMedia("(max-width: 768px)");
@@ -160,7 +143,9 @@ const StudentDashboardNavbar = () => {
             size="lg" radius="xl"
           /> */}
         </div>
+      {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
+
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>
