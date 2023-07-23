@@ -93,6 +93,10 @@
     width: 100% !important;
   }
 
+  .course-reg-form {
+    width: 100% !important;
+  }
+
 }
 
 .custom-stepper .completed-step {

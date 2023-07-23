@@ -144,7 +144,7 @@ const StudentCourseRegistration = () => {
       <form
         action=""
         onSubmit={handleSubmit}
-        className="d-flex shadow p-3"
+        className="d-flex shadow p-3 course-reg-form"
         style={{ position: "fixed", bottom: "40px", width: "75%" }}
       >
         <FormControl variant="standard" sx={{ m: 1, width: "80%" }}>
