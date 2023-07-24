@@ -6,7 +6,7 @@ const StudentDashboardCalendar = () => {
         const [myCalendar, setMyCalendar] = useState(new Date())
   return (
     <>
-    <Calendar className="shadow" onChange={setMyCalendar} value={myCalendar}/>
+    <Calendar className="shadow mx-auto" onChange={setMyCalendar} value={myCalendar}/>
     </>
   )
 }

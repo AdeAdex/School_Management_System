@@ -5,9 +5,9 @@ import StudentDashboardPieChart from "../../components/studentDashboardComponent
 const StudentDashboardHome = () => {
   return (
     <>
-      <div className="d-flex justify-content-between dashboard-home-container w-100 h-100">
+      <div className="d-flex flex-lg-row flex-column justify-content-between dashboard-home-container w-100 h-100">
         <div className=" text-black">hello dashboard</div>
-        <div className="right d-flex shadow p-3 flex-column justify-content-center gap-2" style={{width: '350px', marginLeft: 'auto'}}>
+        <div className="dashboard-home-container-right d-flex shadow p-3 flex-column justify-content-center gap-2" style={{width: '350px', marginLeft: 'auto'}}>
           <StudentDashboardCalendar />
           <StudentDashboardPieChart />
         </div>
