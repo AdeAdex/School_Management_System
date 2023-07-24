@@ -83,7 +83,7 @@ const StudentDashboardNavbar = () => {
         // id="nav"
         style={{ width: "100%", height: "80px" }}
       >
-        <div className="w-50 my-auto d-flex">
+        <div className="w-50 my-auto d-flex burger">
           {/* <button
             className="btn my-auto offcanvas-btn"
             type="button"
@@ -108,18 +108,18 @@ const StudentDashboardNavbar = () => {
             <i className="fas fa-bars fs-3 px-2"></i>
           </button>
           <div
-            className="my-auto"
+            className="my-auto navbar-content"
             style={{ height: "25px", border: '1px solid blue' }}
           ></div>
-          <div className="fw-bold ms-3 my-auto fs-5">
+          <div className="fw-bold ms-3 my-auto fs-5 navbar-content" >
             {globalState.firstName} {globalState.lastName}
           </div>
-          <div className="my-auto ms-auto fw-bold">Class: {globalState.level}</div>
-          <div className="my-auto ms-auto fw-bold">Term: {globalState.term}</div>
-          <div className="my-auto ms-auto fw-bold">Option: {globalState.options}</div>
+          <div className="my-auto ms-auto fw-bold navbar-content">Class: {globalState.level}</div>
+          <div className="my-auto ms-auto fw-bold navbar-content">Term: {globalState.term}</div>
+          <div className="my-auto ms-auto fw-bold navbar-content">Option: {globalState.options}</div>
         </div>
           
-        <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4">
+        <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4 navbar-icons">
           <button onClick={gooo} className="border-0">
             <i className="fas fa-bell fs-4 my-auto"></i>
           </button>
@@ -132,9 +132,9 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="border-0">
-            <img src="pic/avatar.png" style={{ width: "50px" }} alt="" />
-          </button>
+          {/* <button onClick={gooo} className="border-2">
+            <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
+          </button> */}
           <AvatarUploader/>
           {/* <input type="file" className="bg-info" name="" id="" onChange={(e) => changeFile(e)} />
           <button onClick={saveFile}>Upload</button>

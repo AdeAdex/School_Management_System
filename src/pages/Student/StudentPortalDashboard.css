@@ -105,6 +105,22 @@
     width: 100% !important;
   }
 
+  .navbar-content {
+    display: none;
+  }
+
+  .burger {
+    width: auto !important;
+  }
+
+  .navbar-icons {
+    width: 90% !important;
+    justify-content: space-between !important;
+    margin-right: unset !important;
+    /* border: 1px solid red !important; */
+    gap: unset !important;
+  }
+
 }
 
 .custom-stepper .completed-step {
