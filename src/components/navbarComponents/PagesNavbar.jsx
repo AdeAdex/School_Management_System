@@ -113,7 +113,7 @@ const PagesNavbar = () => {
               <StickyNav
                 name="login"
                 icon="fas fa-right-to-bracket"
-                to_where="/account_type"
+                to_where="/login_account_type"
                 styles={{ width: "auto" }}
               ></StickyNav>
               

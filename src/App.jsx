@@ -40,6 +40,7 @@ import StudentChangePassword from './pages/Student/StudentChangePassword'
 import StudentEditDetails from './pages/Student/StudentEditDetails'
 import StudentCourseRegistration from './pages/Student/StudentCourseRegistration'
 import ForgotPassword from './pages/Student/ForgotPassword'
+import LoginAccountType from './pages/LoginAccountType'
 
 
 
@@ -110,6 +111,7 @@ function App() {
         <Route path='/staff_signup' element={<StaffSignUp/>}/>
         <Route path='/staff_signin' element={<StaffSignIn/>}/>
         <Route path='/account_type' element={<AccountTypePage/>}/>
+        <Route path='/login_account_type' element={<LoginAccountType/>}/>
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>
