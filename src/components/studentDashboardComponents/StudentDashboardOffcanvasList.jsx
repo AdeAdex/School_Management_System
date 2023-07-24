@@ -27,7 +27,7 @@ const StudentDashboardOffcanvasList = ({icons, item, params}) => {
   }
   return (
     <>
-    <div className="d-grid gap-3 text-white" onClick={()=> handleClick()} style={{cursor: "pointer"}}>
+    <div className={`d-grid gap-3 text-white ${offcanvasState ? 'offcanvaslist' : ''}`} onClick={()=> handleClick()} style={{cursor: "pointer"}}>
         <div className="d-flex gap-3">
           <i className={icons} style={{marginTop: 'auto', marginBottom: 'auto'}}></i>
           {!offcanvasState && <div className="text-capitalize">{item}</div> }

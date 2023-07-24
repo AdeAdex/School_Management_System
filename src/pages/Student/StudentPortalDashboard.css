@@ -38,7 +38,11 @@
 }
 
 .meme {
-  margin-top: 100px;
+  margin-top: 50px;
+}
+
+.offcanvaslist {
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 768px) {
