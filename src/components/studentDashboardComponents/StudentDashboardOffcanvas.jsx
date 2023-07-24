@@ -2,6 +2,7 @@ import React from 'react'
 import StudentDashboardOffcanvasTitle from './StudentDashboardOffcanvasTitle'
 import StudentDashboardOffcanvasList from './StudentDashboardOffcanvasList'
 import { useSelector } from 'react-redux'
+import StudentDashboardOffcanvasList2 from './StudentDashboardOffcanvasList2'
 
 
 const StudentDashboardOffcanvas = () => {
@@ -60,7 +61,8 @@ const StudentDashboardOffcanvas = () => {
             </div>
             <div className="d-grid gap-3 mb-5">
               {/* <StudentDashboardOffcanvasTitle title="" /> */}
-              <StudentDashboardOffcanvasList item="logout" icons="fas fa-user" />
+              {/* <StudentDashboardOffcanvasList item="logout" icons="fas fa-user" /> */}
+              <StudentDashboardOffcanvasList2 item="logout" icons="fas fa-user"/>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import StudentDashboardOffcanvasTitle from './StudentDashboardOffcanvasTitle'
 import StudentDashboardOffcanvasList from './StudentDashboardOffcanvasList'
+import StudentDashboardOffcanvasList2 from './StudentDashboardOffcanvasList2'
 
 const StudentDashboardOffcanvas_On_Small_Screen = () => {
   return (
@@ -57,7 +58,7 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
             </div>
             <div className="d-grid gap-3 mb-5">
               {/* <StudentDashboardOffcanvasTitle title="" /> */}
-              <StudentDashboardOffcanvasList item="logout" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList2 item="logout" icons="fas fa-user" />
             </div>
           </div>
         </div>
