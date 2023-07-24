@@ -89,7 +89,7 @@ function MyApp({myEmail: myEmail}) {
     <>
       <form
         action=""
-        className="w-100 email-verification-fro mx-auto d-flex flex-column border shadow"
+        className="w-100 email-verification-form mx-auto d-flex flex-column border shadow"
         method="post"
         onSubmit={changePass.handleSubmit}
       >

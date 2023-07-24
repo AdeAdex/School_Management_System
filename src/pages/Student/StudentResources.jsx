@@ -36,7 +36,7 @@ const StudentResources = () => {
 
   return (
     <>
-      <div className="pb-5">
+      <div className="pb-5 resources-container">
         <h3>Resources</h3>
         <div className="d-flex flex-column gap-4">
           {receivedVideo && receivedVideo.length > 0

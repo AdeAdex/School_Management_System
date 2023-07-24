@@ -95,6 +95,7 @@
     padding: unset !important;
     overflow-y: unset !important;
     margin-top: 100px;
+    /* height: 100% !important; */
   }
 
   .each-info {
@@ -121,6 +122,10 @@
     padding-right: 15px;
     /* border: 1px solid red !important; */
     gap: unset !important;
+  }
+
+  .resources-container { 
+    width: 100%;
   }
 
 }
