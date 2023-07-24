@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import StudentDashboardOffcanvasTitle from './StudentDashboardOffcanvasTitle'
 import StudentDashboardOffcanvasList from './StudentDashboardOffcanvasList'
 import StudentDashboardOffcanvasList2 from './StudentDashboardOffcanvasList2'
 
+
 const StudentDashboardOffcanvas_On_Small_Screen = () => {
+  const offCanvasRef = useRef(null);
+  const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
+
+  const toggleOffcanvas = () => {
+    setIsOffcanvasOpen((prev) => !prev); // Toggle the isOffcanvasOpen state
+  };
+
   return (
     <>
       <div
@@ -13,6 +21,7 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
         id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel"
         style={{ backgroundColor: "#030552", width: '75%', overflowY: 'scroll'}}
+        ref={offCanvasRef}
       >
        <div className="dashboard-offcanvas w-100 position-relative text-white">
           <div
@@ -35,26 +44,26 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
           <div className="px-4 d-grid gap-5">
             <div className="d-grid gap-3">
               <StudentDashboardOffcanvasTitle title="main menu" />
-              <StudentDashboardOffcanvasList item="dashboard" params="/student_dashboard/home" icons="fas fa-border-all" />
+              <StudentDashboardOffcanvasList toggleOffcanvas={toggleOffcanvas} item="dashboard" params="/student_dashboard/home" icons="fas fa-border-all" />
             </div>
             <div className="d-grid gap-3">
               <StudentDashboardOffcanvasTitle title="profile" />
-              <StudentDashboardOffcanvasList item="my profile" params="/student_dashboard/profile" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList item="change password" params="/student_dashboard/change_password" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList item="edit details" params="/student_dashboard/edit_details" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList  item="my profile" params="/student_dashboard/profile" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList  item="change password" params="/student_dashboard/change_password" icons="fas fa-lock" />
+              <StudentDashboardOffcanvasList  item="edit details" params="/student_dashboard/edit_details" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
               <StudentDashboardOffcanvasTitle title="academics" />
-              <StudentDashboardOffcanvasList item="resources" params="/student_dashboard/resources" icons="fas fa-file"/>
-              <StudentDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList item="registration history" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList  item="resources" params="/student_dashboard/resources" icons="fas fa-file"/>
+              <StudentDashboardOffcanvasList  item="course registration" params="/student_dashboard/course_registration" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList  item="registration history" icons="fas fa-lock" />
+              <StudentDashboardOffcanvasList  item="results" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
               <StudentDashboardOffcanvasTitle title="payment" />
-              <StudentDashboardOffcanvasList item="pay tuition" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList item="payment history" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList  item="pay tuition" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList  item="payment history" icons="fas fa-lock" />
+              <StudentDashboardOffcanvasList  item="results" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3 mb-5">
               {/* <StudentDashboardOffcanvasTitle title="" /> */}

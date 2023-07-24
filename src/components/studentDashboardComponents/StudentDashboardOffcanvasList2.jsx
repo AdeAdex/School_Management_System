@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import { useSelector } from "react-redux";
+import { Tooltip, Button } from '@mantine/core'
 
-const StudentDashboardOffcanvasList2 = ({icons, item, params}) => {
+
+const StudentDashboardOffcanvasList2 = ({icons, item, label, params}) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const offcanvasState = useSelector((state) => state.portalReducer.hide_show);
@@ -31,13 +33,12 @@ const StudentDashboardOffcanvasList2 = ({icons, item, params}) => {
         onClick={() => handleClick()}
         style={{ cursor: "pointer" }}
       >
-        <div className="d-flex gap-3">
-          <i
-            className={icons}
-            style={{ marginTop: "auto", marginBottom: "auto" }}
-          ></i>
-          {!offcanvasState && <div className="text-capitalize">{item}</div>}
-        </div>
+        <Tooltip transitionProps={{ transition: 'slide-right', duration: 300 }} label={label} withArrow arrowSize={6} position="top">
+      <div className="d-flex gap-3">
+        <i className={icons} style={{ marginTop: 'auto', marginBottom: 'auto' }}></i>
+        {!offcanvasState && <div className="text-capitalize">{item}</div>}
+      </div>
+    </Tooltip>
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={open}
