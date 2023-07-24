@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanvas_On_Small_Screen";
 import axios from "axios";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger, Avatar } from "@mantine/core";
 import AvatarUploader from "./AvatarUploader";
 import StudentDashboardOffcanvas from "./StudentDashboardOffcanvas";
+import { show_hide_offcanvas } from "../../redux/portalSlice";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
+  const offcanvasState = useSelector((state) => state.portalReducer.hide_show)
+  const dispatch = useDispatch();
+
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -22,6 +26,7 @@ const StudentDashboardNavbar = () => {
       nav.style.width = "95%";
       menu.style.setProperty("display", "none", "important");
       setOffCanvasTitleVisible(false);
+      dispatch(show_hide_offcanvas(true))
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
