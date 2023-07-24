@@ -1,10 +1,20 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+
 
 const SigninForm = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [enteredEmail, setEnteredEmail] = useState("")
+
+
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   let formik = useFormik({
     initialValues: {
@@ -13,6 +23,7 @@ const SigninForm = () => {
     },
 
     onSubmit: (values) => {
+      setEnteredEmail(values.email);
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_signin";
       axios.post(endpoint, values)
       .then((res) => {
@@ -41,6 +52,13 @@ const SigninForm = () => {
       });
     },
   });
+
+
+  const navigateToOTP = () => {
+    navigate('/forgot_password', {state: {email: enteredEmail }});
+  }
+
+
   return (
     <>
       <div className="signin-form shadow bg-light">
@@ -76,12 +94,15 @@ const SigninForm = () => {
           </div>
           <div className="form-control signin-form-control">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               required="required"
               name="password"
               onChange={formik.handleChange}
               placeholder="Password"
             />
+            <div className="password-toggle" onClick={togglePasswordVisibility}>
+              {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+              </div>
             <label>
               <span style={{ transitionDelay: "0ms" }}>P</span>
               <span style={{ transitionDelay: "50ms" }}>a</span>
@@ -98,9 +119,8 @@ const SigninForm = () => {
             <span>
               <input type="checkbox" id="checkBox" /> Remember Me
             </span>
-            <a href="" id="forgotPass">
-              Forgot password
-            </a>
+            
+            <div onClick={()=> navigateToOTP()} className="text-primary" style={{cursor: 'pointer'}}>Forgot Password?</div>
           </div>
           <button type="submit" className="button mt-5">
             <div className="btn-text">Login</div>
