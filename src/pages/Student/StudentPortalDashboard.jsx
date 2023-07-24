@@ -189,7 +189,7 @@ const StudentPortalDashboard = () => {
           id="offCan"
           style={{
             width: "20%",
-            height: "100vh",
+            height: "100%",
             backgroundColor: "#030552",
             overflowY: "scroll",
           }}
@@ -201,8 +201,8 @@ const StudentPortalDashboard = () => {
           <StudentDashboardNavbar />
         </div>
           <div
-            className="d-flex p-5 centered-container"
-            style={{ overflowY: "scroll", height: "100%" }}
+            className="d-flex p-4 centered-container"
+            style={{ overflowY: "scroll", height: "90%" }}
           >
             {isLoading ? (
               <div className="loader"></div>

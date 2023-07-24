@@ -4,7 +4,7 @@ import { PieChart } from 'react-minimal-pie-chart'
 const StudentDashboardPieChart = () => {
   return (
     <>
-    <PieChart
+    <PieChart className='mx-auto' style={{width: '80%'}}
         data={[
           { title: "One", value: 10, color: "#E38627" , animate: true, animationDuration:500, animationEasing: "linear" },
           { title: "Two", value: 15, color: "#C13C37" },        
