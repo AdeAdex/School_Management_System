@@ -30,7 +30,7 @@ const SignupCarousel = ({
             <div className="carousel-indicators" style={{ bottom: "-60px" }}>
               <button
                 type="button"
-                data-bs-target="#carouselExampleIndicators"
+                data-bs-target="##carouselExampleControls"
                 data-bs-slide-to="0"
                 className="active"
                 aria-current="true"
@@ -38,13 +38,13 @@ const SignupCarousel = ({
               ></button>
               <button
                 type="button"
-                data-bs-target="#carouselExampleIndicators"
+                data-bs-target="##carouselExampleControls"
                 data-bs-slide-to="1"
                 aria-label="Slide 2"
               ></button>
               <button
                 type="button"
-                data-bs-target="#carouselExampleIndicators"
+                data-bs-target="##carouselExampleControls"
                 data-bs-slide-to="2"
                 aria-label="Slide 3"
               ></button>
