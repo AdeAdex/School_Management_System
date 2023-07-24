@@ -103,78 +103,84 @@ const StudentCourseRegistration = () => {
 
   return (
     <>
-      <div>Course Registration</div>
-      <div ref={divRef}>{globalState.level}</div>
-      <div>
-        <table className="table table-borderd">
-          <thead>
-            <tr>
-              <td>Subject Title</td>
-              <td>Term</td>
-              <td>Options</td>
-              <td>Action</td>
-            </tr>
-          </thead>
-          <tbody>
-            {yhea && yhea.length > 0 ? (
-              yhea.map((subject, index) => (
-                <tr key={index}>
-                  <td>{subject.mySubject}</td>
-                  <td>{subject.newTerm}</td>
-                  <td>{subject.myOption}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-white shadow delete-btn"
-                      onClick={() => deleteSelectedSubject(subject._id)}
-                    >
-                      Delete
-                    </button>
+      <div className="w-100">
+        <div className="d-flex gap-4">
+          <div>Course Registration: </div>
+          <div className="fw-bold" ref={divRef}>{globalState.level}</div>
+        </div>
+        <div>
+          <table className="table table-borderd mt-4">
+            <thead>
+              <tr>
+                <td>Subject Title</td>
+                <td>Term</td>
+                <td>Options</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              {yhea && yhea.length > 0 ? (
+                yhea.map((subject, index) => (
+                  <tr key={index}>
+                    <td>{subject.mySubject}</td>
+                    <td>{subject.newTerm}</td>
+                    <td>{subject.myOption}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="btn btn-white shadow delete-btn"
+                        onClick={() => deleteSelectedSubject(subject._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="text-center">
+                    No Results Found. Add subjects.
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="4" className="text-center">No Results Found. Add subjects.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
+        </div>
+        <form
+          action=""
+          onSubmit={handleSubmit}
+          className="d-flex shadow p-3 course-reg-form"
+          style={{ position: "fixed", bottom: "40px", width: "75%" }}
+        >
+          <FormControl variant="standard" sx={{ m: 1, width: "80%" }}>
+            <InputLabel id="demo-simple-select-standard-label">
+              Class Subjects
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-standard-label"
+              id="demo-simple-select-standard"
+              value={subject}
+              onChange={handleChange}
+              label="Class Subjects"
+              name="registerSubject"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              {classSubject
+                ? classSubject.map((option, index) => (
+                    <MenuItem key={index} value={option}>
+                      {option}
+                    </MenuItem>
+                  ))
+                : null}
+            </Select>
+          </FormControl>
+          <button type="submit" className="btn btn-primary my-auto">
+            Add Subject
+          </button>
+        </form>
       </div>
-      <form
-        action=""
-        onSubmit={handleSubmit}
-        className="d-flex shadow p-3 course-reg-form"
-        style={{ position: "fixed", bottom: "40px", width: "75%" }}
-      >
-        <FormControl variant="standard" sx={{ m: 1, width: "80%" }}>
-          <InputLabel id="demo-simple-select-standard-label">
-            Class Subjects
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            value={subject}
-            onChange={handleChange}
-            label="Class Subjects"
-            name="registerSubject"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            {classSubject
-              ? classSubject.map((option, index) => (
-                  <MenuItem key={index} value={option}>
-                    {option}
-                  </MenuItem>
-                ))
-              : null}
-          </Select>
-        </FormControl>
-        <button type="submit" className="btn btn-primary my-auto">
-          Add Subject
-        </button>
-      </form>
     </>
   );
 };
