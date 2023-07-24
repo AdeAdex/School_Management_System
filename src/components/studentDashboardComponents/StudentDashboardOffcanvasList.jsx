@@ -45,8 +45,10 @@ const StudentDashboardOffcanvasList = ({
           label={label}
           withArrow
           arrowSize={6}
-          position="top"
-          style={{ position: 'absolute', top: '-30px',  right: '-1rem', margin: '-10px 0' }}
+          position="right"
+          offset={35}
+          color="darkblue"
+          // style={{ position: 'absolute',  margin: '0px 40px' }}
         >
           <div className="d-flex gap-3">
             <i

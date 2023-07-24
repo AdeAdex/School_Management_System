@@ -14,14 +14,14 @@ const StudentDashboardOffcanvas = () => {
   return (
     <>
       <div
-        className="position-relative"
+        className="position-relativ"
         id=""
         style={{
           width: "100%",
           height: "100%",
         }}
       >
-        <div className="dashboard-offcanvas w-100 position-relative text-white">
+        <div className="dashboard-offcanvas w-100 position-relativ text-white">
           <div
             className="w-100 d-flex justify-content-center shadow"
             style={{ height: "80px", width: "100%", borderBottom: '2px solid white' }}

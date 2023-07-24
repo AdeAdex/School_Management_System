@@ -185,7 +185,7 @@ const StudentPortalDashboard = () => {
         style={{ width: "100%", height: "100vh", overflow: "hidden" }}
       >
         <div
-          className="position-relative"
+          className="position-relativ"
           id="offCan"
           style={{
             width: "20%",
