@@ -4,7 +4,7 @@ import StudentDashboardOffcanvasList from './StudentDashboardOffcanvasList'
 import { useSelector } from 'react-redux'
 
 
-const StudentDashboardOffcanvas = ({ isVisible }) => {
+const StudentDashboardOffcanvas = () => {
   const offcanvasState = useSelector((state) => state.portalReducer.hide_show)
   return (
     <>
@@ -36,24 +36,24 @@ const StudentDashboardOffcanvas = ({ isVisible }) => {
           </div>
           <div className="px-4 d-grid gap-5">
             <div className="d-grid gap-3">
-              <StudentDashboardOffcanvasTitle title="main menu" style={{ display: isVisible ? 'block' : 'none' }} />
+            {!offcanvasState && <StudentDashboardOffcanvasTitle title="main menu" /> }
               <StudentDashboardOffcanvasList item="dashboard" params="/student_dashboard/home" icons="fas fa-border-all" />
             </div>
             <div className="d-grid gap-3">
-              <StudentDashboardOffcanvasTitle title="profile"  style={{ display: isVisible ? 'block' : 'none' }}/>
+              <StudentDashboardOffcanvasTitle title="profile" />
               <StudentDashboardOffcanvasList item="my profile" params="/student_dashboard/profile" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="change password" params="/student_dashboard/change_password" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="edit details" params="/student_dashboard/edit_details" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
-              <StudentDashboardOffcanvasTitle title="academics" style={{ display: isVisible ? 'block' : 'none' }} />
+              <StudentDashboardOffcanvasTitle title="academics" />
               <StudentDashboardOffcanvasList item="resources" params="/student_dashboard/resources" icons="fas fa-file"/>
               <StudentDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="registration history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
-              <StudentDashboardOffcanvasTitle title="payment"  style={{ display: isVisible ? 'block' : 'none' }}/>
+              <StudentDashboardOffcanvasTitle title="payment" />
               <StudentDashboardOffcanvasList item="pay tuition" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="payment history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" icons="fas fa-edit" />
