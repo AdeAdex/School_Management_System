@@ -117,6 +117,8 @@
     width: 90% !important;
     justify-content: space-between !important;
     margin-right: unset !important;
+    padding-left: 15px;
+    padding-right: 15px;
     /* border: 1px solid red !important; */
     gap: unset !important;
   }
