@@ -11,7 +11,6 @@ import { show_hide_offcanvas } from "../../redux/portalSlice";
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
-  const offcanvasState = useSelector((state) => state.portalReducer.hide_show)
   const dispatch = useDispatch();
 
 
@@ -32,6 +31,7 @@ const StudentDashboardNavbar = () => {
       nav.style.width = "80%";
       menu.style.setProperty("display", "block", "important");
       setOffCanvasTitleVisible(true);
+      dispatch(show_hide_offcanvas(false))
     }
 
     var x = window.matchMedia("(max-width: 768px)");

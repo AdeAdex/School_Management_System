@@ -1,8 +1,11 @@
 import React from 'react'
 import StudentDashboardOffcanvasTitle from './StudentDashboardOffcanvasTitle'
 import StudentDashboardOffcanvasList from './StudentDashboardOffcanvasList'
+import { useSelector } from 'react-redux'
+
 
 const StudentDashboardOffcanvas = ({ isVisible }) => {
+  const offcanvasState = useSelector((state) => state.portalReducer.hide_show)
   return (
     <>
       <div
