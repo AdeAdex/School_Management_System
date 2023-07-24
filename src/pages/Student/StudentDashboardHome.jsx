@@ -1,21 +1,19 @@
-import React from 'react'
-import StudentDashboardCalendar from '../../components/studentDashboardComponents/StudentDashboardCalendar'
-import StudentDashboardPieChart from '../../components/studentDashboardComponents/StudentDashboardPieChart'
+import React from "react";
+import StudentDashboardCalendar from "../../components/studentDashboardComponents/StudentDashboardCalendar";
+import StudentDashboardPieChart from "../../components/studentDashboardComponents/StudentDashboardPieChart";
 
 const StudentDashboardHome = () => {
   return (
     <>
-      <div className="flex p-5">
-      <div className="w-9/12 text-black">
-        hello dashboard
-      </div>
-      <div>
-        <StudentDashboardCalendar/>
-        <StudentDashboardPieChart/>
-      </div>
+      <div className="d-flex p-5 dashboard-home-container">
+        <div className=" text-black">hello dashboard</div>
+        <div className="right d-flex border flex-column" style={{marginLeft: 'auto'}}>
+          <StudentDashboardCalendar />
+          <StudentDashboardPieChart />
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default StudentDashboardHome
+export default StudentDashboardHome;
