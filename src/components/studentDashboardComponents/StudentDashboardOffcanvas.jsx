@@ -34,7 +34,7 @@ const StudentDashboardOffcanvas = () => {
           >
             personal menu
           </div>
-          <div className="px-4 d-grid gap-5">
+          <div className={`px-4 d-grid gap-5 ${offcanvasState ? 'meme' : ''}`} >
             <div className="d-grid gap-3">
             {!offcanvasState && <StudentDashboardOffcanvasTitle title="main menu" /> }
               <StudentDashboardOffcanvasList item="dashboard" params="/student_dashboard/home" icons="fas fa-border-all" />

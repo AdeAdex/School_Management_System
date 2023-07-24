@@ -37,6 +37,10 @@
   background-color: initial; /* Change the color and opacity as desired */
 }
 
+.meme {
+  margin-top: 100px;
+}
+
 @media screen and (min-width: 768px) {
   .offcanvas-btn2 {
     display: none !important;
