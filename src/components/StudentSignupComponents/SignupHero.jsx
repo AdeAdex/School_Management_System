@@ -15,7 +15,7 @@ const SignupHero = () => {
           backgroundColor: "#3c37ff",
           borderRadius: "10px",
           height: "100%",
-          backgroundImage: "url('pic/signupimg.jpg')",
+          backgroundImage: "url('/pic/signupimg.jpg')",
           backgroundRepeat: "no-repeat",
         }}
       >

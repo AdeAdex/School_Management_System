@@ -18,7 +18,7 @@ const SignupCarousel = ({
         style={{
           backgroundColor: "#2520e3",
           borderRadius: "20px",
-          marginTop: "125px",
+          marginTop: "auto",
         }}
       >
         <div className="d-flex gap-3 mt-3">
