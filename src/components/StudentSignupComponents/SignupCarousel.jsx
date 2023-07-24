@@ -54,7 +54,7 @@ const SignupCarousel = ({
                 <div>{carousel_content}</div>
                 <div className="d-flex gap-3 mt-4">
                   <img
-                    src="pic/avatar.png"
+                    src="/pic/avatar.png"
                     alt=""
                     style={{
                       width: "40px",
@@ -73,7 +73,7 @@ const SignupCarousel = ({
                 <div>{carousel_content2}</div>
                 <div className="d-flex gap-3 mt-3">
                   <img
-                    src="pic/2.png"
+                    src="/pic/2.png"
                     alt=""
                     style={{
                       width: "40px",
@@ -92,7 +92,7 @@ const SignupCarousel = ({
                 <div>{carousel_content3}</div>
                 <div className="d-flex gap-3 mt-3">
                   <img
-                    src="pic/1.jpg"
+                    src="/pic/1.jpg"
                     alt=""
                     style={{
                       width: "40px",
