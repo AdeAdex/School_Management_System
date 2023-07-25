@@ -30,7 +30,7 @@ const StaffSigninForm = () => {
         // console.log(res.data.status);
         if (res.data.status) {
           console.log(res.data.status);
-          localStorage.staffSignInToken = res.data.token
+          localStorage.staffSignInToken = res.data.staffSignInToken
           navigate("/staff_dashboard");
         } else {
           setMyMessage(res.data.message)
