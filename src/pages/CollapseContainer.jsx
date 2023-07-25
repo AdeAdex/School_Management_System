@@ -32,7 +32,7 @@ const CollapseContainer = ({btn_txt, content}) => {
             transitionTimingFunction="linear"
             style={{ display: 'inline-flex' }}
           >
-            <Text>{content}</Text>
+            <Text style={{fontFamily: 'monospace'}}>{content}</Text>
           </Collapse>
           
           <Group position="center" mb={0}>
