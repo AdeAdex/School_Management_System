@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footerComponents/Footer";
 
 const LoginAccountType = () => {
   const [selectedAccountType, setSelectedAccountType] = useState("");
@@ -49,7 +50,7 @@ const LoginAccountType = () => {
               Select one of the options below
             </div>
           </div>
-          <div className="d-flex gap-4 mt-4">
+          <div className="d-flex gap-4 mt-4 mx-auto">
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
@@ -110,8 +111,13 @@ const LoginAccountType = () => {
               next
             </button>
           </div>
+          <div className="mt-5">
+            <div className="text-center mb-3" style={{fontFamily: "cursive"}}>Adex protects your privacy</div>
+            <div style={{fontFamily: 'monospace'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform.</div>
+          </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };
