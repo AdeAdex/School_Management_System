@@ -27,7 +27,7 @@ const StaffSigninForm = () => {
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_signin";
       axios.post(endpoint, values)
       .then((res) => {
-        console.log(res.data.status);
+        // console.log(res.data.status);
         if (res.data.status) {
           console.log(res.data.status);
           localStorage.token = res.data.token
@@ -67,7 +67,7 @@ const StaffSigninForm = () => {
   return (
     <>
       <div className="signin-form shadow bg-light">
-      {/* <div className="fs-3 fw-bold bg-red-300" >{myMessage}</div> */}
+      <div className="fs-3 fw-bold bg-red-300" >{myMessage}</div>
         <h1 className="fs-bolder">
           welcome <br />
           back!
