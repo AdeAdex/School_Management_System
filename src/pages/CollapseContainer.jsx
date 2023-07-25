@@ -36,14 +36,14 @@ const CollapseContainer = ({btn_txt, content}) => {
           </Collapse>
           
           <Group position="center" mb={0}>
-            <span className='text-primary' style={{ cursor: 'pointer' }} onClick={toggle}>{btn_txt}</span>
+            <span className='text-primary' style={{ cursor: 'pointer' }} onClick={toggle}>read less</span>
           </Group>
           </div>
          
         ) : (
           <div>
           <Group position="center" mb={0}>
-            <span className='text-primary' style={{ cursor: 'pointer' }} onClick={toggle}>{btn_txt}</span>
+            <span className='text-primary' style={{ cursor: 'pointer' }} onClick={toggle}>read more</span>
           </Group>
           <Collapse
             in={opened}

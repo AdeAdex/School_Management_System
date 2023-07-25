@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/footerComponents/Footer";
 import CollapseContainer from "./CollapseContainer";
+import './LoginAccountType.css'
 
 const LoginAccountType = () => {
   const [selectedAccountType, setSelectedAccountType] = useState("");
+  const [warningText, setWarningText] = useState("")
   const navigate = useNavigate();
+  const warningDiv = useRef("")
 
   const handleAccountTypeClick = (accountType) => {
     setSelectedAccountType(accountType);
+    setWarningText("")
   };
 
   const handleAccountTypeChange = (event) => {
     setSelectedAccountType(event.target.value);
+    setWarningText("")
     // alert(event.target.value);
   };
 
@@ -23,7 +28,8 @@ const LoginAccountType = () => {
     } else if (selectedAccountType === "student") {
       navigate('/student_login')
     } else {
-      alert("pick")
+      setWarningText("⚠ Kindly select an account above and then click the Next button below to proceed.")
+      warningDiv.current.classList.add('text-danger', 'background-color-red', 'fade-in-animation')
     }
   }
 
@@ -73,7 +79,7 @@ const LoginAccountType = () => {
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                width: "150px",
+                width: isSmallScreen? "150px" : "200px",
                 height: "200px",
                 borderRadius: "10px",
                 outline: "1px solid #1F9FEF",
@@ -100,7 +106,7 @@ const LoginAccountType = () => {
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                width: "150px",
+                width: isSmallScreen? "150px" : "200px",
                 height: "200px",
                 borderRadius: "10px",
                 outline: "1px solid #1F9FEF",
@@ -125,7 +131,8 @@ const LoginAccountType = () => {
               />
             </div>
           </div>
-          <div className="mt-5 d-flex">
+          <div className="mt-5 d-flex flex-column gap-3">
+          <div className="text-center warning-txt " ref={warningDiv} >{warningText}</div>
             <button className="btn btn-primary btn-sm px-5 mx-auto text-capitalize" onClick={toLogin}>
               next
             </button>
@@ -134,7 +141,7 @@ const LoginAccountType = () => {
               <div className="text-center mb-3" style={{fontFamily: "cursive"}}>Adex protects your privacy</div>
               {isSmallScreen ? (
                 <div className="" style={{display: ''}}>
-                <div className="mini" style={{fontFamily: 'monospace', display: 'inline'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. <CollapseContainer btn_txt="read more" content=" Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform."/></div>
+                <div className="mini" style={{fontFamily: 'monospace', display: 'inline'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. <CollapseContainer btn_txt="" content=" Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform."/></div>
                 
                 </div>
               ) : (

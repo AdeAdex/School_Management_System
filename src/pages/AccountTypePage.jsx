@@ -17,7 +17,7 @@ const AccountTypePage = () => {
   useEffect(() => {
     h4 = document.createElement("div");
     const h4textNode = document.createTextNode(
-      "Select an account above to continue"
+      "Please select an account type above to continue. We will create your account in seconds."
       );
       h4.appendChild(h4textNode);
       textDiv.append(h4);
@@ -63,7 +63,7 @@ const AccountTypePage = () => {
         // }
           navigate("/student/create_account")
       // navigate("/student_signup/create_account");
-    } else if (h4.innerHTML == "Select an account above to continue") {
+    } else if (h4.innerHTML == "Please select an account type above to continue. We will create your account in seconds.") {
       navigate("/account_type");
       console.log(h4.innerHTML);
       textDiv.innerHTML =
