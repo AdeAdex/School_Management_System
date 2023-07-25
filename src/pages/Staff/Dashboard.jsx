@@ -21,11 +21,11 @@ const Dashboard = () => {
 
   useEffect(() => {
     const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_dashboard";
-    let token = localStorage.token;
+    let staffSignInToken = localStorage.staffSignInToken;
     axios
       .get(endpoint, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${staffSignInToken}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },

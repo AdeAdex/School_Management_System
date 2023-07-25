@@ -63,7 +63,7 @@ function App() {
     }
   },[])
 
-  let token = localStorage.token
+  let staffSignInToken = localStorage.token
   let studentLoginToken = localStorage.studentLoginToken
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
@@ -100,7 +100,7 @@ function App() {
         </Route>
             
         
-        <Route path='/staff_dashboard' element={token ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
+        <Route path='/staff_dashboard' element={staffSignInToken ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
           <Route path='home' element={<StaffDashboardHome/>} />
           <Route path='profile' element={<StaffProfile/>}/>
           <Route path='change_password' element={<StaffChangePassword/>}/>

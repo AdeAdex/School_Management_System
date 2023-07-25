@@ -40,18 +40,18 @@ const StaffDashboardOffcanvas = () => {
           <div className={`px-4 d-grid gap-5 ${offcanvasState ? 'meme' : ''}`} >
             <div className="d-grid gap-3">
             {!offcanvasState && <StaffDashboardOffcanvasTitle title="main menu" /> }
-              <StaffDashboardOffcanvasList item="dashboard" params="/student_dashboard/home" label="dashboard" icons="fas fa-border-all" />
+              <StaffDashboardOffcanvasList item="dashboard" params="/staff_dashboard/home" label="dashboard" icons="fas fa-border-all" />
             </div>
             <div className="d-grid gap-3">
                {!offcanvasState && <StaffDashboardOffcanvasTitle title="profile" /> }
-              <StaffDashboardOffcanvasList item="my profile" params="/student_dashboard/profile" label="my profile" icons="fas fa-user" />
-              <StaffDashboardOffcanvasList item="change password" params="/student_dashboard/change_password" label="change password" icons="fas fa-lock" />
-              <StaffDashboardOffcanvasList item="edit details" params="/student_dashboard/edit_details" label="edit details" icons="fas fa-edit" />
+              <StaffDashboardOffcanvasList item="my profile" params="/staff_dashboard/profile" label="my profile" icons="fas fa-user" />
+              <StaffDashboardOffcanvasList item="change password" params="/staff_dashboard/change_password" label="change password" icons="fas fa-lock" />
+              <StaffDashboardOffcanvasList item="edit details" params="/staff_dashboard/edit_details" label="edit details" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
                {!offcanvasState && <StaffDashboardOffcanvasTitle title="academics" /> }
-              <StaffDashboardOffcanvasList item="resources" params="/student_dashboard/resources" label="resources" icons="fas fa-file"/>
-              <StaffDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration" label="course registration" icons="fas fa-user" />
+              <StaffDashboardOffcanvasList item="resources" params="/staff_dashboard/resources" label="resources" icons="fas fa-file"/>
+              <StaffDashboardOffcanvasList item="course registration" params="/staff_dashboard/course_registration" label="course registration" icons="fas fa-user" />
               <StaffDashboardOffcanvasList item="registration history" label="registration history" icons="fas fa-lock" />
               <StaffDashboardOffcanvasList item="results" label="results" icons="fas fa-edit" />
             </div>
