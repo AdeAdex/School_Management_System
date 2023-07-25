@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger, Avatar } from "@mantine/core";
-import AvatarUploader from "./AvatarUploader";
 import { show_hide_offcanvas } from "../../redux/portalSlice";
 import StaffAvatarUploader from './StaffAvatarUploader';
 import StaffDashboardOffcanvas_On_Small_Screen from './StaffDashboardOffcanvas_On_Small_Screen';
