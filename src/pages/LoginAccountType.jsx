@@ -132,7 +132,7 @@ const LoginAccountType = () => {
             </div>
           </div>
           <div className="mt-5 d-flex flex-column gap-3">
-          <div className="text-center warning-txt " ref={warningDiv} >{warningText}</div>
+          <div className={`text-center warning-txt mx-auto ${!selectedAccountType ? 'p-3' : 'p-0'}`} style={{borderRadius: '10px', maxWidth: 'auto',}} ref={warningDiv} >{warningText}</div>
             <button className="btn btn-primary btn-sm px-5 mx-auto text-capitalize" onClick={toLogin}>
               next
             </button>
