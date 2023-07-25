@@ -9,6 +9,8 @@ const SigninForm = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [enteredEmail, setEnteredEmail] = useState("")
+  const [myMessage, setMyMessage] = useState("");
+
 
 
 
@@ -31,6 +33,7 @@ const SigninForm = () => {
           localStorage.studentSignInToken = res.data.studentSignInToken;
           navigate("/student_dashboard");
         } else {
+          setMyMessage(res.data.message)
           navigate("/student_signin");
           const Toast = Swal.mixin({
             toast: true,

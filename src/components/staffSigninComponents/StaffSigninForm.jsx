@@ -3,11 +3,19 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from 'yup';
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+
 
 
 const StaffSigninForm = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [myMessage, setMyMessage] = useState("");
+  
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   let formik = useFormik({
     initialValues: {
@@ -26,9 +34,25 @@ const StaffSigninForm = () => {
           navigate("/staff_dashboard");
         } else {
           setMyMessage(res.data.message)
-          console.log(res.data.message);
+          // console.log(res.data.message);
           navigate("/staff_signin");
-          console.log(myMessage);
+          // console.log(myMessage);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "error",
+            title: res.data.message,
+          });
         }
       })
       .catch((err)=> {
@@ -43,7 +67,7 @@ const StaffSigninForm = () => {
   return (
     <>
       <div className="signin-form shadow bg-light">
-      <div className="fs-3 fw-bold bg-red-300" >{myMessage}</div>
+      {/* <div className="fs-3 fw-bold bg-red-300" >{myMessage}</div> */}
         <h1 className="fs-bolder">
           welcome <br />
           back!
@@ -64,7 +88,7 @@ const StaffSigninForm = () => {
               onBlur={formik.handleBlur}
 
             />
-            <small className="text-danger">{formik.touched.email && formik.errors.email}</small>
+            {/* <small className="text-danger">{formik.touched.email && formik.errors.email}</small> */}
             <label>
               <span style={{ transitionDelay: "0ms" }}>E</span>
               <span style={{ transitionDelay: "50ms" }}>m</span>
@@ -76,14 +100,17 @@ const StaffSigninForm = () => {
           <div className="form-control signin-form-control">
             <input
             className={formik.touched.password && formik.errors.password ? " my-2 is-invalid" : "form-control my-2"}
-              type="password"
+              type={showPassword ? "text" : "password"}
               required="required"
               name="password"
               onChange={formik.handleChange}
               placeholder="Password"
               onBlur={formik.handleBlur}
             />
-            <small className="text-danger">{formik.touched.password && formik.errors.password}</small>
+             <div className="password-toggle" onClick={togglePasswordVisibility}>
+              {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+              </div>
+            {/* <small className="text-danger">{formik.touched.password && formik.errors.password}</small> */}
             <label>
               <span style={{ transitionDelay: "0ms" }}>P</span>
               <span style={{ transitionDelay: "50ms" }}>a</span>
