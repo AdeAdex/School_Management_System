@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/footerComponents/Footer";
+import CollapseContainer from "./CollapseContainer";
 
 const LoginAccountType = () => {
   const [selectedAccountType, setSelectedAccountType] = useState("");
@@ -25,8 +26,26 @@ const LoginAccountType = () => {
       alert("pick")
     }
   }
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  // Function to check if the media size is small
+  const checkMediaSize = () => {
+    setIsSmallScreen(window.innerWidth <= 768); // Adjust the breakpoint as needed
+  };
+
+
   useEffect(() => {
     setSelectedAccountType("")
+    checkMediaSize();
+
+    // Add event listener to check media size on window resize
+    window.addEventListener("resize", checkMediaSize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", checkMediaSize);
+    };
   }, [])
   
 
@@ -111,10 +130,15 @@ const LoginAccountType = () => {
               next
             </button>
           </div>
-          <div className="mt-5">
-            <div className="text-center mb-3" style={{fontFamily: "cursive"}}>Adex protects your privacy</div>
-            <div style={{fontFamily: 'monospace'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform.</div>
-          </div>
+            <div className="mt-5">
+              <div className="text-center mb-3" style={{fontFamily: "cursive"}}>Adex protects your privacy</div>
+              {isSmallScreen ? (
+                <CollapseContainer btn_txt="read more" content="We use data provided by members to enhance their experience on our platform and deliver personalized content and services. Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform."/>
+              ) : (
+                <div style={{fontFamily: 'monospace'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform.</div>
+              )}
+              
+            </div>
         </div>
       </section>
       <Footer/>
