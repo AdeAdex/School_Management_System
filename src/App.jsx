@@ -63,7 +63,7 @@ function App() {
     }
   },[])
 
-  let staffSignInToken = localStorage.token
+  let staffSignInToken = localStorage.staffSignInToken
   let studentLoginToken = localStorage.studentLoginToken
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
