@@ -15,6 +15,8 @@ import StaffEditDetails from "./StaffEditDetails";
 const Dashboard = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_dashboard";
@@ -40,7 +42,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <section
+      {/* <section
         id=""
         className="d-flex"
         style={{ width: "100%", height: "100%", overflow: "hidden" }}
@@ -66,6 +68,48 @@ const Dashboard = () => {
               <Route path="change_password" element={<StaffChangePassword />} />
               <Route path="edit_details" element={<StaffEditDetails/>}/>
             </Routes>
+          </div>
+        </div>
+      </section> */}
+
+      <section
+        id="dashboard"
+        className="d-flex"
+        style={{ width: "100%", height: "100vh", overflow: "hidden" }}
+      >
+        <div
+          className="position-relativ"
+          id="offCan"
+          style={{
+            width: "20%",
+            height: "100%",
+            backgroundColor: "#030552",
+            overflowY: "scroll",
+          }}
+        >
+          {/* <StudentDashboardOffcanvas /> */}
+          <Offcanvas/>
+        </div>
+        <div className="" id="nav" style={{ width: "100%", height: "100%" }}>
+        <div className="nav-container">
+          {/* <StudentDashboardNavbar /> */}
+          <DashboardNavbar/>
+        </div>
+          <div
+            className="d-flex p-4 centered-container"
+            style={{ overflowY: "scroll", height: "90%" }}
+          >
+            {isLoading ? (
+              <div className="loader"></div>
+            ) : (
+              <Routes>
+              <Route path="home" element={<StaffDashboardHome/>} />
+
+              <Route path="profile" element={<StaffProfile />} />
+              <Route path="change_password" element={<StaffChangePassword />} />
+              <Route path="edit_details" element={<StaffEditDetails/>}/>
+              </Routes>
+            )}
           </div>
         </div>
       </section>

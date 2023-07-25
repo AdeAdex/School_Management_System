@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanvas_On_Small_Screen";
 import axios from "axios";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger, Avatar } from "@mantine/core";
 import AvatarUploader from "./AvatarUploader";
 import { show_hide_offcanvas } from "../../redux/portalSlice";
+import StaffAvatarUploader from './StaffAvatarUploader';
+import StaffDashboardOffcanvas_On_Small_Screen from './StaffDashboardOffcanvas_On_Small_Screen';
 
-const StudentDashboardNavbar = () => {
-  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+
+const StaffDashboardNavbar = () => {
+  const globalState = useSelector((state)=>state.portalReducer.staffInfo)
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
   const dispatch = useDispatch();
 
@@ -22,13 +24,11 @@ const StudentDashboardNavbar = () => {
     if (offCan.style.width === "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
-      // menu.style.setProperty("display", "none", "important");
       setOffCanvasTitleVisible(false);
       dispatch(show_hide_offcanvas(true))
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
-      // menu.style.setProperty("display", "block", "important");
       setOffCanvasTitleVisible(true);
       dispatch(show_hide_offcanvas(false))
     }
@@ -74,23 +74,13 @@ const StudentDashboardNavbar = () => {
 
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? "Close navigation" : "Open navigation";
-
   return (
     <>
       <div
         className="shadow d-flex"
-        // id="nav"
         style={{ width: "100%", height: "80px" }}
       >
         <div className="w-50 my-auto d-flex burger">
-          {/* <button
-            className="btn my-auto offcanvas-btn"
-            type="button"
-            onClick={offCanvas}
-            id="offcanvasBtn"
-          >
-            <i className="fas fa-bars fs-3 px-2"></i>
-          </button> */}
           <Burger
             opened={opened}
             className="my-auto offcanvas-btn px-2 mx-3"
@@ -131,35 +121,13 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
-          {/* <button onClick={gooo} className="border-2">
-            <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
-          </button> */}
-          <AvatarUploader/>
-          {/* <input type="file" className="bg-info" name="" id="" onChange={(e) => changeFile(e)} />
-          <button onClick={saveFile}>Upload</button>
-          <img src={cloudImage} alt="" style={{ width: "50px" }} />
-          <Avatar
-            component="a"
-            href=""
-            target="_blank"
-            src="/pic/avatar.png"
-            alt="it's me"
-            size="lg" radius="xl"
-          /> */}
+          <StaffAvatarUploader/>
         </div>
-      {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
 
-
-      <StudentDashboardOffcanvas_On_Small_Screen />
+      <StaffDashboardOffcanvas_On_Small_Screen/>
     </>
-  );
-};
+  )
+}
 
-export default StudentDashboardNavbar;
-
-
-
-
-
-
+export default StaffDashboardNavbar
