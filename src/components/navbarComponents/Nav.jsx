@@ -56,7 +56,7 @@ const Nav = () => {
                 <StickyNav
                   name="login"
                   icon="fas fa-right-to-bracket"
-                  to_where="/account_type"
+                  to_where="/login_account_type"
                   styles={{border: '1px solid gray', width: '50%', padding: '5px 0px', justifyContent: 'center'}}
                 ></StickyNav>
               </div>
