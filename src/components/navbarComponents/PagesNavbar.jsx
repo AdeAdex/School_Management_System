@@ -40,7 +40,7 @@ const PagesNavbar = () => {
   return (
     <>
       <FixedNav />
-    <ScrollProgress/>
+    {/* <ScrollProgress/> */}
       <section
         className="animation"
         id="stickyNav"
