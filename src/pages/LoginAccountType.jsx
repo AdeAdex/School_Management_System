@@ -133,7 +133,10 @@ const LoginAccountType = () => {
             <div className="mt-5">
               <div className="text-center mb-3" style={{fontFamily: "cursive"}}>Adex protects your privacy</div>
               {isSmallScreen ? (
-                <CollapseContainer btn_txt="read more" content="We use data provided by members to enhance their experience on our platform and deliver personalized content and services. Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform."/>
+                <div className="" style={{display: ''}}>
+                <div style={{fontFamily: 'monospace'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. <CollapseContainer btn_txt="read more" content=" Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform."/></div>
+                
+                </div>
               ) : (
                 <div style={{fontFamily: 'monospace'}}>We use data provided by members to enhance their experience on our platform and deliver personalized content and services. Our privacy policy outlines how we collect, use, and safeguard your data. We are committed to maintaining the confidentiality and security of all member information. Your trust is of utmost importance to us, and we strive to uphold the highest standards in protecting your privacy. If you have any concerns or questions about our privacy practices, please do not hesitate to contact us. Your privacy is paramount, and we value your continued trust in our platform.</div>
               )}

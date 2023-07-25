@@ -8,7 +8,7 @@ const CollapseContainer = ({btn_txt, content}) => {
     <>
     <Box maw={400} mx="auto">
         <Group position="center" mb={5}>
-          <Button onClick={toggle}>{btn_txt}</Button>
+          <span onClick={toggle}>{btn_txt}</span>
         </Group>
 
         <Collapse
