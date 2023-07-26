@@ -55,7 +55,7 @@ const CreateAccount = () => {
         }
       })
       .catch((err) => {
-        console.log(response.data.message);
+        console.log(err.data.message);
         if (err.code === 11000) {
           // alert(err.message);r
         }
