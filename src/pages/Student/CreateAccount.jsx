@@ -15,12 +15,22 @@ const CreateAccount = () => {
       phoneNumber: "",
       password: "",
       check: false,
+      // registrationNumber: ""
     },
 
     onSubmit: (values) => {
-      // console.log(values);
+      const randomNumber = Math.floor(Math.random() * 100000000);
+      const numbersPart = randomNumber.toString().padStart(8, "0");
+      const alphabetPart = Array.from({ length: 2 }, () => {
+        const randomIndex = Math.floor(Math.random() * 26);
+        return String.fromCharCode(65 + randomIndex);
+      }).join("");
+
+      const registrationNumber = numbersPart + alphabetPart;
+      const newValues = { ...values, registrationNumber };
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
-      axios.post(endpoint, values).then((response) => {
+      axios.post(endpoint, newValues)
+      .then((response) => {
         if (response.data.status) {
           console.log(response.data.status);
           // console.log(response.data.response);
@@ -43,13 +53,13 @@ const CreateAccount = () => {
             title: response.data.message,
           });
         }
-      });
-      // .catch((err) => {
-      //   console.log(response.data.message);
-      //   if (err.code === 11000) {
-      //     // alert(err.message);r
-      //   }
-      // })
+      })
+      .catch((err) => {
+        console.log(response.data.message);
+        if (err.code === 11000) {
+          // alert(err.message);r
+        }
+      })
     },
 
     validationSchema: yup.object({
