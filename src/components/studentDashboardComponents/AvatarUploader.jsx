@@ -39,11 +39,7 @@ const AvatarUploader = () => {
       <div>
         <label htmlFor="avatarInput" style={{ cursor: "pointer" }}>
           {isLoading ? (
-            <div class="three-body">
-              <div class="three-body__dot"></div>
-              <div class="three-body__dot"></div>
-              <div class="three-body__dot"></div>
-            </div>
+            <div class="ping"></div>
           ) : cloudImage != null ? (
             <img
               src={cloudImage}
