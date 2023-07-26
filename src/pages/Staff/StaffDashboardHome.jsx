@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DashboardCalendar from "../../components/dashboardComponents/DashboardCalendar";
-import DashboardPieChart from "../../components/dashboardComponents/DashboardPieChart";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import UpgradeLevelModal from "../../components/UpgradeLevelModal";
