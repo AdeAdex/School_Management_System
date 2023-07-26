@@ -14,7 +14,7 @@ const SigninHero = () => {
           className="mt-lg-4 header-text"
           style={{ textTransform: "capitalize" }}
         >
-          hi dear
+          hi dear,
         </h2>
         <h5>To keep connecting with us,</h5>
         <div>Please login with your personal info</div>
