@@ -14,6 +14,7 @@ const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
   const dispatch = useDispatch();
+  const messagesLength = globalState?.messages?.length || 0;
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -134,13 +135,24 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-user fs-4 my-auto"></i>
           </button>
+          <Badge color="secondary" className="my-auto" badgeContent={messagesLength} showZero>
+            <MailIcon />
+          </Badge>
           {/* <button onClick={gooo} className="border-0">
             <i className="fas fa-envelope fs-4 my-auto"></i>
             
           </button> */}
-          <Badge color="secondary" className="my-auto" badgeContent={0} showZero>
+          {/* {
+            globalState.messages.map((total, index) => (
+              <>
+              <div>{index}</div>
+              <Badge color="secondary" className="my-auto" badgeContent={globalState.messages.length} showZero>
             <MailIcon />
           </Badge>
+          </>
+            ))
+          } */}
+          
           <button onClick={gooo} className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
@@ -169,3 +181,7 @@ const StudentDashboardNavbar = () => {
 };
 
 export default StudentDashboardNavbar;
+
+
+
+
