@@ -6,6 +6,8 @@ import * as yup from "yup";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   let formik = useFormik({
     initialValues: {
@@ -19,6 +21,7 @@ const CreateAccount = () => {
     },
 
     onSubmit: (values) => {
+      setIsLoading(true)
       const randomNumber = Math.floor(Math.random() * 100000000);
       const numbersPart = randomNumber.toString().padStart(8, "0");
       const alphabetPart = Array.from({ length: 2 }, () => {
@@ -32,6 +35,7 @@ const CreateAccount = () => {
       axios.post(endpoint, newValues)
       .then((response) => {
         if (response.data.status) {
+          setIsLoading(false)
           console.log(response.data.status);
           // console.log(response.data.response);
           navigate("/student_login");
@@ -251,8 +255,8 @@ const CreateAccount = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary signup-btn" type="submit">
-              Create Account
+            <button className="btn btn-primary signup-btn" type="submit">{isLoading ? ( <div className="spinner"></div> ) : (<span> Create Account</span>)}
+             
             </button>
           </div>
         </form>
