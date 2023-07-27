@@ -94,7 +94,7 @@ const Login = () => {
                 name="email"
                 onChange={formik.handleChange}
                 className="login-input"
-                placeholder="Email or Phone"
+                placeholder="Email or RegistrationNumber"
                 autoComplete="on"
                 // setEnteredEmail(formik.value.entered)
                 
@@ -123,7 +123,7 @@ const Login = () => {
                   </g>
                 </svg>
               </span>
-              <label className="login-label">Email or Phone</label>
+              <label className="login-label">Email or RegistrationNumber</label>
             </div>
             <div className="login-field">
               <input

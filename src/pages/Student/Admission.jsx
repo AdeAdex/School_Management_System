@@ -89,8 +89,9 @@ const Admission = () => {
       })
       .then((res) => {
         if (res.data.status) {
-          dispatch(newStudent(res.data.response));
-          console.log(res.data.message);
+          console.log(res.data.response);
+          // dispatch(newStudent(res.data.response));
+          // console.log(res.data.message);
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
