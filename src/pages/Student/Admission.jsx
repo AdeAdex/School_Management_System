@@ -123,8 +123,9 @@ const Admission = () => {
     <>
       <div>
         {globalState?.firstName && globalState?.lastName ? (
-          <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
-            {globalState.firstName} {globalState.lastName}
+          <div className="font-bold ml-4 my-auto d-fle text-lg fw-bold fs-4 shadow p-2 mb-3">
+            {globalState.firstName} {globalState.lastName} 
+            <div className="my-auto" style={{fontSize: '14px'}}><small>Registration Number:</small> {globalState.registrationNumber}</div>
           </div>
         ) : (
           <div class="loaders"></div>
