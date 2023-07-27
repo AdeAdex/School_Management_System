@@ -15,7 +15,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
       <Modal
         opened={opened}
         onClose={onClose}
-        title="Header is sticky"
+        title="Messages"
         scrollAreaComponent={ScrollArea.Autosize}
         transitionProps={{ transition: "rotate-left" }}
       >
