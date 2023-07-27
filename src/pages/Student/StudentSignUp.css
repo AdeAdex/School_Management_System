@@ -50,11 +50,6 @@ input:valid {
   height: 25px;
 }
 
-.invalid-feedback {
-  /* display: none; */
-  /* visibility: hidden; */
-}
-
 @media screen and (min-width: 768px) {
   .signup-header {
     background-image: unset !important;
