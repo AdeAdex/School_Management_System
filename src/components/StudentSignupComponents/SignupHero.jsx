@@ -10,6 +10,29 @@ const SignupHero = ({ isAdmissionPage }) => {
     <>
     {isAdmissionPage ? (
       <div
+          className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header justify-content-center align-items-center"
+          style={{
+            width: "30%",
+            backgroundColor: "#3c37ff",
+            borderRadius: "10px",
+            height: "100%",
+            backgroundImage: "url('/pic/signupimg.jpg')",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="d-flex flex-column justify-content-center">
+            <img
+              src="/pic/ade.png"
+              alt=""
+              className=""
+              style={{ width: "100px" }}
+            />
+            <div className="">Adex School</div>
+            <div className="">Admission Portal</div>
+          </div>
+        </div>
+    ) : (
+      <div
         className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
         style={{
           width: "30%",
@@ -72,25 +95,6 @@ const SignupHero = ({ isAdmissionPage }) => {
           />
         ) : null}
       </div>
-    ) : (
-      <div
-        className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
-        style={{
-          width: "30%",
-          backgroundColor: "#3c37ff",
-          borderRadius: "10px",
-          height: "100%",
-          backgroundImage: "url('/pic/signupimg.jpg')",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-      <div className="d-flex flex-column justify-content-center">
-      <img src="/pic/ade.png" alt="" style={{width: '100px'}} />
-      <div className="">Adex School</div>
-      <div className="">Admission Portal</div>
-      </div>
-      </div>
-      
     )}
       
     </>

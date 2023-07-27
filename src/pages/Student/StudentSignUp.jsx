@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const StudentSignUp = () => {
   const location = useLocation();
-  const isAdmissionPage = location.pathname.startsWith('student/admission/');
+  const isAdmissionPage = location.pathname.startsWith('/student/admission/');
   return (
     <>
       <section
