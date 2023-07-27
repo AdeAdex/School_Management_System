@@ -3,11 +3,12 @@ import SignupCarousel from "./SignupCarousel";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 
-const SignupHero = () => {
+const SignupHero = ({ isAdmissionPage }) => {
   const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
     <>
+    {isAdmissionPage ? (
       <div
         className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
         style={{
@@ -19,12 +20,15 @@ const SignupHero = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <Link to="/" style={{ color: "white" }}>
-          <i
-            className="fas fa-circle-chevron-left"
-            style={{ fontSize: "30px" }}
-          ></i>
-        </Link>
+        {isLargeScreen ? (
+          <Link to="/" style={{ color: "white" }}>
+            <i
+              className="fas fa-circle-chevron-left"
+              style={{ fontSize: "30px" }}
+            ></i>
+          </Link>
+        ) : null}
+
         <div className="d-flex justify-content-center w-100">
           <img
             src="pic/ade.png"
@@ -34,14 +38,21 @@ const SignupHero = () => {
           />
         </div>
 
-        <h2
-          className="mt-lg-1 header-text"
-          style={{ textTransform: "capitalize" }}
-        >
-          start your <br />
-          journey with us.
-        </h2>
-        <div>Discover the world best education</div>
+        {isLargeScreen ? (
+          <>
+            <h2
+              className="mt-lg-1 header-text"
+              style={{ textTransform: "capitalize" }}
+            >
+              start your <br />
+              journey with us.
+            </h2>
+            <div>Discover the world best education</div>
+          </>
+        ) : (
+          <div>Discover the world best education</div>
+        )}
+
         {isLargeScreen ? (
           <SignupCarousel
             carousel_content="This is a very nice school for any child who want the best
@@ -61,6 +72,27 @@ const SignupHero = () => {
           />
         ) : null}
       </div>
+    ) : (
+      <div
+        className="h-100 py-4 px-5 d-flex flex-column position-relative text-white signup-header"
+        style={{
+          width: "30%",
+          backgroundColor: "#3c37ff",
+          borderRadius: "10px",
+          height: "100%",
+          backgroundImage: "url('/pic/signupimg.jpg')",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+      <div className="d-flex flex-column justify-content-center">
+      <img src="/pic/ade.png" alt="" style={{width: '100px'}} />
+      <div className="">Adex School</div>
+      <div className="">Admission Portal</div>
+      </div>
+      </div>
+      
+    )}
+      
     </>
   );
 };

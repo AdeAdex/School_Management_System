@@ -127,19 +127,7 @@ const Admission = () => {
             {globalState.firstName} {globalState.lastName}
           </div>
         ) : (
-          
-              <div class="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
+          <div class="loaders"></div>
            
         )}
         {/* <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
