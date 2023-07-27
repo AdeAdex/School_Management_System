@@ -50,7 +50,7 @@ const StudentDashboardNavbar = () => {
   const gooo = () => {
     setIsModalOpen(true);
     setMyMessages(globalState.messages)
-    // console.log(globalState.messages);
+    console.log(globalState.messages);
   };
 
   const [myImage, setMyImage] = useState("");
