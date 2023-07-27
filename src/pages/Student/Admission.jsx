@@ -89,8 +89,7 @@ const Admission = () => {
       })
       .then((res) => {
         if (res.data.status) {
-          console.log(res.data.response);
-          // dispatch(newStudent(res.data.response));
+          dispatch(newStudent(res.data.response));
           // console.log(res.data.message);
         } else {
           console.log(res.data.message);
@@ -111,9 +110,16 @@ const Admission = () => {
   return (
     <>
       <div>
+      {globalState?.firstName && globalState?.lastName ? (
         <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
         </div>
+      ) : (
+        <div>Loading...</div>
+      )}
+        {/* <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
+          {globalState.firstName} {globalState.lastName}
+        </div> */}
         {/* <div className="" style={{width: "100%" }}>
           <div
             className="d-flex justify-content-between px-lg-4"
