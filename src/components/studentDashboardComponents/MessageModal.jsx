@@ -26,7 +26,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
               <div>{message.senderName}</div>
               <div>{message.messageSubject}</div>
             </div>
-            <div>{message.messageTime}</div>
+            <div>{message.messageDate}</div>
           </div>
         ))}
         
