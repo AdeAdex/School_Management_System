@@ -82,6 +82,10 @@ input:valid {
     /* position: relative; */
   }
 
+  .admission-hero {
+    margin-top: 80px;
+  }
+
   .signup-header {
     border-radius: unset !important;
     position: fixed !important;

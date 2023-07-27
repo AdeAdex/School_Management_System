@@ -16,7 +16,7 @@ const SignupForm = () => {
   return (
     <>
       <div
-        className="shadow bg-light signup-form"
+        className="shadow bg-light signup-form admission-hero"
         style={{ padding: "", width: "70%", }}
       >
       

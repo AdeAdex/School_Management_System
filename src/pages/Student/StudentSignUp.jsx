@@ -13,9 +13,6 @@ const StudentSignUp = () => {
         className="signup-container d-flex flex-lg-row flex-md-column flex-sm-column  mx-auto py-3 gap-3"
         style={{ width: "75%", height: "100vh", }}
       >
-        {/* <SignupHero/> */}
-        {/* <SignupForm/> */}
-        {/* {!isAdmissionPage && <SignupHero />}  */}
         <SignupHero isAdmissionPage={isAdmissionPage} />
         <SignupForm />
       </section>

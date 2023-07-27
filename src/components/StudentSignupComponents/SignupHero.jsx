@@ -20,6 +20,7 @@ const SignupHero = ({ isAdmissionPage }) => {
             backgroundRepeat: "no-repeat",
           }}
         >
+        {isLargeScreen ? (
           <div className="d-flex flex-column justify-content-center align-items-center">
             <img
               src="/pic/ade.png"
@@ -36,6 +37,20 @@ const SignupHero = ({ isAdmissionPage }) => {
               </div>
             </div>
           </div>
+        ) : (
+          <div className="w-100 d-flex flex-colum justify-content-cente align-items-cente">
+            <img
+              src="/pic/ade.png"
+              alt=""
+              className="ms-0"
+              style={{ width: "50px" }}
+            />
+              <div className="fw-bold fs-4 d-flex mt-auto mx-auto" style={{ fontFamily: "" }}>
+                Adex School
+              </div>
+          </div>
+        )}
+          
         </div>
       ) : (
         <div
