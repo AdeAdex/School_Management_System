@@ -45,7 +45,7 @@ const StudentDashboardNavbar = () => {
   };
 
   const gooo = () => {
-    alert("msg");
+    
   };
 
   const [myImage, setMyImage] = useState("");
@@ -135,23 +135,9 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-user fs-4 my-auto"></i>
           </button>
-          <Badge color="secondary" className="my-auto" badgeContent={messagesLength} showZero>
+          <Badge color="secondary" onClick={gooo} style={{cursor: 'pointer'}} className="my-auto" badgeContent={messagesLength} showZero>
             <MailIcon />
           </Badge>
-          {/* <button onClick={gooo} className="border-0">
-            <i className="fas fa-envelope fs-4 my-auto"></i>
-            
-          </button> */}
-          {/* {
-            globalState.messages.map((total, index) => (
-              <>
-              <div>{index}</div>
-              <Badge color="secondary" className="my-auto" badgeContent={globalState.messages.length} showZero>
-            <MailIcon />
-          </Badge>
-          </>
-            ))
-          } */}
           
           <button onClick={gooo} className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
