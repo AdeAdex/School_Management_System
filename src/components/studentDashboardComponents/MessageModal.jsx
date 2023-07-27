@@ -18,7 +18,8 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         title="Messages"
         scrollAreaComponent={ScrollArea.Autosize}
         transitionProps={{ transition: "rotate-left" }}
-        xOffset={0}
+        // xOffset={0}
+        position="right"
       >
         {myMessages.map((message) => (
           <div className="d-flex w-100" key={message._id}>
