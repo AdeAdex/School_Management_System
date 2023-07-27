@@ -9,12 +9,15 @@ import { show_hide_offcanvas } from "../../redux/portalSlice";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
+import MessageModal from "./MessageModal";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const messagesLength = globalState?.messages?.length || 0;
+  const [myMessages, setMyMessages] = useState([])
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -45,7 +48,8 @@ const StudentDashboardNavbar = () => {
   };
 
   const gooo = () => {
-    
+    setIsModalOpen(true);
+    setMyMessages(globalState.messages)
   };
 
   const [myImage, setMyImage] = useState("");
@@ -160,6 +164,7 @@ const StudentDashboardNavbar = () => {
         </div>
         {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
+      <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>
