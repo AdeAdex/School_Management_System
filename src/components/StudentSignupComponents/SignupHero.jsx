@@ -49,14 +49,12 @@ const SignupHero = ({ isAdmissionPage }) => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          {isLargeScreen ? (
             <Link to="/" style={{ color: "white" }}>
               <i
                 className="fas fa-circle-chevron-left"
                 style={{ fontSize: "30px" }}
               ></i>
             </Link>
-          ) : null}
 
           <div className="d-flex justify-content-center w-100">
             <img
@@ -67,8 +65,6 @@ const SignupHero = ({ isAdmissionPage }) => {
             />
           </div>
 
-          {isLargeScreen ? (
-            <>
               <h2
                 className="mt-lg-1 header-text"
                 style={{ textTransform: "capitalize" }}
@@ -77,10 +73,6 @@ const SignupHero = ({ isAdmissionPage }) => {
                 journey with us.
               </h2>
               <div>Discover the world best education</div>
-            </>
-          ) : (
-            <div>Discover the world best education</div>
-          )}
 
           {isLargeScreen ? (
             <SignupCarousel
