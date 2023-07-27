@@ -20,13 +20,13 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         transitionProps={{ transition: "rotate-left" }}
       >
         {myMessages.map((message) => (
-          <div className="d-flex" key={message._id}>
+          <div className="d-flex w-100" key={message._id}>
             <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
             <div className="my-auto">
               <div>{message.senderName}</div>
               <div>{message.messageSubject}</div>
             </div>
-            <div>{message.messageDate}</div>
+            <div className="ms-auto my-auto">{message.messageDate}</div>
           </div>
         ))}
         
