@@ -24,13 +24,12 @@ const style = {
 };
 
 const MessageModal = ({ opened, onClose, myMessages }) => {
-  //   useEffect(() => {
-  // //     console.log(myMessages);
-  //   }, [myMessages])
+  const [selectedSenderName, setSelectedSenderName] = useState("");
 
 
-  const openChatModal = () => {
+  const openChatModal = (senderName) => {
     onClose();
+    setSelectedSenderName(senderName);
   }
 
   return (
@@ -83,7 +82,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
                 <div
                   className="d-flex w-100 each-modal-message" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                   key={message._id}
-                  onClick={openChatModal}
+                  onClick={() => openChatModal(message.senderName)}
                 >
                   <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
                   <div className="my-auto">
@@ -121,7 +120,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
               ></button>
             </div>
             <div className="modal-body">
-            {/* {message.senderName} */}
+            {selectedSenderName}
             </div>
             <div className="modal-footer">
               <button
