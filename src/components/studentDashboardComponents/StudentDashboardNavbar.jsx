@@ -6,12 +6,14 @@ import { useDisclosure } from "@mantine/hooks";
 import { Burger, Avatar } from "@mantine/core";
 import AvatarUploader from "./AvatarUploader";
 import { show_hide_offcanvas } from "../../redux/portalSlice";
+import Stack from "@mui/material/Stack";
+import Badge from "@mui/material/Badge";
+import MailIcon from "@mui/icons-material/Mail";
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
   const dispatch = useDispatch();
-
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -24,13 +26,13 @@ const StudentDashboardNavbar = () => {
       nav.style.width = "95%";
       // menu.style.setProperty("display", "none", "important");
       setOffCanvasTitleVisible(false);
-      dispatch(show_hide_offcanvas(true))
+      dispatch(show_hide_offcanvas(true));
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
       // menu.style.setProperty("display", "block", "important");
       setOffCanvasTitleVisible(true);
-      dispatch(show_hide_offcanvas(false))
+      dispatch(show_hide_offcanvas(false));
     }
 
     var x = window.matchMedia("(max-width: 768px)");
@@ -40,7 +42,7 @@ const StudentDashboardNavbar = () => {
     } else {
     }
   };
-  
+
   const gooo = () => {
     alert("msg");
   };
@@ -59,7 +61,8 @@ const StudentDashboardNavbar = () => {
   };
 
   const saveFile = () => {
-    const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
+    const endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
     axios
       .post(endpoint, { myImage })
       .then((response) => {
@@ -108,16 +111,22 @@ const StudentDashboardNavbar = () => {
           </button>
           <div
             className="my-auto navbar-content"
-            style={{ height: "25px", border: '1px solid blue' }}
+            style={{ height: "25px", border: "1px solid blue" }}
           ></div>
-          <div className="fw-bold ms-3 my-auto fs-5 navbar-content" >
+          <div className="fw-bold ms-3 my-auto fs-5 navbar-content">
             {globalState.firstName} {globalState.lastName}
           </div>
-          <div className="my-auto ms-auto fw-bold navbar-content">Class: {globalState.level}</div>
-          <div className="my-auto ms-auto fw-bold navbar-content">Term: {globalState.term}</div>
-          <div className="my-auto ms-auto fw-bold navbar-content">Option: {globalState.options}</div>
+          <div className="my-auto ms-auto fw-bold navbar-content">
+            Class: {globalState.level}
+          </div>
+          <div className="my-auto ms-auto fw-bold navbar-content">
+            Term: {globalState.term}
+          </div>
+          <div className="my-auto ms-auto fw-bold navbar-content">
+            Option: {globalState.options}
+          </div>
         </div>
-          
+
         <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4 navbar-icons">
           <button onClick={gooo} className="border-0">
             <i className="fas fa-bell fs-4 my-auto"></i>
@@ -125,16 +134,20 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-user fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="border-0">
+          {/* <button onClick={gooo} className="border-0">
             <i className="fas fa-envelope fs-4 my-auto"></i>
-          </button>
+            
+          </button> */}
+          <Badge color="secondary" className="my-auto" badgeContent={0} showZero>
+            <MailIcon />
+          </Badge>
           <button onClick={gooo} className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
           {/* <button onClick={gooo} className="border-2">
             <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
           </button> */}
-          <AvatarUploader/>
+          <AvatarUploader />
           {/* <input type="file" className="bg-info" name="" id="" onChange={(e) => changeFile(e)} />
           <button onClick={saveFile}>Upload</button>
           <img src={cloudImage} alt="" style={{ width: "50px" }} />
@@ -147,9 +160,8 @@ const StudentDashboardNavbar = () => {
             size="lg" radius="xl"
           /> */}
         </div>
-      {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
+        {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
-
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>
@@ -157,9 +169,3 @@ const StudentDashboardNavbar = () => {
 };
 
 export default StudentDashboardNavbar;
-
-
-
-
-
-
