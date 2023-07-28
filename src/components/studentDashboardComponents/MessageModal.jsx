@@ -25,12 +25,25 @@ const style = {
 
 const MessageModal = ({ opened, onClose, myMessages }) => {
   const [selectedSenderName, setSelectedSenderName] = useState("");
+  const [selectedSenderSubject, setSelectedSenderSubject] = useState("");
+  const [selectedSenderBody, setSelectedSenderBody] = useState("");
+  const [selectedSenderDate, setSelectedSenderDate] = useState("");
+  const [selectedSenderTime, setSelectedSenderTime] = useState("");
 
-
-  const openChatModal = (senderName) => {
+  const openChatModal = (
+    senderName,
+    senderSubject,
+    senderBody,
+    senderDate,
+    senderTime
+  ) => {
     onClose();
     setSelectedSenderName(senderName);
-  }
+    setSelectedSenderSubject(senderSubject);
+    setSelectedSenderBody(senderBody);
+    setSelectedSenderDate(senderDate);
+    setSelectedSenderTime(senderTime);
+  };
 
   return (
     <>
@@ -80,18 +93,34 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               {myMessages.map((message) => (
                 <div
-                  className="d-flex w-100 each-modal-message" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  className="d-flex w-100 each-modal-message"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
                   key={message._id}
-                  onClick={() => openChatModal(message.senderName, message.messageSubject, message.messageBody)}
+                  onClick={() =>
+                    openChatModal(
+                      message.senderName,
+                      message.messageSubject,
+                      message.messageBody,
+                      message.messageDate,
+                      message.messageTime
+                    )
+                  }
                 >
                   <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
                   <div className="my-auto">
                     <div>{message.senderName}</div>
-                    <div style={{fontSize: '12px'}}>{message.messageSubject}</div>
+                    <div style={{ fontSize: "12px" }}>
+                      {message.messageSubject}
+                    </div>
                   </div>
-                  <div className="ms-auto my-auto">
-                  <small className="ms-auto my-auto" style={{fontSize: '8px'}}>{message.messageDate}</small>
-                  <small className="ms-auto my-auto" style={{fontSize: '8px'}}>{message.messageTime}</small>
+                  <div className="ms-auto d-flex flex-column my-auto">
+                    <small className="my-auto" style={{ fontSize: "10px" }}>
+                      {message.messageDate}
+                    </small>
+                    <small className="my-auto" style={{ fontSize: "10px" }}>
+                      {message.messageTime}
+                    </small>
                   </div>
                 </div>
               ))}
@@ -109,12 +138,16 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog d-flex h-100 bg-info">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                Modal title
-              </h1>
+              <div className="modal-title d-flex" id="staticBackdropLabel">
+                <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
+                <div className="my-auto d-flex flex-column">
+                  <small>{selectedSenderName}</small>
+                  <small>Active 2h ago</small>
+                </div>
+              </div>
               <button
                 type="button"
                 className="btn-close"
@@ -123,18 +156,83 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
               ></button>
             </div>
             <div className="modal-body">
-            {selectedSenderName}
+              <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Understood
+              <button type="button " className="btn btn-sm btn-primary">
+                Send
               </button>
             </div>
           </div>
