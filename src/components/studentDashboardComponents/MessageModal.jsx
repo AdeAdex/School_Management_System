@@ -8,6 +8,9 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { FaUserTie } from "react-icons/fa";
+import { Textarea } from '@mantine/core';
+
 
 const style = {
   position: "absolute",
@@ -86,7 +89,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         }}
       >
         <Fade in={opened}>
-          <Box sx={style}>
+          <Box sx={style} className="box">
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Messages
             </Typography>
@@ -130,7 +133,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
       </Modal>
 
       <div
-        className="modal fade"
+        className="modal fade w-100 h-100"
         id="staticBackdrop"
         data-bs-backdrop="false"
         data-bs-keyboard="false"
@@ -138,8 +141,8 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog d-flex h-100 bg-info">
-          <div className="modal-content">
+        <div className="modal-dialog d-flex">
+          <div className="modal-content my-auto">
             <div className="modal-header">
               <div className="modal-title d-flex" id="staticBackdropLabel">
                 <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
@@ -230,7 +233,16 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
               </div>
             </div>
 
-            <div className="modal-footer">
+            <div className="modal-footer d-flex w-100">
+              <FaUserTie size={20} color="gray" />
+              <Textarea
+                label=""
+                placeholder="Message"
+                autosize
+                minRows={1}
+                maxRows={4}
+                style={{width: '70%', backgroundColor: ''}}
+              />
               <button type="button " className="btn btn-sm btn-primary">
                 Send
               </button>

@@ -1,3 +1,7 @@
+.box {
+  background-color: red;
+}
+
 .each-modal-message:hover {
   background-color: rgba(211, 211, 211, 0.283);
   border-radius: 10px;
@@ -6,12 +10,18 @@
 
 .modal-dialog {
   margin-right: 0;
-  width: 400px;
-  top: 55px;
+  width: 350px;
+  height: 50%;
+  right: 30px;
+  position: fixed;
+  bottom: 0;
 }
 
 .modal-content {
-  /* right: 20px; */
-  height: 60%;
-  margin-right: 0;
+  height: 100%;
+}
+
+
+.modal-body {
+  overflow-y: auto;
 }
