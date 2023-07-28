@@ -82,7 +82,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
                 <div
                   className="d-flex w-100 each-modal-message" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                   key={message._id}
-                  onClick={() => openChatModal(message.senderName)}
+                  onClick={() => openChatModal(message.senderName, message.messageSubject, message.messageBody)}
                 >
                   <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
                   <div className="my-auto">
