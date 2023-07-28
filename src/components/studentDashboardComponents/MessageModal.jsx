@@ -61,6 +61,39 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
       >
         {myMessages.map((message) => (
                 <div
+                  className="d-flex w-100 each-modal-message mb-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  key={message._id}
+                  onClick={() =>
+                    openChatModal(
+                      message.senderName,
+                      message.messageSubject,
+                      message.messageBody,
+                      message.messageDate,
+                      message.messageTime
+                    )
+                  }
+                >
+                  <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
+                  <div className="my-auto">
+                    <div>{message.senderName}</div>
+                    <div style={{ fontSize: "12px" }}>
+                      {message.messageSubject}
+                    </div>
+                  </div>
+                  <div className="ms-auto d-flex flex-column my-auto">
+                    <small className="my-auto" style={{ fontSize: "10px" }}>
+                      {message.messageDate}
+                    </small>
+                    <small className="my-auto" style={{ fontSize: "10px" }}>
+                      {message.messageTime}
+                    </small>
+                  </div>
+                </div>
+              ))}
+              {myMessages.map((message) => (
+                <div
                   className="d-flex w-100 each-modal-message"
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdrop"
