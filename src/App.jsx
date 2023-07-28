@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -41,6 +41,7 @@ import ForgotPassword from './pages/Student/ForgotPassword'
 import LoginAccountType from './pages/LoginAccountType'
 import socketClient from 'socket.io-client';
 import ChatModal from './components/studentDashboardComponents/ChatModal'
+
 
 
 

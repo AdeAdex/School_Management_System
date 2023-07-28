@@ -15,7 +15,6 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
   const [allmessages, setAllmessages] = useState([]);
 
   const sendMessage = () => {
-    //     console.log(message);
     socket.current.emit("sentMsg", message);
     setAllmessages([...allmessages, message]);
   };
