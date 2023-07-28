@@ -62,8 +62,8 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         position="right"
         // size={isLargeScreen ? 350 : "100%"}
         className="mantine-drawer"
-        size={isLargeScreen ? 300 : undefined}
-      style={{ width: isLargeScreen ? "10%" : '100%' }}
+        size={isLargeScreen ? 300 : null}
+      style={{ width: isLargeScreen ? 300 : '100%' }}
         // style={{display: 'flex', marginTop: 'auto', marginBottom: 'auto', height: '300px'}}
       >
         {myMessages.map((message) => (

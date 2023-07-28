@@ -29,4 +29,14 @@
   .mantine-drawer {
     width: 100% !important;
   }
+
+  .modal-dialog {
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+  }
 }
