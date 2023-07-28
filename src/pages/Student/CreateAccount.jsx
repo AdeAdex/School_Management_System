@@ -255,7 +255,7 @@ const CreateAccount = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary signup-btn" type="submit">{isLoading ? ( <div className="spinner"></div> ) : (<span> Create Account</span>)}
+            <button className="btn btn-primary signup-btn" type="submit">{isLoading ? ( <span className="d-flex gap-3"> Create Account <div className="spinner my-auto"></div></span> ) : (<span> Create Account</span>)}
              
             </button>
           </div>
