@@ -87,9 +87,12 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
                   <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
                   <div className="my-auto">
                     <div>{message.senderName}</div>
-                    <div>{message.messageSubject}</div>
+                    <div style={{fontSize: '12px'}}>{message.messageSubject}</div>
                   </div>
-                  <div className="ms-auto my-auto">{message.messageDate}</div>
+                  <div className="ms-auto my-auto">
+                  <small className="ms-auto my-auto" style={{fontSize: '8px'}}>{message.messageDate}</small>
+                  <small className="ms-auto my-auto" style={{fontSize: '8px'}}>{message.messageTime}</small>
+                  </div>
                 </div>
               ))}
             </Typography>
