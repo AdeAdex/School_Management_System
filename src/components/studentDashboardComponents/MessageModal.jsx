@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 // import { Modal, Group, Button, ScrollArea } from "@mantine/core";
+import { Drawer, Group, Button, ScrollArea } from '@mantine/core';
 import "../studentDashboardComponents/MessageModal.css";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+// import Backdrop from "@mui/material/Backdrop";
+// import Box from "@mui/material/Box";
+// import Modal from "@mui/material/Modal";
+// import Fade from "@mui/material/Fade";
+// import Button from "@mui/material/Button";
+// import Typography from "@mui/material/Typography";
 import { FaUserTie } from "react-icons/fa";
 import { Textarea } from '@mantine/core';
 
 
-const style = {
-  position: "absolute",
-  top: "85px",
-  left: "",
-  right: "40px",
-  // transform: 'translate(-50%, -50%)',
-  width: 400,
-  height: "87%",
-  bgcolor: "background.paper",
-  // border: '2px solid #000',
-  boxShadow: 24,
-  padding: "10px",
-};
+// const style = {
+//   position: "absolute",
+//   top: "85px",
+//   left: "",
+//   right: "40px",
+//   // transform: 'translate(-50%, -50%)',
+//   width: 400,
+//   height: "87%",
+//   bgcolor: "background.paper",
+//   // border: '2px solid #000',
+//   boxShadow: 24,
+//   padding: "10px",
+// };
 
 const MessageModal = ({ opened, onClose, myMessages }) => {
   const [selectedSenderName, setSelectedSenderName] = useState("");
@@ -50,32 +51,50 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
 
   return (
     <>
-      {/* <Modal
+      <Drawer
         opened={opened}
         onClose={onClose}
         title="Messages"
         scrollAreaComponent={ScrollArea.Autosize}
         transitionProps={{ transition: "rotate-left" }}
-        // size="70%"
-        xOffset="250px"
         position="right"
-        style={{position: 'absolute'}}
-        
       >
         {myMessages.map((message) => (
-          <div className="d-flex w-100 each-modal-message" key={message._id}>
-            <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
-            <div className="my-auto">
-              <div>{message.senderName}</div>
-              <div>{message.messageSubject}</div>
-            </div>
-            <div className="ms-auto my-auto">{message.messageDate}</div>
-          </div>
-        ))}
-        
-      </Modal> */}
+                <div
+                  className="d-flex w-100 each-modal-message"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  key={message._id}
+                  onClick={() =>
+                    openChatModal(
+                      message.senderName,
+                      message.messageSubject,
+                      message.messageBody,
+                      message.messageDate,
+                      message.messageTime
+                    )
+                  }
+                >
+                  <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
+                  <div className="my-auto">
+                    <div>{message.senderName}</div>
+                    <div style={{ fontSize: "12px" }}>
+                      {message.messageSubject}
+                    </div>
+                  </div>
+                  <div className="ms-auto d-flex flex-column my-auto">
+                    <small className="my-auto" style={{ fontSize: "10px" }}>
+                      {message.messageDate}
+                    </small>
+                    <small className="my-auto" style={{ fontSize: "10px" }}>
+                      {message.messageTime}
+                    </small>
+                  </div>
+                </div>
+              ))}
+      </Drawer>
 
-      <Modal
+      {/* <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={opened}
@@ -130,7 +149,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
             </Typography>
           </Box>
         </Fade>
-      </Modal>
+      </Modal> */}
 
       <div
         className="modal fade w-100 h-100"
