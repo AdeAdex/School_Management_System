@@ -1,6 +1,4 @@
-.box {
-  background-color: red;
-}
+
 
 .each-modal-message:hover {
   background-color: rgba(211, 211, 211, 0.283);
@@ -24,4 +22,11 @@
 
 .modal-body {
   overflow-y: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+  .mantine-drawer {
+    width: 100% !important;
+  }
 }

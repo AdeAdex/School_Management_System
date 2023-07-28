@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDisclosure } from "@mantine/hooks";
 // import { Modal, Group, Button, ScrollArea } from "@mantine/core";
-import { Drawer, Group, Button, ScrollArea } from '@mantine/core';
+import { Drawer, Group, Button, ScrollArea } from "@mantine/core";
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import "../studentDashboardComponents/MessageModal.css";
 // import Backdrop from "@mui/material/Backdrop";
 // import Box from "@mui/material/Box";
@@ -10,8 +10,7 @@ import "../studentDashboardComponents/MessageModal.css";
 // import Button from "@mui/material/Button";
 // import Typography from "@mui/material/Typography";
 import { FaUserTie } from "react-icons/fa";
-import { Textarea } from '@mantine/core';
-
+import { Textarea } from "@mantine/core";
 
 // const style = {
 //   position: "absolute",
@@ -33,6 +32,9 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
   const [selectedSenderBody, setSelectedSenderBody] = useState("");
   const [selectedSenderDate, setSelectedSenderDate] = useState("");
   const [selectedSenderTime, setSelectedSenderTime] = useState("");
+  const isMobile = useMediaQuery("(max-width: 50em)");
+  const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
+
 
   const openChatModal = (
     senderName,
@@ -58,73 +60,43 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
         scrollAreaComponent={ScrollArea.Autosize}
         transitionProps={{ transition: "rotate-left" }}
         position="right"
+        // size={isLargeScreen ? 350 : "100%"}
+        className="mantine-drawer"
+        size={isLargeScreen ? 300 : undefined}
+      style={{ width: isLargeScreen ? "10%" : '100%' }}
+        // style={{display: 'flex', marginTop: 'auto', marginBottom: 'auto', height: '300px'}}
       >
         {myMessages.map((message) => (
-                <div
-                  className="d-flex w-100 each-modal-message mb-3"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  key={message._id}
-                  onClick={() =>
-                    openChatModal(
-                      message.senderName,
-                      message.messageSubject,
-                      message.messageBody,
-                      message.messageDate,
-                      message.messageTime
-                    )
-                  }
-                >
-                  <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
-                  <div className="my-auto">
-                    <div>{message.senderName}</div>
-                    <div style={{ fontSize: "12px" }}>
-                      {message.messageSubject}
-                    </div>
-                  </div>
-                  <div className="ms-auto d-flex flex-column my-auto">
-                    <small className="my-auto" style={{ fontSize: "10px" }}>
-                      {message.messageDate}
-                    </small>
-                    <small className="my-auto" style={{ fontSize: "10px" }}>
-                      {message.messageTime}
-                    </small>
-                  </div>
-                </div>
-              ))}
-              {myMessages.map((message) => (
-                <div
-                  className="d-flex w-100 each-modal-message"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  key={message._id}
-                  onClick={() =>
-                    openChatModal(
-                      message.senderName,
-                      message.messageSubject,
-                      message.messageBody,
-                      message.messageDate,
-                      message.messageTime
-                    )
-                  }
-                >
-                  <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
-                  <div className="my-auto">
-                    <div>{message.senderName}</div>
-                    <div style={{ fontSize: "12px" }}>
-                      {message.messageSubject}
-                    </div>
-                  </div>
-                  <div className="ms-auto d-flex flex-column my-auto">
-                    <small className="my-auto" style={{ fontSize: "10px" }}>
-                      {message.messageDate}
-                    </small>
-                    <small className="my-auto" style={{ fontSize: "10px" }}>
-                      {message.messageTime}
-                    </small>
-                  </div>
-                </div>
-              ))}
+          <div
+            className="d-flex w-100 each-modal-message mb-3"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            key={message._id}
+            onClick={() =>
+              openChatModal(
+                message.senderName,
+                message.messageSubject,
+                message.messageBody,
+                message.messageDate,
+                message.messageTime
+              )
+            }
+          >
+            <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
+            <div className="my-auto">
+              <div>{message.senderName}</div>
+              <div style={{ fontSize: "12px" }}>{message.messageSubject}</div>
+            </div>
+            <div className="ms-auto d-flex flex-column my-auto">
+              <small className="my-auto" style={{ fontSize: "10px" }}>
+                {message.messageDate}
+              </small>
+              <small className="my-auto" style={{ fontSize: "10px" }}>
+                {message.messageTime}
+              </small>
+            </div>
+          </div>
+        ))}
       </Drawer>
 
       {/* <Modal
@@ -293,7 +265,7 @@ const MessageModal = ({ opened, onClose, myMessages }) => {
                 autosize
                 minRows={1}
                 maxRows={4}
-                style={{width: '70%', backgroundColor: ''}}
+                style={{ width: "70%", backgroundColor: "" }}
               />
               <button type="button " className="btn btn-sm btn-primary">
                 Send
