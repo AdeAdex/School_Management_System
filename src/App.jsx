@@ -39,6 +39,9 @@ import StudentEditDetails from './pages/Student/StudentEditDetails'
 import StudentCourseRegistration from './pages/Student/StudentCourseRegistration'
 import ForgotPassword from './pages/Student/ForgotPassword'
 import LoginAccountType from './pages/LoginAccountType'
+import socketClient from 'socket.io-client';
+import ChatModal from './components/studentDashboardComponents/ChatModal'
+
 
 
 
@@ -46,6 +49,8 @@ import LoginAccountType from './pages/LoginAccountType'
 
 
 function App() {
+  let socketRef = useRef()
+  const endpoint = "http://localhost:2000"
   const globalState = useSelector((state)=>state.portalReducer.firstName)
   console.log(globalState);
   const [count, setCount] = useState(0)
@@ -61,6 +66,7 @@ function App() {
         })
       })
     }
+    socketRef.current = socketClient(endpoint);
   },[])
 
   let staffSignInToken = localStorage.staffSignInToken
@@ -74,7 +80,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
-
+        <Route path='/chat' element={<ChatModal socket={socketRef}/>}/>
         <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>   {/* studentLoginToken ?   : <Navigate to="/student_login"/> */}
