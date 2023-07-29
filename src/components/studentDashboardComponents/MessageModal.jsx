@@ -103,7 +103,7 @@ const MessageModal = ({ opened, onClose, myMessages, socket  }) => {
           </div>
         ))}
       </Drawer>
-      <ChatModal selectedSenderName={selectedSenderName} selectedSenderBody={selectedSenderBody} selectedSenderSubject={selectedSenderSubject} selectedSenderDate={selectedSenderDate} selectedSenderTime={selectedSenderTime} socket/>
+      {/* <ChatModal selectedSenderName={selectedSenderName} selectedSenderBody={selectedSenderBody} selectedSenderSubject={selectedSenderSubject} selectedSenderDate={selectedSenderDate} selectedSenderTime={selectedSenderTime} socket/> */}
       
     </>
   );

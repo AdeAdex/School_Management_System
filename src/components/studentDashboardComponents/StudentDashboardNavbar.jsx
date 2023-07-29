@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StudentDashboardOffcanvas_On_Small_Screen from "./StudentDashboardOffcanvas_On_Small_Screen";
 import axios from "axios";
@@ -10,6 +10,11 @@ import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import MessageModal from "./MessageModal";
+import ChatModal from "./ChatModal";
+import { Link, useNavigate } from "react-router-dom";
+import socketClient from 'socket.io-client';
+
+
 
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -18,6 +23,16 @@ const StudentDashboardNavbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const messagesLength = globalState?.messages?.length || 0;
   const [myMessages, setMyMessages] = useState([])
+  let navigate = useNavigate()
+
+
+  let socketRef = useRef()
+  const endpoint = "http://localhost:2000"
+
+  useEffect(() => {
+    socketRef.current = socketClient(endpoint);
+  }, [])
+  
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -53,36 +68,45 @@ const StudentDashboardNavbar = () => {
     // console.log(globalState.messages);
   };
 
+  
+
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState();
 
-  const changeFile = (e) => {
-    console.log(e.target.files[0]);
-    let myImage = e.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(myImage);
-    reader.onload = () => {
-      setMyImage(reader.result);
-    };
-  };
+  // const changeFile = (e) => {
+  //   console.log(e.target.files[0]);
+  //   let myImage = e.target.files[0];
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(myImage);
+  //   reader.onload = () => {
+  //     setMyImage(reader.result);
+  //   };
+  // };
 
-  const saveFile = () => {
-    const endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
-    axios
-      .post(endpoint, { myImage })
-      .then((response) => {
-        console.log(response.data);
-        setCloudImage(response.data.cloudLink);
-        console.log(response.data.cloudLink);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const saveFile = () => {
+  //   const endpoint =
+  //     "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
+  //   axios
+  //     .post(endpoint, { myImage })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setCloudImage(response.data.cloudLink);
+  //       console.log(response.data.cloudLink);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? "Close navigation" : "Open navigation";
+
+
+  const dooo = () => {
+    // navigate('/student_dashboard/chat')
+    // socket={socketRef}
+    console.log(cloudImage);
+  }
 
   return (
     <>
@@ -137,9 +161,10 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-bell fs-4 my-auto"></i>
           </button>
-          <button onClick={gooo} className="border-0">
+          <button onClick={dooo} className="border-0" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">
             <i className="fas fa-user fs-4 my-auto"></i>
-          </button>
+          </button> 
           <Badge color="secondary" onClick={gooo} style={{cursor: 'pointer'}} className="my-auto" badgeContent={messagesLength} showZero>
             <MailIcon />
           </Badge>
@@ -166,6 +191,7 @@ const StudentDashboardNavbar = () => {
         {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
       <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ChatModal socket={socketRef} name={globalState.firstName} picture={cloudImage}/>
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>

@@ -12,6 +12,7 @@ import StudentEditDetails from "./StudentEditDetails";
 import StudentDashboardHome from "./StudentDashboardHome";
 import StudentCourseRegistration from "./StudentCourseRegistration";
 import StudentResources from "./StudentResources";
+import ChatModal from "../../components/studentDashboardComponents/ChatModal";
 
 // import { styled, useTheme } from '@mui/material/styles';
 // import Box from '@mui/material/Box';
@@ -229,6 +230,7 @@ const StudentPortalDashboard = () => {
                     />
                   }
                 />
+                {/* <Route path="chat" element={<ChatModal/>}/> */}
               </Routes>
             )}
           </div>

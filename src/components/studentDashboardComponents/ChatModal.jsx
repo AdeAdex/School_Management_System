@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaUserTie} from "react-icons/fa";
 import { Textarea } from "@mantine/core";
 
-const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBody, selectedSenderDate, selectedSenderTime, socket}) => {
+const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBody, selectedSenderDate, selectedSenderTime, socket, name, picture}) => {
   useEffect(() => {
     if (socket.current) {
       socket.current.on("brodcastMsg", (receivedMessage) => {
@@ -14,10 +14,24 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
   const [message, setMessage] = useState("");
   const [allmessages, setAllmessages] = useState([]);
 
+  // ChatModal.jsx
+
   const sendMessage = () => {
-    socket.current.emit("sentMsg", message);
-    setAllmessages([...allmessages, message]);
+    let payload = {
+      message: message,
+      name: name,
+      messageDate: new Date().toLocaleDateString('en-GB', { year: '2-digit', month: '2-digit', day: '2-digit' }),
+      messageTime: new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }),
+      picture: localStorage.cloudImage
+    }
+
+    // console.log(payload);
+    socket.current.emit("sentMsg", payload);
+    setAllmessages([...allmessages, payload]);
   };
+
+
+
   return (
     <>
       <div
@@ -47,7 +61,7 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
               ></button>
             </div>
             <div className="modal-body">
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
                   <small>{selectedSenderDate}</small>
                   <small>{selectedSenderTime}</small>
@@ -100,7 +114,7 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
                     {selectedSenderBody}
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* <div className="mb-4">
                 <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
                   <small>{selectedSenderDate}</small>
@@ -119,11 +133,17 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
                   </div>
                 </div>
               </div> */}
-            </div>
             <div>
               {allmessages.map((msg, index) => (
-                <div key={index}>{msg}</div>
+                <div key={index}>
+                  <div>{msg.name}</div>
+                  <div>{msg.message}</div>
+                  <div>{msg.messageDate}</div>
+                  <div>{msg.messageTime}</div>
+                  <img src={msg.picture} alt="" style={{width: '50px', borderRadius: '50%'}}/>
+                </div>
               ))}
+            </div>
             </div>
 
             <div className="modal-footer d-flex w-100">

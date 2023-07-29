@@ -81,7 +81,8 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
-        <Route path='/chat' element={<ChatModal socket={socketRef}/>}/>
+          {/* <Route path='/student_dashboard/chat' element={<ChatModal socket={socketRef}/>}/> */}
+
         <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>   {/* studentLoginToken ?   : <Navigate to="/student_login"/> */}
@@ -104,6 +105,7 @@ function App() {
           <Route path='change_password' element={<StudentChangePassword/>} />
           <Route path='edit_details' element={<StudentEditDetails/>} />
           <Route path='course_registration' element={<StudentCourseRegistration/>} />
+          {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
             
         
