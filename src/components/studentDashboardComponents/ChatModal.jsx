@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { FaUserTie} from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
 import { Textarea } from "@mantine/core";
 
-const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBody, selectedSenderDate, selectedSenderTime, socket, name, picture, id}) => {
+const ChatModal = ({
+  selectedSenderName,
+  selectedSenderSubject,
+  selectedSenderBody,
+  selectedSenderDate,
+  selectedSenderTime,
+  socket,
+  name,
+  picture,
+  id,
+}) => {
   const [message, setMessage] = useState("");
   const [allmessages, setAllmessages] = useState([]);
-  const [myChat, setMyChat] = useState([])
+  const [myChat, setMyChat] = useState([]);
 
   useEffect(() => {
+    // alert("hii")
     if (socket.current) {
       socket.current.on("brodcastMsg", (receivedMessage) => {
         console.log(receivedMessage);
-        setMyChat(receivedMessage)
+        setMyChat(receivedMessage);
       });
     }
   }, []);
-
 
   // ChatModal.jsx
 
@@ -23,18 +33,24 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
     let payload = {
       message: message,
       name: name,
-      messageDate: new Date().toLocaleDateString('en-GB', { year: '2-digit', month: '2-digit', day: '2-digit' }),
-      messageTime: new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }),
+      messageDate: new Date().toLocaleDateString("en-GB", {
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit",
+      }),
+      messageTime: new Date().toLocaleTimeString("en-US", {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
       picture: localStorage.cloudImage,
       id: id,
-    }
+    };
 
     // console.log(payload);
     socket.current.emit("sentMsg", payload);
     setAllmessages([...allmessages, payload]);
   };
-
-
 
   return (
     <>
@@ -137,17 +153,21 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
                   </div>
                 </div>
               </div> */}
-            <div>
-              {myChat.map((msg, index) => (
-                <div key={index}>
-                  <div>{msg.name}</div>
-                  <div>{msg.message}</div>
-                  <div>{msg.messageDate}</div>
-                  <div>{msg.messageTime}</div>
-                  <img src={msg.picture} alt="" style={{width: '50px', borderRadius: '50%'}}/>
-                </div>
-              ))}
-            </div>
+              <div>
+                {myChat.map((msg, index) => (
+                  <div key={index}>
+                    <div>{msg.name}</div>
+                    <div>{msg.message}</div>
+                    <div>{msg.messageDate}</div>
+                    <div>{msg.messageTime}</div>
+                    <img
+                      src={msg.picture}
+                      alt=""
+                      style={{ width: "50px", borderRadius: "50%" }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="modal-footer d-flex w-100">
@@ -177,3 +197,6 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
 };
 
 export default ChatModal;
+
+
+
