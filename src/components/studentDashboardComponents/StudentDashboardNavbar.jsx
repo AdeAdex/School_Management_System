@@ -105,7 +105,7 @@ const StudentDashboardNavbar = () => {
   const dooo = () => {
     // navigate('/student_dashboard/chat')
     // socket={socketRef}
-    console.log(cloudImage);
+    // console.log(cloudImage);
   }
 
   return (
@@ -191,7 +191,7 @@ const StudentDashboardNavbar = () => {
         {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
       <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <ChatModal socket={socketRef} name={globalState.firstName} picture={cloudImage}/>
+      <ChatModal socket={socketRef} name={globalState.firstName} picture={cloudImage} id={globalState._id}/>
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>

@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import { FaUserTie} from "react-icons/fa";
 import { Textarea } from "@mantine/core";
 
-const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBody, selectedSenderDate, selectedSenderTime, socket, name, picture}) => {
+const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBody, selectedSenderDate, selectedSenderTime, socket, name, picture, id}) => {
+  const [message, setMessage] = useState("");
+  const [allmessages, setAllmessages] = useState([]);
+  const [myChat, setMyChat] = useState([])
+
   useEffect(() => {
     if (socket.current) {
       socket.current.on("brodcastMsg", (receivedMessage) => {
         console.log(receivedMessage);
+        setMyChat(receivedMessage)
       });
     }
   }, []);
 
-  const [message, setMessage] = useState("");
-  const [allmessages, setAllmessages] = useState([]);
 
   // ChatModal.jsx
 
@@ -22,7 +25,8 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
       name: name,
       messageDate: new Date().toLocaleDateString('en-GB', { year: '2-digit', month: '2-digit', day: '2-digit' }),
       messageTime: new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }),
-      picture: localStorage.cloudImage
+      picture: localStorage.cloudImage,
+      id: id,
     }
 
     // console.log(payload);
@@ -134,7 +138,7 @@ const ChatModal = ({selectedSenderName, selectedSenderSubject, selectedSenderBod
                 </div>
               </div> */}
             <div>
-              {allmessages.map((msg, index) => (
+              {myChat.map((msg, index) => (
                 <div key={index}>
                   <div>{msg.name}</div>
                   <div>{msg.message}</div>
