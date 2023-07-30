@@ -18,41 +18,41 @@ const ChatModal = ({
   const [myChat, setMyChat] = useState([]);
   const [me, setMe] = useState("");
 
-  useEffect(() => {
-    // alert("hii")
-    setMe('adex')
-    if (socket.current) {
-      socket.current.on("broadcastMsg", (receivedMessage) => {
-        console.log(receivedMessage);
-        setMyChat(receivedMessage);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   // alert("hii")
+  //   setMe('adex')
+  //   if (socket.current) {
+  //     socket.current.on("broadcastMsg", (receivedMessage) => {
+  //       console.log(receivedMessage);
+  //       setMyChat(receivedMessage);
+  //     });
+  //   }
+  // }, []);
 
   // ChatModal.jsx
 
-  const sendMessage = () => {
-    let payload = {
-      message: message,
-      name: name,
-      messageDate: new Date().toLocaleDateString("en-GB", {
-        year: "2-digit",
-        month: "2-digit",
-        day: "2-digit",
-      }),
-      messageTime: new Date().toLocaleTimeString("en-US", {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-      picture: localStorage.cloudImage,
-      id: id,
-    };
+  // const sendMessage = () => {
+  //   let payload = {
+  //     message: message,
+  //     name: name,
+  //     messageDate: new Date().toLocaleDateString("en-GB", {
+  //       year: "2-digit",
+  //       month: "2-digit",
+  //       day: "2-digit",
+  //     }),
+  //     messageTime: new Date().toLocaleTimeString("en-US", {
+  //       hour12: false,
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //     }),
+  //     picture: localStorage.cloudImage,
+  //     id: id,
+  //   };
 
-    // console.log(payload);
-    socket.current.emit("sentMsg", payload);
-    setAllmessages([...allmessages, payload]);
-  };
+  //   // console.log(payload);
+  //   socket.current.emit("sentMsg", payload);
+  //   setAllmessages([...allmessages, payload]);
+  // };
 
   return (
     <>

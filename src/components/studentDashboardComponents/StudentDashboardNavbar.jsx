@@ -109,7 +109,7 @@ const StudentDashboardNavbar = () => {
   }
 
   const something = () => {
-    navigate(`/student_dashboard/edit_details?id=${globalState._id}`)
+    // navigate(`/student_dashboard/edit_details?id=${globalState._id}`)
   }
 
   return (
