@@ -56,7 +56,7 @@ const ChatModal = ({
 
   return (
     <>
-      <div
+      {/* <div
         className="modal fade w-100 h-100"
         id="staticBackdrop"
         data-bs-backdrop="false"
@@ -68,13 +68,13 @@ const ChatModal = ({
         <div className="modal-dialog d-flex">
           <div className="modal-content my-auto">
             <div className="modal-header">
-              {/* <div className="modal-title d-flex" id="staticBackdropLabel">
+              <div className="modal-title d-flex" id="staticBackdropLabel">
                 <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
                 <div className="my-auto d-flex flex-column">
                   <small>{selectedSenderName}</small>
                   <small>Active 2h ago</small>
                 </div>
-              </div> */}
+              </div>
               <button
                 type="button"
                 className="btn-close"
@@ -83,79 +83,6 @@ const ChatModal = ({
               ></button>
             </div>
             <div className="modal-body">
-            <div>{me}</div>
-              {/* <div className="mb-4">
-                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
-                  <small>{selectedSenderDate}</small>
-                  <small>{selectedSenderTime}</small>
-                </div>
-                <div className="d-flex gap-2">
-                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
-                  <div
-                    className="my-auto p-2"
-                    style={{
-                      backgroundColor: "lightgreen",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    {selectedSenderBody}
-                  </div>
-                </div>
-              </div>
-              <div className="mb-4">
-                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
-                  <small>{selectedSenderDate}</small>
-                  <small>{selectedSenderTime}</small>
-                </div>
-                <div className="d-flex gap-2">
-                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
-                  <div
-                    className="my-auto p-2"
-                    style={{
-                      backgroundColor: "lightgreen",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    {selectedSenderBody}
-                  </div>
-                </div>
-              </div>
-              <div className="mb-4">
-                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
-                  <small>{selectedSenderDate}</small>
-                  <small>{selectedSenderTime}</small>
-                </div>
-                <div className="d-flex gap-2">
-                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
-                  <div
-                    className="my-auto p-2"
-                    style={{
-                      backgroundColor: "lightgreen",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    {selectedSenderBody}
-                  </div>
-                </div>
-              </div> */}
-              {/* <div className="mb-4">
-                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
-                  <small>{selectedSenderDate}</small>
-                  <small>{selectedSenderTime}</small>
-                </div>
-                <div className="d-flex gap-2">
-                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
-                  <div
-                    className="my-auto p-2"
-                    style={{
-                      backgroundColor: "lightgreen",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    {selectedSenderBody}
-                  </div>
-                </div>
-              </div> */}
               <div>
                 {allmessages.map((msg, index) => (
                   <div key={index}>
@@ -194,7 +121,7 @@ const ChatModal = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
