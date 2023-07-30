@@ -194,8 +194,8 @@ const StudentDashboardNavbar = () => {
         </div>
         {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
-      {/* <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
-      {/* <ChatModal socket={socketRef} name={globalState.firstName} picture={cloudImage} id={globalState._id}/> */}
+      <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ChatModal name={globalState.firstName} picture={cloudImage} id={globalState._id}/>
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>

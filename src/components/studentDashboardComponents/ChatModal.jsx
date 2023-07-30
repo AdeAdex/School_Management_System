@@ -18,45 +18,45 @@ const ChatModal = ({
   const [myChat, setMyChat] = useState([]);
   const [me, setMe] = useState("");
 
-  // useEffect(() => {
-  //   // alert("hii")
-  //   setMe('adex')
-  //   if (socket.current) {
-  //     socket.current.on("broadcastMsg", (receivedMessage) => {
-  //       console.log(receivedMessage);
-  //       setMyChat(receivedMessage);
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    // alert("hii")
+    // setMe('adex')
+    // if (socket.current) {
+    //   socket.current.on("broadcastMsg", (receivedMessage) => {
+    //     console.log(receivedMessage);
+    //     setMyChat(receivedMessage);
+    //   });
+    // }
+  }, []);
 
   // ChatModal.jsx
 
-  // const sendMessage = () => {
-  //   let payload = {
-  //     message: message,
-  //     name: name,
-  //     messageDate: new Date().toLocaleDateString("en-GB", {
-  //       year: "2-digit",
-  //       month: "2-digit",
-  //       day: "2-digit",
-  //     }),
-  //     messageTime: new Date().toLocaleTimeString("en-US", {
-  //       hour12: false,
-  //       hour: "2-digit",
-  //       minute: "2-digit",
-  //     }),
-  //     picture: localStorage.cloudImage,
-  //     id: id,
-  //   };
+  const sendMessage = () => {
+    let payload = {
+      message: message,
+      name: name,
+      messageDate: new Date().toLocaleDateString("en-GB", {
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit",
+      }),
+      messageTime: new Date().toLocaleTimeString("en-US", {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      picture: localStorage.cloudImage,
+      id: id,
+    };
 
-  //   // console.log(payload);
-  //   socket.current.emit("sentMsg", payload);
-  //   setAllmessages([...allmessages, payload]);
-  // };
+    // console.log(payload);
+    socket.current.emit("sentMsg", payload);
+    setAllmessages([...allmessages, payload]);
+  };
 
   return (
     <>
-      {/* <div
+      <div
         className="modal fade w-100 h-100"
         id="staticBackdrop"
         data-bs-backdrop="false"
@@ -68,13 +68,13 @@ const ChatModal = ({
         <div className="modal-dialog d-flex">
           <div className="modal-content my-auto">
             <div className="modal-header">
-              <div className="modal-title d-flex" id="staticBackdropLabel">
+              {/* <div className="modal-title d-flex" id="staticBackdropLabel">
                 <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
                 <div className="my-auto d-flex flex-column">
                   <small>{selectedSenderName}</small>
                   <small>Active 2h ago</small>
                 </div>
-              </div>
+              </div> */}
               <button
                 type="button"
                 className="btn-close"
@@ -83,6 +83,79 @@ const ChatModal = ({
               ></button>
             </div>
             <div className="modal-body">
+            <div>{me}</div>
+              {/* <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div> */}
+              {/* <div className="mb-4">
+                <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
+                  <small>{selectedSenderDate}</small>
+                  <small>{selectedSenderTime}</small>
+                </div>
+                <div className="d-flex gap-2">
+                  <img src="/pic/avatar.png" style={{ width: "45px" }} alt="" />
+                  <div
+                    className="my-auto p-2"
+                    style={{
+                      backgroundColor: "lightgreen",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {selectedSenderBody}
+                  </div>
+                </div>
+              </div> */}
               <div>
                 {allmessages.map((msg, index) => (
                   <div key={index}>
@@ -113,7 +186,7 @@ const ChatModal = ({
               />
               <button
                 type="submit"
-                // onClick={sendMessage}
+                onClick={sendMessage}
                 className="btn btn-sm btn-primary"
               >
                 Send
@@ -121,7 +194,7 @@ const ChatModal = ({
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
