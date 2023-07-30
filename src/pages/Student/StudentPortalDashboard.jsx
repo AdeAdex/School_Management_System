@@ -110,6 +110,8 @@ const StudentPortalDashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
   // const location = useLocation();
   const [content, setContent] = useState("Initial Content");
+  let socketRef = useRef()
+  const endpoint2 = "http://localhost:2000"
 
   useEffect(() => {
     const url = `/course_registration?myEmail=${encodeURIComponent(
@@ -145,6 +147,8 @@ const StudentPortalDashboard = () => {
           navigate("/student_signin");
         }
       });
+
+    socketRef.current = socketClient(endpoint2);
 
   }, [globalState, navigate]);
 
@@ -220,7 +224,7 @@ const StudentPortalDashboard = () => {
                     <StudentChangePassword myEmail={globalState.email} />
                   }
                 />
-                <Route path="edit_details" element={<StudentEditDetails/>} />
+                <Route path="edit_details" element={<StudentEditDetails socket={socketRef}/>} />
                 <Route path="resources" element={<StudentResources />} />
                 <Route
                   path="course_registration"
