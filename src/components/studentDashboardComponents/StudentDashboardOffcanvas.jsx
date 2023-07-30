@@ -54,7 +54,7 @@ const StudentDashboardOffcanvas = () => {
             <div className="d-grid gap-3">
                {!offcanvasState && <StudentDashboardOffcanvasTitle title="academics" /> }
               <StudentDashboardOffcanvasList item="resources" params="/student_dashboard/resources" label="resources" icons="fas fa-file"/>
-              <StudentDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration"  label="course registration" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration" label="course registration" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="registration history" label="registration history" icons="fas fa-lock" />
               <StudentDashboardOffcanvasList item="results" label="results" icons="fas fa-edit" />
             </div>
