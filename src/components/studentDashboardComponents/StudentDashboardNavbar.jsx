@@ -26,12 +26,12 @@ const StudentDashboardNavbar = () => {
   let navigate = useNavigate()
 
 
-  let socketRef = useRef()
-  const endpoint = "http://localhost:2000"
+  // let socketRef = useRef()
+  // const endpoint = "http://localhost:2000"
 
-  useEffect(() => {
-    socketRef.current = socketClient(endpoint);
-  }, [])
+  // useEffect(() => {
+  //   socketRef.current = socketClient(endpoint);
+  // }, [])
   
 
   const offCanvas = () => {
@@ -194,8 +194,8 @@ const StudentDashboardNavbar = () => {
         </div>
         {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
-      <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <ChatModal socket={socketRef} name={globalState.firstName} picture={cloudImage} id={globalState._id}/>
+      {/* <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
+      {/* <ChatModal socket={socketRef} name={globalState.firstName} picture={cloudImage} id={globalState._id}/> */}
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>
