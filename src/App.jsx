@@ -50,8 +50,8 @@ import ChatModal from './components/studentDashboardComponents/ChatModal'
 
 
 function App() {
-  let socketRef = useRef()
-  const endpoint = "http://localhost:2000"
+  // let socketRef = useRef()
+  // const endpoint = "http://localhost:2000"
   const globalState = useSelector((state)=>state.portalReducer.firstName)
   console.log(globalState);
   const [count, setCount] = useState(0)
@@ -67,7 +67,7 @@ function App() {
         })
       })
     }
-    socketRef.current = socketClient(endpoint);
+    // socketRef.current = socketClient(endpoint);
   },[])
 
   let staffSignInToken = localStorage.staffSignInToken
@@ -103,7 +103,7 @@ function App() {
           <Route path='home' element={<StudentDashboardHome/>}/>
           <Route path='profile' element={<StudentProfile/>} />
           <Route path='change_password' element={<StudentChangePassword/>} />
-          <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />
+          <Route path='edit_details' element={<StudentEditDetails />} />   {/* socket={socketRef} */}
           <Route path='course_registration' element={<StudentCourseRegistration/>} />
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
