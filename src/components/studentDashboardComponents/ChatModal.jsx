@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaUserTie } from "react-icons/fa";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
 
 const ChatModal = ({
@@ -16,11 +16,13 @@ const ChatModal = ({
   const [message, setMessage] = useState("");
   const [allmessages, setAllmessages] = useState([]);
   const [myChat, setMyChat] = useState([]);
+  const [me, setMe] = useState("");
 
   useEffect(() => {
     // alert("hii")
+    setMe('adex')
     if (socket.current) {
-      socket.current.on("brodcastMsg", (receivedMessage) => {
+      socket.current.on("broadcastMsg", (receivedMessage) => {
         console.log(receivedMessage);
         setMyChat(receivedMessage);
       });
@@ -81,6 +83,7 @@ const ChatModal = ({
               ></button>
             </div>
             <div className="modal-body">
+            <div>{me}</div>
               {/* <div className="mb-4">
                 <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
                   <small>{selectedSenderDate}</small>
@@ -154,7 +157,7 @@ const ChatModal = ({
                 </div>
               </div> */}
               <div>
-                {myChat.map((msg, index) => (
+                {allmessages.map((msg, index) => (
                   <div key={index}>
                     <div>{msg.name}</div>
                     <div>{msg.message}</div>
@@ -171,7 +174,7 @@ const ChatModal = ({
             </div>
 
             <div className="modal-footer d-flex w-100">
-              <FaUserTie size={20} color="gray" />
+              <BsFillEmojiSmileFill size={20} color="orange" />
               <Textarea
                 label=""
                 placeholder="Message"

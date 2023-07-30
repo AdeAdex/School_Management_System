@@ -103,7 +103,7 @@ function App() {
           <Route path='home' element={<StudentDashboardHome/>}/>
           <Route path='profile' element={<StudentProfile/>} />
           <Route path='change_password' element={<StudentChangePassword/>} />
-          <Route path='edit_details' element={<StudentEditDetails/>} />
+          <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />
           <Route path='course_registration' element={<StudentCourseRegistration/>} />
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>

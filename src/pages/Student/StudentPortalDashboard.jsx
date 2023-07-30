@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../Student/StudentPortalDashboard.css";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,8 @@ import StudentDashboardHome from "./StudentDashboardHome";
 import StudentCourseRegistration from "./StudentCourseRegistration";
 import StudentResources from "./StudentResources";
 import ChatModal from "../../components/studentDashboardComponents/ChatModal";
+import socketClient from 'socket.io-client';
+
 
 // import { styled, useTheme } from '@mui/material/styles';
 // import Box from '@mui/material/Box';
@@ -108,6 +110,8 @@ const StudentPortalDashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
   // const location = useLocation();
   const [content, setContent] = useState("Initial Content");
+  let socketRef = useRef()
+  const endpoint = "http://localhost:2000"
 
   useEffect(() => {
     const url = `/course_registration?myEmail=${encodeURIComponent(
@@ -143,6 +147,8 @@ const StudentPortalDashboard = () => {
           navigate("/student_signin");
         }
       });
+
+      socketRef.current = socketClient(endpoint);
   }, [globalState, navigate]);
 
   // const theme = useTheme();
@@ -217,7 +223,7 @@ const StudentPortalDashboard = () => {
                     <StudentChangePassword myEmail={globalState.email} />
                   }
                 />
-                <Route path="edit_details" element={<StudentEditDetails />} />
+                <Route path="edit_details" element={<StudentEditDetails socket={socketRef}/>} />
                 <Route path="resources" element={<StudentResources />} />
                 <Route
                   path="course_registration"

@@ -108,6 +108,10 @@ const StudentDashboardNavbar = () => {
     // console.log(cloudImage);
   }
 
+  const something = () => {
+    navigate('/student_dashboard/edit_details')
+  }
+
   return (
     <>
       <div
@@ -158,7 +162,7 @@ const StudentDashboardNavbar = () => {
         </div>
 
         <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4 navbar-icons">
-          <button onClick={gooo} className="border-0">
+          <button onClick={something} className="border-0">
             <i className="fas fa-bell fs-4 my-auto"></i>
           </button>
           <button onClick={dooo} className="border-0" data-bs-toggle="modal"

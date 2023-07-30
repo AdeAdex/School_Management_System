@@ -1,86 +1,83 @@
-import axios from 'axios'
-import { useFormik } from 'formik'
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import axios from "axios";
+import { useFormik } from "formik";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
+import { Textarea } from "@mantine/core";
 
-const StudentEditDetails = () => {
-  const globalState = useSelector((state)=>state.portalReducer.studentInfo)
-
-  let formik = useFormik({
-    initialValues: {
-      address: "",
-      country: "",
-      lga: "",
-      hubby: "",
-      receivedEmail: ""
-    },
-
-    onSubmit: (values) => {
-      // console.log(globalState);
-      const newValues = {...values,receivedEmail:globalState.email};
-      console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/edit_details";
-      axios.post(endpoint, newValues)
-      .then((response) => {
-        console.log(response);
+const StudentEditDetails = ({ socket }) => {
+  useEffect(() => {
+    if (socket.current) {
+      socket.current.on("brodcastMsg", (receivedMessage) => {
+        console.log(receivedMessage);
       });
-    },
+    }
   });
+
+  const [message, setMessage] = useState("");
+  const [allmessages, setAllmessages] = useState([]);
+
+  const sendMessage = () => {
+    let payload = {
+      message: message,
+      name: name,
+      messageDate: new Date().toLocaleDateString("en-GB", {
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit",
+      }),
+      messageTime: new Date().toLocaleTimeString("en-US", {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      picture: localStorage.cloudImage,
+      id: id,
+    };
+
+    // console.log(payload);
+    socket.current.emit("sentMsg", payload);
+    setAllmessages([...allmessages, payload]);
+  };
 
   return (
     <>
-    <div className="edit-container">
-        <div className="edit-card">
-          <h3 className="edit-login">Edit Your Details</h3>
-          <form onSubmit={formik.handleSubmit} action="/staff_account/edit_details" method="post">
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="address"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span className="edit-user">Address</span>
-            </div>
-
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="country"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span className="edit-user">Country</span>
-            </div>
-
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="lga"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span className="edit-user">LGA</span>
-            </div>
-
-            <div className="edit-inputBox">
-              <input
-                type="text"
-                name="hubby"
-                required="required"
-                onChange={formik.handleChange}
-              />
-              <span>Hubby</span>
-            </div>
-
-            <button type="submit" className="edit-enter">
-              Enter
-            </button>
-          </form>
-        </div>
+      <div>
+        {allmessages.map((msg, index) => (
+          <div key={index}>
+            <div>{msg.name}</div>
+            <div>{msg.message}</div>
+            <div>{msg.messageDate}</div>
+            <div>{msg.messageTime}</div>
+            <img
+              src={msg.picture}
+              alt=""
+              style={{ width: "50px", borderRadius: "50%" }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="modal-footer d-flex w-100">
+        <BsFillEmojiSmileFill size={20} color="orange" />
+        <Textarea
+          label=""
+          placeholder="Message"
+          autosize
+          minRows={1}
+          maxRows={4}
+          style={{ width: "70%", backgroundColor: "" }}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button
+          type="submit"
+          onClick={sendMessage}
+          className="btn btn-sm btn-primary"
+        >
+          Send
+        </button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default StudentEditDetails
+export default StudentEditDetails;
