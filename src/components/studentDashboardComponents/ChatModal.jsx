@@ -186,7 +186,7 @@ const ChatModal = ({
               />
               <button
                 type="submit"
-                onClick={sendMessage}
+                // onClick={sendMessage}
                 className="btn btn-sm btn-primary"
               >
                 Send
