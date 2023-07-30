@@ -4,8 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
+import { useLocation } from "react-router-dom";
+
 
 const StudentEditDetails = ({ socket }) => {
+  const location = useLocation();
+  const id = new URLSearchParams(location.search).get("id");
+  const name = new URLSearchParams(location.search).get("name");
+  // const picture = new URLSearchParams(location.search).get("picture");
+
   useEffect(() => {
     if (socket.current) {
       socket.current.on("brodcastMsg", (receivedMessage) => {
