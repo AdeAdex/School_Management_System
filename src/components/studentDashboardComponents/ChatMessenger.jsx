@@ -28,6 +28,7 @@ const ChatMessenger = ({ socket, username, room }) => {
 
       await socket.current.emit("sent_message", messageData);
       setMessageList((list) => [...list, messageData]);
+      setCurrentMessage("")
     }
   };
 
@@ -50,6 +51,7 @@ const ChatMessenger = ({ socket, username, room }) => {
           <input
             type="text"
             placeholder="Hey..."
+            value={currentMessage}
             onChange={(e) => {
               setCurrentMessage(e.target.value);
             }}
