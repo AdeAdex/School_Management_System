@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 
 const ChatMessenger = ({ socket, username, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
-  const [shouldAddListener, setShouldAddListener] = useState(false);
-
+  const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
     if (socket.current) {
-//       console.log(socket.current);
       socket.current.on("received_message", (data) => {
-        console.log(data);
+        // console.log(data);
+        setMessageList((list) => [...list, data]);
       });
     }
   }, [socket.current]);
@@ -27,15 +26,20 @@ const ChatMessenger = ({ socket, username, room }) => {
       };
 
       await socket.current.emit("sent_message", messageData);
+      setMessageList((list) => [...list, messageData]);
+
     }
   };
-
 
   return (
     <>
       <div className="d-grid gap-3 mt-5 justify-content-center">
         <div className="text-center">Live Chat</div>
-        <div></div>
+        <div>
+          {messageList.map((messageContent, index) => (
+            <div key={index}>{messageContent.message}</div>
+          ))}
+        </div>
         <div>
           <input
             type="text"
