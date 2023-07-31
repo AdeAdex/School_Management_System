@@ -2,6 +2,17 @@ import React, { useEffect, useState } from "react";
 
 const ChatMessenger = ({ socket, username, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
+  const [shouldAddListener, setShouldAddListener] = useState(false);
+
+
+  useEffect(() => {
+    if (socket.current) {
+//       console.log(socket.current);
+      socket.current.on("received_message", (data) => {
+        console.log(data);
+      });
+    }
+  }, [socket.current]);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -18,6 +29,8 @@ const ChatMessenger = ({ socket, username, room }) => {
       await socket.current.emit("sent_message", messageData);
     }
   };
+
+
   return (
     <>
       <div className="d-grid gap-3 mt-5 justify-content-center">
