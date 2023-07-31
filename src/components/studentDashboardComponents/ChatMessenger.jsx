@@ -27,7 +27,6 @@ const ChatMessenger = ({ socket, username, room }) => {
 
       await socket.current.emit("sent_message", messageData);
       setMessageList((list) => [...list, messageData]);
-
     }
   };
 
@@ -37,7 +36,11 @@ const ChatMessenger = ({ socket, username, room }) => {
         <div className="text-center">Live Chat</div>
         <div>
           {messageList.map((messageContent, index) => (
-            <div key={index}>{messageContent.message}</div>
+            <div className="" key={index}>
+              <div>{messageContent.message}</div>
+              <div>{messageContent.author}</div>
+              <div>{messageContent.time}</div>
+            </div>
           ))}
         </div>
         <div>
