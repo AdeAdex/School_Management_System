@@ -36,7 +36,7 @@ const ChatMessenger = ({ socket, username, room }) => {
         <div className="text-center">Live Chat</div>
         <div>
           {messageList.map((messageContent, index) => (
-            <div className="" key={index}>
+            <div className="" key={index} id={username === messageContent.author ? "you" : "others"}>
               <div>{messageContent.message}</div>
               <div>{messageContent.author}</div>
               <div>{messageContent.time}</div>
