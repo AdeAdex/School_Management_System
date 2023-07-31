@@ -55,7 +55,7 @@ const ChatMessenger = ({ socket, username, room }) => {
             onChange={(e) => {
               setCurrentMessage(e.target.value);
             }}
-            onKeyPress={(e) => {e.key == "Enter" && sendMessage()}}
+            onKeyPress={(e) => {e.key === "Enter" && sendMessage()}}
           />
           <button onClick={sendMessage}> Send&#9658;</button>
         </div>
