@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ChatMessenger from "./ChatMessenger";
 
 const Chat = ({socket}) => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Chat = ({socket}) => {
 
   return (
     <>
-      <div>
+      <div  className="d-grid justify-content-center gap-3">
         <h3>Join A Chat</h3>
         <input
           type="text"
@@ -28,6 +29,8 @@ const Chat = ({socket}) => {
         />
         <button onClick={joinRoom}>Join A Room</button>
       </div>
+
+      <ChatMessenger socket={socket} username={username} room={room}/>
     </>
   );
 };
