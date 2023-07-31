@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 const ChatMessenger = ({ socket, username, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -35,6 +36,7 @@ const ChatMessenger = ({ socket, username, room }) => {
       <div className="d-grid gap-3 mt-5 justify-content-center">
         <div className="text-center">Live Chat</div>
         <div>
+        <ScrollToBottom style={{overflowY: 'scroll', width: '100%', height: '100%'}}>
           {messageList.map((messageContent, index) => (
             <div className="" key={index} id={username === messageContent.author ? "you" : "others"}>
               <div>{messageContent.message}</div>
@@ -42,6 +44,7 @@ const ChatMessenger = ({ socket, username, room }) => {
               <div>{messageContent.time}</div>
             </div>
           ))}
+          </ScrollToBottom>
         </div>
         <div>
           <input
