@@ -41,6 +41,7 @@ import ForgotPassword from './pages/Student/ForgotPassword'
 import LoginAccountType from './pages/LoginAccountType'
 import socketClient from 'socket.io-client';
 import ChatModal from './components/studentDashboardComponents/ChatModal'
+import Chat from './components/studentDashboardComponents/Chat'
 
 
 
@@ -83,6 +84,8 @@ function App() {
         {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
           {/* <Route path='/student_dashboard/chat' element={<ChatModal socket={socketRef}/>}/> */}
           {/* <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />   */}
+
+          <Route path='/chat' element={<Chat socket={socketRef}/>} />  
 
 
         <Route path='/student_signin' element={<StudentSignIn/>}/>

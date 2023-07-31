@@ -48,6 +48,7 @@ const StudentEditDetails = ({ socket }) => {
 
   return (
     <>
+    <div className="d-flex">
       <div>
         {allmessages.map((msg, index) => (
           <div key={index}>
@@ -81,6 +82,7 @@ const StudentEditDetails = ({ socket }) => {
         >
           Send
         </button>
+      </div>
       </div>
     </>
   );
