@@ -34,9 +34,9 @@ const ChatMessenger = ({ socket, username, room }) => {
 
   return (
     <>
-      <div className="d-grid gap-3 mt-5 justify-content-center">
+      <div className="d-grid gap-3 mt-5 justify-content-center w-100">
         <div className="text-center">Live Chat</div>
-        <div className="border shadow" style={{height: '50vh'}}>
+        <div className="border shadow" style={{height: '100%', width: '100%'}}>
         <ScrollToBottom style={{overflowY: 'scroll', width: '100%', height: '100%'}}>
           {messageList.map((messageContent, index) => (
             <div className="" key={index} id={username === messageContent.author ? "you" : "others"}>

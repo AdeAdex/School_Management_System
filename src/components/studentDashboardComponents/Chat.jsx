@@ -13,7 +13,7 @@ const Chat = ({ socket }) => {
     // console.log(username, room);
     if (username !== "" && room !== "") {
       socket.current.emit("join room", room);
-      setShowChat(true)
+//       setShowChat(true)
     } else {
     }
   };
@@ -24,8 +24,8 @@ const Chat = ({ socket }) => {
 
   return (
     <>
-      {!showChat ? (
-        <div className="d-grid justify-content-center gap-3">
+      {/* {!showChat ? ( */}
+        <div className="d-grid justify-content-center gap-3 w-100">
           <h3>Join A Chat</h3>
           <input
             type="text"
@@ -39,9 +39,9 @@ const Chat = ({ socket }) => {
           />
           <button onClick={joinRoom}>Join A Room</button>
         </div>
-      ) : (
+      {/* ) : ( */}
         <ChatMessenger socket={socket} username={username} room={room} />
-      )}
+      {/* )} */}
     </>
   );
 };

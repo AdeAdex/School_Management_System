@@ -6,6 +6,7 @@ import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
 import { useLocation } from "react-router-dom";
 import Chat from "../../components/studentDashboardComponents/Chat";
+import ChatMessenger from "../../components/studentDashboardComponents/ChatMessenger";
 
 
 const StudentEditDetails = ({ socket }) => {
@@ -49,7 +50,7 @@ const StudentEditDetails = ({ socket }) => {
 
   return (
     <>
-    <div className="d-flex">
+    <div className="d-flex w-100">
       {/* <div>
         {allmessages.map((msg, index) => (
           <div key={index}>
@@ -84,8 +85,9 @@ const StudentEditDetails = ({ socket }) => {
           Send
         </button>
       </div> */}
-      </div>
       <Chat socket={socket}/>
+      <ChatMessenger socket={socket}/>
+      </div>
     </>
   );
 };
