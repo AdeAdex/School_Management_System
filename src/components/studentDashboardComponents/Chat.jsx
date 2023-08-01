@@ -56,7 +56,7 @@ const Chat = ({ socket }) => {
             >
               <img src="/pic/ade.png" style={{ width: "30px" }} alt="" />
               <div className="my-auto">
-                <div>{eachGroup.roomName}</div>
+                <small className="" style={{fontSize: '14px', fontFamily: 'monospace'}}>{eachGroup.roomName}</small>
                 <div></div>
               </div>
             </div>

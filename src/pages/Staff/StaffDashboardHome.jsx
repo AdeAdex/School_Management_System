@@ -211,6 +211,7 @@ const StaffDashboardHome = () => {
             placeholder="Room ID..."
             onChange={(e) => setRoom(e.target.value)}
           />
+          <input type="file" />
           <button onClick={createRoom}>Create Room</button>
           </div>
         </div>
