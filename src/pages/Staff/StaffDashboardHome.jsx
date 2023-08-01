@@ -80,7 +80,7 @@ const StaffDashboardHome = () => {
     });
 
     let values = {room, myImage, createdDay, createdTime}
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/chat_group"
+    let endpoint = "http://localhost:2000/staff_account/chat_group"
     axios.post(endpoint, {values})
     .then((response) => {
 
@@ -88,8 +88,7 @@ const StaffDashboardHome = () => {
     console.log(values);
   }
 
-
-
+  // https://school-portal-backend-adex2210.vercel.app
   const handleFileSelect = (e) => {
     // setIsLoading(true);
     console.log(e.target.files[0]);

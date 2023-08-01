@@ -11,13 +11,17 @@ const Chat = ({ socket }) => {
   //   const endpoint = "http://localhost:2000";
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
-  const [showChat, setShowChat] = useState(false);
   const [group, setGroup] = useState([]);
+  const [datCreate, setDateCreate] = useState('');
+  const [timeCreate, setTimeCreate] = useState('');
+  const [groupIcon, setGroupIcon] = useState('');
 
-  const joinRoom = (myRoom, day, time) => {
+  const joinRoom = (myRoom, createDay, createTime, roomPic) => {
     setRoom(myRoom);
+    setDateCreate(createDay);
+    setTimeCreate(createTime);
+    setGroupIcon(roomPic)
     if (myRoom !== "") {
-      console.log(myRoom);
       socket.current.emit("join room", myRoom);
     } else {
     }
@@ -50,11 +54,12 @@ const Chat = ({ socket }) => {
                 joinRoom(
                   eachGroup.roomName,
                   eachGroup.roomDateCreated,
-                  eachGroup.roomTimeCreated
+                  eachGroup.roomTimeCreated,
+                  eachGroup.roomPic
                 )
               }
             >
-              <img src="/pic/ade.png" style={{ width: "30px" }} alt="" />
+              <img src={eachGroup.roomPic} style={{ width: "30px" }} alt="" />
               <div className="my-auto">
                 <small className="" style={{fontSize: '14px', fontFamily: 'monospace'}}>{eachGroup.roomName}</small>
                 <div></div>
@@ -63,7 +68,7 @@ const Chat = ({ socket }) => {
           ))}
         </div>
         {/* ) : ( */}
-        <ChatMessenger socket={socket}  room={room} />
+        <ChatMessenger socket={socket}  room={room} createDay={datCreate} createTime={timeCreate} roomPic={groupIcon} />
         <OnlineUser />
       </div>
       {/* )} */}

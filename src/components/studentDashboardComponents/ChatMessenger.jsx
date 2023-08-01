@@ -4,7 +4,7 @@ import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
 import { useSelector } from "react-redux";
 
-const ChatMessenger = ({ socket, room }) => {
+const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -43,13 +43,20 @@ const ChatMessenger = ({ socket, room }) => {
         className="d-flex flex-column border"
         style={{ width: "50%", height: "100%" }}
       >
-        <div className="text-center bg-danger" style={{ height: "5%" }}>
+        <div className="text-center" style={{ height: "5%" }}>
           Live Chat
         </div>
         <div
           className="shadow position-relative"
           style={{ height: "80%", width: "100%", border: "3px solid red" }}
         >
+        <div className="d-flex group-chat p-2 gap-2">
+        <img src={roomPic} style={{ width: "30px" }} alt="" />
+              <div className="my-auto">
+                <small className="" style={{fontSize: '14px', fontFamily: 'monospace'}}>{room}</small>
+                <div></div>
+              </div>
+        </div>
           <ScrollToBottom
             style={{ overflowY: "scroll", width: "100%", height: "100%" }}
           >
@@ -58,7 +65,7 @@ const ChatMessenger = ({ socket, room }) => {
                 className=""
                 key={index}
                 id={globalState.firstName === messageContent.author ? "you" : "others"}
-              >
+              > 
                 <div>{messageContent.message}</div>
                 <div>{messageContent.author}</div>
                 <div>{messageContent.time}</div>
