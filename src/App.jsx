@@ -52,7 +52,7 @@ import Chat from './components/studentDashboardComponents/Chat'
 
 function App() {
   let socketRef = useRef()
-  const endpoint = "http://localhost:200"
+  const endpoint = "https://school-portal-backend-adex2210.vercel.app"
   const globalState = useSelector((state)=>state.portalReducer.firstName)
   console.log(globalState);
   const [count, setCount] = useState(0)
