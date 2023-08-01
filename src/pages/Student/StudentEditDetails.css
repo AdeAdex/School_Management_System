@@ -26,3 +26,14 @@
   margin-bottom: 20px;
 
 }
+
+
+@media screen and (max-width: 768px) {
+  .chat-container {
+    flex-direction: column;
+  }
+
+  .chat-nav, .chat-messenger-container, .online-container {
+    width: 100% !important;
+  }
+}

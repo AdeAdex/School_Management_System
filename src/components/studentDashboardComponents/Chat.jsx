@@ -39,9 +39,9 @@ const Chat = ({ socket }) => {
   return (
     <>
       {/* {!showChat ? ( */}
-      <div className="w-100 d-flex gap-3 h-100">
+      <div className="w-100 d-flex gap-3 h-100 chat-container">
         <div
-          className="d-flex flex-column gap-3 border h-100 p-4"
+          className="d-flex flex-column gap-3 border h-100 p-4 chat-nav"
           style={{ width: "25%" }}
         >
           <h3 className="text-center" style={{fontFamily: 'fantasy'}}>Join A Chat</h3>

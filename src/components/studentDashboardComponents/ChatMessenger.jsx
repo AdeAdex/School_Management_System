@@ -39,7 +39,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
   return (
     <>
       <div
-        className="d-flex flex-column border"
+        className="d-flex flex-column border chat-messenger-container"
         style={{ width: "50%", height: "100%" }}
       >
         <div className="text-center" style={{ height: "5%" }}>

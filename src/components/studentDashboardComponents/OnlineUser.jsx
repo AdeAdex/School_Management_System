@@ -2,7 +2,7 @@ import React from 'react'
 
 const OnlineUser = () => {
   return (
-    <div className='border text-center' style={{width: '25%'}}>OnlineUser</div>
+    <div className='border text-center online-container' style={{width: '25%'}}>OnlineUser</div>
   )
 }
 
