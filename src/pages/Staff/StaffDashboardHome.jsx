@@ -65,9 +65,22 @@ const StaffDashboardHome = () => {
 
 
   const createRoom = () => {
+    let createdDay = new Date().toLocaleDateString("en-GB", {
+      year: "2-digit",
+      month: "2-digit",
+      day: "2-digit",
+    });
+
+    let createdTime = new Date().toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    let values = {room, createdDay, createdTime}
     let endpoint = ""
-    // axios.post(endpoint, room)
-    console.log(room);
+    // axios.post(endpoint, values)
+    console.log(values);
   }
 
   return (
