@@ -10,6 +10,7 @@ const StaffDashboardHome = () => {
   const [studentClass, setStudentClass] = useState("");
   const [studentTerm, setStudentTerm] = useState("");
   const [studentOption, setStudentOption] = useState("")
+  const [room, setRoom] = useState('')
 
   useEffect(() => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
@@ -61,6 +62,13 @@ const StaffDashboardHome = () => {
     const selectedStudent = allStudent.find(student => student.firstName === selectedFirstName);
     setSelectedStudent(selectedStudent);
   };
+
+
+  const createRoom = () => {
+    let endpoint = ""
+    // axios.post(endpoint, room)
+    console.log(room);
+  }
 
   return (
     <>
@@ -177,6 +185,17 @@ const StaffDashboardHome = () => {
           </tbody>
         </table>
       )} */}
+        </div>
+        <div className="w-100 mt-4">
+          <div>Create Group</div>
+          <div>
+          <input
+            type="text"
+            placeholder="Room ID..."
+            onChange={(e) => setRoom(e.target.value)}
+          />
+          <button onClick={createRoom}>Create Room</button>
+          </div>
         </div>
         <UpgradeLevelModal
           isOpen={modalOpen}
