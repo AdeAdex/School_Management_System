@@ -63,7 +63,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
           </div>
           {/* <ScrollToBottom */}
           <div
-            style={{ overflowY: "scroll", width: "100%", height: "100%", backgroundImage: `url(${localStorage.cloudImage})`, backgroundRepeat: 'no-repeat' }}
+            style={{ overflowY: "scroll", width: "100%", height: "100%", backgroundImage: `url(${localStorage.cloudImage})`, backgroundRepeat: 'no-repeat', backgroundPosition: '100%', backgroundSize: 'contain' }}
           >
             {messageList.map((messageContent, index) => (
               <div
