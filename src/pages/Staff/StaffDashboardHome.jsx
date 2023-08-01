@@ -13,7 +13,7 @@ const StaffDashboardHome = () => {
   const [room, setRoom] = useState('')
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
+    let endpoint = "http://localhost:2000/student_account/allStudent";
     axios
       .get(endpoint, {
         headers: {
@@ -81,7 +81,7 @@ const StaffDashboardHome = () => {
     let endpoint = "http://localhost:2000/staff_account/chat_group"
     axios.post(endpoint, {values})
     .then((response) => {
-      
+
     })
     // console.log(values);
   }
