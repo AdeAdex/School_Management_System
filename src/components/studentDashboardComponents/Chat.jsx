@@ -44,7 +44,7 @@ const Chat = ({ socket }) => {
           className="d-flex flex-column gap-3 border h-100 p-4"
           style={{ width: "25%" }}
         >
-          <h3 className="text-center">Join A Chat</h3>
+          <h3 className="text-center" style={{fontFamily: 'fantasy'}}>Join A Chat</h3>
           {group.map((eachGroup, index) => (
             <div
               key={index}

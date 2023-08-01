@@ -9,7 +9,6 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
   const [messageList, setMessageList] = useState([]);
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
 
-
   useEffect(() => {
     if (socket.current) {
       socket.current.on("received_message", (data) => {
@@ -50,22 +49,32 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
           className="shadow position-relative"
           style={{ height: "80%", width: "100%", border: "3px solid red" }}
         >
-        <div className="d-flex group-chat p-2 gap-2">
-        <img src={roomPic} style={{ width: "30px" }} alt="" />
-              <div className="my-auto">
-                <small className="" style={{fontSize: '14px', fontFamily: 'monospace'}}>{room}</small>
-                <div></div>
-              </div>
-        </div>
+          <div className="d-flex justify-content-center shadow p-3 gap-2">
+            <img src={roomPic} style={{ width: "30px" }} alt="" />
+            <div className="my-auto">
+              <small
+                className=""
+                style={{ fontSize: "14px", fontFamily: "monospace" }}
+              >
+                {room}
+              </small>
+              <div></div>
+            </div>
+          </div>
           <ScrollToBottom
             style={{ overflowY: "scroll", width: "100%", height: "100%" }}
           >
+          
             {messageList.map((messageContent, index) => (
               <div
-                className=""
+                className="d-flex chat-div"
                 key={index}
-                id={globalState.firstName === messageContent.author ? "you" : "others"}
-              > 
+                id={
+                  globalState.firstName === messageContent.author
+                    ? "you"
+                    : "others"
+                }
+              >
                 <div>{messageContent.message}</div>
                 <div>{messageContent.author}</div>
                 <div>{messageContent.time}</div>
@@ -81,7 +90,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
             autosize
             minRows={1}
             maxRows={4}
-            style={{ width: "100%", backgroundColor: "", height: '100%' }}
+            style={{ width: "100%", backgroundColor: "", height: "100%" }}
             value={currentMessage}
             onChange={(e) => {
               setCurrentMessage(e.target.value);
