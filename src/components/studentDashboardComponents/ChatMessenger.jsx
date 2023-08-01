@@ -63,7 +63,15 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
           </div>
           {/* <ScrollToBottom */}
           <div
-            style={{ overflowY: "scroll", width: "100%", height: "100%", backgroundImage: `url(${localStorage.cloudImage})`, backgroundRepeat: 'no-repeat', backgroundPosition: '100%', backgroundSize: 'contain' }}
+            style={{
+              overflowY: "scroll",
+              width: "100%",
+              height: "100%",
+              backgroundImage: `url(${localStorage.cloudImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+            }}
           >
             {messageList.map((messageContent, index) => (
               <div
@@ -77,7 +85,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
               >
                 <img
                   src={localStorage.cloudImage}
-                  style={{ width: "50px", height: '50px', borderRadius: "50%" }}
+                  style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                   alt=""
                 />
                 <div className="d-flex flex-column w-100">
@@ -87,10 +95,13 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
                 </div>
               </div>
             ))}
-            </div>
+          </div>
           {/* </ScrollToBottom> */}
         </div>
-        <div className="mt-auto d-flex yhan shadow position-relative" style={{ height: "15%", backgroundColor: 'gray' }}>
+        <div
+          className="mt-auto d-flex yhan shadow position-relative"
+          style={{ height: "15%", backgroundColor: "gray" }}
+        >
           <BsFillEmojiSmileFill size={20} color="orange" />
           <Textarea
             label=""
