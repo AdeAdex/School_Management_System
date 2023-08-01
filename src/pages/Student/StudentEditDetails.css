@@ -11,7 +11,7 @@
 
 #you {
   /* justify-content: flex-start; */
-  margin-left: 5px;
+  margin-left: 10px;
   background-color: rgba(128, 128, 128, 0.63);
   margin-bottom: 20px;
   width: 70%;
@@ -20,7 +20,9 @@
 #others {
   /* justify-content: flex-end; */
   margin-left: auto;
-  margin-right: 5px;
+  margin-right: 10px;
   background-color: green;
   width: 70%;
+  margin-bottom: 20px;
+
 }

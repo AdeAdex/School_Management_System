@@ -61,8 +61,9 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
               <div></div>
             </div>
           </div>
-          <ScrollToBottom
-            style={{ overflowY: "scroll", width: "100%", height: "100%" }}
+          {/* <ScrollToBottom */}
+          <div
+            style={{ overflowY: "scroll", width: "100%", height: "80%" }}
           >
             {messageList.map((messageContent, index) => (
               <div
@@ -86,7 +87,8 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
                 </div>
               </div>
             ))}
-          </ScrollToBottom>
+            </div>
+          {/* </ScrollToBottom> */}
         </div>
         <div className="mt-auto d-flex yhan" style={{ height: "15%" }}>
           <BsFillEmojiSmileFill size={20} color="orange" />

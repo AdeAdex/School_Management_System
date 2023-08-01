@@ -52,7 +52,7 @@ import Chat from './components/studentDashboardComponents/Chat'
 
 function App() {
   let socketRef = useRef()
-  const endpoint = "http://localhost:2000"
+  const endpoint = "http://localhost:200"
   const globalState = useSelector((state)=>state.portalReducer.firstName)
   console.log(globalState);
   const [count, setCount] = useState(0)
