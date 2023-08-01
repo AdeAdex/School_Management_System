@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ScrollToBottom from 'react-scroll-to-bottom';
+import ScrollToBottom from "react-scroll-to-bottom";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
+import { Textarea } from "@mantine/core";
 
 const ChatMessenger = ({ socket, username, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -27,37 +29,65 @@ const ChatMessenger = ({ socket, username, room }) => {
       };
 
       await socket.current.emit("sent_message", messageData);
-//       setMessageList((list) => [...list, messageData]);
-      setCurrentMessage("")
+      //       setMessageList((list) => [...list, messageData]);
+      setCurrentMessage("");
     }
   };
 
   return (
     <>
-      <div className="d-grid gap-3 mt-5 justify-content-center w-100">
-        <div className="text-center">Live Chat</div>
-        <div className="border shadow" style={{height: '100%', width: '100%'}}>
-        <ScrollToBottom style={{overflowY: 'scroll', width: '100%', height: '100%'}}>
-          {messageList.map((messageContent, index) => (
-            <div className="" key={index} id={username === messageContent.author ? "you" : "others"}>
-              <div>{messageContent.message}</div>
-              <div>{messageContent.author}</div>
-              <div>{messageContent.time}</div>
-            </div>
-          ))}
+      <div
+        className="d-flex flex-column border"
+        style={{ width: "50%", height: "100%" }}
+      >
+        <div className="text-center bg-danger" style={{ height: "5%" }}>
+          Live Chat
+        </div>
+        <div
+          className="shadow position-relative"
+          style={{ height: "80%", width: "100%", border: "3px solid red" }}
+        >
+          <ScrollToBottom
+            style={{ overflowY: "scroll", width: "100%", height: "100%" }}
+          >
+            {messageList.map((messageContent, index) => (
+              <div
+                className=""
+                key={index}
+                id={username === messageContent.author ? "you" : "others"}
+              >
+                <div>{messageContent.message}</div>
+                <div>{messageContent.author}</div>
+                <div>{messageContent.time}</div>
+              </div>
+            ))}
           </ScrollToBottom>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Hey..."
+        <div className="mt-auto d-flex yhan" style={{ height: "15%" }}>
+          <BsFillEmojiSmileFill size={20} color="orange" />
+          <Textarea
+            label=""
+            placeholder="Message"
+            autosize
+            minRows={1}
+            maxRows={4}
+            style={{ width: "100%", backgroundColor: "", height: '100%' }}
             value={currentMessage}
             onChange={(e) => {
               setCurrentMessage(e.target.value);
             }}
-            onKeyPress={(e) => {e.key === "Enter" && sendMessage()}}
+            onKeyPress={(e) => {
+              e.key === "Enter" && sendMessage();
+            }}
           />
-          <button onClick={sendMessage}> Send&#9658;</button>
+          <button
+            type="submit"
+            onClick={sendMessage}
+            className="btn btn-sm btn-primary h-auto"
+            style={{ marginLeft: "10px" }}
+          >
+            Send
+          </button>
         </div>
       </div>
     </>

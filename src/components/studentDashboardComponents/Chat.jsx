@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import ChatMessenger from "./ChatMessenger";
 import socketClient from "socket.io-client";
+import OnlineUser from "./OnlineUser";
 
 const Chat = ({ socket }) => {
   //   let socketRef = useRef();
@@ -25,7 +26,10 @@ const Chat = ({ socket }) => {
   return (
     <>
       {/* {!showChat ? ( */}
-        <div className="d-grid justify-content-center gap-3 w-100">
+      <div className="w-100 d-flex gap-3 h-100">
+
+      
+        <div className="d-grid justify-content-center gap-3 border" style={{width: '25%'}}>
           <h3>Join A Chat</h3>
           <input
             type="text"
@@ -41,6 +45,8 @@ const Chat = ({ socket }) => {
         </div>
       {/* ) : ( */}
         <ChatMessenger socket={socket} username={username} room={room} />
+        <OnlineUser/>
+        </div>
       {/* )} */}
     </>
   );
