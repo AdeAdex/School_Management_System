@@ -26,7 +26,7 @@ const Chat = ({ socket }) => {
         let groupEndpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/chat_group"
         axios.get(groupEndpoint)
         .then((response) => {
-          console.log(response);
+          console.log(response.data.roomsArray);
         })
       }, [])
 
