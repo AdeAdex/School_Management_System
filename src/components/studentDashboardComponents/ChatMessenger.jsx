@@ -27,7 +27,7 @@ const ChatMessenger = ({ socket, username, room }) => {
       };
 
       await socket.current.emit("sent_message", messageData);
-      setMessageList((list) => [...list, messageData]);
+//       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("")
     }
   };
