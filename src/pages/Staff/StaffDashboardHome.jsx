@@ -207,6 +207,7 @@ const StaffDashboardHome = () => {
           <div>
           <input
             type="text"
+            className="text-capitalize"
             placeholder="Room ID..."
             onChange={(e) => setRoom(e.target.value)}
           />
