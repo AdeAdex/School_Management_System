@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
+import { useSelector } from "react-redux";
 
-const ChatMessenger = ({ socket, username, room }) => {
+const ChatMessenger = ({ socket, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+
 
   useEffect(() => {
     if (socket.current) {
@@ -20,7 +23,7 @@ const ChatMessenger = ({ socket, username, room }) => {
     if (currentMessage !== "") {
       const messageData = {
         room: room,
-        author: username,
+        author: globalState.firstName,
         message: currentMessage,
         time:
           new Date(Date.now()).getHours() +
@@ -54,7 +57,7 @@ const ChatMessenger = ({ socket, username, room }) => {
               <div
                 className=""
                 key={index}
-                id={username === messageContent.author ? "you" : "others"}
+                id={globalState.firstName === messageContent.author ? "you" : "others"}
               >
                 <div>{messageContent.message}</div>
                 <div>{messageContent.author}</div>
