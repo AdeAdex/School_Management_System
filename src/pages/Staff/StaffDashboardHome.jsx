@@ -11,6 +11,8 @@ const StaffDashboardHome = () => {
   const [studentTerm, setStudentTerm] = useState("");
   const [studentOption, setStudentOption] = useState("")
   const [room, setRoom] = useState('')
+  const [myImage, setMyImage] = useState("");
+
 
   useEffect(() => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
@@ -77,14 +79,27 @@ const StaffDashboardHome = () => {
       minute: "2-digit",
     });
 
-    let values = {room, createdDay, createdTime}
+    let values = {room, myImage, createdDay, createdTime}
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/chat_group"
     axios.post(endpoint, {values})
     .then((response) => {
 
     })
-    // console.log(values);
+    console.log(values);
   }
+
+
+
+  const handleFileSelect = (e) => {
+    // setIsLoading(true);
+    console.log(e.target.files[0]);
+    let selectedImage = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(selectedImage);
+    reader.onload = () => {
+      setMyImage(reader.result);
+    };
+  };
 
   return (
     <>
@@ -211,7 +226,13 @@ const StaffDashboardHome = () => {
             placeholder="Room ID..."
             onChange={(e) => setRoom(e.target.value)}
           />
-          <input type="file" />
+          <input
+          type="file"
+          id="avatarInput"
+          accept="image/*"
+          style={{ display: "" }}
+          onChange={handleFileSelect}
+        />
           <button onClick={createRoom}>Create Room</button>
           </div>
         </div>
