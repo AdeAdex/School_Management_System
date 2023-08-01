@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
 import { useLocation } from "react-router-dom";
+import Chat from "../../components/studentDashboardComponents/Chat";
 
 
 const StudentEditDetails = ({ socket }) => {
@@ -49,7 +50,7 @@ const StudentEditDetails = ({ socket }) => {
   return (
     <>
     <div className="d-flex">
-      <div>
+      {/* <div>
         {allmessages.map((msg, index) => (
           <div key={index}>
             <div>{msg.name}</div>
@@ -82,8 +83,9 @@ const StudentEditDetails = ({ socket }) => {
         >
           Send
         </button>
+      </div> */}
       </div>
-      </div>
+      <Chat socket={socket}/>
     </>
   );
 };

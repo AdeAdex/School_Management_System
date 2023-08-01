@@ -85,7 +85,7 @@ function App() {
           {/* <Route path='/student_dashboard/chat' element={<ChatModal socket={socketRef}/>}/> */}
           {/* <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />   */}
 
-          <Route path='/chat' element={<Chat socket={socketRef}/>} />  
+          {/* <Route path='/chat' element={<Chat socket={socketRef}/>} />   */}
 
 
         <Route path='/student_signin' element={<StudentSignIn/>}/>
