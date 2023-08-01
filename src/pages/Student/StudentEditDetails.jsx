@@ -7,6 +7,7 @@ import { Textarea } from "@mantine/core";
 import { useLocation } from "react-router-dom";
 import Chat from "../../components/studentDashboardComponents/Chat";
 import ChatMessenger from "../../components/studentDashboardComponents/ChatMessenger";
+import '../Student/StudentEditDetails.css'
 
 
 const StudentEditDetails = ({ socket }) => {
