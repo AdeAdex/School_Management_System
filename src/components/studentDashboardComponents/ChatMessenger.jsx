@@ -64,10 +64,9 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
           <ScrollToBottom
             style={{ overflowY: "scroll", width: "100%", height: "100%" }}
           >
-          
             {messageList.map((messageContent, index) => (
               <div
-                className="d-flex chat-div"
+                className="d-flex chat-div gap-3"
                 key={index}
                 id={
                   globalState.firstName === messageContent.author
@@ -75,9 +74,16 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
                     : "others"
                 }
               >
-                <div>{messageContent.message}</div>
-                <div>{messageContent.author}</div>
-                <div>{messageContent.time}</div>
+                <img
+                  src={localStorage.cloudImage}
+                  style={{ width: "50px", height: '50px', borderRadius: "50%" }}
+                  alt=""
+                />
+                <div className="d-flex flex-column w-100">
+                  <div className="">{messageContent.author}</div>
+                  <div>{messageContent.message}</div>
+                  <div className="ms-auto">{messageContent.time}</div>
+                </div>
               </div>
             ))}
           </ScrollToBottom>
