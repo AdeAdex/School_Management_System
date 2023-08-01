@@ -79,8 +79,11 @@ const StaffDashboardHome = () => {
 
     let values = {room, createdDay, createdTime}
     let endpoint = "http://localhost:2000/staff_account/chat_group"
-    axios.post(endpoint, values)
-    console.log(values);
+    axios.post(endpoint, {values})
+    .then((response) => {
+      
+    })
+    // console.log(values);
   }
 
   return (
