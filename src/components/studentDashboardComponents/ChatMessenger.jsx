@@ -71,6 +71,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "contain",
+              paddingBottom: '50px'
             }}
           >
             {messageList.map((messageContent, index) => (
