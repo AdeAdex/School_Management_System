@@ -19,7 +19,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
   }, [socket.current]);
 
   const sendMessage = async () => {
-    if (currentMessage !== "") {
+    if (currentMessage.trim() !== "") {
       const messageData = {
         room: room,
         author: globalState.firstName,
