@@ -139,8 +139,6 @@ const StudentPortalDashboard = () => {
       })
       .then((response) => {
         if (response.data.status) {
-          // console.log(response.data.response);
-          // console.log(response.data.message);
           dispatch(newStudent(response.data.response));
         } else {
           console.log(response.data.message);
