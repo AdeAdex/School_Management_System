@@ -347,6 +347,6 @@ const StudentPortalDashboard = () => {
 
 export default StudentPortalDashboard;
 
-// studentCourseRegistration
+
 
 
