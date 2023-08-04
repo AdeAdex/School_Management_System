@@ -235,7 +235,6 @@ const StudentPortalDashboard = () => {
                     />
                   }
                 />
-                {/* <Route path="chat" element={<ChatModal/>}/> */}
               </Routes>
             )}
           </div>
