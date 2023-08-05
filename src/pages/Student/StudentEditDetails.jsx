@@ -68,23 +68,6 @@ const StudentEditDetails = ({ socket }) => {
         ))}
       </div>
       <div className="modal-footer d-flex w-100">
-        <BsFillEmojiSmileFill size={20} color="orange" />
-        <Textarea
-          label=""
-          placeholder="Message"
-          autosize
-          minRows={1}
-          maxRows={4}
-          style={{ width: "70%", backgroundColor: "" }}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button
-          type="submit"
-          onClick={sendMessage}
-          className="btn btn-sm btn-primary"
-        >
-          Send
-        </button>
       </div> */}
       <Chat socket={socket}/>
       </div>
