@@ -43,8 +43,6 @@ const StudentEditDetails = ({ socket }) => {
       picture: localStorage.cloudImage,
       id: id,
     };
-
-    // console.log(payload);
     socket.current.emit("sentMsg", payload);
     setAllmessages([...allmessages, payload]);
   };
