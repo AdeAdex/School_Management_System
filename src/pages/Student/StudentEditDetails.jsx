@@ -87,7 +87,6 @@ const StudentEditDetails = ({ socket }) => {
         </button>
       </div> */}
       <Chat socket={socket}/>
-      {/* <ChatMessenger socket={socket}/> */}
       </div>
     </>
   );
