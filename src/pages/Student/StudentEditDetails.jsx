@@ -53,13 +53,7 @@ const StudentEditDetails = ({ socket }) => {
     <>
     <div className="d-flex w-100 h-100">
       {/* <div>
-        {allmessages.map((msg, index) => (
-          <div key={index}>
-            <div>{msg.name}</div>
-            <div>{msg.message}</div>
-            <div>{msg.messageDate}</div>
-            <div>{msg.messageTime}</div>
-            <img
+        
               src={msg.picture}
               alt=""
               style={{ width: "50px", borderRadius: "50%" }}
