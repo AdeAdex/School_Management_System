@@ -50,11 +50,6 @@ const StudentEditDetails = ({ socket }) => {
   return (
     <>
     <div className="d-flex w-100 h-100">
-      {/* <div>
-        
-              src={msg.picture}
-              alt=""
-              style={{ width */}
       <Chat socket={socket}/>
       </div>
     </>
