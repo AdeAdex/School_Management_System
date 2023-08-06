@@ -57,9 +57,7 @@ const StudentEditDetails = ({ socket }) => {
               style={{ width: "50px", borderRadius: "50%" }}
             />
           </div>
-        ))}
-      </div>
-      <div className="modal-footer d-flex w-100">
+        
       </div> */}
       <Chat socket={socket}/>
       </div>
