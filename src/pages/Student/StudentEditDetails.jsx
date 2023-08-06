@@ -54,9 +54,7 @@ const StudentEditDetails = ({ socket }) => {
         
               src={msg.picture}
               alt=""
-              style={{ width: "50px", borderRadius: "50%" }
-        
-      </div> */}
+              style={{ width */}
       <Chat socket={socket}/>
       </div>
     </>
