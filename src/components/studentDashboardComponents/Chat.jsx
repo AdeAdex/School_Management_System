@@ -17,11 +17,12 @@ const Chat = ({ socket }) => {
   const [groupIcon, setGroupIcon] = useState('');
 
   const joinRoom = (myRoom, createDay, createTime, roomPic) => {
-    setRoom(myRoom);
-    setDateCreate(createDay);
-    setTimeCreate(createTime);
-    setGroupIcon(roomPic)
+    
     if (myRoom !== "") {
+      setRoom(myRoom);
+   		setDateCreate(createDay);
+   		setTimeCreate(createTime);
+   		setGroupIcon(roomPic)
       socket.current.emit("join room", myRoom);
     } else {
     }
@@ -34,7 +35,7 @@ const Chat = ({ socket }) => {
     .then((response) => {
       setGroup(response.data.rooms);
     });
-  }, [group]);
+  }, []);
 
   return (
     <>

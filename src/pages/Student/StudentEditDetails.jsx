@@ -43,8 +43,6 @@ const StudentEditDetails = ({ socket }) => {
       picture: localStorage.cloudImage,
       id: id,
     };
-
-    // console.log(payload);
     socket.current.emit("sentMsg", payload);
     setAllmessages([...allmessages, payload]);
   };
@@ -52,42 +50,7 @@ const StudentEditDetails = ({ socket }) => {
   return (
     <>
     <div className="d-flex w-100 h-100">
-      {/* <div>
-        {allmessages.map((msg, index) => (
-          <div key={index}>
-            <div>{msg.name}</div>
-            <div>{msg.message}</div>
-            <div>{msg.messageDate}</div>
-            <div>{msg.messageTime}</div>
-            <img
-              src={msg.picture}
-              alt=""
-              style={{ width: "50px", borderRadius: "50%" }}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="modal-footer d-flex w-100">
-        <BsFillEmojiSmileFill size={20} color="orange" />
-        <Textarea
-          label=""
-          placeholder="Message"
-          autosize
-          minRows={1}
-          maxRows={4}
-          style={{ width: "70%", backgroundColor: "" }}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button
-          type="submit"
-          onClick={sendMessage}
-          className="btn btn-sm btn-primary"
-        >
-          Send
-        </button>
-      </div> */}
       <Chat socket={socket}/>
-      {/* <ChatMessenger socket={socket}/> */}
       </div>
     </>
   );
