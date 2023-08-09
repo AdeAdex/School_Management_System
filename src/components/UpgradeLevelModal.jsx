@@ -23,7 +23,7 @@ const UpgradeLevelModal = ({
       // let student;
       let newValues = { ...values, studentEmail };
       console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/upgrade_level";
+      let endpoint = "http://localhost:2000/student_account/upgrade_level";
       axios.post(endpoint, newValues)
       .then((response) => {
         if (response.status) {
