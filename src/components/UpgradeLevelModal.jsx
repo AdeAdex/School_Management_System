@@ -125,9 +125,9 @@ const UpgradeLevelModal = ({
                   </div>
                 </div>
 
-                {formik.values.studentClass === "SSS 1" ||
-              formik.values.studentClass === "SSS 2" ||
-              formik.values.studentClass === "SSS 3" ? (
+                {formik.values.studentNewClass === "SSS 1" ||
+              formik.values.studentNewClass === "SSS 2" ||
+              formik.values.studentNewClass === "SSS 3" ? (
                 <div className="col-md-12 mb-3">
                   <label
                     htmlFor="validationServer04"
