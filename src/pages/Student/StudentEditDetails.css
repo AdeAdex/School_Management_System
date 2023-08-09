@@ -35,5 +35,9 @@
 
   .chat-nav, .chat-messenger-container, .online-container {
     width: 100% !important;
+  } 
+
+  .chat-nav {
+    
   }
 }
