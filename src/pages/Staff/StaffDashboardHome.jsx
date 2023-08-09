@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Modal from "react-bootstrap/Modal";
+// import Modal from "react-bootstrap/Modal";
 import UpgradeLevelModal from "../../components/UpgradeLevelModal";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 

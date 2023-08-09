@@ -51,8 +51,8 @@ const UpgradeLevelModal = ({
   });
   return (
     <>
-      <div>
-        <Modal show={isOpen} onHide={onClose} animation={true}>
+      <div className="d-flex mx-auto w-100 bg-danger">
+        <Modal show={isOpen} onHide={onClose} animation={true} className="mx-auto">
           <Modal.Header className="bg-white text-dark">
             <Modal.Title className="text-uppercase text-center mx-auto">
               upgrade class
