@@ -13,8 +13,8 @@ const UpgradeLevelModal = ({
 }) => {
   let formik = useFormik({
     initialValues: {
-      class: "",
-      options: ""
+      studentClass: "",
+      studentOptions: ""
     },
     // https://school-portal-backend-adex2210.vercel.app
 
@@ -102,7 +102,7 @@ const UpgradeLevelModal = ({
                   <select
                     className="form-select "
                     id="validationServer04"
-                    name="class"
+                    name="studentClass"
                     aria-describedby="validationServer04Feedback"
                     required
                     onChange={formik.handleChange}
@@ -138,7 +138,7 @@ const UpgradeLevelModal = ({
                   <select
                     className="form-select"
                     id="validationServer04"
-                    name="options"
+                    name="studentOptions"
                     aria-describedby="validationServer04Feedback"
                     required
                     onChange={formik.handleChange}
