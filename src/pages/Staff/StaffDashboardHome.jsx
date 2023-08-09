@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import UpgradeLevelModal from "../../components/UpgradeLevelModal";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const StaffDashboardHome = () => {
+  return (
+    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} >
+      <MyApp/>
+    </SnackbarProvider>
+  )
+};
+
+function MyApp() {
   const [allStudent, setAllStudent] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [personEmail, setPersonEmail] = useState("");
@@ -12,10 +21,12 @@ const StaffDashboardHome = () => {
   const [studentOption, setStudentOption] = useState("")
   const [room, setRoom] = useState('')
   const [myImage, setMyImage] = useState("");
+  const {enqueueSnackbar} = useSnackbar();
 
+  // https://school-portal-backend-adex2210.vercel.app 
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
+    let endpoint = "http://localhost:2000/student_account/allStudent";
     axios
       .get(endpoint, {
         headers: {
@@ -66,7 +77,7 @@ const StaffDashboardHome = () => {
   };
 
 
-  const createRoom = () => {
+  const createRoom = (variant) => {
     let createdDay = new Date().toLocaleDateString("en-GB", {
       year: "2-digit",
       month: "2-digit",
@@ -83,7 +94,7 @@ const StaffDashboardHome = () => {
     let endpoint = "http://localhost:2000/staff_account/chat_group"
     axios.post(endpoint, {values})
     .then((response) => {
-
+      enqueueSnackbar( response.data.message, { variant: 'success' });
     })
     console.log(values);
   }
@@ -246,7 +257,7 @@ const StaffDashboardHome = () => {
       </div>
     </>
   );
-};
+}
 
 export default StaffDashboardHome;
 
