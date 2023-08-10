@@ -3,43 +3,34 @@ import axios from "axios";
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
-//   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-//   const currentQuestion = questions[currentQuestionIndex];
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const currentQuestion = questions[currentQuestionIndex];
 
 
 
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/questions";
 
-    // Fetch the questions from the API when the component mounts
-//     axios.get(endpoint)
-//     .then((response) => {
-//       setQuestions(response.data.questions);
-//       console.log(questions);
-//     });
-axios.get(endpoint)
+    axios.get(endpoint)
     .then((response) => {
-        console.log(response.data.questions);
-//       setQuestions((prevQuestions) => {
-//         console.log(response.data.questions);
-//         return response.data.questions;
-//       });
+      setQuestions(response.data.questions);
+      console.log(questions);
     });
   }, []);
 
-//   const handleNextClick = () => {
-//     // Move to the next question
-//     setCurrentQuestionIndex(currentQuestionIndex + 1);
-//   };
+  const handleNextClick = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
 
-//   if (!currentQuestion) {
-//         return <div>Loading...</div>;
-//       } 
+  if (!currentQuestion) {
+        return <div>Loading...</div>;
+      } 
       
 
   return (
     <>
-      {/* <div>
+      {currentQuestion ? (
+      <div>
         <h2>Question {currentQuestion.id}</h2>
         <p>{currentQuestion.content}</p>
         <ul>
@@ -48,7 +39,10 @@ axios.get(endpoint)
           ))}
         </ul>
         <button onClick={handleNextClick}>Next</button>
-      </div> */}
+      </div>
+    ) : (
+      <div>Loading...</div>
+    )}
     </>
   );
 };
