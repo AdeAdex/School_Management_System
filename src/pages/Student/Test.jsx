@@ -32,6 +32,11 @@ const Test = () => {
       setSelectedOption("");
       setShowCorrectAnswer(false);
       setClicked(false);
+      let endpoint2 = "http://localhost:2000/student_account/update_my_admission_exam_scor"
+      axios.post(endpoint2, scores)
+      .then((response) => {
+        
+      })
     }
   };
 
