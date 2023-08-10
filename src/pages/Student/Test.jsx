@@ -19,10 +19,11 @@ const Test = () => {
 //     });
 axios.get(endpoint)
     .then((response) => {
-      setQuestions((prevQuestions) => {
         console.log(response.data.questions);
-        return response.data.questions;
-      });
+//       setQuestions((prevQuestions) => {
+//         console.log(response.data.questions);
+//         return response.data.questions;
+//       });
     });
   }, []);
 
