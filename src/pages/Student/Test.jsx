@@ -6,13 +6,12 @@ const Test = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
-  const [scores, setScores] = useState(0)
+  const [scores, setScores] = useState(0);
 
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/questions";
 
-    axios.get(endpoint)
-    .then((response) => {
+    axios.get(endpoint).then((response) => {
       setQuestions(response.data);
     });
   }, []);
@@ -28,8 +27,10 @@ const Test = () => {
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     setShowCorrectAnswer(true);
-    if (c) {
-        
+
+    if (option.startsWith(questions[currentQuestionIndex].correctOption)) {
+      // Increment the score by 10 if the selected option is correct
+      setScores(scores + 10);
     }
   };
 
@@ -70,6 +71,7 @@ const Test = () => {
               </p>
             )} */}
             <button onClick={handleNextClick}>Next</button>
+            <p>Score: {scores}</p>
           </>
         )}
       </div>
