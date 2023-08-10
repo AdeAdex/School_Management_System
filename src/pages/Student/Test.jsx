@@ -7,6 +7,7 @@ const Test = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [scores, setScores] = useState(0);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/questions";
@@ -21,6 +22,7 @@ const Test = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedOption("");
       setShowCorrectAnswer(false);
+      setClicked(false);
     }
   };
 
@@ -28,10 +30,25 @@ const Test = () => {
     setSelectedOption(option);
     setShowCorrectAnswer(true);
 
-    if (option.startsWith(questions[currentQuestionIndex].correctOption)) {
-      // Increment the score by 10 if the selected option is correct
-      setScores(scores + 10);
-    }
+//     if (option.startsWith(questions[currentQuestionIndex].correctOption)) {
+//       setClicked(true);
+//       setScores(scores + 10);
+//       if (clicked) {
+//         setScores(scores);
+//       }
+//     } 
+
+if (option.startsWith(questions[currentQuestionIndex].correctOption)) {
+        if (!clicked) {
+          setClicked(true);
+          setScores(scores + 10);
+        }
+      } else {
+        if (clicked) {
+          setClicked(false);
+          setScores(scores - 10);
+        }
+      }
   };
 
   const currentQuestion = questions[currentQuestionIndex];
