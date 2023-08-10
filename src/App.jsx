@@ -42,6 +42,7 @@ import LoginAccountType from './pages/LoginAccountType'
 import socketClient from 'socket.io-client';
 import ChatModal from './components/studentDashboardComponents/ChatModal'
 import Chat from './components/studentDashboardComponents/Chat'
+import Test from './pages/Student/Test'
 
 
 
@@ -103,6 +104,7 @@ function App() {
         </Route>
         <Route path='/forgot_password' element={<ForgotPassword/>}/>
         <Route path='student_login' element={<Login/>}/>
+        <Route path='/questions' element={<Test/>}/>
         <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>
           <Route path='home' element={<StudentDashboardHome/>}/>
