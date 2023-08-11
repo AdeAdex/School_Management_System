@@ -15,9 +15,9 @@ const Login = () => {
   const [taken, setTaken] = useState(false)
   const examState = useSelector((state) => state.portalReducer.taken);
 
-  // useEffect(() => {
-  //   alert(examState)
-  // }, [])
+  useEffect(() => {
+    alert(examState)
+  }, [])
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
