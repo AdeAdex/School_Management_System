@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Student/Login.css";
 import { useFormik } from "formik";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 
 const Login = () => {
@@ -12,7 +13,11 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [taken, setTaken] = useState(false)
-  
+  const examState = useSelector((state) => state.portalReducer.taken);
+
+  // useEffect(() => {
+  //   alert(examState)
+  // }, [])
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -25,6 +30,8 @@ const Login = () => {
     },
    
 
+  
+    
     // https://school-portal-backend-adex2210.vercel.app
 
     onSubmit: (values) => {
@@ -36,7 +43,7 @@ const Login = () => {
         setIsLoading(false)
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
-          if (taken) {
+          if (examState) {
           navigate("/student/admission/pick_class");
           } else {
             navigate('/questions')
