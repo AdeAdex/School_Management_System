@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { newStudent } from "../../redux/portalSlice";
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -31,8 +32,8 @@ const Test = () => {
           })
           .then((res) => {
             if (res.data.status) {
-              setIsLoading(false);
-              setOpen(false);
+        //       setIsLoading(false);
+        //       setOpen(false);
               dispatch(newStudent(res.data.response));
               // console.log(res.data.message);
             } else {
@@ -96,7 +97,7 @@ const Test = () => {
   return (
     <>
       <div>
-      <div>Welcome: {globalState.firstName}</div>
+      <div>Welcome: {globalState.firstName} {globalState.lastName}</div>
         {currentQuestion && (
           <>
             <h1>Question {currentQuestion.id}</h1>
