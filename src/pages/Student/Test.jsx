@@ -80,6 +80,7 @@ const Test = () => {
           setSelectedOption("");
           setShowCorrectAnswer(false);
           setClicked(false);
+          setScores(0)
         } else {
 
         }
@@ -87,6 +88,21 @@ const Test = () => {
       });
     }
   };
+
+
+  const handlePreviousClick = () => {
+    if (currentQuestionIndex > 0) {
+      const newQuestionIndex = currentQuestionIndex - 1;
+      setCurrentQuestionIndex(newQuestionIndex);
+      localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
+      setSelectedOption("");
+      setShowCorrectAnswer(false);
+      setClicked(false);
+      setScores(0)
+    }
+  };
+
+
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -143,6 +159,7 @@ const Test = () => {
                 )}
               </p>
             )} */}
+            <button onClick={handlePreviousClick}>Previous</button>
             <button onClick={handleNextClick}>Next</button>
             <p>Score: {scores}</p>
           </>
