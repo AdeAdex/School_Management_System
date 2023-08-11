@@ -38,8 +38,7 @@ const CreateAccount = () => {
           setIsLoading(false)
           console.log(response.data.status);
           // console.log(response.data.response);
-          navigate("/questions");
-          // student_login
+          navigate("/student_login");
         } else {
           const Toast = Swal.mixin({
             toast: true,

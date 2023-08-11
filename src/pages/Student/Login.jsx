@@ -11,6 +11,7 @@ const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState("")
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [taken, setTaken] = useState(false)
   
 
   const togglePasswordVisibility = () => {
@@ -35,7 +36,12 @@ const Login = () => {
         setIsLoading(false)
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
+          if (taken) {
           navigate("/student/admission/pick_class");
+          } else {
+            navigate('/questions')
+          }
+          
         } else {
           const Toast = Swal.mixin({
             toast: true,

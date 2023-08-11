@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -10,6 +12,39 @@ const Test = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [scores, setScores] = useState(0);
   const [clicked, setClicked] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+
+  useEffect(() => {
+        let studentLoginToken = localStorage.studentLoginToken;
+        let endpoint =
+          "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
+        axios
+          .get(endpoint, {
+            headers: {
+              Authorization: `Bearer ${studentLoginToken}`,
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          })
+          .then((res) => {
+            if (res.data.status) {
+              setIsLoading(false);
+              setOpen(false);
+              dispatch(newStudent(res.data.response));
+              // console.log(res.data.message);
+            } else {
+              console.log(res.data.message);
+              console.log(res.data.status);
+              navigate("/student_login");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
 
   useEffect(() => {
     let endpoint =
@@ -32,10 +67,10 @@ const Test = () => {
       setSelectedOption("");
       setShowCorrectAnswer(false);
       setClicked(false);
-      let endpoint2 = "http://localhost:2000/student_account/update_my_admission_exam_scor"
+      let endpoint2 = "http://localhost:2000/student_account/update_my_admission_exam_score"
       axios.post(endpoint2, scores)
       .then((response) => {
-        
+
       })
     }
   };
@@ -61,6 +96,7 @@ const Test = () => {
   return (
     <>
       <div>
+      <div>Welcome: {globalState.firstName}</div>
         {currentQuestion && (
           <>
             <h1>Question {currentQuestion.id}</h1>
