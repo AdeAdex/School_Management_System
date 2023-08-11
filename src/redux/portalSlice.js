@@ -11,7 +11,8 @@ export const portalSlice = createSlice({
     OTPVerify: false,
     otp: '',
     mySub: [],
-    hide_show: false
+    hide_show: false,
+    taken: false
   },
   reducers: {
     newName: (state, action) => {
@@ -34,9 +35,12 @@ export const portalSlice = createSlice({
     },
     show_hide_offcanvas: (state, action) => {
       state.hide_show = action.payload
+    },
+    takenExam: (state, action) => {
+      state.taken = action.payload
     }
   },
 });
 
-export const { newName, newStudent, myEmailVerify, myOTPVerify, mySentOTP, mySubSub, show_hide_offcanvas} = portalSlice.actions;
+export const { newName, newStudent, myEmailVerify, myOTPVerify, mySentOTP, mySubSub, show_hide_offcanvas, takenExam} = portalSlice.actions;
 export default portalSlice.reducer;
