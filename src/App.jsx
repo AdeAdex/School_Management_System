@@ -53,7 +53,7 @@ import Test from './pages/Student/Test'
 
 function App() {
   let socketRef = useRef()
-  const endpoint = "https://school-portal-backend-adex2210.vercel.app/"
+  const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
   const globalState = useSelector((state)=>state.portalReducer.firstName)
   console.log(globalState);
   const [count, setCount] = useState(0)
@@ -69,7 +69,7 @@ function App() {
         })
       })
     }
-    socketRef.current = socketClient(endpoint);
+    socketRef.current = socketClient(ioEndpoint);
   },[])
 
   let staffSignInToken = localStorage.staffSignInToken
