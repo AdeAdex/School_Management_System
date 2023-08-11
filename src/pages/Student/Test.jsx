@@ -63,13 +63,14 @@ const Test = () => {
   }, []);
 
   const handleNextClick = () => {
+        let myEmail = globalState.email
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedOption("");
       setShowCorrectAnswer(false);
       setClicked(false);
       let endpoint2 = "http://localhost:2000/student_account/update_my_admission_exam_score"
-      axios.post(endpoint2, scores)
+      axios.post(endpoint2, {scores, myEmail})
       .then((response) => {
 
       })
