@@ -183,8 +183,8 @@ const Test = () => {
                     ))}
                   </ul>
                   <div className="d-flex gap-3 justify-content-center">
-                  <button onClick={handlePreviousClick}>Previous</button>
-                  <button onClick={handleNextClick}>
+                  <button className=" btn btn-primary btn-sm px-3" onClick={handlePreviousClick}>Previous</button>
+                  <button className=" btn btn-primary btn-sm px-3" onClick={handleNextClick}>
                     {currentQuestion.id === 10 ? "Submit" : "Next"}
                   </button>
                   </div>
