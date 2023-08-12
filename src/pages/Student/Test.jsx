@@ -12,6 +12,7 @@ const Test = () => {
   const [selectedOptions, setSelectedOptions] = useState(Array(0));
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
+  const [beginExam, setBeginExam] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const Test = () => {
   }, [currentQuestionIndex]);
 
   const handleNextClick = () => {
+    console.log(taken);
     if (currentQuestionIndex < questions.length - 1) {
       const newQuestionIndex = currentQuestionIndex + 1;
       setCurrentQuestionIndex(newQuestionIndex);
@@ -138,81 +140,100 @@ const Test = () => {
   };
 
   return (
-    <div className="w-100 h-100">
-      <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
-        <div className="text-center d-flex gap-2 justify-content-center">
-          <span className="fs-4">Welcome: </span>{" "}
+    <>
+      {!beginExam ? (
+        <div className="text-center">
+        <div>
+          <span className="fs-4">Hello: </span>{" "}
           <div className="fw-bold fs-4">
             {globalState.firstName} {globalState.lastName}{" "}
             {globalState.takenExam}
           </div>
+          </div>
+          <button className="btn btn-sm btn-success">Start</button>
         </div>
-        {currentQuestion && (
-          <div className="div text-center">
-            {currentQuestion.id === 10 && taken ? (
-              <div>
-                <div>Hello</div>
-                <button onClick={toLogin}>Finish</button>
+      ) : (
+        <div className="w-100 h-100">
+          <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
+            <div className="text-center d-flex gap-2 justify-content-center">
+              {taken ? (
+                <span className="fs-4">Thank You: </span>
+              ) : (
+                <span className="fs-4">Welcome: </span>
+              )}
+              <div className="fw-bold fs-4">
+                {globalState.firstName} {globalState.lastName}{" "}
+                {globalState.takenExam}
               </div>
-            ) : (
-              <>
-                <h1 className="my-3">Question {currentQuestion.id}</h1>
-                <p className="my-3">{currentQuestion.content}</p>
-                <ul className="d-flex flex-column mx-auto mb-5">
-                  {currentQuestion.options.map((option, index) => (
-                    <label
-                      key={index}
-                      className="d-flex align-items-center  mx-auto"
-                      style={{ cursor: "pointer" }}
+            </div>
+            {currentQuestion && (
+              <div className="div text-center">
+                {currentQuestion.id === 10 && taken ? (
+                  <div>
+                    <div>Hello</div>
+                    <button onClick={toLogin}>Finish</button>
+                  </div>
+                ) : (
+                  <>
+                    <h1 className="my-3">Question {currentQuestion.id}</h1>
+                    <p className="my-3">{currentQuestion.content}</p>
+                    <ul className="d-flex flex-column mx-auto mb-5">
+                      {currentQuestion.options.map((option, index) => (
+                        <label
+                          key={index}
+                          className="d-flex mx-auto"
+                          style={{ cursor: "pointer", width: "50%" }}
+                        >
+                          <input
+                            type="radio"
+                            name="option"
+                            value={option}
+                            checked={
+                              selectedOptions[currentQuestionIndex] === option
+                            }
+                            onChange={() => handleOptionSelect(option)}
+                            className="select-radio"
+                            style={{
+                              height: "unset",
+                              width: "unset",
+                              verticalAlign: "unset",
+                              float: "unset",
+                              marginRight: "10px",
+                            }}
+                          />
+                          {option}
+                        </label>
+                      ))}
+                    </ul>
+                    <div className="d-flex gap-3 justify-content-center my-4">
+                      <button
+                        className="btn btn-primary btn-sm px-3"
+                        onClick={handlePreviousClick}
+                      >
+                        Previous
+                      </button>
+                      <button
+                        className="btn btn-primary btn-sm px-3"
+                        onClick={handleNextClick}
+                      >
+                        {taken ? "Finish" : "Next"}
+                      </button>
+                      {/* <button
+                      className="btn btn-primary btn-sm px-3"
+                      onClick={handleNextClick}
                     >
-                      <input
-                        type="radio"
-                        name="option"
-                        value={option}
-                        checked={
-                          selectedOptions[currentQuestionIndex] === option
-                        }
-                        onChange={() => handleOptionSelect(option)}
-                        className="select-radio"
-                        style={{
-                          height: "unset",
-                          width: "unset",
-                          verticalAlign: "unset",
-                          float: "unset",
-                          marginRight: "10px",
-                        }}
-                      />
-                      {option}
-                    </label>
-                  ))}
-                </ul>
-                <div className="d-flex gap-3 justify-content-center my-4">
-                  <button
-                    className="btn btn-primary btn-sm px-3"
-                    onClick={handlePreviousClick}
-                  >
-                    Previous
-                  </button>
-                  <button
-                    className="btn btn-primary btn-sm px-3"
-                    onClick={handleNextClick}
-                  >
-                    {taken ? "Finish" : "Next"}
-                  </button>
-                  {/* <button
-                    className="btn btn-primary btn-sm px-3"
-                    onClick={handleNextClick}
-                  >
-                    {currentQuestion.id === 10 ? "Submit" : "Next"}
-                  </button> */}
-                </div>
-                <p>Score: {questionScores[currentQuestionIndex]}</p>
-              </>
+                      {currentQuestion.id === 10 ? "Submit" : "Next"}
+                    </button> */}
+                    </div>
+                    <p>Score: {questionScores[currentQuestionIndex]}</p>
+                  </>
+                )}
+              </div>
             )}
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 

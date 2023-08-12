@@ -88,7 +88,6 @@ function App() {
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
   let shouldRedirect = true;
-  // const [taken, setTaken] = useState(false);
   let takenAdmissionExam = localStorage.taken
   return (
     <>
