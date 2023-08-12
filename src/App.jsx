@@ -16,7 +16,7 @@ import StaffSignUp from './pages/Staff/StaffSignUp'
 import StaffSignIn from './pages/Staff/StaffSignIn'
 import AccountTypePage from './pages/AccountTypePage'
 import UserPage from './pages/UserPage'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import StaffProfile from './pages/Staff/StaffProfile'
 import StaffChangePassword from './pages/Staff/StaffChangePassword'
 import StaffDashboardHome from './pages/Staff/StaffDashboardHome'
@@ -43,6 +43,7 @@ import socketClient from 'socket.io-client';
 import ChatModal from './components/studentDashboardComponents/ChatModal'
 import Chat from './components/studentDashboardComponents/Chat'
 import Test from './pages/Student/Test'
+import { newStudent } from './redux/portalSlice'
 
 
 
@@ -53,9 +54,11 @@ import Test from './pages/Student/Test'
 
 function App() {
   let socketRef = useRef()
+  const dispatch = useDispatch();
   const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
-  const globalState = useSelector((state)=>state.portalReducer.firstName)
-  console.log(globalState);
+  // const globalState = useSelector((state)=>state.portalReducer.firstName)
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  // const examState = useSelector((state) => state.portalReducer.taken);
   const [count, setCount] = useState(0)
   useEffect(()=> {
     if ('serviceWorker' in navigator) {
@@ -70,6 +73,8 @@ function App() {
       })
     }
     socketRef.current = socketClient(ioEndpoint);
+    // dispatch(newStudent(res.data.response));
+    let endpoint = ""
   },[])
 
   let staffSignInToken = localStorage.staffSignInToken
@@ -77,6 +82,8 @@ function App() {
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
   let shouldRedirect = true;
+
+  let takenAdmissionExam = true
   return (
     <>
     <Router>
@@ -89,6 +96,7 @@ function App() {
           {/* <Route path='/chat' element={<Chat socket={socketRef}/>} />   */}
 
 
+        <Route path='/questions' element={!takenAdmissionExam ? <Test/> : <Navigate to="../student/admission/pick_class"/>}/>
         <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>   {/* studentLoginToken ?   : <Navigate to="/student_login"/> */}
@@ -104,7 +112,6 @@ function App() {
         </Route>
         <Route path='/forgot_password' element={<ForgotPassword/>}/>
         <Route path='student_login' element={<Login/>}/>
-        <Route path='/questions' element={<Test/>}/>
         <Route path='student_dashboard' element={shouldRedirect ? <Navigate to="/student_dashboard/home"/> : <StudentPortalDashboard/>}/>
         <Route path='/student_dashboard/*' element={studentSignInToken ? <StudentPortalDashboard/> : <Navigate to="/student_signin"/>}>
           <Route path='home' element={<StudentDashboardHome/>}/>

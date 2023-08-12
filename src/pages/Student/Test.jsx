@@ -13,6 +13,7 @@ const Test = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [scores, setScores] = useState(0);
   const [clicked, setClicked] = useState(false);
+  const [taken, setTaken] = useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const Test = () => {
   // http://localhost:2000
 
   let myEmail = globalState.email;
-  const handleNextClick = () => {
+  const handleNextClick = (takenValue) => {
     if (currentQuestionIndex < questions.length - 1) {
       let endpoint2 =
       "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
@@ -98,7 +99,9 @@ const Test = () => {
         let updateEndpoint = "http://localhost:2000/student_account/update_admission_state"
         axios.post(updateEndpoint, payload)
         .then((response) => {
-
+          if (response.data.status) {
+            setTaken(true)
+          }
         })
       }
     }
@@ -182,7 +185,7 @@ const Test = () => {
       </div>
       {currentQuestion && (
         <div className="div">
-          {currentQuestion.id === 10 && globalState.takenExam  ? (
+          {currentQuestion.id === 10 && taken  ? (
             <div>
               <div>Hello</div>
               <button onClick={toLogin}>Finish</button>
