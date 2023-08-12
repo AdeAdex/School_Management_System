@@ -145,8 +145,8 @@ const Test = () => {
 
   return (
     <>
-      <div className="w-100">
-        <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4">
+      <div className="w-100 h-100">
+        <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
           <div className="text-center d-flex gap-2 justify-content-center">
             <span className="fs-4">Welcome: </span>{" "}
             <div className="fw-bold fs-4">
