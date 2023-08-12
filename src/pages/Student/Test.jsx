@@ -13,7 +13,7 @@ const Test = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [scores, setScores] = useState(0);
   const [clicked, setClicked] = useState(false);
-  const [taken, setTaken] = useState(false)
+  const [taken, setTaken] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,22 +47,21 @@ const Test = () => {
       .catch((err) => {
         console.log(err);
       });
-      // alert(globalState.takenExam)
+    // alert(globalState.takenExam)
+  }, [globalState]);
 
-    }, [globalState]);
-    
-    useEffect(() => {
-      let endpoint =
+  useEffect(() => {
+    let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
-      axios.get(endpoint).then((response) => {
-        setQuestions(response.data);
-        if (localStorage.getItem("currentQuestionIndex") === null) {
-          localStorage.setItem(
-            "currentQuestionIndex",
-            String(currentQuestionIndex)
-            );
-          }
-        });
+    axios.get(endpoint).then((response) => {
+      setQuestions(response.data);
+      if (localStorage.getItem("currentQuestionIndex") === null) {
+        localStorage.setItem(
+          "currentQuestionIndex",
+          String(currentQuestionIndex)
+        );
+      }
+    });
   }, []);
 
   // http://localhost:2000
@@ -98,10 +97,10 @@ const Test = () => {
           myEmail: myEmail,
         };
         let updateEndpoint =
-          "http://localhost:2000/student_account/update_admission_state";
+          "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
         axios.post(updateEndpoint, payload).then((response) => {
           if (response.data.status) {
-            setTaken(true)
+            setTaken(true);
             localStorage.taken = response.data.response;
             // dispatch();
           }
@@ -146,24 +145,28 @@ const Test = () => {
 
   return (
     <>
-     
       <div className="w-100">
-      <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4">
-        <div className="text-center d-flex gap-2 justify-content-center">
-          <span className="fs-4">Welcome: </span> <div className="fw-bold fs-4"> {globalState.firstName} {globalState.lastName} {globalState.takenExam}</div>
-        </div>
-        {currentQuestion && (
-          <div className="div text-cente">
-            {currentQuestion.id === 10 && taken ? (
-              <div>
-                <div>Hello</div>
-                <button onClick={toLogin}>Finish</button>
-              </div>
-            ) : (
-              <>
-                <h1>Question {currentQuestion.id}</h1>
-                <p>{currentQuestion.content}</p>
-                {/* <ul>
+        <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4">
+          <div className="text-center d-flex gap-2 justify-content-center">
+            <span className="fs-4">Welcome: </span>{" "}
+            <div className="fw-bold fs-4">
+              {" "}
+              {globalState.firstName} {globalState.lastName}{" "}
+              {globalState.takenExam}
+            </div>
+          </div>
+          {currentQuestion && (
+            <div className="div text-cente">
+              {currentQuestion.id === 10 && taken ? (
+                <div>
+                  <div>Hello</div>
+                  <button onClick={toLogin}>Finish</button>
+                </div>
+              ) : (
+                <>
+                  <h1>Question {currentQuestion.id}</h1>
+                  <p>{currentQuestion.content}</p>
+                  {/* <ul>
                   {currentQuestion.options.map((option, index) => (
                     <li
                       key={index}
@@ -182,29 +185,30 @@ const Test = () => {
                     </li>
                   ))}
                 </ul> */}
-                <ul className="d-flex flex-column">
-  {currentQuestion.options.map((option, index) => (
-    <label key={index}>
-      <input
-        type="radio"
-        name="option"
-        value={option}
-        checked={selectedOption === option}
-        onChange={() => handleOptionSelect(option)}
-      />
-      {option}
-    </label>
-  ))}
-</ul>
-                <button onClick={handlePreviousClick}>Previous</button>
-                <button onClick={handleNextClick}>
-                  {currentQuestion.id === 10 ? "Submit" : "Next"}
-                </button>
-                <p>Score: {scores}</p>
-              </>
-            )}
-          </div>
-        )}
+                  <ul className="d-flex flex-column">
+                    {currentQuestion.options.map((option, index) => (
+                      <label key={index}>
+                        <input
+                          type="radio"
+                          name="option"
+                          value={option}
+                          checked={selectedOption === option}
+                          onChange={() => handleOptionSelect(option)}
+                          className="select-radio"
+                        />
+                        {option}
+                      </label>
+                    ))}
+                  </ul>
+                  <button onClick={handlePreviousClick}>Previous</button>
+                  <button onClick={handleNextClick}>
+                    {currentQuestion.id === 10 ? "Submit" : "Next"}
+                  </button>
+                  <p>Score: {scores}</p>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
