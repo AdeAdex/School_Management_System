@@ -15,6 +15,13 @@ const Test = () => {
   const [clicked, setClicked] = useState(false);
   const [taken, setTaken] = useState(false);
 
+  const [selectedOptions, setSelectedOptions] = useState(
+    Array(questions.length).fill("")
+  );
+  const [questionScores, setQuestionScores] = useState(
+    Array(questions.length).fill(0)
+  );
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -77,6 +84,12 @@ const Test = () => {
           // setCurrentQuestionIndex(currentQuestionIndex + 1);
           const newQuestionIndex = currentQuestionIndex + 1;
           setCurrentQuestionIndex(newQuestionIndex);
+
+          const totalScore = questionScores.reduce(
+            (acc, score) => acc + score,
+            0
+          );
+          setScores(totalScore);
           localStorage.setItem(
             "currentQuestionIndex",
             String(newQuestionIndex)
@@ -90,7 +103,6 @@ const Test = () => {
       });
     } else {
       if (currentQuestion.id === 10) {
-        // dispatch(takenExam(true));
         let myEmail = globalState.email;
         const payload = {
           yourKeyHere: true,
@@ -114,27 +126,57 @@ const Test = () => {
       const newQuestionIndex = currentQuestionIndex - 1;
       setCurrentQuestionIndex(newQuestionIndex);
       localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
-      setSelectedOption("");
+      setSelectedOption(selectedOptions[newQuestionIndex]);
       setShowCorrectAnswer(false);
-      setClicked(false);
-      setScores(0);
+
+      // Calculate the total score based on updated questionScores array
+      const totalScore = questionScores.reduce(
+        (acc, score, index) => (index <= newQuestionIndex ? acc + score : acc),
+        0
+      );
+      setScores(totalScore);
     }
+    // if (currentQuestionIndex > 0) {
+    //   const newQuestionIndex = currentQuestionIndex - 1;
+    //   setCurrentQuestionIndex(newQuestionIndex);
+    //   localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
+    //   setSelectedOption("");
+    //   setShowCorrectAnswer(false);
+    //   setClicked(false);
+    //   setScores(0);
+    // }
   };
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    setShowCorrectAnswer(true);
-    if (option.startsWith(questions[currentQuestionIndex].correctOption)) {
-      if (!clicked) {
-        setClicked(true);
-        setScores(scores + 10);
-      }
+    const newSelectedOptions = [...selectedOptions];
+    const newQuestionScores = [...questionScores];
+
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionIndex = currentQuestion.id - 1;
+
+    newSelectedOptions[questionIndex] = option;
+
+    if (option.startsWith(currentQuestion.correctOption)) {
+      newQuestionScores[questionIndex] = 10;
     } else {
-      if (clicked) {
-        setClicked(false);
-        setScores(scores - 10);
-      }
+      newQuestionScores[questionIndex] = -10;
     }
+
+    setSelectedOptions(newSelectedOptions);
+    setQuestionScores(newQuestionScores);
+    // setSelectedOption(option);
+    // setShowCorrectAnswer(true);
+    // if (option.startsWith(questions[currentQuestionIndex].correctOption)) {
+    //   if (!clicked) {
+    //     setClicked(true);
+    //     setScores(scores + 10);
+    //   }
+    // } else {
+    //   if (clicked) {
+    //     setClicked(false);
+    //     setScores(scores - 10);
+    //   }
+    // }
   };
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -168,7 +210,11 @@ const Test = () => {
                   <p className="my-3">{currentQuestion.content}</p>
                   <ul className="d-flex flex-column mx-auto mb-5">
                     {currentQuestion.options.map((option, index) => (
-                      <label key={index} className="d-flex align-items-center  mx-auto" style={{cursor: 'pointer'}}>
+                      <label
+                        key={index}
+                        className="d-flex align-items-center  mx-auto"
+                        style={{ cursor: "pointer" }}
+                      >
                         <input
                           type="radio"
                           name="option"
@@ -176,19 +222,34 @@ const Test = () => {
                           checked={selectedOption === option}
                           onChange={() => handleOptionSelect(option)}
                           className="select-radio"
-                          style={{height: 'unset', width: 'unset', verticalAlign: 'unset', float: 'unset', marginRight: '10px' }}
+                          style={{
+                            height: "unset",
+                            width: "unset",
+                            verticalAlign: "unset",
+                            float: "unset",
+                            marginRight: "10px",
+                          }}
                         />
                         {option}
                       </label>
                     ))}
                   </ul>
                   <div className="d-flex gap-3 justify-content-center my-4">
-                  <button className=" btn btn-primary btn-sm px-3" onClick={handlePreviousClick}>Previous</button>
-                  <button className=" btn btn-primary btn-sm px-3" onClick={handleNextClick}>
-                    {currentQuestion.id === 10 ? "Submit" : "Next"}
-                  </button>
+                    <button
+                      className=" btn btn-primary btn-sm px-3"
+                      onClick={handlePreviousClick}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      className=" btn btn-primary btn-sm px-3"
+                      onClick={handleNextClick}
+                    >
+                      {currentQuestion.id === 10 ? "Submit" : "Next"}
+                    </button>
                   </div>
-                  <p>Score: {scores}</p>
+                  <p>Score: {questionScores[currentQuestionIndex]}</p>
+                  {/* <p>Score: {scores}</p> */}
                 </>
               )}
             </div>
