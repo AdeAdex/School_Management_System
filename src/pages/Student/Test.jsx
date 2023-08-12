@@ -168,7 +168,7 @@ const Test = () => {
                   <p className="my-3">{currentQuestion.content}</p>
                   <ul className="d-flex flex-column mx-auto">
                     {currentQuestion.options.map((option, index) => (
-                      <label key={index}>
+                      <label key={index} className="d-flex align-items-center">
                         <input
                           type="radio"
                           name="option"
