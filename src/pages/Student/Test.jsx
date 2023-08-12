@@ -163,7 +163,7 @@ const Test = () => {
               <>
                 <h1>Question {currentQuestion.id}</h1>
                 <p>{currentQuestion.content}</p>
-                <ul>
+                {/* <ul>
                   {currentQuestion.options.map((option, index) => (
                     <li
                       key={index}
@@ -181,7 +181,21 @@ const Test = () => {
                       {option}
                     </li>
                   ))}
-                </ul>
+                </ul> */}
+                <ul className="d-flex flex-column">
+  {currentQuestion.options.map((option, index) => (
+    <label key={index}>
+      <input
+        type="radio"
+        name="option"
+        value={option}
+        checked={selectedOption === option}
+        onChange={() => handleOptionSelect(option)}
+      />
+      {option}
+    </label>
+  ))}
+</ul>
                 <button onClick={handlePreviousClick}>Previous</button>
                 <button onClick={handleNextClick}>
                   {currentQuestion.id === 10 ? "Submit" : "Next"}
