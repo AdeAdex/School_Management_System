@@ -195,6 +195,7 @@ const Test = () => {
                           checked={selectedOption === option}
                           onChange={() => handleOptionSelect(option)}
                           className="select-radio"
+                          style={{height: 'unset', width: 'unset', verticalAlign: 'unset', float: 'unset', }}
                         />
                         {option}
                       </label>
