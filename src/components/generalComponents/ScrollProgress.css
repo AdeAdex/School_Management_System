@@ -1,45 +1,53 @@
 .scroll-progress-container {
-        position: fixed;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background-color: #ccc;
-        z-index: 99;
-      }
-      
-      .scroll-progress {
-        height: 100%;
-        background: linear-gradient(to right, mediumblue 10%, red 30%, yellow 60%, cyan 90%, orange 100%, green 60%, forestgreen 100%);
-        /* background-color: #007bff; */
-      }
-      
-      .scroll-links {
-        position: fixed;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .scroll-links li {
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: #007bff;
-      }
-      
-      .scroll-links a {
-        color: #333;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      
-      .scroll-links a.active {
-        color: #6FC191;
-        font-weight: bold;
-      }
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #ccc;
+  z-index: 99;
+}
 
-     
+.scroll-progress {
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    mediumblue 10%,
+    red 30%,
+    yellow 60%,
+    cyan 90%,
+    orange 100%,
+    green 60%,
+    forestgreen 100%
+  );
+  /* background-color: #007bff; */
+}
+
+.scroll-links {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+.scroll-links li {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.scroll-links a {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.scroll-links a.active {
+  color: #6fc191;
+  font-weight: bold;
+}
