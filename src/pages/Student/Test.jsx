@@ -47,23 +47,22 @@ const Test = () => {
       .catch((err) => {
         console.log(err);
       });
+      // alert(globalState.takenExam)
 
-
-      
-  }, []);
-
-  useEffect(() => {
-    let endpoint =
+    }, [globalState]);
+    
+    useEffect(() => {
+      let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
-    axios.get(endpoint).then((response) => {
-      setQuestions(response.data);
-      if (localStorage.getItem("currentQuestionIndex") === null) {
-        localStorage.setItem(
-          "currentQuestionIndex",
-          String(currentQuestionIndex)
-        );
-      }
-    });
+      axios.get(endpoint).then((response) => {
+        setQuestions(response.data);
+        if (localStorage.getItem("currentQuestionIndex") === null) {
+          localStorage.setItem(
+            "currentQuestionIndex",
+            String(currentQuestionIndex)
+            );
+          }
+        });
   }, []);
 
   // http://localhost:2000
@@ -72,41 +71,44 @@ const Test = () => {
   const handleNextClick = (takenValue) => {
     if (currentQuestionIndex < questions.length - 1) {
       let endpoint2 =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
+        "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
       axios.post(endpoint2, { scores, myEmail }).then((response) => {
         if (response.data.status) {
           console.log(response.data.message);
           // setCurrentQuestionIndex(currentQuestionIndex + 1);
           const newQuestionIndex = currentQuestionIndex + 1;
           setCurrentQuestionIndex(newQuestionIndex);
-          localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
+          localStorage.setItem(
+            "currentQuestionIndex",
+            String(newQuestionIndex)
+          );
           setSelectedOption("");
           setShowCorrectAnswer(false);
           setClicked(false);
-          setScores(0)
+          setScores(0);
         } else {
-
         }
       });
     } else {
       if (currentQuestion.id === 10) {
         // dispatch(takenExam(true));
-        let myEmail = globalState.email
+        let myEmail = globalState.email;
         const payload = {
-          yourKeyHere: true ,
-          myEmail: myEmail
+          yourKeyHere: true,
+          myEmail: myEmail,
         };
-        let updateEndpoint = "http://localhost:2000/student_account/update_admission_state"
-        axios.post(updateEndpoint, payload)
-        .then((response) => {
+        let updateEndpoint =
+          "http://localhost:2000/student_account/update_admission_state";
+        axios.post(updateEndpoint, payload).then((response) => {
           if (response.data.status) {
             setTaken(true)
+            localStorage.taken = response.data.response;
+            // dispatch();
           }
-        })
+        });
       }
     }
   };
-
 
   const handlePreviousClick = () => {
     if (currentQuestionIndex > 0) {
@@ -116,11 +118,9 @@ const Test = () => {
       setSelectedOption("");
       setShowCorrectAnswer(false);
       setClicked(false);
-      setScores(0)
+      setScores(0);
     }
   };
-
-
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -142,87 +142,57 @@ const Test = () => {
 
   const toLogin = () => {
     navigate("/student_login");
-  }
+  };
 
   return (
     <>
-      {/* <div>
-        <div>
-          Welcome: {globalState.firstName} {globalState.lastName}
+     
+      <div className="w-100">
+      <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4">
+        <div className="text-center d-flex gap-2 justify-content-center">
+          <span className="fs-4">Welcome: </span> <div className="fw-bold fs-4"> {globalState.firstName} {globalState.lastName} {globalState.takenExam}</div>
         </div>
         {currentQuestion && (
-          <div className="div">
-            <h1>Question {currentQuestion.id}</h1>
-            <p>{currentQuestion.content}</p>
-            <ul>
-              {currentQuestion.options.map((option, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleOptionSelect(option)}
-                  style={{
-                    backgroundColor:
-                      showCorrectAnswer &&
-                      option.startsWith(currentQuestion.correctOption)
-                        ? "green"
-                        : option === selectedOption
-                        ? "red"
-                        : "white",
-                  }}
-                >
-                  {option}
-                </li>
-              ))}
-            </ul>
-            <button onClick={handlePreviousClick}>Previous</button>
-            <button onClick={handleNextClick}>{currentQuestion.id === 10 ? "Submit" : "Next"}</button>
-            <p>Score: {scores}</p>
+          <div className="div text-cente">
+            {currentQuestion.id === 10 && taken ? (
+              <div>
+                <div>Hello</div>
+                <button onClick={toLogin}>Finish</button>
+              </div>
+            ) : (
+              <>
+                <h1>Question {currentQuestion.id}</h1>
+                <p>{currentQuestion.content}</p>
+                <ul>
+                  {currentQuestion.options.map((option, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleOptionSelect(option)}
+                      style={{
+                        backgroundColor:
+                          showCorrectAnswer &&
+                          option.startsWith(currentQuestion.correctOption)
+                            ? "green"
+                            : option === selectedOption
+                            ? "red"
+                            : "white",
+                      }}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+                <button onClick={handlePreviousClick}>Previous</button>
+                <button onClick={handleNextClick}>
+                  {currentQuestion.id === 10 ? "Submit" : "Next"}
+                </button>
+                <p>Score: {scores}</p>
+              </>
+            )}
           </div>
         )}
-      </div> */}
-      <div>
-      <div>
-        Welcome: {globalState.firstName} {globalState.lastName}
-      </div>
-      {currentQuestion && (
-        <div className="div">
-          {currentQuestion.id === 10 && taken  ? (
-            <div>
-              <div>Hello</div>
-              <button onClick={toLogin}>Finish</button>
-            </div>
-          ) : (
-            <>
-              <h1>Question {currentQuestion.id}</h1>
-              <p>{currentQuestion.content}</p>
-              <ul>
-                {currentQuestion.options.map((option, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleOptionSelect(option)}
-                    style={{
-                      backgroundColor:
-                        showCorrectAnswer &&
-                        option.startsWith(currentQuestion.correctOption)
-                          ? "green"
-                          : option === selectedOption
-                          ? "red"
-                          : "white",
-                    }}
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-              <button onClick={handlePreviousClick}>Previous</button>
-              <button onClick={handleNextClick}>
-                {currentQuestion.id === 10 ? "Submit" : "Next"}
-              </button>
-              <p>Score: {scores}</p>
-            </>
-          )}
         </div>
-      )}
-    </div>
+      </div>
     </>
   );
 };

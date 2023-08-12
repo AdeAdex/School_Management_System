@@ -44,6 +44,7 @@ import ChatModal from './components/studentDashboardComponents/ChatModal'
 import Chat from './components/studentDashboardComponents/Chat'
 import Test from './pages/Student/Test'
 import { newStudent } from './redux/portalSlice'
+import axios from "axios";
 
 
 
@@ -55,7 +56,7 @@ import { newStudent } from './redux/portalSlice'
 function App() {
   let socketRef = useRef()
   const dispatch = useDispatch();
-  const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
+  // const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
   // const globalState = useSelector((state)=>state.portalReducer.firstName)
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   // const examState = useSelector((state) => state.portalReducer.taken);
@@ -72,9 +73,14 @@ function App() {
         })
       })
     }
-    socketRef.current = socketClient(ioEndpoint);
+    // socketRef.current = socketClient(ioEndpoint);
     // dispatch(newStudent(res.data.response));
-    let endpoint = ""
+    // let myEmail = globalState.email
+    // let payload = {
+    //   myEmail: myEmail
+    // }
+    // let endpoint = "http://localhost:2000/student_account/"
+    // axios.post(endpoint, payload)
   },[])
 
   let staffSignInToken = localStorage.staffSignInToken
@@ -82,8 +88,8 @@ function App() {
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
   let shouldRedirect = true;
-
-  let takenAdmissionExam = true
+  // const [taken, setTaken] = useState(false);
+  let takenAdmissionExam = localStorage.taken
   return (
     <>
     <Router>
