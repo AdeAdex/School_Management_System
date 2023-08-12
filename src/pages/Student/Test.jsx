@@ -11,6 +11,7 @@ const Test = () => {
   );
   const [selectedOptions, setSelectedOptions] = useState(Array(0));
   const [questionScores, setQuestionScores] = useState(Array(0));
+  const [taken, setTaken] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -56,17 +57,15 @@ const Test = () => {
     });
   }, [currentQuestionIndex]);
 
-
-
   const handleNextClick = () => {
     if (currentQuestionIndex < questions.length - 1) {
       const newQuestionIndex = currentQuestionIndex + 1;
       setCurrentQuestionIndex(newQuestionIndex);
-  
+
       const endpoint2 =
         "http://localhost:2000/student_account/update_my_admission_exam_score";
       const scoreToUpdate = questionScores[currentQuestionIndex];
-      console.log(scoreToUpdate);
+      // console.log(scoreToUpdate);
       axios
         .post(endpoint2, {
           scores: scoreToUpdate,
@@ -76,13 +75,13 @@ const Test = () => {
           if (response.data.status) {
             const newQuestionScores = [...questionScores];
             newQuestionScores[currentQuestionIndex] = scoreToUpdate;
-  
+
             setQuestionScores(newQuestionScores);
-  
-            if (newQuestionIndex === questions.length - 1) {
-              setTaken(true);
+
+            if (currentQuestion.id === 10) {
+              // setTaken(true);
             }
-  
+
             localStorage.setItem(
               "currentQuestionIndex",
               String(newQuestionIndex)
@@ -93,7 +92,6 @@ const Test = () => {
       setTaken(true);
     }
   };
-
 
   const handlePreviousClick = () => {
     if (currentQuestionIndex > 0) {
@@ -131,13 +129,12 @@ const Test = () => {
     };
     let updateEndpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-    axios.post(updateEndpoint, payload)
-      .then((response) => {
-        if (response.data.status) {
-          localStorage.taken = response.data.response;
-          navigate("/student_login");
-        }
-      });
+    axios.post(updateEndpoint, payload).then((response) => {
+      if (response.data.status) {
+        localStorage.taken = response.data.response;
+        navigate("/student_login");
+      }
+    });
   };
 
   return (
@@ -146,7 +143,8 @@ const Test = () => {
         <div className="text-center d-flex gap-2 justify-content-center">
           <span className="fs-4">Welcome: </span>{" "}
           <div className="fw-bold fs-4">
-            {globalState.firstName} {globalState.lastName} {globalState.takenExam}
+            {globalState.firstName} {globalState.lastName}{" "}
+            {globalState.takenExam}
           </div>
         </div>
         {currentQuestion && (
@@ -171,7 +169,9 @@ const Test = () => {
                         type="radio"
                         name="option"
                         value={option}
-                        checked={selectedOptions[currentQuestionIndex] === option}
+                        checked={
+                          selectedOptions[currentQuestionIndex] === option
+                        }
                         onChange={() => handleOptionSelect(option)}
                         className="select-radio"
                         style={{
@@ -197,8 +197,14 @@ const Test = () => {
                     className="btn btn-primary btn-sm px-3"
                     onClick={handleNextClick}
                   >
-                    {currentQuestion.id === 10 ? "Submit" : "Next"}
+                    {taken ? "Finish" : "Next"}
                   </button>
+                  {/* <button
+                    className="btn btn-primary btn-sm px-3"
+                    onClick={handleNextClick}
+                  >
+                    {currentQuestion.id === 10 ? "Submit" : "Next"}
+                  </button> */}
                 </div>
                 <p>Score: {questionScores[currentQuestionIndex]}</p>
               </>
@@ -211,12 +217,6 @@ const Test = () => {
 };
 
 export default Test;
-
-
-
-
-
-
 
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
@@ -261,7 +261,7 @@ export default Test;
 //       })
 //       .then((res) => {
 //         if (res.data.status) {
-        
+
 //           dispatch(newStudent(res.data.response));
 //           // console.log(res.data.message);
 //         } else {
