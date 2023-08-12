@@ -15,9 +15,9 @@ const Login = () => {
   const [taken, setTaken] = useState(false)
   const examState = useSelector((state) => state.portalReducer.taken);
 
-  useEffect(() => {
-    alert(examState)
-  }, [])
+  // useEffect(() => {
+  //   alert(examState)
+  // }, [])
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -31,23 +31,24 @@ const Login = () => {
    
 
   
-    
+    // http://localhost:2000
     // https://school-portal-backend-adex2210.vercel.app
 
     onSubmit: (values) => {
       setIsLoading(true)
       setEnteredEmail(values.email);
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_login";
+      const endpoint = "http://localhost:2000/student_account/student_login";
       axios.post(endpoint, values)
       .then((response) => {
         setIsLoading(false)
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
-          if (examState) {
-          navigate("/student/admission/pick_class");
-          } else {
-            navigate('/questions')
-          }
+          console.log(response.data.response);
+          // if (ressponse) {
+          // navigate("/student/admission/pick_class");
+          // } else {
+          //   navigate('/questions')
+          // }
           
         } else {
           const Toast = Swal.mixin({

@@ -69,8 +69,8 @@ const Chat = ({ socket }) => {
           ))}
         </div>
         {/* ) : ( */}
-        <ChatMessenger socket={socket}  room={room} createDay={datCreate} createTime={timeCreate} roomPic={groupIcon} />
-        <OnlineUser />
+        {/* <ChatMessenger socket={socket}  room={room} createDay={datCreate} createTime={timeCreate} roomPic={groupIcon} /> */}
+        {/* <OnlineUser /> */}
       </div>
       {/* )} */}
     </>
