@@ -166,9 +166,9 @@ const Test = () => {
                 <>
                   <h1 className="my-3">Question {currentQuestion.id}</h1>
                   <p className="my-3">{currentQuestion.content}</p>
-                  <ul className="d-flex flex-column mx-auto">
+                  <ul className="d-flex flex-column mx-auto mb-5">
                     {currentQuestion.options.map((option, index) => (
-                      <label key={index} className="d-flex align-items-center mx-auto">
+                      <label key={index} className="d-flex align-items-center  mx-auto">
                         <input
                           type="radio"
                           name="option"
@@ -182,7 +182,7 @@ const Test = () => {
                       </label>
                     ))}
                   </ul>
-                  <div className="d-flex gap-3 justify-content-center">
+                  <div className="d-flex gap-3 justify-content-center my-4">
                   <button className=" btn btn-primary btn-sm px-3" onClick={handlePreviousClick}>Previous</button>
                   <button className=" btn btn-primary btn-sm px-3" onClick={handleNextClick}>
                     {currentQuestion.id === 10 ? "Submit" : "Next"}
