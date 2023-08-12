@@ -156,7 +156,7 @@ const Test = () => {
             </div>
           </div>
           {currentQuestion && (
-            <div className="div text-cente">
+            <div className="div text-center">
               {currentQuestion.id === 10 && taken ? (
                 <div>
                   <div>Hello</div>
@@ -164,28 +164,9 @@ const Test = () => {
                 </div>
               ) : (
                 <>
-                  <h1>Question {currentQuestion.id}</h1>
-                  <p>{currentQuestion.content}</p>
-                  {/* <ul>
-                  {currentQuestion.options.map((option, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleOptionSelect(option)}
-                      style={{
-                        backgroundColor:
-                          showCorrectAnswer &&
-                          option.startsWith(currentQuestion.correctOption)
-                            ? "green"
-                            : option === selectedOption
-                            ? "red"
-                            : "white",
-                      }}
-                    >
-                      {option}
-                    </li>
-                  ))}
-                </ul> */}
-                  <ul className="d-flex flex-column">
+                  <h1 className="my-3">Question {currentQuestion.id}</h1>
+                  <p className="my-3">{currentQuestion.content}</p>
+                  <ul className="d-flex flex-column mx-auto">
                     {currentQuestion.options.map((option, index) => (
                       <label key={index}>
                         <input
@@ -195,7 +176,7 @@ const Test = () => {
                           checked={selectedOption === option}
                           onChange={() => handleOptionSelect(option)}
                           className="select-radio"
-                          style={{height: 'unset', width: 'unset', verticalAlign: 'unset', float: 'unset', }}
+                          style={{height: 'unset', width: 'unset', verticalAlign: 'unset', float: 'unset', marginRight: '10px' }}
                         />
                         {option}
                       </label>
