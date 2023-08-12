@@ -89,7 +89,17 @@ const Test = () => {
       });
     } else {
       if (currentQuestion.id === 10) {
-        dispatch(takenExam(true));
+        // dispatch(takenExam(true));
+        let myEmail = globalState.email
+        const payload = {
+          yourKeyHere: true ,
+          myEmail: myEmail
+        };
+        let updateEndpoint = "http://localhost:2000/student_account/update_admission_state"
+        axios.post(updateEndpoint, payload)
+        .then((response) => {
+
+        })
       }
     }
   };
@@ -172,7 +182,7 @@ const Test = () => {
       </div>
       {currentQuestion && (
         <div className="div">
-          {currentQuestion.id === 10 && examState  ? (
+          {currentQuestion.id === 10 && globalState.takenExam  ? (
             <div>
               <div>Hello</div>
               <button onClick={toLogin}>Finish</button>

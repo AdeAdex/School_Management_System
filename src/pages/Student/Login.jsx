@@ -44,11 +44,12 @@ const Login = () => {
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
           console.log(response.data.response);
-          // if (ressponse) {
-          // navigate("/student/admission/pick_class");
-          // } else {
-          //   navigate('/questions')
-          // }
+          // alert(response.data.response)
+          if (response.data.response) {
+          navigate("/student/admission/pick_class");
+          } else {
+            navigate('/questions')
+          }
           
         } else {
           const Toast = Swal.mixin({
