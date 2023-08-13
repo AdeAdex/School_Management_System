@@ -119,7 +119,6 @@ const Test = () => {
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
           localStorage.done = true
-
           // setDone(true)
         } else {
           const minutes = Math.floor(remainingTime / 60);
@@ -316,12 +315,14 @@ const Test = () => {
                 Remember, managing your time efficiently is essential to
                 complete all the questions within the given timeframe.
               </p>
+              <div className="start-exam-div">
               <button
                 className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto"
                 onClick={startExam}
               >
                 Start Exam
               </button>
+              </div>
             </div>
           </div>
         </div>
