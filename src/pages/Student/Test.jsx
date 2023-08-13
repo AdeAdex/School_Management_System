@@ -198,7 +198,7 @@ const Test = () => {
         });
 
         Toast.fire({
-          icon: "error",
+          icon: "success",
           title: response.data.message,
         });
         localStorage.taken = response.data.response;
