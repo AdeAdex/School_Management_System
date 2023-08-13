@@ -29,8 +29,9 @@ const CreateAccount = () => {
         return String.fromCharCode(65 + randomIndex);
       }).join("");
 
+      const currentDate = format(new Date(), "yyyy-MM-dd");
       const registrationNumber = numbersPart + alphabetPart;
-      const newValues = { ...values, registrationNumber };
+      const newValues = { ...values, registrationNumber, createdDate: currentDate };
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
       axios.post(endpoint, newValues)
       .then((response) => {
