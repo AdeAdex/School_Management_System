@@ -182,12 +182,27 @@ const Test = () => {
     };
     let updateEndpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-    axios.post(updateEndpoint, payload).then((response) => {
+    axios.post(updateEndpoint, payload)
+    .then((response) => {
       if (response.data.status) {
         localStorage.taken = response.data.response;
         navigate("/student_login");
       }
-    });
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+    let myEmail = globalState.email
+      let endpoint = "http://localhost:2000/student_account/send_student_entrance_result"
+      axios.post(endpoint, myEmail)
+      .then((response) => {
+        if (response.data.status) {
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   const finishedByForce = () => {
@@ -323,9 +338,9 @@ const Test = () => {
             {currentQuestion && (
               <div className="div text-center">
                 {currentQuestion.id === 10 && taken ? (
-                  <div>
-                    <div>Hello</div>
-                    <button onClick={toLogin}>Finish</button>
+                  <div className="mt-4">
+                  <div className="mb-5">Congratulations for successfully participating in our entrance examination! We commend your efforts and wish you the best of luck on your educational journey. To view your results, kindly click the "Finish" button below, and your scores will be promptly sent to your email.</div>
+                    <button className="btn btn-success btn-sm px-5 py-2" onClick={toLogin}>Finish</button>
                   </div>
                 ) : (
                   <>
