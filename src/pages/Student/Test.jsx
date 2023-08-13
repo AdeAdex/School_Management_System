@@ -20,6 +20,10 @@ const Test = () => {
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
 
+  // useEffect(() => {
+   
+  // }, [])
+
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
     let endpoint =
@@ -46,6 +50,8 @@ const Test = () => {
       });
   }, [globalState]);
 
+  
+
   useEffect(() => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
@@ -58,7 +64,41 @@ const Test = () => {
         );
       }
     });
+
+
+    const startTime = parseInt(localStorage.getItem('countdownStartTime'));
+    const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
+  
+    if (startTime && countdownTime) {
+      const countdownInterval = setInterval(() => {
+        const currentTime = Date.now();
+        const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+        
+        const remainingTime = countdownTime - elapsedTime;
+        if (remainingTime <= 0) {
+          clearInterval(countdownInterval);
+          toLogin();
+        } else {
+          const minutes = Math.floor(remainingTime / 60);
+          const seconds = remainingTime % 60;
+          const countdownElement = document.getElementById('countdown');
+          if (countdownElement) {
+            countdownElement.textContent = `${minutes}:${seconds}`;
+          }
+        }
+      }, 1000);
+  
+      return () => {
+        clearInterval(countdownInterval);
+      };
+    }
   }, [currentQuestionIndex]);
+
+
+ 
+  
+
+  
 
   const handleNextClick = () => {
     console.log(taken);
@@ -155,34 +195,41 @@ const Test = () => {
         popup: "animate__animated animate__fadeOutUp",
       },
     }).then((result) => {
+
       if (result.isConfirmed) {
         setBeginExam(true);
         localStorage.setItem('examStarted', 'true');
       
-        const countdownTime = 300;
-        let timeRemaining = countdownTime;
-        const countdownInterval = setInterval(() => {
-          if (timeRemaining <= 0) {
-            clearInterval(countdownInterval);
-          } else {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            document.getElementById('countdown').textContent = `${minutes}:${seconds}`;
-            timeRemaining--;
-          }
-        }, 1000);
+        const countdownTime = 300; // 5 minutes in seconds
+        localStorage.setItem('countdownStartTime', Date.now());
+        localStorage.setItem('countdownTimeRemaining', countdownTime);
       }
-       else {
-        // User clicked "Cancel"
-        // Add any code you want to execute when the user cancels
-      }
+      
+      // if (result.isConfirmed) {
+      //   setBeginExam(true);
+      //   localStorage.setItem('examStarted', 'true');
+      
+      //   const countdownTime = 300;
+      //   let timeRemaining = countdownTime;
+      //   const countdownInterval = setInterval(() => {
+      //     if (timeRemaining <= 0) {
+      //       clearInterval(countdownInterval);
+      //     } else {
+      //       const minutes = Math.floor(timeRemaining / 60);
+      //       const seconds = timeRemaining % 60;
+      //       document.getElementById('countdown').textContent = `${minutes}:${seconds}`;
+      //       timeRemaining--;
+      //     }
+      //   }, 1000);
+      // }
+       
     });
   };
 
   return (
     <>
       {!beginExam && !localStorage.examStarted ? (
-        <div className="w-100" style={{ width: "100%" }}>
+        <div className="w-100 pb-4" style={{ width: "100%" }}>
           <div className="w-50 mx-auto text-container2">
             <div className="d-flex justify-content-center mt-5 mb-3">
               <span className="fs-4">Hello, </span>{" "}
