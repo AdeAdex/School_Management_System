@@ -119,7 +119,6 @@ const Test = () => {
       const endpoint2 =
         "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
       const scoreToUpdate = questionScores[currentQuestionIndex];
-      // console.log(scoreToUpdate);
       axios
         .post(endpoint2, {
           scores: scoreToUpdate,

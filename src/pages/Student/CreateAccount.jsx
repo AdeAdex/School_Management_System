@@ -32,7 +32,7 @@ const CreateAccount = () => {
       const currentDate = format(new Date(), "yyyy-MM-dd");
       const registrationNumber = numbersPart + alphabetPart;
       const newValues = { ...values, registrationNumber, createdDate: currentDate };
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
+      const endpoint = "http://localhost:2000/student_account/student";
       axios.post(endpoint, newValues)
       .then((response) => {
         if (response.data.status) {
