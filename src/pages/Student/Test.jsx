@@ -109,6 +109,7 @@ const Test = () => {
   
     const startTime = parseInt(localStorage.getItem('countdownStartTime'));
     const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
+    let warningSound = new Audio("warning.wav");
   
     if (startTime && countdownTime) {
       const countdownInterval = setInterval(() => {
@@ -120,12 +121,17 @@ const Test = () => {
           clearInterval(countdownInterval);
           localStorage.done = true
           // setDone(true)
+        } else if (remainingTime  ) {
+          
         } else {
           const minutes = Math.floor(remainingTime / 60);
           const seconds = remainingTime % 60;
           const countdownElement = document.getElementById('countdown');
           if (countdownElement) {
             countdownElement.textContent = `${minutes}:${seconds}`;
+            if (minutes === 0 && seconds <= 30) {
+              warningSound.play()
+            }
           }
         }
       }, 1000);
@@ -250,7 +256,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem('examStarted', 'true');
       
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 120; // 5 minutes in seconds
         localStorage.setItem('countdownStartTime', Date.now());
         localStorage.setItem('countdownTimeRemaining', countdownTime);
       }
