@@ -185,10 +185,23 @@ const Test = () => {
     axios.post(updateEndpoint, payload)
     .then((response) => {
       if (response.data.status) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "error",
+          title: response.data.message,
+        });
         localStorage.taken = response.data.response;
-        if (localStorage.taken) {
-          
-        }
         navigate("/student_login");
       }
     })
