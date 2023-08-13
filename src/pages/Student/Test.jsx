@@ -258,12 +258,12 @@ const Test = () => {
       ) : (
         <div className="w-100 h-100">
           <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
-            <div className="text-center d-flex gap-2 justify-content-center me">
+            <div className="d-flex gap-2 justify-content-center position-relative">
               {taken ? (
                 <span className="fs-4">Thank You: </span>
               ) : (
                 <>
-                <small id="countdown" className="fs-4" style={{float: 'left'}}></small>
+                <small id="countdown" className="fs-4 position-absolute start-0"></small>
                 <span className="fs-4"> Welcome: </span>
                 </>
               )}
