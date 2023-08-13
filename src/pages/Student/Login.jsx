@@ -44,7 +44,6 @@ const Login = () => {
         if (response.data.result) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
           console.log(response.data.response);
-          // alert(response.data.response)
           if (response.data.response) {
           navigate("/student/admission/pick_class");
           } else {
