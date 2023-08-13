@@ -333,7 +333,7 @@ const Test = () => {
                 <span className="fs-4">Thank You: </span>
               ) : (
                 <>
-                <small id="countdown" className="fs-4 position-absolute start-0"></small>
+                <div id="countdown" className="fs-4 position-absolute start-0"></div>
                 <span className="fs-4"> Welcome: </span>
                 </>
               )}
