@@ -143,14 +143,26 @@ const Test = () => {
 
   const startExam = () => {
     Swal.fire({
-      title: 'Custom animation with Animate.css',
+      title: 'Start Exam?',
+      text: 'You will have a limited time to complete all 10 questions. Make sure you\'re prepared before beginning.',
+      showCancelButton: true,
+      confirmButtonText: 'Start Exam',
+      cancelButtonText: 'Cancel',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
       },
       hideClass: {
         popup: 'animate__animated animate__fadeOutUp'
       }
-    })
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setBeginExam(true)
+      } else {
+        // User clicked "Cancel"
+        // Add any code you want to execute when the user cancels
+      }
+    });
+    
   }
 
   return (
@@ -219,7 +231,7 @@ const Test = () => {
         </div>
       ) : (
         <div className="w-100 h-100">
-          <div className="w-75 shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
+          <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
             <div className="text-center d-flex gap-2 justify-content-center">
               {taken ? (
                 <span className="fs-4">Thank You: </span>

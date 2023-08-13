@@ -1,5 +1,5 @@
 @media screen and (max-width: 768px) {
-  .text-container2 {
+  .text-container2, .question-container {
         width: 100% !important;
         margin-left: 0;
         margin-right: 0;
