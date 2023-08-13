@@ -116,7 +116,7 @@ const Test = () => {
         const elapsedTime = Math.floor((currentTime - startTime) / 1000);
   
         const remainingTime = countdownTime - elapsedTime;
-        if (remainingTime <= 1) {
+        if (remainingTime <= 0) {
           clearInterval(countdownInterval);
           setDone(true)
         } else {
