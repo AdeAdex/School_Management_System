@@ -15,7 +15,7 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
-  const [done, setDone] = useState(false)
+  const [done, setDone] = useState(false);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
 
@@ -23,7 +23,6 @@ const Test = () => {
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   let warningSound = new Audio("warning.wav");
- 
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
@@ -50,13 +49,12 @@ const Test = () => {
         console.log(err);
       });
   }, [globalState]);
- 
-
-
 
   const startCountdown = () => {
-    const startTime = parseInt(localStorage.getItem('countdownStartTime'));
-    const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
+    const startTime = parseInt(localStorage.getItem("countdownStartTime"));
+    const countdownTime = parseInt(
+      localStorage.getItem("countdownTimeRemaining")
+    );
 
     if (startTime && countdownTime) {
       const countdownInterval = setInterval(() => {
@@ -86,7 +84,6 @@ const Test = () => {
     }
   };
 
-
   useEffect(() => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
@@ -99,15 +96,9 @@ const Test = () => {
         );
       }
     });
-  
-    startCountdown();
-    
-  }, [currentQuestionIndex]);
-  
-  
-  
 
-  
+    startCountdown();
+  }, [currentQuestionIndex]);
 
   const handleNextClick = () => {
     console.log(taken);
@@ -190,13 +181,11 @@ const Test = () => {
     });
   };
 
-
-
   const finishedByForce = () => {
     if (localStorage.done) {
-      toLogin()
+      toLogin();
     }
-  }
+  };
   finishedByForce();
 
   const startExam = () => {
@@ -213,14 +202,13 @@ const Test = () => {
         popup: "animate__animated animate__fadeOutUp",
       },
     }).then((result) => {
-
       if (result.isConfirmed) {
         setBeginExam(true);
-        localStorage.setItem('examStarted', 'true');
-      
+        localStorage.setItem("examStarted", "true");
+
         const countdownTime = 300; // 5 minutes in seconds
-        localStorage.setItem('countdownStartTime', Date.now());
-        localStorage.setItem('countdownTimeRemaining', countdownTime);
+        localStorage.setItem("countdownStartTime", Date.now());
+        localStorage.setItem("countdownTimeRemaining", countdownTime);
 
         startCountdown();
       }
@@ -286,12 +274,12 @@ const Test = () => {
                 complete all the questions within the given timeframe.
               </p>
               <div className="start-exam-div">
-              <button
-                className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto"
-                onClick={startExam}
-              >
-                Start Exam
-              </button>
+                <button
+                  className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto"
+                  onClick={startExam}
+                >
+                  Start Exam
+                </button>
               </div>
             </div>
           </div>
@@ -304,8 +292,18 @@ const Test = () => {
                 <span className="fs-4">Thank You: </span>
               ) : (
                 <>
-                <div className={`fs-4 position-absolute start-0 ${countdown.minutes === 0 && countdown.seconds <= 59 ? 'text-danger blinking' : ''}`}>{countdown.minutes}:{countdown.seconds}</div>
-                <span className="fs-4"> Welcome: </span>
+                  <div
+                    className={`fs-4 position-absolute start-0 ${
+                      countdown.minutes === 0 && countdown.seconds <= 30
+                        ? "text-danger blinking"
+                        : countdown.minutes === 0 && countdown.seconds <= 59
+                        ? "text-danger"
+                        : "text-dark"
+                    }`}
+                  >
+                    {countdown.minutes}:{countdown.seconds}
+                  </div>
+                  <span className="fs-4"> Welcome: </span>
                 </>
               )}
               <div className="fw-bold fs-4">
