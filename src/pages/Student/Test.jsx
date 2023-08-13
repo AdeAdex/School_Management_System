@@ -242,8 +242,8 @@ const Test = () => {
                 </li>
                 <li>You must select one correct option for each question.</li>
                 <li>
-                  Once you select an option for a question, it cannot be
-                  changed.
+                  You can change your selected option for a question before
+                  submitting the exam.
                 </li>
                 <li>
                   Make sure to read each question and all the options before
@@ -254,7 +254,7 @@ const Test = () => {
                   timer will start when you begin the exam.
                 </li>
                 <li>
-                  You can see your remaining time on the top-right corner of the
+                  You can see your remaining time on the top-left corner of the
                   screen.
                 </li>
                 <li>
