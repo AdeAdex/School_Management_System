@@ -79,7 +79,7 @@ const LoginAccountType = () => {
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                width: isSmallScreen? "150px" : "200px",
+                width: isSmallScreen? "130px" : "200px",
                 height: "200px",
                 borderRadius: "10px",
                 outline: "1px solid #1F9FEF",
@@ -106,7 +106,7 @@ const LoginAccountType = () => {
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                width: isSmallScreen? "150px" : "200px",
+                width: isSmallScreen? "130px" : "200px",
                 height: "200px",
                 borderRadius: "10px",
                 outline: "1px solid #1F9FEF",
