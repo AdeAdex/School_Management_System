@@ -23,3 +23,17 @@
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   }
 }
+
+
+.blinking {
+  animation: blink-animation 2s infinite;
+}
+
+@keyframes blink-animation {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}

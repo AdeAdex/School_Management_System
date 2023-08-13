@@ -23,11 +23,7 @@ const Test = () => {
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   let warningSound = new Audio("warning.wav");
-
-
-  // useEffect(() => {
-   
-  // }, [])
+ 
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
@@ -54,50 +50,7 @@ const Test = () => {
         console.log(err);
       });
   }, [globalState]);
-
  
-  //   let endpoint =
-  //     "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
-  //   axios.get(endpoint).then((response) => {
-  //     setQuestions(response.data);
-  //     if (localStorage.getItem("currentQuestionIndex") === null) {
-  //       localStorage.setItem(
-  //         "currentQuestionIndex",
-  //         String(currentQuestionIndex)
-  //       );
-  //     }
-  //   });
-
-
-  //   const startTime = parseInt(localStorage.getItem('countdownStartTime'));
-  //   const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
-  
-  //   if (startTime && countdownTime) {
-  //     const countdownInterval = setInterval(() => {
-  //       const currentTime = Date.now();
-  //       const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-        
-  //       const remainingTime = countdownTime - elapsedTime;
-  //       if (remainingTime <= 0) {
-  //         clearInterval(countdownInterval);
-  //         toLogin();
-  //       } else {
-  //         const minutes = Math.floor(remainingTime / 60);
-  //         const seconds = remainingTime % 60;
-  //         const countdownElement = document.getElementById('countdown');
-  //         if (countdownElement) {
-  //           countdownElement.textContent = `${minutes}:${seconds}`;
-  //         }
-  //       }
-  //     }, 1000);
-  
-  //     return () => {
-  //       clearInterval(countdownInterval);
-  //     };
-  //   }
-  // }, [currentQuestionIndex]);
-
-
 
 
 
@@ -265,7 +218,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem('examStarted', 'true');
       
-        const countdownTime = 50; // 5 minutes in seconds
+        const countdownTime = 300; // 5 minutes in seconds
         localStorage.setItem('countdownStartTime', Date.now());
         localStorage.setItem('countdownTimeRemaining', countdownTime);
 
@@ -351,7 +304,7 @@ const Test = () => {
                 <span className="fs-4">Thank You: </span>
               ) : (
                 <>
-                <div className={`fs-4 ${countdown.minutes === 0 && countdown.seconds <= 30 ? 'text-danger' : ''}`}>{countdown.minutes}:{countdown.seconds}</div>
+                <div className={`fs-4 position-absolute start-0 ${countdown.minutes === 0 && countdown.seconds <= 59 ? 'text-danger blinking' : ''}`}>{countdown.minutes}:{countdown.seconds}</div>
                 <span className="fs-4"> Welcome: </span>
                 </>
               )}
