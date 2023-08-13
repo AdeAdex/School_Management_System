@@ -17,9 +17,13 @@ const Test = () => {
   const [beginExam, setBeginExam] = useState(false);
   const [done, setDone] = useState(false)
 
+  const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  let warningSound = new Audio("warning.wav");
+
 
   // useEffect(() => {
    
@@ -94,6 +98,42 @@ const Test = () => {
   // }, [currentQuestionIndex]);
 
 
+
+
+
+  const startCountdown = () => {
+    const startTime = parseInt(localStorage.getItem('countdownStartTime'));
+    const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
+
+    if (startTime && countdownTime) {
+      const countdownInterval = setInterval(() => {
+        const currentTime = Date.now();
+        const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+
+        const remainingTime = countdownTime - elapsedTime;
+        if (remainingTime <= 0) {
+          clearInterval(countdownInterval);
+          localStorage.done = true;
+          // setDone(true);
+        } else {
+          const minutes = Math.floor(remainingTime / 60);
+          const seconds = remainingTime % 60;
+
+          setCountdown({ minutes, seconds });
+
+          if (minutes === 0 && seconds <= 30) {
+            // warningSound.play();
+          }
+        }
+      }, 1000);
+
+      return () => {
+        clearInterval(countdownInterval);
+      };
+    }
+  };
+
+
   useEffect(() => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
@@ -107,39 +147,8 @@ const Test = () => {
       }
     });
   
-    const startTime = parseInt(localStorage.getItem('countdownStartTime'));
-    const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
-    let warningSound = new Audio("warning.wav");
-  
-    if (startTime && countdownTime) {
-      const countdownInterval = setInterval(() => {
-        const currentTime = Date.now();
-        const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-  
-        const remainingTime = countdownTime - elapsedTime;
-        if (remainingTime <= 0) {
-          clearInterval(countdownInterval);
-          localStorage.done = true
-          // setDone(true)
-        } else if (remainingTime  ) {
-          
-        } else {
-          const minutes = Math.floor(remainingTime / 60);
-          const seconds = remainingTime % 60;
-          const countdownElement = document.getElementById('countdown');
-          if (countdownElement) {
-            countdownElement.textContent = `${minutes}:${seconds}`;
-            if (minutes === 0 && seconds <= 30) {
-              warningSound.play()
-            }
-          }
-        }
-      }, 1000);
-  
-      return () => {
-        clearInterval(countdownInterval);
-      };
-    }
+    startCountdown();
+    
   }, [currentQuestionIndex]);
   
   
@@ -256,9 +265,11 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem('examStarted', 'true');
       
-        const countdownTime = 120; // 5 minutes in seconds
+        const countdownTime = 50; // 5 minutes in seconds
         localStorage.setItem('countdownStartTime', Date.now());
         localStorage.setItem('countdownTimeRemaining', countdownTime);
+
+        startCountdown();
       }
     });
   };
@@ -340,7 +351,7 @@ const Test = () => {
                 <span className="fs-4">Thank You: </span>
               ) : (
                 <>
-                <div id="countdown" className="fs-4 position-absolute start-0"></div>
+                <div className={`fs-4 ${countdown.minutes === 0 && countdown.seconds <= 30 ? 'text-danger' : ''}`}>{countdown.minutes}:{countdown.seconds}</div>
                 <span className="fs-4"> Welcome: </span>
                 </>
               )}
