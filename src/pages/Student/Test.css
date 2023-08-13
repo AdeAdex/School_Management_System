@@ -1,0 +1,8 @@
+@media screen and (max-width: 768px) {
+  .text-container2 {
+        width: 100% !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0px 10px;
+  }
+}

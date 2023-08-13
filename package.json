@@ -17,6 +17,7 @@
     "@mui/material": "^5.13.6",
     "@mui/x-date-pickers": "^6.9.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "animate.css": "^4.1.1",
     "axios": "^1.4.0",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.2.3",

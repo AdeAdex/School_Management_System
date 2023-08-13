@@ -3,6 +3,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { newStudent } from "../../redux/portalSlice";
+import "../Student/Test.css";
+import 'animate.css';
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -139,12 +141,24 @@ const Test = () => {
     });
   };
 
+  const startExam = () => {
+    Swal.fire({
+      title: 'Custom animation with Animate.css',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  }
+
   return (
     <>
       {!beginExam ? (
-        <div className="w-100">
-          <div className="w-50 mx-auto">
-            <div className="d-flex justify-content-center">
+        <div className="w-100" style={{ width: "100%" }}>
+          <div className="w-50 mx-auto text-container2">
+            <div className="d-flex justify-content-center mt-5 mb-3">
               <span className="fs-4">Hello, </span>{" "}
               <div className="fw-bold fs-4">
                 {globalState.firstName} {globalState.lastName}{" "}
@@ -152,7 +166,7 @@ const Test = () => {
               </div>
             </div>
             <div className="exam-instructions">
-              <h2 className="text-center">Exam Instructions:</h2>
+              <h2 className="text-center mb-3">Exam Instructions:</h2>
               <p>
                 You are about to take a timed exam consisting of 10
                 multiple-choice questions. You will have 5 minutes to complete
@@ -197,7 +211,7 @@ const Test = () => {
                 Remember, managing your time efficiently is essential to
                 complete all the questions within the given timeframe.
               </p>
-              <button className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto">
+              <button className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto" onClick={startExam}>
                 Start Exam
               </button>
             </div>
