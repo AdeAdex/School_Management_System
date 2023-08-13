@@ -215,7 +215,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 3000; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -331,7 +331,7 @@ const Test = () => {
                   <>
                     <h1 className="my-3">Question {currentQuestion.id}</h1>
                     <p className="my-3">{currentQuestion.content}</p>
-                    <ul className="d-flex flex-column mx-auto mb-5">
+                    <ul className="d-flex flex-column mx-auto mb-5 question-ul">
                       {currentQuestion.options.map((option, index) => (
                         <label
                           key={index}

@@ -24,7 +24,7 @@ const PersonalInformation = () => {
   //   setCountry(event.target.value);
   // };
 
-  var globalState = useSelector((state) => state.portalReducer.studentInfo);
+  let globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
     initialValues: {
       firstName: globalState.firstName,
