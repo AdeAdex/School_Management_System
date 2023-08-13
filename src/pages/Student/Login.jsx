@@ -47,7 +47,7 @@ const Login = () => {
           if (response.data.response) {
           navigate("/student/admission/pick_class");
           } else {
-            navigate('/questions')
+            navigate('/student-entrance-exam_questions')
           }
           
         } else {
