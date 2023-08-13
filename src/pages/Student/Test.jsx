@@ -174,7 +174,7 @@ const Test = () => {
             const seconds = timeRemaining % 60;
       
             // Update the display with the remaining time and "Welcome" message
-            document.getElementById('countdown').textContent = `${minutes}:${seconds} Welcome:`;
+            document.getElementById('countdown').textContent = `${minutes}:${seconds}`;
       
             // Decrement time remaining
             timeRemaining--;
@@ -258,14 +258,14 @@ const Test = () => {
       ) : (
         <div className="w-100 h-100">
           <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
-            <div className="text-center d-flex gap-2 justify-content-center">
+            <div className="text-center d-flex gap-2 justify-content-center me">
               {taken ? (
                 <span className="fs-4">Thank You: </span>
               ) : (
-                <div>
-                <small id="countdown" className="fs-4"></small>
+                <>
+                <small id="countdown" className="fs-4" style={{float: 'left'}}></small>
                 <span className="fs-4"> Welcome: </span>
-                </div>
+                </>
               )}
               <div className="fw-bold fs-4">
                 {globalState.firstName} {globalState.lastName}{" "}
