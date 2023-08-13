@@ -89,16 +89,26 @@ const Test = () => {
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
       setQuestions(response.data);
-      if (localStorage.getItem("currentQuestionIndex") === null) {
+      // if (localStorage.getItem("currentQuestionIndex") === null) {
+      //   localStorage.setItem(
+      //     "currentQuestionIndex",
+      //     String(currentQuestionIndex)
+      //   );
+      // }
+
+      const storedQuestionIndex = localStorage.getItem("currentQuestionIndex");
+      if (storedQuestionIndex === null) {
         localStorage.setItem(
           "currentQuestionIndex",
           String(currentQuestionIndex)
         );
+      } else {
+        setCurrentQuestionIndex(Number(storedQuestionIndex)); // Use the stored index
       }
     });
 
     startCountdown();
-  }, [currentQuestionIndex]);
+  }, []);
 
   const handleNextClick = () => {
     console.log(taken);
