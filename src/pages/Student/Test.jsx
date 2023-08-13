@@ -142,15 +142,66 @@ const Test = () => {
   return (
     <>
       {!beginExam ? (
-        <div className="text-center">
-        <div>
-          <span className="fs-4">Hello: </span>{" "}
-          <div className="fw-bold fs-4">
-            {globalState.firstName} {globalState.lastName}{" "}
-            {globalState.takenExam}
+        <div className="w-100">
+          <div className="w-50 mx-auto">
+            <div className="d-flex justify-content-center">
+              <span className="fs-4">Hello, </span>{" "}
+              <div className="fw-bold fs-4">
+                {globalState.firstName} {globalState.lastName}{" "}
+                {globalState.takenExam}
+              </div>
+            </div>
+            <div className="exam-instructions">
+              <h2 className="text-center">Exam Instructions:</h2>
+              <p>
+                You are about to take a timed exam consisting of 10
+                multiple-choice questions. You will have 5 minutes to complete
+                the entire exam. Please read the instructions carefully before
+                starting the exam:
+              </p>
+              <ol>
+                <li>
+                  The exam comprises 10 questions, each with multiple-choice
+                  options.
+                </li>
+                <li>You must select one correct option for each question.</li>
+                <li>
+                  Once you select an option for a question, it cannot be
+                  changed.
+                </li>
+                <li>
+                  Make sure to read each question and all the options before
+                  making a selection.
+                </li>
+                <li>
+                  The exam is timed, and you have 5 minutes to complete it. The
+                  timer will start when you begin the exam.
+                </li>
+                <li>
+                  You can see your remaining time on the top-right corner of the
+                  screen.
+                </li>
+                <li>
+                  After answering all 10 questions or when the timer runs out,
+                  the exam will be automatically submitted.
+                </li>
+                <li>
+                  Do not refresh the page or leave the exam screen during the
+                  test, as it may result in submission.
+                </li>
+                <li>Good luck! Start the exam when you are ready.</li>
+              </ol>
+              <p>
+                Please note that your responses will be recorded and evaluated
+                once the exam is completed or the time limit is reached.
+                Remember, managing your time efficiently is essential to
+                complete all the questions within the given timeframe.
+              </p>
+              <button className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto">
+                Start Exam
+              </button>
+            </div>
           </div>
-          </div>
-          <button className="btn btn-sm btn-success">Start</button>
         </div>
       ) : (
         <div className="w-100 h-100">
