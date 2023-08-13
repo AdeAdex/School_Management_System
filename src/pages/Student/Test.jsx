@@ -118,7 +118,9 @@ const Test = () => {
         const remainingTime = countdownTime - elapsedTime;
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
-          setDone(true)
+          localStorage.done = true
+
+          // setDone(true)
         } else {
           const minutes = Math.floor(remainingTime / 60);
           const seconds = remainingTime % 60;
@@ -136,11 +138,7 @@ const Test = () => {
   }, [currentQuestionIndex]);
   
   
- 
-  // const finishedByForce = () => {
-  //   console.log(done);
-  // }
-  // finishedByForce();
+  
 
   
 
@@ -224,6 +222,15 @@ const Test = () => {
       }
     });
   };
+
+
+
+  const finishedByForce = () => {
+    if (localStorage.done) {
+      toLogin()
+    }
+  }
+  finishedByForce();
 
   const startExam = () => {
     Swal.fire({
