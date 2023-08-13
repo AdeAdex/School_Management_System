@@ -251,7 +251,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem('examStarted', 'true');
       
-        const countdownTime = 10; // 5 minutes in seconds
+        const countdownTime = 300; // 5 minutes in seconds
         localStorage.setItem('countdownStartTime', Date.now());
         localStorage.setItem('countdownTimeRemaining', countdownTime);
       }
