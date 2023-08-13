@@ -175,70 +175,59 @@ const Test = () => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  // const toLogin = () => {
-  //   const payload = {
-  //     yourKeyHere: true,
-  //     myEmail: globalState.email,
-  //   };
-  //   let updateEndpoint =
-  //     "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-  //   axios.post(updateEndpoint, payload)
-  //   .then((response) => {
-  //     if (response.data.status) {
-  //       localStorage.taken = response.data.response;
-  //       navigate("/student_login");
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
-
-  //   let myEmail = globalState.email
-  //     let endpoint = "http://localhost:2000/student_account/send_student_entrance_result"
-  //     axios.post(endpoint, myEmail)
-  //     .then((response) => {
-  //       if (response.data.status) {
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // };
-
-
   const toLogin = () => {
     const payload = {
       yourKeyHere: true,
       myEmail: globalState.email,
     };
-    const updateEndpoint =
+    let updateEndpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-    const resultEndpoint =
-      "http://localhost:2000/student_account/send_student_entrance_result";
-  
     axios.post(updateEndpoint, payload)
-      .then((response) => {
-        if (response.data.status) {
-          localStorage.taken = response.data.response;
-          axios.post(resultEndpoint, { myEmail: globalState.email })
-            .then((resultResponse) => {
-              if (resultResponse.data.status) {
-                // Handle success if needed
-              } else {
-                console.log(resultResponse.data.message);
-              }
-            })
-            .catch((resultErr) => {
-              console.log(resultErr);
-            });
-  
-          navigate("/student_login");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    .then((response) => {
+      if (response.data.status) {
+        localStorage.taken = response.data.response;
+        navigate("/student_login");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
+
+
+  // const toLogin = () => {
+  //   const payload = {
+  //     yourKeyHere: true,
+  //     myEmail: globalState.email,
+  //   };
+  //   const updateEndpoint =
+  //     "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
+  //   const resultEndpoint =
+  //     "http://localhost:2000/student_account/send_student_entrance_result";
+  
+  //   axios.post(updateEndpoint, payload)
+  //     .then((response) => {
+  //       if (response.data.status) {
+  //         localStorage.taken = response.data.response;
+  //         axios.post(resultEndpoint, { myEmail: globalState.email })
+  //           .then((resultResponse) => {
+  //             if (resultResponse.data.status) {
+  //               // Handle success if needed
+  //             } else {
+  //               console.log(resultResponse.data.message);
+  //             }
+  //           })
+  //           .catch((resultErr) => {
+  //             console.log(resultErr);
+  //           });
+  
+  //         navigate("/student_login");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   
 
 
