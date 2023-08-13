@@ -332,10 +332,10 @@ const Test = () => {
               {taken ? (
                 <span className="fs-4">Thank You: </span>
               ) : (
-                <div className="">
-                <small id="countdown" className="fs-4"></small>
+                <>
+                <div id="countdown" className="fs-4 position-absolute start-0"></div>
                 <span className="fs-4"> Welcome: </span>
-                </div>
+                </>
               )}
               <div className="fw-bold fs-4">
                 {globalState.firstName} {globalState.lastName}{" "}
