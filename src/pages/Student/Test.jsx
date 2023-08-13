@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { newStudent } from "../../redux/portalSlice";
 import "../Student/Test.css";
-import 'animate.css';
+import "animate.css";
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -143,27 +143,50 @@ const Test = () => {
 
   const startExam = () => {
     Swal.fire({
-      title: 'Start Exam?',
-      text: 'You will have a limited time to complete all 10 questions. Make sure you\'re prepared before beginning.',
+      title: "Start Exam?",
+      text: "You will have a limited time to complete all 10 questions. Make sure you're prepared before beginning.",
       showCancelButton: true,
-      confirmButtonText: 'Start Exam',
-      cancelButtonText: 'Cancel',
+      confirmButtonText: "Start Exam",
+      cancelButtonText: "Cancel",
       showClass: {
-        popup: 'animate__animated animate__fadeInDown'
+        popup: "animate__animated animate__fadeInDown",
       },
       hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
+        popup: "animate__animated animate__fadeOutUp",
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        setBeginExam(true)
-      } else {
+        setBeginExam(true);
+      
+        // Set the countdown time to 5 minutes (300 seconds)
+        const countdownTime = 300; // 5 minutes in seconds
+      
+        // Start the countdown timer
+        let timeRemaining = countdownTime;
+        const countdownInterval = setInterval(() => {
+          if (timeRemaining <= 0) {
+            // Time's up! Perform any actions you want when the countdown ends
+            clearInterval(countdownInterval);
+            // Add your code here for handling when the time is up
+          } else {
+            // Calculate remaining minutes and seconds
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+      
+            // Update the display with the remaining time and "Welcome" message
+            document.getElementById('countdown').textContent = `${minutes}:${seconds} Welcome:`;
+      
+            // Decrement time remaining
+            timeRemaining--;
+          }
+        }, 1000); // Update every 1 second (1000 milliseconds)
+      }
+       else {
         // User clicked "Cancel"
         // Add any code you want to execute when the user cancels
       }
     });
-    
-  }
+  };
 
   return (
     <>
@@ -223,7 +246,10 @@ const Test = () => {
                 Remember, managing your time efficiently is essential to
                 complete all the questions within the given timeframe.
               </p>
-              <button className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto" onClick={startExam}>
+              <button
+                className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto"
+                onClick={startExam}
+              >
                 Start Exam
               </button>
             </div>
@@ -236,7 +262,10 @@ const Test = () => {
               {taken ? (
                 <span className="fs-4">Thank You: </span>
               ) : (
-                <span className="fs-4">Welcome: </span>
+                <div>
+                <small id="countdown" className="fs-4"></small>
+                <span className="fs-4"> Welcome: </span>
+                </div>
               )}
               <div className="fw-bold fs-4">
                 {globalState.firstName} {globalState.lastName}{" "}
