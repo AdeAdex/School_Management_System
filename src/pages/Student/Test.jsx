@@ -15,6 +15,7 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
+  const [done, setDone] = useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,7 +51,48 @@ const Test = () => {
       });
   }, [globalState]);
 
+ 
+  //   let endpoint =
+  //     "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
+  //   axios.get(endpoint).then((response) => {
+  //     setQuestions(response.data);
+  //     if (localStorage.getItem("currentQuestionIndex") === null) {
+  //       localStorage.setItem(
+  //         "currentQuestionIndex",
+  //         String(currentQuestionIndex)
+  //       );
+  //     }
+  //   });
+
+
+  //   const startTime = parseInt(localStorage.getItem('countdownStartTime'));
+  //   const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
   
+  //   if (startTime && countdownTime) {
+  //     const countdownInterval = setInterval(() => {
+  //       const currentTime = Date.now();
+  //       const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+        
+  //       const remainingTime = countdownTime - elapsedTime;
+  //       if (remainingTime <= 0) {
+  //         clearInterval(countdownInterval);
+  //         toLogin();
+  //       } else {
+  //         const minutes = Math.floor(remainingTime / 60);
+  //         const seconds = remainingTime % 60;
+  //         const countdownElement = document.getElementById('countdown');
+  //         if (countdownElement) {
+  //           countdownElement.textContent = `${minutes}:${seconds}`;
+  //         }
+  //       }
+  //     }, 1000);
+  
+  //     return () => {
+  //       clearInterval(countdownInterval);
+  //     };
+  //   }
+  // }, [currentQuestionIndex]);
+
 
   useEffect(() => {
     let endpoint =
@@ -64,8 +106,7 @@ const Test = () => {
         );
       }
     });
-
-
+  
     const startTime = parseInt(localStorage.getItem('countdownStartTime'));
     const countdownTime = parseInt(localStorage.getItem('countdownTimeRemaining'));
   
@@ -73,11 +114,11 @@ const Test = () => {
       const countdownInterval = setInterval(() => {
         const currentTime = Date.now();
         const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-        
+  
         const remainingTime = countdownTime - elapsedTime;
-        if (remainingTime <= 0) {
+        if (remainingTime <= 1) {
           clearInterval(countdownInterval);
-          toLogin();
+          setDone(true)
         } else {
           const minutes = Math.floor(remainingTime / 60);
           const seconds = remainingTime % 60;
@@ -93,10 +134,13 @@ const Test = () => {
       };
     }
   }, [currentQuestionIndex]);
-
-
- 
   
+  
+ 
+  // const finishedByForce = () => {
+  //   console.log(done);
+  // }
+  // finishedByForce();
 
   
 
@@ -107,7 +151,7 @@ const Test = () => {
       setCurrentQuestionIndex(newQuestionIndex);
 
       const endpoint2 =
-        "http://localhost:2000/student_account/update_my_admission_exam_score";
+        "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
       const scoreToUpdate = questionScores[currentQuestionIndex];
       // console.log(scoreToUpdate);
       axios
@@ -200,29 +244,10 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem('examStarted', 'true');
       
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 10; // 5 minutes in seconds
         localStorage.setItem('countdownStartTime', Date.now());
         localStorage.setItem('countdownTimeRemaining', countdownTime);
       }
-      
-      // if (result.isConfirmed) {
-      //   setBeginExam(true);
-      //   localStorage.setItem('examStarted', 'true');
-      
-      //   const countdownTime = 300;
-      //   let timeRemaining = countdownTime;
-      //   const countdownInterval = setInterval(() => {
-      //     if (timeRemaining <= 0) {
-      //       clearInterval(countdownInterval);
-      //     } else {
-      //       const minutes = Math.floor(timeRemaining / 60);
-      //       const seconds = timeRemaining % 60;
-      //       document.getElementById('countdown').textContent = `${minutes}:${seconds}`;
-      //       timeRemaining--;
-      //     }
-      //   }, 1000);
-      // }
-       
     });
   };
 
