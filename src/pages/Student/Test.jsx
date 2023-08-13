@@ -186,6 +186,9 @@ const Test = () => {
     .then((response) => {
       if (response.data.status) {
         localStorage.taken = response.data.response;
+        if (localStorage.taken) {
+          
+        }
         navigate("/student_login");
       }
     })
