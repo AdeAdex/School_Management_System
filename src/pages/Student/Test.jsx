@@ -157,29 +157,20 @@ const Test = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setBeginExam(true);
+        localStorage.setItem('examStarted', 'true');
       
-        // Set the countdown time to 5 minutes (300 seconds)
-        const countdownTime = 300; // 5 minutes in seconds
-      
-        // Start the countdown timer
+        const countdownTime = 300;
         let timeRemaining = countdownTime;
         const countdownInterval = setInterval(() => {
           if (timeRemaining <= 0) {
-            // Time's up! Perform any actions you want when the countdown ends
             clearInterval(countdownInterval);
-            // Add your code here for handling when the time is up
           } else {
-            // Calculate remaining minutes and seconds
             const minutes = Math.floor(timeRemaining / 60);
             const seconds = timeRemaining % 60;
-      
-            // Update the display with the remaining time and "Welcome" message
             document.getElementById('countdown').textContent = `${minutes}:${seconds}`;
-      
-            // Decrement time remaining
             timeRemaining--;
           }
-        }, 1000); // Update every 1 second (1000 milliseconds)
+        }, 1000);
       }
        else {
         // User clicked "Cancel"
@@ -190,7 +181,7 @@ const Test = () => {
 
   return (
     <>
-      {!beginExam ? (
+      {!beginExam && !localStorage.examStarted ? (
         <div className="w-100" style={{ width: "100%" }}>
           <div className="w-50 mx-auto text-container2">
             <div className="d-flex justify-content-center mt-5 mb-3">
