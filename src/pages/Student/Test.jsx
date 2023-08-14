@@ -449,23 +449,55 @@ const Test = () => {
   };
 
 
-  const finishedByForce = () => {
-    if (localStorage.done) {
+  // const finishedByForce = () => {
+  //   if (localStorage.done) {
       
-      // const nonNegativeScores = questionScores.map((score) =>
-      //   Math.max(score, 0)
-      // );
+  //     // const nonNegativeScores = questionScores.map((score) =>
+  //     //   Math.max(score, 0)
+  //     // );
 
-      // const totalNonNegativeScore = nonNegativeScores.reduce(
-      //   (total, score) => total + score,
-      //   0
-      // );
-      // submit(totalNonNegativeScore);
+  //     // const totalNonNegativeScore = nonNegativeScores.reduce(
+  //     //   (total, score) => total + score,
+  //     //   0
+  //     // );
+  //     // submit(totalNonNegativeScore);
+  //     // toLogin();
+  //   }
+  // };
+
+
+
+  // const finishedByForce = () => {
+  //   if (localStorage.done) {
+  //     const nonNegativeScores = questionScores.map((score) =>
+  //       Math.max(score, 0)
+  //     );
+
+  //     const totalNonNegativeScore = nonNegativeScores.reduce(
+  //       (total, score) => total + score,
+  //       0
+  //     );
+  //     submit(totalNonNegativeScore);
+  //     // toLogin();
+  //   }
+  // };
+
+  setTimeout(() => {
+    if (localStorage.done) {
+      const nonNegativeScores = questionScores.map((score) =>
+        Math.max(score, 0)
+      );
+
+      const totalNonNegativeScore = nonNegativeScores.reduce(
+        (total, score) => total + score,
+        0
+      );
+      submit(totalNonNegativeScore);
       // toLogin();
     }
-  };
+  }, 10000);
 
-  finishedByForce();
+
 
  
   // const finishedByForce = () => {
