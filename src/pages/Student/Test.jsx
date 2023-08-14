@@ -15,13 +15,12 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
+  const [allTotalScore, setAllTotalScore] = useState(0);
   // const [done, setDone] = useState(false);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
 
-
   const currentQuestion = questions[currentQuestionIndex];
-
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -114,58 +113,109 @@ const Test = () => {
     startCountdown();
   }, []);
 
-
-
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
-  
+
     if (newQuestionIndex < questions.length) {
       const currentQuestion = questions[currentQuestionIndex]; // Store the current question
       const scoreToUpdate = questionScores[currentQuestionIndex];
-  
+
       console.log(scoreToUpdate);
       console.log("currentQuestion.id:", currentQuestion.id);
-  
+
       // Update local state
       const newQuestionScores = [...questionScores];
       newQuestionScores[currentQuestionIndex] = scoreToUpdate;
-  
+
       setQuestionScores(newQuestionScores);
-  
+
       localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
-  
+
       setCurrentQuestionIndex(newQuestionIndex);
     } else if (currentQuestion && currentQuestion.id === 10) {
-      const totalScore = questionScores.reduce((total, score) => total + score, 0);
-  
-      console.log("Total score:", totalScore);
-  
-      const endpoint2 =
-        "http://localhost:2000/student_account/update_my_admission_exam_score";
-      axios
-        .post(endpoint2, {
-          scores: totalScore,
-          myEmail: globalState.email,
-        })
-        .then((response) => {
-          if (response.data.status) {
-            setTaken(true);
-          }
-        });
+      const nonNegativeScores = questionScores.map((score) =>
+        Math.max(score, 0)
+      );
+
+      const totalNonNegativeScore = nonNegativeScores.reduce(
+        (total, score) => total + score,
+        0
+      );
+      submit(totalNonNegativeScore);
     }
   };
-  
 
+  const submit = (newScores) => {
+    console.log(newScores);
+    const endpoint2 =
+      "http://localhost:2000/student_account/update_my_admission_exam_score";
+    axios
+      .post(endpoint2, {
+        myScores: newScores,
+        myEmail: globalState.email,
+      })
+      .then((response) => {
+        if (response.data.status) {
+          setTaken(true);
+        }
+      });
+  };
+
+  // const handleNextClick = () => {
+  //   const newQuestionIndex = currentQuestionIndex + 1;
+
+  //   if (newQuestionIndex < questions.length) {
+  //     const currentQuestion = questions[currentQuestionIndex]; // Store the current question
+  //     const scoreToUpdate = questionScores[currentQuestionIndex];
+
+  //     console.log(scoreToUpdate);
+  //     console.log("currentQuestion.id:", currentQuestion.id);
+
+  //     // Update local state
+  //     const newQuestionScores = [...questionScores];
+  //     newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+
+  //     setQuestionScores(newQuestionScores);
+
+  //     localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
+
+  //     setCurrentQuestionIndex(newQuestionIndex);
+  //   } else if (currentQuestion && currentQuestion.id === 10) {
+  //     const totalScore = questionScores.reduce((total, score) => total + score, 0);
+  //     setAllTotalScore(totalScore)
+
+  //     if (allTotalScore !== 0 && allTotalScore !== undefined && allTotalScore !== null) {
+  //       console.log("Total score:", totalScore);
+  //       console.log("All total score:", allTotalScore);
+  //       submit();
+  //     }
+  //   }
+  // };
+
+  // const submit = () => {
+  //   const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: allTotalScore,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           setTaken(true);
+  //         }
+  //       });
+  // }
 
   // const handleNextClick = () => {
   //   const newQuestionIndex = currentQuestionIndex + 1;
   //   if (newQuestionIndex < questions.length) {
   //     const currentQuestion = questions[currentQuestionIndex]; // Store the current question
   //     const scoreToUpdate = questionScores[currentQuestionIndex];
-    
+
   //     console.log(scoreToUpdate);
   //     console.log("currentQuestion.id:", currentQuestion.id);
-    
+
   //     const endpoint2 =
   //       "http://localhost:2000/student_account/update_my_admission_exam_score";
   //     axios
@@ -177,22 +227,22 @@ const Test = () => {
   //         if (response.data.status) {
   //           const newQuestionScores = [...questionScores];
   //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
-    
+
   //           setQuestionScores(newQuestionScores);
-    
+
   //           localStorage.setItem(
   //             "currentQuestionIndex",
   //             String(newQuestionIndex)
   //           );
-    
+
   //           setCurrentQuestionIndex(newQuestionIndex);
   //         }
   //       });
   //   } else if (currentQuestion && currentQuestion.id === 10) {
   //     const totalScore = questionScores.reduce((total, score) => total + score, 0);
-    
+
   //     console.log("Total score:", totalScore);
-    
+
   //     const endpoint2 =
   //       "http://localhost:2000/student_account/update_my_admission_exam_score";
   //     axios
@@ -207,18 +257,16 @@ const Test = () => {
   //       });
   //   }
   // };
-  
- 
 
   // const handleNextClick = () => {
   //   const newQuestionIndex = currentQuestionIndex + 1;
   //   if (newQuestionIndex < questions.length) {
   //     const currentQuestion = questions[currentQuestionIndex]; // Store the current question
   //     const scoreToUpdate = questionScores[currentQuestionIndex];
-  
+
   //     console.log(scoreToUpdate);
   //     console.log("currentQuestion.id:", currentQuestion.id);
-  
+
   //     const endpoint2 =
   //       "http://localhost:2000/student_account/update_my_admission_exam_score";
   //     axios
@@ -230,21 +278,21 @@ const Test = () => {
   //         if (response.data.status) {
   //           const newQuestionScores = [...questionScores];
   //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
-  
+
   //           setQuestionScores(newQuestionScores);
-  
+
   //           localStorage.setItem(
   //             "currentQuestionIndex",
   //             String(newQuestionIndex)
   //           );
-  
+
   //           setCurrentQuestionIndex(newQuestionIndex);
   //         }
   //       });
   //   } else if (currentQuestion && currentQuestion.id === 10) {
-  //     const scoreToUpdate = questionScores[currentQuestionIndex]; 
+  //     const scoreToUpdate = questionScores[currentQuestionIndex];
   //     console.log("Final scoreToUpdate:", scoreToUpdate);
-  
+
   //     // Send scoreToUpdate to the server for all questions (from 1 to 10)
   //     const endpoint2 =
   //       "http://localhost:2000/student_account/update_my_admission_exam_score";
@@ -260,17 +308,14 @@ const Test = () => {
   //       });
   //   }
   // };
-  
-  
-  
-  
+
   // const handleNextClick = () => {
   //   const newQuestionIndex = currentQuestionIndex + 1;
   //   if (newQuestionIndex < questions.length) {
   //     const scoreToUpdate = questionScores[currentQuestionIndex];
   //     console.log(scoreToUpdate);
   //     console.log("currentQuestion.id:", currentQuestion.id);
-  
+
   //     const endpoint2 =
   //       "http://localhost:2000/student_account/update_my_admission_exam_score";
   //     axios
@@ -282,27 +327,25 @@ const Test = () => {
   //         if (response.data.status) {
   //           const newQuestionScores = [...questionScores];
   //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
-  
+
   //           setQuestionScores(newQuestionScores);
-  
+
   //           if (currentQuestion.id === 10) {
   //             // setTaken(true);
   //           }
-  
+
   //           localStorage.setItem(
   //             "currentQuestionIndex",
   //             String(newQuestionIndex)
   //           );
   //         }
   //       });
-  
+
   //     setCurrentQuestionIndex(newQuestionIndex);
   //   } else {
   //     setTaken(true);
   //   }
   // };
-  
-
 
   // const handleNextClick = () => {
   //   const scoreToUpdate = questionScores[currentQuestionIndex];
@@ -337,9 +380,6 @@ const Test = () => {
   //     const newQuestionIndex = currentQuestionIndex + 1;
   //     setCurrentQuestionIndex(newQuestionIndex);
 
-     
-
-      
   //   } else {
   //     setTaken(true);
   //   }
@@ -371,7 +411,6 @@ const Test = () => {
     setSelectedOptions(newSelectedOptions);
     setQuestionScores(newQuestionScores);
   };
-
 
   const toLogin = () => {
     const payload = {
