@@ -16,6 +16,7 @@ const Test = () => {
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [allTotalScore, setAllTotalScore] = useState(0);
+  const [isSubmissionTriggered, setIsSubmissionTriggered] = useState(false);
   // const [done, setDone] = useState(false);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
@@ -68,6 +69,29 @@ const Test = () => {
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
           localStorage.done = true;
+
+          console.log('timeout')
+
+
+          if (localStorage.done) {
+            // setIsSubmissionTriggered(true);
+      
+            const nonNegativeScores = questionScores.map((score) =>
+              Math.max(score, 0)
+            );
+      
+            const totalNonNegativeScore = nonNegativeScores.reduce(
+              (total, score) => total + score,
+              0
+            );
+            submit(totalNonNegativeScore);
+          }
+        // };
+      
+        // setTimeout(() => {
+        //   // finishedByForce();
+        // }, 10000);
+          
           // setDone(true);
         } else {
           const minutes = Math.floor(remainingTime / 60);
@@ -449,6 +473,58 @@ const Test = () => {
   };
 
 
+
+
+
+
+  // const finishedByForce = () => {
+  //   if (localStorage.done && !isSubmissionTriggered) {
+  //     setIsSubmissionTriggered(true);
+
+  //     const nonNegativeScores = questionScores.map((score) =>
+  //       Math.max(score, 0)
+  //     );
+
+  //     const totalNonNegativeScore = nonNegativeScores.reduce(
+  //       (total, score) => total + score,
+  //       0
+  //     );
+  //     submit(totalNonNegativeScore);
+  //   }
+  // };
+
+  // setTimeout(() => {
+  //   finishedByForce();
+  // }, 10000);
+
+
+
+
+
+
+  // const finishedByForce = () => {
+  //   if (localStorage.done) {
+  //     const nonNegativeScores = questionScores.map((score) =>
+  //       Math.max(score, 0)
+  //     );
+
+  //     const totalNonNegativeScore = nonNegativeScores.reduce(
+  //       (total, score) => total + score,
+  //       0
+  //     );
+  //     submit(totalNonNegativeScore);
+  //   }
+  // };
+
+  // Delay the execution of finishedByForce by 10 seconds
+  // setTimeout(() => {
+  //   if (!isSubmissionTriggered && localStorage.done) {
+  //     setIsSubmissionTriggered(true);
+  //     finishedByForce();
+  //   }
+  // }, 10000);
+
+
   // const finishedByForce = () => {
   //   if (localStorage.done) {
       
@@ -482,20 +558,21 @@ const Test = () => {
   //   }
   // };
 
-  setTimeout(() => {
-    if (localStorage.done) {
-      const nonNegativeScores = questionScores.map((score) =>
-        Math.max(score, 0)
-      );
+  // setTimeout(() => {
+  //   if (localStorage.done) {
+  //     const nonNegativeScores = questionScores.map((score) =>
+  //       Math.max(score, 0)
+  //     );
 
-      const totalNonNegativeScore = nonNegativeScores.reduce(
-        (total, score) => total + score,
-        0
-      );
-      submit(totalNonNegativeScore);
-      // toLogin();
-    }
-  }, 10000);
+  //     const totalNonNegativeScore = nonNegativeScores.reduce(
+  //       (total, score) => total + score,
+  //       0
+  //     );
+  //     // submit(totalNonNegativeScore);
+  //   } else {
+  //     return null
+  //   }
+  // }, 10000);
 
 
 
