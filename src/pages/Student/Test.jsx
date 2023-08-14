@@ -15,9 +15,13 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
-  const [done, setDone] = useState(false);
+  // const [done, setDone] = useState(false);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
+
+
+  const currentQuestion = questions[currentQuestionIndex];
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -110,41 +114,236 @@ const Test = () => {
     startCountdown();
   }, []);
 
-  const handleNextClick = () => {
-    console.log(taken);
-    if (currentQuestionIndex < questions.length - 1) {
-      const newQuestionIndex = currentQuestionIndex + 1;
-      setCurrentQuestionIndex(newQuestionIndex);
 
-      const endpoint2 =
-        "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
+
+  const handleNextClick = () => {
+    const newQuestionIndex = currentQuestionIndex + 1;
+  
+    if (newQuestionIndex < questions.length) {
+      const currentQuestion = questions[currentQuestionIndex]; // Store the current question
       const scoreToUpdate = questionScores[currentQuestionIndex];
+  
+      console.log(scoreToUpdate);
+      console.log("currentQuestion.id:", currentQuestion.id);
+  
+      // Update local state
+      const newQuestionScores = [...questionScores];
+      newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+  
+      setQuestionScores(newQuestionScores);
+  
+      localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
+  
+      setCurrentQuestionIndex(newQuestionIndex);
+    } else if (currentQuestion && currentQuestion.id === 10) {
+      const totalScore = questionScores.reduce((total, score) => total + score, 0);
+  
+      console.log("Total score:", totalScore);
+  
+      const endpoint2 =
+        "http://localhost:2000/student_account/update_my_admission_exam_score";
       axios
         .post(endpoint2, {
-          scores: scoreToUpdate,
+          scores: totalScore,
           myEmail: globalState.email,
         })
         .then((response) => {
           if (response.data.status) {
-            const newQuestionScores = [...questionScores];
-            newQuestionScores[currentQuestionIndex] = scoreToUpdate;
-
-            setQuestionScores(newQuestionScores);
-
-            if (currentQuestion.id === 10) {
-              // setTaken(true);
-            }
-
-            localStorage.setItem(
-              "currentQuestionIndex",
-              String(newQuestionIndex)
-            );
+            setTaken(true);
           }
         });
-    } else {
-      setTaken(true);
     }
   };
+  
+
+
+  // const handleNextClick = () => {
+  //   const newQuestionIndex = currentQuestionIndex + 1;
+  //   if (newQuestionIndex < questions.length) {
+  //     const currentQuestion = questions[currentQuestionIndex]; // Store the current question
+  //     const scoreToUpdate = questionScores[currentQuestionIndex];
+    
+  //     console.log(scoreToUpdate);
+  //     console.log("currentQuestion.id:", currentQuestion.id);
+    
+  //     const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: scoreToUpdate,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           const newQuestionScores = [...questionScores];
+  //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+    
+  //           setQuestionScores(newQuestionScores);
+    
+  //           localStorage.setItem(
+  //             "currentQuestionIndex",
+  //             String(newQuestionIndex)
+  //           );
+    
+  //           setCurrentQuestionIndex(newQuestionIndex);
+  //         }
+  //       });
+  //   } else if (currentQuestion && currentQuestion.id === 10) {
+  //     const totalScore = questionScores.reduce((total, score) => total + score, 0);
+    
+  //     console.log("Total score:", totalScore);
+    
+  //     const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: totalScore,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           setTaken(true);
+  //         }
+  //       });
+  //   }
+  // };
+  
+ 
+
+  // const handleNextClick = () => {
+  //   const newQuestionIndex = currentQuestionIndex + 1;
+  //   if (newQuestionIndex < questions.length) {
+  //     const currentQuestion = questions[currentQuestionIndex]; // Store the current question
+  //     const scoreToUpdate = questionScores[currentQuestionIndex];
+  
+  //     console.log(scoreToUpdate);
+  //     console.log("currentQuestion.id:", currentQuestion.id);
+  
+  //     const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: scoreToUpdate,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           const newQuestionScores = [...questionScores];
+  //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+  
+  //           setQuestionScores(newQuestionScores);
+  
+  //           localStorage.setItem(
+  //             "currentQuestionIndex",
+  //             String(newQuestionIndex)
+  //           );
+  
+  //           setCurrentQuestionIndex(newQuestionIndex);
+  //         }
+  //       });
+  //   } else if (currentQuestion && currentQuestion.id === 10) {
+  //     const scoreToUpdate = questionScores[currentQuestionIndex]; 
+  //     console.log("Final scoreToUpdate:", scoreToUpdate);
+  
+  //     // Send scoreToUpdate to the server for all questions (from 1 to 10)
+  //     const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: questionScores,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           setTaken(true);
+  //         }
+  //       });
+  //   }
+  // };
+  
+  
+  
+  
+  // const handleNextClick = () => {
+  //   const newQuestionIndex = currentQuestionIndex + 1;
+  //   if (newQuestionIndex < questions.length) {
+  //     const scoreToUpdate = questionScores[currentQuestionIndex];
+  //     console.log(scoreToUpdate);
+  //     console.log("currentQuestion.id:", currentQuestion.id);
+  
+  //     const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: scoreToUpdate,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           const newQuestionScores = [...questionScores];
+  //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+  
+  //           setQuestionScores(newQuestionScores);
+  
+  //           if (currentQuestion.id === 10) {
+  //             // setTaken(true);
+  //           }
+  
+  //           localStorage.setItem(
+  //             "currentQuestionIndex",
+  //             String(newQuestionIndex)
+  //           );
+  //         }
+  //       });
+  
+  //     setCurrentQuestionIndex(newQuestionIndex);
+  //   } else {
+  //     setTaken(true);
+  //   }
+  // };
+  
+
+
+  // const handleNextClick = () => {
+  //   const scoreToUpdate = questionScores[currentQuestionIndex];
+  //    console.log(scoreToUpdate);
+  //     console.log("currentQuestion.id:", currentQuestion.id);
+
+  //     const endpoint2 =
+  //       "http://localhost:2000/student_account/update_my_admission_exam_score";
+  //     axios
+  //       .post(endpoint2, {
+  //         scores: scoreToUpdate,
+  //         myEmail: globalState.email,
+  //       })
+  //       .then((response) => {
+  //         if (response.data.status) {
+  //           const newQuestionScores = [...questionScores];
+  //           newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+
+  //           setQuestionScores(newQuestionScores);
+
+  //           if (currentQuestion.id === 10) {
+  //             // setTaken(true);
+  //           }
+
+  //           localStorage.setItem(
+  //             "currentQuestionIndex",
+  //             String(newQuestionIndex)
+  //           );
+  //         }
+  //       });
+  //   if (currentQuestionIndex < questions.length - 1) {
+  //     const newQuestionIndex = currentQuestionIndex + 1;
+  //     setCurrentQuestionIndex(newQuestionIndex);
+
+     
+
+      
+  //   } else {
+  //     setTaken(true);
+  //   }
+  // };
 
   const handlePreviousClick = () => {
     if (currentQuestionIndex > 0) {
@@ -173,7 +372,6 @@ const Test = () => {
     setQuestionScores(newQuestionScores);
   };
 
-  const currentQuestion = questions[currentQuestionIndex];
 
   const toLogin = () => {
     const payload = {
@@ -181,35 +379,36 @@ const Test = () => {
       myEmail: globalState.email,
     };
     let updateEndpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-    axios.post(updateEndpoint, payload)
-    .then((response) => {
-      if (response.data.status) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+      "http://localhost:2000/student_account/update_admission_state";
+    axios
+      .post(updateEndpoint, payload)
+      .then((response) => {
+        if (response.data.status) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
 
-        Toast.fire({
-          icon: "success",
-          title: response.data.message,
-        });
-        localStorage.taken = response.data.response;
-        navigate("/student_login");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
+          // console.log(response.data.newResult);
+          localStorage.taken = response.data.newResult;
+          navigate("/student_login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
 
   // const toLogin = () => {
   //   const payload = {
@@ -220,7 +419,7 @@ const Test = () => {
   //     "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
   //   const resultEndpoint =
   //     "http://localhost:2000/student_account/send_student_entrance_result";
-  
+
   //   axios.post(updateEndpoint, payload)
   //     .then((response) => {
   //       if (response.data.status) {
@@ -236,7 +435,7 @@ const Test = () => {
   //           .catch((resultErr) => {
   //             console.log(resultErr);
   //           });
-  
+
   //         navigate("/student_login");
   //       }
   //     })
@@ -244,8 +443,6 @@ const Test = () => {
   //       console.log(err);
   //     });
   // };
-  
-
 
   const finishedByForce = () => {
     if (localStorage.done) {
@@ -379,10 +576,21 @@ const Test = () => {
             </div>
             {currentQuestion && (
               <div className="div text-center">
-                {currentQuestion.id === 10 && taken ? (
+                {currentQuestion.id === 11 && taken ? (
                   <div className="mt-4">
-                  <div className="mb-5">Congratulations for successfully participating in our entrance examination! We commend your efforts and wish you the best of luck on your educational journey. To view your results, kindly click the "Finish" button below, and your scores will be promptly sent to your email.</div>
-                    <button className="btn btn-success btn-sm px-5 py-2" onClick={toLogin}>Finish</button>
+                    <div className="mb-5">
+                      Congratulations for successfully participating in our
+                      entrance examination! We commend your efforts and wish you
+                      the best of luck on your educational journey. To view your
+                      results, kindly click the "Finish" button below, and your
+                      scores will be promptly sent to your email.
+                    </div>
+                    <button
+                      className="btn btn-success btn-sm px-5 py-2"
+                      onClick={toLogin}
+                    >
+                      Finish
+                    </button>
                   </div>
                 ) : (
                   <>
@@ -427,7 +635,7 @@ const Test = () => {
                         className="btn btn-primary btn-sm px-3"
                         onClick={handleNextClick}
                       >
-                        {taken ? "Finish" : "Next"}
+                        Next
                       </button>
                       {/* <button
                       className="btn btn-primary btn-sm px-3"
