@@ -123,7 +123,6 @@ const Test = () => {
       console.log(scoreToUpdate);
       console.log("currentQuestion.id:", currentQuestion.id);
 
-      // Update local state
       const newQuestionScores = [...questionScores];
       newQuestionScores[currentQuestionIndex] = scoreToUpdate;
 
@@ -449,46 +448,33 @@ const Test = () => {
       });
   };
 
-  // const toLogin = () => {
-  //   const payload = {
-  //     yourKeyHere: true,
-  //     myEmail: globalState.email,
-  //   };
-  //   const updateEndpoint =
-  //     "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-  //   const resultEndpoint =
-  //     "http://localhost:2000/student_account/send_student_entrance_result";
-
-  //   axios.post(updateEndpoint, payload)
-  //     .then((response) => {
-  //       if (response.data.status) {
-  //         localStorage.taken = response.data.response;
-  //         axios.post(resultEndpoint, { myEmail: globalState.email })
-  //           .then((resultResponse) => {
-  //             if (resultResponse.data.status) {
-  //               // Handle success if needed
-  //             } else {
-  //               console.log(resultResponse.data.message);
-  //             }
-  //           })
-  //           .catch((resultErr) => {
-  //             console.log(resultErr);
-  //           });
-
-  //         navigate("/student_login");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   const finishedByForce = () => {
     if (localStorage.done) {
-      toLogin();
+      
+      // const nonNegativeScores = questionScores.map((score) =>
+      //   Math.max(score, 0)
+      // );
+
+      // const totalNonNegativeScore = nonNegativeScores.reduce(
+      //   (total, score) => total + score,
+      //   0
+      // );
+      // submit(totalNonNegativeScore);
+      // toLogin();
     }
   };
+
   finishedByForce();
+
+ 
+  // const finishedByForce = () => {
+  //   if (localStorage.done) {
+  //     submit(totalNonNegativeScore);
+  //     toLogin();
+  //   }
+  // };
+  // finishedByForce();
 
   const startExam = () => {
     Swal.fire({
@@ -508,7 +494,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 20; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -615,7 +601,7 @@ const Test = () => {
             </div>
             {currentQuestion && (
               <div className="div text-center">
-                {currentQuestion.id === 11 && taken ? (
+                {currentQuestion.id === 10 || localStorage.done ? (
                   <div className="mt-4">
                     <div className="mb-5">
                       Congratulations for successfully participating in our
