@@ -56,7 +56,7 @@ import axios from "axios";
 function App() {
   let socketRef = useRef()
   const dispatch = useDispatch();
-  // const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
+  const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
   // const globalState = useSelector((state)=>state.portalReducer.firstName)
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   // const examState = useSelector((state) => state.portalReducer.taken);
@@ -73,7 +73,8 @@ function App() {
         })
       })
     }
-    // socketRef.current = socketClient(ioEndpoint);
+    //https://school-portal-backend-adex2210.vercel.app/
+    socketRef.current = socketClient(ioEndpoint);
     // dispatch(newStudent(res.data.response));
     // let myEmail = globalState.email
     // let payload = {
@@ -98,7 +99,7 @@ function App() {
           {/* <Route path='/student_dashboard/chat' element={<ChatModal socket={socketRef}/>}/> */}
           {/* <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />   */}
 
-          {/* <Route path='/chat' element={<Chat socket={socketRef}/>} />   */}
+          <Route path='/chat' element={<Chat socket={socketRef}/>} />  
 
 
         <Route path='/student-entrance-exam_questions' element={!takenAdmissionExam ? <Test/> : <Navigate to="../student/admission/pick_class"/>}/>

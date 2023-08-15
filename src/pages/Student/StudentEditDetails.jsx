@@ -50,7 +50,7 @@ const StudentEditDetails = ({ socket }) => {
   return (
     <>
     <div className="d-flex w-100 h-100">
-      {/* <Chat socket={socket}/> */}
+      <Chat socket={socket}/>
       </div>
     </>
   );

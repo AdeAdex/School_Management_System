@@ -375,7 +375,27 @@ const Test = () => {
           <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4" style={{marginTop: '100px'}}>
             <div className="d-flex gap-2 justify-content-center position-relative">
               {taken ? (
+                <>
+                <div
+                className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                style={{
+                  fontFamily: "fantasy",
+                  left: "0",
+                  top: "0",
+                  backgroundColor: "whitesmoke",
+                  zIndex: '2'
+                }}
+              >
+                <img
+                  src="/pic/ade.png"
+                  className="d-flex flex-start"
+                  alt=""
+                  style={{ width: "50px" }}
+                />
+                <div className="my-auto">Adex International School</div>
+              </div>
                 <span className="fs-4">Thank You: </span>
+                </>
               ) : (
                 <>
                 <div

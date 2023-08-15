@@ -1,7 +1,12 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const FixedNav = () => {
+  const navigate = useNavigate()
+  const navigateToShop = () => {
+    window.location.href = 'https://adex2210.github.io/e-commerce/';
+  }
   return (
     <>
       <div
@@ -21,7 +26,7 @@ const FixedNav = () => {
         <img src="vite.svg" alt="" className="py-2"  />
       </div>
         <div className="w-50 my-auto d-flex justify-content-end">
-          <button className="btn btn-sm text-white px-3" style={{backgroundColor: '#7AA93C'}}>Shop</button>
+          <button className="btn btn-sm text-white px-3" style={{backgroundColor: '#7AA93C'}} onClick={navigateToShop}>Shop</button>
         </div>
       </div>
     </>
