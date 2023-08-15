@@ -524,7 +524,7 @@ const Test = () => {
                         </label>
                       ))}
                     </ul>
-                    <div className="d-flex gap-3 justify-content-center my-4">
+                    <div className="d-flex gap-3 justify-content-center " style={{marginTop: '120px'}}>
                       <button
                         className="btn btn-primary btn-sm px-3"
                         onClick={handlePreviousClick}
@@ -538,7 +538,7 @@ const Test = () => {
                         Next
                       </button>
                     </div>
-                    <p>Score: {questionScores[currentQuestionIndex]}</p>
+                    {/* <p>Score: {questionScores[currentQuestionIndex]}</p> */}
                     <QuestionNavigationTable
                       totalQuestions={questions.length}
                       currentQuestionIndex={currentQuestionIndex}
