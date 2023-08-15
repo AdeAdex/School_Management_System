@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { newStudent } from "../../redux/portalSlice";
 import "../Student/Test.css";
 import "animate.css";
+import { FaUserAlt } from 'react-icons/fa';
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -12,13 +13,14 @@ const Test = () => {
     Number(localStorage.getItem("currentQuestionIndex")) || 0
   );
   // const [selectedOptions, setSelectedOptions] = useState(Array(0));
-  const [selectedOptions, setSelectedOptions] = useState(Array(questions.length).fill(''));
+  const [selectedOptions, setSelectedOptions] = useState(
+    Array(questions.length).fill("")
+  );
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [allTotalScore, setAllTotalScore] = useState(0);
   const [timeIsUp, setTimeIsUp] = useState(false);
-
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
 
@@ -71,7 +73,7 @@ const Test = () => {
           clearInterval(countdownInterval);
           localStorage.done = true;
           if (localStorage.done) {
-              setTimeIsUp(true);
+            setTimeIsUp(true);
           }
         } else {
           const minutes = Math.floor(remainingTime / 60);
@@ -103,7 +105,7 @@ const Test = () => {
           String(currentQuestionIndex)
         );
       } else {
-        setCurrentQuestionIndex(Number(storedQuestionIndex)); 
+        setCurrentQuestionIndex(Number(storedQuestionIndex));
       }
     });
 
@@ -113,23 +115,22 @@ const Test = () => {
       const nonNegativeScores = questionScores.map((score) =>
         Math.max(score, 0)
       );
-  
+
       const totalNonNegativeScore = nonNegativeScores.reduce(
         (total, score) => total + score,
         0
       );
-  
+
       // console.log(totalNonNegativeScore);
       submitMyScore(totalNonNegativeScore);
     }
-
   }, [timeIsUp]);
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
 
     if (newQuestionIndex < questions.length) {
-      const currentQuestion = questions[currentQuestionIndex]; 
+      const currentQuestion = questions[currentQuestionIndex];
       const scoreToUpdate = questionScores[currentQuestionIndex];
 
       console.log(scoreToUpdate);
@@ -169,13 +170,11 @@ const Test = () => {
         if (response.data.status) {
           setTaken(true);
           if (localStorage.done) {
-            toLogin()
+            toLogin();
           }
         }
       });
   };
-
- 
 
   const handlePreviousClick = () => {
     if (currentQuestionIndex > 0) {
@@ -184,8 +183,6 @@ const Test = () => {
       localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
     }
   };
-
-
 
   const handleOptionSelect = (option) => {
     const newSelectedOptions = [...selectedOptions];
@@ -243,7 +240,6 @@ const Test = () => {
       });
   };
 
-
   const startExam = () => {
     Swal.fire({
       title: "Start Exam?",
@@ -262,7 +258,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 200; // 5 minutes in seconds
+        const countdownTime = 300; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -271,16 +267,50 @@ const Test = () => {
     });
   };
 
+  const handleClick = () => {
+    // setOpen(true);
+    // setIsLoading(true);
+    setTimeout(() => {
+      // setIsLoading(false);
+      // setOpen(false);
+      localStorage.removeItem("studentLoginToken");
+    }, 1200);
+  };
+
   return (
     <>
       {!beginExam && !localStorage.examStarted ? (
         <div className="w-100 pb-4" style={{ width: "100%" }}>
           <div className="w-50 mx-auto text-container2">
-            <div className="d-flex justify-content-center mt-5 mb-3">
-              <span className="fs-4">Hello, </span>{" "}
-              <div className="fw-bold fs-4">
-                {globalState.firstName} {globalState.lastName}{" "}
-                {globalState.takenExam}
+            <div className="mt-5 mb-3 w-100 position-relative">
+              <div
+                className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                style={{
+                  fontFamily: "fantasy",
+                  left: "0",
+                  top: "0",
+                  backgroundColor: "whitesmoke",
+                  zIndex: '2'
+                }}
+              >
+                <img
+                  src="/pic/ade.png"
+                  className="d-flex flex-start"
+                  alt=""
+                  style={{ width: "50px" }}
+                />
+                <div className="my-auto">Adex International School</div>
+              </div>
+              <div className="d-flex justify-content-between position-relative" style={{marginTop: '100px'}}>
+              <div className="d-flex gap-3" >
+              <small className="fs-4 shadow px-2 py-1" style={{borderRadius: '50%',}}><FaUserAlt size={30} /></small>
+                <div className="fw-bold fs-4 my-auto">
+                  {globalState.firstName} {globalState.lastName}{" "}
+                  {globalState.takenExam}
+                </div>
+              </div>
+                
+                <button className="btn btn-sm btn-primary my-auto" onClick={handleClick}>Logout</button>
               </div>
             </div>
             <div className="exam-instructions">
@@ -369,7 +399,7 @@ const Test = () => {
             </div>
             {currentQuestion && (
               <div className="div text-center">
-                {currentQuestion.id === 10 && taken || localStorage.done ? (
+                {(currentQuestion.id === 10 && taken) || localStorage.done ? (
                   <div className="mt-4">
                     <div className="mb-5">
                       Congratulations for successfully participating in our
