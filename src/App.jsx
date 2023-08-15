@@ -56,7 +56,7 @@ import axios from "axios";
 function App() {
   let socketRef = useRef()
   const dispatch = useDispatch();
-  const ioEndpoint = "https://school-portal-backend-adex2210.vercel.app"
+  const ioEndpoint = "http://localhost:2000"
   // const globalState = useSelector((state)=>state.portalReducer.firstName)
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   // const examState = useSelector((state) => state.portalReducer.taken);

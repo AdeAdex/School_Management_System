@@ -6,6 +6,7 @@ import { newStudent } from "../../redux/portalSlice";
 import "../Student/Test.css";
 import "animate.css";
 import { FaUserAlt } from 'react-icons/fa';
+import { BsFillCalculatorFill } from 'react-icons/bs';
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -258,7 +259,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 3000; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -276,6 +277,10 @@ const Test = () => {
       localStorage.removeItem("studentLoginToken");
     }, 1200);
   };
+
+  const openCalculator =() => {
+    
+  }
 
   return (
     <>
@@ -434,6 +439,7 @@ const Test = () => {
                 {globalState.firstName} {globalState.lastName}{" "}
                 {globalState.takenExam}
               </div>
+              <div className=" position-absolute end-0" style={{cursor: 'pointer'}} onClick={openCalculator}><BsFillCalculatorFill size={30}/></div>
             </div>
             {currentQuestion && (
               <div className="div text-center">
