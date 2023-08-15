@@ -36,6 +36,7 @@
     overflow-x: auto;
     background-color: transparent;
     box-shadow: none;
+    transform: translate(15%, 0%);
   }
 
   .question-h4 {
