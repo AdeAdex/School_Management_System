@@ -258,7 +258,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 30000; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -372,12 +372,30 @@ const Test = () => {
         </div>
       ) : (
         <div className="w-100 h-100">
-          <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4 mt-5">
+          <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4" style={{marginTop: '100px'}}>
             <div className="d-flex gap-2 justify-content-center position-relative">
               {taken ? (
                 <span className="fs-4">Thank You: </span>
               ) : (
                 <>
+                <div
+                className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                style={{
+                  fontFamily: "fantasy",
+                  left: "0",
+                  top: "0",
+                  backgroundColor: "whitesmoke",
+                  zIndex: '2'
+                }}
+              >
+                <img
+                  src="/pic/ade.png"
+                  className="d-flex flex-start"
+                  alt=""
+                  style={{ width: "50px" }}
+                />
+                <div className="my-auto">Adex International School</div>
+              </div>
                   <div
                     className={`fs-4 position-absolute start-0 ${
                       countdown.minutes === 0 && countdown.seconds <= 30
@@ -389,10 +407,10 @@ const Test = () => {
                   >
                     {countdown.minutes}:{countdown.seconds}
                   </div>
-                  <span className="fs-4"> Welcome: </span>
+                  <span className="fs-5"> Welcome: </span>
                 </>
               )}
-              <div className="fw-bold fs-4">
+              <div className="fw-bold fs-5 my-auto">
                 {globalState.firstName} {globalState.lastName}{" "}
                 {globalState.takenExam}
               </div>
@@ -419,7 +437,7 @@ const Test = () => {
                   <>
                     <h1 className="my-3">Question {currentQuestion.id}</h1>
                     <p className="my-3">{currentQuestion.content}</p>
-                    <ul className="d-flex flex-column mx-auto mb-5 question-ul">
+                    <ul className="d-flex flex-column mx-auto mb-5 mt-4 question-ul">
                       {currentQuestion.options.map((option, index) => (
                         <label
                           key={index}
