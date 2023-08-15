@@ -1,9 +1,10 @@
-import React from 'react'
-import '../studentDashboardComponents/Calculator.css'
+import React, { useState } from "react";
+import "../studentDashboardComponents/Calculator.css";
+import Modal from "react-bootstrap/Modal";
 
-const Calculator = () => {
-        const [input, setInput] = useState('');
-  
+const Calculator = ({ isOpen, onClose }) => {
+  const [input, setInput] = useState("");
+
   const handleButtonPress = (value) => {
     setInput(input + value);
   };
@@ -12,44 +13,43 @@ const Calculator = () => {
     try {
       setInput(eval(input).toString());
     } catch (error) {
-      setInput('Error');
+      setInput("Error");
     }
   };
 
-  const handleClear = () => {
-    setInput('');
+  const handleClear = ({ isOpen, onClose }) => {
+    setInput("");
   };
   return (
     <>
-     <Modal show={isOpen} onHide={onClose} animation={true} 
-      centered>
+      <Modal show={isOpen} onHide={onClose} animation={true} backdrop={false} onClick={onClose}>
         <Modal.Header closeButton className="bg-danger text-white">
           <Modal.Title className="text-uppercase">Calculator</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
-        <div className="App">
-      <div className="calculator">
-        <div className="display">{input}</div>
-        <div className="buttons">
-          <button onClick={() => handleButtonPress('1')}>1</button>
-          <button onClick={() => handleButtonPress('2')}>2</button>
-          <button onClick={() => handleButtonPress('3')}>3</button>
-          <button onClick={() => handleButtonPress('+')}>+</button>
-          <button onClick={() => handleButtonPress('4')}>4</button>
-          <button onClick={() => handleButtonPress('5')}>5</button>
-          <button onClick={() => handleButtonPress('6')}>6</button>
-          <button onClick={() => handleButtonPress('-')}>-</button>
-          <button onClick={() => handleButtonPress('7')}>7</button>
-          <button onClick={() => handleButtonPress('8')}>8</button>
-          <button onClick={() => handleButtonPress('9')}>9</button>
-          <button onClick={() => handleButtonPress('*')}>*</button>
-          <button onClick={() => handleButtonPress('0')}>0</button>
-          <button onClick={() => handleButtonPress('.')}>.</button>
-          <button onClick={handleClear}>C</button>
-          <button onClick={handleCalculate}>=</button>
-        </div>
-      </div>
-    </div>
+          <div className="App">
+            <div className="calculator">
+              <div className="display">{input}</div>
+              <div className="buttons">
+                <button onClick={() => handleButtonPress("1")}>1</button>
+                <button onClick={() => handleButtonPress("2")}>2</button>
+                <button onClick={() => handleButtonPress("3")}>3</button>
+                <button onClick={() => handleButtonPress("+")}>+</button>
+                <button onClick={() => handleButtonPress("4")}>4</button>
+                <button onClick={() => handleButtonPress("5")}>5</button>
+                <button onClick={() => handleButtonPress("6")}>6</button>
+                <button onClick={() => handleButtonPress("-")}>-</button>
+                <button onClick={() => handleButtonPress("7")}>7</button>
+                <button onClick={() => handleButtonPress("8")}>8</button>
+                <button onClick={() => handleButtonPress("9")}>9</button>
+                <button onClick={() => handleButtonPress("*")}>*</button>
+                <button onClick={() => handleButtonPress("0")}>0</button>
+                <button onClick={() => handleButtonPress(".")}>.</button>
+                <button onClick={handleClear}>C</button>
+                <button onClick={handleCalculate}>=</button>
+              </div>
+            </div>
+          </div>
         </Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={onClose}>
@@ -58,9 +58,8 @@ const Calculator = () => {
           <Button variant="primary">Save Changes</Button>
         </Modal.Footer> */}
       </Modal>
-    
     </>
-  )
-}
+  );
+};
 
-export default Calculator
+export default Calculator;

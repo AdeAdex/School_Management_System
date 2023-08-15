@@ -7,6 +7,7 @@ import "../Student/Test.css";
 import "animate.css";
 import { FaUserAlt } from 'react-icons/fa';
 import { BsFillCalculatorFill } from 'react-icons/bs';
+import Calculator from "../../components/studentDashboardComponents/Calculator";
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -278,8 +279,18 @@ const Test = () => {
     }, 1200);
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   const openCalculator =() => {
-    
+
   }
 
   return (
@@ -439,7 +450,7 @@ const Test = () => {
                 {globalState.firstName} {globalState.lastName}{" "}
                 {globalState.takenExam}
               </div>
-              <div className=" position-absolute end-0" style={{cursor: 'pointer'}} onClick={openCalculator}><BsFillCalculatorFill size={30}/></div>
+              <div className=" position-absolute end-0" style={{cursor: 'pointer'}} onClick={openModal}><BsFillCalculatorFill size={30}/></div>
             </div>
             {currentQuestion && (
               <div className="div text-center">
@@ -514,6 +525,8 @@ const Test = () => {
                     <p>Score: {questionScores[currentQuestionIndex]}</p>
                   </>
                 )}
+
+                <Calculator isOpen={modalOpen} onClose={closeModal}/>
               </div>
             )}
           </div>
