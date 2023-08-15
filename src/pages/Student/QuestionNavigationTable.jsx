@@ -13,7 +13,7 @@ const QuestionNavigationTable = ({
   return (
     <>
       <div className="question-navigation-table">
-        <h4>Questions:</h4>
+        <h4 className="question-h4">Questions:</h4>
         <ul className="question-number-list">
           {questionNumbers.map((number) => (
             <li
