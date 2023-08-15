@@ -41,3 +41,31 @@
     opacity: 0;
   }
 }
+
+
+.question-navigation-table {
+  position: absolute;
+  top: 1%;
+  right: 0%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.question-number-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.question-number-list li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.question-number-list li.active {
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+}

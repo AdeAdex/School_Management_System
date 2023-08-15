@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { newStudent } from "../../redux/portalSlice";
 import "../Student/Test.css";
 import "animate.css";
-import { FaUserAlt } from 'react-icons/fa';
-import { BsFillCalculatorFill } from 'react-icons/bs';
+import { FaUserAlt } from "react-icons/fa";
+import { BsFillCalculatorFill } from "react-icons/bs";
 import Calculator from "../../components/studentDashboardComponents/Calculator";
+import QuestionNavigationTable from "./QuestionNavigationTable";
 
 const Test = () => {
   const [questions, setQuestions] = useState([]);
@@ -289,10 +290,9 @@ const Test = () => {
     setModalOpen(false);
   };
 
-  const openCalculator =() => {
-
-  }
-
+  const handleQuestionNavigation = (index) => {
+    setCurrentQuestionIndex(index);
+  };
   return (
     <>
       {!beginExam && !localStorage.examStarted ? (
@@ -306,7 +306,7 @@ const Test = () => {
                   left: "0",
                   top: "0",
                   backgroundColor: "whitesmoke",
-                  zIndex: '2'
+                  zIndex: "2",
                 }}
               >
                 <img
@@ -317,16 +317,29 @@ const Test = () => {
                 />
                 <div className="my-auto">Adex International School</div>
               </div>
-              <div className="d-flex justify-content-between position-relative" style={{marginTop: '100px'}}>
-              <div className="d-flex gap-3" >
-              <small className="fs-4 shadow px-2 py-1" style={{borderRadius: '50%',}}><FaUserAlt size={30} /></small>
-                <div className="fw-bold fs-4 my-auto">
-                  {globalState.firstName} {globalState.lastName}{" "}
-                  {globalState.takenExam}
+              <div
+                className="d-flex justify-content-between position-relative"
+                style={{ marginTop: "100px" }}
+              >
+                <div className="d-flex gap-3">
+                  <small
+                    className="fs-4 shadow px-2 py-1"
+                    style={{ borderRadius: "50%" }}
+                  >
+                    <FaUserAlt size={30} />
+                  </small>
+                  <div className="fw-bold fs-4 my-auto">
+                    {globalState.firstName} {globalState.lastName}{" "}
+                    {globalState.takenExam}
+                  </div>
                 </div>
-              </div>
-                
-                <button className="btn btn-sm btn-primary my-auto" onClick={handleClick}>Logout</button>
+
+                <button
+                  className="btn btn-sm btn-primary my-auto"
+                  onClick={handleClick}
+                >
+                  Logout
+                </button>
               </div>
             </div>
             <div className="exam-instructions">
@@ -388,50 +401,53 @@ const Test = () => {
         </div>
       ) : (
         <div className="w-100 h-100">
-          <div className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4" style={{marginTop: '100px'}}>
+          <div
+            className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4"
+            style={{ marginTop: "100px" }}
+          >
             <div className="d-flex gap-2 justify-content-center position-relative">
               {taken ? (
                 <>
-                <div
-                className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
-                style={{
-                  fontFamily: "fantasy",
-                  left: "0",
-                  top: "0",
-                  backgroundColor: "whitesmoke",
-                  zIndex: '2'
-                }}
-              >
-                <img
-                  src="/pic/ade.png"
-                  className="d-flex flex-start"
-                  alt=""
-                  style={{ width: "50px" }}
-                />
-                <div className="my-auto">Adex International School</div>
-              </div>
-                <span className="fs-4">Thank You: </span>
+                  <div
+                    className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                    style={{
+                      fontFamily: "fantasy",
+                      left: "0",
+                      top: "0",
+                      backgroundColor: "whitesmoke",
+                      zIndex: "2",
+                    }}
+                  >
+                    <img
+                      src="/pic/ade.png"
+                      className="d-flex flex-start"
+                      alt=""
+                      style={{ width: "50px" }}
+                    />
+                    <div className="my-auto">Adex International School</div>
+                  </div>
+                  <span className="fs-4">Thank You: </span>
                 </>
               ) : (
                 <>
-                <div
-                className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
-                style={{
-                  fontFamily: "fantasy",
-                  left: "0",
-                  top: "0",
-                  backgroundColor: "whitesmoke",
-                  zIndex: '2'
-                }}
-              >
-                <img
-                  src="/pic/ade.png"
-                  className="d-flex flex-start"
-                  alt=""
-                  style={{ width: "50px" }}
-                />
-                <div className="my-auto">Adex International School</div>
-              </div>
+                  <div
+                    className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                    style={{
+                      fontFamily: "fantasy",
+                      left: "0",
+                      top: "0",
+                      backgroundColor: "whitesmoke",
+                      zIndex: "2",
+                    }}
+                  >
+                    <img
+                      src="/pic/ade.png"
+                      className="d-flex flex-start"
+                      alt=""
+                      style={{ width: "50px" }}
+                    />
+                    <div className="my-auto">Adex International School</div>
+                  </div>
                   <div
                     className={`fs-4 position-absolute start-0 ${
                       countdown.minutes === 0 && countdown.seconds <= 30
@@ -450,7 +466,13 @@ const Test = () => {
                 {globalState.firstName} {globalState.lastName}{" "}
                 {globalState.takenExam}
               </div>
-              <div className=" position-absolute end-0" style={{cursor: 'pointer'}} onClick={openModal}><BsFillCalculatorFill size={30}/></div>
+              <div
+                className=" position-absolute end-0"
+                style={{ cursor: "pointer" }}
+                onClick={openModal}
+              >
+                <BsFillCalculatorFill size={30} />
+              </div>
             </div>
             {currentQuestion && (
               <div className="div text-center">
@@ -471,7 +493,7 @@ const Test = () => {
                     </button>
                   </div>
                 ) : (
-                  <>
+                  <div className="position-relative">
                     <h1 className="my-3">Question {currentQuestion.id}</h1>
                     <p className="my-3">{currentQuestion.content}</p>
                     <ul className="d-flex flex-column mx-auto mb-5 mt-4 question-ul">
@@ -515,18 +537,17 @@ const Test = () => {
                       >
                         Next
                       </button>
-                      {/* <button
-                      className="btn btn-primary btn-sm px-3"
-                      onClick={handleNextClick}
-                    >
-                      {currentQuestion.id === 10 ? "Submit" : "Next"}
-                    </button> */}
                     </div>
                     <p>Score: {questionScores[currentQuestionIndex]}</p>
-                  </>
+                    <QuestionNavigationTable
+                      totalQuestions={questions.length}
+                      currentQuestionIndex={currentQuestionIndex}
+                      handleQuestionNavigation={handleQuestionNavigation}
+                    />
+                  </div>
                 )}
 
-                <Calculator isOpen={modalOpen} onClose={closeModal}/>
+                <Calculator isOpen={modalOpen} onClose={closeModal} />
               </div>
             )}
           </div>

@@ -22,7 +22,7 @@ const Calculator = ({ isOpen, onClose }) => {
   };
   return (
     <>
-      <Modal show={isOpen} onHide={onClose} animation={true} backdrop={false} onClick={onClose}>
+      <Modal show={isOpen} onHide={onClose} animation={true} backdrop={false} style={{ position: 'fixed', top: 0, right: 0 }} >
         <Modal.Header closeButton className="bg-danger text-white">
           <Modal.Title className="text-uppercase">Calculator</Modal.Title>
         </Modal.Header>
