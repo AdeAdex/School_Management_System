@@ -21,7 +21,13 @@ const Calculator = () => {
   };
   return (
     <>
-    <div className="App">
+     <Modal show={isOpen} onHide={onClose} animation={true} 
+      centered>
+        <Modal.Header closeButton className="bg-danger text-white">
+          <Modal.Title className="text-uppercase">Calculator</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-uppercase">
+        <div className="App">
       <div className="calculator">
         <div className="display">{input}</div>
         <div className="buttons">
@@ -44,6 +50,15 @@ const Calculator = () => {
         </div>
       </div>
     </div>
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="secondary" onClick={onClose}>
+            Close
+          </Button>
+          <Button variant="primary">Save Changes</Button>
+        </Modal.Footer> */}
+      </Modal>
+    
     </>
   )
 }
