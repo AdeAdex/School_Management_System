@@ -18,7 +18,10 @@ const Test = () => {
   const [selectedOptions, setSelectedOptions] = useState(
     Array(questions.length).fill("")
   );
-  const [questionScores, setQuestionScores] = useState(Array(0));
+  // const [questionScores, setQuestionScores] = useState(Array(0));
+  const [questionScores, setQuestionScores] = useState(
+    Array.from({ length: questions.length }, () => 0)
+  );
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
@@ -166,12 +169,13 @@ const Test = () => {
       const scoreToUpdate = questionScores[currentQuestionIndex];
 
       const newQuestionScores = [...questionScores];
-      newQuestionScores[currentQuestionIndex] = scoreToUpdate;
+      newQuestionScores[currentQuestionIndex] = scoreToUpdate || 0;
 
       setQuestionScores(newQuestionScores);
 
       localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
-      localStorage.setItem("questionScores", JSON.stringify(questionScores));
+        localStorage.setItem("questionScores", JSON.stringify(questionScores));
+      
 
       setCurrentQuestionIndex(newQuestionIndex);
     } else if (currentQuestion && currentQuestion.id === 10) {
@@ -205,6 +209,7 @@ const Test = () => {
     }
   };
 
+
   const submitMyScore = (newScores) => {
     const endpoint2 =
       "http://localhost:2000/student_account/update_my_admission_exam_score";
@@ -231,44 +236,83 @@ const Test = () => {
     }
   };
 
+
   const handleOptionSelect = (option) => {
     const newSelectedOptions = [...selectedOptions];
     const newQuestionScores = [...questionScores];
-
+  
     const currentQuestion = questions[currentQuestionIndex];
     const questionIndex = currentQuestion.id - 1;
-
+  
     newSelectedOptions[questionIndex] = option;
-
+  
     if (option.startsWith(currentQuestion.correctOption)) {
       newQuestionScores[questionIndex] = 10;
     } else {
       newQuestionScores[questionIndex] = -10;
     }
-
+  
     setSelectedOptions(newSelectedOptions);
-    if (option !== "") {
-      setQuestionScores(newQuestionScores);
-      const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
-      setAnsweredQuestions(updatedAnsweredQuestions);
-      localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-      localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
-    } else {
-      const updatedAnsweredQuestions = answeredQuestions.filter(qId => qId !== currentQuestion.id);
-      setAnsweredQuestions(updatedAnsweredQuestions);
-      localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-    }
     
+    const updatedAnsweredQuestions = [...answeredQuestions];
+    
+    if (option !== "") {
+      newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
+      updatedAnsweredQuestions.push(currentQuestion.id);
+    } else {
+      const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
+      if (index !== -1) {
+        updatedAnsweredQuestions.splice(index, 1);
+      }
+    }
+  
+    setAnsweredQuestions(updatedAnsweredQuestions);
+    setQuestionScores(newQuestionScores);
+  
+    localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+    localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
     localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  //   setQuestionScores(newQuestionScores);
-  //   // setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
-  //   // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  //   const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
-  // setAnsweredQuestions(updatedAnsweredQuestions);
-  // localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-  // localStorage.setItem("questionScores", JSON.stringify(questionScores));
-  // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   };
+  
+
+  // const handleOptionSelect = (option) => {
+  //   const newSelectedOptions = [...selectedOptions];
+  //   const newQuestionScores = [...questionScores];
+
+  //   const currentQuestion = questions[currentQuestionIndex];
+  //   const questionIndex = currentQuestion.id - 1;
+
+  //   newSelectedOptions[questionIndex] = option;
+
+  //   if (option.startsWith(currentQuestion.correctOption)) {
+  //     newQuestionScores[questionIndex] = 10;
+  //   } else {
+  //     newQuestionScores[questionIndex] = -10;
+  //   }
+
+  //   setSelectedOptions(newSelectedOptions);
+  //   if (option !== "") {
+  //     setQuestionScores(newQuestionScores);
+  //     const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
+  //     setAnsweredQuestions(updatedAnsweredQuestions);
+  //     localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+  //     localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
+  //   } else {
+  //     const updatedAnsweredQuestions = answeredQuestions.filter(qId => qId !== currentQuestion.id);
+  //     setAnsweredQuestions(updatedAnsweredQuestions);
+  //     localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+  //   }
+    
+  //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  // //   setQuestionScores(newQuestionScores);
+  // //   // setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
+  // //   // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  // //   const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
+  // // setAnsweredQuestions(updatedAnsweredQuestions);
+  // // localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+  // // localStorage.setItem("questionScores", JSON.stringify(questionScores));
+  // // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  // };
 
   const handleQuestionNavigation = (index) => {
     setCurrentQuestionIndex(index);
