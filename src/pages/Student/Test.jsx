@@ -274,46 +274,7 @@ const Test = () => {
     localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   };
   
-
-  // const handleOptionSelect = (option) => {
-  //   const newSelectedOptions = [...selectedOptions];
-  //   const newQuestionScores = [...questionScores];
-
-  //   const currentQuestion = questions[currentQuestionIndex];
-  //   const questionIndex = currentQuestion.id - 1;
-
-  //   newSelectedOptions[questionIndex] = option;
-
-  //   if (option.startsWith(currentQuestion.correctOption)) {
-  //     newQuestionScores[questionIndex] = 10;
-  //   } else {
-  //     newQuestionScores[questionIndex] = -10;
-  //   }
-
-  //   setSelectedOptions(newSelectedOptions);
-  //   if (option !== "") {
-  //     setQuestionScores(newQuestionScores);
-  //     const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
-  //     setAnsweredQuestions(updatedAnsweredQuestions);
-  //     localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-  //     localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
-  //   } else {
-  //     const updatedAnsweredQuestions = answeredQuestions.filter(qId => qId !== currentQuestion.id);
-  //     setAnsweredQuestions(updatedAnsweredQuestions);
-  //     localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-  //   }
-    
-  //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  // //   setQuestionScores(newQuestionScores);
-  // //   // setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
-  // //   // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  // //   const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
-  // // setAnsweredQuestions(updatedAnsweredQuestions);
-  // // localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-  // // localStorage.setItem("questionScores", JSON.stringify(questionScores));
-  // // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  // };
-
+ 
   const handleQuestionNavigation = (index) => {
     setCurrentQuestionIndex(index);
   };
