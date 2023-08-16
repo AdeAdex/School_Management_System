@@ -41,7 +41,7 @@ const Login = () => {
       axios.post(endpoint, values)
       .then((response) => {
         setIsLoading(false)
-        if (response.data.result) {
+        if (response.data.status) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
           console.log(response.data.response);
           if (response.data.response) {
