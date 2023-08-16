@@ -145,8 +145,8 @@ const Test = () => {
       const currentQuestion = questions[currentQuestionIndex];
       const scoreToUpdate = questionScores[currentQuestionIndex];
 
-      console.log(scoreToUpdate);
-      console.log("currentQuestion.id:", currentQuestion.id);
+      // console.log(scoreToUpdate);
+      // console.log("currentQuestion.id:", currentQuestion.id);
 
       const newQuestionScores = [...questionScores];
       newQuestionScores[currentQuestionIndex] = scoreToUpdate;
