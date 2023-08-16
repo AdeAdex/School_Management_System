@@ -41,14 +41,15 @@ const Login = () => {
       axios.post(endpoint, values)
       .then((response) => {
         setIsLoading(false)
-        if (response.data.result) {
-          localStorage.studentLoginToken = response.data.studentLoginToken;
-          console.log(response.data.response);
-          if (response.data.response) {
-          navigate("/student/admission/pick_class");
-          } else {
-            navigate('/student-entrance-exam_questions')
-          }
+        if (response.data.myResult) {
+          console.log(response);
+          // localStorage.studentLoginToken = response.data.token;
+          // console.log(response.data.ExamTaken);
+          // if (response.data.ExamTaken) {
+          // navigate("/student/admission/pick_class");
+          // } else {
+          //   navigate('/student-entrance-exam_questions')
+          // }
           
         } else {
           const Toast = Swal.mixin({
