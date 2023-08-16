@@ -28,8 +28,8 @@
   }
 
   .question-navigation-table {
-    /* position: absolute; */
-    top: 90% !important;
+    position: relative;
+    top: 87% !important;
     right: auto !important;
     left: auto;
     display: flex;
@@ -37,6 +37,14 @@
     background-color: transparent;
     box-shadow: none;
     transform: translate(15%, 0%);
+  }
+
+  .button-container {
+    margin-top: unset !important;
+    /* bottom: 100px !important; */
+    /* margin-bottom: 100px; */
+    /* margin-bottom: 100px; */
+    /* top: 100px; */
   }
 
   .question-h4 {

@@ -2,7 +2,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* height: 100vh; */
         background-color: #f0f0f0;
       }
       
@@ -30,7 +29,7 @@
         grid-gap: 10px;
       }
       
-      button {
+     .buttons button {
         background-color: #555;
         color: #fff;
         font-size: 18px;
@@ -41,7 +40,7 @@
         transition: background-color 0.3s;
       }
       
-      button:hover {
+     .buttons button:hover {
         background-color: #777;
       }
       

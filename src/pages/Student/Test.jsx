@@ -261,7 +261,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 30000; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -493,7 +493,7 @@ const Test = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className="position-relative">
+                  <div className="position-relative" style={{minHeight:'64vh'}}>
                     <h1 className="my-3">Question {currentQuestion.id}</h1>
                     <p className="my-3">{currentQuestion.content}</p>
                     <ul className="d-flex flex-column mx-auto mb-5 mt-4 question-ul">
@@ -524,7 +524,7 @@ const Test = () => {
                         </label>
                       ))}
                     </ul>
-                    <div className="d-flex gap-3 justify-content-center " style={{marginTop: '120px'}}>
+                    <div className="d-flex gap-3 justify-content-center button-container" style={{marginTop: '120px'}}>
                       <button
                         className="btn btn-primary btn-sm px-3"
                         onClick={handlePreviousClick}
