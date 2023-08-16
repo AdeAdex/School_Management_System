@@ -92,7 +92,7 @@
 
 .question-navigation-table {
   position: absolute;
-  top: 0%;
+  top: 15%;
   right: 0%;
   padding: 10px;
   background-color: #f0f0f0;
@@ -115,6 +115,11 @@
   background-color: #007bff;
   color: white;
   border-radius: 3px;
+}
+
+
+.answered {
+  color: green;
 }
 
 

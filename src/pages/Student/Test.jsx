@@ -24,6 +24,7 @@ const Test = () => {
   const [beginExam, setBeginExam] = useState(false);
   const [allTotalScore, setAllTotalScore] = useState(0);
   const [timeIsUp, setTimeIsUp] = useState(false);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
 
@@ -148,7 +149,22 @@ const Test = () => {
 
       setCurrentQuestionIndex(newQuestionIndex);
     } else if (currentQuestion && currentQuestion.id === 10) {
-      const nonNegativeScores = questionScores.map((score) =>
+
+       Swal.fire({
+      title: "Submit Exam?",
+      text: "You are about to submit your exam",
+      showCancelButton: true,
+      confirmButtonText: "Submit",
+      cancelButtonText: "Cancel",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const nonNegativeScores = questionScores.map((score) =>
         Math.max(score, 0)
       );
 
@@ -158,6 +174,8 @@ const Test = () => {
       );
       console.log(totalNonNegativeScore);
       submitMyScore(totalNonNegativeScore);
+      }
+    });
     }
   };
 
@@ -204,6 +222,11 @@ const Test = () => {
 
     setSelectedOptions(newSelectedOptions);
     setQuestionScores(newQuestionScores);
+    setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
+  };
+
+  const handleQuestionNavigation = (index) => {
+    setCurrentQuestionIndex(index);
   };
 
   const toLogin = () => {
@@ -261,7 +284,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 300; // 5 minutes in seconds
+        const countdownTime = 3000; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -277,7 +300,7 @@ const Test = () => {
       // setIsLoading(false);
       // setOpen(false);
       localStorage.removeItem("studentLoginToken");
-    }, 1200);
+    }, 1000);
   };
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -290,9 +313,7 @@ const Test = () => {
     setModalOpen(false);
   };
 
-  const handleQuestionNavigation = (index) => {
-    setCurrentQuestionIndex(index);
-  };
+  
   return (
     <>
       {!beginExam && !localStorage.examStarted ? (
@@ -543,6 +564,7 @@ const Test = () => {
                       totalQuestions={questions.length}
                       currentQuestionIndex={currentQuestionIndex}
                       handleQuestionNavigation={handleQuestionNavigation}
+                      answeredQuestions={answeredQuestions}
                     />
                   </div>
                 )}
