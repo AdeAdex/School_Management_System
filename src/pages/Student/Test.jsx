@@ -124,18 +124,38 @@ const Test = () => {
         0
       );
 
-      // console.log(totalNonNegativeScore);
       submitMyScore(totalNonNegativeScore);
     }
 
+
+    const storedQuestionScores = localStorage.getItem("questionScores");
+    if (storedQuestionScores) {
+      setQuestionScores(JSON.parse(storedQuestionScores));
+    } else {
+      // Initialize questionScores with an array of 0's
+      setQuestionScores(Array.from({ length: questions.length }, () => 0));
+    }
+  
     const storedSelectedOptions = localStorage.getItem("selectedOptions");
     if (storedSelectedOptions) {
       setSelectedOptions(JSON.parse(storedSelectedOptions));
     }
     const storedAnsweredQuestions = localStorage.getItem("answeredQuestions");
-  if (storedAnsweredQuestions) {
-    setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
-  }
+    if (storedAnsweredQuestions) {
+      setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
+    }
+  //   if (storedQuestionScores) {
+  //     setQuestionScores(JSON.parse(storedQuestionScores));
+  //   }
+
+  //   const storedSelectedOptions = localStorage.getItem("selectedOptions");
+  //   if (storedSelectedOptions) {
+  //     setSelectedOptions(JSON.parse(storedSelectedOptions));
+  //   }
+  //   const storedAnsweredQuestions = localStorage.getItem("answeredQuestions");
+  // if (storedAnsweredQuestions) {
+  //   setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
+  // }
   }, [timeIsUp]);
 
   const handleNextClick = () => {
@@ -145,15 +165,13 @@ const Test = () => {
       const currentQuestion = questions[currentQuestionIndex];
       const scoreToUpdate = questionScores[currentQuestionIndex];
 
-      // console.log(scoreToUpdate);
-      // console.log("currentQuestion.id:", currentQuestion.id);
-
       const newQuestionScores = [...questionScores];
       newQuestionScores[currentQuestionIndex] = scoreToUpdate;
 
       setQuestionScores(newQuestionScores);
 
       localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
+      localStorage.setItem("questionScores", JSON.stringify(questionScores));
 
       setCurrentQuestionIndex(newQuestionIndex);
     } else if (currentQuestion && currentQuestion.id === 10) {
@@ -229,13 +247,27 @@ const Test = () => {
     }
 
     setSelectedOptions(newSelectedOptions);
-    setQuestionScores(newQuestionScores);
-    // setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
-    // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-    const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
-  setAnsweredQuestions(updatedAnsweredQuestions);
-  localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
-  localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+    if (option !== "") {
+      setQuestionScores(newQuestionScores);
+      const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
+      setAnsweredQuestions(updatedAnsweredQuestions);
+      localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+      localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
+    } else {
+      const updatedAnsweredQuestions = answeredQuestions.filter(qId => qId !== currentQuestion.id);
+      setAnsweredQuestions(updatedAnsweredQuestions);
+      localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+    }
+    
+    localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  //   setQuestionScores(newQuestionScores);
+  //   // setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
+  //   // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  //   const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
+  // setAnsweredQuestions(updatedAnsweredQuestions);
+  // localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+  // localStorage.setItem("questionScores", JSON.stringify(questionScores));
+  // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   };
 
   const handleQuestionNavigation = (index) => {
