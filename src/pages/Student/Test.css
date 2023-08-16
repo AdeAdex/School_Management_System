@@ -71,6 +71,11 @@
     color: white;
     border: none;
   }
+
+  .tick-mark {
+    bottom: 0;
+    right: 0 !important;
+  }
 }
 
 
