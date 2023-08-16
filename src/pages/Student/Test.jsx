@@ -15,14 +15,12 @@ const Test = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     Number(localStorage.getItem("currentQuestionIndex")) || 0
   );
-  // const [selectedOptions, setSelectedOptions] = useState(Array(0));
   const [selectedOptions, setSelectedOptions] = useState(
     Array(questions.length).fill("")
   );
   const [questionScores, setQuestionScores] = useState(Array(0));
   const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
-  const [allTotalScore, setAllTotalScore] = useState(0);
   const [timeIsUp, setTimeIsUp] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
@@ -60,6 +58,7 @@ const Test = () => {
         console.log(err);
       });
   }, [globalState]);
+
 
   const startCountdown = () => {
     const startTime = parseInt(localStorage.getItem("countdownStartTime"));
@@ -128,6 +127,15 @@ const Test = () => {
       // console.log(totalNonNegativeScore);
       submitMyScore(totalNonNegativeScore);
     }
+
+    const storedSelectedOptions = localStorage.getItem("selectedOptions");
+    if (storedSelectedOptions) {
+      setSelectedOptions(JSON.parse(storedSelectedOptions));
+    }
+    const storedAnsweredQuestions = localStorage.getItem("answeredQuestions");
+  if (storedAnsweredQuestions) {
+    setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
+  }
   }, [timeIsUp]);
 
   const handleNextClick = () => {
@@ -152,7 +160,7 @@ const Test = () => {
 
        Swal.fire({
       title: "Submit Exam?",
-      text: "You are about to submit your exam",
+      text: "You are about to submit your exam. Please make sure you have answered all questions before submitting.",
       showCancelButton: true,
       confirmButtonText: "Submit",
       cancelButtonText: "Cancel",
@@ -222,7 +230,12 @@ const Test = () => {
 
     setSelectedOptions(newSelectedOptions);
     setQuestionScores(newQuestionScores);
-    setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
+    // setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
+    // localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+    const updatedAnsweredQuestions = [...answeredQuestions, currentQuestion.id];
+  setAnsweredQuestions(updatedAnsweredQuestions);
+  localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+  localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   };
 
   const handleQuestionNavigation = (index) => {
