@@ -105,7 +105,7 @@ const Admission = () => {
             myEmail: globalState.email,
             justPaid: true,
           }
-          let endpoint = "http://localhost:2000"
+          let endpoint = "http://localhost:2000/student_account/paidAdmissionFee"
           axios.post(endpoint, payload)
           .then((response) => {
 
