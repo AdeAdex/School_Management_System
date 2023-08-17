@@ -103,7 +103,7 @@ const Admission = () => {
         if (response.status == "success") {
           let payload = true
           let endpoint = "http://localhost:2000"
-          axios.post(esndpoint, payload)
+          axios.post(endpoint, payload)
           .then((response) => {
 
           })
