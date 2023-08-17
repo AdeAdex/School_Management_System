@@ -18,26 +18,76 @@ const CreateAccount = () => {
       phoneNumber: "",
       password: "",
       check: false,
-      // registrationNumber: ""
     },
 
-    onSubmit: (values) => {
-      setIsLoading(true)
-      const randomNumber = Math.floor(Math.random() * 100000000);
-      const numbersPart = randomNumber.toString().padStart(8, "0");
-      const alphabetPart = Array.from({ length: 2 }, () => {
-        const randomIndex = Math.floor(Math.random() * 26);
-        return String.fromCharCode(65 + randomIndex);
-      }).join("");
+    // onSubmit: (values) => {
+    //   setIsLoading(true)
+    //   const randomNumber = Math.floor(Math.random() * 100000000);
+    //   const numbersPart = randomNumber.toString().padStart(8, "0");
+    //   const alphabetPart = Array.from({ length: 2 }, () => {
+    //     const randomIndex = Math.floor(Math.random() * 26);
+    //     return String.fromCharCode(65 + randomIndex);
+    //   }).join("");
 
-      const currentDate = format(new Date(), "yyyy-MM-dd");
-      const registrationNumber = numbersPart + alphabetPart;
-      const newValues = { ...values, registrationNumber, createdDate: currentDate };
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+    //   const currentDate = format(new Date(), "yyyy-MM-dd");
+    //   const registrationNumber = numbersPart + alphabetPart;
+    //   const newValues = { ...values, registrationNumber, createdDate: currentDate };
+    //   const endpoint = "http://localhost:2000/student_account/student";
+    //   axios.post(endpoint, newValues)
+    //   .then((response) => {
+    //     if (response.data.status) {
+    //       setIsLoading(false)
+    //       console.log(response.data.status);
+    //       navigate("/student_login");
+    //     } else {
+    //       const Toast = Swal.mixin({
+    //         toast: true,
+    //         position: "top",
+    //         showConfirmButton: false,
+    //         timer: 3000,
+    //         timerProgressBar: true,
+    //         didOpen: (toast) => {
+    //           toast.addEventListener("mouseenter", Swal.stopTimer);
+    //           toast.addEventListener("mouseleave", Swal.resumeTimer);
+    //         },
+    //       });
+
+    //       Toast.fire({
+    //         icon: "error",
+    //         title: response.data.message,
+    //       });
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.data.message);
+    //     if (err.code === 11000) {
+    //       // alert(err.message);r
+    //     }
+    //   })
+    // },
+
+
+
+    onSubmit: async (values) => {
+      setIsLoading(true);
+    
+      try {
+        const randomNumber = Math.floor(Math.random() * 100000000);
+        const numbersPart = randomNumber.toString().padStart(8, "0");
+        const alphabetPart = Array.from({ length: 2 }, () => {
+          const randomIndex = Math.floor(Math.random() * 26);
+          return String.fromCharCode(65 + randomIndex);
+        }).join("");
+    
+        const currentDate = format(new Date(), "yyyy-MM-dd");
+        const registrationNumber = numbersPart + alphabetPart;
+        const newValues = { ...values, registrationNumber, createdDate: currentDate };
+        const endpoint = "http://localhost:2000/student_account/student";
+        
+        const response = await axios.post(endpoint, newValues);
+    
         if (response.data.status) {
-          setIsLoading(false)
+          setIsLoading(false);
           console.log(response.data.status);
           navigate("/student_login");
         } else {
@@ -52,20 +102,21 @@ const CreateAccount = () => {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
-
+    
           Toast.fire({
             icon: "error",
             title: response.data.message,
           });
         }
-      })
-      .catch((err) => {
-        console.log(err.data.message);
+      } catch (err) {
+        console.log(err);
         if (err.code === 11000) {
-          // alert(err.message);r
+          // Handle duplicate registration number error
         }
-      })
+      }
     },
+    
+
 
     validationSchema: yup.object({
       firstName: yup
