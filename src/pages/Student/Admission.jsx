@@ -23,6 +23,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CredentialUpload from "./CredentialUpload";
 import Backdrop from "@mui/material/Backdrop";
+import "./StudentDashboardHome.css"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,12 +61,10 @@ function a11yProps(index) {
 }
 
 const Admission = () => {
-  // const history = useHistory();
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  // const offcanvasState = useSelector((state) => state.portalReducer.hide_show);
-
   const [open, setOpen] = useState(false);
+  const [paid, setPaid] = useState(false)
 
   const handleClose = () => {
     setOpen(false);
@@ -100,6 +99,9 @@ const Admission = () => {
           text: message,
           footer: "",
         });
+        if (response.status == "success") {
+          setPaid(true)
+        }
       },
     });
 
@@ -158,7 +160,7 @@ const Admission = () => {
 
   return (
     <>
-      <div>
+      <div className="">
         {globalState?.firstName && globalState?.lastName ? (
           <div className="font-bold ml-4 my-auto d-fle text-lg fw-bold fs-4 shadow p-2 mb-3">
             {globalState.firstName} {globalState.lastName}
@@ -236,17 +238,7 @@ const Admission = () => {
               sx={{
                 borderRight: 1,
                 borderColor: "divider",
-                backgroundColor: "",
-                "&:hover": {
-                  color: "blue",
-                  backgroundColor: "",
-                },
-                "@media (max-width: 600px)": {
-                  "& .MuiTab-root": {
-                    fontSize: "12px",
-                    padding: "6px 12px",
-                  },
-                },
+                minWidth: "100%",
               }}
             >
               <Tab

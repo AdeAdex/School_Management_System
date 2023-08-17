@@ -6,7 +6,9 @@ const Payment = () => {
 
   return (
     <>
-      <div>Hello</div>
+      <div>
+        <small>{paid ? (<div>Paid</div>) : (<div>Not Paid</div>)}</small>
+      </div>
     </>
   )
 }
