@@ -108,6 +108,7 @@ const CreateAccount = () => {
             title: response.data.message,
           });
         }
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
         if (err.code === 11000) {
@@ -307,7 +308,7 @@ const CreateAccount = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary signup-btn" type="submit">{isLoading ? ( <span className="d-flex"> Create Account <div className="spinner my-auto"></div></span> ) : (<span> Create Account</span>)}
+            <button className="btn btn-primary signup-btn" type="submit">{isLoading ? ( <span className="d-flex"><div className="spinner my-auto"></div></span> ) : (<span> Create Account</span>)}
              
             </button>
           </div>

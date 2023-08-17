@@ -11,6 +11,7 @@ import Calculator from "../../components/studentDashboardComponents/Calculator";
 import QuestionNavigationTable from "./QuestionNavigationTable";
 
 const Test = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     Number(localStorage.getItem("currentQuestionIndex")) || 0
@@ -280,6 +281,7 @@ const Test = () => {
   };
 
   const toLogin = () => {
+    setIsLoading(true);
     const payload = {
       yourKeyHere: true,
       myEmail: globalState.email,
@@ -290,6 +292,7 @@ const Test = () => {
       .post(updateEndpoint, payload)
       .then((response) => {
         if (response.data.status) {
+          setIsLoading(false);
           const Toast = Swal.mixin({
             toast: true,
             position: "top",
@@ -560,7 +563,12 @@ const Test = () => {
                       className="btn btn-success btn-sm px-5 py-2"
                       onClick={toLogin}
                     >
-                      Finish
+                    {isLoading ? (
+                      <div className="spinner my-auto"></div>
+                    ) : (
+                      <span>Finish</span> 
+                    )}
+                      
                     </button>
                   </div>
                 ) : (
