@@ -72,14 +72,15 @@ input:valid {
   .admission-hero {
     margin-top: 80px;
     border-top: 2px solid red !important;
-    /* background-color: red !important; */
+    padding: 10px !important;
+    overflow-y: scroll;
   }
   
   .signup-form {
+    margin-top: 240px;
+    border-top: 2px solid red !important;
     padding: 10px !important;
     overflow-y: scroll;
-    margin-top: 240px;
-    background-color: red;
     /* position: relative; */
   }
 

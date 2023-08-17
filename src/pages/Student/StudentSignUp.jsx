@@ -14,7 +14,7 @@ const StudentSignUp = () => {
         style={{ width: "75%", height: "100vh", }}
       >
         <SignupHero isAdmissionPage={isAdmissionPage} />
-        <SignupForm />
+        <SignupForm isAdmissionPage={isAdmissionPage}/>
       </section>
     </>
   )

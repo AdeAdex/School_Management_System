@@ -12,11 +12,12 @@ import Admission from "../../pages/Student/Admission";
 
 const SignupForm = () => {
   const navigate = useNavigate();
+  const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
     <>
       <div
-        className="shadow bg-light signup-form admission-hero"
+        className={`shadow bg-light ${signup ? "signup-form" : "admission-her"}`}
         style={{ padding: "", width: "70%", }}
       >
       
