@@ -9,15 +9,16 @@ import {
 import CreateAccount from "../../pages/Student/CreateAccount";
 import PickClass from "../../pages/Student/PickClass";
 import Admission from "../../pages/Student/Admission";
+import { useMediaQuery } from "react-responsive";
 
-const SignupForm = () => {
+const SignupForm = ({isAdmissionPage}) => {
   const navigate = useNavigate();
-  const isLargeScreen = useMediaQuery({ query: "(min-width: 768px)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
   return (
     <>
       <div
-        className={`shadow bg-light ${signup ? "signup-form" : "admission-her"}`}
+        className={`shadow bg-light ${isAdmissionPage && isSmallScreen ? "admission-hero" : "signup-form"}`}
         style={{ padding: "", width: "70%", }}
       >
       

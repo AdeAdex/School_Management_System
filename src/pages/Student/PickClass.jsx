@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 
 const PickClass = () => {
-  // const [state, setState] = useState("")
   const [responseArray, setResponseArray] = useState([]);
 
   useEffect(() => {
@@ -133,7 +132,7 @@ const PickClass = () => {
               Please select a valid state.
             </div>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn btn-sm btn-primary">Submit</button>
         </form>
       </div>
     </>
