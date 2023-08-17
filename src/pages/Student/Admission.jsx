@@ -66,7 +66,7 @@ const Admission = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const [paid, setPaid] = useState(globalState.paidForAdmission)
+  const [paid, setPaid] = useState(false)
 
  
 
@@ -74,6 +74,42 @@ const Admission = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    setOpen(true);
+    setIsLoading(true);
+    let studentLoginToken = localStorage.studentLoginToken;
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
+    axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${studentLoginToken}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.data.status) {
+          setIsLoading(false);
+          setOpen(false);
+          dispatch(newStudent(res.data.response));
+        } else {
+          console.log(res.data.message);
+          console.log(res.data.status);
+          navigate("/student_login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  
+
+  }, [globalState]);
+  
+  useEffect(() => {
+    setPaid(globalState.paidForAdmission);
+    console.log(paid);
+  }, [globalState, dispatch]);
   
   const payWithPaystack = () => {
     let handler = PaystackPop.setup({
@@ -105,10 +141,13 @@ const Admission = () => {
             myEmail: globalState.email,
             justPaid: true,
           }
+          console.log(payload);
           let endpoint = "http://localhost:2000/student_account/paidAdmissionFee"
-          axios.post(endpoint, {payload})
+          axios.post(endpoint, payload)
           .then((response) => {
-
+            if (response.data.status) {
+              console.log(response.data.message);
+            }
           })
           .catch((err) => {
             console.log(err)
@@ -120,26 +159,18 @@ const Admission = () => {
     handler.openIframe();
   };
 
-
-  // const handleChange = (event, newValue) => {
-  //     setValue(newValue);
-  // };
-  
-  // const handlePaymentClick = () => {
-  //   payWithPaystack();
-  //   navigate("/student/admission/payment");
-  // };
-
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     if (paid && newValue !== 1) {
       setValue(newValue);
-    } else if (!paid && (newValue !== 1 || newValue !== 0)) {
+    console.log(newValue, paid, value);
+    } else if (!paid && (newValue !== 1 && newValue !== 0)) {
       setValue(1);
+    console.log(newValue, paid, value);
       navigate("/student/admission/payment");
       payWithPaystack();
     } else {
       setValue(newValue);
+    console.log(newValue, paid);
     }
   };
 
@@ -159,49 +190,7 @@ const Admission = () => {
   // };
 
   
-  useEffect(() => {
-    setOpen(true);
-    setIsLoading(true);
-    let studentLoginToken = localStorage.studentLoginToken;
-    let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
-    axios
-      .get(endpoint, {
-        headers: {
-          Authorization: `Bearer ${studentLoginToken}`,
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-      .then((res) => {
-        if (res.data.status) {
-          setIsLoading(false);
-          setOpen(false);
-          dispatch(newStudent(res.data.response));
-          // setPaid(globalState.paidForAdmission)
-          // console.log(res.data.message);
-        } else {
-          console.log(res.data.message);
-          console.log(res.data.status);
-          navigate("/student_login");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        // navigate('/student_login');
-        // console.log(err.data.message);
-        // console.log(err.data.status);
-      });
-
-      // if (!paid) {
-      //   navigate("/student/admission/payment");
-      // }
-
-  }, [globalState]);
-
  
-  // console.log(paid);
-  const pay = true;
 
   return (
     <>
@@ -211,7 +200,7 @@ const Admission = () => {
             {globalState.firstName} {globalState.lastName}
             <div className="my-auto" style={{ fontSize: "14px" }}>
               <small>Registration Number:</small>{" "}
-              {globalState.registrationNumber}
+              {globalState.registrationNumber}{globalState.paidForAdmission}
             </div>
           </div>
         ) : (
