@@ -63,7 +63,7 @@ const Admission = () => {
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [paid, setPaid] = useState(false)
+  const [paid, setPaid] = useState(true)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -120,7 +120,9 @@ const Admission = () => {
 
   const handleChange = (event, newValue) => {
     console.log(newValue);
-    if (!paid && newValue !== 1) {
+    if (paid && newValue !== 1) {
+      setValue(newValue);
+    } else if (!paid && (newValue !== 1 || newValue !== 0)) {
       setValue(1);
       navigate("/student/admission/payment");
       payWithPaystack();
@@ -275,8 +277,8 @@ const Admission = () => {
               <Tab
                 label="Pick Class"
                 component={Link}
-                // to="/student/admission/pick_class"
-                to={!paid ? "/student/admission/payment" : "/student/admission/pick_class"}
+                to="/student/admission/pick_class"
+                // to={!paid ? "/student/admission/payment" : "/student/admission/pick_class"}
                 sx={{
                   "&:hover": {
                     color: "blue",
@@ -311,7 +313,8 @@ const Admission = () => {
               <Tab
                 label="Education"
                 component={Link}
-                to="/student/admission/education"
+                to={!paid ? "/student/admission/payment" : "/student/admission/education"}
+                // to="/student/admission/education"
                 sx={{
                   "&:hover": {
                     color: "blue",
@@ -322,7 +325,8 @@ const Admission = () => {
               <Tab
                 label="Referees"
                 component={Link}
-                to="/student/admission/referees"
+                to={!paid ? "/student/admission/payment" : "/student/admission/referees"}
+                // to="/student/admission/referees"
                 sx={{
                   "&:hover": {
                     color: "blue",
@@ -333,7 +337,8 @@ const Admission = () => {
               <Tab
                 label="Credential Upload"
                 component={Link}
-                to="/student/admission/credential"
+                to={!paid ? "/student/admission/payment" : "/student/admission/credential"}
+                // to="/student/admission/credential"
                 sx={{
                   "&:hover": {
                     color: "blue",
