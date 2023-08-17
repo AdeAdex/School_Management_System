@@ -101,7 +101,10 @@ const Admission = () => {
           footer: "",
         });
         if (response.status == "success") {
-          let payload = true
+          let payload = {
+            myEmail: globalState.email,
+            justPaid: true,
+          }
           let endpoint = "http://localhost:2000"
           axios.post(endpoint, payload)
           .then((response) => {
