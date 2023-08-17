@@ -24,8 +24,6 @@ import Box from "@mui/material/Box";
 import CredentialUpload from "./CredentialUpload";
 import Backdrop from "@mui/material/Backdrop";
 
-
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -100,18 +98,17 @@ const Admission = () => {
           icon: "success",
           title: "Thank You " + globalState.firstName,
           text: message,
-          footer:
-            '',
+          footer: "",
         });
       },
     });
-  
+
     handler.openIframe();
   };
 
   const handlePaymentClick = () => {
     payWithPaystack();
-    navigate('/student/admission/payment');
+    navigate("/student/admission/payment");
   };
 
   const navigate = useNavigate();
@@ -164,12 +161,14 @@ const Admission = () => {
       <div>
         {globalState?.firstName && globalState?.lastName ? (
           <div className="font-bold ml-4 my-auto d-fle text-lg fw-bold fs-4 shadow p-2 mb-3">
-            {globalState.firstName} {globalState.lastName} 
-            <div className="my-auto" style={{fontSize: '14px'}}><small>Registration Number:</small> {globalState.registrationNumber}</div>
+            {globalState.firstName} {globalState.lastName}
+            <div className="my-auto" style={{ fontSize: "14px" }}>
+              <small>Registration Number:</small>{" "}
+              {globalState.registrationNumber}
+            </div>
           </div>
         ) : (
           <div class="loaders"></div>
-           
         )}
         {/* <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
@@ -177,7 +176,7 @@ const Admission = () => {
         {/* <div className="" style={{width: "100%" }}>
           <div
             className="d-flex justify-content-between px-lg-4"
-            style={{ width: "100%", overflowX: "auto", overflowY: 'hidden', height: '40px', borderBottom: '1px solid gray' }}
+            style={{ width: "100%", overflowX: "auto", overflowY: 'hidden', height: '40px', borderBottom: '1px solid lightgray' }}
           >
             <NavLink style={navLinkStyles} to="pick_class" className="nav-links">
               Pick Class
@@ -232,18 +231,44 @@ const Admission = () => {
               value={value}
               onChange={handleChange}
               variant="scrollable"
-              scrollButtons
+              scrollButtons="auto"
               aria-label="visible arrows tabs example"
-              sx={{ borderRight: 1, borderColor: "divider" }}
+              sx={{
+                borderRight: 1,
+                borderColor: "divider",
+                backgroundColor: "",
+                "&:hover": {
+                  color: "blue",
+                  backgroundColor: "",
+                },
+                "@media (max-width: 600px)": {
+                  "& .MuiTab-root": {
+                    fontSize: "12px",
+                    padding: "6px 12px",
+                  },
+                },
+              }}
             >
               <Tab
                 label="Pick Class"
                 component={Link}
                 to="/student/admission/pick_class"
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
               />
               <Tab
                 label="Payment"
                 onClick={handlePaymentClick}
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
                 // component={Link}
                 // to="/student/admission/payment"
               />
@@ -251,21 +276,45 @@ const Admission = () => {
                 label="Personal Information"
                 component={Link}
                 to="/student/admission/personal_information"
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
               />
               <Tab
                 label="Education"
                 component={Link}
                 to="/student/admission/education"
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
               />
               <Tab
                 label="Referees"
                 component={Link}
                 to="/student/admission/referees"
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
               />
               <Tab
                 label="Credential Upload"
                 component={Link}
                 to="/student/admission/credential"
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
               />
               <Tab label="Item Seven" {...a11yProps(6)} />
             </Tabs>
