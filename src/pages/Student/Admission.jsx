@@ -23,7 +23,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CredentialUpload from "./CredentialUpload";
 import Backdrop from "@mui/material/Backdrop";
-import "./StudentDashboardHome.css"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,16 +63,17 @@ const Admission = () => {
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [paid, setPaid] = useState(false)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
  
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+  
   const payWithPaystack = () => {
     let handler = PaystackPop.setup({
       key: "pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537",
@@ -108,15 +108,34 @@ const Admission = () => {
     handler.openIframe();
   };
 
-  const handlePaymentClick = () => {
-    payWithPaystack();
-    navigate("/student/admission/payment");
+
+  // const handleChange = (event, newValue) => {
+  //     setValue(newValue);
+  // };
+  
+  // const handlePaymentClick = () => {
+  //   payWithPaystack();
+  //   navigate("/student/admission/payment");
+  // };
+
+  const handleChange = (event, newValue) => {
+    console.log(newValue);
+    if (!paid && newValue !== 1) {
+      setValue(1);
+      navigate("/student/admission/payment");
+      payWithPaystack();
+    } else {
+      setValue(newValue);
+    }
   };
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const [paid, setPaid] = useState(null)
+  const handlePaymentClick = () => {
+    // if (value === 1) {
+      payWithPaystack();
+    // }
+    navigate("/student/admission/payment");
+  };
+  
   
   // const navLinkStyles = ({ isActive }) => {
   //   return {
@@ -145,7 +164,7 @@ const Admission = () => {
           setIsLoading(false);
           setOpen(false);
           dispatch(newStudent(res.data.response));
-          setPaid(globalState.paidForAdmission)
+          // setPaid(globalState.paidForAdmission)
           // console.log(res.data.message);
         } else {
           console.log(res.data.message);
@@ -159,10 +178,15 @@ const Admission = () => {
         // console.log(err.data.message);
         // console.log(err.data.status);
       });
+
+      // if (!paid) {
+      //   navigate("/student/admission/payment");
+      // }
+
   }, [globalState]);
 
  
-  console.log(paid);
+  // console.log(paid);
   const pay = true;
 
   return (
@@ -177,7 +201,7 @@ const Admission = () => {
             </div>
           </div>
         ) : (
-          <div class="loaders"></div>
+          <div className="loaders"></div>
         )}
         {/* <div className="font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3">
           {globalState.firstName} {globalState.lastName}
@@ -251,7 +275,8 @@ const Admission = () => {
               <Tab
                 label="Pick Class"
                 component={Link}
-                to="/student/admission/pick_class"
+                // to="/student/admission/pick_class"
+                to={!paid ? "/student/admission/payment" : "/student/admission/pick_class"}
                 sx={{
                   "&:hover": {
                     color: "blue",
@@ -274,7 +299,8 @@ const Admission = () => {
               <Tab
                 label="Personal Information"
                 component={Link}
-                to="/student/admission/personal_information"
+                to={!paid ? "/student/admission/payment" : "/student/admission/personal_information"}
+                // to="/student/admission/personal_information"
                 sx={{
                   "&:hover": {
                     color: "blue",
