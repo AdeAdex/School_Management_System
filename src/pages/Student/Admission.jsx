@@ -106,7 +106,7 @@ const Admission = () => {
             justPaid: true,
           }
           let endpoint = "http://localhost:2000/student_account/paidAdmissionFee"
-          axios.post(endpoint, payload)
+          axios.post(endpoint, {payload})
           .then((response) => {
 
           })
