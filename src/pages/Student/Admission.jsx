@@ -63,10 +63,11 @@ const Admission = () => {
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [paid, setPaid] = useState(true)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const [paid, setPaid] = useState(globalState.paidForAdmission)
+
  
 
   const handleClose = () => {
@@ -100,7 +101,15 @@ const Admission = () => {
           footer: "",
         });
         if (response.status == "success") {
-          setPaid(true)
+          let payload = true
+          let endpoint = "http://localhost:2000"
+          axios.post(esndpoint, payload)
+          .then((response) => {
+
+          })
+          .catch((err) => {
+            console.log(err)
+          })
         }
       },
     });
