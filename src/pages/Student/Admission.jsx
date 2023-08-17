@@ -64,7 +64,7 @@ const Admission = () => {
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [paid, setPaid] = useState(false)
+ 
 
   const handleClose = () => {
     setOpen(false);
@@ -116,12 +116,16 @@ const Admission = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const [paid, setPaid] = useState(null)
+  
   // const navLinkStyles = ({ isActive }) => {
   //   return {
   //     fontWeight: isActive ? "bold" : "normal",
   //     textDecoration: isActive ? "none" : "none",
   //   };
   // };
+
+  
   useEffect(() => {
     setOpen(true);
     setIsLoading(true);
@@ -141,6 +145,7 @@ const Admission = () => {
           setIsLoading(false);
           setOpen(false);
           dispatch(newStudent(res.data.response));
+          setPaid(globalState.paidForAdmission)
           // console.log(res.data.message);
         } else {
           console.log(res.data.message);
@@ -154,8 +159,10 @@ const Admission = () => {
         // console.log(err.data.message);
         // console.log(err.data.status);
       });
-  }, []);
+  }, [globalState]);
 
+ 
+  console.log(paid);
   const pay = true;
 
   return (
