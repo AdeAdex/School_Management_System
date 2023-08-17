@@ -24,6 +24,8 @@ import Box from "@mui/material/Box";
 import CredentialUpload from "./CredentialUpload";
 import Backdrop from "@mui/material/Backdrop";
 
+
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -60,6 +62,7 @@ function a11yProps(index) {
 }
 
 const Admission = () => {
+  // const history = useHistory();
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   // const offcanvasState = useSelector((state) => state.portalReducer.hide_show);
@@ -72,6 +75,43 @@ const Admission = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const payWithPaystack = () => {
+    let handler = PaystackPop.setup({
+      key: "pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537",
+      email: globalState.email,
+      amount: 5000 * 100,
+      ref: "Adex" + Math.floor(Math.random() * 1000000000 + 1),
+      onClose: function () {
+        let message = "You just cancel this transaction";
+        Swal.fire({
+          icon: "error",
+          title: "Dear " + globalState.firstName,
+          text: message,
+          footer:
+            "For further assistance, please call us at +2347033959586 or email us at adeoluamole@gmail.com",
+        });
+      },
+      callback: function (response) {
+        let message =
+          "Payment completed! Your Reference Number is: " + response.reference;
+        Swal.fire({
+          icon: "success",
+          title: "Thank You " + globalState.firstName,
+          text: message,
+          footer:
+            '',
+        });
+      },
+    });
+  
+    handler.openIframe();
+  };
+
+  const handlePaymentClick = () => {
+    payWithPaystack();
+    navigate('/student/admission/payment');
   };
 
   const navigate = useNavigate();
@@ -203,8 +243,9 @@ const Admission = () => {
               />
               <Tab
                 label="Payment"
-                component={Link}
-                to="/student/admission/payment"
+                onClick={handlePaymentClick}
+                // component={Link}
+                // to="/student/admission/payment"
               />
               <Tab
                 label="Personal Information"
