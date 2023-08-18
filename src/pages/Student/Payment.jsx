@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import "./Payment.css"
-import { Badge } from '@mantine/core';
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import "./Payment.css";
+import { Badge } from "@mantine/core";
 import axios from "axios";
-import BigReceiptModal from './BigReceiptModal';
+import BigReceiptModal from "./BigReceiptModal";
 
-const Payment = ({paid, myEmail, receiptURL}) => {
+const Payment = ({ paid, myEmail, receiptURL }) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const hasUploadedImage = cloudImage !== null;
 
   const handleImageSelect = (e) => {
     setIsLoading(true);
@@ -32,8 +33,7 @@ const Payment = ({paid, myEmail, receiptURL}) => {
 
   useEffect(() => {
     setCloudImage(receiptURL);
-  }, [receiptURL])
-  
+  }, [receiptURL]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,42 +47,60 @@ const Payment = ({paid, myEmail, receiptURL}) => {
 
   return (
     <>
-    <div className="payment-card">
-      <div className="status">
-        <div className={`status-value w-100 ${paid ? 'paid' : 'not-paid'}`}>
-          <span>Application Fee:</span>
-          <Badge variant="gradient" gradient={{ from: 'teal', to: paid ? 'blue' : 'orangered', deg: 60 }}>{paid ? 'Paid' : 'Not Paid'}</Badge>
+      <div className="payment-card">
+        <div className="status">
+          <div className={`status-value w-100 ${paid ? "paid" : "not-paid"}`}>
+            <span>Application Fee:</span>
+            <Badge
+              variant="gradient"
+              gradient={{
+                from: "teal",
+                to: paid ? "blue" : "orangered",
+                deg: 60,
+              }}
+            >
+              {paid ? "Paid" : "Not Paid"}
+            </Badge>
+          </div>
+        </div>
+        <div className="amount">
+          <span>Amount Paid:</span> <small className="fw-bold">₦5000</small>
+        </div>
+        <div className="method">
+          <span>Payment Method:</span> <small className="fw-bold">Card</small>
+        </div>
+        <div className="payment-slip">
+          <span>Payment Slip:</span>
+          <small className="fw-bold">Upload your payment slip here</small>
+          <input type="file" accept="image/*" onChange={handleImageSelect} />
+          {hasUploadedImage ? (
+            <div className="selected-image">
+              {isLoading ? (
+                <div className="ping"></div>
+              ) : (
+                <img
+                  src={!cloudImage ? "/pic/america.png" : cloudImage}
+                  alt="Avatar"
+                  style={{ width: "10%", height: "10%", borderRadius: "0%" }}
+                  onClick={openModal}
+                />
+              )}
+            </div>
+          ) : (
+            <div className="arrow">
+              <span className="arrow-span"></span>
+              <span className="arrow-span"></span>
+              <span className="arrow-span"></span>
+            </div>
+          )}
         </div>
       </div>
-      <div className="amount">
-        <span>Amount Paid:</span> <small className="fw-bold">₦5000</small>
-      </div>
-      <div className="method">
-        <span>Payment Method:</span> <small className="fw-bold">Card</small>
-      </div>
-      <div className="payment-slip">
-        <span>Payment Slip:</span>
-        <small className="fw-bold">Upload your payment slip here</small>
-        <input type="file" accept="image/*" onChange={handleImageSelect} />
-        <div className="selected-image">
-        {isLoading ? (
-            <div className="ping"></div>
-          ) : cloudImage != null ? (
-            <img
-              src={!cloudImage ? "/pic/america.png" : cloudImage}
-              alt="Avatar"
-              style={{ width: "10%", height: "10%", borderRadius: "0%" }}
-              onClick={openModal}
-            />
-          ) : null} 
-        </div>
-      </div>
-      {isModalOpen && (
-      <BigReceiptModal cloudImage={cloudImage} onClose={closeModal} />
-      )}
-    </div>
-    </>
-  )
-}
 
-export default Payment
+      {isModalOpen && (
+        <BigReceiptModal cloudImage={cloudImage} onClose={closeModal} />
+      )}
+    </>
+  );
+};
+
+export default Payment;

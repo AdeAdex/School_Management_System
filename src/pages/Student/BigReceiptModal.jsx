@@ -1,8 +1,7 @@
 import React from "react";
 
-const BigReceiptModal = ({ isOpen, onClose, cloudImage }) => {
+const BigReceiptModal = ({ onClose, cloudImage }) => {
   return (
-    <>
       <div className="modal">
         <div className="modal-content">
           <span className="close" onClick={onClose}>
@@ -15,7 +14,6 @@ const BigReceiptModal = ({ isOpen, onClose, cloudImage }) => {
           />
         </div>
       </div>
-    </>
   );
 };
 
