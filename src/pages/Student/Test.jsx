@@ -213,7 +213,7 @@ const Test = () => {
 
   const submitMyScore = (newScores) => {
     const endpoint2 =
-      "http://localhost:2000/student_account/update_my_admission_exam_score";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
     axios
       .post(endpoint2, {
         myScores: newScores,
