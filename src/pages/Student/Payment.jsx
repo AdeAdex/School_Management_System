@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import "./Payment.css"
 import { Badge } from '@mantine/core';
+import axios from "axios";
 
 const Payment = ({paid, myEmail}) => {
   const [myImage, setMyImage] = useState("");
@@ -25,10 +26,10 @@ const Payment = ({paid, myEmail}) => {
         .then((response) => {
           console.log(response.data);
           setIsLoading(false);
-          const cloudLink = response.data.cloudLink;
-          setCloudImage(cloudLink);
-          localStorage.setItem("cloudImage", cloudLink);
-          console.log(response.data.cloudLink);
+          const cloudLinkForAdmissionReceipt = response.data.cloudLinkForAdmissionReceipt;
+          setCloudImage(cloudLinkForAdmissionReceipt);
+          localStorage.setItem("cloudImage", cloudLinkForAdmissionReceipt);
+          console.log(response.data.cloudLinkForAdmissionReceipt);
         })
         .catch((err) => {
           console.log(err);
@@ -56,7 +57,15 @@ const Payment = ({paid, myEmail}) => {
         <small className="fw-bold">Upload your payment slip here</small>
         <input type="file" accept="image/*" onChange={handleImageSelect} />
         <div className="selected-image">
-          {cloudImage && <img src={cloudImage} alt="Selected Payment Slip" />}
+        {isLoading ? (
+            <div className="ping"></div>
+          ) : cloudImage != null ? (
+            <img
+              src={cloudImage}
+              alt="Avatar"
+              style={{ width: "100%", height: "100%", borderRadius: "0%" }}
+            />
+          ) : null} 
         </div>
       </div>
     </div>
