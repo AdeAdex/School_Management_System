@@ -21,7 +21,7 @@ const Payment = ({paid, myEmail}) => {
       const endpoint =
         "http://localhost:2000/student_account/upload_admission_receipt";
       axios
-        .post(endpoint, { myImage: reader.result })
+        .post(endpoint, { myImage: reader.result, myEmail })
         .then((response) => {
           setIsLoading(false);
           setCloudImage(response.data.cloudLinkForAdmissionReceipt);
@@ -33,8 +33,8 @@ const Payment = ({paid, myEmail}) => {
   };
 
   useEffect(() => {
-    setCloudLinkForAdmissionReceipt(cloudImage)
-  }, [cloudImage])
+    setCloudImage(cloudLinkForAdmissionReceipt);
+  }, [])
   
 
   return (
