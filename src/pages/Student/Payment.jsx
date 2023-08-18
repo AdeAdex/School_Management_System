@@ -8,11 +8,9 @@ const Payment = ({paid, myEmail, receiptURL}) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [cloudLinkForAdmissionReceipt, setCloudLinkForAdmissionReceipt] = useState(null)
 
   const handleImageSelect = (e) => {
     setIsLoading(true);
-    // console.log(e.target.files[0]);
     let selectedImage = e.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(selectedImage);
@@ -24,7 +22,6 @@ const Payment = ({paid, myEmail, receiptURL}) => {
         .post(endpoint, { myImage: reader.result, myEmail })
         .then((response) => {
           setIsLoading(false);
-          // setCloudImage(response.data.cloudLinkForAdmissionReceipt);
         })
         .catch((err) => {
           console.log(err);
