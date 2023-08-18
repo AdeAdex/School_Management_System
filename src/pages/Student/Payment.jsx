@@ -4,7 +4,7 @@ import "./Payment.css"
 import { Badge } from '@mantine/core';
 import axios from "axios";
 
-const Payment = ({paid, myEmail}) => {
+const Payment = ({paid, myEmail, receiptURL}) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ const Payment = ({paid, myEmail}) => {
         .post(endpoint, { myImage: reader.result, myEmail })
         .then((response) => {
           setIsLoading(false);
-          setCloudImage(response.data.cloudLinkForAdmissionReceipt);
+          // setCloudImage(response.data.cloudLinkForAdmissionReceipt);
         })
         .catch((err) => {
           console.log(err);
@@ -33,8 +33,8 @@ const Payment = ({paid, myEmail}) => {
   };
 
   useEffect(() => {
-    setCloudImage(cloudLinkForAdmissionReceipt);
-  }, [])
+    setCloudImage(receiptURL);
+  }, [receiptURL])
   
 
   return (
@@ -59,9 +59,9 @@ const Payment = ({paid, myEmail}) => {
         <div className="selected-image">
         {isLoading ? (
             <div className="ping"></div>
-          ) : cloudLinkForAdmissionReceipt != null ? (
+          ) : cloudImage != null ? (
             <img
-              src={cloudLinkForAdmissionReceipt}
+              src={cloudImage}
               alt="Avatar"
               style={{ width: "100%", height: "100%", borderRadius: "0%" }}
             />
