@@ -150,6 +150,7 @@ const Admission = () => {
             .then((response) => {
               if (response.data.status) {
                 localStorage.setItem("currentPaidState", true);
+                
               }
             })
             .catch((err) => {
