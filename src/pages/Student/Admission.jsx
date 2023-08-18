@@ -66,9 +66,7 @@ const Admission = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const [paid, setPaid] = useState(false)
-
- 
+  const [paid, setPaid] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
@@ -102,15 +100,9 @@ const Admission = () => {
       .catch((err) => {
         console.log(err);
       });
-  
-
   }, [globalState]);
-  
-  // useEffect(() => {
-  //   setPaid(true);
-  //   console.log(paid);
-  // }, [globalState, dispatch]);
-  
+
+
   const payWithPaystack = () => {
     let handler = PaystackPop.setup({
       key: "pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537",
@@ -140,18 +132,20 @@ const Admission = () => {
           let payload = {
             myEmail: globalState.email,
             justPaid: true,
-          }
+          };
           console.log(payload);
-          let endpoint = "http://localhost:2000/student_account/paidAdmissionFee"
-          axios.post(endpoint, payload)
-          .then((response) => {
-            if (response.data.status) {
-              console.log(response.data.message);
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+          let endpoint =
+            "http://localhost:2000/student_account/paidAdmissionFee";
+          axios
+            .post(endpoint, payload)
+            .then((response) => {
+              if (response.data.status) {
+                console.log(response.data.message);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       },
     });
@@ -160,28 +154,18 @@ const Admission = () => {
   };
 
   const handleChange = (event, newValue) => {
-    let payload = {
-      myEmail: globalState.email,
+    if (/* globalState.paidForAdmission */ paid && newValue !== 1) {
+      setValue(newValue);
+      console.log(newValue, /* globalState.paidForAdmission */ paid, value);
+    } else if (!/* globalState.paidForAdmission */ paid && newValue !== 1 && newValue !== 0) {
+      setValue(1);
+      console.log(newValue, /* globalState.paidForAdmission */ paid, value);
+      navigate("/student/admission/payment");
+      payWithPaystack();
+    } else {
+      setValue(newValue);
+      console.log(newValue, /* globalState.paidForAdmission */ paid);
     }
-    let endpoint = "http://localhost:2000/student_account/confirm"
-    axios.post(endpoint, payload)
-    .then((res) => {
-      if (res.data.status) {
-        
-      }
-    })
-    // if (paid && newValue !== 1) {
-    //   setValue(newValue);
-    // console.log(newValue, paid, value);
-    // } else if (!paid && (newValue !== 1 && newValue !== 0)) {
-    //   setValue(1);
-    // console.log(newValue, paid, value);
-    //   navigate("/student/admission/payment")
-    //   payWithPaystack();
-    // } else {
-    //   setValue(newValue);
-    // console.log(newValue, paid);
-    // }
   };
 
   const handlePaymentClick = () => {
@@ -192,17 +176,7 @@ const Admission = () => {
       navigate("/student/admission/payment");
     }
   };
-  
-  
-  // const navLinkStyles = ({ isActive }) => {
-  //   return {
-  //     fontWeight: isActive ? "bold" : "normal",
-  //     textDecoration: isActive ? "none" : "none",
-  //   };
-  // };
 
-  
- 
 
   return (
     <>
@@ -212,7 +186,7 @@ const Admission = () => {
             {globalState.firstName} {globalState.lastName}
             <div className="my-auto" style={{ fontSize: "14px" }}>
               <small>Registration Number:</small>{" "}
-              {globalState.registrationNumber}{globalState.paidForAdmission}
+              {globalState.registrationNumber}
             </div>
           </div>
         ) : (
@@ -314,7 +288,11 @@ const Admission = () => {
               <Tab
                 label="Personal Information"
                 component={Link}
-                to={!paid ? "/student/admission/payment" : "/student/admission/personal_information"}
+                to={
+                  !paid
+                    ? "/student/admission/payment"
+                    : "/student/admission/personal_information"
+                }
                 // to="/student/admission/personal_information"
                 sx={{
                   "&:hover": {
@@ -326,7 +304,11 @@ const Admission = () => {
               <Tab
                 label="Education"
                 component={Link}
-                to={!paid ? "/student/admission/payment" : "/student/admission/education"}
+                to={
+                  !paid
+                    ? "/student/admission/payment"
+                    : "/student/admission/education"
+                }
                 // to="/student/admission/education"
                 sx={{
                   "&:hover": {
@@ -338,7 +320,11 @@ const Admission = () => {
               <Tab
                 label="Referees"
                 component={Link}
-                to={!paid ? "/student/admission/payment" : "/student/admission/referees"}
+                to={
+                  !paid
+                    ? "/student/admission/payment"
+                    : "/student/admission/referees"
+                }
                 // to="/student/admission/referees"
                 sx={{
                   "&:hover": {
@@ -350,7 +336,11 @@ const Admission = () => {
               <Tab
                 label="Credential Upload"
                 component={Link}
-                to={!paid ? "/student/admission/payment" : "/student/admission/credential"}
+                to={
+                  !paid
+                    ? "/student/admission/payment"
+                    : "/student/admission/credential"
+                }
                 // to="/student/admission/credential"
                 sx={{
                   "&:hover": {
@@ -365,7 +355,7 @@ const Admission = () => {
               <PickClass />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Payment paid={paid}/>
+              <Payment paid={paid} />
             </TabPanel>
             <TabPanel value={value} index={2}>
               <PersonalInformation />
