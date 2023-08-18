@@ -1,48 +1,3 @@
-/* .payment-card {
-  width: 500px;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.status-value {
-  display: flex;
-  justify-content: space-between;
-}
-
-.status {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.paid {
-  color: green;
-}
-
-.not-paid {
-  color: red;
-}
-
-.amount {
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-}
-
-.method {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.payment-slip {
-  width: 100%;
-  height: 100px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-} */
-
 .payment-card {
   width: 500px;
   border: 1px solid #ccc;
@@ -60,6 +15,7 @@
 .status-value {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Vertically center align */
   font-size: 18px;
 }
 
@@ -74,17 +30,47 @@
 .amount {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Vertically center align */
   font-size: 18px;
 }
 
 .method {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically center align */
   font-size: 14px;
   margin-bottom: 10px;
 }
 
 .payment-slip {
-  width: 100%;
-  height: 100px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+      }
+      
+      .payment-slip span {
+        font-weight: bold;
+        display: block;
+      }
+      
+      .payment-slip small {
+        font-weight: bold;
+        display: block;
+        margin-top: 5px;
+      }
+      
+      .payment-slip input[type="file"] {
+        margin-top: 10px;
+      }
+      
+      .selected-image {
+        margin-top: 10px;
+      }
+      
+      .selected-image img {
+        max-width: 100%;
+        max-height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+      }

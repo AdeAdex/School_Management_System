@@ -150,7 +150,7 @@ const Admission = () => {
             .then((response) => {
               if (response.data.status) {
                 localStorage.setItem("currentPaidState", true);
-                
+
               }
             })
             .catch((err) => {
@@ -361,7 +361,7 @@ const Admission = () => {
               <PickClass />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Payment paid={paid} />
+              <Payment paid={paid} myEmail={globalState.email} />
             </TabPanel>
             <TabPanel value={value} index={2}>
               <PersonalInformation />
