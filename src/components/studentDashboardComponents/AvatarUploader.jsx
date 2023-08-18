@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const AvatarUploader = () => {
+const AvatarUploader = ({myEmail, profilePicture}) => {
   const [myImage, setMyImage] = useState("");
-  const [cloudImage, setCloudImage] = useState(
-    localStorage.getItem("cloudImage")
-  );
+  const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFileSelect = (e) => {
@@ -17,22 +15,21 @@ const AvatarUploader = () => {
     reader.onload = () => {
       setMyImage(reader.result);
       const endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
+        "http://localhost:2000/student_account/upload_profile_pic";
       axios
-        .post(endpoint, { myImage: reader.result })
+        .post(endpoint, { myImage: reader.result, myEmail })
         .then((response) => {
-          console.log(response.data);
           setIsLoading(false);
-          const cloudLink = response.data.cloudLink;
-          setCloudImage(cloudLink);
-          localStorage.setItem("cloudImage", cloudLink);
-          console.log(response.data.cloudLink);
         })
         .catch((err) => {
           console.log(err);
         });
     };
   };
+
+  useEffect(() => {
+    setCloudImage(profilePicture);
+  }, [profilePicture])
 
   return (
     <>

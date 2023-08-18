@@ -179,7 +179,7 @@ const StudentDashboardNavbar = () => {
           {/* <button onClick={gooo} className="border-2">
             <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
           </button> */}
-          <AvatarUploader />
+          <AvatarUploader myEmail={globalState.email} profilePicture={globalState.profileURL} />
           {/* <input type="file" className="bg-info" name="" id="" onChange={(e) => changeFile(e)} />
           <button onClick={saveFile}>Upload</button>
           <img src={cloudImage} alt="" style={{ width: "50px" }} />
