@@ -12,7 +12,7 @@ const Payment = ({paid}) => {
           <small>{paid ? 'Paid' : 'Not Paid'}</small>
         </div>
       </div>
-      <div className="amount"><span>Amount Paid:</span> <small>₦5000</small></div>
+      <div className="amount"><span>Amount Paid:</span> <small className='fw-bold'>₦5000</small></div>
       <div className="method">Pay Method: 'card'</div>
       <div className="payment-slip"></div>
     </div>
