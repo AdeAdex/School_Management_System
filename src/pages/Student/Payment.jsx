@@ -6,14 +6,13 @@ import axios from "axios";
 
 const Payment = ({paid, myEmail}) => {
   const [myImage, setMyImage] = useState("");
-  const [cloudImage, setCloudImage] = useState(
-    localStorage.getItem("cloudImage")
-  );
+  const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [cloudLinkForAdmissionReceipt, setCloudLinkForAdmissionReceipt] = useState(null)
 
   const handleImageSelect = (e) => {
     setIsLoading(true);
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     let selectedImage = e.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(selectedImage);
@@ -24,18 +23,19 @@ const Payment = ({paid, myEmail}) => {
       axios
         .post(endpoint, { myImage: reader.result })
         .then((response) => {
-          console.log(response.data);
           setIsLoading(false);
-          const cloudLinkForAdmissionReceipt = response.data.cloudLinkForAdmissionReceipt;
-          setCloudImage(cloudLinkForAdmissionReceipt);
-          localStorage.setItem("cloudImage", cloudLinkForAdmissionReceipt);
-          console.log(response.data.cloudLinkForAdmissionReceipt);
+          setCloudImage(response.data.cloudLinkForAdmissionReceipt);
         })
         .catch((err) => {
           console.log(err);
         });
     };
   };
+
+  useEffect(() => {
+    setCloudLinkForAdmissionReceipt(cloudImage)
+  }, [cloudImage])
+  
 
   return (
     <>
@@ -59,9 +59,9 @@ const Payment = ({paid, myEmail}) => {
         <div className="selected-image">
         {isLoading ? (
             <div className="ping"></div>
-          ) : cloudImage != null ? (
+          ) : cloudLinkForAdmissionReceipt != null ? (
             <img
-              src={cloudImage}
+              src={cloudLinkForAdmissionReceipt}
               alt="Avatar"
               style={{ width: "100%", height: "100%", borderRadius: "0%" }}
             />
