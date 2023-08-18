@@ -66,7 +66,10 @@ const Admission = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const [paid, setPaid] = useState(false);
+  const [paid, setPaid] = useState(() => {
+    const storedPaid = localStorage.getItem("currentPaidState");
+    return storedPaid !== null ? JSON.parse(storedPaid) : false;
+  });
 
   const handleClose = () => {
     setOpen(false);
@@ -91,6 +94,7 @@ const Admission = () => {
           setIsLoading(false);
           setOpen(false);
           dispatch(newStudent(res.data.response));
+          localStorage.setItem("currentPaidState", globalState.paidForAdmission);
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -100,7 +104,7 @@ const Admission = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [globalState]);
+  }, [globalState, globalState.paidForAdmission, navigate]);
 
 
   const payWithPaystack = () => {
@@ -127,7 +131,12 @@ const Admission = () => {
           title: "Thank You " + globalState.firstName,
           text: message,
           footer: "",
-        });
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        })
         if (response.status == "success") {
           let payload = {
             myEmail: globalState.email,
@@ -140,7 +149,7 @@ const Admission = () => {
             .post(endpoint, payload)
             .then((response) => {
               if (response.data.status) {
-                console.log(response.data.message);
+                localStorage.setItem("currentPaidState", true);
               }
             })
             .catch((err) => {
@@ -154,17 +163,13 @@ const Admission = () => {
   };
 
   const handleChange = (event, newValue) => {
-    if (/* globalState.paidForAdmission */ paid && newValue !== 1) {
-      setValue(newValue);
-      console.log(newValue, /* globalState.paidForAdmission */ paid, value);
-    } else if (!/* globalState.paidForAdmission */ paid && newValue !== 1 && newValue !== 0) {
-      setValue(1);
-      console.log(newValue, /* globalState.paidForAdmission */ paid, value);
+    if ((paid === false) && (newValue !== 1 || newValue !== 0)) {
+      setValue(1)
+      console.log(newValue, paid);
       navigate("/student/admission/payment");
       payWithPaystack();
     } else {
       setValue(newValue);
-      console.log(newValue, /* globalState.paidForAdmission */ paid);
     }
   };
 
