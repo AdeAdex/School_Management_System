@@ -8,11 +8,11 @@ const Payment = ({paid}) => {
     <>
       <div className="payment-card">
       <div className="status">
-        <div className={`status-value ${paid ? 'paid' : 'not-paid'}`}>Application Fee: 
-          {paid ? 'Paid' : 'Not Paid'}
+        <div className={`status-value w-100 ${paid ? 'paid' : 'not-paid'}`}> <span>Application Fee: </span> 
+          <small>{paid ? 'Paid' : 'Not Paid'}</small>
         </div>
       </div>
-      <div className="amount">Amount Paid: ₦5000</div>
+      <div className="amount"><span>Amount Paid:</span> <small>₦5000</small></div>
       <div className="method">Pay Method: 'card'</div>
       <div className="payment-slip"></div>
     </div>
