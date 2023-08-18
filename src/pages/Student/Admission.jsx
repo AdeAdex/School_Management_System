@@ -106,10 +106,10 @@ const Admission = () => {
 
   }, [globalState]);
   
-  useEffect(() => {
-    setPaid(globalState.paidForAdmission);
-    console.log(paid);
-  }, [globalState, dispatch]);
+  // useEffect(() => {
+  //   setPaid(true);
+  //   console.log(paid);
+  // }, [globalState, dispatch]);
   
   const payWithPaystack = () => {
     let handler = PaystackPop.setup({
@@ -160,25 +160,37 @@ const Admission = () => {
   };
 
   const handleChange = (event, newValue) => {
-    if (paid && newValue !== 1) {
-      setValue(newValue);
-    console.log(newValue, paid, value);
-    } else if (!paid && (newValue !== 1 && newValue !== 0)) {
-      setValue(1);
-    console.log(newValue, paid, value);
-      navigate("/student/admission/payment");
-      payWithPaystack();
-    } else {
-      setValue(newValue);
-    console.log(newValue, paid);
+    let payload = {
+      myEmail: globalState.email,
     }
+    let endpoint = "http://localhost:2000/student_account/confirm"
+    axios.post(endpoint, payload)
+    .then((res) => {
+      if (res.data.status) {
+        
+      }
+    })
+    // if (paid && newValue !== 1) {
+    //   setValue(newValue);
+    // console.log(newValue, paid, value);
+    // } else if (!paid && (newValue !== 1 && newValue !== 0)) {
+    //   setValue(1);
+    // console.log(newValue, paid, value);
+    //   navigate("/student/admission/payment")
+    //   payWithPaystack();
+    // } else {
+    //   setValue(newValue);
+    // console.log(newValue, paid);
+    // }
   };
 
   const handlePaymentClick = () => {
-    // if (value === 1) {
+    if (!paid) {
       payWithPaystack();
-    // }
-    navigate("/student/admission/payment");
+      navigate("/student/admission/payment");
+    } else {
+      navigate("/student/admission/payment");
+    }
   };
   
   
@@ -353,7 +365,7 @@ const Admission = () => {
               <PickClass />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Payment />
+              <Payment paid={paid}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
               <PersonalInformation />
