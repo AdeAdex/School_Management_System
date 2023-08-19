@@ -273,13 +273,13 @@
     width: 100%;
   }
 
-  .status,
+  /* .status,
   .amount,
   .method {
     flex-direction: column;
     align-items: flex-start;
     font-size: 16px;
-  }
+  } */
 
   .status-value {
     margin-top: 10px;
