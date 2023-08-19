@@ -5,7 +5,7 @@ import { Badge } from "@mantine/core";
 import axios from "axios";
 import BigReceiptModal from "./BigReceiptModal";
 
-const Payment = ({ paid, myEmail, receiptURL, lastName, firstName }) => {
+const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -78,7 +78,7 @@ const Payment = ({ paid, myEmail, receiptURL, lastName, firstName }) => {
           <div className="card-content">
           <div className="name-date">
             <div className="name">{lastName} {" "} {firstName}</div>
-            <div className="date my-3 text-white"><span className="my-auto">Uploaded:</span> <small className="my-auto">{}</small></div>
+            <div className="date my-3 text-white"><span className="my-auto">Uploaded:</span> <small className="my-auto">{receiptDate}</small></div>
           </div>
           <div className="selected-image">
               <div
