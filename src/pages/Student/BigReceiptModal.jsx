@@ -1,19 +1,26 @@
 import React from "react";
+import Modal from "react-bootstrap/Modal";
 
-const BigReceiptModal = ({ onClose, cloudImage }) => {
+
+const BigReceiptModal = ({ isOpen, onClose, cloudImage }) => {
   return (
-      <div className="modal">
-        <div className="modal-content">
-          <span className="close" onClick={onClose}>
-            &times;
-          </span>
-          <img
-            src={!cloudImage ? "/pic/america.png" : cloudImage}
+    <>
+    <Modal show={isOpen} onHide={onClose} animation={true}>
+        <Modal.Header className="bg-white text-dark">
+          <Modal.Title className="text-uppercase text-center mx-auto">
+            My Receipt
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-uppercase">
+        <img
+            src={cloudImage}
             alt="Avatar"
-            style={{ width: "80%", height: "80%" }}
+            style={{ width: "100%", height: "100%" }}
           />
-        </div>
-      </div>
+        </Modal.Body>
+      
+      </Modal>
+      </>
   );
 };
 

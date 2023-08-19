@@ -9,7 +9,7 @@ const Payment = ({ paid, myEmail, receiptURL }) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const hasUploadedImage = cloudImage !== null;
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleImageSelect = (e) => {
     setIsLoading(true);
@@ -24,6 +24,7 @@ const Payment = ({ paid, myEmail, receiptURL }) => {
         .post(endpoint, { myImage: reader.result, myEmail })
         .then((response) => {
           setIsLoading(false);
+          openModal();
         })
         .catch((err) => {
           console.log(err);
@@ -35,14 +36,11 @@ const Payment = ({ paid, myEmail, receiptURL }) => {
     setCloudImage(receiptURL);
   }, [receiptURL]);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openModal = () => {
-    setIsModalOpen(true);
+    setModalOpen(true);
   };
-
   const closeModal = () => {
-    setIsModalOpen(false);
+    setModalOpen(false);
   };
 
   return (
@@ -73,20 +71,26 @@ const Payment = ({ paid, myEmail, receiptURL }) => {
           <span>Payment Slip:</span>
           <small className="fw-bold">Upload your payment slip here</small>
           <input type="file" accept="image/*" onChange={handleImageSelect} />
-          {hasUploadedImage ? (
+          {isLoading ? ( // Display ping while isLoading
+            <div className="ping"></div>
+          ) : cloudImage ? ( // Display image if cloudImage is truthy
             <div className="selected-image">
-              {isLoading ? (
-                <div className="ping"></div>
-              ) : (
-                <img
-                  src={!cloudImage ? "/pic/america.png" : cloudImage}
-                  alt="Avatar"
-                  style={{ width: "10%", height: "10%", borderRadius: "0%" }}
-                  onClick={openModal}
-                />
-              )}
+              <div
+                className="admission-receipt"
+                style={{ width: "20%", height: "80px", borderRadius: "0%" }}
+                onClick={openModal}
+              >
+                <img src={cloudImage} alt="Avatar" className="hover-img" />
+                <div class="cover-container">
+                <img src={cloudImage} alt="" className="cover-img" />
+                  <p className="cover-txt" style={{ fontSize: "12px" }}>
+                    Hover & Click{" "}
+                  </p>
+                </div>
+              </div>
             </div>
           ) : (
+            // Display arrow if no image is selected
             <div className="arrow">
               <span className="arrow-span"></span>
               <span className="arrow-span"></span>
@@ -96,8 +100,12 @@ const Payment = ({ paid, myEmail, receiptURL }) => {
         </div>
       </div>
 
-      {isModalOpen && (
-        <BigReceiptModal cloudImage={cloudImage} onClose={closeModal} />
+      {modalOpen && (
+        <BigReceiptModal
+          cloudImage={cloudImage}
+          isOpen={modalOpen}
+          onClose={closeModal}
+        />
       )}
     </>
   );
