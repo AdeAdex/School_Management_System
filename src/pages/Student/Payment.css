@@ -63,6 +63,8 @@
 
 .payment-slip input[type="file"] {
   margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .selected-image {
@@ -263,6 +265,9 @@
 
 
 
+
+
+
 @media screen and (max-width: 767px) {
   .payment-card {
     width: 100%;
@@ -283,5 +288,9 @@
   .admission-receipt {
     width: 100px !important;
     height: 100px !important;
+  }
+
+  .payment-slip input[type="file"] {
+    max-width: 100%;
   }
 }
