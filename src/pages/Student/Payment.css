@@ -180,6 +180,43 @@
 }
 
 
+.give-it-a-class-name {
+  width: 100%;
+  height: 200px;
+  background-color: #3C37FF;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-date {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* margin-bottom: 10px; */
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.date {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #999;
+}
+
+/* Rest of the styles remain the same */
+
+
+
 .admission-receipt {
   position: relative;
   border-radius: 10px;

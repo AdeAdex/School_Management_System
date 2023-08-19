@@ -8,7 +8,7 @@ const BigReceiptModal = ({ isOpen, onClose, cloudImage }) => {
     <Modal show={isOpen} onHide={onClose} animation={true}>
         <Modal.Header className="bg-white text-dark">
           <Modal.Title className="text-uppercase text-center mx-auto">
-            My Receipt
+            My  Receipt
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
