@@ -324,7 +324,7 @@
 
   .admission-receipt {
     width: 100px !important;
-    height: 100px !important;
+    height: 60px !important;
   }
 
   .payment-slip input[type="file"] {
