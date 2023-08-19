@@ -361,7 +361,7 @@ const Admission = () => {
               <PickClass />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Payment paid={paid} myEmail={globalState.email} receiptURL={globalState.paymentURL} lastName={globalState.lastName} firstName={globalState.firstName}/>
+              <Payment paid={paid} myEmail={globalState.email} receiptURL={globalState.paymentURL}  lastName={globalState.lastName} firstName={globalState.firstName}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
               <PersonalInformation />
