@@ -81,23 +81,12 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 767px) {
-  .payment-card {
-    width: 100%;
-  }
 
-  .status,
-  .amount,
-  .method {
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 16px;
-  }
 
-  .status-value {
-    margin-top: 10px;
-  }
-}
+
+
+
+
 
 .loader {
   width: 2rem;
@@ -270,4 +259,29 @@
 .admission-receipt img {
   width: 100%;
   height: 100%;
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .payment-card {
+    width: 100%;
+  }
+
+  .status,
+  .amount,
+  .method {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+
+  .status-value {
+    margin-top: 10px;
+  }
+
+  .admission-receipt {
+    width: 100px !important;
+    height: 100px !important;
+  }
 }
