@@ -1,0 +1,6 @@
+@media screen and (max-width: 768px) {
+        .signup-account-label {
+          flex: 0 0 calc(45% - 8px);  
+          max-width: none;
+        }
+      }

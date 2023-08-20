@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
-import {  Router, redirect, useNavigate } from "react-router-dom";
+import { Router, redirect, useNavigate } from "react-router-dom";
 import Footer from "../components/footerComponents/Footer";
-
-
-
-
+import "./AccountTypePage.css";
 
 const AccountTypePage = () => {
   const [first, setfirst] = useState("");
-  const [redirectToCreateAccount, setRedirectToCreateAccount] = useState(false)
+  const [redirectToCreateAccount, setRedirectToCreateAccount] = useState(false);
   const navigate = useNavigate();
 
- 
   let h4;
   useEffect(() => {
     h4 = document.createElement("div");
     const h4textNode = document.createTextNode(
       "Please select an account type above to continue. We will create your account in seconds."
-      );
-      h4.appendChild(h4textNode);
-      textDiv.append(h4);
-    }, []);
-    
-    const setImage = (mySelect = "nothing ") => {
-      textDiv.innerHTML = "";
-      if (mySelect == "staff") {
-        h4 = document.createElement("h4");
+    );
+    h4.appendChild(h4textNode);
+    textDiv.append(h4);
+  }, []);
+
+  const setImage = (mySelect = "nothing ") => {
+    textDiv.innerHTML = "";
+    if (mySelect == "staff") {
+      h4 = document.createElement("h4");
       const h2 = document.createElement("div");
       const h4textNode = document.createTextNode("Hello Staff,");
       const h2textNode = document.createTextNode(
@@ -60,10 +56,13 @@ const AccountTypePage = () => {
     } else if (h4.innerHTML == "Hi Student,") {
       // setRedirectToCreateAccount(true)
       // if (redirectToCreateAccount) {
-        // }
-          navigate("/student/create_account")
+      // }
+      navigate("/student/create_account");
       // navigate("/student_signup/create_account");
-    } else if (h4.innerHTML == "Please select an account type above to continue. We will create your account in seconds.") {
+    } else if (
+      h4.innerHTML ==
+      "Please select an account type above to continue. We will create your account in seconds."
+    ) {
       navigate("/account_type");
       console.log(h4.innerHTML);
       textDiv.innerHTML =
@@ -87,17 +86,18 @@ const AccountTypePage = () => {
           <h3
             className="text-capitalize text-center"
             style={{
-              fontFamily: " Georgia, 'Times New Roman', Times, serif",
+              fontFamily: "Georgia, 'Times New Roman', Times, serif",
               color: "#01F",
             }}
           >
             choose account type
           </h3>
-          <div className="d-flex gap-4 mx-auto mt-5">
+          <div className="d-flex flex-wrap justify-content-center gap-4 mx-auto mt-5">
             <label
-              className=""
+              className="signup-account-label"
               style={{
-                width: "150px",
+                flex: "0 0 calc(45% - 8px)",
+                maxWidth: "200px",
                 outline: "outset gray",
                 cursor: "pointer",
               }}
@@ -110,7 +110,6 @@ const AccountTypePage = () => {
               />
               <hr className="mx-3" />
               <div className="text-center fw-bold">Staff</div>
-              {/* <hr className="mx-3" /> */}
               <input
                 type="radio"
                 name="checkboxes"
@@ -119,9 +118,10 @@ const AccountTypePage = () => {
               />
             </label>
             <label
-              className=""
+              className="signup-account-label"
               style={{
-                width: "150px",
+                flex: "0 0 calc(45% - 8px)",
+                maxWidth: "200px",
                 outline: "outset gray",
                 cursor: "pointer",
               }}
@@ -146,13 +146,6 @@ const AccountTypePage = () => {
           <div className="text-center mt-5 text-div p-3" id="textDiv">
             {first}
           </div>
-          {/* <div
-            id=""
-            className="position-absolute"
-            style={{ left: "47%", top: "60%" }}
-          >
-            <i className="fas fa-circle-check text-success"></i>
-          </div> */}
           <button
             className="btn btn-sm px-5 mt-4 bg-primary text-white mx-auto"
             onClick={createAccount}
