@@ -9,7 +9,6 @@ const CreateAccount = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-
   let formik = useFormik({
     initialValues: {
       firstName: "",
@@ -22,7 +21,7 @@ const CreateAccount = () => {
 
     onSubmit: async (values) => {
       setIsLoading(true);
-    
+
       try {
         const randomNumber = Math.floor(Math.random() * 100000000);
         const numbersPart = randomNumber.toString().padStart(8, "0");
@@ -30,14 +29,19 @@ const CreateAccount = () => {
           const randomIndex = Math.floor(Math.random() * 26);
           return String.fromCharCode(65 + randomIndex);
         }).join("");
-    
+
         const currentDate = format(new Date(), "yyyy-MM-dd");
         const registrationNumber = numbersPart + alphabetPart;
-        const newValues = { ...values, registrationNumber, createdDate: currentDate };
-        const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
-        
+        const newValues = {
+          ...values,
+          registrationNumber,
+          createdDate: currentDate,
+        };
+        const endpoint =
+          "https://school-portal-backend-adex2210.vercel.app/student_account/student";
+
         const response = await axios.post(endpoint, newValues);
-    
+
         if (response.data.status) {
           setIsLoading(false);
           console.log(response.data.status);
@@ -54,7 +58,7 @@ const CreateAccount = () => {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
-    
+
           Toast.fire({
             icon: "error",
             title: response.data.message,
@@ -74,18 +78,18 @@ const CreateAccount = () => {
             toast.addEventListener("mouseleave", Swal.resumeTimer);
           },
         });
-    
-        const errorMessage = err.response?.data?.message || "An error occurred.";
-    
+
+        const errorMessage =
+          err.response?.data?.message || "An error occurred.";
+
         Toast.fire({
           icon: "error",
           title: errorMessage,
         });
       }
     },
+
     
-
-
     validationSchema: yup.object({
       firstName: yup
         .string()
@@ -272,8 +276,14 @@ const CreateAccount = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary signup-btn" type="submit">{isLoading ? ( <span className="d-flex"><div className="spinner my-auto"></div></span> ) : (<span> Create Account</span>)}
-             
+            <button className="btn btn-primary signup-btn" type="submit">
+              {isLoading ? (
+                <span className="d-flex">
+                  <div className="spinner my-auto"></div>
+                </span>
+              ) : (
+                <span> Create Account</span>
+              )}
             </button>
           </div>
         </form>
