@@ -385,11 +385,11 @@ const Test = () => {
               >
                 <img
                   src="/pic/ade.png"
-                  className="d-flex flex-start"
+                  className="d-flex flex-start my-auto"
                   alt=""
-                  style={{ width: "50px" }}
+                  style={{ width: "50px", height: '50px' }}
                 />
-                <div className="my-auto sch-name" style={{ whiteSpace: "nowrap", overflow: "hidden" }}>Adex International School</div>
+                <div className="my-auto sch-name">Adex International School</div>
               </div>
               <div
                 className="d-flex justify-content-between position-relative"
