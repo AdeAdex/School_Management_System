@@ -496,7 +496,7 @@ const Test = () => {
                       src="/pic/ade.png"
                       className="d-flex flex-start"
                       alt=""
-                      style={{ width: "50px" }}
+                      style={{ width: "50px", height: '50px' }}
                     />
                     <div className="my-auto">Adex International School</div>
                   </div>
@@ -518,7 +518,7 @@ const Test = () => {
                       src="/pic/ade.png"
                       className="d-flex flex-start"
                       alt=""
-                      style={{ width: "50px" }}
+                      style={{ width: "50px", height: '50px' }}
                     />
                     <div className="my-auto">Adex International School</div>
                   </div>

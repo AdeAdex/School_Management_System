@@ -7,6 +7,15 @@
     padding: 0px 10px;
   }
 
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
   .start-exam-btn {
     width: 100%;
     justify-content: center;
