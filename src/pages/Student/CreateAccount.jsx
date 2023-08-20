@@ -20,54 +20,6 @@ const CreateAccount = () => {
       check: false,
     },
 
-    // onSubmit: (values) => {
-    //   setIsLoading(true)
-    //   const randomNumber = Math.floor(Math.random() * 100000000);
-    //   const numbersPart = randomNumber.toString().padStart(8, "0");
-    //   const alphabetPart = Array.from({ length: 2 }, () => {
-    //     const randomIndex = Math.floor(Math.random() * 26);
-    //     return String.fromCharCode(65 + randomIndex);
-    //   }).join("");
-
-    //   const currentDate = format(new Date(), "yyyy-MM-dd");
-    //   const registrationNumber = numbersPart + alphabetPart;
-    //   const newValues = { ...values, registrationNumber, createdDate: currentDate };
-    //   const endpoint = "http://localhost:2000/student_account/student";
-    //   axios.post(endpoint, newValues)
-    //   .then((response) => {
-    //     if (response.data.status) {
-    //       setIsLoading(false)
-    //       console.log(response.data.status);
-    //       navigate("/student_login");
-    //     } else {
-    //       const Toast = Swal.mixin({
-    //         toast: true,
-    //         position: "top",
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         timerProgressBar: true,
-    //         didOpen: (toast) => {
-    //           toast.addEventListener("mouseenter", Swal.stopTimer);
-    //           toast.addEventListener("mouseleave", Swal.resumeTimer);
-    //         },
-    //       });
-
-    //       Toast.fire({
-    //         icon: "error",
-    //         title: response.data.message,
-    //       });
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.data.message);
-    //     if (err.code === 11000) {
-    //       // alert(err.message);r
-    //     }
-    //   })
-    // },
-
-
-
     onSubmit: async (values) => {
       setIsLoading(true);
     
@@ -82,7 +34,7 @@ const CreateAccount = () => {
         const currentDate = format(new Date(), "yyyy-MM-dd");
         const registrationNumber = numbersPart + alphabetPart;
         const newValues = { ...values, registrationNumber, createdDate: currentDate };
-        const endpoint = "http://localhost:2000/student_account/student";
+        const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student";
         
         const response = await axios.post(endpoint, newValues);
     
@@ -110,10 +62,25 @@ const CreateAccount = () => {
         }
         setIsLoading(false);
       } catch (err) {
-        console.log(err);
-        if (err.code === 11000) {
-          // Handle duplicate registration number error
-        }
+        setIsLoading(false);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+    
+        const errorMessage = err.response?.data?.message || "An error occurred.";
+    
+        Toast.fire({
+          icon: "error",
+          title: errorMessage,
+        });
       }
     },
     
@@ -141,9 +108,6 @@ const CreateAccount = () => {
           "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
         ),
       checkbox: yup.boolean().oneOf([true]),
-      // createdOn:
-      // date()
-      // .default(() => new Date()),
     }),
   });
 
