@@ -168,7 +168,7 @@ const Admission = () => {
       setValue(1);
       console.log(newValue, paid);
       navigate("/student/admission/payment");
-      payWithPaystack();
+      // payWithPaystack();
     } else {
       setValue(newValue);
     }
@@ -176,7 +176,7 @@ const Admission = () => {
 
   const handlePaymentClick = () => {
     if (!paid) {
-      payWithPaystack();
+      // payWithPaystack();
       navigate("/student/admission/payment");
     } else {
       navigate("/student/admission/payment");

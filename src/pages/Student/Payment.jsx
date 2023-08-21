@@ -4,8 +4,20 @@ import "./Payment.css";
 import { Badge } from "@mantine/core";
 import axios from "axios";
 import BigReceiptModal from "./BigReceiptModal";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }) => {
+const Payment = ({
+  paid,
+  myEmail,
+  receiptURL,
+  receiptDate,
+  lastName,
+  firstName,
+}) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +55,72 @@ const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }
     setModalOpen(false);
   };
 
+
+  const payWithPaystack = () => {
+    let handler = PaystackPop.setup({
+      key: "pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537",
+      email: globalState.email,
+      amount: 5000 * 100,
+      ref: "Adex" + Math.floor(Math.random() * 1000000000 + 1),
+      onClose: function () {
+        let message = "You just cancel this transaction";
+        Swal.fire({
+          icon: "error",
+          title: "Dear " + globalState.firstName,
+          text: message,
+          footer:
+            "For further assistance, please call us at +2347033959586 or email us at adeoluamole@gmail.com",
+        });
+      },
+      callback: function (response) {
+        let message =
+          "Payment completed! Your Reference Number is: " + response.reference;
+        Swal.fire({
+          icon: "success",
+          title: "Thank You " + globalState.firstName,
+          text: message,
+          footer: "",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+        if (response.status == "success") {
+          let payload = {
+            myEmail: globalState.email,
+            justPaid: true,
+          };
+          console.log(payload);
+          let endpoint =
+            "https://school-portal-backend-adex2210.vercel.app/student_account/paidAdmissionFee";
+          axios
+            .post(endpoint, payload)
+            .then((response) => {
+              if (response.data.status) {
+                localStorage.setItem("currentPaidState", true);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      },
+    });
+
+    handler.openIframe();
+  };
+
+  const [payType, setPayType] = React.useState("card");
+
+  const handleChange = (event) => {
+    setPayType(event.target.value);
+    if (event.target.value === "card") {
+      payWithPaystack();
+    } else {
+      
+    }
+  };
+
   return (
     <>
       <div className="payment-card">
@@ -62,19 +140,44 @@ const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }
           </div>
         </div>
         <div className="amount">
-        {paid ? (
-          <>
-          <span>Amount Paid:</span> <small className="fw-bold">₦5000</small>
-          </>
-        ) : (
-          <>
-          <span>Amount to be Paid:</span> <small className="fw-bold">₦5000</small>
-          </>
-        )}
-          
+          {paid ? (
+            <>
+              <span>Amount Paid:</span> <small className="fw-bold">₦5000</small>
+            </>
+          ) : (
+            <>
+              <span>Amount to be Paid:</span>{" "}
+              <small className="fw-bold">₦5000</small>
+            </>
+          )}
         </div>
         <div className="method">
-          <span>Payment Method:</span> <small className="fw-bold">Card</small>
+          {paid ? (
+            <>
+              <span>Payment Method:</span>{" "}
+              <small className="fw-bold">Card</small>
+            </>
+          ) : (
+            <>
+              <Box sx={{ width: '100%', marginTop: '30px', minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label" style={{fontSize: '22px'}}>
+                    Pay Method
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={payType}
+                    label="Pay Method"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="card">Debit Card</MenuItem>
+                    <MenuItem value="slip">Payment Slip Upload</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </>
+          )}
         </div>
         <div className="payment-slip">
           <span>Payment Slip:</span>
@@ -82,32 +185,35 @@ const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }
           <input type="file" accept="image/*" onChange={handleImageSelect} />
           {isLoading ? ( // Display ping while isLoading
             <div className="ping"></div>
-          ) : cloudImage ? ( 
-          <div className="give-it-a-class-name text-white">
-          <div className="card-content">
-          <div className="name-date">
-            <div className="name">{lastName} {" "} {firstName}</div>
-            <div className="date my-3 text-white"><span className="my-auto">Uploaded:</span> <small className="my-auto">{receiptDate}</small></div>
-          </div>
-          <div className="selected-image">
-              <div
-                className="admission-receipt"
-                style={{ width: "20%", height: "80px", borderRadius: "0%" }}
-                onClick={openModal}
-              >
-                <img src={cloudImage} alt="Avatar" className="hover-img" />
-                <div class="cover-container">
-                <img src={cloudImage} alt="" className="cover-img" />
-                  <p className="cover-txt" style={{ fontSize: "12px" }}>
-                    Hover & Click{" "}
-                  </p>
+          ) : cloudImage ? (
+            <div className="give-it-a-class-name text-white">
+              <div className="card-content">
+                <div className="name-date">
+                  <div className="name">
+                    {lastName} {firstName}
+                  </div>
+                  <div className="date my-3 text-white">
+                    <span className="my-auto">Uploaded:</span>{" "}
+                    <small className="my-auto">{receiptDate}</small>
+                  </div>
+                </div>
+                <div className="selected-image">
+                  <div
+                    className="admission-receipt"
+                    style={{ width: "20%", height: "80px", borderRadius: "0%" }}
+                    onClick={openModal}
+                  >
+                    <img src={cloudImage} alt="Avatar" className="hover-img" />
+                    <div class="cover-container">
+                      <img src={cloudImage} alt="" className="cover-img" />
+                      <p className="cover-txt" style={{ fontSize: "12px" }}>
+                        Hover & Click{" "}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-        </div>
-          
-          </div>
-            
           ) : (
             // Display arrow if no image is selected
             <div className="arrow">
@@ -131,20 +237,3 @@ const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }
 };
 
 export default Payment;
-
-
-{/* <div className="selected-image">
-              <div
-                className="admission-receipt"
-                style={{ width: "20%", height: "80px", borderRadius: "0%" }}
-                onClick={openModal}
-              >
-                <img src={cloudImage} alt="Avatar" className="hover-img" />
-                <div class="cover-container">
-                <img src={cloudImage} alt="" className="cover-img" />
-                  <p className="cover-txt" style={{ fontSize: "12px" }}>
-                    Hover & Click{" "}
-                  </p>
-                </div>
-              </div>
-            </div> */}
