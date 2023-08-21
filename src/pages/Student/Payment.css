@@ -186,11 +186,6 @@
   flex-direction: column;
 }
 
-.name-date {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* margin-bottom: 10px; */
-}
 
 .name {
   font-size: 18px;
