@@ -43,6 +43,7 @@
     margin-right: auto !important;
     width: auto;
     top: 0% !important;
+    margin-top: 10%;
     right: 0% !important;
     padding-left: unset !important;
     padding-right: unset !important;
@@ -149,85 +150,3 @@
   background-color: rgba(128, 128, 128, 0.171);
 }
 
-
-
-
-
-
-
-
-/* @media screen and (max-width: 768px) {
-  .text-container2, .question-container {
-        width: 100% !important;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 0px 10px;
-  }
-
-  .start-exam-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 5px;
-  }
-
-  .start-exam-div {
-    padding: 5px 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    right: 0;
-    background-color: whitesmoke;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .question-ul label {
-    width: 100% !important;
-  }
-
-  .question-navigation-table {
-    position: relative;
-    top: 87% !important;
-    right: auto !important;
-    left: auto;
-    display: flex;
-    overflow-x: auto;
-    background-color: transparent;
-    box-shadow: none;
-    transform: translate(15%, 0%);
-  }
-
-  .button-container {
-    margin-top: unset !important;
-  }
-
-  .question-h4 {
-    display: none;
-  }
-
-  .question-number-list {
-    display: flex;
-    gap: 5px;
-    flex-wrap: nowrap;
-    padding: 5px 0;
-  }
-
-  .question-number-list li {
-    cursor: pointer;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    background-color: #f0f0f0;
-  }
-
-  .question-number-list li.active {
-    background-color: #007bff;
-    color: white;
-    border: none;
-  }
-
-  .tick-mark {
-    bottom: 0;
-    right: 0 !important;
-  }
-} */
