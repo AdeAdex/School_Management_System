@@ -209,7 +209,15 @@ const Payment = ({
         </div>
         {myChoice ? (
           <>
-            <div>hi</div>
+          <div className="give-it-a-class-name text-white">
+              <div className="card-content">
+                <div className="name-date">
+                  <div className="name">
+                    {lastName} {firstName}
+                  </div>
+                </div>
+              </div>
+            </div>
           </>
         ) : (
           <>
@@ -274,3 +282,51 @@ const Payment = ({
 };
 
 export default Payment;
+
+
+
+
+{/* <div className="payment-slip">
+          <span>Payment Slip:</span>
+          <small className="fw-bold">Upload your payment slip here</small>
+          <input type="file" accept="image/*" onChange={handleImageSelect} />
+          {isLoading ? ( // Display ping while isLoading
+            <div className="ping"></div>
+          ) : cloudImage ? (
+            <div className="give-it-a-class-name text-white">
+              <div className="card-content">
+                <div className="name-date">
+                  <div className="name">
+                    {lastName} {firstName}
+                  </div>
+                  <div className="date my-3 text-white">
+                    <span className="my-auto">Uploaded:</span>{" "}
+                    <small className="my-auto">{receiptDate}</small>
+                  </div>
+                </div>
+                <div className="selected-image">
+                  <div
+                    className="admission-receipt"
+                    style={{ width: "20%", height: "80px", borderRadius: "0%" }}
+                    onClick={openModal}
+                  >
+                    <img src={cloudImage} alt="Avatar" className="hover-img" />
+                    <div class="cover-container">
+                      <img src={cloudImage} alt="" className="cover-img" />
+                      <p className="cover-txt" style={{ fontSize: "12px" }}>
+                        Hover & Click{" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            // Display arrow if no image is selected
+            <div className="arrow">
+              <span className="arrow-span"></span>
+              <span className="arrow-span"></span>
+              <span className="arrow-span"></span>
+            </div>
+          )}
+        </div> */}
