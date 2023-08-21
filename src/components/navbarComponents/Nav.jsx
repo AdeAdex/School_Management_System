@@ -9,7 +9,7 @@ const Nav = () => {
   const label = opened ? 'Close navigation' : 'Open navigation';
 
   const mobileStyle = {
-    maxHeight: opened ? "auto" : "0",
+    maxHeight: opened ? "1000px" : "0",
     overflow: "hidden",
     // opacity: opened ? 1 : 0,
     transition: "max-height 1s ease-in-out, opacity 1s ease-in-out",
