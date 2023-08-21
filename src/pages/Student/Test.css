@@ -90,7 +90,7 @@
     z-index: 1;
   }
   .question-number-item:hover {
-    background-color: rgba(11, 169, 242, 0.171);
+    background-color: rgba(11, 169, 242, 0.816) !important;
   }
 }
 
