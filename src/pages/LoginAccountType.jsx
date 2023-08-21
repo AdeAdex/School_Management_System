@@ -77,9 +77,9 @@ const LoginAccountType = () => {
           </div>
           <div className={`d-flex mt-4 mx-auto justify-content-center ${isSmallScreen ? "gap-3" : "gap-4"}`}>
             <div
-              className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
+              className="shadow position-relative text-capitalize text-center py-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                flex: isSmallScreen ? "0 0 calc(45% - 8px)" : "0 0 calc(45% - 8px)",
+                flex: isSmallScreen ? "0 0 calc(50% - 8px)" : "0 0 calc(50% - 8px)",
                 maxWidth: isSmallScreen ? "none" : "200px",
                 height: "200px",
                 borderRadius: "10px",
@@ -105,9 +105,9 @@ const LoginAccountType = () => {
               />
             </div>
             <div
-              className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
+              className="shadow position-relative text-capitalize text-center py-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                flex: isSmallScreen ? "0 0 calc(45% - 8px)" : "0 0 calc(45% - 8px)",
+                flex: isSmallScreen ? "0 0 calc(50% - 8px)" : "0 0 calc(50% - 8px)",
                 maxWidth: isSmallScreen ? "none" : "200px",
                 height: "200px",
                 borderRadius: "10px",
