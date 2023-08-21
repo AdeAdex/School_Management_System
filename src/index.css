@@ -80,7 +80,6 @@
       
         .sticky-container {
           display: none !important;
-          /* margin-top: 0px !important; */
         }
       
         ul {
@@ -185,6 +184,10 @@
         /* .navbar-collapse .navbar-nav, .collapse form {
           display: none !important;
           background-color: red;
+        } */
+
+        /* .navbar-collapse {
+          background-color: red !important;
         } */
       
         .navbar-toggler:focus .navbar-toggler:active,
@@ -404,9 +407,7 @@
       #textDiv {
         transition: all 0.3s ease-in-out;
       }
-
-      .nav-link {
-      }
+     
       .nav-links:after {
         position: relative;
         top: 12px;

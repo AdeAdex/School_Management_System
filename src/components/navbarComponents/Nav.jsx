@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import StickyNav from "./StickyNav";
+import { useDisclosure } from '@mantine/hooks';
+import { Burger } from '@mantine/core';
 
 const Nav = () => {
+  const [opened, { toggle }] = useDisclosure(false);
+  const label = opened ? 'Close navigation' : 'Open navigation';
+  
   return (
     <>
       <nav
@@ -37,11 +42,13 @@ const Nav = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+          <Burger className="navbar-toggler-ico" opened={opened} onClick={toggle} aria-label={label} />
+            {/* <span className="navbar-toggler-icon"></span> */}
           </button>
         </div>
           <div
-            className="collapse navbar-collapse"
+            // className="collapse navbar-collapse"
+            className={`collapse navbar-collapse ${opened ? "show" : ""}`}
             id="navbarSupportedContent"
             style={{ height: "80px" }}
           >
