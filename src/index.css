@@ -294,6 +294,14 @@
         .other_parallax-about_teachers_page_positioning {
           object-position: 40% 100% !important;
         }
+
+        .sticky-icons {
+          border-radius: 5px;
+        }
+
+        .sticky-icons:hover {
+          background-color: lightgray;
+        }
         
       }
       
