@@ -19,7 +19,6 @@ const Test = () => {
   const [selectedOptions, setSelectedOptions] = useState(
     Array(questions.length).fill("")
   );
-  // const [questionScores, setQuestionScores] = useState(Array(0));
   const [questionScores, setQuestionScores] = useState(
     Array.from({ length: questions.length }, () => 0)
   );

@@ -62,7 +62,16 @@ const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }
           </div>
         </div>
         <div className="amount">
+        {paid ? (
+          <>
           <span>Amount Paid:</span> <small className="fw-bold">₦5000</small>
+          </>
+        ) : (
+          <>
+          <span>Amount to be Paid:</span> <small className="fw-bold">₦5000</small>
+          </>
+        )}
+          
         </div>
         <div className="method">
           <span>Payment Method:</span> <small className="fw-bold">Card</small>
