@@ -63,7 +63,6 @@ const Test = () => {
       });
   }, [globalState]);
 
-
   const startCountdown = () => {
     const startTime = parseInt(localStorage.getItem("countdownStartTime"));
     const countdownTime = parseInt(
@@ -131,7 +130,6 @@ const Test = () => {
       submitMyScore(totalNonNegativeScore);
     }
 
-
     const storedQuestionScores = localStorage.getItem("questionScores");
     if (storedQuestionScores) {
       setQuestionScores(JSON.parse(storedQuestionScores));
@@ -139,7 +137,7 @@ const Test = () => {
       // Initialize questionScores with an array of 0's
       setQuestionScores(Array.from({ length: questions.length }, () => 0));
     }
-  
+
     const storedSelectedOptions = localStorage.getItem("selectedOptions");
     if (storedSelectedOptions) {
       setSelectedOptions(JSON.parse(storedSelectedOptions));
@@ -148,18 +146,18 @@ const Test = () => {
     if (storedAnsweredQuestions) {
       setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     }
-  //   if (storedQuestionScores) {
-  //     setQuestionScores(JSON.parse(storedQuestionScores));
-  //   }
+    //   if (storedQuestionScores) {
+    //     setQuestionScores(JSON.parse(storedQuestionScores));
+    //   }
 
-  //   const storedSelectedOptions = localStorage.getItem("selectedOptions");
-  //   if (storedSelectedOptions) {
-  //     setSelectedOptions(JSON.parse(storedSelectedOptions));
-  //   }
-  //   const storedAnsweredQuestions = localStorage.getItem("answeredQuestions");
-  // if (storedAnsweredQuestions) {
-  //   setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
-  // }
+    //   const storedSelectedOptions = localStorage.getItem("selectedOptions");
+    //   if (storedSelectedOptions) {
+    //     setSelectedOptions(JSON.parse(storedSelectedOptions));
+    //   }
+    //   const storedAnsweredQuestions = localStorage.getItem("answeredQuestions");
+    // if (storedAnsweredQuestions) {
+    //   setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
+    // }
   }, [timeIsUp]);
 
   const handleNextClick = () => {
@@ -175,41 +173,38 @@ const Test = () => {
       setQuestionScores(newQuestionScores);
 
       localStorage.setItem("currentQuestionIndex", String(newQuestionIndex));
-        localStorage.setItem("questionScores", JSON.stringify(questionScores));
-      
+      localStorage.setItem("questionScores", JSON.stringify(questionScores));
 
       setCurrentQuestionIndex(newQuestionIndex);
     } else if (currentQuestion && currentQuestion.id === 10) {
+      Swal.fire({
+        title: "Submit Exam?",
+        text: "You are about to submit your exam. Please make sure you have answered all questions before submitting.",
+        showCancelButton: true,
+        confirmButtonText: "Submit",
+        cancelButtonText: "Cancel",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const nonNegativeScores = questionScores.map((score) =>
+            Math.max(score, 0)
+          );
 
-       Swal.fire({
-      title: "Submit Exam?",
-      text: "You are about to submit your exam. Please make sure you have answered all questions before submitting.",
-      showCancelButton: true,
-      confirmButtonText: "Submit",
-      cancelButtonText: "Cancel",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp",
-      },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const nonNegativeScores = questionScores.map((score) =>
-        Math.max(score, 0)
-      );
-
-      const totalNonNegativeScore = nonNegativeScores.reduce(
-        (total, score) => total + score,
-        0
-      );
-      console.log(totalNonNegativeScore);
-      submitMyScore(totalNonNegativeScore);
-      }
-    });
+          const totalNonNegativeScore = nonNegativeScores.reduce(
+            (total, score) => total + score,
+            0
+          );
+          console.log(totalNonNegativeScore);
+          submitMyScore(totalNonNegativeScore);
+        }
+      });
     }
   };
-
 
   const submitMyScore = (newScores) => {
     const endpoint2 =
@@ -237,26 +232,25 @@ const Test = () => {
     }
   };
 
-
   const handleOptionSelect = (option) => {
     const newSelectedOptions = [...selectedOptions];
     const newQuestionScores = [...questionScores];
-  
+
     const currentQuestion = questions[currentQuestionIndex];
     const questionIndex = currentQuestion.id - 1;
-  
+
     newSelectedOptions[questionIndex] = option;
-  
+
     if (option.startsWith(currentQuestion.correctOption)) {
       newQuestionScores[questionIndex] = 10;
     } else {
       newQuestionScores[questionIndex] = -10;
     }
-  
+
     setSelectedOptions(newSelectedOptions);
-    
+
     const updatedAnsweredQuestions = [...answeredQuestions];
-    
+
     if (option !== "") {
       newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
       updatedAnsweredQuestions.push(currentQuestion.id);
@@ -266,16 +260,18 @@ const Test = () => {
         updatedAnsweredQuestions.splice(index, 1);
       }
     }
-  
+
     setAnsweredQuestions(updatedAnsweredQuestions);
     setQuestionScores(newQuestionScores);
-  
-    localStorage.setItem("answeredQuestions", JSON.stringify(updatedAnsweredQuestions));
+
+    localStorage.setItem(
+      "answeredQuestions",
+      JSON.stringify(updatedAnsweredQuestions)
+    );
     localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
     localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   };
-  
- 
+
   const handleQuestionNavigation = (index) => {
     setCurrentQuestionIndex(index);
   };
@@ -366,9 +362,8 @@ const Test = () => {
     setModalOpen(false);
   };
 
-  
   return (
-    <>
+    <div className="test-container">
       {!beginExam && !localStorage.examStarted ? (
         <div className="w-100 pb-4" style={{ width: "100%" }}>
           <div className="w-50 mx-auto text-container2">
@@ -387,9 +382,11 @@ const Test = () => {
                   src="/pic/ade.png"
                   className="d-flex flex-start my-auto"
                   alt=""
-                  style={{ width: "50px", height: '50px' }}
+                  style={{ width: "50px", height: "50px" }}
                 />
-                <div className="my-auto sch-name">Adex International School</div>
+                <div className="my-auto sch-name">
+                  Adex International School
+                </div>
               </div>
               <div
                 className="d-flex justify-content-between position-relative"
@@ -397,10 +394,13 @@ const Test = () => {
               >
                 <div className="d-flex gap-3">
                   <small
-                    className="fs-4 shadow px-2 py-1"
-                    style={{ borderRadius: "50%" }}
+                    className="fs-4 shadow px-2 py-1 user-icon"
+                    style={{
+                      borderRadius: "50%",
+                      fontSize: "24px",
+                    }}
                   >
-                    <FaUserAlt size={30} />
+                    <FaUserAlt size={24} />
                   </small>
                   <div className="fw-bold fs-4 my-auto">
                     {globalState.firstName} {globalState.lastName}{" "}
@@ -496,7 +496,7 @@ const Test = () => {
                       src="/pic/ade.png"
                       className="d-flex flex-start"
                       alt=""
-                      style={{ width: "50px", height: '50px' }}
+                      style={{ width: "50px", height: "50px" }}
                     />
                     <div className="my-auto">Adex International School</div>
                   </div>
@@ -518,7 +518,7 @@ const Test = () => {
                       src="/pic/ade.png"
                       className="d-flex flex-start"
                       alt=""
-                      style={{ width: "50px", height: '50px' }}
+                      style={{ width: "50px", height: "50px" }}
                     />
                     <div className="my-auto">Adex International School</div>
                   </div>
@@ -533,7 +533,7 @@ const Test = () => {
                   >
                     {countdown.minutes}:{countdown.seconds}
                   </div>
-                  <span className="fs-5"> Welcome: </span>
+                  <span className="fs-5"> </span>
                 </>
               )}
               <div className="fw-bold fs-5 my-auto">
@@ -563,20 +563,24 @@ const Test = () => {
                       className="btn btn-success btn-sm px-5 py-2"
                       onClick={toLogin}
                     >
-                    {isLoading ? (
-                      <div className="spinner my-auto"></div>
-                    ) : (
-                      <span>Finish</span> 
-                    )}
-                      
+                      {isLoading ? (
+                        <div className="spinner my-auto"></div>
+                      ) : (
+                        <span>Finish</span>
+                      )}
                     </button>
                   </div>
                 ) : (
-                  <div className="position-relative" style={{minHeight:'64vh'}}>
-                  <small className="fw-bold">Your Sit No: {globalState.mySitNo}</small>
+                  <div
+                    className="position-relative"
+                    style={{ minHeight: "64vh" }}
+                  >
+                    <small className="fw-bold">
+                      Your Sit No: {globalState.mySitNo}
+                    </small>
                     <h1 className="my-3">Question {currentQuestion.id}</h1>
                     <p className="my-3">{currentQuestion.content}</p>
-                    <ul className="d-flex flex-column mx-auto mb-5 mt-4 question-ul">
+                    <ul className="d-flex flex-column mx-auto mt-4 question-ul">
                       {currentQuestion.options.map((option, index) => (
                         <label
                           key={index}
@@ -604,7 +608,16 @@ const Test = () => {
                         </label>
                       ))}
                     </ul>
-                    <div className="d-flex gap-3 justify-content-center button-container" style={{marginTop: '120px'}}>
+                    <QuestionNavigationTable
+                      totalQuestions={questions.length}
+                      currentQuestionIndex={currentQuestionIndex}
+                      handleQuestionNavigation={handleQuestionNavigation}
+                      answeredQuestions={answeredQuestions}
+                    />
+                    <div
+                      className="d-flex gap-3 justify-content-center button-container"
+                      style={{ marginTop: "120px" }}
+                    >
                       <button
                         className="btn btn-primary btn-sm px-3"
                         onClick={handlePreviousClick}
@@ -618,13 +631,7 @@ const Test = () => {
                         Next
                       </button>
                     </div>
-                    {/* <p>Score: {questionScores[currentQuestionIndex]}</p> */}
-                    <QuestionNavigationTable
-                      totalQuestions={questions.length}
-                      currentQuestionIndex={currentQuestionIndex}
-                      handleQuestionNavigation={handleQuestionNavigation}
-                      answeredQuestions={answeredQuestions}
-                    />
+                    
                   </div>
                 )}
 
@@ -634,7 +641,7 @@ const Test = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
