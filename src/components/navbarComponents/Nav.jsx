@@ -7,6 +7,16 @@ import { Burger } from '@mantine/core';
 const Nav = () => {
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? 'Close navigation' : 'Open navigation';
+
+  const mobileStyle = {
+    maxHeight: opened ? "1000px" : "0",
+    overflow: "hidden",
+    transition: "max-height 0.5s ease-in-out",
+  };
+  
+  const desktopStyle = {
+    height: "80px",
+  };
   
   return (
     <>
@@ -48,9 +58,10 @@ const Nav = () => {
         </div>
           <div
             // className="collapse navbar-collapse"
-            className={`collapse navbar-collapse ${opened ? "show" : ""}`}
+            className={`collapse navbar-collapse ${opened ? "show opened" : ""}`}
             id="navbarSupportedContent"
-            style={{ height: "80px" }}
+             style={window.innerWidth <= 768 ? mobileStyle : desktopStyle}
+            // style={{ height: "80px" }}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <div className="sign-in-lg d-flex justify-content-between my-3 w-100 gap-3">
