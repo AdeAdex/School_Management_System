@@ -283,7 +283,7 @@ const Test = () => {
       myEmail: globalState.email,
     };
     let updateEndpoint =
-      "http://localhost:2000/student_account/update_admission_state";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
     axios
       .post(updateEndpoint, payload)
       .then((response) => {
