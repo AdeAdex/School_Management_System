@@ -12,7 +12,7 @@ const Nav = () => {
     maxHeight: opened ? "1000px" : "0",
     overflow: "hidden",
     opacity: opened ? 1 : 0,
-    transition: "max-height 0.5s ease-in-out, opacity 0.5s ease-in-out",
+    transition: "max-height 1s ease-in-out, opacity 1s ease-in-out",
   };
   
   const desktopStyle = {
@@ -53,7 +53,7 @@ const Nav = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-          <Burger className="navbar-toggler-ico" opened={opened} onClick={toggle} aria-label={label} />
+          <Burger opened={opened} onClick={toggle} aria-label={label} />
             {/* <span className="navbar-toggler-icon"></span> */}
           </button>
         </div>
