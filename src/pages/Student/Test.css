@@ -89,6 +89,9 @@
     height: 45px;
     z-index: 1;
   }
+  .question-number-item:hover {
+    background-color: rgba(11, 169, 242, 0.171);
+  }
 }
 
 
