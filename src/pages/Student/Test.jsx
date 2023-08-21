@@ -333,7 +333,7 @@ const Test = () => {
         setBeginExam(true);
         localStorage.setItem("examStarted", "true");
 
-        const countdownTime = 3000; // 5 minutes in seconds
+        const countdownTime = 300; // 5 minutes in seconds
         localStorage.setItem("countdownStartTime", Date.now());
         localStorage.setItem("countdownTimeRemaining", countdownTime);
 
@@ -343,11 +343,7 @@ const Test = () => {
   };
 
   const handleClick = () => {
-    // setOpen(true);
-    // setIsLoading(true);
     setTimeout(() => {
-      // setIsLoading(false);
-      // setOpen(false);
       localStorage.removeItem("studentLoginToken");
     }, 1000);
   };
