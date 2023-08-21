@@ -55,18 +55,17 @@ const Payment = ({
     setModalOpen(false);
   };
 
-
   const payWithPaystack = () => {
     let handler = PaystackPop.setup({
       key: "pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537",
-      email: globalState.email,
+      email: myEmail,
       amount: 5000 * 100,
       ref: "Adex" + Math.floor(Math.random() * 1000000000 + 1),
       onClose: function () {
         let message = "You just cancel this transaction";
         Swal.fire({
           icon: "error",
-          title: "Dear " + globalState.firstName,
+          title: "Dear " + firstName,
           text: message,
           footer:
             "For further assistance, please call us at +2347033959586 or email us at adeoluamole@gmail.com",
@@ -77,7 +76,7 @@ const Payment = ({
           "Payment completed! Your Reference Number is: " + response.reference;
         Swal.fire({
           icon: "success",
-          title: "Thank You " + globalState.firstName,
+          title: "Thank You " + firstName,
           text: message,
           footer: "",
         }).then((result) => {
@@ -87,7 +86,7 @@ const Payment = ({
         });
         if (response.status == "success") {
           let payload = {
-            myEmail: globalState.email,
+            myEmail: myEmail,
             justPaid: true,
           };
           console.log(payload);
@@ -110,14 +109,15 @@ const Payment = ({
     handler.openIframe();
   };
 
-  const [payType, setPayType] = React.useState("card");
+  const [payType, setPayType] = useState("card");
+  const [myChoice, setMyChoice] = useState(true)
 
   const handleChange = (event) => {
     setPayType(event.target.value);
     if (event.target.value === "card") {
-      payWithPaystack();
+      setMyChoice(true)
     } else {
-      
+      setMyChoice(false)
     }
   };
 
@@ -154,14 +154,42 @@ const Payment = ({
         <div className="method">
           {paid ? (
             <>
-              <span>Payment Method:</span>{" "}
-              <small className="fw-bold">Card</small>
+              <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    style={{ fontSize: "22px" }}
+                  >
+                    Pay Method
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={payType}
+                    label="Pay Method"
+                    onChange={handleChange}
+                    disabled={payType !== ""}
+                  >
+                    <MenuItem value="card">
+                      {payType === "card" ? "✓ Debit Card" : "Debit Card"}
+                    </MenuItem>
+                    <MenuItem value="slip">
+                      {payType === "slip"
+                        ? "✓ Payment Slip Upload"
+                        : "Payment Slip Upload"}
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
             </>
           ) : (
             <>
-              <Box sx={{ width: '100%', marginTop: '30px', minWidth: 120 }}>
+              <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label" style={{fontSize: '22px'}}>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    style={{ fontSize: "22px" }}
+                  >
                     Pay Method
                   </InputLabel>
                   <Select
@@ -179,7 +207,13 @@ const Payment = ({
             </>
           )}
         </div>
-        <div className="payment-slip">
+        {myChoice ? (
+          <>
+            <div>hi</div>
+          </>
+        ) : (
+          <>
+          <div className="payment-slip">
           <span>Payment Slip:</span>
           <small className="fw-bold">Upload your payment slip here</small>
           <input type="file" accept="image/*" onChange={handleImageSelect} />
@@ -223,6 +257,9 @@ const Payment = ({
             </div>
           )}
         </div>
+          </>
+        )}
+        
       </div>
 
       {modalOpen && (
