@@ -83,13 +83,6 @@
   cursor: pointer;
 }
 
-
-
-
-
-
-
-
 .loader {
   width: 2rem;
   height: 2rem;
@@ -135,7 +128,6 @@
   }
 }
 
-
 .arrow {
   transform: rotate(180deg);
   cursor: pointer;
@@ -179,11 +171,10 @@
   }
 }
 
-
 .give-it-a-class-name {
   width: 100%;
   height: 200px;
-  background-color: #3C37FF;
+  background-color: #3c37ff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -214,8 +205,6 @@
 }
 
 /* Rest of the styles remain the same */
-
-
 
 .admission-receipt {
   position: relative;
@@ -300,10 +289,10 @@
   height: 100%;
 }
 
-
-
-
-
+.pay-btn:hover {
+  background-color: cyan;
+  color: white;
+}
 
 @media screen and (max-width: 767px) {
   .payment-card {

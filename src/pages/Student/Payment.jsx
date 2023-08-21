@@ -211,10 +211,12 @@ const Payment = ({
           <>
           <div className="give-it-a-class-name text-white">
               <div className="card-content">
-                <div className="name-date">
+                <div className="name-date d-flex flex-column">
+                <div className="ms-auto mb-2">Card</div>
                   <div className="name">
                     {lastName} {firstName}
                   </div>
+                  <button className="btn pay-btn" style={{ backgroundColor: 'white' }}>Pay ₦5000</button>
                 </div>
               </div>
             </div>
