@@ -82,7 +82,7 @@ const AccountTypePage = () => {
           paddingTop: "170px",
         }}
       >
-        <div className="m-auto w-lg-50 w-sm-100 shadow px-5 py-5 d-flex flex-column justify-content-center">
+        <div className="m-auto w-lg-50 w-sm-100 shadow px-5 py-5 d-flex flex-column justify-content-center account-type-page">
           <h3
             className="text-capitalize text-center"
             style={{
