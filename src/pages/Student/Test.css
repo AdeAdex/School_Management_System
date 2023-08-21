@@ -35,16 +35,21 @@
 
   .question-navigation-table {
     position: relative !important;
+    justify-content: center;
     display: flex;
     background-color: transparent;
     box-shadow: none;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+    /* margin-left: auto !important; */
+    /* margin-right: auto !important; */
+    /* width: auto; */
     top: 0% !important;
-    right: 0% !important;
-    padding-left: unset !important;
-    padding-right: unset !important;
+    /* right: 0% !important; */
+    /* padding-left: unset !important; */
+    /* padding-right: unset !important; */
+    overflow-x: auto;
+    /* background-color: transparent; */
+    /* box-shadow: none; */
+    /* transform: translate(15%, 0%); */
   }
 
   .button-container {
