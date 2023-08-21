@@ -66,7 +66,7 @@ const LoginAccountType = () => {
           paddingTop: "170px",
         }}
       >
-        <div className={`m-auto w-lg-50 w-sm-100 shadow h-100 d-flex flex-column justify-content-center ${isSmallScreen ? "px-3 py-1" : " px-5 py-5"}`}>
+        <div className={`m-auto w-lg-50 w-sm-100 shadow h-100 d-flex flex-column justify-content-center ${isSmallScreen ? "px-1 py-1" : " px-5 py-5"}`}>
           <div>
             <div className="text-center text-capitalize fs-3 fw-bold">
               welcome to Adex school
@@ -75,7 +75,7 @@ const LoginAccountType = () => {
               Select one of the options below
             </div>
           </div>
-          <div className={`d-flex mt-4 mx-auto justify-content-center ${isSmallScreen ? "gap-3" : "gap-4"}`}>
+          <div className={`d-flex mt-4 mx-auto justify-content-center ${isSmallScreen ? "gap-4" : "gap-4"}`}>
             <div
               className="shadow position-relative text-capitalize text-center py-3 d-flex flex-column gap-3 fw-bold"
               style={{
