@@ -39,17 +39,14 @@
     display: flex;
     background-color: transparent;
     box-shadow: none;
-    /* margin-left: auto !important; */
-    /* margin-right: auto !important; */
-    /* width: auto; */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: auto;
     top: 0% !important;
-    /* right: 0% !important; */
-    /* padding-left: unset !important; */
-    /* padding-right: unset !important; */
+    right: 0% !important;
+    padding-left: unset !important;
+    padding-right: unset !important;
     overflow-x: auto;
-    /* background-color: transparent; */
-    /* box-shadow: none; */
-    /* transform: translate(15%, 0%); */
   }
 
   .button-container {
