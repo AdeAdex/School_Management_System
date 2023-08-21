@@ -500,7 +500,7 @@ const Test = () => {
                     />
                     <div className="my-auto">Adex International School</div>
                   </div>
-                  <span className="fs-4">Thank You: </span>
+                  <span className="fs-4 " style={{display: 'inline-flex'}}>Thank You: </span>
                 </>
               ) : (
                 <>
@@ -540,6 +540,8 @@ const Test = () => {
                 {globalState.firstName} {globalState.lastName}{" "}
                 {globalState.takenExam}
               </div>
+              {taken ? null : (
+
               <div
                 className=" position-absolute end-0"
                 style={{ cursor: "pointer" }}
@@ -547,6 +549,7 @@ const Test = () => {
               >
                 <BsFillCalculatorFill size={30} />
               </div>
+              )}
             </div>
             {currentQuestion && (
               <div className="div text-center">
