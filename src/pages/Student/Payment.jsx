@@ -121,6 +121,10 @@ const Payment = ({
     }
   };
 
+  const payForAdmission = () => {
+    payWithPaystack();
+  }
+
   return (
     <>
       <div className="payment-card">
@@ -216,7 +220,7 @@ const Payment = ({
                   <div className="name">
                     {lastName} {firstName}
                   </div>
-                  <button className="btn pay-btn" style={{ backgroundColor: 'white' }}>Pay ₦5000</button>
+                  <button onClick={payForAdmission} className="btn pay-btn mt-3 mx-auto px-5" style={{ backgroundColor: 'white' }}>Pay ₦5000</button>
                 </div>
               </div>
             </div>

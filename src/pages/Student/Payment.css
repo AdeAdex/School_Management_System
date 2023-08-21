@@ -290,7 +290,7 @@
 }
 
 .pay-btn:hover {
-  background-color: cyan;
+  background-color: orange !important;
   color: white;
 }
 
