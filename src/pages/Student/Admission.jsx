@@ -94,7 +94,10 @@ const Admission = () => {
           setIsLoading(false);
           setOpen(false);
           dispatch(newStudent(res.data.response));
-          localStorage.setItem("currentPaidState", globalState.paidForAdmission);
+          localStorage.setItem(
+            "currentPaidState",
+            globalState.paidForAdmission
+          );
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -105,7 +108,6 @@ const Admission = () => {
         console.log(err);
       });
   }, [globalState, globalState.paidForAdmission, navigate]);
-
 
   const payWithPaystack = () => {
     let handler = PaystackPop.setup({
@@ -131,12 +133,11 @@ const Admission = () => {
           title: "Thank You " + globalState.firstName,
           text: message,
           footer: "",
-        })
-        .then((result) => {
+        }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
           }
-        })
+        });
         if (response.status == "success") {
           let payload = {
             myEmail: globalState.email,
@@ -150,7 +151,6 @@ const Admission = () => {
             .then((response) => {
               if (response.data.status) {
                 localStorage.setItem("currentPaidState", true);
-
               }
             })
             .catch((err) => {
@@ -164,8 +164,8 @@ const Admission = () => {
   };
 
   const handleChange = (event, newValue) => {
-    if ((paid === false) && (newValue !== 1 || newValue !== 0)) {
-      setValue(1)
+    if (paid === false && (newValue !== 1 || newValue !== 0)) {
+      setValue(1);
       console.log(newValue, paid);
       navigate("/student/admission/payment");
       payWithPaystack();
@@ -182,7 +182,6 @@ const Admission = () => {
       navigate("/student/admission/payment");
     }
   };
-
 
   return (
     <>
@@ -361,7 +360,25 @@ const Admission = () => {
               <PickClass />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Payment paid={paid} myEmail={globalState.email} receiptURL={globalState.paymentURL[0].paymentLink} receiptDate={globalState.paymentURL[0].dateUploaded} lastName={globalState.lastName} firstName={globalState.firstName}/>
+              {globalState.paymentURL && globalState.paymentURL[0] ? (
+                <Payment
+                  paid={paid}
+                  myEmail={globalState.email}
+                  receiptURL={globalState.paymentURL[0].paymentLink}
+                  receiptDate={globalState.paymentURL[0].dateUploaded}
+                  lastName={globalState.lastName}
+                  firstName={globalState.firstName}
+                />
+              ) : (
+                <Payment 
+                  paid={paid}
+                  myEmail={globalState.email}
+                  receiptURL={null}
+                  // receiptDate={}
+                  lastName={globalState.lastName}
+                  firstName={globalState.firstName}
+                />
+              )}
             </TabPanel>
             <TabPanel value={value} index={2}>
               <PersonalInformation />

@@ -73,7 +73,7 @@ const Payment = ({ paid, myEmail, receiptURL, receiptDate, lastName, firstName }
           <input type="file" accept="image/*" onChange={handleImageSelect} />
           {isLoading ? ( // Display ping while isLoading
             <div className="ping"></div>
-          ) : cloudImage ? ( // Display image if cloudImage is truthy
+          ) : cloudImage ? ( 
           <div className="give-it-a-class-name text-white">
           <div className="card-content">
           <div className="name-date">
