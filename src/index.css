@@ -180,12 +180,7 @@
           width: 100% !important;
           background-color: #f1f1f1;
         }
-
-        .navbar-collapse .opened {
-          max-height: auto;
-          overflow: hidden;
-          transition: max-height 3s ease-in-out; 
-        }
+      
       
         /* .navbar-collapse .navbar-nav, .collapse form {
           display: none !important;

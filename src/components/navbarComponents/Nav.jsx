@@ -11,7 +11,8 @@ const Nav = () => {
   const mobileStyle = {
     maxHeight: opened ? "1000px" : "0",
     overflow: "hidden",
-    transition: "max-height 0.5s ease-in-out",
+    opacity: opened ? 1 : 0,
+    transition: "max-height 0.5s ease-in-out, opacity 0.5s ease-in-out",
   };
   
   const desktopStyle = {
