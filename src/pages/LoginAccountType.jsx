@@ -66,7 +66,7 @@ const LoginAccountType = () => {
           paddingTop: "170px",
         }}
       >
-        <div className="m-auto w-lg-50 w-sm-100 shadow px-5 py-5 h-100 d-flex flex-column justify-content-center">
+        <div className={`m-auto w-lg-50 w-sm-100 shadow h-100 d-flex flex-column justify-content-center ${isSmallScreen ? "px-3 py-1" : " px-5 py-5"}`}>
           <div>
             <div className="text-center text-capitalize fs-3 fw-bold">
               welcome to Adex school
@@ -75,11 +75,12 @@ const LoginAccountType = () => {
               Select one of the options below
             </div>
           </div>
-          <div className="d-flex gap-4 mt-4 mx-auto">
+          <div className={`d-flex mt-4 mx-auto justify-content-center ${isSmallScreen ? "gap-3" : "gap-4"}`}>
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                width: isSmallScreen? "130px" : "200px",
+                flex: isSmallScreen ? "0 0 calc(45% - 8px)" : "0 0 calc(45% - 8px)",
+                maxWidth: isSmallScreen ? "none" : "200px",
                 height: "200px",
                 borderRadius: "10px",
                 outline: "1px solid #1F9FEF",
@@ -106,7 +107,8 @@ const LoginAccountType = () => {
             <div
               className="shadow position-relative text-capitalize text-center p-3 d-flex flex-column gap-3 fw-bold"
               style={{
-                width: isSmallScreen? "130px" : "200px",
+                flex: isSmallScreen ? "0 0 calc(45% - 8px)" : "0 0 calc(45% - 8px)",
+                maxWidth: isSmallScreen ? "none" : "200px",
                 height: "200px",
                 borderRadius: "10px",
                 outline: "1px solid #1F9FEF",
@@ -137,7 +139,7 @@ const LoginAccountType = () => {
               next
             </button>
           </div>
-            <div className="mt-5">
+            <div className="mt-5 w-100 re-size" style={{ fontFamily: 'monospace', overflowWrap: 'break-word' }}>
               <div className="text-center mb-3" style={{fontFamily: "cursive"}}>Adex protects your privacy</div>
               {isSmallScreen ? (
                 <div className="" style={{display: ''}}>
