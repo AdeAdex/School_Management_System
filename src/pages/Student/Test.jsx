@@ -496,7 +496,7 @@ const Test = () => {
                     />
                     <div className="my-auto">Adex International School</div>
                   </div>
-                  <span className="fs-4 " style={{display: 'inline-flex'}}>Thank You: </span>
+                  <span className="fs-5 " style={{display: 'inline-flex'}}>Thank You: </span>
                 </>
               ) : (
                 <>
