@@ -351,7 +351,7 @@ const Test = () => {
           newCountdownTimeRemaining: countdownTime,
           myEmail: globalState.email,
         };
-        let endpoint = "http://localhost:2000/student_account/started_the_test";
+        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/started_the_test";
         axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
             localStorage.setItem("examStarted", true);
@@ -360,6 +360,7 @@ const Test = () => {
               setRefresh(false);
               startCountdown();
             }, 100);
+              window.location.reload()
           }
         });
       }
