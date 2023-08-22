@@ -56,8 +56,14 @@ const Test = () => {
             "examStarted",
             globalState.testStart[0].examStarted
           );
-          localStorage.setItem("countdownStartTime", globalState.testStart[0].countdownStartTime);
-          localStorage.setItem("countdownTimeRemaining", globalState.testStart[0].countdownTimeRemaining);
+          localStorage.setItem(
+            "countdownStartTime",
+            globalState.testStart[0].countdownStartTime
+          );
+          localStorage.setItem(
+            "countdownTimeRemaining",
+            globalState.testStart[0].countdownTimeRemaining
+          );
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -104,14 +110,10 @@ const Test = () => {
       };
     }
   };
-
+  
   useEffect(() => {
     setBeginExam(localStorage.getItem("examStarted") === "true");
-    // if (refresh) {
-    //   setTimeout(() => {
-    //     setRefresh(false);
-    //   }, 100);
-    // }
+    startCountdown();
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
@@ -127,7 +129,6 @@ const Test = () => {
       }
     });
 
-    startCountdown();
 
     if (timeIsUp) {
       const nonNegativeScores = questionScores.map((score) =>
@@ -353,10 +354,12 @@ const Test = () => {
         let endpoint = "http://localhost:2000/student_account/started_the_test";
         axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
+            localStorage.setItem("examStarted", true);
             setRefresh(true);
-            // if (refresh) {
+            setTimeout(() => {
+              setRefresh(false);
               startCountdown();
-            // }
+            }, 100);
           }
         });
       }
@@ -492,175 +495,176 @@ const Test = () => {
         </div>
       ) : (
         <>
-        <div className="w-100 h-100">
-          <div
-            className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4"
-            style={{ marginTop: "100px" }}
-          >
-            <div className="d-flex gap-2 justify-content-center position-relative">
-              {taken ? (
-                <>
-                  <div
-                    className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
-                    style={{
-                      fontFamily: "fantasy",
-                      left: "0",
-                      top: "0",
-                      backgroundColor: "whitesmoke",
-                      zIndex: "2",
-                    }}
-                  >
-                    <img
-                      src="/pic/ade.png"
-                      className="d-flex flex-start"
-                      alt=""
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                    <div className="my-auto">Adex International School</div>
-                  </div>
-                  <span className="fs-5 " style={{display: 'inline-flex'}}>Thank You: </span>
-                </>
-              ) : (
-                <>
-                  <div
-                    className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
-                    style={{
-                      fontFamily: "fantasy",
-                      left: "0",
-                      top: "0",
-                      backgroundColor: "whitesmoke",
-                      zIndex: "2",
-                    }}
-                  >
-                    <img
-                      src="/pic/ade.png"
-                      className="d-flex flex-start"
-                      alt=""
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                    <div className="my-auto">Adex International School</div>
-                  </div>
-                  <div
-                    className={`fs-4 position-absolute start-0 ${
-                      countdown.minutes === 0 && countdown.seconds <= 30
-                        ? "text-danger blinking"
-                        : countdown.minutes === 0 && countdown.seconds <= 59
-                        ? "text-danger"
-                        : "text-dark"
-                    }`}
-                  >
-                    {countdown.minutes}:{countdown.seconds}
-                  </div>
-                  <span className="fs-5"> </span>
-                </>
-              )}
-              <div className="fw-bold fs-5 my-auto">
-                {globalState.firstName} {globalState.lastName}{" "}
-                {globalState.takenExam}
-              </div>
-              {taken ? null : (
-
-              <div
-                className=" position-absolute end-0"
-                style={{ cursor: "pointer" }}
-                onClick={openModal}
-              >
-                <BsFillCalculatorFill size={30} />
-              </div>
-              )}
-            </div>
-            {currentQuestion && (
-              <div className="div text-center">
-                {(currentQuestion.id === 10 && taken) || localStorage.done ? (
-                  <div className="mt-4">
-                    <div className="mb-5">
-                      Congratulations for successfully participating in our
-                      entrance examination! We commend your efforts and wish you
-                      the best of luck on your educational journey. To view your
-                      results, kindly click the "Finish" button below, and your
-                      scores will be promptly sent to your email.
-                    </div>
-                    <button
-                      className="btn btn-success btn-sm px-5 py-2"
-                      onClick={toLogin}
-                    >
-                      {isLoading ? (
-                        <div className="spinner my-auto"></div>
-                      ) : (
-                        <span>Finish</span>
-                      )}
-                    </button>
-                  </div>
-                ) : (
-                  <div
-                    className="position-relative"
-                    style={{ minHeight: "64vh" }}
-                  >
-                    <small className="fw-bold">
-                      Your Sit No: {globalState.mySitNo}
-                    </small>
-                    <h1 className="my-3">Question {currentQuestion.id}</h1>
-                    <p className="my-3">{currentQuestion.content}</p>
-                    <ul className="d-flex flex-column mx-auto mt-4 question-ul">
-                      {currentQuestion.options.map((option, index) => (
-                        <label
-                          key={index}
-                          className="d-flex mx-auto"
-                          style={{ cursor: "pointer", width: "50%" }}
-                        >
-                          <input
-                            type="radio"
-                            name="option"
-                            value={option}
-                            checked={
-                              selectedOptions[currentQuestionIndex] === option
-                            }
-                            onChange={() => handleOptionSelect(option)}
-                            className="select-radio"
-                            style={{
-                              height: "unset",
-                              width: "unset",
-                              verticalAlign: "unset",
-                              float: "unset",
-                              marginRight: "10px",
-                            }}
-                          />
-                          {option}
-                        </label>
-                      ))}
-                    </ul>
-                    <QuestionNavigationTable
-                      totalQuestions={questions.length}
-                      currentQuestionIndex={currentQuestionIndex}
-                      handleQuestionNavigation={handleQuestionNavigation}
-                      answeredQuestions={answeredQuestions}
-                    />
+          <div className="w-100 h-100">
+            <div
+              className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4"
+              style={{ marginTop: "100px" }}
+            >
+              <div className="d-flex gap-2 justify-content-center position-relative">
+                {taken ? (
+                  <>
                     <div
-                      className="d-flex gap-3 justify-content-center button-container"
-                      style={{ marginTop: "120px" }}
+                      className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                      style={{
+                        fontFamily: "fantasy",
+                        left: "0",
+                        top: "0",
+                        backgroundColor: "whitesmoke",
+                        zIndex: "2",
+                      }}
                     >
-                      <button
-                        className="btn btn-primary btn-sm px-3"
-                        onClick={handlePreviousClick}
-                      >
-                        Previous
-                      </button>
-                      <button
-                        className="btn btn-primary btn-sm px-3"
-                        onClick={handleNextClick}
-                      >
-                        Next
-                      </button>
+                      <img
+                        src="/pic/ade.png"
+                        className="d-flex flex-start"
+                        alt=""
+                        style={{ width: "50px", height: "50px" }}
+                      />
+                      <div className="my-auto">Adex International School</div>
                     </div>
-                    
+                    <span className="fs-5 " style={{ display: "inline-flex" }}>
+                      Thank You:{" "}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
+                      style={{
+                        fontFamily: "fantasy",
+                        left: "0",
+                        top: "0",
+                        backgroundColor: "whitesmoke",
+                        zIndex: "2",
+                      }}
+                    >
+                      <img
+                        src="/pic/ade.png"
+                        className="d-flex flex-start"
+                        alt=""
+                        style={{ width: "50px", height: "50px" }}
+                      />
+                      <div className="my-auto">Adex International School</div>
+                    </div>
+                    <div
+                      className={`fs-4 position-absolute start-0 ${
+                        countdown.minutes === 0 && countdown.seconds <= 30
+                          ? "text-danger blinking"
+                          : countdown.minutes === 0 && countdown.seconds <= 59
+                          ? "text-danger"
+                          : "text-dark"
+                      }`}
+                    >
+                      {countdown.minutes}:{countdown.seconds}
+                    </div>
+                    <span className="fs-5"> </span>
+                  </>
+                )}
+                <div className="fw-bold fs-5 my-auto">
+                  {globalState.firstName} {globalState.lastName}{" "}
+                  {globalState.takenExam}
+                </div>
+                {taken ? null : (
+                  <div
+                    className=" position-absolute end-0"
+                    style={{ cursor: "pointer" }}
+                    onClick={openModal}
+                  >
+                    <BsFillCalculatorFill size={30} />
                   </div>
                 )}
-
-                <Calculator isOpen={modalOpen} onClose={closeModal} />
               </div>
-            )}
+              {currentQuestion && (
+                <div className="div text-center">
+                  {(currentQuestion.id === 10 && taken) || localStorage.done ? (
+                    <div className="mt-4">
+                      <div className="mb-5">
+                        Congratulations for successfully participating in our
+                        entrance examination! We commend your efforts and wish
+                        you the best of luck on your educational journey. To
+                        view your results, kindly click the "Finish" button
+                        below, and your scores will be promptly sent to your
+                        email.
+                      </div>
+                      <button
+                        className="btn btn-success btn-sm px-5 py-2"
+                        onClick={toLogin}
+                      >
+                        {isLoading ? (
+                          <div className="spinner my-auto"></div>
+                        ) : (
+                          <span>Finish</span>
+                        )}
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      className="position-relative"
+                      style={{ minHeight: "64vh" }}
+                    >
+                      <small className="fw-bold">
+                        Your Sit No: {globalState.mySitNo}
+                      </small>
+                      <h1 className="my-3">Question {currentQuestion.id}</h1>
+                      <p className="my-3">{currentQuestion.content}</p>
+                      <ul className="d-flex flex-column mx-auto mt-4 question-ul">
+                        {currentQuestion.options.map((option, index) => (
+                          <label
+                            key={index}
+                            className="d-flex mx-auto"
+                            style={{ cursor: "pointer", width: "50%" }}
+                          >
+                            <input
+                              type="radio"
+                              name="option"
+                              value={option}
+                              checked={
+                                selectedOptions[currentQuestionIndex] === option
+                              }
+                              onChange={() => handleOptionSelect(option)}
+                              className="select-radio"
+                              style={{
+                                height: "unset",
+                                width: "unset",
+                                verticalAlign: "unset",
+                                float: "unset",
+                                marginRight: "10px",
+                              }}
+                            />
+                            {option}
+                          </label>
+                        ))}
+                      </ul>
+                      <QuestionNavigationTable
+                        totalQuestions={questions.length}
+                        currentQuestionIndex={currentQuestionIndex}
+                        handleQuestionNavigation={handleQuestionNavigation}
+                        answeredQuestions={answeredQuestions}
+                      />
+                      <div
+                        className="d-flex gap-3 justify-content-center button-container"
+                        style={{ marginTop: "120px" }}
+                      >
+                        <button
+                          className="btn btn-primary btn-sm px-3"
+                          onClick={handlePreviousClick}
+                        >
+                          Previous
+                        </button>
+                        <button
+                          className="btn btn-primary btn-sm px-3"
+                          onClick={handleNextClick}
+                        >
+                          Next
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  <Calculator isOpen={modalOpen} onClose={closeModal} />
+                </div>
+              )}
+            </div>
           </div>
-        </div> 
         </>
       )}
     </div>
@@ -668,6 +672,3 @@ const Test = () => {
 };
 
 export default Test;
-
-
-
