@@ -53,19 +53,21 @@ const Test = () => {
       .then((res) => {
         if (res.data.status) {
           dispatch(newStudent(res.data.response));
-          localStorage.setItem(
-            "examStarted",
-            globalState.testStart[0].examStarted
-          );
-          localStorage.setItem(
-            "countdownStartTime",
-            globalState.testStart[0].countdownStartTime
-          );
-          localStorage.setItem(
-            "countdownTimeRemaining",
-            globalState.testStart[0].countdownTimeRemaining
-          );
-        startCountdown();
+          if (globalState.testStart && globalState.testStart.length > 0) {
+            localStorage.setItem(
+              "examStarted",
+              globalState.testStart[0].examStarted
+            );
+            localStorage.setItem(
+              "countdownStartTime",
+              globalState.testStart[0].countdownStartTime
+            );
+            localStorage.setItem(
+              "countdownTimeRemaining",
+              globalState.testStart[0].countdownTimeRemaining
+            );
+            startCountdown();
+          }
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
