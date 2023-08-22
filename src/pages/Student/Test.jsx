@@ -267,12 +267,27 @@ const Test = () => {
     setAnsweredQuestions(updatedAnsweredQuestions);
     setQuestionScores(newQuestionScores);
 
-    localStorage.setItem(
-      "answeredQuestions",
-      JSON.stringify(updatedAnsweredQuestions)
-    );
-    localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
-    localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+    let payload = {
+      answeredQuestions: updatedAnsweredQuestions,
+      questionScores: newQuestionScores,
+      selectedOptions: newSelectedOptions
+    }
+    console.log(payload);
+    let endpoint = "http://localhost:2000/student_account/set_scores"
+    axios.post(endpoint, payload)
+    .then((response) => {
+
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  //   localStorage.setItem(
+  //     "answeredQuestions",
+  //     JSON.stringify(updatedAnsweredQuestions)
+  //   );
+  //   localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
+  //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   };
 
   const handleQuestionNavigation = (index) => {
@@ -333,7 +348,6 @@ const Test = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // setBeginExam(false);
         const countdownTime = 3000;
         let payload = {
           newExamStarted: true,
