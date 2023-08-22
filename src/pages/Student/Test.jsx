@@ -330,13 +330,27 @@ const Test = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setBeginExam(true);
-        localStorage.setItem("examStarted", "true");
+        const countdownTime = 3000
+        let payload = {
+          examStarted: true,
+          countdownStartTime: Date.now(),
+          countdownTimeRemaining: countdownTime,
+          myEmail: globalState.email
+        }
+        let endpoint = "http://localhost:2000/student_account/started_the_test"
+        axios.post(endpoint, payload )
+        .then((response) => {
+          if (response.data.status) {
+            console.log(response);
+            // localStorage.setItem("examStarted", "true");
+            // localStorage.setItem("countdownStartTime", Date.now());
+            // localStorage.setItem("countdownTimeRemaining", countdownTime);
+            
+            startCountdown();
+          }
+        })
 
-        const countdownTime = 300; // 5 minutes in seconds
-        localStorage.setItem("countdownStartTime", Date.now());
-        localStorage.setItem("countdownTimeRemaining", countdownTime);
 
-        startCountdown();
       }
     });
   };

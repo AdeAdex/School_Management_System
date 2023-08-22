@@ -88,6 +88,7 @@ const Payment = ({
           let payload = {
             myEmail: myEmail,
             justPaid: true,
+            amount: amount
           };
           console.log(payload);
           let endpoint =
@@ -220,7 +221,12 @@ const Payment = ({
                   <div className="name">
                     {lastName} {firstName}
                   </div>
+                  {paid ? (
+                  <button onClick={payForAdmission} className="btn pay-btn mt-3 mx-auto px-5" style={{ backgroundColor: 'green' }} disabled>✓ Paid ₦5000</button>
+                  ) : (
+                    
                   <button onClick={payForAdmission} className="btn pay-btn mt-3 mx-auto px-5" style={{ backgroundColor: 'white' }}>Pay ₦5000</button>
+                  )}
                 </div>
               </div>
             </div>

@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import Modal from "react-bootstrap/Modal";
 import UpgradeLevelModal from "../../components/UpgradeLevelModal";
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { SnackbarProvider, useSnackbar } from "notistack";
+import ConfirmAdmissionPaymentModal from "../../components/ConfirmAdmissionPaymentModal";
 
 const StaffDashboardHome = () => {
   return (
-    <SnackbarProvider maxSnack={1} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} >
-      <MyApp/>
+    <SnackbarProvider
+      maxSnack={1}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    >
+      <MyApp />
     </SnackbarProvider>
-  )
+  );
 };
 
 function MyApp() {
@@ -18,15 +22,30 @@ function MyApp() {
   const [personEmail, setPersonEmail] = useState("");
   const [studentClass, setStudentClass] = useState("");
   const [studentTerm, setStudentTerm] = useState("");
-  const [studentOption, setStudentOption] = useState("")
-  const [room, setRoom] = useState('')
+  const [studentOption, setStudentOption] = useState("");
+  const [room, setRoom] = useState("");
   const [myImage, setMyImage] = useState("");
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
+  const [studentFirstName, setStudentFirstName] = useState("")
+  const [studentAdmissionState, setStudentAdmissionState] = useState("")
+  const [] = useState("")
 
-  // https://school-portal-backend-adex2210.vercel.app 
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const confirmAdmissionPayment = (studentFirstName, personEmail, studentAdmissionState) => {
+    setDialogOpen(true);
+    setStudentFirstName(studentFirstName)
+    setPersonEmail(personEmail);
+    setStudentAdmissionState(studentAdmissionState)
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/allStudent";
     axios
       .get(endpoint, {
         headers: {
@@ -36,7 +55,6 @@ function MyApp() {
       })
       .then((response) => {
         setAllStudent(response.data.response);
-        // console.log(response.data.response);
       });
   }, []);
 
@@ -46,36 +64,34 @@ function MyApp() {
     setStudentClass(studentClass);
     setStudentTerm(studentTerm);
     setStudentOption(studentOption);
-    
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [matchedNames, setMatchedNames] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
-
 
   const handleSearch = (event) => {
     const term = event.target.value;
     setSearchTerm(term);
 
     // Filter names that match the search term
-    const matched = allStudent.filter(student =>
+    const matched = allStudent.filter((student) =>
       student.firstName.toLowerCase().includes(term.toLowerCase())
     );
     setMatchedNames(matched);
   };
 
-
   const handleSelectStudent = (event) => {
     const selectedFirstName = event.target.value;
-    const selectedStudent = allStudent.find(student => student.firstName === selectedFirstName);
+    const selectedStudent = allStudent.find(
+      (student) => student.firstName === selectedFirstName
+    );
     setSelectedStudent(selectedStudent);
   };
-
 
   const createRoom = (variant) => {
     let createdDay = new Date().toLocaleDateString("en-GB", {
@@ -90,14 +106,14 @@ function MyApp() {
       minute: "2-digit",
     });
 
-    let values = {room, myImage, createdDay, createdTime}
-    let endpoint = "http://localhost:2000/staff_account/chat_group"
-    axios.post(endpoint, {values})
+    let values = { room, myImage, createdDay, createdTime };
+    let endpoint = "http://localhost:2000/staff_account/chat_group";
+    axios.post(endpoint, { values })
     .then((response) => {
-      enqueueSnackbar( response.data.message, { variant: 'success' });
-    })
+      enqueueSnackbar(response.data.message, { variant: "success" });
+    });
     console.log(values);
-  }
+  };
 
   // https://school-portal-backend-adex2210.vercel.app
   const handleFileSelect = (e) => {
@@ -116,134 +132,141 @@ function MyApp() {
       <div className="flex p-5 flex-column w-100">
         <div className="w-100 text-black">Dashbord</div>
         <div className="d-flex flex-column">
-      <input
-        type="search"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-      <select onChange={handleSelectStudent}>
-      <option value="">Select a student</option>
-        {matchedNames.map((student, index) => (
-          <option key={index} value={student.firstName}>
-            {student.firstName}
-          </option>
-        ))}
-      </select>
-    </div>
-        <div className="w-100">
-          {/* <table className="table table-border table-stripped gap-2 w-100">
-            <thead>
-              <tr className="text-uppercase">
-                <td>first name</td>
-                <td>last name</td>
-                <td>email</td>
-                <td>matric No</td>
-                <td>class</td>
-                <td>action</td>
-              </tr>
-            </thead>
-            {allStudent.map((student, index) => (
-              <tbody key={index}>
-                <tr>
-                  <td>{student.firstName}</td>
-                  <td>{student.lastName}</td>
-                  <td>{student.email}</td>
-                  <td>{student.matric}</td>
-                  <td>{student.level}</td>
-                  <td>
-                    <button 
-                    className="btn btn-primary btn-sm"
-                      onClick={() => {
-                        upgrade(student.email, student.level, student.prefix);
-                      }}
-                    >
-                      Upgrade
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+          <input
+            type="search"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <select onChange={handleSelectStudent}>
+            <option value="">Select a student</option>
+            {matchedNames.map((student, index) => (
+              <option key={index} value={student.firstName}>
+                {student.firstName}
+              </option>
             ))}
-          </table> */}
-
-
-
+          </select>
+        </div>
+        <div className="w-100">
           {selectedStudent && (
-          <table className="table table-border table-stripped gap-2 w-100">
-            <thead>
-              <tr className="text-uppercase">
-                <td>first name</td>
-                <td>last name</td>
-                <td>email</td>
-                <td>matric No</td>
-                <td>class</td>
-                <td>term</td>
-                <td>option</td>
-                <td>action</td>
-              </tr>
-            </thead>
+            <>
+          { window.innerWidth >= 768 ? (
+            <table className="table table-border table-stripped gap-2 w-100">
+              <thead>
+                <tr className="text-uppercase">
+                  <td>first name</td>
+                  <td>last name</td>
+                  <td>email</td>
+                  <td>Admission Status</td>
+                  <td>matric No</td>
+                  <td>class</td>
+                  <td>term</td>
+                  <td>option</td>
+                  <td className="d-flex ms-5">action</td>
+                </tr>
+              </thead>
               <tbody>
                 <tr>
                   <td>{selectedStudent.firstName}</td>
                   <td>{selectedStudent.lastName}</td>
                   <td>{selectedStudent.email}</td>
+                  <td>{selectedStudent.paidForAdmission}</td>
                   <td>{selectedStudent.matric}</td>
                   <td>{selectedStudent.level}</td>
                   <td>{selectedStudent.term}</td>
                   <td>{selectedStudent.options}</td>
-                  <td>
-                    <button 
-                    className="btn btn-primary btn-sm"
+                  <td className="d-flex gap-3">
+                    <button
+                      className="btn btn-primary btn-sm"
                       onClick={() => {
-                        upgrade(selectedStudent.email, selectedStudent.level, selectedStudent.term, selectedStudent.options);
+                        upgrade(
+                          selectedStudent.email,
+                          selectedStudent.level,
+                          selectedStudent.term,
+                          selectedStudent.options
+                        );
                       }}
                     >
                       Upgrade
                     </button>
+                    <button
+                      variant="outlined"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => {
+                        confirmAdmissionPayment(
+                          selectedStudent.firstName,
+                          selectedStudent.email,
+                          selectedStudent.paidForAdmission
+                        );
+                      }}
+                    >
+                      Confirm Payment
+                    </button>
                   </td>
                 </tr>
               </tbody>
-          </table>
-
-      )}
-
-
-          {/* {selectedStudent && (
-        <table>
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{selectedStudent.firstName}</td>
-              <td>{selectedStudent.lastName}</td>
-              <td>{selectedStudent.email}</td>
-            </tr>
-          </tbody>
-        </table>
-      )} */}
+            </table>
+            ) : ( 
+              <div className="d-block d-md-none">
+              <div>First Name: {selectedStudent.firstName}</div>
+              <div>Last Name: {selectedStudent.lastName}</div>
+              <div>Email: {selectedStudent.email}</div>
+              <div>Admission Status: {selectedStudent.paidForAdmission}</div>
+              <div>Matric No: {selectedStudent.matric}</div>
+              <div>Class: {selectedStudent.level}</div>
+              <div>Term: {selectedStudent.term}</div>
+              <div>Options: {selectedStudent.options}</div>
+              <div className="d-flex gap-3">
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => {
+                    upgrade(
+                      selectedStudent.email,
+                      selectedStudent.level,
+                      selectedStudent.term,
+                      selectedStudent.options
+                    );
+                  }}
+                >
+                  Upgrade
+                </button>
+                <button
+                  variant="outlined"
+                  className="btn btn-primary btn-sm"
+                  onClick={() => {
+                    confirmAdmissionPayment(
+                      selectedStudent.firstName,
+                      selectedStudent.email,
+                      selectedStudent.paidForAdmission
+                    );
+                  }}
+                >
+                  Confirm Payment
+                </button>
+              </div>
+            </div>
+            )}
+            </>
+           
+          )}
         </div>
         <div className="w-100 mt-4">
           <div>Create Group</div>
           <div>
-          <input
-            type="text"
-            className="text-capitalize"
-            placeholder="Room ID..."
-            onChange={(e) => setRoom(e.target.value)}
-          />
-          <input
-          type="file"
-          id="avatarInput"
-          accept="image/*"
-          style={{ display: "" }}
-          onChange={handleFileSelect}
-        />
-          <button onClick={createRoom}>Create Room</button>
+            <input
+              type="text"
+              className="text-capitalize"
+              placeholder="Room ID..."
+              onChange={(e) => setRoom(e.target.value)}
+            />
+            <input
+              type="file"
+              id="avatarInput"
+              accept="image/*"
+              style={{ display: "" }}
+              onChange={handleFileSelect}
+            />
+            <button onClick={createRoom}>Create Room</button>
           </div>
         </div>
         <UpgradeLevelModal
@@ -254,10 +277,16 @@ function MyApp() {
           studentOption={studentOption}
           onClose={closeModal}
         />
+        <ConfirmAdmissionPaymentModal
+          open={dialogOpen}
+          handleClose={handleDialogClose}
+          firstName={studentFirstName}
+          personEmail={personEmail}
+          admissionState={studentAdmissionState}
+        />
       </div>
     </>
   );
 }
 
 export default StaffDashboardHome;
-
