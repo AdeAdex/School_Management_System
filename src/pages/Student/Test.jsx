@@ -39,6 +39,7 @@ const Test = () => {
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
+    setBeginExam(localStorage.getItem("examStarted") === "true");
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
     axios
@@ -52,18 +53,19 @@ const Test = () => {
       .then((res) => {
         if (res.data.status) {
           dispatch(newStudent(res.data.response));
-          // localStorage.setItem(
-          //   "examStarted",
-          //   globalState.testStart[0].examStarted
-          // );
-          // localStorage.setItem(
-          //   "countdownStartTime",
-          //   globalState.testStart[0].countdownStartTime
-          // );
-          // localStorage.setItem(
-          //   "countdownTimeRemaining",
-          //   globalState.testStart[0].countdownTimeRemaining
-          // );
+          localStorage.setItem(
+            "examStarted",
+            globalState.testStart[0].examStarted
+          );
+          localStorage.setItem(
+            "countdownStartTime",
+            globalState.testStart[0].countdownStartTime
+          );
+          localStorage.setItem(
+            "countdownTimeRemaining",
+            globalState.testStart[0].countdownTimeRemaining
+          );
+        startCountdown();
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -112,18 +114,8 @@ const Test = () => {
   };
   
   useEffect(() => {
-    if (localStorage.examStarted && localStorage.countdownStartTime && localStorage.countdownTimeRemaining) {
-      setBeginExam(localStorage.getItem("examStarted") === "true");
-      localStorage.getItem("countdownStartTime")
-      localStorage.getItem("countdownTimeRemaining")
-    }
-   
-    if (refreshing) {
-      setTimeout(() => {
-        setRefreshing(false);
-        startCountdown();
-      }, 100);
-    }
+    setBeginExam(localStorage.getItem("examStarted") === "true");
+    startCountdown();
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
@@ -169,18 +161,6 @@ const Test = () => {
     if (storedAnsweredQuestions) {
       setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     }
-    //   if (storedQuestionScores) {
-    //     setQuestionScores(JSON.parse(storedQuestionScores));
-    //   }
-
-    //   const storedSelectedOptions = localStorage.getItem("selectedOptions");
-    //   if (storedSelectedOptions) {
-    //     setSelectedOptions(JSON.parse(storedSelectedOptions));
-    //   }
-    //   const storedAnsweredQuestions = localStorage.getItem("answeredQuestions");
-    // if (storedAnsweredQuestions) {
-    //   setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
-    // }
   }, [timeIsUp, beginExam, refreshing]);
 
   const handleNextClick = () => {
@@ -364,13 +344,10 @@ const Test = () => {
         let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/started_the_test";
         axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
-            localStorage.setItem("examStarted", true);
-            localStorage.setItem("countdownStartTime", 1692723060198)
-            localStorage.setItem("countdownTimeRemaining", 300)
             setRefreshing(true);
-            startCountdown();
             setTimeout(() => {
               setRefreshing(false);
+              localStorage.setItem("examStarted", true);
               startCountdown();
             }, 100);
           }
