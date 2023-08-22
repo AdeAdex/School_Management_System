@@ -332,16 +332,16 @@ const Test = () => {
         setBeginExam(true);
         const countdownTime = 3000
         let payload = {
-          examStarted: true,
-          countdownStartTime: Date.now(),
-          countdownTimeRemaining: countdownTime,
+          newExamStarted: true,
+          newCountdownStartTime: Date.now(),
+          newCountdownTimeRemaining: countdownTime,
           myEmail: globalState.email
         }
         let endpoint = "http://localhost:2000/student_account/started_the_test"
         axios.post(endpoint, payload )
         .then((response) => {
           if (response.data.status) {
-            console.log(response);
+            console.log(response.data.response);
             // localStorage.setItem("examStarted", "true");
             // localStorage.setItem("countdownStartTime", Date.now());
             // localStorage.setItem("countdownTimeRemaining", countdownTime);
