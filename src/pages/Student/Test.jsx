@@ -112,7 +112,12 @@ const Test = () => {
   };
   
   useEffect(() => {
-    setBeginExam(localStorage.getItem("examStarted") === "true");
+    if (localStorage.examStarted && localStorage.countdownStartTime && localStorage.countdownTimeRemaining) {
+      setBeginExam(localStorage.getItem("examStarted") === "true");
+      localStorage.getItem("countdownStartTime")
+      localStorage.getItem("countdownTimeRemaining")
+    }
+   
     if (refreshing) {
       setTimeout(() => {
         setRefreshing(false);
