@@ -26,7 +26,7 @@ const Test = () => {
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
 
@@ -73,7 +73,7 @@ const Test = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [globalState]);
+  }, [globalState, refreshing]);
 
   const startCountdown = () => {
     const startTime = parseInt(localStorage.getItem("countdownStartTime"));
@@ -113,7 +113,12 @@ const Test = () => {
   
   useEffect(() => {
     setBeginExam(localStorage.getItem("examStarted") === "true");
-    startCountdown();
+    if (refreshing) {
+      setTimeout(() => {
+        setRefreshing(false);
+        startCountdown();
+      }, 100);
+    }
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
@@ -171,7 +176,7 @@ const Test = () => {
     // if (storedAnsweredQuestions) {
     //   setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     // }
-  }, [timeIsUp, beginExam, refresh]);
+  }, [timeIsUp, beginExam, refreshing]);
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
@@ -355,12 +360,11 @@ const Test = () => {
         axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
             localStorage.setItem("examStarted", true);
-            setRefresh(true);
+            setRefreshing(true);
             setTimeout(() => {
-              setRefresh(false);
+              setRefreshing(false);
               startCountdown();
             }, 100);
-              window.location.reload()
           }
         });
       }
