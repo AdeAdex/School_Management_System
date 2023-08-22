@@ -38,6 +38,12 @@ const Test = () => {
   let warningSound = new Audio("warning.wav");
 
   useEffect(() => {
+    if (refreshing) {
+      setTimeout(() => {
+        setRefreshing(false);
+        startCountdown();
+      }, 100);
+    }
     let studentLoginToken = localStorage.studentLoginToken;
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
