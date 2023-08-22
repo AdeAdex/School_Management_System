@@ -270,6 +270,7 @@ const Test = () => {
     setQuestionScores(newQuestionScores);
 
     let payload = {
+      myEmail: globalState.email,
       answeredQuestions: updatedAnsweredQuestions,
       questionScores: newQuestionScores,
       selectedOptions: newSelectedOptions
