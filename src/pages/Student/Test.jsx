@@ -26,6 +26,7 @@ const Test = () => {
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   const [countdown, setCountdown] = useState({ minutes: 0, seconds: 0 });
 
@@ -51,6 +52,12 @@ const Test = () => {
       .then((res) => {
         if (res.data.status) {
           dispatch(newStudent(res.data.response));
+          localStorage.setItem(
+            "examStarted",
+            globalState.testStart[0].examStarted
+          );
+          localStorage.setItem("countdownStartTime", globalState.testStart[0].countdownStartTime);
+          localStorage.setItem("countdownTimeRemaining", globalState.testStart[0].countdownTimeRemaining);
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -99,6 +106,12 @@ const Test = () => {
   };
 
   useEffect(() => {
+    setBeginExam(localStorage.getItem("examStarted") === "true");
+    // if (refresh) {
+    //   setTimeout(() => {
+    //     setRefresh(false);
+    //   }, 100);
+    // }
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
@@ -157,7 +170,7 @@ const Test = () => {
     // if (storedAnsweredQuestions) {
     //   setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     // }
-  }, [timeIsUp]);
+  }, [timeIsUp, beginExam, refresh]);
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
@@ -329,28 +342,23 @@ const Test = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        setBeginExam(true);
-        const countdownTime = 3000
+        // setBeginExam(false);
+        const countdownTime = 3000;
         let payload = {
           newExamStarted: true,
           newCountdownStartTime: Date.now(),
           newCountdownTimeRemaining: countdownTime,
-          myEmail: globalState.email
-        }
-        let endpoint = "http://localhost:2000/student_account/started_the_test"
-        axios.post(endpoint, payload )
-        .then((response) => {
+          myEmail: globalState.email,
+        };
+        let endpoint = "http://localhost:2000/student_account/started_the_test";
+        axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
-            console.log(response.data.response);
-            // localStorage.setItem("examStarted", "true");
-            // localStorage.setItem("countdownStartTime", Date.now());
-            // localStorage.setItem("countdownTimeRemaining", countdownTime);
-            
-            startCountdown();
+            setRefresh(true);
+            // if (refresh) {
+              startCountdown();
+            // }
           }
-        })
-
-
+        });
       }
     });
   };
@@ -373,7 +381,7 @@ const Test = () => {
 
   return (
     <div className="test-container">
-      {!beginExam && !localStorage.examStarted ? (
+      {!beginExam ? (
         <div className="w-100 pb-4" style={{ width: "100%" }}>
           <div className="w-50 mx-auto text-container2">
             <div className="mt-5 mb-3 w-100 position-relative">
@@ -483,6 +491,7 @@ const Test = () => {
           </div>
         </div>
       ) : (
+        <>
         <div className="w-100 h-100">
           <div
             className="w-75 question-container shadow mx-auto d-flex flex-column justify-content-center p-4"
@@ -651,10 +660,14 @@ const Test = () => {
               </div>
             )}
           </div>
-        </div>
+        </div> 
+        </>
       )}
     </div>
   );
 };
 
 export default Test;
+
+
+
