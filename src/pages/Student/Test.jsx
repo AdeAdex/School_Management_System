@@ -38,12 +38,6 @@ const Test = () => {
   let warningSound = new Audio("warning.wav");
 
   useEffect(() => {
-    if (refreshing) {
-      setTimeout(() => {
-        setRefreshing(false);
-        startCountdown();
-      }, 100);
-    }
     let studentLoginToken = localStorage.studentLoginToken;
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
@@ -58,18 +52,18 @@ const Test = () => {
       .then((res) => {
         if (res.data.status) {
           dispatch(newStudent(res.data.response));
-          localStorage.setItem(
-            "examStarted",
-            globalState.testStart[0].examStarted
-          );
-          localStorage.setItem(
-            "countdownStartTime",
-            globalState.testStart[0].countdownStartTime
-          );
-          localStorage.setItem(
-            "countdownTimeRemaining",
-            globalState.testStart[0].countdownTimeRemaining
-          );
+          // localStorage.setItem(
+          //   "examStarted",
+          //   globalState.testStart[0].examStarted
+          // );
+          // localStorage.setItem(
+          //   "countdownStartTime",
+          //   globalState.testStart[0].countdownStartTime
+          // );
+          // localStorage.setItem(
+          //   "countdownTimeRemaining",
+          //   globalState.testStart[0].countdownTimeRemaining
+          // );
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -366,7 +360,10 @@ const Test = () => {
         axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
             localStorage.setItem("examStarted", true);
+            localStorage.setItem("countdownStartTime", 1692723060198)
+            localStorage.setItem("countdownTimeRemaining", 300)
             setRefreshing(true);
+            startCountdown();
             setTimeout(() => {
               setRefreshing(false);
               startCountdown();
