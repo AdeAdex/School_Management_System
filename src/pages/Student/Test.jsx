@@ -365,7 +365,9 @@ const handleOptionSelect = (option) => {
           localStorage.removeItem("examStarted");
           localStorage.removeItem("countdownStartTime");
           localStorage.removeItem("countdownTimeRemaining");
-
+          localStorage.removeItem("selectedOptions");
+          localStorage.setItem("currentQuestionIndex", 0);
+          
           setIsLoading(false);
           const Toast = Swal.mixin({
             toast: true,
