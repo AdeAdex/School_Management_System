@@ -47,7 +47,7 @@ const Login = () => {
             "taken",
             response.data.response
           );
-          if (response.data.response) {
+          if (response.data.response === true) {
           navigate("/student/admission/pick_class");
           } else {
             navigate('/student-entrance-exam_questions')

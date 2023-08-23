@@ -22,7 +22,7 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(
     Array.from({ length: questions.length }, () => 0)
   );
-  const [taken, setTaken] = useState(false);
+  // const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -123,7 +123,7 @@ const Test = () => {
   };
   
   useEffect(() => {
-    setTaken(localStorage.getItem("taken") === "true")
+    // setTaken(localStorage.getItem("taken") === "true")
     setBeginExam(localStorage.getItem("examStarted") === "true");
     startCountdown();
     let endpoint =
@@ -572,7 +572,7 @@ const handleOptionSelect = (option) => {
               style={{ marginTop: "100px" }}
             >
               <div className="d-flex gap-2 justify-content-center position-relative">
-                {taken ? (
+                {localStorage.getItem('taken') === 'true' ? (
                   <>
                     <div
                       className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
@@ -634,7 +634,7 @@ const handleOptionSelect = (option) => {
                   {globalState.firstName} {globalState.lastName}{" "}
                   {globalState.takenExam}
                 </div>
-                {taken ? null : (
+                {localStorage.getItem('taken') === 'true' ? null : (
                   <div
                     className=" position-absolute end-0"
                     style={{ cursor: "pointer" }}
@@ -646,7 +646,7 @@ const handleOptionSelect = (option) => {
               </div>
               {currentQuestion && (
                 <div className="div text-center">
-                  {(currentQuestion.id === 10 && taken) || localStorage.done ? (
+                  {(currentQuestion.id === 10 && localStorage.getItem('taken') === 'true') || localStorage.done ? (
                     <div className="mt-4">
                       <div className="mb-5">
                         Congratulations for successfully participating in our
