@@ -102,7 +102,7 @@ function App() {
           <Route path='/chat' element={<Chat socket={socketRef}/>} />  
 
 
-        <Route path='/student-entrance-exam_questions' element={!takenAdmissionExam ? <Test/> : <Navigate to="../student/admission/pick_class"/>}/>
+        <Route path='/student-entrance-exam_questions' element={takenAdmissionExam ? <Test/> : <Navigate to="../student/admission/pick_class"/>}/>
         <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
         <Route path='/student/*' element={ <StudentSignUp/>}>   {/* studentLoginToken ?   : <Navigate to="/student_login"/> */}

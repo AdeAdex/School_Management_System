@@ -66,6 +66,11 @@ const Test = () => {
               "countdownTimeRemaining",
               globalState.testStart[0].countdownTimeRemaining
             );
+
+            localStorage.setItem(
+              "taken",
+              globalState.takenExam
+            );
             
             startCountdown();
           }
@@ -118,13 +123,13 @@ const Test = () => {
   };
   
   useEffect(() => {
+    setTaken(localStorage.getItem("taken") === "true")
     setBeginExam(localStorage.getItem("examStarted") === "true");
     startCountdown();
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
       setQuestions(response.data);
-      // console.log(questions);
       const storedQuestionIndex = localStorage.getItem("currentQuestionIndex");
       if (storedQuestionIndex === null) {
         localStorage.setItem(
@@ -227,7 +232,7 @@ const Test = () => {
       })
       .then((response) => {
         if (response.data.status) {
-          setTaken(true);
+          // setTaken(true);
           if (localStorage.done) {
             toLogin();
           }
