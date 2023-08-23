@@ -238,8 +238,8 @@ const Test = () => {
   };
 
   const handleOptionSelect = (option) => {
-    const newSelectedOptions = [...selectedOptions];
-    const newQuestionScores = [...questionScores];
+    const newSelectedOptions = {...selectedOptions};
+    const newQuestionScores = {...questionScores};
 
     const currentQuestion = questions[currentQuestionIndex];
     const questionIndex = currentQuestion.id - 1;
@@ -254,7 +254,7 @@ const Test = () => {
 
     setSelectedOptions(newSelectedOptions);
 
-    const updatedAnsweredQuestions = [...answeredQuestions];
+    const updatedAnsweredQuestions = {...answeredQuestions};
 
     if (option !== "") {
       newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
@@ -276,20 +276,20 @@ const Test = () => {
       selectedOptions: newSelectedOptions
     }
     console.log(payload);
-    let endpoint = "http://localhost:2000/student_account/set_scores"
-    axios.post(endpoint, payload)
-    .then((response) => {
-      if (response.data.status) {
-        console.log(response.data.response);
-        // localStorage.setItem("answeredQuestions",JSON.stringify(response.data.response.answeredQuestions));
-        //      localStorage.setItem("questionScores", JSON.stringify(response.data.response.questionScores));
-        //       localStorage.setItem("selectedOptions", JSON.stringify(response.data.response.selectedOptions));
+    // let endpoint = "http://localhost:2000/student_account/set_scores"
+    // axios.post(endpoint, payload)
+    // .then((response) => {
+    //   if (response.data.status) {
+    //     console.log(response.data.response);
+    //     // localStorage.setItem("answeredQuestions",JSON.stringify(response.data.response.answeredQuestions));
+    //     //      localStorage.setItem("questionScores", JSON.stringify(response.data.response.questionScores));
+    //     //       localStorage.setItem("selectedOptions", JSON.stringify(response.data.response.selectedOptions));
         
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // })
 
   //   localStorage.setItem(
   //     "answeredQuestions",
