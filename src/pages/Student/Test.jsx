@@ -279,7 +279,9 @@ const Test = () => {
     let endpoint = "http://localhost:2000/student_account/set_scores"
     axios.post(endpoint, payload)
     .then((response) => {
-
+      if (response.data.status) {
+        console.log(response.data.response);
+      }
     })
     .catch((err) => {
       console.log(err);
