@@ -89,7 +89,7 @@ function App() {
   let studentSignInToken = localStorage.studentSignInToken
   let username = "Adex";
   let shouldRedirect = true;
-  let takenAdmissionExam = localStorage.taken
+  let takenAdmissionExam = localStorage.getItem("taken");
   return (
     <>
     <Router>

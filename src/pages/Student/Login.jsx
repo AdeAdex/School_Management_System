@@ -43,6 +43,10 @@ const Login = () => {
         setIsLoading(false)
         if (response.data.status) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
+          localStorage.setItem(
+            "taken",
+            response.data.response
+          );
           if (response.data.response) {
           navigate("/student/admission/pick_class");
           } else {
