@@ -72,8 +72,13 @@ const Test = () => {
               globalState.takenExam
             );
             
+            localStorage.setItem(
+              "submitted",
+              globalState.submitted
+            );
             startCountdown();
           }
+          setTaken(localStorage.getItem('taken') === 'true')
        
         } else {
           console.log(res.data.message);
@@ -234,7 +239,8 @@ const Test = () => {
       .post(endpoint2, payload)
       .then((response) => {
         if (response.data.status) {
-          setTaken(true);
+          localStorage.setItem("submitted", response.data.response);
+          setTaken(localStorage.getItem('taken') === 'true')
           if (localStorage.done) {
             toLogin();
           }
