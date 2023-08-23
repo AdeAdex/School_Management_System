@@ -23,6 +23,7 @@ const Test = () => {
     Array.from({ length: questions.length }, () => 0)
   );
   const [taken, setTaken] = useState(false);
+  const [performed, setPerformed] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -89,7 +90,7 @@ const Test = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [globalState, refreshing]);
+  }, [globalState, refreshing, taken]);
 
   const startCountdown = () => {
     const startTime = parseInt(localStorage.getItem("countdownStartTime"));
@@ -128,7 +129,7 @@ const Test = () => {
   };
   
   useEffect(() => {
-    // setTaken(localStorage.getItem("taken") === "true")
+    setTaken(localStorage.getItem('taken') === 'true')
     setBeginExam(localStorage.getItem("examStarted") === "true");
     startCountdown();
     let endpoint =
@@ -240,6 +241,7 @@ const Test = () => {
       .then((response) => {
         if (response.data.status) {
           localStorage.setItem("submitted", response.data.response);
+          setPerformed(true)
           setTaken(localStorage.getItem('taken') === 'true')
           if (localStorage.done) {
             toLogin();
@@ -581,7 +583,7 @@ const handleOptionSelect = (option) => {
               style={{ marginTop: "100px" }}
             >
               <div className="d-flex gap-2 justify-content-center position-relative">
-                {taken ? (
+                {performed === true ? (
                   <>
                     <div
                       className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
@@ -643,7 +645,7 @@ const handleOptionSelect = (option) => {
                   {globalState.firstName} {globalState.lastName}{" "}
                   {globalState.takenExam}
                 </div>
-                {taken ? null : (
+                {performed ? null : (
                   <div
                     className=" position-absolute end-0"
                     style={{ cursor: "pointer" }}
@@ -655,7 +657,7 @@ const handleOptionSelect = (option) => {
               </div>
               {currentQuestion && (
                 <div className="div text-center">
-                  {(currentQuestion.id === 10 && taken) || localStorage.done ? (
+                  {(currentQuestion.id === 10 && performed) || localStorage.done ? (
                     <div className="mt-4">
                       <div className="mb-5">
                         Congratulations for successfully participating in our
