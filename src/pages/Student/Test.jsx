@@ -66,8 +66,10 @@ const Test = () => {
               "countdownTimeRemaining",
               globalState.testStart[0].countdownTimeRemaining
             );
+            
             startCountdown();
           }
+       
         } else {
           console.log(res.data.message);
           console.log(res.data.status);
@@ -122,6 +124,7 @@ const Test = () => {
       "https://school-portal-backend-adex2210.vercel.app/staff_account/questions";
     axios.get(endpoint).then((response) => {
       setQuestions(response.data);
+      // console.log(questions);
       const storedQuestionIndex = localStorage.getItem("currentQuestionIndex");
       if (storedQuestionIndex === null) {
         localStorage.setItem(
@@ -163,7 +166,10 @@ const Test = () => {
     if (storedAnsweredQuestions) {
       setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     }
-  }, [timeIsUp, beginExam, refreshing]);
+  }, [timeIsUp, questions, beginExam, refreshing]);
+
+
+
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
@@ -229,6 +235,7 @@ const Test = () => {
       });
   };
 
+  
   const handlePreviousClick = () => {
     if (currentQuestionIndex > 0) {
       const newQuestionIndex = currentQuestionIndex - 1;
@@ -237,71 +244,108 @@ const Test = () => {
     }
   };
 
-  const handleOptionSelect = (option) => {
-    const newSelectedOptions = {...selectedOptions};
-    const newQuestionScores = {...questionScores};
-
-    const currentQuestion = questions[currentQuestionIndex];
-    const questionIndex = currentQuestion.id - 1;
-
-    newSelectedOptions[questionIndex] = option;
-
-    if (option.startsWith(currentQuestion.correctOption)) {
-      newQuestionScores[questionIndex] = 10;
-    } else {
-      newQuestionScores[questionIndex] = -10;
-    }
-
-    setSelectedOptions(newSelectedOptions);
-
-    const updatedAnsweredQuestions = {...answeredQuestions};
-
-    if (option !== "") {
-      newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
-      updatedAnsweredQuestions.push(currentQuestion.id);
-    } else {
-      const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
-      if (index !== -1) {
-        updatedAnsweredQuestions.splice(index, 1);
-      }
-    }
-
-    setAnsweredQuestions(updatedAnsweredQuestions);
-    setQuestionScores(newQuestionScores);
-
-    let payload = {
-      myEmail: globalState.email,
-      answeredQuestions: updatedAnsweredQuestions,
-      questionScores: newQuestionScores,
-      selectedOptions: newSelectedOptions
-    }
-    console.log(payload);
-    // let endpoint = "http://localhost:2000/student_account/set_scores"
-    // axios.post(endpoint, payload)
-    // .then((response) => {
-    //   if (response.data.status) {
-    //     console.log(response.data.response);
-    //     // localStorage.setItem("answeredQuestions",JSON.stringify(response.data.response.answeredQuestions));
-    //     //      localStorage.setItem("questionScores", JSON.stringify(response.data.response.questionScores));
-    //     //       localStorage.setItem("selectedOptions", JSON.stringify(response.data.response.selectedOptions));
-        
-    //   }
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // })
-
-  //   localStorage.setItem(
-  //     "answeredQuestions",
-  //     JSON.stringify(updatedAnsweredQuestions)
-  //   );
-  //   localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
-  //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  };
-
   const handleQuestionNavigation = (index) => {
     setCurrentQuestionIndex(index);
   };
+
+
+  // const handleOptionSelect = (option) => {
+  //   const currentQuestion = questions[currentQuestionIndex];
+  //   const questionIndex = currentQuestion.id - 1;
+  
+  //   const newSelectedOptions = { ...selectedOptions };
+  //   const newQuestionScores = { ...questionScores };
+  //   const updatedAnsweredQuestions = [...answeredQuestions];
+  
+  //   newSelectedOptions[questionIndex] = option;
+  
+  //   const isCorrect = option.startsWith(currentQuestion.correctOption);
+  //   newQuestionScores[questionIndex] = isCorrect ? 10 : -10;
+  
+  //   if (option !== "") {
+  //     if (!updatedAnsweredQuestions.includes(currentQuestion.id)) {
+  //       updatedAnsweredQuestions.push(currentQuestion.id);
+  //     }
+  //   } else {
+  //     const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
+  //     if (index !== -1) {
+  //       updatedAnsweredQuestions.splice(index, 1);
+  //     }
+  //   }
+  
+  //   setAnsweredQuestions(updatedAnsweredQuestions);
+  //   setQuestionScores(newQuestionScores);
+  //   setSelectedOptions(newSelectedOptions);
+  
+  //   // console.log("Picked Option:", option);
+  //   // console.log("Score for Picked Option:", newQuestionScores[questionIndex]);
+  
+  //   const payload = {
+  //     myEmail: globalState.email,
+  //     answeredQuestions: currentQuestion.id,
+  //     questionScores: newQuestionScores[questionIndex],
+  //     selectedOptions: option,
+  //   };
+  
+  //   console.log(payload);
+  
+  //   let endpoint = "http://localhost:2000/student_account/set_scores";
+  //   axios
+  //     .post(endpoint, payload)
+  //     .then((response) => {
+  //       if (response.data.status) {
+  //         console.log(response.data.response);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+
+const handleOptionSelect = (option) => {
+  const newSelectedOptions = [ ...selectedOptions ];
+  const newQuestionScores = [ ...questionScores ];
+
+  const currentQuestion = questions[currentQuestionIndex];
+  const questionIndex = currentQuestion.id - 1;
+
+  newSelectedOptions[questionIndex] = option;
+
+  if (option.startsWith(currentQuestion.correctOption)) {
+    newQuestionScores[questionIndex] = 10;
+  } else {
+    newQuestionScores[questionIndex] = -10;
+  }
+
+  setSelectedOptions(newSelectedOptions);
+
+  // Use an array for answeredQuestions
+  const updatedAnsweredQuestions = [...answeredQuestions];
+
+  if (option !== "") {
+    newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
+    updatedAnsweredQuestions.push(currentQuestion.id);
+  } else {
+    const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
+    if (index !== -1) {
+      updatedAnsweredQuestions.splice(index, 1);
+    }
+  }
+
+  setAnsweredQuestions(updatedAnsweredQuestions);
+  setQuestionScores(newQuestionScores);
+
+  localStorage.setItem(
+    "answeredQuestions",
+    JSON.stringify(updatedAnsweredQuestions)
+  );
+  localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
+  localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+};
+
+  
+  
 
   const toLogin = () => {
     setIsLoading(true);
@@ -315,6 +359,13 @@ const Test = () => {
       .post(updateEndpoint, payload)
       .then((response) => {
         if (response.data.status) {
+          localStorage.removeItem("answeredQuestions");
+          localStorage.removeItem("questionScores");
+          localStorage.removeItem("currentQuestionIndex");
+          localStorage.removeItem("examStarted");
+          localStorage.removeItem("countdownStartTime");
+          localStorage.removeItem("countdownTimeRemaining");
+
           setIsLoading(false);
           const Toast = Swal.mixin({
             toast: true,
@@ -332,7 +383,7 @@ const Test = () => {
             icon: "success",
             title: response.data.message,
           });
-          // console.log(response.data.newResult);
+          
           localStorage.taken = response.data.newResult;
           navigate("/student_login");
         }
@@ -357,7 +408,7 @@ const Test = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        const countdownTime = 3000;
+        const countdownTime = 300;
         let payload = {
           newExamStarted: true,
           newCountdownStartTime: Date.now(),
@@ -647,6 +698,7 @@ const Test = () => {
                           </label>
                         ))}
                       </ul>
+
                       <QuestionNavigationTable
                         totalQuestions={questions.length}
                         currentQuestionIndex={currentQuestionIndex}
@@ -681,6 +733,7 @@ const Test = () => {
         </>
       )}
     </div>
+
   );
 };
 
