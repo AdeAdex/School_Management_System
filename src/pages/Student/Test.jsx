@@ -22,7 +22,7 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(
     Array.from({ length: questions.length }, () => 0)
   );
-  // const [taken, setTaken] = useState(false);
+  const [taken, setTaken] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -232,7 +232,7 @@ const Test = () => {
       })
       .then((response) => {
         if (response.data.status) {
-          // setTaken(true);
+          setTaken(true);
           if (localStorage.done) {
             toLogin();
           }
@@ -372,6 +372,7 @@ const handleOptionSelect = (option) => {
           localStorage.removeItem("countdownTimeRemaining");
           localStorage.removeItem("selectedOptions");
           localStorage.setItem("currentQuestionIndex", 0);
+          localStorage.removeItem("taken");
           
           setIsLoading(false);
           const Toast = Swal.mixin({
@@ -572,7 +573,7 @@ const handleOptionSelect = (option) => {
               style={{ marginTop: "100px" }}
             >
               <div className="d-flex gap-2 justify-content-center position-relative">
-                {localStorage.getItem('taken') === 'true' ? (
+                {taken ? (
                   <>
                     <div
                       className="d-flex fs-2 fw-bold position-fixed gap-4 justify-content-center w-100 py-3"
@@ -634,7 +635,7 @@ const handleOptionSelect = (option) => {
                   {globalState.firstName} {globalState.lastName}{" "}
                   {globalState.takenExam}
                 </div>
-                {localStorage.getItem('taken') === 'true' ? null : (
+                {taken ? null : (
                   <div
                     className=" position-absolute end-0"
                     style={{ cursor: "pointer" }}
@@ -646,7 +647,7 @@ const handleOptionSelect = (option) => {
               </div>
               {currentQuestion && (
                 <div className="div text-center">
-                  {(currentQuestion.id === 10 && localStorage.getItem('taken') === 'true') || localStorage.done ? (
+                  {(currentQuestion.id === 10 && taken) || localStorage.done ? (
                     <div className="mt-4">
                       <div className="mb-5">
                         Congratulations for successfully participating in our
