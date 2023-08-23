@@ -281,6 +281,10 @@ const Test = () => {
     .then((response) => {
       if (response.data.status) {
         console.log(response.data.response);
+        // localStorage.setItem("answeredQuestions",JSON.stringify(response.data.response.answeredQuestions));
+        //      localStorage.setItem("questionScores", JSON.stringify(response.data.response.questionScores));
+        //       localStorage.setItem("selectedOptions", JSON.stringify(response.data.response.selectedOptions));
+        
       }
     })
     .catch((err) => {
