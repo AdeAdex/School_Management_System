@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const Chat = ({ socket }) => {
 
   //   let socketRef = useRef();
-  //   const endpoint = "http://localhost:2000";
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [group, setGroup] = useState([]);

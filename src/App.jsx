@@ -80,7 +80,6 @@ function App() {
     // let payload = {
     //   myEmail: myEmail
     // }
-    // let endpoint = "http://localhost:2000/student_account/"
     // axios.post(endpoint, payload)
   },[])
 

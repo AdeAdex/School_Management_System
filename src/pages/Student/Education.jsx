@@ -48,7 +48,6 @@ const Education = () => {
     setEditModalOpen(true);
     setL(items);
     console.log(l);
-    //   let endpoints = "http://localhost:2000/student_account/edit"
     //  axios.get(endpoints, {
     //   headers: {
     //     Authorization: `${myId} ${myEmail}`,

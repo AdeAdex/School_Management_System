@@ -27,7 +27,6 @@ const StudentDashboardNavbar = () => {
 
 
   // let socketRef = useRef()
-  // const endpoint = "http://localhost:2000"
 
   // useEffect(() => {
   //   socketRef.current = socketClient(endpoint);
