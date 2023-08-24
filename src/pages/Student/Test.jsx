@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { newStudent, takenExam } from "../../redux/portalSlice";
+import { newStudent } from "../../redux/portalSlice";
 import "../Student/Test.css";
 import "animate.css";
 import { FaUserAlt } from "react-icons/fa";
@@ -36,7 +36,6 @@ const Test = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const globalTaken = useSelector((state) => state.portalReducer.taken);
   let warningSound = new Audio("warning.wav");
 
   useEffect(() => {
@@ -78,9 +77,11 @@ const Test = () => {
               "submitted",
               globalState.submitted
             );
+
+            localStorage.getItem("finished") === "true";
+
             startCountdown();
           }
-          // setTaken(localStorage.getItem('taken') === 'true')
        
         } else {
           console.log(res.data.message);
@@ -130,6 +131,7 @@ const Test = () => {
   };
   
   useEffect(() => {
+    localStorage.getItem("finished") === "true";
     // setTaken(localStorage.getItem('taken') === 'true')
     setBeginExam(localStorage.getItem("examStarted") === "true");
     startCountdown();
@@ -244,11 +246,10 @@ const Test = () => {
         if (response.data.status) {
           localStorage.setItem("submitted", response.data.response);
           setPerformed(true)
-          // if (localStorage.submitted === 'true') {
-            // setTaken(localStorage.getItem('submitted') === 'true')
-          dispatch(takenExam(response.data.response));
-            console.log(globalTaken.taken);
-          // }
+          if (localStorage.submitted === 'true') {
+          localStorage.setItem("finished", response.data.response);
+            // console.log(local);
+          }
           if (localStorage.done) {
             toLogin();
           }
@@ -663,7 +664,7 @@ const handleOptionSelect = (option) => {
               </div>
               {currentQuestion && (
                 <div className="div text-center">
-                  {(currentQuestion.id === 10 && performed) || localStorage.done ? (
+                  {(currentQuestion.id === 10 && localStorage.finished === 'true') || localStorage.done ? (
                     <div className="mt-4">
                       <div className="mb-5">
                         Congratulations for successfully participating in our
