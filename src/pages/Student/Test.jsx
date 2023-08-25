@@ -268,6 +268,7 @@ const Test = () => {
 
   const handleQuestionNavigation = (index) => {
     setCurrentQuestionIndex(index);
+    localStorage.setItem("currentQuestionIndex", String(index));
   };
 
 
@@ -433,7 +434,7 @@ const handleOptionSelect = (option) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        const countdownTime = 300;
+        const countdownTime = 3000;
         let payload = {
           newExamStarted: true,
           newCountdownStartTime: Date.now(),
