@@ -28,15 +28,18 @@ function MyApp() {
   const { enqueueSnackbar } = useSnackbar();
   const [studentFirstName, setStudentFirstName] = useState("")
   const [studentAdmissionState, setStudentAdmissionState] = useState("")
-  const [] = useState("")
+  const [studentUploadedURL, setStudentUploadedURL] = useState("")
+  const [studentUploadedDate, setStudentUploadedDate] = useState("")
 
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const confirmAdmissionPayment = (studentFirstName, personEmail, studentAdmissionState) => {
+  const confirmAdmissionPayment = (studentFirstName, personEmail, studentAdmissionState, studentUploadedURL, studentUploadedDate) => {
     setDialogOpen(true);
     setStudentFirstName(studentFirstName)
     setPersonEmail(personEmail);
     setStudentAdmissionState(studentAdmissionState)
+    setStudentUploadedURL(studentUploadedURL)
+    setStudentUploadedDate(studentUploadedDate)
   };
 
   const handleDialogClose = () => {
@@ -237,7 +240,9 @@ function MyApp() {
                     confirmAdmissionPayment(
                       selectedStudent.firstName,
                       selectedStudent.email,
-                      selectedStudent.paidForAdmission
+                      selectedStudent.paidForAdmission,
+                      selectedStudent.paymentURL[0].paymentLink,
+                      selectedStudent.paymentURL[0].dateUploaded,
                     );
                   }}
                 >
@@ -283,6 +288,8 @@ function MyApp() {
           firstName={studentFirstName}
           personEmail={personEmail}
           admissionState={studentAdmissionState}
+          paymentURL={studentUploadedURL}
+          paymentDate={studentUploadedDate}
         />
       </div>
     </>

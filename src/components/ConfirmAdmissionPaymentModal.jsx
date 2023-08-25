@@ -19,6 +19,8 @@ const ConfirmAdmissionPaymentModal = ({
   firstName,
   personEmail,
   admissionState,
+  paymentURL,
+  paymentDate
 }) => {
   return (
     <SnackbarProvider
@@ -31,12 +33,14 @@ const ConfirmAdmissionPaymentModal = ({
         firstName={firstName}
         personEmail={personEmail}
         admissionState={admissionState}
+        paymentURL={paymentURL}
+        paymentDate={paymentDate}
       />
     </SnackbarProvider>
   );
 };
 
-function MyApp({ open, handleClose, firstName, personEmail, admissionState }) {
+function MyApp({ open, handleClose, firstName, personEmail, admissionState, paymentURL, paymentDate }) {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleAgree = () => {
@@ -69,6 +73,8 @@ function MyApp({ open, handleClose, firstName, personEmail, admissionState }) {
       <DialogTitle>{`Confirm Admission Payment For ${firstName}`}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
+        <img src={paymentURL} alt="" />
+        <small>{paymentDate}</small>
           <div>Current Payment: 0</div>
           <div>Admission Payment State: {admissionState}</div>
         </DialogContentText>
