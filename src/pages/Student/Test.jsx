@@ -392,6 +392,9 @@ const handleOptionSelect = (option) => {
           localStorage.removeItem("selectedOptions");
           localStorage.setItem("currentQuestionIndex", 0);
           localStorage.removeItem("taken");
+          localStorage.removeItem("done");
+          localStorage.removeItem("submitted");
+          localStorage.removeItem("finished");
           
           setIsLoading(false);
           const Toast = Swal.mixin({
