@@ -42,11 +42,11 @@ const Test = () => {
     let studentLoginToken = localStorage.studentLoginToken;
     setBeginExam(localStorage.getItem("examStarted") === "true");
     let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
+    "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
     axios
-      .get(endpoint, {
-        headers: {
-          Authorization: `Bearer ${studentLoginToken}`,
+    .get(endpoint, {
+      headers: {
+        Authorization: `Bearer ${studentLoginToken}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },
@@ -62,8 +62,8 @@ const Test = () => {
             localStorage.setItem(
               "countdownStartTime",
               globalState.testStart[0].countdownStartTime
-            );
-            localStorage.setItem(
+              );
+              localStorage.setItem(
               "countdownTimeRemaining",
               globalState.testStart[0].countdownTimeRemaining
             );
@@ -71,19 +71,20 @@ const Test = () => {
             localStorage.setItem(
               "taken",
               globalState.takenExam
-            );
-            
-            localStorage.setItem(
-              "submitted",
-              globalState.submitted
-            );
-
-            localStorage.getItem("finished") === "true";
-
-            startCountdown();
-          }
-       
-        } else {
+              );
+              
+              localStorage.setItem(
+                "submitted",
+                globalState.submitted
+                );
+                localStorage.setItem("finished", globalState.submitted);
+                
+                localStorage.getItem("finished") === "true";
+                
+                startCountdown();
+              }
+              
+            } else {
           console.log(res.data.message);
           console.log(res.data.status);
           navigate("/student_login");
