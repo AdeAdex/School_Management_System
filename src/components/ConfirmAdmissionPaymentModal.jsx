@@ -73,8 +73,10 @@ function MyApp({ open, handleClose, firstName, personEmail, admissionState, paym
       <DialogTitle>{`Confirm Admission Payment For ${firstName}`}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
-        <img src={paymentURL} alt="" />
+        <div className="d-flex flex-column">
+        <img src={paymentURL} style={{width: '400px', maxWidth: '100%'}} alt="" />
         <small>{paymentDate}</small>
+        </div>
           <div>Current Payment: 0</div>
           <div>Admission Payment State: {admissionState}</div>
         </DialogContentText>
