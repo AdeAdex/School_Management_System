@@ -434,7 +434,7 @@ const handleOptionSelect = (option) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        const countdownTime = 3000;
+        const countdownTime = 300;
         let payload = {
           newExamStarted: true,
           newCountdownStartTime: Date.now(),
