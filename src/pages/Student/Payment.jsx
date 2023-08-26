@@ -74,37 +74,37 @@ const Payment = ({
       callback: function (response) {
         let message =
           "Payment completed! Your Reference Number is: " + response.reference;
-        // Swal.fire({
-        //   icon: "success",
-        //   title: "Thank You " + firstName,
-        //   text: message,
-        //   footer: "",
-        // }).then((result) => {
-        //   if (result.isConfirmed) {
-        //     window.location.reload();
-        //   }
-        // });
-          // console.log(response);
-          
+        Swal.fire({
+          icon: "success",
+          title: "Thank You " + firstName,
+          text: message,
+          footer: "",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+        
         if (response.status === "success") {
+        console.log(response);
           let payload = {
             myEmail: myEmail,
             justPaid: true,
-            amount: amount
+            amount: 5000
           };
           console.log(payload);
-          // let endpoint =
-          //   "http://localhost:2000/student_account/paidAdmissionFee";
-          // axios
-          //   .post(endpoint, payload)
-          //   .then((response) => {
-          //     if (response.data.status) {
-          //       // localStorage.setItem("currentPaidState", true);
-          //     }
-          //   })
-          //   .catch((err) => {
-          //     console.log(err);
-          //   });
+          let endpoint =
+            "http://localhost:2000/student_account/paidAdmissionFee";
+          axios
+            .post(endpoint, payload)
+            .then((response) => {
+              if (response.data.status) {
+                localStorage.setItem("currentPaidState", true);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       },
     });
