@@ -92,7 +92,6 @@ const Payment = ({
             justPaid: true,
             amount: 5000,
           };
-          console.log(payload);
           let endpoint =
             "https://school-portal-backend-adex2210.vercel.app/student_account/paidAdmissionFee";
           axios
