@@ -31,7 +31,7 @@ const Payment = ({
     reader.onload = () => {
       setMyImage(reader.result);
       const endpoint =
-        "http://localhost:2000/student_account/upload_admission_receipt";
+        "https://school-portal-backend-adex2210.vercel.app/student_account/upload_admission_receipt";
       axios
         .post(endpoint, { myImage: reader.result, myEmail })
         .then((response) => {
@@ -90,11 +90,11 @@ const Payment = ({
           let payload = {
             myEmail: myEmail,
             justPaid: true,
-            amount: 5000
+            amount: 5000,
           };
           console.log(payload);
           let endpoint =
-            "http://localhost:2000/student_account/paidAdmissionFee";
+            "https://school-portal-backend-adex2210.vercel.app/student_account/paidAdmissionFee";
           axios
             .post(endpoint, payload)
             .then((response) => {
