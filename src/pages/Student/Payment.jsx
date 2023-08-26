@@ -92,7 +92,7 @@ const Payment = ({
           };
           console.log(payload);
           let endpoint =
-            "https://school-portal-backend-adex2210.vercel.app/student_account/paidAdmissionFee";
+            "http://localhost:2000/student_account/paidAdmissionFee";
           axios
             .post(endpoint, payload)
             .then((response) => {
