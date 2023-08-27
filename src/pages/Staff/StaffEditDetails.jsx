@@ -213,8 +213,7 @@ const StaffEditDetails = () => {
     });
   };
   return (
-    <>
-      <div className="d-flex flex-column">
+      <div className="upload-container">
         <table className="table gap-2">
           <thead className="text-white table-head mb-3">
             <tr className="text-uppercase">
@@ -456,7 +455,6 @@ const StaffEditDetails = () => {
           </form>
         </div>
       </div>
-    </>
   );
 };
 

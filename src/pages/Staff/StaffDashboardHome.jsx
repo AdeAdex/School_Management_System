@@ -4,6 +4,7 @@ import axios from "axios";
 import UpgradeLevelModal from "../../components/UpgradeLevelModal";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import ConfirmAdmissionPaymentModal from "../../components/ConfirmAdmissionPaymentModal";
+import "./Dashboard.css";
 
 const StaffDashboardHome = () => {
   return (
@@ -49,7 +50,7 @@ function MyApp() {
     setStudentAdmissionState(studentAdmissionState);
     setStudentUploadedURL(studentUploadedURL);
     setStudentUploadedDate(studentUploadedDate);
-    setStudentPaidAmount(studentPaidAmount)
+    setStudentPaidAmount(studentPaidAmount);
   };
 
   const handleDialogClose = () => {
@@ -93,6 +94,50 @@ function MyApp() {
     setModalOpen(false);
   };
 
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [matchedNames, setMatchedNames] = useState([]);
+  // const [selectedStudent, setSelectedStudent] = useState(null);
+
+  // const handleSearch = (event) => {
+  //   const term = event.target.value;
+  //   setSearchTerm(term);
+
+  //   // Filter names that match the search term
+  //   const matched = allStudent.filter((student) =>
+  //     student.firstName.toLowerCase().includes(term.toLowerCase())
+  //   );
+  //   setMatchedNames(matched);
+  // };
+
+  // const handleSelectStudent = (event) => {
+  //   const selectedFirstName = event.target.value;
+  //   const selectedStudent = allStudent.find(
+  //     (student) => student.firstName === selectedFirstName
+  //   );
+  //   setSelectedStudent(selectedStudent);
+  // };
+
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [selectedStudent, setSelectedStudent] = useState(null);
+
+  // const handleSearch = (event) => {
+  //   const term = event.target.value;
+  //   setSearchTerm(term);
+  // };
+
+  // const handleSelectStudent = (event) => {
+  //   const selectedFirstName = event.target.value;
+  //   const selectedStudent = allStudent.find(
+  //     (student) => student.firstName === selectedFirstName
+  //   );
+  //   setSelectedStudent(selectedStudent);
+  // };
+
+  // // Filter names that match the search term
+  // const matchedNames = allStudent.filter((student) =>
+  //   student.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
   const [searchTerm, setSearchTerm] = useState("");
   const [matchedNames, setMatchedNames] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
@@ -108,12 +153,10 @@ function MyApp() {
     setMatchedNames(matched);
   };
 
-  const handleSelectStudent = (event) => {
-    const selectedFirstName = event.target.value;
-    const selectedStudent = allStudent.find(
-      (student) => student.firstName === selectedFirstName
-    );
-    setSelectedStudent(selectedStudent);
+  const handleSelectStudent = (student) => {
+    setSelectedStudent(student);
+    setSearchTerm(student.firstName);
+    setMatchedNames([]); // Clear suggestions after selection
   };
 
   const createRoom = (variant) => {
@@ -153,22 +196,29 @@ function MyApp() {
     <>
       <div className="flex p-5 flex-column w-100">
         <div className="w-100 text-black">Dashbord</div>
-        <div className="d-flex flex-column">
+        <div className="search-container">
           <input
+            className="search-input"
             type="search"
             placeholder="Search..."
             value={searchTerm}
             onChange={handleSearch}
           />
-          <select onChange={handleSelectStudent}>
-            <option value="">Select a student</option>
-            {matchedNames.map((student, index) => (
-              <option key={index} value={student.firstName}>
-                {student.firstName}
-              </option>
-            ))}
-          </select>
+          {searchTerm && matchedNames.length > 0 && (
+            <div className="suggestions">
+              {matchedNames.map((student, index) => (
+                <div
+                  key={index}
+                  className="suggestion"
+                  onClick={() => handleSelectStudent(student)}
+                >
+                  {student.firstName} {student.lastName}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+
         <div className="w-100">
           {selectedStudent && (
             <>
@@ -279,25 +329,29 @@ function MyApp() {
             </>
           )}
         </div>
-        <div className="w-100 mt-4">
-          <div>Create Group</div>
+       
+        <div className="create-group">
+          <div className="create-group-heading">Create Group</div>
           <div>
             <input
+              className="create-group-input text-capitalize"
               type="text"
-              className="text-capitalize"
               placeholder="Room ID..."
               onChange={(e) => setRoom(e.target.value)}
             />
             <input
+              className="create-group-input"
               type="file"
               id="avatarInput"
               accept="image/*"
-              style={{ display: "" }}
               onChange={handleFileSelect}
             />
-            <button onClick={createRoom}>Create Room</button>
+            <button className="create-group-button" onClick={createRoom}>
+              Create Room
+            </button>
           </div>
         </div>
+
         <UpgradeLevelModal
           isOpen={modalOpen}
           personEmail={personEmail}
