@@ -32,6 +32,7 @@ function MyApp() {
   const [studentUploadedDate, setStudentUploadedDate] = useState("")
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const confirmAdmissionPayment = (studentFirstName, personEmail, studentAdmissionState, studentUploadedURL, studentUploadedDate) => {
     setDialogOpen(true);
@@ -59,6 +60,17 @@ function MyApp() {
       .then((response) => {
         setAllStudent(response.data.response);
       });
+      
+      const handleResize = () => {
+        setScreenWidth(window.innerWidth);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+
   }, []);
 
   const upgrade = (personEmail, studentClass, studentTerm, studentOption) => {
@@ -153,7 +165,7 @@ function MyApp() {
         <div className="w-100">
           {selectedStudent && (
             <>
-          { window.innerWidth >= 768 ? (
+          { screenWidth >= 768 ? (
             <table className="table table-border table-stripped gap-2 w-100">
               <thead>
                 <tr className="text-uppercase">

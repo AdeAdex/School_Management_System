@@ -75,7 +75,7 @@ function MyApp({ open, handleClose, firstName, personEmail, admissionState, paym
         <DialogContentText id="alert-dialog-slide-description">
         <div className="d-flex flex-column">
         <img src={paymentURL} style={{width: '400px', maxWidth: '100%'}} alt="" />
-        <small>{paymentDate}</small>
+        <small className="my-2">Uploaded date: {paymentDate}</small>
         </div>
           <div>Current Payment: 0</div>
           <div>Admission Payment State: {admissionState}</div>
