@@ -26,21 +26,30 @@ function MyApp() {
   const [room, setRoom] = useState("");
   const [myImage, setMyImage] = useState("");
   const { enqueueSnackbar } = useSnackbar();
-  const [studentFirstName, setStudentFirstName] = useState("")
-  const [studentAdmissionState, setStudentAdmissionState] = useState("")
-  const [studentUploadedURL, setStudentUploadedURL] = useState("")
-  const [studentUploadedDate, setStudentUploadedDate] = useState("")
+  const [studentFirstName, setStudentFirstName] = useState("");
+  const [studentAdmissionState, setStudentAdmissionState] = useState("");
+  const [studentUploadedURL, setStudentUploadedURL] = useState("");
+  const [studentUploadedDate, setStudentUploadedDate] = useState("");
+  const [studentPaidAmount, setStudentPaidAmount] = useState("");
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  const confirmAdmissionPayment = (studentFirstName, personEmail, studentAdmissionState, studentUploadedURL, studentUploadedDate) => {
+  const confirmAdmissionPayment = (
+    studentFirstName,
+    personEmail,
+    studentAdmissionState,
+    studentUploadedURL,
+    studentUploadedDate,
+    studentPaidAmount
+  ) => {
     setDialogOpen(true);
-    setStudentFirstName(studentFirstName)
+    setStudentFirstName(studentFirstName);
     setPersonEmail(personEmail);
-    setStudentAdmissionState(studentAdmissionState)
-    setStudentUploadedURL(studentUploadedURL)
-    setStudentUploadedDate(studentUploadedDate)
+    setStudentAdmissionState(studentAdmissionState);
+    setStudentUploadedURL(studentUploadedURL);
+    setStudentUploadedDate(studentUploadedDate);
+    setStudentPaidAmount(studentPaidAmount)
   };
 
   const handleDialogClose = () => {
@@ -60,17 +69,16 @@ function MyApp() {
       .then((response) => {
         setAllStudent(response.data.response);
       });
-      
-      const handleResize = () => {
-        setScreenWidth(window.innerWidth);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
 
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const upgrade = (personEmail, studentClass, studentTerm, studentOption) => {
@@ -123,8 +131,7 @@ function MyApp() {
 
     let values = { room, myImage, createdDay, createdTime };
     let endpoint = "http://localhost:2000/staff_account/chat_group";
-    axios.post(endpoint, { values })
-    .then((response) => {
+    axios.post(endpoint, { values }).then((response) => {
       enqueueSnackbar(response.data.message, { variant: "success" });
     });
     console.log(values);
@@ -165,32 +172,78 @@ function MyApp() {
         <div className="w-100">
           {selectedStudent && (
             <>
-          { screenWidth >= 768 ? (
-            <table className="table table-border table-stripped gap-2 w-100">
-              <thead>
-                <tr className="text-uppercase">
-                  <td>first name</td>
-                  <td>last name</td>
-                  <td>email</td>
-                  <td>Admission Status</td>
-                  <td>matric No</td>
-                  <td>class</td>
-                  <td>term</td>
-                  <td>option</td>
-                  <td className="d-flex ms-5">action</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{selectedStudent.firstName}</td>
-                  <td>{selectedStudent.lastName}</td>
-                  <td>{selectedStudent.email}</td>
-                  <td>{selectedStudent.paidForAdmission}</td>
-                  <td>{selectedStudent.matric}</td>
-                  <td>{selectedStudent.level}</td>
-                  <td>{selectedStudent.term}</td>
-                  <td>{selectedStudent.options}</td>
-                  <td className="d-flex gap-3">
+              {screenWidth >= 768 ? (
+                <table className="table table-border table-stripped gap-2 w-100">
+                  <thead>
+                    <tr className="text-uppercase">
+                      <td>first name</td>
+                      <td>last name</td>
+                      <td>email</td>
+                      <td>Admission Status</td>
+                      <td>matric No</td>
+                      <td>class</td>
+                      <td>term</td>
+                      <td>option</td>
+                      <td className="d-flex ms-5">action</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{selectedStudent.firstName}</td>
+                      <td>{selectedStudent.lastName}</td>
+                      <td>{selectedStudent.email}</td>
+                      <td>{selectedStudent.paidForAdmission}</td>
+                      <td>{selectedStudent.matric}</td>
+                      <td>{selectedStudent.level}</td>
+                      <td>{selectedStudent.term}</td>
+                      <td>{selectedStudent.options}</td>
+                      <td className="d-flex gap-3">
+                        <button
+                          className="btn btn-primary btn-sm"
+                          onClick={() => {
+                            upgrade(
+                              selectedStudent.email,
+                              selectedStudent.level,
+                              selectedStudent.term,
+                              selectedStudent.options
+                            );
+                          }}
+                        >
+                          Upgrade
+                        </button>
+                        <button
+                          variant="outlined"
+                          className="btn btn-primary btn-sm"
+                          onClick={() => {
+                            confirmAdmissionPayment(
+                              selectedStudent.firstName,
+                              selectedStudent.email,
+                              selectedStudent.paidForAdmission,
+                              selectedStudent.paymentURL[0].paymentLink,
+                              selectedStudent.paymentURL[0].dateUploaded,
+                              selectedStudent.admissionAmount
+                            );
+                          }}
+                        >
+                          Confirm Payment
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              ) : (
+                <div className="d-block d-md-none">
+                  <div>First Name: {selectedStudent.firstName}</div>
+                  <div>Last Name: {selectedStudent.lastName}</div>
+                  <div>Email: {selectedStudent.email}</div>
+                  <div>
+                    Admission Status: {selectedStudent.paidForAdmission}
+                  </div>
+                  <div>Matric No: {selectedStudent.matric}</div>
+                  <div>Class: {selectedStudent.level}</div>
+                  <div>Term: {selectedStudent.term}</div>
+                  <div>Options: {selectedStudent.options}</div>
+                  <div className="d-flex gap-3">
                     <button
                       className="btn btn-primary btn-sm"
                       onClick={() => {
@@ -211,60 +264,19 @@ function MyApp() {
                         confirmAdmissionPayment(
                           selectedStudent.firstName,
                           selectedStudent.email,
-                          selectedStudent.paidForAdmission
+                          selectedStudent.paidForAdmission,
+                          selectedStudent.paymentURL[0].paymentLink,
+                          selectedStudent.paymentURL[0].dateUploaded,
+                          selectedStudent.admissionAmount
                         );
                       }}
                     >
                       Confirm Payment
                     </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            ) : ( 
-              <div className="d-block d-md-none">
-              <div>First Name: {selectedStudent.firstName}</div>
-              <div>Last Name: {selectedStudent.lastName}</div>
-              <div>Email: {selectedStudent.email}</div>
-              <div>Admission Status: {selectedStudent.paidForAdmission}</div>
-              <div>Matric No: {selectedStudent.matric}</div>
-              <div>Class: {selectedStudent.level}</div>
-              <div>Term: {selectedStudent.term}</div>
-              <div>Options: {selectedStudent.options}</div>
-              <div className="d-flex gap-3">
-                <button
-                  className="btn btn-primary btn-sm"
-                  onClick={() => {
-                    upgrade(
-                      selectedStudent.email,
-                      selectedStudent.level,
-                      selectedStudent.term,
-                      selectedStudent.options
-                    );
-                  }}
-                >
-                  Upgrade
-                </button>
-                <button
-                  variant="outlined"
-                  className="btn btn-primary btn-sm"
-                  onClick={() => {
-                    confirmAdmissionPayment(
-                      selectedStudent.firstName,
-                      selectedStudent.email,
-                      selectedStudent.paidForAdmission,
-                      selectedStudent.paymentURL[0].paymentLink,
-                      selectedStudent.paymentURL[0].dateUploaded,
-                    );
-                  }}
-                >
-                  Confirm Payment
-                </button>
-              </div>
-            </div>
-            )}
+                  </div>
+                </div>
+              )}
             </>
-           
           )}
         </div>
         <div className="w-100 mt-4">
@@ -302,6 +314,7 @@ function MyApp() {
           admissionState={studentAdmissionState}
           paymentURL={studentUploadedURL}
           paymentDate={studentUploadedDate}
+          paymentAmount={studentPaidAmount}
         />
       </div>
     </>

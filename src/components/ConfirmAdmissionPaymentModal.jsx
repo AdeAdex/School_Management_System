@@ -8,6 +8,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import axios from "axios";
 import { SnackbarProvider, useSnackbar } from "notistack";
+import "../pages/Staff/Dashboard.css"
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -20,7 +22,8 @@ const ConfirmAdmissionPaymentModal = ({
   personEmail,
   admissionState,
   paymentURL,
-  paymentDate
+  paymentDate,
+  paymentAmount
 }) => {
   return (
     <SnackbarProvider
@@ -35,18 +38,20 @@ const ConfirmAdmissionPaymentModal = ({
         admissionState={admissionState}
         paymentURL={paymentURL}
         paymentDate={paymentDate}
+        paymentAmount={paymentAmount}
       />
     </SnackbarProvider>
   );
 };
 
-function MyApp({ open, handleClose, firstName, personEmail, admissionState, paymentURL, paymentDate }) {
+function MyApp({ open, handleClose, firstName, personEmail, admissionState, paymentURL, paymentDate, paymentAmount }) {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleAgree = () => {
     let payload = {
       myEmail: personEmail,
-      justPaid: false,
+      justPaid: true,
+      amount: 5000
     };
     let endpoint = "http://localhost:2000/student_account/paidAdmissionFee";
     axios
@@ -77,12 +82,12 @@ function MyApp({ open, handleClose, firstName, personEmail, admissionState, paym
         <img src={paymentURL} style={{width: '400px', maxWidth: '100%'}} alt="" />
         <small className="my-2">Uploaded date: {paymentDate}</small>
         </div>
-          <div>Current Payment: 0</div>
+          <div>Current Payment: {paymentAmount}</div>
           <div>Admission Payment State: {admissionState}</div>
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button className="btn btn-success" onClick={handleAgree}>
+        <Button className="btn agree-btn" onClick={handleAgree}>
           Agree
         </Button>
       </DialogActions>

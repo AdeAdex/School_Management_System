@@ -48,3 +48,24 @@
     display: none !important;
   }
 } */
+
+
+
+.agree-btn {
+  color: #fff !important;
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+}
+
+.agree-btn:hover {
+  color: #fff;
+  background-color: #218838 !important;
+  border-color: #1e7e34 !important;
+}
+
+.agree-btn:focus, .agree-btn.focus {
+  color: #fff;
+  background-color: #218838 !important;
+  border-color: #1e7e34 !important;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5) !important;
+}
