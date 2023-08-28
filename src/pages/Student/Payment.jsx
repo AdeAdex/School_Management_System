@@ -127,8 +127,22 @@ const Payment = ({
     payWithPaystack();
   }
 
+//   let currentNumber = 230001;
+
+// function generateSequentialID() {
+//   const generatedID = currentNumber.toString();
+//   currentNumber++;
+//   return generatedID;
+// }
+
+//   const gene =() => {
+//     let myID  = generateSequentialID()
+//     console.log("my ID " + myID);
+//   }
+
   return (
     <>
+    <button onClick={gene}>gene</button>
       <div className="payment-card">
         <div className="status">
           <div className={`status-value w-100 ${paid ? "paid" : "not-paid"}`}>
