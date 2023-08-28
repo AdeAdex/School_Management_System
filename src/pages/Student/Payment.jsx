@@ -142,7 +142,7 @@ const Payment = ({
 
   return (
     <>
-    <button onClick={gene}>gene</button>
+    {/* <button onClick={gene}>gene</button> */}
       <div className="payment-card">
         <div className="status">
           <div className={`status-value w-100 ${paid ? "paid" : "not-paid"}`}>
