@@ -6,18 +6,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
-
 const Login = () => {
   let navigate = useNavigate();
-  const [enteredEmail, setEnteredEmail] = useState("")
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [taken, setTaken] = useState(false)
+  const [taken, setTaken] = useState(false);
   const examState = useSelector((state) => state.portalReducer.taken);
 
-  // useEffect(() => {
-  //   alert(examState)
-  // }, [])
+  useEffect(() => {
+    localStorage.removeItem("answeredQuestions");
+    localStorage.removeItem("questionScores");
+    localStorage.removeItem("currentQuestionIndex");
+    localStorage.removeItem("examStarted");
+    localStorage.removeItem("countdownStartTime");
+    localStorage.removeItem("countdownTimeRemaining");
+    localStorage.removeItem("selectedOptions");
+    localStorage.setItem("currentQuestionIndex", 0);
+    localStorage.removeItem("taken");
+    localStorage.removeItem("done");
+    localStorage.removeItem("submitted");
+    localStorage.removeItem("finished");
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -28,31 +38,25 @@ const Login = () => {
       email: "",
       password: "",
     },
-   
 
-  
     // http://localhost:2000
     // https://school-portal-backend-adex2210.vercel.app
 
     onSubmit: (values) => {
-      setIsLoading(true)
+      setIsLoading(true);
       setEnteredEmail(values.email);
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_login";
-      axios.post(endpoint, values)
-      .then((response) => {
-        setIsLoading(false)
+      const endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/student_login";
+      axios.post(endpoint, values).then((response) => {
+        setIsLoading(false);
         if (response.data.status) {
           localStorage.studentLoginToken = response.data.studentLoginToken;
-          localStorage.setItem(
-            "taken",
-            response.data.response
-          );
+          localStorage.setItem("taken", response.data.response);
           if (response.data.response === true) {
-          navigate("/student/admission/pick_class");
+            navigate("/student/admission/pick_class");
           } else {
-            navigate('/student-entrance-exam_questions')
+            navigate("/student-entrance-exam_questions");
           }
-          
         } else {
           const Toast = Swal.mixin({
             toast: true,
@@ -70,20 +74,22 @@ const Login = () => {
             icon: "error",
             title: response.data.message,
           });
-          navigate('/student_login');
+          navigate("/student_login");
         }
       });
     },
   });
 
-
-  const myOTP = Math.floor(Math.random() * 9000 + 1000)
+  const myOTP = Math.floor(Math.random() * 9000 + 1000);
   const navigateToOTP = () => {
-    navigate('/forgot_password', {state: {email: enteredEmail }});
-  }
+    navigate("/forgot_password", { state: { email: enteredEmail } });
+  };
   return (
     <>
-      <div className="login-main-container" style={{backgroundImage: 'url("pic/loginImage7.png")'}}>
+      <div
+        className="login-main-container"
+        style={{ backgroundImage: 'url("pic/loginImage7.png")' }}
+      >
         <div className="login-content">
           <div className="login-text text-center">Login</div>
           <form action="#" onSubmit={formik.handleSubmit}>
@@ -97,7 +103,6 @@ const Login = () => {
                 placeholder="Email or RegistrationNumber"
                 autoComplete="on"
                 // setEnteredEmail(formik.value.entered)
-                
               />
               <span className="login-span">
                 <svg
@@ -135,9 +140,12 @@ const Login = () => {
                 placeholder="Password"
                 autoComplete="on"
               />
-              <div className="password-toggle" onClick={togglePasswordVisibility}>
-              {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
-            </div>
+              <div
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+              </div>
               <span className="login-span">
                 <svg
                   className=""
@@ -165,9 +173,20 @@ const Login = () => {
               <label className="login-label">Password</label>
             </div>
             <div className="login-forgot-pass">
-              <div onClick={()=> navigateToOTP()} className="text-primary my-4 forgotpassword">Forgot Password?</div>
+              <div
+                onClick={() => navigateToOTP()}
+                className="text-primary my-4 forgotpassword"
+              >
+                Forgot Password?
+              </div>
             </div>
-            <button className="login-button btn btn-primary" type="submit">{isLoading ? ( <div className="spinner"></div> ) : ( <div>Sign in </div> ) }</button>
+            <button className="login-button btn btn-primary" type="submit">
+              {isLoading ? (
+                <div className="spinner"></div>
+              ) : (
+                <div>Sign in </div>
+              )}
+            </button>
             <div className="login-sign-up gap-4">
               Not a member?
               <Link to="/student/create_account">Signup now</Link>
@@ -175,7 +194,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      
     </>
   );
 };
