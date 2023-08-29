@@ -42,7 +42,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const resendNewOTP = () => {
     const myNewOTP = Math.floor(Math.random() * 9000 + 1000);
     const myNewValues = { myNewOTP, sentEmail };
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/otp";
+    let endpoint = "http://localhost:2000/student_account/otp";
     axios.post(endpoint, myNewValues)
     .then((response) => {
       localStorage.secret = response.data.secret;
