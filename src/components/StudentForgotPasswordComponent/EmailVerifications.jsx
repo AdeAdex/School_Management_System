@@ -38,7 +38,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
       myEmail: sentEmail || "",
       startCountdown: true,
       countdownStartTime: Date.now(),
-      countdownTimeRemaining: 30,
+      countdownTimeRemaining: 180,
     },
 
     onSubmit: (values) => {
