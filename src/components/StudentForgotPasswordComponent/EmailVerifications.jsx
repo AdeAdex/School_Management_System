@@ -16,13 +16,16 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
 
   useEffect(() => {
     const storedValue = localStorage.getItem("ok") ;
-    const defaultValue = true;
 
     if (storedValue) {
       setStartCountdown(storedValue === "true");
     } else {
-      // localStorage.setItem("ok", defaultValue.toString());
+      setStartCountdown(false);
     }
+
+    // let endpoint = ""
+
+
   }, [startCountdown])
   
 
@@ -33,20 +36,18 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
       myEmail: sentEmail || "",
       startCountdown: true,
       countdownStartTime: Date.now(),
-      countdownTimeRemaining: 20,
+      countdownTimeRemaining: 30,
     },
 
     onSubmit: (values) => {
       const myOTP = Math.floor(Math.random() * 9000 + 1000);
       const newValues = { ...values, myOTP };
-      console.log(newValues);
       let endpoint = "http://localhost:2000/student_account/forgot_password";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
           localStorage.secret = response.data.secret;
           setMyEmail(response.data.response[0]);
           if (response.data.status) {
-            // setOk(response.data.result[0].startCountdown)
             localStorage.setItem("ok", response.data.result[0].startCountdown.toString());
             setStartCountdown(response.data.result[0].startCountdown);
             setIsCountdownActive(response.data.result[0].startCountdown);
@@ -153,7 +154,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
           <button
             type="submit"
             className="btn btn-success btn-sm my-4"
-            disabled={startCountdown}
+            disabled={localStorage.getItem("ok") === "true"}
           >
             Submit
           </button>

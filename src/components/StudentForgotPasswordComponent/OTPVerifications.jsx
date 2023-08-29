@@ -27,17 +27,13 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const [myLatestOTP, setMyLatestOTP] = useState("");
   
   
+
   // useEffect(() => {
-  //   console.log("startCountdown:", startCountdown);
-  //   const OTPTime = parseInt(localStorage.getItem("OTPCountdownStartTime"));
-  //   const OTPCountdownTime = parseInt(localStorage.getItem("OTPCountdownTimeRemaining"));
-  
-  //   console.log("OTPTime:", OTPTime);
-  //   console.log("OTPCountdownTime:", OTPCountdownTime);
-  
-  //   // ... rest of your code ...
-  
-  // }, [startCountdown]);
+  //   const storedValue = localStorage.getItem("ok") ;
+  //   if (storedValue) {
+  //     setStartCountdown(storedValue)
+  //   }
+  // }, [startCountdown])
 
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify

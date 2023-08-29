@@ -11,7 +11,6 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
     const OTPCountdownTime = parseInt(
       localStorage.getItem("OTPCountdownTimeRemaining")
     );
-    localStorage.getItem("ok") === "false"
 
     if (startCountdown && OTPTime && OTPCountdownTime) {
       const currentTime = Date.now();
@@ -23,7 +22,7 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
       if (remainingTime <= 0) {
         setCountdownTime(0);
         clearInterval(countdownInterval);
-        // localStorage.setItem("ok", "false")
+        localStorage.setItem("ok", "false")
       } else {
         const countdownInterval = setInterval(() => {
           setCountdownTime((prevTime) => Math.max(0, prevTime - 1));
