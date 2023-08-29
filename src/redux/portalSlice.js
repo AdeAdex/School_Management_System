@@ -13,7 +13,8 @@ export const portalSlice = createSlice({
     mySub: [],
     hide_show: false,
     taken: false,
-    paidAdmin: false
+    paidAdmin: false,
+    countdownExpired: false,
   },
   reducers: {
     newName: (state, action) => {
@@ -42,9 +43,12 @@ export const portalSlice = createSlice({
     },
     AdminPaid: (state, action) => {
       state.paidAdmin = action.payload
-    }
+    },
+    setCountdownExpired: (state, action) => {
+      state.countdownExpired = action.payload;
+    },
   },
 });
 
-export const { newName, newStudent, myEmailVerify, myOTPVerify, mySentOTP, mySubSub, show_hide_offcanvas, takenExam, AdminPaid} = portalSlice.actions;
+export const { newName, newStudent, myEmailVerify, myOTPVerify, mySentOTP, mySubSub, show_hide_offcanvas, takenExam, AdminPaid, setCountdownExpired} = portalSlice.actions;
 export default portalSlice.reducer;

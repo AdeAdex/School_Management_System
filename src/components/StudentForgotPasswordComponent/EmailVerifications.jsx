@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { myEmailVerify, mySentOTP } from "../../redux/portalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OTPCountdown from "./OTPCountdown";
 
 const EmailVerifications = ({ sentEmail: sentEmail }) => {
@@ -11,8 +11,9 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
   const [myEmail, setMyEmail] = useState("");
   const [myHarshOTP, setMyHarshOTP] = useState("");
   const [startCountdown, setStartCountdown] = useState(false);
-  const [isCountdownActive, setIsCountdownActive] = useState(false);
-  // const [ok, setOk] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const countdownExpired = useSelector((state) => state.portalReducer.countdownExpired);
 
   useEffect(() => {
     const storedValue = localStorage.getItem("ok") ;
@@ -23,10 +24,11 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
       setStartCountdown(false);
     }
 
-    // let endpoint = ""
 
-
-  }, [startCountdown])
+    if (countdownExpired) {
+      localStorage.setItem("ok", "false"); // Set localStorage.ok to "false"
+    }
+  }, [startCountdown, countdownExpired])
   
 
   // const [ok, setOk] = useState(false);
@@ -40,17 +42,19 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
     },
 
     onSubmit: (values) => {
+      setIsLoading(true)
       const myOTP = Math.floor(Math.random() * 9000 + 1000);
       const newValues = { ...values, myOTP };
-      let endpoint = "http://localhost:2000/student_account/forgot_password";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/forgot_password";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
+          setIsLoading(false)
           localStorage.secret = response.data.secret;
           setMyEmail(response.data.response[0]);
           if (response.data.status) {
             localStorage.setItem("ok", response.data.result[0].startCountdown.toString());
             setStartCountdown(response.data.result[0].startCountdown);
-            setIsCountdownActive(response.data.result[0].startCountdown);
+            // setIsCountdownActive(response.data.result[0].startCountdown);
             localStorage.setItem(
               "OTPCountdownStartTime",
               response.data.result[0].countdownStartTime
@@ -100,11 +104,6 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
       });
     },
   });
-
-  // const handleCountdownComplete = () => {
-  //   setIsCountdownActive(false);
-  //   setStartCountdown(false);
-  // };
 
   return (
     <>
@@ -156,7 +155,11 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
             className="btn btn-success btn-sm my-4"
             disabled={localStorage.getItem("ok") === "true"}
           >
-            Submit
+           {isLoading ? (
+            <div className="spinner"></div>
+           ) : (
+            <div>Submit</div>
+           )} 
           </button>
           <Link
             to="/student_login"
