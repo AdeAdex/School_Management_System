@@ -70,7 +70,7 @@ function MyApp() {
           </Group>
         </Stepper.Step>
         <Stepper.Step label="Second step" description="OTP Verification">
-          <OTPVerifications myOTP={sentOTP} sentEmail={sentEmail} />
+          <OTPVerifications myOTP={sentOTP} sentEmail={sentEmail} startCountdown={true} />
           <Group position="center" mt="xl" style={{position: 'relative', top: '-75px', left: ''}}>
             <Button variant="default" onClick={prevStep}>
               Back

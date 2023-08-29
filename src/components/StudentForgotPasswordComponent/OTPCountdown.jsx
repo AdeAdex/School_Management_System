@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
   const [countdownTime, setCountdownTime] = useState(0);
+  
 
   useEffect(() => {
     const OTPTime = parseInt(localStorage.getItem("OTPCountdownStartTime"));
@@ -23,7 +24,7 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
       } else {
         // Start the countdown
         const countdownInterval = setInterval(() => {
-          setCountdownTime((prevTime) => Math.max(0, prevTime - 1)); // Ensure the countdown doesn't go negative
+          setCountdownTime((prevTime) => Math.max(0, prevTime - 1));
         }, 1000);
 
         return () => {
@@ -31,7 +32,7 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
         };
       }
     }
-  }, [startCountdown, localStorage.getItem("ok")]);
+  }, [startCountdown, ]);
 
   const minutes = Math.floor(countdownTime / 60);
   const seconds = countdownTime % 60;
@@ -39,7 +40,7 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
   return (
     <>
       <div>
-        <div>
+        <div className="text-danger">
           {minutes < 10 ? `0${minutes}` : minutes}:
           {seconds < 10 ? `0${seconds}` : seconds}
         </div>

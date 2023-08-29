@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./OTPVerification.css";
 import { Link } from "react-router-dom";
 import { SnackbarProvider, useSnackbar } from "notistack";
@@ -8,23 +8,36 @@ import { myOTPVerify } from "../../redux/portalSlice";
 import axios from "axios";
 import OTPCountdown from "./OTPCountdown";
 
-const OTPVerifications = ({ myOTP: myOTP, sentEmail: sentEmail }) => {
+const OTPVerifications = ({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) => {
   return (
     <SnackbarProvider
       maxSnack={1}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
-      <MyApp myOTP={myOTP} sentEmail={sentEmail} />
+      <MyApp myOTP={myOTP} sentEmail={sentEmail} startCountdown={startCountdown} />
     </SnackbarProvider>
   );
 };
 
-function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
+function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const [OTPInput, setOTPInput] = useState([0, 0, 0, 0]);
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const [confirmNewOTP, setConfirmNewOTP] = useState(false);
   const [myLatestOTP, setMyLatestOTP] = useState("");
+  
+  
+  // useEffect(() => {
+  //   console.log("startCountdown:", startCountdown);
+  //   const OTPTime = parseInt(localStorage.getItem("OTPCountdownStartTime"));
+  //   const OTPCountdownTime = parseInt(localStorage.getItem("OTPCountdownTimeRemaining"));
+  
+  //   console.log("OTPTime:", OTPTime);
+  //   console.log("OTPCountdownTime:", OTPCountdownTime);
+  
+  //   // ... rest of your code ...
+  
+  // }, [startCountdown]);
 
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
@@ -43,6 +56,8 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
       enqueueSnackbar(response.data.message, { variant: "success" });
     });
   };
+
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -220,7 +235,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail }) {
           </a>
         </p>
 
-        <OTPCountdown/>
+        <OTPCountdown startCountdown={startCountdown} />
       </div>
 
       {/* <form action=""> */}

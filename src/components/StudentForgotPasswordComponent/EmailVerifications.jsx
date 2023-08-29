@@ -12,10 +12,10 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
   const [myHarshOTP, setMyHarshOTP] = useState("");
   const [startCountdown, setStartCountdown] = useState(false);
   const [isCountdownActive, setIsCountdownActive] = useState(false);
-  const [ok, setOk] = useState(false);
+  // const [ok, setOk] = useState(false);
 
   useEffect(() => {
-    const storedValue = localStorage.getItem("ok");
+    const storedValue = localStorage.getItem("ok") ;
     if (storedValue) {
       setStartCountdown(storedValue)
     }
@@ -29,7 +29,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
       myEmail: sentEmail || "",
       startCountdown: true,
       countdownStartTime: Date.now(),
-      countdownTimeRemaining: 30,
+      countdownTimeRemaining: 300,
     },
 
     onSubmit: (values) => {
