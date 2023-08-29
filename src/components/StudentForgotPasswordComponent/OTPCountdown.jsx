@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 
 const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
   const [countdownTime, setCountdownTime] = useState(0);
+  const [countdownExpired, setCountdownExpired] = useState(false);
   
 
   useEffect(() => {
+    let countdownInterval;  
     const OTPTime = parseInt(localStorage.getItem("OTPCountdownStartTime"));
     const OTPCountdownTime = parseInt(
       localStorage.getItem("OTPCountdownTimeRemaining")
     );
+    localStorage.getItem("ok") === "false"
 
     if (startCountdown && OTPTime && OTPCountdownTime) {
       const currentTime = Date.now();
@@ -18,11 +21,10 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
       setCountdownTime(remainingTime);
 
       if (remainingTime <= 0) {
-        localStorage.setItem("ok", "false");
         setCountdownTime(0);
-        // onCountdownComplete();
+        clearInterval(countdownInterval);
+        // localStorage.setItem("ok", "false")
       } else {
-        // Start the countdown
         const countdownInterval = setInterval(() => {
           setCountdownTime((prevTime) => Math.max(0, prevTime - 1));
         }, 1000);
@@ -32,7 +34,8 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
         };
       }
     }
-  }, [startCountdown, ]);
+  }, [startCountdown, localStorage.getItem("ok")
+]);
 
   const minutes = Math.floor(countdownTime / 60);
   const seconds = countdownTime % 60;
@@ -40,7 +43,7 @@ const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
   return (
     <>
       <div>
-        <div className="text-danger">
+        <div className="">
           {minutes < 10 ? `0${minutes}` : minutes}:
           {seconds < 10 ? `0${seconds}` : seconds}
         </div>

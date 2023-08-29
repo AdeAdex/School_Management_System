@@ -16,8 +16,12 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
 
   useEffect(() => {
     const storedValue = localStorage.getItem("ok") ;
+    const defaultValue = true;
+
     if (storedValue) {
-      setStartCountdown(storedValue)
+      setStartCountdown(storedValue === "true");
+    } else {
+      // localStorage.setItem("ok", defaultValue.toString());
     }
   }, [startCountdown])
   
@@ -29,7 +33,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
       myEmail: sentEmail || "",
       startCountdown: true,
       countdownStartTime: Date.now(),
-      countdownTimeRemaining: 300,
+      countdownTimeRemaining: 20,
     },
 
     onSubmit: (values) => {
@@ -149,9 +153,9 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
           <button
             type="submit"
             className="btn btn-success btn-sm my-4"
-            // disabled={!startCountdown}
+            disabled={startCountdown}
           >
-            Submit {startCountdown}
+            Submit
           </button>
           <Link
             to="/student_login"
