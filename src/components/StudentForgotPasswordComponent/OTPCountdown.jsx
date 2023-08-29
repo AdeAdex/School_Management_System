@@ -1,41 +1,40 @@
 import React, { useEffect, useState } from "react";
 
-const OTPCountdown = ({startCountdown, onCountdownComplete }) => {
-  const [minutes, setMinutes] = useState(10);
-  const [seconds, setSeconds] = useState(0);
-//   const [startCountdown, setStartCountdown] = useState(false);
-  
-
+const OTPCountdown = ({ startCountdown, onCountdownComplete }) => {
+  const [countdownTime, setCountdownTime] = useState(0);
 
   useEffect(() => {
-    let countdownInterval;
+    const OTPTime = parseInt(localStorage.getItem("OTPCountdownStartTime"));
+    const OTPCountdownTime = parseInt(
+      localStorage.getItem("OTPCountdownTimeRemaining")
+    );
 
-    if (startCountdown) {
-        
-      countdownInterval = setInterval(() => {
-        if (seconds > 0) {
-          setSeconds((prevSeconds) => prevSeconds - 1);
-        } else {
-          if (minutes > 0) {
-            setMinutes((prevMinutes) => prevMinutes - 1);
-            setSeconds(59);
-          } else {
-            // Countdown is complete, reset the state
-            setMinutes(10);
-            setSeconds(0);
-            clearInterval(countdownInterval);
-            onCountdownComplete();
-          }
-        }
-      }, 1000);
+    if (startCountdown && OTPTime && OTPCountdownTime) {
+      const currentTime = Date.now();
+      const elapsedTime = Math.floor((currentTime - OTPTime) / 1000);
+      const remainingTime = OTPCountdownTime - elapsedTime;
+
+      setCountdownTime(remainingTime);
+
+      if (remainingTime <= 0) {
+        localStorage.setItem("ok", "false");
+        setCountdownTime(0);
+        // onCountdownComplete();
+      } else {
+        // Start the countdown
+        const countdownInterval = setInterval(() => {
+          setCountdownTime((prevTime) => Math.max(0, prevTime - 1)); // Ensure the countdown doesn't go negative
+        }, 1000);
+
+        return () => {
+          clearInterval(countdownInterval);
+        };
+      }
     }
+  }, [startCountdown, localStorage.getItem("ok")]);
 
-
-    return () => clearInterval(countdownInterval);
-  }, [startCountdown, minutes, seconds, onCountdownComplete]);
-
-
-//  
+  const minutes = Math.floor(countdownTime / 60);
+  const seconds = countdownTime % 60;
 
   return (
     <>
