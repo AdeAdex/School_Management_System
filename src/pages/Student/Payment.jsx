@@ -98,6 +98,7 @@ const Payment = ({
             .post(endpoint, payload)
             .then((response) => {
               if (response.data.status) {
+                console.log(response);
                 localStorage.setItem("currentPaidState", true);
               }
             })

@@ -1,3 +1,5 @@
+// Code 1
+
 import { useFormik } from "formik";
 import React, { useEffect, useRef, useState } from "react";
 import "./OTPVerification.css";
@@ -25,6 +27,8 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const dispatch = useDispatch();
   const [confirmNewOTP, setConfirmNewOTP] = useState(false);
   const [myLatestOTP, setMyLatestOTP] = useState("");
+  // const [startCountdown, setStartCountdown] = useState(false);
+
   
   
 
@@ -40,6 +44,9 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   );
 
   const resendNewOTP = () => {
+    localStorage.removeItem("ok")
+    localStorage.removeItem("OTPCountdownStartTime")
+    localStorage.removeItem("OTPCountdownTimeRemaining")
     const startCountdown = true
     const countdownStartTime = Date.now()
      const countdownTimeRemaining = 180
@@ -48,8 +55,10 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
     let endpoint = "http://localhost:2000/student_account/otp";
     axios.post(endpoint, myNewValues)
     .then((response) => {
-      localStorage.secret = response.data.secret;
+      if (response.data.status) {
+        localStorage.secret = response.data.secret;
       localStorage.setItem("ok", response.data.result[0].startCountdown.toString());
+      startCountdown(response.data.result[0].startCountdown);
       localStorage.setItem(
         "OTPCountdownStartTime",
         response.data.result[0].countdownStartTime
@@ -61,6 +70,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
       setConfirmNewOTP(true);
       setMyLatestOTP(myNewOTP);
       enqueueSnackbar(response.data.message, { variant: "success" });
+      }
     });
   };
 
@@ -244,10 +254,6 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
 
         <OTPCountdown startCountdown={startCountdown} />
       </div>
-
-      {/* <form action=""> */}
-
-      {/* </form> */}
     </>
   );
 }

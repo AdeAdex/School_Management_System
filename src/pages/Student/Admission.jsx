@@ -94,6 +94,11 @@ const Admission = () => {
           setIsLoading(false);
           setOpen(false);
           dispatch(newStudent(res.data.response));
+          localStorage.removeItem("submitted");
+          localStorage.removeItem("finished");
+          localStorage.removeItem("taken");
+          localStorage.removeItem("done");
+          localStorage.removeItem("examStarted")
           localStorage.setItem(
             "currentPaidState",
             globalState.paidForAdmission
@@ -108,7 +113,6 @@ const Admission = () => {
         console.log(err);
       });
   }, [globalState, globalState.paidForAdmission, navigate]);
-
 
   const handleChange = (event, newValue) => {
     if (paid === false && (newValue !== 1 || newValue !== 0)) {
@@ -315,7 +319,7 @@ const Admission = () => {
                   firstName={globalState.firstName}
                 />
               ) : (
-                <Payment 
+                <Payment
                   paid={paid}
                   myEmail={globalState.email}
                   receiptURL={null}

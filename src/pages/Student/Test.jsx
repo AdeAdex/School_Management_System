@@ -42,11 +42,11 @@ const Test = () => {
     let studentLoginToken = localStorage.studentLoginToken;
     setBeginExam(localStorage.getItem("examStarted") === "true");
     let endpoint =
-    "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student__admission_dashboard";
     axios
-    .get(endpoint, {
-      headers: {
-        Authorization: `Bearer ${studentLoginToken}`,
+      .get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${studentLoginToken}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },
@@ -62,29 +62,22 @@ const Test = () => {
             localStorage.setItem(
               "countdownStartTime",
               globalState.testStart[0].countdownStartTime
-              );
-              localStorage.setItem(
+            );
+            localStorage.setItem(
               "countdownTimeRemaining",
               globalState.testStart[0].countdownTimeRemaining
             );
 
-            localStorage.setItem(
-              "taken",
-              globalState.takenExam
-              );
-              
-              localStorage.setItem(
-                "submitted",
-                globalState.submitted
-                );
-                localStorage.setItem("finished", globalState.submitted);
-                
-                localStorage.getItem("finished") === "true";
-                
-                startCountdown();
-              }
-              
-            } else {
+            localStorage.setItem("taken", globalState.takenExam);
+
+            localStorage.setItem("submitted", globalState.submitted);
+            localStorage.setItem("finished", globalState.submitted);
+
+            localStorage.getItem("finished") === "true";
+
+            startCountdown();
+          }
+        } else {
           console.log(res.data.message);
           console.log(res.data.status);
           navigate("/student_login");
@@ -130,7 +123,7 @@ const Test = () => {
       };
     }
   };
-  
+
   useEffect(() => {
     localStorage.getItem("finished") === "true";
     // setTaken(localStorage.getItem('taken') === 'true')
@@ -150,7 +143,6 @@ const Test = () => {
         setCurrentQuestionIndex(Number(storedQuestionIndex));
       }
     });
-
 
     if (timeIsUp) {
       const nonNegativeScores = questionScores.map((score) =>
@@ -182,9 +174,6 @@ const Test = () => {
       setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     }
   }, [timeIsUp, questions, beginExam, refreshing]);
-
-
-
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
@@ -233,32 +222,28 @@ const Test = () => {
   };
 
   const submitMyScore = (newScores) => {
-    
     let payload = {
       myScores: newScores,
-        myEmail: globalState.email,
-        myDecision: true
-    }
+      myEmail: globalState.email,
+      myDecision: true,
+    };
     const endpoint2 =
       "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
-    axios
-      .post(endpoint2, payload)
-      .then((response) => {
-        if (response.data.status) {
-          localStorage.setItem("submitted", response.data.response);
-          setPerformed(true)
-          if (localStorage.submitted === 'true') {
+    axios.post(endpoint2, payload).then((response) => {
+      if (response.data.status) {
+        localStorage.setItem("submitted", response.data.response);
+        setPerformed(true);
+        if (localStorage.submitted === "true") {
           localStorage.setItem("finished", response.data.response);
-            // console.log(local);
-          }
-          if (localStorage.done) {
-            toLogin();
-          }
+          // console.log(local);
         }
-      });
+        if (localStorage.done) {
+          toLogin();
+        }
+      }
+    });
   };
 
-  
   const handlePreviousClick = () => {
     if (currentQuestionIndex > 0) {
       const newQuestionIndex = currentQuestionIndex - 1;
@@ -272,20 +257,19 @@ const Test = () => {
     localStorage.setItem("currentQuestionIndex", String(index));
   };
 
-
   // const handleOptionSelect = (option) => {
   //   const currentQuestion = questions[currentQuestionIndex];
   //   const questionIndex = currentQuestion.id - 1;
-  
+
   //   const newSelectedOptions = { ...selectedOptions };
   //   const newQuestionScores = { ...questionScores };
   //   const updatedAnsweredQuestions = [...answeredQuestions];
-  
+
   //   newSelectedOptions[questionIndex] = option;
-  
+
   //   const isCorrect = option.startsWith(currentQuestion.correctOption);
   //   newQuestionScores[questionIndex] = isCorrect ? 10 : -10;
-  
+
   //   if (option !== "") {
   //     if (!updatedAnsweredQuestions.includes(currentQuestion.id)) {
   //       updatedAnsweredQuestions.push(currentQuestion.id);
@@ -296,23 +280,23 @@ const Test = () => {
   //       updatedAnsweredQuestions.splice(index, 1);
   //     }
   //   }
-  
+
   //   setAnsweredQuestions(updatedAnsweredQuestions);
   //   setQuestionScores(newQuestionScores);
   //   setSelectedOptions(newSelectedOptions);
-  
+
   //   // console.log("Picked Option:", option);
   //   // console.log("Score for Picked Option:", newQuestionScores[questionIndex]);
-  
+
   //   const payload = {
   //     myEmail: globalState.email,
   //     answeredQuestions: currentQuestion.id,
   //     questionScores: newQuestionScores[questionIndex],
   //     selectedOptions: option,
   //   };
-  
+
   //   console.log(payload);
-  
+
   //   let endpoint = "http://localhost:2000/student_account/set_scores";
   //   axios
   //     .post(endpoint, payload)
@@ -326,52 +310,60 @@ const Test = () => {
   //     });
   // };
 
+  const handleOptionSelect = (option) => {
+    const newSelectedOptions = [...selectedOptions];
+    const newQuestionScores = [...questionScores];
 
-const handleOptionSelect = (option) => {
-  const newSelectedOptions = [ ...selectedOptions ];
-  const newQuestionScores = [ ...questionScores ];
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionIndex = currentQuestion.id - 1;
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const questionIndex = currentQuestion.id - 1;
+    newSelectedOptions[questionIndex] = option;
 
-  newSelectedOptions[questionIndex] = option;
-
-  if (option.startsWith(currentQuestion.correctOption)) {
-    newQuestionScores[questionIndex] = 10;
-  } else {
-    newQuestionScores[questionIndex] = -10;
-  }
-
-  setSelectedOptions(newSelectedOptions);
-
-  // Use an array for answeredQuestions
-  const updatedAnsweredQuestions = [...answeredQuestions];
-
-  if (option !== "") {
-    newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
-    updatedAnsweredQuestions.push(currentQuestion.id);
-  } else {
-    const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
-    if (index !== -1) {
-      updatedAnsweredQuestions.splice(index, 1);
+    if (option.startsWith(currentQuestion.correctOption)) {
+      newQuestionScores[questionIndex] = 10;
+    } else {
+      newQuestionScores[questionIndex] = -10;
     }
-  }
 
-  setAnsweredQuestions(updatedAnsweredQuestions);
-  setQuestionScores(newQuestionScores);
+    setSelectedOptions(newSelectedOptions);
 
-  localStorage.setItem(
-    "answeredQuestions",
-    JSON.stringify(updatedAnsweredQuestions)
-  );
-  localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
-  localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-};
+    // Use an array for answeredQuestions
+    const updatedAnsweredQuestions = [...answeredQuestions];
 
-  
-  
+    if (option !== "") {
+      newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
+      updatedAnsweredQuestions.push(currentQuestion.id);
+    } else {
+      const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
+      if (index !== -1) {
+        updatedAnsweredQuestions.splice(index, 1);
+      }
+    }
+
+    setAnsweredQuestions(updatedAnsweredQuestions);
+    setQuestionScores(newQuestionScores);
+
+    localStorage.setItem(
+      "answeredQuestions",
+      JSON.stringify(updatedAnsweredQuestions)
+    );
+    localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
+    localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  };
 
   const toLogin = () => {
+    localStorage.removeItem("answeredQuestions");
+    localStorage.removeItem("questionScores");
+    localStorage.removeItem("currentQuestionIndex");
+    localStorage.removeItem("examStarted");
+    localStorage.removeItem("countdownStartTime");
+    localStorage.removeItem("countdownTimeRemaining");
+    localStorage.removeItem("selectedOptions");
+    localStorage.setItem("currentQuestionIndex", 0);
+    localStorage.removeItem("taken");
+    localStorage.removeItem("done");
+    localStorage.removeItem("submitted");
+    localStorage.removeItem("finished");
     setIsLoading(true);
     const payload = {
       yourKeyHere: true,
@@ -383,19 +375,6 @@ const handleOptionSelect = (option) => {
       .post(updateEndpoint, payload)
       .then((response) => {
         if (response.data.status) {
-          localStorage.removeItem("answeredQuestions");
-          localStorage.removeItem("questionScores");
-          localStorage.removeItem("currentQuestionIndex");
-          localStorage.removeItem("examStarted");
-          localStorage.removeItem("countdownStartTime");
-          localStorage.removeItem("countdownTimeRemaining");
-          localStorage.removeItem("selectedOptions");
-          localStorage.setItem("currentQuestionIndex", 0);
-          localStorage.removeItem("taken");
-          localStorage.removeItem("done");
-          localStorage.removeItem("submitted");
-          localStorage.removeItem("finished");
-          
           setIsLoading(false);
           const Toast = Swal.mixin({
             toast: true,
@@ -413,7 +392,7 @@ const handleOptionSelect = (option) => {
             icon: "success",
             title: response.data.message,
           });
-          
+
           localStorage.taken = response.data.newResult;
           navigate("/student_login");
         }
@@ -445,7 +424,8 @@ const handleOptionSelect = (option) => {
           newCountdownTimeRemaining: countdownTime,
           myEmail: globalState.email,
         };
-        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/started_the_test";
+        let endpoint =
+          "https://school-portal-backend-adex2210.vercel.app/student_account/started_the_test";
         axios.post(endpoint, payload).then((response) => {
           if (response.data.status) {
             setRefreshing(true);
@@ -669,7 +649,9 @@ const handleOptionSelect = (option) => {
               </div>
               {currentQuestion && (
                 <div className="div text-center">
-                  {(currentQuestion.id === 10 && localStorage.finished === 'true') || localStorage.done ? (
+                  {(currentQuestion.id === 10 &&
+                    localStorage.finished === "true") ||
+                  localStorage.done ? (
                     <div className="mt-4">
                       <div className="mb-5">
                         Congratulations for successfully participating in our
@@ -763,7 +745,6 @@ const handleOptionSelect = (option) => {
         </>
       )}
     </div>
-
   );
 };
 
