@@ -113,7 +113,7 @@ const SigninForm = () => {
           repeat={Infinity}
         />
         {typingStatus !== "Done Typing" && (
-          <span style={{ color: "red" }}>{typingStatus}</span>
+          <span style={{ color: "blue" }}>{typingStatus}</span>
         )}
           </small>
         
