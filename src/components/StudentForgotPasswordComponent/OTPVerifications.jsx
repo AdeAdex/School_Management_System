@@ -40,13 +40,24 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   );
 
   const resendNewOTP = () => {
+    const startCountdown = true
+    const countdownStartTime = Date.now()
+     const countdownTimeRemaining = 180
     const myNewOTP = Math.floor(Math.random() * 9000 + 1000);
-    const myNewValues = { myNewOTP, sentEmail };
+    const myNewValues = { myNewOTP, sentEmail, startCountdown, countdownStartTime, countdownTimeRemaining };
     let endpoint = "http://localhost:2000/student_account/otp";
     axios.post(endpoint, myNewValues)
     .then((response) => {
       localStorage.secret = response.data.secret;
-      console.log(response.data.message);
+      localStorage.setItem("ok", response.data.result[0].startCountdown.toString());
+      localStorage.setItem(
+        "OTPCountdownStartTime",
+        response.data.result[0].countdownStartTime
+      );
+      localStorage.setItem(
+        "OTPCountdownTimeRemaining",
+        response.data.result[0].countdownTimeRemaining
+      );
       setConfirmNewOTP(true);
       setMyLatestOTP(myNewOTP);
       enqueueSnackbar(response.data.message, { variant: "success" });
