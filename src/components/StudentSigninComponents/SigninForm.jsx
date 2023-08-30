@@ -88,9 +88,9 @@ const SigninForm = () => {
     <>
       <div className="signin-form shadow bg-light">
     
-        <h1 className="fs-bolder">
+        <h1 className="">
         {message && isSmallScreen ? (
-          <small style={{position: 'absolute', top: '10px', fontSize: '14px', fontWeight: 'unset'}}>
+          <small className="h1-animation" style={{position: 'absolute', top: '10px', fontSize: '14px', fontWeight: 'normal'}}>
           <TypeAnimation
           sequence={[
             1500,

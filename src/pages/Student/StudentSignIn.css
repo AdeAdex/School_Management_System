@@ -186,6 +186,10 @@
     border-top-right-radius: 5px;
   }
 
+  .h1-animation {
+    font-weight: normal;
+  }
+
   .signin-form form {
     margin-top: 150px;
     padding: 0px 20px;
