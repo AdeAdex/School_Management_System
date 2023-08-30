@@ -54,7 +54,7 @@ const SigninForm = () => {
               icon: "error",
               title: res.data.errorMessage,
             });
-            setMessage("If you haven't made the payment for admission yet, you won't have a valid Student ID. Please make the payment to receive your Student ID.\n")
+            setMessage("If you haven't made the payment for admission yet, you won't have a valid Student ID. Please make the payment by login to Admission portal to receive your Student ID.\n")
           } else {
             const Toast = Swal.mixin({
               toast: true,
