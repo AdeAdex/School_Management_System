@@ -257,58 +257,6 @@ const Test = () => {
     localStorage.setItem("currentQuestionIndex", String(index));
   };
 
-  // const handleOptionSelect = (option) => {
-  //   const currentQuestion = questions[currentQuestionIndex];
-  //   const questionIndex = currentQuestion.id - 1;
-
-  //   const newSelectedOptions = { ...selectedOptions };
-  //   const newQuestionScores = { ...questionScores };
-  //   const updatedAnsweredQuestions = [...answeredQuestions];
-
-  //   newSelectedOptions[questionIndex] = option;
-
-  //   const isCorrect = option.startsWith(currentQuestion.correctOption);
-  //   newQuestionScores[questionIndex] = isCorrect ? 10 : -10;
-
-  //   if (option !== "") {
-  //     if (!updatedAnsweredQuestions.includes(currentQuestion.id)) {
-  //       updatedAnsweredQuestions.push(currentQuestion.id);
-  //     }
-  //   } else {
-  //     const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
-  //     if (index !== -1) {
-  //       updatedAnsweredQuestions.splice(index, 1);
-  //     }
-  //   }
-
-  //   setAnsweredQuestions(updatedAnsweredQuestions);
-  //   setQuestionScores(newQuestionScores);
-  //   setSelectedOptions(newSelectedOptions);
-
-  //   // console.log("Picked Option:", option);
-  //   // console.log("Score for Picked Option:", newQuestionScores[questionIndex]);
-
-  //   const payload = {
-  //     myEmail: globalState.email,
-  //     answeredQuestions: currentQuestion.id,
-  //     questionScores: newQuestionScores[questionIndex],
-  //     selectedOptions: option,
-  //   };
-
-  //   console.log(payload);
-
-  //   let endpoint = "http://localhost:2000/student_account/set_scores";
-  //   axios
-  //     .post(endpoint, payload)
-  //     .then((response) => {
-  //       if (response.data.status) {
-  //         console.log(response.data.response);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   const handleOptionSelect = (option) => {
     const newSelectedOptions = [...selectedOptions];

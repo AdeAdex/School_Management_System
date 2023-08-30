@@ -26,7 +26,7 @@ const SigninForm = () => {
 
     onSubmit: (values) => {
       setEnteredEmail(values.email);
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_signin";
+      const endpoint = "http://localhost:2000/student_account/student_signin";
       axios.post(endpoint, values)
       .then((res) => {
         if (res.data.status) {
@@ -35,22 +35,23 @@ const SigninForm = () => {
         } else {
           setMyMessage(res.data.message)
           navigate("/student_signin");
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+          console.log(res);
+          // const Toast = Swal.mixin({
+          //   toast: true,
+          //   position: "top",
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          //   timerProgressBar: true,
+          //   didOpen: (toast) => {
+          //     toast.addEventListener("mouseenter", Swal.stopTimer);
+          //     toast.addEventListener("mouseleave", Swal.resumeTimer);
+          //   },
+          // });
 
-          Toast.fire({
-            icon: "error",
-            title: res.data.message,
-          });
+          // Toast.fire({
+          //   icon: "error",
+          //   title: res.data.message,
+          // });
         }
       });
     },
