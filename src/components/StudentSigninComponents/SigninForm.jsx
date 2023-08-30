@@ -29,7 +29,7 @@ const SigninForm = () => {
     },
     onSubmit: (values) => {
       setEnteredEmail(values.email);
-      const endpoint = "http://localhost:2000/student_account/student_signin";
+      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_signin";
       axios.post(endpoint, values).then((res) => {
         if (res.data.status) {
           localStorage.studentSignInToken = res.data.studentSignInToken;
