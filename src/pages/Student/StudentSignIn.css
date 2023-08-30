@@ -29,6 +29,7 @@
 
 .signin-form form {
   margin-top: 150px;
+  position: relative;
 }
 
 .signin-form-control {
