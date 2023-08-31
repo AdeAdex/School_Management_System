@@ -5,6 +5,9 @@ import UpgradeLevelModal from "../../components/UpgradeLevelModal";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import ConfirmAdmissionPaymentModal from "../../components/ConfirmAdmissionPaymentModal";
 import "./Dashboard.css";
+import { MultiSelect } from "@mantine/core";
+import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
 
 const StaffDashboardHome = () => {
   return (
@@ -35,6 +38,28 @@ function MyApp() {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const globalState = useSelector((state) => state.portalReducer.staffInfo);
+  const [subjectToRegister, setSubjectToRegister] = useState([]);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [subjectPercentages, setSubjectPercentages] = useState({});
+  const percentageOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+  useEffect(() => {
+    let endpoint2 = "http://localhost:2000/staff_account/student_subject";
+    axios
+      .get(endpoint2, {
+        headers: {
+          Authorization: `${"staffArray"}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setSubjectToRegister(res.data);
+        // setSelectedPercentage(res.data.percentageOptions)
+        // console.log(res.data.percentageOptions);
+      });
+  }, [globalState]);
 
   const confirmAdmissionPayment = (
     studentFirstName,
@@ -192,6 +217,34 @@ function MyApp() {
     };
   };
 
+  let formik = useFormik({
+    initialValues: {
+      name: "",
+      aboutMe: "",
+      videoLink: "",
+      selectedSubjects: [],
+      subjectPercentages: {},
+    },
+
+    onSubmit: (values) => {
+      // console.log(values);
+      const subjectPercentageMap = {};
+    selectedSubjects.forEach((subject) => {
+      subjectPercentageMap[subject] = subjectPercentages[subject];
+    });
+
+    // Merge subjectPercentageMap with existing form values
+    const updatedValues = {
+      ...values,
+      subjectPercentages: subjectPercentageMap,
+    };
+
+    console.log(updatedValues);
+      //   let endpoint = ""
+      // axios.post(endpoint, payload)
+    },
+  });
+
   return (
     <>
       <div className="flex p-5 flex-column w-100">
@@ -329,7 +382,7 @@ function MyApp() {
             </>
           )}
         </div>
-       
+
         <div className="create-group">
           <div className="create-group-heading">Create Group</div>
           <div>
@@ -350,6 +403,98 @@ function MyApp() {
               Create Room
             </button>
           </div>
+        </div>
+
+        <div className="container mt-5 pb-5">
+          <h5 className="mb-4">Create Staff Account</h5>
+          <form onSubmit={formik.handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                onChange={formik.handleChange}
+                value={formik.values.name}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="aboutMe" className="form-label">
+                About Me
+              </label>
+              <textarea
+                className="form-control"
+                id="aboutMe"
+                rows="3"
+                name="aboutMe"
+                onChange={formik.handleChange}
+                value={formik.values.aboutMe}
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="videoLink" className="form-label">
+                Video Link
+              </label>
+              <input
+                type="file"
+                className="form-control"
+                id="videoLink"
+                name="videoLink"
+                onChange={formik.handleChange}
+                value={formik.values.videoLink}
+              />
+            </div>
+            <div className="mb-3">
+              <MultiSelect
+                data={subjectToRegister.map((subject) => ({
+                  label: subject.subject,
+                  value: subject.subject,
+                }))}
+                label="Your Skills Here"
+                placeholder="Pick all that you like"
+                searchable
+                nothingFound="Nothing found"
+                onChange={(selectedItems) => {
+                  formik.setFieldValue("selectedSubjects", selectedItems);
+                  setSelectedSubjects(selectedItems);
+                }}
+              />
+            </div>
+
+            <div className="mb-3">
+              {selectedSubjects.map((subject) => (
+                <div key={subject}>
+                  <label>{subject}</label>
+                  <select
+                    className="form-control"
+                    value={subjectPercentages[subject] || ""}
+                    name={`subjectPercentages.${subject}`}
+                    onChange={(e) => {
+                      const selectedPercentage = e.target.value;
+                      setSubjectPercentages((prev) => ({
+                        ...prev,
+                        [subject]: selectedPercentage,
+                      }));
+                    }}
+                  >
+                    <option value="">Select a percentage</option>
+                    {percentageOptions.map((percentage) => (
+                      <option key={percentage} value={percentage}>
+                        {percentage}%
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+
+            <button type="submit" className="btn btn-primary">
+              Create
+            </button>
+          </form>
         </div>
 
         <UpgradeLevelModal
