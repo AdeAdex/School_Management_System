@@ -101,7 +101,7 @@ const SigninForm = () => {
             () => {
               setTypingStatus("Done Typing");
             },
-            1000,
+            5000,
             () => {
               setTypingStatus("Deleting...");
             },
@@ -113,7 +113,7 @@ const SigninForm = () => {
           repeat={Infinity}
         />
         {typingStatus !== "Done Typing" && (
-          <span style={{ color: "blue" }}>{typingStatus}</span>
+          <span style={{ color: typingStatus === "Deleting..." ? "red" : "blue" }}>{typingStatus}</span>
         )}
           </small>
         
@@ -134,7 +134,7 @@ const SigninForm = () => {
             () => {
               setTypingStatus("Done Typing");
             },
-            1000,
+            5000,
             () => {
               setTypingStatus("Deleting...");
             },
@@ -146,7 +146,7 @@ const SigninForm = () => {
           repeat={Infinity}
         />
         {typingStatus !== "Done Typing" && (
-          <span style={{ color: "blue" }}>{typingStatus}</span>
+          <span style={{ color: typingStatus === "Deleting..." ? "red" : "blue" }}>{typingStatus}</span>
         )}
           </small>
         
