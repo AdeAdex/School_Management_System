@@ -34,9 +34,7 @@ const StaffSigninForm = () => {
           navigate("/staff_dashboard");
         } else {
           setMyMessage(res.data.message)
-          // console.log(res.data.message);
           navigate("/staff_signin");
-          // console.log(myMessage);
           const Toast = Swal.mixin({
             toast: true,
             position: "top",

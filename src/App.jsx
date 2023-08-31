@@ -129,7 +129,7 @@ function App() {
         </Route>
             
         
-        <Route path='/staff_dashboard' element={staffSignInToken ? <Dashboard/> : <Navigate to="/staff_signin"/>}>
+        <Route path='/staff_dashboard' element={ <Dashboard/>}>
           <Route path='home' element={<StaffDashboardHome/>} />
           <Route path='profile' element={<StaffProfile/>}/>
           <Route path='change_password' element={<StaffChangePassword/>}/>
