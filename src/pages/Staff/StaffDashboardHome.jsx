@@ -217,33 +217,33 @@ function MyApp() {
     };
   };
 
+
   let formik = useFormik({
     initialValues: {
       name: "",
       aboutMe: "",
       videoLink: "",
       selectedSubjects: [],
-      subjectPercentages: {},
     },
 
     onSubmit: (values) => {
-      // console.log(values);
       const subjectPercentageMap = {};
-    selectedSubjects.forEach((subject) => {
-      subjectPercentageMap[subject] = subjectPercentages[subject];
-    });
+      selectedSubjects.forEach((subject) => {
+        subjectPercentageMap[subject] = subjectPercentages[subject];
+      });
 
-    // Merge subjectPercentageMap with existing form values
-    const updatedValues = {
-      ...values,
-      subjectPercentages: subjectPercentageMap,
-    };
+      const updatedValues = {
+        ...values,
+        subjectPercentages: subjectPercentageMap,
+      };
 
-    console.log(updatedValues);
-      //   let endpoint = ""
-      // axios.post(endpoint, payload)
+      const { selectedSubjects: selectedSubjects2, ...valuesWithoutSelectedSubjects } = updatedValues;
+
+      console.log(valuesWithoutSelectedSubjects);
     },
   });
+
+
 
   return (
     <>
