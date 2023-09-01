@@ -15,7 +15,7 @@ const TeachersPage = () => {
   const [teacherInfo, setTeacherInfo] = useState([])
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/create_staff_account"
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account"
     axios.get(endpoint)
     .then((response) => {
       // console.log(response.data.response[0].aboutTeacher);

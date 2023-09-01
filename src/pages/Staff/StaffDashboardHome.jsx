@@ -48,7 +48,7 @@ function MyApp() {
   const percentageOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
   useEffect(() => {
-    let endpoint2 = "http://localhost:2000/staff_account/student_subject";
+    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
@@ -200,7 +200,7 @@ function MyApp() {
     });
 
     let values = { room, myImage, createdDay, createdTime };
-    let endpoint = "http://localhost:2000/staff_account/chat_group";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/chat_group";
     axios.post(endpoint, { values }).then((response) => {
       enqueueSnackbar(response.data.message, { variant: "success" });
     });
@@ -218,7 +218,7 @@ function MyApp() {
       setMyImage(reader.result);
     };
   };
-  
+
 
   const handleVideoFileChange = (e) => {
     let myImage = e.target.files[0];
@@ -265,7 +265,7 @@ function MyApp() {
       } = updatedValues;
 
       console.log(valuesWithoutSelectedSubjects);
-      let endpoint = "http://localhost:2000/staff_account/create_staff_account";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
       axios.post(endpoint, valuesWithoutSelectedSubjects);
     },
   });
