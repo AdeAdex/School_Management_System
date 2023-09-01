@@ -8,11 +8,12 @@ import Parallax from "../components/generalComponents/Parallax";
 import Parallax3 from "../components/generalComponents/Parallax3";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 
 const TeachersPage = () => {
 
   const [teacherInfo, setTeacherInfo] = useState([])
+  const navigate = useNavigate();
 
   useEffect(() => {
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account"
@@ -20,10 +21,14 @@ const TeachersPage = () => {
     .then((response) => {
       // console.log(response.data.response[0].aboutTeacher);
       setTeacherInfo(response.data.response[0].aboutTeacher)
-      console.log(teacherInfo);
+      // console.log(teacherInfo);
     })
   }, [teacherInfo])
   
+
+  const toTeachersPage = (teacherName, teacherInfo, teacherPicture) => {
+    navigate(`/aboutThisTeacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
+    };
 
   return (
     <>
@@ -91,41 +96,15 @@ const TeachersPage = () => {
           {teacherInfo.map((eachTeacher, index) => (
             <OrangeHouseTeachersCard
               img={eachTeacher.teacherPicture}
-              bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
+              bodyClassName={`${index % 5 === 0 ? 'orange' : index % 5 === 1 ? 'skyblue' : index % 5 === 2 ? 'yellow' : index % 5 === 3 ? 'purple' : 'pink'} orange-body-main col-lg-7 col-md-12 d-flex`}
+              // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
               teacherName={eachTeacher.teacherName}
               aboutTeacher={eachTeacher.teacherInfo}
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
+              onClick={() => toTeachersPage(eachTeacher.teacherName, eachTeacher.teacherInfo, eachTeacher.teacherPicture)}
             />
           ))}
-          {/* <OrangeHouseTeachersCard
-              img="pic/teacher10.jpg"
-              bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
-              teacherName="juliet margaret"
-              to_where="/aboutThisTeacher"
-              para="/aboutThisTeacher"
-            /> */}
-            {/* <OrangeHouseTeachersCard
-              img="pic/teacher9.jpg"
-              bodyClassName="orange-body-main col-lg-7 col-md-12 skyblue d-flex"
-              teacherName="lucy faith"
-              to_where="/aboutThisTeacher"
-              para="/aboutThisTeacher"
-            />
-            <OrangeHouseTeachersCard
-              img="pic/teacher5.png"
-              bodyClassName="orange-body-main col-lg-7 col-md-12 yellow d-flex"
-              teacherName="john smith"
-              to_where="/aboutThisTeacher"
-              para="/aboutThisTeacher"
-            />
-            <OrangeHouseTeachersCard
-              img="pic/teacher8.jpg"
-              bodyClassName="orange-body-main col-lg-7 col-md-12 purple d-flex"
-              teacherName="oluwaseun adewale"
-              to_where="/aboutThisTeacher"
-              para="/aboutThisTeacher"
-            /> */}
           </div>
         </div>
         <Parallax3

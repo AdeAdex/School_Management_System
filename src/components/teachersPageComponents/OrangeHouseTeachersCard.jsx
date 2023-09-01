@@ -9,12 +9,13 @@ const OrangeHouseTeachersCard = ({
   bodyStyle,
   bodyClassName,
   to_where,
-  para
+  para,
+  onClick,
 }) => {
   const navigate = useNavigate();
-  const toTeachersPage = () => {
-    navigate(para)
-  };
+  // const toTeachersPage = () => {
+  //   navigate(para)
+  // };
   return (
     <>
       <div
@@ -48,11 +49,11 @@ const OrangeHouseTeachersCard = ({
                 <h5>{teacherName}</h5>
               </Link>
               <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}/>
-              <div className="card-text mt-3 position-relative" style={{ maxHeight: "5.8em", overflow: "hidden",  textOverflow: "ellipsis", backgroundColor: 'green' }}>
+              <div className="card-text mt-3 position-relative" style={{ maxHeight: "5.8em", overflow: "hidden",  textOverflow: "ellipsis", backgroundColor: '' }}>
               {aboutTeacher}
               </div>
               <button
-                onClick={toTeachersPage}
+                onClick={onClick}
                 className="btn card-text mt-2 text-white d-flex gap-2 shadow py-2 px-2 border-0"
                 style={{ cursor: "pointer", backgroundColor: "inherit" }}
               >
@@ -84,3 +85,6 @@ const OrangeHouseTeachersCard = ({
 };
 
 export default OrangeHouseTeachersCard;
+
+
+
