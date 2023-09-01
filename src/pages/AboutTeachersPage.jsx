@@ -73,7 +73,7 @@ const AboutTeachersPage = ({ seconds }) => {
                 width: "35px",
               }}
             ></Small_hr>
-            <div className="text-color">
+            <div className="text-color" style={{maxHeight: '21em', backgroundColor: '', overflowY: 'scroll', overflowX: 'hidden'}}>
               {teacherInfo}
             </div>
           </div>
