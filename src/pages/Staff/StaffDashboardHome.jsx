@@ -218,6 +218,7 @@ function MyApp() {
       setMyImage(reader.result);
     };
   };
+  
 
   const handleVideoFileChange = (e) => {
     let myImage = e.target.files[0];
