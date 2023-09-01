@@ -20,7 +20,7 @@ const TeachersPage = () => {
     axios.get(endpoint).then((response) => {
       // console.log(response.data.response[0].aboutTeacher);
       setTeacherInfo(response.data.response[0].aboutTeacher);
-      // console.log(teacherInfo);
+      console.log(teacherInfo);
     });
   }, [teacherInfo]);
 
