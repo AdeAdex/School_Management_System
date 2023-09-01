@@ -9,18 +9,15 @@ const OrangeHouseTeachersCard = ({
   bodyStyle,
   bodyClassName,
   to_where,
-  para
+  para,
 }) => {
   const navigate = useNavigate();
   const toTeachersPage = () => {
-    navigate(para)
+    navigate(para);
   };
   return (
     <>
-      <div
-        className="card orange-card-main  mb-2"
-        style={{ width: "48.3%" }}
-      >
+      <div className="card orange-card-main  mb-2" style={{ width: "48.3%" }}>
         <div className="orange-container row g-0">
           <div className="col-lg-5 col-md-12">
             <img
@@ -47,14 +44,35 @@ const OrangeHouseTeachersCard = ({
               >
                 <h5>{teacherName}</h5>
               </Link>
-              <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}/>
-              <div className="card-text mt-4">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                rerum distinctio cumque quas.
+              <Small_hr
+                hr_class="my-3"
+                hr_style={{
+                  height: "3px",
+                  backgroundColor: "white",
+                  width: "35px",
+                }}
+              />
+              <div
+                className="card-text mt-3 position-relative"
+                style={{
+                  maxHeight: "5.8em",
+                  backgroundColor: "green",
+                }}
+              >
+                <div
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    height: '100%',
+                  }}
+                >
+                  {aboutTeacher}
+                </div>
               </div>
               <button
                 onClick={toTeachersPage}
-                className="btn card-text mt-3 text-white d-flex gap-2 shadow py-2 px-2 border-0"
+                className="btn card-text mt-2 text-white d-flex gap-2 shadow py-2 px-2 border-0"
                 style={{ cursor: "pointer", backgroundColor: "inherit" }}
               >
                 <i className="fas fa-graduation-cap fs-5 my-auto"></i>
@@ -66,8 +84,7 @@ const OrangeHouseTeachersCard = ({
               <i
                 className="fas fa-paperclip shadow about-icon-mains"
                 title="CURRICULUM"
-              >
-              </i>
+              ></i>
               <i
                 className="far fa-floppy-disk shadow about-icon-mains"
                 title="DOCUMENT"

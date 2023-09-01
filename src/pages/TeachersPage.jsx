@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/footerComponents/Footer";
 import TeachersType from "../components/teachersPageComponents/TeachersType";
 import ActivitiesHeader from "../components/generalComponents/ActivitiesHeader";
@@ -7,8 +7,24 @@ import OrangeHouseTeachersCard from "../components/teachersPageComponents/Orange
 import Parallax from "../components/generalComponents/Parallax";
 import Parallax3 from "../components/generalComponents/Parallax3";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
+import axios from "axios";
+
 
 const TeachersPage = () => {
+
+  const [teacherInfo, setTeacherInfo] = useState([])
+
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/staff_account/create_staff_account"
+    axios.get(endpoint)
+    .then((response) => {
+      // console.log(response.data.response[0].aboutTeacher);
+      setTeacherInfo(response.data.response[0].aboutTeacher)
+      console.log(teacherInfo);
+    })
+  }, [teacherInfo])
+  
+
   return (
     <>
     <PagesNavbar/>
@@ -72,14 +88,24 @@ const TeachersPage = () => {
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="d-flex gap-lg-4 gap-md-4 w-100 flex-wrap position-relative">
+          {teacherInfo.map((eachTeacher, index) => (
             <OrangeHouseTeachersCard
+              img={eachTeacher.teacherPicture}
+              bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
+              teacherName={eachTeacher.teacherName}
+              aboutTeacher={eachTeacher.teacherInfo}
+              to_where="/aboutThisTeacher"
+              para="/aboutThisTeacher"
+            />
+          ))}
+          {/* <OrangeHouseTeachersCard
               img="pic/teacher10.jpg"
               bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
               teacherName="juliet margaret"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-            />
-            <OrangeHouseTeachersCard
+            /> */}
+            {/* <OrangeHouseTeachersCard
               img="pic/teacher9.jpg"
               bodyClassName="orange-body-main col-lg-7 col-md-12 skyblue d-flex"
               teacherName="lucy faith"
@@ -99,7 +125,7 @@ const TeachersPage = () => {
               teacherName="oluwaseun adewale"
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-            />
+            /> */}
           </div>
         </div>
         <Parallax3
