@@ -29,6 +29,8 @@ function MyApp() {
   const [studentOption, setStudentOption] = useState("");
   const [room, setRoom] = useState("");
   const [myImage, setMyImage] = useState("");
+  const [myVideo, setMyVideo] = useState("");
+  const [myProfilePic, setMyProfilePic] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const [studentFirstName, setStudentFirstName] = useState("");
   const [studentAdmissionState, setStudentAdmissionState] = useState("");
@@ -217,6 +219,24 @@ function MyApp() {
     };
   };
 
+  const handleVideoFileChange = (e) => {
+    let myImage = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(myImage);
+    reader.onload = () => {
+      setMyVideo(reader.result);
+    };
+  };
+  
+  
+  const handleImageFileChange = (e) => {
+    let myImage = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(myImage);
+    reader.onload = () => {
+      setMyProfilePic(reader.result);
+    };
+  };
 
   let formik = useFormik({
     initialValues: {
@@ -235,15 +255,19 @@ function MyApp() {
       const updatedValues = {
         ...values,
         subjectPercentages: subjectPercentageMap,
+        myVideo, myProfilePic
       };
 
-      const { selectedSubjects: selectedSubjects2, ...valuesWithoutSelectedSubjects } = updatedValues;
+      const {
+        selectedSubjects: selectedSubjects2,
+        ...valuesWithoutSelectedSubjects
+      } = updatedValues;
 
       console.log(valuesWithoutSelectedSubjects);
+      let endpoint = "http://localhost:2000/staff_account/create_staff_account";
+      axios.post(endpoint, valuesWithoutSelectedSubjects);
     },
   });
-
-
 
   return (
     <>
@@ -435,16 +459,29 @@ function MyApp() {
               ></textarea>
             </div>
             <div className="mb-3">
+              <label htmlFor="profilePicture" className="form-label">
+                Profile Picture
+              </label>
+              <input
+                type="file"
+                className="form-control"
+                id="profilePicture"
+                name="profilePicture"
+                accept="images/*"
+                onChange={handleImageFileChange}
+              />
+            </div>
+            <div className="mb-3">
               <label htmlFor="videoLink" className="form-label">
-                Video Link
+                My Video
               </label>
               <input
                 type="file"
                 className="form-control"
                 id="videoLink"
                 name="videoLink"
-                onChange={formik.handleChange}
-                value={formik.values.videoLink}
+                accept="video/*"
+                onChange={handleVideoFileChange}
               />
             </div>
             <div className="mb-3">
