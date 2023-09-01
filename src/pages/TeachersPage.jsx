@@ -26,8 +26,9 @@ const TeachersPage = () => {
   }, [teacherInfo])
   
 
-  const toTeachersPage = (teacherName, teacherInfo, teacherPicture) => {
-    navigate(`/aboutThisTeacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
+  const toTeachersPage = (teacherData) => {
+    // navigate(`/aboutThisTeacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
+    navigate("/aboutThisTeacher", { state: teacherData });
     };
 
   return (
@@ -102,7 +103,14 @@ const TeachersPage = () => {
               aboutTeacher={eachTeacher.teacherInfo}
               to_where="/aboutThisTeacher"
               para="/aboutThisTeacher"
-              onClick={() => toTeachersPage(eachTeacher.teacherName, eachTeacher.teacherInfo, eachTeacher.teacherPicture)}
+              // onClick={() => toTeachersPage(eachTeacher.teacherName, eachTeacher.teacherInfo, eachTeacher.teacherPicture)}
+              onClick={() => {
+      toTeachersPage({
+        teacherName: eachTeacher.teacherName,
+        teacherInfo: eachTeacher.teacherInfo,
+        teacherPicture: eachTeacher.teacherPicture,
+      });
+    }}
             />
           ))}
           </div>

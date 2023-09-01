@@ -9,10 +9,14 @@ import MyLessons from "../components/aboutTeachersPageComponents/MyLessons";
 import Contact_Teacher_Form from "../components/aboutTeachersPageComponents/Contact_Teacher_Form";
 import Parallax1 from "../components/generalComponents/Parallax1";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
+import { useLocation } from "react-router-dom";
+
 
 const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
 
+  const location = useLocation();
+  const { teacherName, teacherInfo, teacherPicture } = location.state;
   // useEffect(() => {
   //   const timer =
   //     countdown > 0 && setInterval(() => setCountdown(countdown - 1), 1000);
@@ -44,15 +48,15 @@ const AboutTeachersPage = ({ seconds }) => {
             backgroundPosition: "60% 10%",
           }}
           inner_classes="activities activities-white-color"
-          name="juliet margaret"
-          content="know juliet our math teacher"
+          name={teacherName}
+          content={"know " + teacherName + " our " + teacherName + " teacher"}
           hrStyle={{ backgroundColor: "white" }}
         />
         <div className="teacher_skill d-flex w-75 mx-auto gap-4 py-5">
           {/* <div>{countdown}</div> */}
           <div className="skill_content" style={{ width: "33%" }}>
             <img
-              src="pic/teacher10.jpg"
+              src={teacherPicture}
               alt=""
               style={{ height: "400px", width: "100%", borderRadius: "5px" }}
             />
@@ -70,23 +74,7 @@ const AboutTeachersPage = ({ seconds }) => {
               }}
             ></Small_hr>
             <div className="text-color">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Perferendis nam, cumque delectus voluptas nisi illo voluptate
-                necessitatibus, eos sunt corporis nemo accusamus minus
-                assumenda, voluptates fugiat.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium mollitia ex, harum nam reiciendis ab dolorem expedita
-                molestias pariatur hic veniam eveniet.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
-                alias illo perferendis tenetur consequuntur aspernatur quisquam?
-                Natus deleniti consequatur doloribus non harum omnis possimus
-                eos. Distinctio consequatur non velit blanditiis?
-              </p>
+              {teacherInfo}
             </div>
           </div>
           <div className="skill_content" style={{ width: "33%" }}>
