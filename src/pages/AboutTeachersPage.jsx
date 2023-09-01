@@ -16,7 +16,7 @@ const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
 
   const location = useLocation();
-  const { teacherName, teacherInfo, teacherPicture } = location.state;
+  const { teacherName, teacherInfo, teacherPicture, teacherVideo } = location.state;
   // useEffect(() => {
   //   const timer =
   //     countdown > 0 && setInterval(() => setCountdown(countdown - 1), 1000);
@@ -153,7 +153,7 @@ const AboutTeachersPage = ({ seconds }) => {
               controls
               poster="pic/pic.jpg"
             >
-              <source src="pic/video1.mp4" type="video/mp4" />
+              <source src={teacherVideo} type="video/mp4" />
             </video>
           </div>
           <div className="skill_content" style={{ width: "33%" }}>

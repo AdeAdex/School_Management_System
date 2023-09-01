@@ -11,29 +11,27 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const TeachersPage = () => {
-
-  const [teacherInfo, setTeacherInfo] = useState([])
+  const [teacherInfo, setTeacherInfo] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account"
-    axios.get(endpoint)
-    .then((response) => {
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
+    axios.get(endpoint).then((response) => {
       // console.log(response.data.response[0].aboutTeacher);
-      setTeacherInfo(response.data.response[0].aboutTeacher)
+      setTeacherInfo(response.data.response[0].aboutTeacher);
       // console.log(teacherInfo);
-    })
-  }, [teacherInfo])
-  
+    });
+  }, [teacherInfo]);
 
   const toTeachersPage = (teacherData) => {
     // navigate(`/aboutThisTeacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
     navigate("/aboutThisTeacher", { state: teacherData });
-    };
+  };
 
   return (
     <>
-    <PagesNavbar/>
+      <PagesNavbar />
       <div
         className="teachers-container mx-aut"
         style={{ width: "100%", height: "100vh" }}
@@ -42,8 +40,9 @@ const TeachersPage = () => {
           classes="bg other_parallax"
           styles={{
             height: "60%",
-            backgroundImage: 'url("pic/teacher17.avif"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
-            backgroundPosition: '100% 10%'
+            backgroundImage:
+              'url("pic/teacher17.avif"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
+            backgroundPosition: "100% 10%",
           }}
           inner_classes="activities activities-white-color"
           name="our teacher"
@@ -94,25 +93,36 @@ const TeachersPage = () => {
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="d-flex gap-lg-4 gap-md-4 w-100 flex-wrap position-relative">
-          {teacherInfo.map((eachTeacher, index) => (
-            <OrangeHouseTeachersCard
-              img={eachTeacher.teacherPicture}
-              bodyClassName={`${index % 5 === 0 ? 'orange' : index % 5 === 1 ? 'skyblue' : index % 5 === 2 ? 'yellow' : index % 5 === 3 ? 'purple' : 'pink'} orange-body-main col-lg-7 col-md-12 d-flex`}
-              // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
-              teacherName={eachTeacher.teacherName}
-              aboutTeacher={eachTeacher.teacherInfo}
-              to_where="/aboutThisTeacher"
-              para="/aboutThisTeacher"
-              // onClick={() => toTeachersPage(eachTeacher.teacherName, eachTeacher.teacherInfo, eachTeacher.teacherPicture)}
-              onClick={() => {
-      toTeachersPage({
-        teacherName: eachTeacher.teacherName,
-        teacherInfo: eachTeacher.teacherInfo,
-        teacherPicture: eachTeacher.teacherPicture,
-      });
-    }}
-            />
-          ))}
+            {teacherInfo.map((eachTeacher, index) => (
+              <OrangeHouseTeachersCard
+                img={eachTeacher.teacherPicture}
+                bodyClassName={`${
+                  index % 5 === 0
+                    ? "orange"
+                    : index % 5 === 1
+                    ? "skyblue"
+                    : index % 5 === 2
+                    ? "yellow"
+                    : index % 5 === 3
+                    ? "purple"
+                    : "pink"
+                } orange-body-main col-lg-7 col-md-12 d-flex`}
+                // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
+                teacherName={eachTeacher.teacherName}
+                aboutTeacher={eachTeacher.teacherInfo}
+                to_where="/aboutThisTeacher"
+                para="/aboutThisTeacher"
+                // onClick={() => toTeachersPage(eachTeacher.teacherName, eachTeacher.teacherInfo, eachTeacher.teacherPicture)}
+                onClick={() => {
+                  toTeachersPage({
+                    teacherName: eachTeacher.teacherName,
+                    teacherInfo: eachTeacher.teacherInfo,
+                    teacherPicture: eachTeacher.teacherPicture,
+                    teacherVideo: eachTeacher.teacherVideo
+                  });
+                }}
+              />
+            ))}
           </div>
         </div>
         <Parallax3
