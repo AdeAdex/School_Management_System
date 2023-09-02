@@ -20,7 +20,7 @@ const TeachersPage = () => {
     axios.get(endpoint).then((response) => {
       // console.log(response.data.response[0].aboutTeacher);
       setTeacherInfo(response.data.response[0].aboutTeacher);
-      console.log(teacherInfo);
+      // console.log(teacherInfo);
     });
   }, [teacherInfo]);
 
@@ -112,17 +112,18 @@ const TeachersPage = () => {
                 aboutTeacher={eachTeacher.teacherInfo}
                 to_where="/aboutThisTeacher"
                 para="/aboutThisTeacher"
-                // onClick={() => toTeachersPage(eachTeacher.teacherName, eachTeacher.teacherInfo, eachTeacher.teacherPicture)}
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,
                     teacherInfo: eachTeacher.teacherInfo,
                     teacherPicture: eachTeacher.teacherPicture,
-                    teacherVideo: eachTeacher.teacherVideo
+                    teacherVideo: eachTeacher.teacherVideo,
+                    teacherSkills: eachTeacher.teacherSkills
                   });
                 }}
               />
             ))}
+
           </div>
         </div>
         <Parallax3

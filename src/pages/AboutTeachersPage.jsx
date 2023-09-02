@@ -16,12 +16,7 @@ const AboutTeachersPage = ({ seconds }) => {
   const [countdown, setCountdown] = useState(5);
 
   const location = useLocation();
-  const { teacherName, teacherInfo, teacherPicture, teacherVideo } = location.state;
-  // useEffect(() => {
-  //   const timer =
-  //     countdown > 0 && setInterval(() => setCountdown(countdown - 1), 1000);
-  //   return () => clearInterval(timer);
-  // }, [countdown]);
+  const { teacherName, teacherInfo, teacherPicture, teacherVideo, teacherSkills } = location.state;
 
   const countDown = () => {
     if (countdown > 0) {
@@ -31,6 +26,10 @@ const AboutTeachersPage = ({ seconds }) => {
   useEffect(() => {
     setTimeout(() => countDown(), 1000);
   }, [countdown]);
+
+
+
+  const sortedTeacherSkills = teacherSkills.slice().sort((a, b) => b.percentage - a.percentage);
 
   return (
     <>
@@ -49,7 +48,7 @@ const AboutTeachersPage = ({ seconds }) => {
           }}
           inner_classes="activities activities-white-color"
           name={teacherName}
-          content={"know " + teacherName + " our " + teacherName + " teacher"}
+          content={"know " + teacherName + " our " + sortedTeacherSkills[0].subject + " teacher"}
           hrStyle={{ backgroundColor: "white" }}
         />
         <div className="teacher_skill d-flex w-75 mx-auto gap-4 py-5">
@@ -91,36 +90,27 @@ const AboutTeachersPage = ({ seconds }) => {
             ></Small_hr>
             <div className="card p-3">
               <div className="body w-100 d-flex flex-column gap-3">
-                <Skills
-                  skill_classes="skill-percent yellow d-flex gap-4 text-white px-4"
-                  skill_style={{ width: "95%" }}
-                  skills="HTML"
-                  skill_percent="95%"
+              {
+                sortedTeacherSkills.map((skills, index) => (
+                  <Skills
+                  key={index}
+                  skill_classes={`${
+                  index % 5 === 0
+                    ? "orange"
+                    : index % 5 === 1
+                    ? "skyblue"
+                    : index % 5 === 2
+                    ? "green"
+                    : index % 5 === 3
+                    ? "yellow"
+                    : "purple"
+                } skill-percent d-flex gap-4 text-white px-4`}
+                  skill_style={{ width: `${skills.percentage}%` }}
+                  skills={skills.subject}
+                  skill_percent={skills.percentage}
                 ></Skills>
-                <Skills
-                  skill_classes="skill-percent skyblue d-flex gap-4 text-white px-4"
-                  skill_style={{ width: "85%" }}
-                  skills="CSS"
-                  skill_percent="85%"
-                ></Skills>
-                <Skills
-                  skill_classes="skill-percent green d-flex gap-4 text-white px-4"
-                  skill_style={{ width: "75%" }}
-                  skills="JavaScript"
-                  skill_percent="75%"
-                ></Skills>
-                <Skills
-                  skill_classes="skill-percent orange d-flex gap-4 text-white px-4"
-                  skill_style={{ width: "65%" }}
-                  skills="React"
-                  skill_percent="65%"
-                ></Skills>
-                <Skills
-                  skill_classes="skill-percent pink d-flex gap-4 text-white px-4"
-                  skill_style={{ width: "55%" }}
-                  skills="Node"
-                  skill_percent="55%"
-                ></Skills>
+                ))
+              }
               </div>
             </div>
           </div>

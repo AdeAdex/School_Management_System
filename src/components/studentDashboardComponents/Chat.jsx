@@ -5,7 +5,7 @@ import OnlineUser from "./OnlineUser";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const Chat = ({ socket }) => {
+const Chat = ({ socket, messages, fetchGroupMessage }) => {
 
   //   let socketRef = useRef();
   const [username, setUsername] = useState("");
@@ -18,6 +18,8 @@ const Chat = ({ socket }) => {
   const joinRoom = (myRoom, createDay, createTime, roomPic) => {
     
     if (myRoom !== "") {
+      localStorage.setItem('myRoom', myRoom);
+      fetchGroupMessage()
       setRoom(myRoom);
    		setDateCreate(createDay);
    		setTimeCreate(createTime);
@@ -55,7 +57,7 @@ const Chat = ({ socket }) => {
                   eachGroup.roomName,
                   eachGroup.roomDateCreated,
                   eachGroup.roomTimeCreated,
-                  eachGroup.roomPic
+                  eachGroup.roomPic,
                 )
               }
             >
@@ -68,7 +70,7 @@ const Chat = ({ socket }) => {
           ))}
         </div>
         {/* ) : ( */}
-        <ChatMessenger socket={socket}  room={room} createDay={datCreate} createTime={timeCreate} roomPic={groupIcon} />
+        <ChatMessenger socket={socket} messages={messages}  room={room} createDay={datCreate} createTime={timeCreate} roomPic={groupIcon} />
         <OnlineUser />
       </div>
       {/* )} */}

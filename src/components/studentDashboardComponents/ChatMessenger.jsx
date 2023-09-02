@@ -4,21 +4,32 @@ import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Textarea } from "@mantine/core";
 import { useSelector } from "react-redux";
 
-const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
+const ChatMessenger = ({
+  socket,
+  room,
+  createDay,
+  createTime,
+  roomPic,
+  messages,
+}) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
 
   useEffect(() => {
+    // if (localStorage.getItem("myRoom") ) {
+
+    // }
+    localStorage.getItem("myRoom");
     if (socket.current) {
       socket.current.on("received_message", (data) => {
-        // console.log(data);
-        setMessageList((list) => [...list, data]);
+        console.log(data);
+        // setMessageList((list) => [...list, data]);
       });
     }
   }, [socket.current]);
 
-  const sendMessage = async () => {
+  const sendMessage = () => {
     if (currentMessage.trim() !== "") {
       const messageData = {
         room: room,
@@ -28,9 +39,10 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
           new Date(Date.now()).getHours() +
           ":" +
           new Date(Date.now()).getMinutes(),
+        profilePic: globalState.profileURL,
       };
-
-      await socket.current.emit("sent_message", messageData);
+      console.log(messageData);
+      socket.current.emit("sent_message", messageData);
       //       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
     }
@@ -56,7 +68,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
                 className=""
                 style={{ fontSize: "14px", fontFamily: "monospace" }}
               >
-                {room}
+                {localStorage.getItem("myRoom")}
               </small>
               <div></div>
             </div>
@@ -67,14 +79,14 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
               overflowY: "scroll",
               width: "100%",
               height: "100%",
-              backgroundImage: `url(${localStorage.cloudImage})`,
+              // backgroundImage: `url(${})`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "contain",
-              paddingBottom: '50px'
+              paddingBottom: "50px",
             }}
           >
-            {messageList.map((messageContent, index) => (
+            {/* {messages.map((messageContent, index) => (
               <div
                 className="d-flex chat-div gap-3"
                 key={index}
@@ -85,7 +97,7 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
                 }
               >
                 <img
-                  src={localStorage.cloudImage}
+                  src={messageContent.profilePic}
                   style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                   alt=""
                 />
@@ -95,7 +107,38 @@ const ChatMessenger = ({ socket, room, createDay, createTime, roomPic }) => {
                   <div className="ms-auto">{messageContent.time}</div>
                 </div>
               </div>
-            ))}
+            ))} */}
+
+            {messages.length !== 0 ? (
+              messages.map((messageContent, index) => (
+                <div
+                  className="d-flex chat-div gap-3"
+                  key={index}
+                  id={
+                    globalState.firstName === messageContent.author
+                      ? "you"
+                      : "others"
+                  }
+                >
+                  <img
+                    src={messageContent.profilePic}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                    }}
+                    alt=""
+                  />
+                  <div className="d-flex flex-column w-100">
+                    <div>{messageContent.author}</div>
+                    <div>{messageContent.message}</div>
+                    <div className="ms-auto">{messageContent.time}</div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div>Nothing</div>
+            )}
           </div>
           {/* </ScrollToBottom> */}
         </div>
