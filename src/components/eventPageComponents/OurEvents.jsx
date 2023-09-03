@@ -3,7 +3,6 @@ import EventsCard from "./EventsCard";
 import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
 import axios from "axios";
 
-
 const OurEvents = () => {
   const [eventInfo, setEventInfo] = useState([]);
   useEffect(() => {
@@ -11,14 +10,14 @@ const OurEvents = () => {
     axios
       .get(endpoint)
       .then((response) => {
-        setEventInfo(response.data.response)
+        setEventInfo(response.data.response);
         console.log(response.data.response);
       })
       .catch((err) => {
         console.log(err);
-      })
-  }, [])
-  
+      });
+  }, []);
+
   return (
     <>
       <div>
@@ -30,136 +29,65 @@ const OurEvents = () => {
         ></ActivitiesHeader>
       </div>
       <div className="our-events-container d-flex flex-lg-row flex-md-row flex-sm-column w-100 gap-3 flex-wrap justify-content-center align-items-center">
-      {
-        eventInfo.map((eachEvent, index) => (
-          <EventsCard
-        cardstyle={{ width: "23%" }}
-          classes="our-events"
-          img="pic/bg-image-3.jpg"
-          h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: "0px" }}
-          time_container="time-container"
-          country_container="country-container mb-1"
-          days_time="days-time"
-          days_time_icon="d-none"
-          days="21"
-          date="Jun"
-          title={eachEvent.eventTitle}
-          styles={{ backgroundColor: "#6fc191" }}
-          country="nigeria"
-          time="9:00am to 4:00pm"
-          hr_class="my-3 bg-white"
-          hr_style={{
-            height: "3px",
-            width: "35px",
-          }}
-          content=" Join us for a delightful day in the park, filled with outdoor games, delicious food, "
-          btn="check it"
-          btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
-      />
-        ))
-      }
-      
-        {/* <EventsCard
-          cardstyle={{ width: "23%" }}
-          classes="our-events"
-          img="pic/bg-image-3.jpg"
-          h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: "0px" }}
-          time_container="time-container"
-          country_container="country-container mb-1"
-          days_time="days-time"
-          days_time_icon="d-none"
-          days="21"
-          date="Jun"
-          title="Summer Park Picnic"
-          styles={{ backgroundColor: "#6fc191" }}
-          country="nigeria"
-          time="9:00am to 4:00pm"
-          hr_class="my-3 bg-white"
-          hr_style={{
-            height: "3px",
-            width: "35px",
-          }}
-          content=" Join us for a delightful day in the park, filled with outdoor games, delicious food, "
-          btn="check it"
-          btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
-        ></EventsCard>
-        <EventsCard
-          cardstyle={{ width: "23%" }}
-          classes="our-events"
-          img="pic/bg-image-3.jpg"
-          h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: "0px" }}
-          time_container="time-container"
-          country_container="country-container mb-1"
-          days_time="days-time"
-          days_time_icon="d-none"
-          days="05"
-          date="Jul"
-          title="Artistic Workshop"
-          styles={{ backgroundColor: "#74CEE4" }}
-          country="nigeria"
-          time="9:00am to 4:00pm"
-          hr_class="my-3 bg-white"
-          hr_style={{
-            height: "3px",
-            width: "35px",
-          }}
-          content=" Unleash your creativity at our art session and explore various artistic techniques."
-          btn="check it"
-          btnstyle={{ backgroundColor: "#6FC4D9", textTransform: "uppercase" }}
-        ></EventsCard>
-        <EventsCard
-          cardstyle={{ width: "23%" }}
-          classes="our-events"
-          img="pic/bg-image-5.jpeg"
-          h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: "0px" }}
-          time_container="time-container"
-          country_container="country-container mb-1"
-          days_time="days-time"
-          days_time_icon="d-none"
-          days="04"
-          date="aug"
-          title="Sports & Fitness"
-          styles={{ backgroundColor: "#edbf47" }}
-          country="nigeria"
-          time="9:00am to 4:00pm"
-          hr_class="my-3 bg-white"
-          hr_style={{
-            height: "3px",
-            width: "35px",
-          }}
-          content=" Join us for a day of sports and exercise, filled with competitions and fitness challenges"
-          btn="check it"
-          btnstyle={{ backgroundColor: "#E0B84E", textTransform: "uppercase" }}
-        ></EventsCard>
-        <EventsCard
-          cardstyle={{ width: "23%" }}
-          classes="our-events"
-          img="pic/bg-image-4.jpg"
-          h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
-          h5Style={{ marginBottom: "0px" }}
-          time_container="time-container"
-          country_container="country-container mb-1"
-          days_time="days-time"
-          days_time_icon="d-none"
-          days="20"
-          date="aug"
-          title="Excursion Adventure"
-          styles={{ backgroundColor: "#ec774b" }}
-          country="nigeria"
-          time="9:00am to 4:00pm"
-          hr_class="my-3 bg-white"
-          hr_style={{
-            height: "3px",
-            width: "35px",
-          }}
-          content=" Embark on an exciting excursion day, exploring the beauty of nature"
-          btn="check it"
-          btnstyle={{ backgroundColor: "#DF764E", textTransform: "uppercase" }}
-        ></EventsCard> */}
+        {eventInfo.map((eachEvent, index) => {
+          // Split the eventDays and format it
+          const [year, month, day] = eachEvent.eventDays.split("-");
+
+          // Create an array of month abbreviations
+          const monthAbbreviations = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ];
+
+          // Use the Date object to convert the numeric month to the abbreviated name
+          const formattedMonth = monthAbbreviations[parseInt(month) - 1]; // Subtract 1 because months are 0-indexed in Date
+
+          const formattedDate = `${day} ${formattedMonth}`;
+          const contentColors = ["#6fc191", "#74CEE4", "#edbf47", "#ec774b"];
+          const btnColors = ["#6AB78A", "#6FC4D9", "#E0B84E", "#DF764E"];
+
+          return (
+            <EventsCard
+              key={index}
+              cardstyle={{ width: "23%" }}
+              classes="our-events"
+              img={eachEvent.eventImage}
+              h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
+              h5Style={{ marginBottom: "0px" }}
+              time_container="time-container"
+              country_container="country-container mb-1"
+              days_time="days-time"
+              days_time_icon="d-none"
+              days={formattedDate} // Use the formatted date
+              title={eachEvent.eventTitle}
+              styles={{ backgroundColor: contentColors[index % contentColors.length], }}
+              country={eachEvent.eventCountry}
+              time={`${eachEvent.eventFrom} to ${eachEvent.eventTo}`}
+              hr_class="my-3 bg-white"
+              hr_style={{
+                height: "3px",
+                width: "35px",
+              }}
+              content={eachEvent.eventContent}
+              btn="check it"
+              btnstyle={{
+                backgroundColor: btnColors[index % btnColors.length],
+                textTransform: "uppercase",
+              }}
+            />
+          );
+        })}
+       
       </div>
     </>
   );
