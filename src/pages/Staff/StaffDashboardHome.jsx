@@ -8,6 +8,7 @@ import "./Dashboard.css";
 import { MultiSelect } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
+import EventsPageComponents from "../../components/homepageComponents/EventsPageComponents";
 
 const StaffDashboardHome = () => {
   return (
@@ -48,9 +49,9 @@ function MyApp() {
   const percentageOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   const [isLoading, setIsLoading] = useState(false);
 
-
   useEffect(() => {
-    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
+    let endpoint2 =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
@@ -202,7 +203,8 @@ function MyApp() {
     });
 
     let values = { room, myImage, createdDay, createdTime };
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/chat_group";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/chat_group";
     axios.post(endpoint, { values }).then((response) => {
       enqueueSnackbar(response.data.message, { variant: "success" });
     });
@@ -221,7 +223,6 @@ function MyApp() {
     };
   };
 
-
   const handleVideoFileChange = (e) => {
     let myImage = e.target.files[0];
     let reader = new FileReader();
@@ -230,8 +231,7 @@ function MyApp() {
       setMyVideo(reader.result);
     };
   };
-  
-  
+
   const handleImageFileChange = (e) => {
     let myImage = e.target.files[0];
     let reader = new FileReader();
@@ -259,7 +259,8 @@ function MyApp() {
       const updatedValues = {
         ...values,
         subjectPercentages: subjectPercentageMap,
-        myVideo, myProfilePic
+        myVideo,
+        myProfilePic,
       };
 
       const {
@@ -269,26 +270,25 @@ function MyApp() {
 
       console.log(valuesWithoutSelectedSubjects);
       let endpoint = "http://localhost:2000/staff_account/create_staff_account";
-      axios.post(endpoint, valuesWithoutSelectedSubjects)
-      .then((response) => {
-      setIsLoading(false);
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
+      axios.post(endpoint, valuesWithoutSelectedSubjects).then((response) => {
+        setIsLoading(false);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
-      Toast.fire({
-        icon: "error",
-        title: response.data.message,
+        Toast.fire({
+          icon: "error",
+          title: response.data.message,
+        });
       });
-      })
     },
   });
 
@@ -552,15 +552,13 @@ function MyApp() {
             </div>
 
             <button type="submit" className="btn btn-primary">
-              {
-                isLoading ? (
-                  <div className="spinner"></div>
-                ) : (
-                  <div>Create</div>
-                )
-              }
+              {isLoading ? <div className="spinner"></div> : <div>Create</div>}
             </button>
           </form>
+        </div>
+
+        <div className="w-100">
+          <EventsPageComponents />
         </div>
 
         <UpgradeLevelModal
