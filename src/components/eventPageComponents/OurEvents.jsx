@@ -43,7 +43,7 @@ const OurEvents = () => {
           days_time_icon="d-none"
           days="21"
           date="Jun"
-          title={reachEvent.eventTitle}
+          title={eachEvent.eventTitle}
           styles={{ backgroundColor: "#6fc191" }}
           country="nigeria"
           time="9:00am to 4:00pm"
