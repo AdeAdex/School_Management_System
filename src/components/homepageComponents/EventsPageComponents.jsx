@@ -36,9 +36,10 @@ const EventsPageComponents = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+        let newValues = {...values, myImage}
       let endpoint = "http://localhost:2000/staff_account/create_events";
       axios
-        .post(endpoint, values)
+        .post(endpoint, newValues)
         .then((response) => {})
         .catch((err) => {});
     },
