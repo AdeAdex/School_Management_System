@@ -3,6 +3,7 @@ import EventsCard from "./EventsCard";
 import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
 
 const OurEvents = () => {
+  
   return (
     <>
       <div>
@@ -14,7 +15,32 @@ const OurEvents = () => {
         ></ActivitiesHeader>
       </div>
       <div className="our-events-container d-flex flex-lg-row flex-md-row flex-sm-column w-100 gap-3 flex-wrap justify-content-center align-items-center">
-        <EventsCard
+      <EventsCard
+        cardstyle={{ width: "23%" }}
+          classes="our-events"
+          img="pic/bg-image-3.jpg"
+          h5Classes="card-title  bg-secondary py-3 text-uppercase px-3"
+          h5Style={{ marginBottom: "0px" }}
+          time_container="time-container"
+          country_container="country-container mb-1"
+          days_time="days-time"
+          days_time_icon="d-none"
+          days="21"
+          date="Jun"
+          title="Summer Park Picnic"
+          styles={{ backgroundColor: "#6fc191" }}
+          country="nigeria"
+          time="9:00am to 4:00pm"
+          hr_class="my-3 bg-white"
+          hr_style={{
+            height: "3px",
+            width: "35px",
+          }}
+          content=" Join us for a delightful day in the park, filled with outdoor games, delicious food, "
+          btn="check it"
+          btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
+      />
+        {/* <EventsCard
           cardstyle={{ width: "23%" }}
           classes="our-events"
           img="pic/bg-image-3.jpg"
@@ -113,7 +139,7 @@ const OurEvents = () => {
           content=" Embark on an exciting excursion day, exploring the beauty of nature"
           btn="check it"
           btnstyle={{ backgroundColor: "#DF764E", textTransform: "uppercase" }}
-        ></EventsCard>
+        ></EventsCard> */}
       </div>
     </>
   );

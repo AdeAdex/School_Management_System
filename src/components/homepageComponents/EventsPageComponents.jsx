@@ -8,7 +8,6 @@ const EventsPageComponents = () => {
   const [myImage, setMyImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-
   const handleImageFileChange = (e) => {
     let myImage = e.target.files[0];
     let reader = new FileReader();
@@ -39,12 +38,28 @@ const EventsPageComponents = () => {
     validationSchema,
     onSubmit: (values) => {
       setIsLoading(true);
-        let newValues = {...values, myImage}
+      let newValues = { ...values, myImage };
       let endpoint = "http://localhost:2000/staff_account/create_events";
       axios
         .post(endpoint, newValues)
         .then((response) => {
-                setIsLoading(false);
+          setIsLoading(false);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "error",
+            title: response.data.message,
+          });
         })
         .catch((err) => {});
     },
@@ -147,7 +162,7 @@ const EventsPageComponents = () => {
           )}
         </div>
         <button type="submit" className="btn-submit">
-        {isLoading ? <div className="spinner"></div> : <div>Submit</div>}
+          {isLoading ? <div className="spinner"></div> : <div>Submit</div>}
         </button>
       </form>
     </div>
