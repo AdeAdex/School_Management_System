@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EventsCard from "./EventsCard";
 import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
+import axios from "axios";
+
 
 const OurEvents = () => {
   const [eventInfo, setEventInfo] = useState([]);
