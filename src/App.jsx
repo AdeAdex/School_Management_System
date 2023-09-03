@@ -128,8 +128,8 @@ function App() {
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
             
-        
-        <Route path='/staff_dashboard' element={ <Dashboard/>}>
+        <Route path='/staff_dashboard' element={shouldRedirect ? <Navigate to="/staff_dashboard/home"/> : <Dashboard/>} />
+        <Route path='/staff_dashboard/*' element={ <Dashboard/>}>
           <Route path='home' element={<StaffDashboardHome/>} />
           <Route path='profile' element={<StaffProfile/>}/>
           <Route path='change_password' element={<StaffChangePassword/>}/>

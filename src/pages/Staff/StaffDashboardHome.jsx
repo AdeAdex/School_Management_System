@@ -46,6 +46,8 @@ function MyApp() {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [subjectPercentages, setSubjectPercentages] = useState({});
   const percentageOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
@@ -248,6 +250,7 @@ function MyApp() {
     },
 
     onSubmit: (values) => {
+      setIsLoading(true);
       const subjectPercentageMap = {};
       selectedSubjects.forEach((subject) => {
         subjectPercentageMap[subject] = subjectPercentages[subject];
@@ -265,8 +268,27 @@ function MyApp() {
       } = updatedValues;
 
       console.log(valuesWithoutSelectedSubjects);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
-      axios.post(endpoint, valuesWithoutSelectedSubjects);
+      let endpoint = "http://localhost:2000/staff_account/create_staff_account";
+      axios.post(endpoint, valuesWithoutSelectedSubjects)
+      .then((response) => {
+      setIsLoading(false);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: response.data.message,
+      });
+      })
     },
   });
 
@@ -530,7 +552,13 @@ function MyApp() {
             </div>
 
             <button type="submit" className="btn btn-primary">
-              Create
+              {
+                isLoading ? (
+                  <div className="spinner"></div>
+                ) : (
+                  <div>Create</div>
+                )
+              }
             </button>
           </form>
         </div>
