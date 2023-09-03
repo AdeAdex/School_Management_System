@@ -6,6 +6,8 @@ import axios from "axios";
 
 const EventsPageComponents = () => {
   const [myImage, setMyImage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleImageFileChange = (e) => {
     let myImage = e.target.files[0];
@@ -36,11 +38,14 @@ const EventsPageComponents = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      setIsLoading(true);
         let newValues = {...values, myImage}
       let endpoint = "http://localhost:2000/staff_account/create_events";
       axios
         .post(endpoint, newValues)
-        .then((response) => {})
+        .then((response) => {
+                setIsLoading(false);
+        })
         .catch((err) => {});
     },
   });
@@ -142,7 +147,7 @@ const EventsPageComponents = () => {
           )}
         </div>
         <button type="submit" className="btn-submit">
-          Submit
+        {isLoading ? <div className="spinner"></div> : <div>Submit</div>}
         </button>
       </form>
     </div>
