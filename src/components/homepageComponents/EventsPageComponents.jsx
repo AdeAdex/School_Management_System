@@ -4,8 +4,16 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-
 const EventsPageComponents = () => {
+  const handleVideoFileChange = (e) => {
+    let myImage = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(myImage);
+    reader.onload = () => {
+      setMyVideo(reader.result);
+    };
+  };
+
   const validationSchema = Yup.object({
     days: Yup.string().required("Days is required"),
     title: Yup.string().required("Title is required"),
@@ -26,14 +34,11 @@ const EventsPageComponents = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-        let endpoint = "http://localhost:2000/staff_account/create_events"
-        axios.post(endpoint, values)
-        .then((response) => {
-
-        })
-        .catch((err) => {
-
-        })
+      let endpoint = "http://localhost:2000/staff_account/create_events";
+      axios
+        .post(endpoint, values)
+        .then((response) => {})
+        .catch((err) => {});
     },
   });
 
@@ -41,6 +46,19 @@ const EventsPageComponents = () => {
     <div className="event-form-container">
       <h2>Create an Event</h2>
       <form onSubmit={formik.handleSubmit} className="event-form">
+        <div className="mb-3">
+          <label htmlFor="profilePicture" className="form-label">
+            Event Picture
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            id="profilePicture"
+            name="profilePicture"
+            accept="images/*"
+            onChange={handleImageFileChange}
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="days">Date</label>
           <input
