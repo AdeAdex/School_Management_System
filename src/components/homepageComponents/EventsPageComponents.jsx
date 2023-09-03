@@ -5,12 +5,14 @@ import * as Yup from "yup";
 import axios from "axios";
 
 const EventsPageComponents = () => {
-  const handleVideoFileChange = (e) => {
+  const [myImage, setMyImage] = useState("");
+
+  const handleImageFileChange = (e) => {
     let myImage = e.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(myImage);
     reader.onload = () => {
-      setMyVideo(reader.result);
+      setMyImage(reader.result);
     };
   };
 
