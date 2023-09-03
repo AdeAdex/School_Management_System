@@ -39,7 +39,7 @@ const EventsPageComponents = () => {
     onSubmit: (values) => {
       setIsLoading(true);
       let newValues = { ...values, myImage };
-      let endpoint = "http://localhost:2000/staff_account/create_events";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_events";
       axios
         .post(endpoint, newValues)
         .then((response) => {
