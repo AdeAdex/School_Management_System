@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import EventsCard from "./EventsCard";
 import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
 
@@ -27,7 +27,9 @@ const OurEvents = () => {
         ></ActivitiesHeader>
       </div>
       <div className="our-events-container d-flex flex-lg-row flex-md-row flex-sm-column w-100 gap-3 flex-wrap justify-content-center align-items-center">
-      <EventsCard
+      {
+        eventInfo.map((eachEvent, index) => (
+          <EventsCard
         cardstyle={{ width: "23%" }}
           classes="our-events"
           img="pic/bg-image-3.jpg"
@@ -39,7 +41,7 @@ const OurEvents = () => {
           days_time_icon="d-none"
           days="21"
           date="Jun"
-          title="Summer Park Picnic"
+          title={reachEvent.eventTitle}
           styles={{ backgroundColor: "#6fc191" }}
           country="nigeria"
           time="9:00am to 4:00pm"
@@ -52,6 +54,9 @@ const OurEvents = () => {
           btn="check it"
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
       />
+        ))
+      }
+      
         {/* <EventsCard
           cardstyle={{ width: "23%" }}
           classes="our-events"
