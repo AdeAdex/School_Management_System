@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import EventsCard from "./EventsCard";
 import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const OurEvents = () => {
   const [eventInfo, setEventInfo] = useState([]);
+  let navigate = useNavigate();
+
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/get_events";
     axios
@@ -17,6 +20,11 @@ const OurEvents = () => {
         console.log(err);
       });
   }, []);
+
+
+  const readMore = () => {
+    navigate('/')
+  }
 
   return (
     <>
@@ -79,7 +87,7 @@ const OurEvents = () => {
                 width: "35px",
               }}
               content={eachEvent.eventContent}
-              btn="check it"
+              onClick={readMore}
               btnstyle={{
                 backgroundColor: btnColors[index % btnColors.length],
                 textTransform: "uppercase",

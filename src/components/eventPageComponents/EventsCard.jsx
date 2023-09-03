@@ -23,12 +23,15 @@ const EventsCard = ({
   classesStyle,
   hr_class,
   hr_style,
+  onClick,
 }) => {
   return (
     <div className="card text-white" style={cardstyle}>
       <div className={classes} style={classesStyle}>
         <div className={days_time}>
-          <span className="d-flex justify-content-center">{days}</span>
+          <span className="d-flex justify-content-center text-uppercase">
+            {days}
+          </span>
           <p className="text-uppercase">{date}</p>
         </div>
         <i className={days_time_icon}></i>
@@ -55,9 +58,9 @@ const EventsCard = ({
           <div className={hr_class} style={hr_style}></div>
           <div>{content}</div>
         </div>
-        <a href="#" className="btn text-white" style={btnstyle}>
-          {btn}
-        </a>
+        <button onClick={onClick} className="btn text-white" style={btnstyle}>
+          check it
+        </button>
       </div>
     </div>
   );
