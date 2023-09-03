@@ -7,7 +7,7 @@ import axios from "axios";
 const OurEvents = () => {
   const [eventInfo, setEventInfo] = useState([]);
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/get_events";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/get_events";
     axios
       .get(endpoint)
       .then((response) => {
