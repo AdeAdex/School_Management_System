@@ -26,7 +26,7 @@ const OurEvents = () => {
           days_time_icon="d-none"
           days="21"
           date="Jun"
-          title="A DAY IN THE PARK"
+          title="Summer Park Picnic"
           styles={{ backgroundColor: "#6fc191" }}
           country="nigeria"
           time="9:00am to 4:00pm"
@@ -35,7 +35,7 @@ const OurEvents = () => {
             height: "3px",
             width: "35px",
           }}
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+          content=" Join us for a delightful day in the park, filled with outdoor games, delicious food, "
           btn="check it"
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "uppercase" }}
         ></EventsCard>
@@ -51,7 +51,7 @@ const OurEvents = () => {
           days_time_icon="d-none"
           days="05"
           date="Jul"
-          title="art session"
+          title="Artistic Workshop"
           styles={{ backgroundColor: "#74CEE4" }}
           country="nigeria"
           time="9:00am to 4:00pm"
@@ -60,7 +60,7 @@ const OurEvents = () => {
             height: "3px",
             width: "35px",
           }}
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+          content=" Unleash your creativity at our art session and explore various artistic techniques."
           btn="check it"
           btnstyle={{ backgroundColor: "#6FC4D9", textTransform: "uppercase" }}
         ></EventsCard>
@@ -76,7 +76,7 @@ const OurEvents = () => {
           days_time_icon="d-none"
           days="04"
           date="aug"
-          title="sport & exercise day"
+          title="Sports & Fitness"
           styles={{ backgroundColor: "#edbf47" }}
           country="nigeria"
           time="9:00am to 4:00pm"
@@ -85,7 +85,7 @@ const OurEvents = () => {
             height: "3px",
             width: "35px",
           }}
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+          content=" Join us for a day of sports and exercise, filled with competitions and fitness challenges"
           btn="check it"
           btnstyle={{ backgroundColor: "#E0B84E", textTransform: "uppercase" }}
         ></EventsCard>
@@ -101,7 +101,7 @@ const OurEvents = () => {
           days_time_icon="d-none"
           days="20"
           date="aug"
-          title="excursion day"
+          title="Excursion Adventure"
           styles={{ backgroundColor: "#ec774b" }}
           country="nigeria"
           time="9:00am to 4:00pm"
@@ -110,7 +110,7 @@ const OurEvents = () => {
             height: "3px",
             width: "35px",
           }}
-          content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non."
+          content=" Embark on an exciting excursion day, exploring the beauty of nature"
           btn="check it"
           btnstyle={{ backgroundColor: "#DF764E", textTransform: "uppercase" }}
         ></EventsCard>
