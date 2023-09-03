@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EventsCard from "./EventsCard";
 import ActivitiesHeader from "../generalComponents/ActivitiesHeader";
 
 const OurEvents = () => {
+  const [eventInfo, setEventInfo] = useState([]);
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/staff_account/get_events";
+    axios
+      .get(endpoint)
+      .then((response) => {
+        setEventInfo(response.data.response)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
   
   return (
     <>
