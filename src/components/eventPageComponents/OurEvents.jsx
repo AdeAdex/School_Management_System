@@ -23,7 +23,7 @@ const OurEvents = () => {
 
 
   const readMore = () => {
-    navigate('/')
+    navigate('/read_more_about_our_event')
   }
 
   return (

@@ -45,6 +45,7 @@ import Chat from './components/studentDashboardComponents/Chat'
 import Test from './pages/Student/Test'
 import { newStudent } from './redux/portalSlice'
 import axios from "axios";
+import ReadEventPage from './pages/ReadEventPage'
 
 
 
@@ -143,6 +144,7 @@ function App() {
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>
         <Route path='/aboutThisTeacher' element={<AboutTeachersPage/>}/>
+        <Route path='/read_more_about_our_event' element={<ReadEventPage/>}/>
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
     </Router>
