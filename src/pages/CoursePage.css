@@ -1,0 +1,62 @@
+.course-container {
+  padding: 20px;
+  text-align: center;
+  margin-top: 200px;
+  width: 100%;
+}
+
+.course-main {
+  width: 75%;
+}
+
+.course-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.course-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.custom-select {
+  font-size: 16px;
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  outline: none;
+}
+
+.custom-select option {
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.subject-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subject-card {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.subject-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.not-available {
+  font-size: 18px;
+  color: red;
+}
