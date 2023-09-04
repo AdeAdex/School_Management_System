@@ -269,7 +269,7 @@ function MyApp() {
       } = updatedValues;
 
       console.log(valuesWithoutSelectedSubjects);
-      let endpoint = "http://localhost:2000/staff_account/create_staff_account";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
       axios.post(endpoint, valuesWithoutSelectedSubjects).then((response) => {
         setIsLoading(false);
         const Toast = Swal.mixin({
