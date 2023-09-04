@@ -13,12 +13,14 @@ const CoursePage = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     let endpoint2 =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/science_option_endpoint";
     let endpoint3 =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/commercial_option_endpoint";
-    let endpoint4 = "https://school-portal-backend-adex2210.vercel.app/staff_account/art_option_endpoint";
+    let endpoint4 =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/art_option_endpoint";
 
     axios.get(endpoint).then((response) => {
       setSubjects(response.data);
@@ -93,27 +95,31 @@ const CoursePage = () => {
               <option value="art">Art</option>
             </select>
             <div className="subject-list">
-  {selectedOption === "commercial" && data3.length > 0
-    ? data3.map((sub, index) => (
-        <div className="subject-card" key={index}>
-          <h2 className="subject-title">{sub.subject}</h2>
-        </div>
-      ))
-    : selectedOption === "science" && data2.length > 0
-    ? data2.map((sub, index) => (
-        <div className="subject-card" key={index}>
-          <h2 className="subject-title">{sub.subject}</h2>
-        </div>
-      ))
-    : selectedOption === "" && data4.length > 0
-    ? data4.map((sub, index) => (
-        <div className="subject-card" key={index}>
-          <h2 className="subject-title">{sub.subject}</h2>
-        </div>
-      ))
-    : <div>nothing</div>}
-</div>
-
+              {selectedOption === "commercial" && data3.length > 0 ? (
+                data3.map((sub, index) => (
+                  <div className="subject-card" key={index}>
+                    <h2 className="subject-title">{sub.subject}</h2>
+                  </div>
+                ))
+              ) : selectedOption === "science" && data2.length > 0 ? (
+                data2.map((sub, index) => (
+                  <div className="subject-card" key={index}>
+                    <h2 className="subject-title">{sub.subject}</h2>
+                  </div>
+                ))
+              ) : selectedOption === "" && data4.length > 0 ? (
+                data4.map((sub, index) => (
+                  <div className="subject-card" key={index}>
+                    <h2 className="subject-title">{sub.subject}</h2>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  There is currently no subject available for the selected
+                  sources.
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
