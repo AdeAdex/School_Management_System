@@ -40,7 +40,7 @@ const EventsCard = ({
         src={img}
         className="card-img-top"
         alt="..."
-        style={{ opacity: "1", filter: "blur" }}
+        style={{ opacity: "1", filter: "blur", height: '200px' }}
       />
       <h5 className={h5Classes} style={h5Style}>
         {title}
