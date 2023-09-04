@@ -9,22 +9,22 @@ const OurEvents = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/get_events";
+    let endpoint =
+      "http://localhost:2000/staff_account/get_events";
     axios
       .get(endpoint)
       .then((response) => {
         setEventInfo(response.data.response);
-        console.log(response.data.response);
+        // console.log(response.data.response);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-
-  const readMore = () => {
-    navigate('/read_more_about_our_event')
-  }
+  const readMore = (eventData) => {
+    navigate("/read_more_about_our_event", { state: eventData });
+  };
 
   return (
     <>
@@ -78,7 +78,9 @@ const OurEvents = () => {
               days_time_icon="d-none"
               days={formattedDate} // Use the formatted date
               title={eachEvent.eventTitle}
-              styles={{ backgroundColor: contentColors[index % contentColors.length], }}
+              styles={{
+                backgroundColor: contentColors[index % contentColors.length],
+              }}
               country={eachEvent.eventCountry}
               time={`${eachEvent.eventFrom} to ${eachEvent.eventTo}`}
               hr_class="my-3 bg-white"
@@ -87,7 +89,17 @@ const OurEvents = () => {
                 width: "35px",
               }}
               content={eachEvent.eventContent}
-              onClick={readMore}
+              onClick={() => {
+                readMore({
+                  eventImage: eachEvent.eventImage,
+                  eventTitle: eachEvent.eventTitle,
+                  eventDate: formattedDate,
+                  eventCountry: eachEvent.eventCountry,
+                  eventContent: eachEvent.eventContent,
+                  eventFrom: eachEvent.eventFrom,
+                  eventTo: eachEvent.eventTo,
+                });
+              }}
               btnstyle={{
                 backgroundColor: btnColors[index % btnColors.length],
                 textTransform: "uppercase",
@@ -95,7 +107,6 @@ const OurEvents = () => {
             />
           );
         })}
-       
       </div>
     </>
   );

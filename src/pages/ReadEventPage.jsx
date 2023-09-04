@@ -1,8 +1,12 @@
 import React from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import Footer from "../components/footerComponents/Footer";
+import { useLocation } from "react-router-dom";
+
 
 const ReadEventPage = () => {
+  const location = useLocation();
+  const { eventImage, eventTitle,  eventDate, eventCountry, eventContent,  eventFrom,  eventTo } = location.state;
   return (
     <>
       <PagesNavbar />
@@ -15,7 +19,7 @@ const ReadEventPage = () => {
             paddingTop: "170px",
           }}
         >
-          welcome
+          <div>{eventContent}</div>
         </div>
         <Footer />
       </div>
