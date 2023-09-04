@@ -66,7 +66,7 @@ const ReadEventPage = () => {
           <h2>Registration</h2>
           <p>
             To attend this event, please register by clicking the "Register Now"
-            button below. Registration fee is $10 per person.
+            button below. Registration fee is ₦0 per person.
           </p>
           <button className="register-button">Register Now</button>
         </div>

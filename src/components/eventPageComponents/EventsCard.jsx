@@ -56,7 +56,7 @@ const EventsCard = ({
             <span className="text-uppercase my-auto">{time}</span>
           </div>
           <div className={hr_class} style={hr_style}></div>
-          <div>{content}</div>
+          <div style={{height: '3.9em', backgroundColor: '', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowra', lineHeight: '1.2em'}}>{content}</div>
         </div>
         <button onClick={onClick} className="btn text-white" style={btnstyle}>
           check it
