@@ -6,7 +6,6 @@ const CoursePage = () => {
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/student_subject";
     axios.get(endpoint).then((response) => {
-      console.log(response.data.subject);
       setSubject(response.data.subject)
     });
   }, []);
@@ -16,7 +15,7 @@ const CoursePage = () => {
       <div>
         {
           subject.map((sub, index) => (
-            
+
           ))
         }
       </div>
