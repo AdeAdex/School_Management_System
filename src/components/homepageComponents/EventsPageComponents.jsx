@@ -57,7 +57,7 @@ const EventsPageComponents = () => {
           });
 
           Toast.fire({
-            icon: "error",
+            icon: "success",
             title: response.data.message,
           });
         })
