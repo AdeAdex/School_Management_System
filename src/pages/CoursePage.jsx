@@ -8,15 +8,17 @@ const CoursePage = () => {
   const [subjects, setSubjects] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
 
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/student_subject";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     let endpoint2 =
-      "http://localhost:2000/staff_account/science_option_endpoint";
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/science_option_endpoint";
     let endpoint3 =
-      "http://localhost:2000/staff_account/commercial_option_endpoint";
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/commercial_option_endpoint";
+    let endpoint4 = "https://school-portal-backend-adex2210.vercel.app/staff_account/art_option_endpoint";
 
     axios.get(endpoint).then((response) => {
       setSubjects(response.data);
@@ -31,19 +33,27 @@ const CoursePage = () => {
     axios.get(endpoint3).then((response) => {
       setData3(response.data);
     });
+
+    axios.get(endpoint3).then((response) => {
+      setData4(response.data);
+    });
   }, []);
+
+  // const handleSelectChange = (e) => {
+  //   const selectedValue = e.target.value;
+  //   setSelectedOption(selectedValue);
+
+  //   if (selectedValue === "science") {
+  //     setData2(data2);
+  //   } else if (selectedValue === "commercial") {
+  //     setData2(data3);
+  //   }
+  // };
 
   const handleSelectChange = (e) => {
     const selectedValue = e.target.value;
     setSelectedOption(selectedValue);
-
-    if (selectedValue === "science") {
-      setData2(data2); 
-    } else if (selectedValue === "commercial") {
-      setData2(data3); 
-    }
   };
-
   return (
     <>
       <PagesNavbar />
@@ -80,18 +90,26 @@ const CoursePage = () => {
               </option>
               <option value="science">Sciences</option>
               <option value="commercial">Commercial</option>
-              <option value="">Art</option>
+              <option value="art">Art</option>
             </select>
             <div className="subject-list">
-              {data2 ? (
-                data2.map((sub, index) => (
-                  <div className="subject-card" key={index}>
-                    <h2 className="subject-title">{sub.subject}</h2>
-                  </div>
-                ))
-              ) : (
-                <div className="not-available">Not available</div>
-              )}
+              {selectedOption === "commercial"
+                ? data3.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                : selectedOption === "science"
+                ? data2.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                : data4.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))}
             </div>
           </div>
         </div>
