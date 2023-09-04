@@ -93,24 +93,27 @@ const CoursePage = () => {
               <option value="art">Art</option>
             </select>
             <div className="subject-list">
-              {selectedOption === "commercial"
-                ? data3.map((sub, index) => (
-                    <div className="subject-card" key={index}>
-                      <h2 className="subject-title">{sub.subject}</h2>
-                    </div>
-                  ))
-                : selectedOption === "science"
-                ? data2.map((sub, index) => (
-                    <div className="subject-card" key={index}>
-                      <h2 className="subject-title">{sub.subject}</h2>
-                    </div>
-                  ))
-                : data4.map((sub, index) => (
-                    <div className="subject-card" key={index}>
-                      <h2 className="subject-title">{sub.subject}</h2>
-                    </div>
-                  ))}
-            </div>
+  {selectedOption === "commercial" && data3.length > 0
+    ? data3.map((sub, index) => (
+        <div className="subject-card" key={index}>
+          <h2 className="subject-title">{sub.subject}</h2>
+        </div>
+      ))
+    : selectedOption === "science" && data2.length > 0
+    ? data2.map((sub, index) => (
+        <div className="subject-card" key={index}>
+          <h2 className="subject-title">{sub.subject}</h2>
+        </div>
+      ))
+    : selectedOption === "" && data4.length > 0
+    ? data4.map((sub, index) => (
+        <div className="subject-card" key={index}>
+          <h2 className="subject-title">{sub.subject}</h2>
+        </div>
+      ))
+    : <div>nothing</div>}
+</div>
+
           </div>
         </div>
       </div>
