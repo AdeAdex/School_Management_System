@@ -61,6 +61,7 @@ const OurEvents = () => {
           const formattedMonth = monthAbbreviations[parseInt(month) - 1]; // Subtract 1 because months are 0-indexed in Date
 
           const formattedDate = `${day} ${formattedMonth}`;
+          const formattedDays = `${day} ${formattedMonth} ${year}`
           const contentColors = ["#6fc191", "#74CEE4", "#edbf47", "#ec774b"];
           const btnColors = ["#6AB78A", "#6FC4D9", "#E0B84E", "#DF764E"];
 
@@ -93,7 +94,7 @@ const OurEvents = () => {
                 readMore({
                   eventImage: eachEvent.eventImage,
                   eventTitle: eachEvent.eventTitle,
-                  eventDate: formattedDate,
+                  eventDate: formattedDays,
                   eventCountry: eachEvent.eventCountry,
                   eventContent: eachEvent.eventContent,
                   eventFrom: eachEvent.eventFrom,
