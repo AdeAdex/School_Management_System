@@ -10,7 +10,7 @@ const OurEvents = () => {
 
   useEffect(() => {
     let endpoint =
-      "http://localhost:2000/staff_account/get_events";
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/get_events";
     axios
       .get(endpoint)
       .then((response) => {
