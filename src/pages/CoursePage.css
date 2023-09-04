@@ -60,3 +60,23 @@
   font-size: 18px;
   color: red;
 }
+
+@media screen and (max-width: 768px) {
+  .course-container {
+    padding: 10px;
+    margin-top: 150px;
+  }
+
+  .course-main {
+    width: 90%;
+  }
+
+  .custom-select {
+    width: 80%;
+  }
+
+  .subject-card {
+    width: 100%;
+    padding: 10px;
+  }
+}
