@@ -38,7 +38,6 @@ function MyApp({myEmail: myEmail}) {
       setOpen(true);
       setIsLoading(true);
       let newValues = { ...values, myEmail };
-      console.log(newValues);
       setTimeout(() => {
         let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/change_student_password";
       axios
@@ -46,7 +45,6 @@ function MyApp({myEmail: myEmail}) {
       .then((response) => {
         if (response.data.status) {
           setIsLoading(false);
-          console.log(response.data.message);
           enqueueSnackbar(response.data.message, { variant: 'success' });
         } else {
           setIsLoading(false);

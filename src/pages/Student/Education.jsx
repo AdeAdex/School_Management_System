@@ -31,7 +31,6 @@ const Education = () => {
       .then((response) => {
         setModalOpen(true);
         setSubject(response.data)
-        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +46,6 @@ const Education = () => {
     setModalEmailValue(myEmail);
     setEditModalOpen(true);
     setL(items);
-    console.log(l);
     //  axios.get(endpoints, {
     //   headers: {
     //     Authorization: `${myId} ${myEmail}`,
@@ -124,7 +122,6 @@ const Education = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(myId, myEmail);
         let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/delete";
         axios
           .delete(endpoint, {

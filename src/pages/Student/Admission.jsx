@@ -104,8 +104,6 @@ const Admission = () => {
             globalState.paidForAdmission
           );
         } else {
-          console.log(res.data.message);
-          console.log(res.data.status);
           navigate("/student_login");
         }
       })
@@ -117,7 +115,6 @@ const Admission = () => {
   const handleChange = (event, newValue) => {
     if (paid === false && (newValue !== 1 || newValue !== 0)) {
       setValue(1);
-      console.log(newValue, paid);
       navigate("/student/admission/payment");
     } else {
       setValue(newValue);

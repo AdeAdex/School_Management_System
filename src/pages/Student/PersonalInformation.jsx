@@ -43,11 +43,8 @@ const PersonalInformation = () => {
 
     onSubmit: (values) => {
       globalState = { ...globalState, ...values };
-      console.log(globalState);
-      // console.log(values);
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
       axios.post(endpoint, globalState).then((response) => {
-        console.log(response);
         const Toast = Swal.mixin({
           toast: true,
           position: "top",

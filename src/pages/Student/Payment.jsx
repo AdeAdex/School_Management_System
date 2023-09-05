@@ -86,7 +86,6 @@ const Payment = ({
         });
         
         if (response.status === "success") {
-        console.log(response);
           let payload = {
             myEmail: myEmail,
             justPaid: true,
@@ -98,7 +97,6 @@ const Payment = ({
             .post(endpoint, payload)
             .then((response) => {
               if (response.data.status) {
-                console.log(response);
                 localStorage.setItem("currentPaidState", true);
               }
             })

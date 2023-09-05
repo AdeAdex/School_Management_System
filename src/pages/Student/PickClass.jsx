@@ -27,7 +27,6 @@ const PickClass = () => {
   //     ...prevResponses,
   //     [name]: value,
   //   }));
-  //   console.log(name, value);
   // };
 
   // console.log(responseArray);

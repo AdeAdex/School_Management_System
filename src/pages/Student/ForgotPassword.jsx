@@ -41,7 +41,6 @@ function MyApp() {
   const {enqueueSnackbar} = useSnackbar();
   const [active, setActive] = useState(0);
   const nextStep = (variant) => {
-    // console.log(myEmailResponse);
     if (myEmailResponse) {
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {
@@ -52,7 +51,6 @@ function MyApp() {
   const prevStep = () =>setActive((current) => (current > 0 ? current - 1 : current));
 
   const nextStep2 = (variant) => {
-    // console.log(myOTPResponse);
     if (myOTPResponse) {
       setActive((current) => (current < 3 ? current + 1 : current));
     } else {

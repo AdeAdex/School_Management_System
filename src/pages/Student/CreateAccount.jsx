@@ -44,7 +44,6 @@ const CreateAccount = () => {
 
         if (response.data.status) {
           setIsLoading(false);
-          console.log(response.data.status);
           navigate("/student_login");
         } else {
           const Toast = Swal.mixin({
