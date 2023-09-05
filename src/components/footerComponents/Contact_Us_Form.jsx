@@ -27,7 +27,7 @@ const Contact_Us_Form = () => {
           toast: true,
           position: "top",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 3000,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -60,7 +60,7 @@ const Contact_Us_Form = () => {
           onChange={formik.handleChange}
         />
         {formik.touched.name && formik.errors.name ? (
-          <div className="error">{formik.errors.name}</div>
+          <div className="error text-danger">{formik.errors.name}</div>
         ) : null}
 
         <input
@@ -74,7 +74,7 @@ const Contact_Us_Form = () => {
           onChange={formik.handleChange}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div className="error">{formik.errors.email}</div>
+          <div className="error text-danger">{formik.errors.email}</div>
         ) : null}
 
         <textarea
@@ -87,7 +87,7 @@ const Contact_Us_Form = () => {
           onChange={formik.handleChange}
         />
         {formik.touched.message && formik.errors.message ? (
-          <div className="error">{formik.errors.message}</div>
+          <div className="error text-danger">{formik.errors.message}</div>
         ) : null}
 
         <button className="footer-contact-btn" type="submit">
