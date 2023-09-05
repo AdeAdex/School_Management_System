@@ -23,7 +23,22 @@ const Contact_Us_Form = () => {
       let endpoint = 'http://localhost:2000/staff_account/people_reaching_us'
       axios.post(endpoint, values)
       .then((response) => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
+        Toast.fire({
+          icon: "success",
+          title: response.data.message,
+        });
       })
       .catch((err) => {
         console.log(err);
