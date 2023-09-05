@@ -100,13 +100,13 @@ const Nav = () => {
                       jss 1
                     </a>
                   </li>
-                  <hr />
+                  {/* <hr /> */}
                   <li>
                     <a className="dropdown-item" href="#">
                       jss 2
                     </a>
                   </li>
-                  <hr />
+                  {/* <hr /> */}
 
                   {/* <li>
                     <hr className="dropdown-divider" />
@@ -116,21 +116,21 @@ const Nav = () => {
                       jss 3
                     </a>
                   </li>
-                  <hr />
+                  {/* <hr /> */}
 
                   <li>
                     <a className="dropdown-item" href="#">
                       sss 1
                     </a>
                   </li>
-                  <hr />
+                  {/* <hr /> */}
 
                   <li>
                     <a className="dropdown-item" href="#">
                       sss 2
                     </a>
                   </li>
-                  <hr />
+                  {/* <hr /> */}
 
                   <li>
                     <a className="dropdown-item" href="#">

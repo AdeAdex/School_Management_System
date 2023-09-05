@@ -98,7 +98,12 @@ $text-transform: uppercase;
 .dropdown-menu .dropdown-item {
   text-transform: capitalize;
   padding: 5px 10px 5px 25px;
-  font-size: 14px;
+  font-size: 18px;
+}
+
+.dropdown-menu li {
+  // background-color: red;
+  padding: unset !important;
 }
 
 .activities-color {
