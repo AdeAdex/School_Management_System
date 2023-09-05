@@ -7,8 +7,12 @@ import Contact_Us_Form from "./Contact_Us_Form";
 import FooterHero from "./FooterHero";
 import Small_hr from "../generalComponents/Small_hr";
 import MulticolorLine from "../generalComponents/MulticolorLine";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+
+  const navigate = useNavigate()
+
   const primarySchool = (para) => {
     if (para == "call") {
       window.open("tel:+2347033959586");
@@ -31,6 +35,35 @@ const Footer = () => {
       });
     }
   };
+
+  const toRespectiveLocation = (para) => {
+    if (para == "teacher") {
+      navigate('/ourteachers')
+    } else if (para == "courses") {
+      navigate('/our_courses')
+    } else if (para == "events") {
+      navigate('/ourevent')
+    } else if (para == "secondary") {
+      navigate('/') 
+    } else {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "warning",
+        title: "Currently Unavailable, Please Try Again Later",
+      });
+    }
+  }
 
   return (
     <>
@@ -98,12 +131,12 @@ const Footer = () => {
             ></Small_hr>
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3 flex-wrap w-100">
-                <OurTagBtn btn_txt="teacher"></OurTagBtn>
-                <OurTagBtn btn_txt="courses"></OurTagBtn>
-                <OurTagBtn btn_txt="events"></OurTagBtn>
-                <OurTagBtn btn_txt="nursery"></OurTagBtn>
-                <OurTagBtn btn_txt="primary"></OurTagBtn>
-                <OurTagBtn btn_txt="secondary"></OurTagBtn>
+                <OurTagBtn onClick={() => toRespectiveLocation('teacher')} btn_txt="teacher"></OurTagBtn>
+                <OurTagBtn onClick={() => toRespectiveLocation('courses')} btn_txt="courses"></OurTagBtn>
+                <OurTagBtn onClick={() => toRespectiveLocation('events')} btn_txt="events"></OurTagBtn>
+                <OurTagBtn onClick={() => toRespectiveLocation('nursery')} btn_txt="nursery"></OurTagBtn>
+                <OurTagBtn onClick={() => toRespectiveLocation('primary')} btn_txt="primary"></OurTagBtn>
+                <OurTagBtn onClick={() => toRespectiveLocation('secondary')} btn_txt="secondary"></OurTagBtn>
               </div>
             </div>
           </div>

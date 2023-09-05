@@ -1,9 +1,9 @@
 import React from 'react'
 
-const OurTagBtn = ({btn_txt}) => {
+const OurTagBtn = ({btn_txt, onClick}) => {
   return (
     <>
-        <button className='tag-btn'>{btn_txt}</button>
+        <button className='tag-btn' onClick={onClick}>{btn_txt}</button>
     </>
   )
 }
