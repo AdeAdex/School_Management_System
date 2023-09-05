@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import StickyNav from "./StickyNav";
 import { useDisclosure } from '@mantine/hooks';
 import { Burger } from '@mantine/core';
 
 const Nav = () => {
+  let navigate = useNavigate()
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? 'Close navigation' : 'Open navigation';
 
@@ -18,6 +19,11 @@ const Nav = () => {
   const desktopStyle = {
     height: "80px",
   };
+
+
+  // const toCoursePage = (para) => {
+  //   navigate('/our_courses', { state: para })
+  // }
   
   return (
     <>
@@ -96,46 +102,37 @@ const Nav = () => {
                 </a>
                 <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="/our_courses" state={{ para: "jOne" }} className="dropdown-item">
                       JSS 1
-                    </a>
+                    </Link>
                   </li>
-                  {/* <hr /> */}
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="/our_courses" state={{ para: "jTwo" }} className="dropdown-item">
                       JSS 2
-                    </a>
+                    </Link>
                   </li>
-                  {/* <hr /> */}
-
-                  {/* <li>
-                    <hr className="dropdown-divider" />
-                  </li> */}
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="/our_courses" state={{ para: "jThree" }} className="dropdown-item">
                       JSS 3
-                    </a>
+                    </Link>
                   </li>
-                  {/* <hr /> */}
 
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="/our_courses" state={{ para: "sOne" }} className="dropdown-item">
                       SSS 1
-                    </a>
+                    </Link>
                   </li>
-                  {/* <hr /> */}
 
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="/our_courses" state={{ para: "sTwo" }} className="dropdown-item">
                       SSS 2
-                    </a>
+                    </Link>
                   </li>
-                  {/* <hr /> */}
 
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="/our_courses" state={{ para: "sThree" }} className="dropdown-item">
                       SSS 3
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>

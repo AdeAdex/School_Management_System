@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import Footer from "../components/footerComponents/Footer";
 import "../pages/CoursePage.css";
+import { useLocation } from "react-router-dom";
 
 const CoursePage = () => {
   const [subjects, setSubjects] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
   const [data4, setData4] = useState([]);
+
+
+  const location = useLocation();
+  const para = location.state ? location.state.para : null;
 
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -41,16 +46,6 @@ const CoursePage = () => {
     });
   }, []);
 
-  // const handleSelectChange = (e) => {
-  //   const selectedValue = e.target.value;
-  //   setSelectedOption(selectedValue);
-
-  //   if (selectedValue === "science") {
-  //     setData2(data2);
-  //   } else if (selectedValue === "commercial") {
-  //     setData2(data3);
-  //   }
-  // };
 
   const handleSelectChange = (e) => {
     const selectedValue = e.target.value;
@@ -59,8 +54,77 @@ const CoursePage = () => {
   return (
     <>
       <PagesNavbar />
-      <div className="course-container">
-        <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+      {para  === null || para === undefined ? (
+        <div className="course-container">
+          <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+            <div className="my-5 junior">
+              <h1 className="course-header">
+                All Subjects in Junior Secondary School
+              </h1>
+              <div className="subject-list">
+                {subjects ? (
+                  subjects.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : (
+                  <div>not available</div>
+                )}
+              </div>
+            </div>
+  
+            <div className="my-5 senior">
+              <h1 className="course-header">
+                All Subjects in Senior Secondary School
+              </h1>
+              <select
+                className="custom-select"
+                name="myOption"
+                id=""
+                value={selectedOption}
+                onChange={handleSelectChange}
+              >
+                <option value="" disabled>
+                  Select An Option
+                </option>
+                <option value="science">Sciences</option>
+                <option value="commercial">Commercial</option>
+                <option value="art">Art</option>
+              </select>
+              <div className="subject-list">
+                {selectedOption === "commercial" && data3.length > 0 ? (
+                  data3.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : selectedOption === "science" && data2.length > 0 ? (
+                  data2.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : selectedOption === "" && data4.length > 0 ? (
+                  data4.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : (
+                  <div>
+                    There is currently no subject available for the selected
+                    sources.
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : para && (para == "jOne" || para == "jTwo" || para == "jThree") ? (
+        <div className="course-container">
+          <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+        <div className="my-5 junior">
           <h1 className="course-header">
             All Subjects in Junior Secondary School
           </h1>
@@ -75,8 +139,166 @@ const CoursePage = () => {
               <div>not available</div>
             )}
           </div>
+        </div>
+        </div>
+        </div>
+      ) : para && (para === "sOne" || para === "sTwo" || para === "sThree") ? (
+        <div className="course-container">
+          <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+        <div className="my-5 senior">
+          <h1 className="course-header">
+            All Subjects in Senior Secondary School
+          </h1>
+          <select
+            className="custom-select"
+            name="myOption"
+            id=""
+            value={selectedOption}
+            onChange={handleSelectChange}
+          >
+            <option value="" disabled>
+              Select An Option
+            </option>
+            <option value="science">Sciences</option>
+            <option value="commercial">Commercial</option>
+            <option value="art">Art</option>
+          </select>
+          <div className="subject-list">
+            {selectedOption === "commercial" && data3.length > 0 ? (
+              data3.map((sub, index) => (
+                <div className="subject-card" key={index}>
+                  <h2 className="subject-title">{sub.subject}</h2>
+                </div>
+              ))
+            ) : selectedOption === "science" && data2.length > 0 ? (
+              data2.map((sub, index) => (
+                <div className="subject-card" key={index}>
+                  <h2 className="subject-title">{sub.subject}</h2>
+                </div>
+              ))
+            ) : selectedOption === "" && data4.length > 0 ? (
+              data4.map((sub, index) => (
+                <div className="subject-card" key={index}>
+                  <h2 className="subject-title">{sub.subject}</h2>
+                </div>
+              ))
+            ) : (
+              <div>
+                There is currently no subject available for the selected
+                sources.
+              </div>
+            )}
+          </div>
+        </div>
+        </div>
+        </div>
+      ) : (
+        <div>
+          Invalid para value. Please select a valid option.
+        </div>
+      )}
+      <Footer />
+    </>
+  );
+  
+};
 
-          <div className="my-5">
+export default CoursePage;
+
+
+
+
+{/* <div className="course-container">
+        <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+        <div className="my-5 junior">
+          <h1 className="course-header">
+            All Subjects in Junior Secondary School
+          </h1>
+          <div className="subject-list">
+            {subjects ? (
+              subjects.map((sub, index) => (
+                <div className="subject-card" key={index}>
+                  <h2 className="subject-title">{sub.subject}</h2>
+                </div>
+              ))
+            ) : (
+              <div>not available</div>
+            )}
+          </div>
+          </div>
+
+          <div className="my-5 senior">
+            <h1 className="course-header">
+              All Subjects in Senior Secondary School
+            </h1>
+            <select
+              className="custom-select"
+              name="myOption"
+              id=""
+              value={selectedOption}
+              onChange={handleSelectChange}
+            >
+              <option value="" disabled>
+                Select An Option
+              </option>
+              <option value="science">Sciences</option>
+              <option value="commercial">Commercial</option>
+              <option value="art">Art</option>
+            </select>
+            <div className="subject-list">
+              {selectedOption === "commercial" && data3.length > 0 ? (
+                data3.map((sub, index) => (
+                  <div className="subject-card" key={index}>
+                    <h2 className="subject-title">{sub.subject}</h2>
+                  </div>
+                ))
+              ) : selectedOption === "science" && data2.length > 0 ? (
+                data2.map((sub, index) => (
+                  <div className="subject-card" key={index}>
+                    <h2 className="subject-title">{sub.subject}</h2>
+                  </div>
+                ))
+              ) : selectedOption === "" && data4.length > 0 ? (
+                data4.map((sub, index) => (
+                  <div className="subject-card" key={index}>
+                    <h2 className="subject-title">{sub.subject}</h2>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  There is currently no subject available for the selected
+                  sources.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+
+      {/* <div className="course-container">
+        <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+        { !para ? (
+            <div className="course-container">
+        <div className="d-flex flex-column justify-content-center align-items-center course-main mx-auto">
+        <div className="my-5 junior">
+          <h1 className="course-header">
+            All Subjects in Junior Secondary School
+          </h1>
+          <div className="subject-list">
+            {subjects ? (
+              subjects.map((sub, index) => (
+                <div className="subject-card" key={index}>
+                  <h2 className="subject-title">{sub.subject}</h2>
+                </div>
+              ))
+            ) : (
+              <div>not available</div>
+            )}
+          </div>
+          </div>
+
+          <div className="my-5 senior">
             <h1 className="course-header">
               All Subjects in Senior Secondary School
             </h1>
@@ -123,9 +345,77 @@ const CoursePage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
-  );
-};
-
-export default CoursePage;
+          ) : (
+            {para && (para == "jOne" || para == "jTwo" || para == "jThree") ? (
+            <div className="my-5 junior">
+              <h1 className="course-header">
+                All Subjects in Junior Secondary School
+              </h1>
+              <div className="subject-list">
+                {subjects ? (
+                  subjects.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : (
+                  <div>not available</div>
+                )}
+              </div>
+            </div>
+          ) : para && (para === "sOne" || para === "sTwo" || para === "sThree") ? (
+            <div className="my-5 senior">
+              <h1 className="course-header">
+                All Subjects in Senior Secondary School
+              </h1>
+              <select
+                className="custom-select"
+                name="myOption"
+                id=""
+                value={selectedOption}
+                onChange={handleSelectChange}
+              >
+                <option value="" disabled>
+                  Select An Option
+                </option>
+                <option value="science">Sciences</option>
+                <option value="commercial">Commercial</option>
+                <option value="art">Art</option>
+              </select>
+              <div className="subject-list">
+                {selectedOption === "commercial" && data3.length > 0 ? (
+                  data3.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : selectedOption === "science" && data2.length > 0 ? (
+                  data2.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : selectedOption === "" && data4.length > 0 ? (
+                  data4.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ) : (
+                  <div>
+                    There is currently no subject available for the selected
+                    sources.
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div>
+              Invalid para value. Please select a valid option.
+            </div>
+          )}
+          )
+        }
+          
+        </div>
+      </div> */}
