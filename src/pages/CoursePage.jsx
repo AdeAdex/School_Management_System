@@ -183,7 +183,8 @@ const CoursePage = () => {
                 ) : (
                   <div>
                     There is currently no subject available for the selected
-                    sources.
+                    sources. We apologize for any inconvenience. Kindly please
+                    check back later.
                   </div>
                 )}
               </div>
