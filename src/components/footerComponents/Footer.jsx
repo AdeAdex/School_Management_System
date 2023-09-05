@@ -99,14 +99,11 @@ const Footer = () => {
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3 flex-wrap w-100">
                 <OurTagBtn btn_txt="teacher"></OurTagBtn>
-                <OurTagBtn btn_txt="baby"></OurTagBtn>
-                <OurTagBtn btn_txt="kids"></OurTagBtn>
+                <OurTagBtn btn_txt="courses"></OurTagBtn>
+                <OurTagBtn btn_txt="events"></OurTagBtn>
                 <OurTagBtn btn_txt="nursery"></OurTagBtn>
                 <OurTagBtn btn_txt="primary"></OurTagBtn>
                 <OurTagBtn btn_txt="secondary"></OurTagBtn>
-                <OurTagBtn btn_txt="teacher"></OurTagBtn>
-                <OurTagBtn btn_txt="baby"></OurTagBtn>
-                <OurTagBtn btn_txt="kids"></OurTagBtn>
               </div>
             </div>
           </div>

@@ -105,33 +105,6 @@ const HomePage = () => {
         </div>
         <Footer />
       </div>
-      {/* <div
-        className="position-fixed top-0 d-flex flex-column gap-2"
-        style={{ marginTop: "40%", marginLeft: "2%" }}
-      >
-        <h5>My count: {count} </h5>
-        <button type="button" class="btn btn-primary btn-sm position-relative">
-          Inbox
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {calculation}
-            <span class="visually-hidden">unread messages</span>
-          </span>
-        </button>
-        <div className="d-flex gap-3 justify-content-center">
-        <button
-          className="btn btn-danger btn-sm"
-          onClick={() => setCount((c) => c - 1)}
-        >
-          <i className="fas fa-minus"></i>
-        </button>
-        <button
-          className="btn btn-success btn-sm"
-          onClick={() => setCount((c) => c + 1)}
-        >
-          <i className="fas fa-plus"></i>
-        </button>
-        </div>
-      </div> */}
     </>
   );
 };
