@@ -20,7 +20,7 @@ const Contact_Us_Form = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      let endpoint = 'http://localhost:2000/staff_account/people_reaching_us'
+      let endpoint = 'https://school-portal-backend-adex2210.vercel.app/staff_account/people_reaching_us'
       axios.post(endpoint, values)
       .then((response) => {
         const Toast = Swal.mixin({
