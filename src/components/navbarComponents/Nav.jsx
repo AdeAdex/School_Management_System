@@ -97,13 +97,13 @@ const Nav = () => {
                 <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <a className="dropdown-item" href="#">
-                      jss 1
+                      JSS 1
                     </a>
                   </li>
                   {/* <hr /> */}
                   <li>
                     <a className="dropdown-item" href="#">
-                      jss 2
+                      JSS 2
                     </a>
                   </li>
                   {/* <hr /> */}
@@ -113,28 +113,28 @@ const Nav = () => {
                   </li> */}
                   <li>
                     <a className="dropdown-item" href="#">
-                      jss 3
+                      JSS 3
                     </a>
                   </li>
                   {/* <hr /> */}
 
                   <li>
                     <a className="dropdown-item" href="#">
-                      sss 1
+                      SSS 1
                     </a>
                   </li>
                   {/* <hr /> */}
 
                   <li>
                     <a className="dropdown-item" href="#">
-                      sss 2
+                      SSS 2
                     </a>
                   </li>
                   {/* <hr /> */}
 
                   <li>
                     <a className="dropdown-item" href="#">
-                      sss 3
+                      SSS 3
                     </a>
                   </li>
                 </ul>
