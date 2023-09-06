@@ -47,6 +47,7 @@ import { newStudent } from './redux/portalSlice'
 import axios from "axios";
 import ReadEventPage from './pages/ReadEventPage'
 import CoursePage from './pages/CoursePage'
+import AboutUsPage from './pages/AboutUsPage'
 
 
 
@@ -147,6 +148,7 @@ function App() {
         <Route path='/aboutThisTeacher' element={<AboutTeachersPage/>}/>
         <Route path='/read_more_about_our_event' element={<ReadEventPage/>}/>
         <Route path='/our_courses' element={<CoursePage/>}/>
+        <Route path='/aboutus' element={<AboutUsPage/>} />
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
     </Router>

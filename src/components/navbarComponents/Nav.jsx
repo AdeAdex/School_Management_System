@@ -197,7 +197,7 @@ const Nav = () => {
                 <Link to="" className="nav-link">more</Link>
               </li>
               <li className="nav-item">
-                <Link to="" className="nav-link">Contact US</Link>
+                <Link to="/aboutus" className="nav-link">About US</Link>
               </li>
             </ul>
             <form className="d-flex" role="search">

@@ -505,6 +505,7 @@ function MyApp() {
                 id="videoLink"
                 name="videoLink"
                 accept="video/*"
+                // accept=".mp4, .avi, .mov, .wmv, .flv, .mkv, .webm, .ogg, .ogv, .mpeg, .mpg"
                 onChange={handleVideoFileChange}
               />
             </div>

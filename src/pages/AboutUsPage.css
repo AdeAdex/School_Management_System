@@ -1,0 +1,138 @@
+/* 
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+} */
+
+/* Style the container */
+.about-us-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Style the header */
+.about-us-header {
+  position: relative;
+  text-align: center;
+}
+
+.about-us-header img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333; /* Customize the color */
+}
+
+.header-content p {
+  color: #555; /* Customize the color */
+}
+
+/* Style the story section */
+.our-story {
+  padding: 20px 0;
+}
+
+.our-story h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333; /* Customize the color */
+}
+
+.our-story p {
+  color: #555; /* Customize the color */
+}
+
+/* Style the team section */
+.meet-the-team {
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-member {
+  text-align: center;
+  margin: 20px;
+}
+
+.team-member img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.team-member h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #333; /* Customize the color */
+}
+
+.team-member p {
+  color: #555; /* Customize the color */
+}
+
+/* Style the mission section */
+.our-mission {
+  padding: 20px 0;
+}
+
+.our-mission h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333; /* Customize the color */
+}
+
+.our-mission p {
+  color: #555; /* Customize the color */
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .header-content {
+    padding: 10px;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .our-story h2 {
+    font-size: 1.2rem;
+  }
+
+  .team-member {
+    margin: 10px;
+  }
+
+  .team-member h3 {
+    font-size: 1rem;
+  }
+
+  .our-mission h2 {
+    font-size: 1.2rem;
+  }
+}
