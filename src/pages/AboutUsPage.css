@@ -1,15 +1,7 @@
-/* 
-body,
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-} */
+.about-us-main-container {
+  background-color: #f1f1f1;
+}
 
-/* Style the container */
 .about-us-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -80,7 +72,8 @@ p {
 
 .team-member img {
   width: 100%;
-  max-width: 200px;
+  max-width: 200px; /* Adjust the max-width as needed */
+  max-height: 200px; /* Add a max-height to maintain aspect ratio */
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -110,29 +103,41 @@ p {
   color: #555; /* Customize the color */
 }
 
-/* Add media queries for responsiveness */
-@media screen and (max-width: 768px) {
-  .header-content {
-    padding: 10px;
+@media (max-width: 768px) {
+  .about-us-container {
+    padding-top: 100px; /* Adjust as needed for mobile */
+  }
+
+  .about-us-header img {
+    max-width: 100%;
+    height: auto;
   }
 
   .header-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Adjust the font size as needed */
   }
 
   .our-story h2 {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Adjust the font size as needed */
   }
 
-  .team-member {
+  .meet-the-team .teacher {
     margin: 10px;
+    text-align: center; /* Center the teacher info on mobile */
+  }
+
+  .teacher-image {
+    max-width: 100%; /* Ensure images don't overflow their containers */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .team-member h3 {
-    font-size: 1rem;
+    font-size: 1rem; /* Adjust the font size as needed */
   }
 
   .our-mission h2 {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Adjust the font size as needed */
   }
 }

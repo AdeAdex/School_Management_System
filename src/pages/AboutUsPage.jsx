@@ -7,7 +7,12 @@ const AboutUsPage = () => {
   return (
     <>
     <PagesNavbar/>
-    <div className="about-us-container">
+    <div className='about-us-main-container'>
+    <div className="d-flex flex-column justify-content-center align-items-center about-us-container"
+        style={{
+          minHeight: "100vh",
+          paddingTop: "200px",
+        }}>
       <header className="about-us-header">
         <img src="/pic/teacher21.jpg" alt="School Header" />
         <div className="header-content">
@@ -61,6 +66,7 @@ const AboutUsPage = () => {
         </p>
       </section>
     </div>  
+    </div>
     <Footer/>      
     </>
   )
