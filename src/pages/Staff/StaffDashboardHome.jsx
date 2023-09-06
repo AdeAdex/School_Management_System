@@ -269,8 +269,9 @@ function MyApp() {
       } = updatedValues;
 
       console.log(valuesWithoutSelectedSubjects);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
-      axios.post(endpoint, valuesWithoutSelectedSubjects).then((response) => {
+      let endpoint = "http://localhost:2000/staff_account/create_staff_account";
+      axios.post(endpoint, valuesWithoutSelectedSubjects)
+      .then((response) => {
         setIsLoading(false);
         const Toast = Swal.mixin({
           toast: true,
@@ -288,7 +289,8 @@ function MyApp() {
           icon: "success",
           title: response.data.message,
         });
-      });
+      })
+      .catch((err))
     },
   });
 
@@ -585,3 +587,17 @@ function MyApp() {
 }
 
 export default StaffDashboardHome;
+
+
+
+// Greetings! I am Lucy Faith, and I am utterly captivated by the enchanting world of music. With 12 years of experience as a music teacher, I have had the privilege of guiding countless students on their own melodic journeys. My philosophy of music education centers on fostering creativity, igniting passion, and nurturing the unique musical talents within each individual.
+
+// I hold a degree in Music Education from University of Lagos, and this academic foundation provides me with the technical knowledge needed to navigate the intricacies of music theory and performance. Yet, my approach transcends the technicalities; I believe in teaching music as a language, a universal means of communication that transcends boundaries.
+
+// In my classroom, you'll find an atmosphere brimming with energy and enthusiasm. I am a firm advocate for the power of music to inspire, heal, and connect people. I encourage my students to not only master their chosen instruments but also to express themselves fully through the medium of music.
+
+// Whether it's classical compositions, jazz improvisations, or contemporary hits, I am dedicated to helping my students explore diverse genres and styles. I've had the privilege of witnessing students discover their musical identities, compose their original pieces, and perform in awe-inspiring ensembles.
+
+// Beyond the classroom, I am an active musician, Frequently performing with the Harmonic Waves Orchestra. This practical experience enriches my teaching, allowing me to share real-world insights with my students. I also organize recitals and concerts, providing my students with opportunities to showcase their talents and build confidence.
+
+// I am not just a teacher; I am a mentor, a collaborator, and a lifelong learner in the world of music. I invite you to let your child  join us on this harmonious journey where we will explore the limitless possibilities of music, harmonize our hearts, and create beautiful melodies together.

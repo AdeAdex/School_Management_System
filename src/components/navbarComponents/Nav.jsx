@@ -148,9 +148,9 @@ const Nav = () => {
                 </a>
                 <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="/staff_signin">
                       teachers
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/student_signin">
