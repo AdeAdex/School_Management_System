@@ -211,9 +211,7 @@ function MyApp() {
     console.log(values);
   };
 
-  // https://school-portal-backend-adex2210.vercel.app
   const handleFileSelect = (e) => {
-    // setIsLoading(true);
     console.log(e.target.files[0]);
     let selectedImage = e.target.files[0];
     let reader = new FileReader();
@@ -269,7 +267,7 @@ function MyApp() {
       } = updatedValues;
 
       console.log(valuesWithoutSelectedSubjects);
-      let endpoint = "http://localhost:2000/staff_account/create_staff_account";
+      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
       axios.post(endpoint, valuesWithoutSelectedSubjects)
       .then((response) => {
         setIsLoading(false);
@@ -290,7 +288,9 @@ function MyApp() {
           title: response.data.message,
         });
       })
-      .catch((err))
+      .catch((err) => {
+        console.log(err);
+      })
     },
   });
 
