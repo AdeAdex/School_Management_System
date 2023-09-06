@@ -268,28 +268,28 @@ function MyApp() {
       console.log(valuesWithoutSelectedSubjects);
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
       axios.post(endpoint, valuesWithoutSelectedSubjects)
-      // .then((response) => {
-      //   setIsLoading(false);
-      //   const Toast = Swal.mixin({
-      //     toast: true,
-      //     position: "top",
-      //     showConfirmButton: false,
-      //     timer: 1500,
-      //     timerProgressBar: true,
-      //     didOpen: (toast) => {
-      //       toast.addEventListener("mouseenter", Swal.stopTimer);
-      //       toast.addEventListener("mouseleave", Swal.resumeTimer);
-      //     },
-      //   });
+      .then((response) => {
+        setIsLoading(false);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
-      //   Toast.fire({
-      //     icon: "success",
-      //     title: response.data.message,
-      //   });
-      // })
-      // .catch((err) => {
-      //   console.log(err);
-      // })
+        Toast.fire({
+          icon: "success",
+          title: response.data.message,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     },
   });
 
