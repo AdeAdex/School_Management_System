@@ -107,7 +107,7 @@ const AboutTeachersPage = ({ seconds }) => {
                 } skill-percent d-flex gap-4 text-white px-4`}
                   skill_style={{ width: `${skills.percentage}%` }}
                   skills={skills.subject}
-                  skill_percent={skills.percentage}
+                  skill_percent={`${skills.percentage}%`}
                 ></Skills>
                 ))
               }
