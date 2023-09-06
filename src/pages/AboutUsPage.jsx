@@ -98,8 +98,7 @@ const AboutUsPage = () => {
 
           <section className="our-story">
             <h2>{t("aboutUs.ourHistory")}</h2>
-            <p>{t("aboutUs.historyContent")}</p>
-            {/* Additional sections */}
+            <div dangerouslySetInnerHTML={{ __html: t("aboutUs.historyContent") }} />
           </section>
         </div>
       </div>
