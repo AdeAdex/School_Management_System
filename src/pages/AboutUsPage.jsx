@@ -2,12 +2,14 @@ import React from "react";
 import "../pages/AboutUsPage.css";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import Footer from "../components/footerComponents/Footer";
+import { useTranslation } from "react-i18next";
 
 const AboutUsPage = () => {
+  const { t } = useTranslation();
   return (
     <>
       <PagesNavbar />
-      <div className="about-us-main-container">
+      {/* <div className="about-us-main-container">
         <div
           className="d-flex flex-column justify-content-center align-items-center about-us-container"
           style={{
@@ -75,7 +77,33 @@ const AboutUsPage = () => {
             </p>
           </section>
         </div>
+      </div> */}
+
+
+      <div className="about-us-main-container">
+        <div
+          className="d-flex flex-column justify-content-center align-items-center about-us-container"
+          style={{
+            minHeight: "100vh",
+            paddingTop: "200px",
+          }}
+        >
+          <header className="about-us-header">
+            <img src="/pic/teacher21.jpg" alt="School Header" />
+            <div className="header-content">
+              <h1>{t("aboutUs.aboutOurSchool")}</h1>
+              <p>{t("aboutUs.welcomeMessage")}</p>
+            </div>
+          </header>
+
+          <section className="our-story">
+            <h2>{t("aboutUs.ourHistory")}</h2>
+            <p>{t("aboutUs.historyContent")}</p>
+            {/* Additional sections */}
+          </section>
+        </div>
       </div>
+
 
       <Footer />
     </>

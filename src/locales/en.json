@@ -1,0 +1,16 @@
+{
+  "language": {
+    "title": "Language",
+    "english": "English",
+    "spanish": "Spanish",
+    "german": "German",
+    "chinese": "Chinese",
+    "french": "French"
+  },
+  "aboutUs": {
+    "aboutOurSchool": "About Our School",
+    "welcomeMessage": "Welcome to our secondary school, where we strive to provide quality education and foster a nurturing environment for students.",
+    "ourHistory": "Our History",
+    "historyContent": "<p>Our school has a rich history of academic excellence dating back several decades. We have consistently provided top-tier education to countless students.</p><p>Our commitment to educational innovation and holistic development sets us apart. We believe in nurturing not only the minds but also the character of our students.</p><p>In an ever-changing world, we adapt and evolve to ensure that our students receive the best education possible.</p>"
+  }
+}
