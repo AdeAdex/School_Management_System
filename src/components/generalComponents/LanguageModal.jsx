@@ -73,7 +73,7 @@ const LanguageModal = ({ isOpen, onClose }) => {
           <Modal.Title className="text-uppercase">{t("language.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
-          <p className="d-flex justify-content-between" onClick={() => changeLanguage("en")} style={{cursor: pointer}}>
+          <p className="d-flex justify-content-between" onClick={() => changeLanguage("en")} style={{cursor: "pointer"}}>
             <span className="my-auto">{t("language.english")}</span>
             <img
               src="pic/america.png"
@@ -82,7 +82,7 @@ const LanguageModal = ({ isOpen, onClose }) => {
             />
           </p>
           <hr />
-          <p className="d-flex justify-content-between" onClick={() => changeLanguage("es")} style={{cursor: pointer}}>
+          <p className="d-flex justify-content-between" onClick={() => changeLanguage("es")} style={{cursor: "pointer"}}>
             <span className="my-auto">{t("language.spanish")}</span>
             <img
               src="pic/spain.png"
@@ -91,7 +91,7 @@ const LanguageModal = ({ isOpen, onClose }) => {
             />
           </p>
           <hr />
-          <p className="d-flex justify-content-between" onClick={() => changeLanguage("de")} style={{cursor: pointer}}>
+          <p className="d-flex justify-content-between" onClick={() => changeLanguage("de")} style={{cursor: "pointer"}}>
             <span className="my-auto">{t("language.german")}</span>
             <img
               src="pic/germany.png"
@@ -100,7 +100,7 @@ const LanguageModal = ({ isOpen, onClose }) => {
             />
           </p>
           <hr />
-          <p className="d-flex justify-content-between" onClick={() => changeLanguage("zh")} style={{cursor: pointer}}>
+          <p className="d-flex justify-content-between" onClick={() => changeLanguage("zh")} style={{cursor: "pointer"}}>
             <span className="my-auto">{t("language.chinese")}</span>
             <img
               src="pic/china.png"
@@ -109,7 +109,7 @@ const LanguageModal = ({ isOpen, onClose }) => {
             />
           </p>
           <hr />
-          <p className="d-flex justify-content-between" onClick={() => changeLanguage("fr")} style={{cursor: pointer}}>
+          <p className="d-flex justify-content-between" onClick={() => changeLanguage("fr")} style={{cursor: "pointer"}}>
             <span className="my-auto">{t("language.french")}</span>
             <img
               src="pic/france.png"
