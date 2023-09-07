@@ -7,7 +7,7 @@ const NavigateTo = (props) => {
         <div className="navigate_to_compo py-4 px-5 text-white text-center fs-3 col-sm-12 col-md-6 col-lg-3 text-capitalize mb-md-2"
         style={props.style}
         >
-          <Link to={props.to_where} style={{textDecoration: 'none', color: 'white'}}>{props.txt}</Link>
+          <Link to={props.to_where} style={{textDecoration: 'none', color: 'white'}} onClick={props.onClick}>{props.txt}</Link>
         </div>
     </>
   )

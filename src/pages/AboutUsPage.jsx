@@ -9,21 +9,41 @@ const AboutUsPage = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [schoolLocation, setSchoolLocation] = useState(null);
 
-  // const schoolLocationUrl = `https://maps.google.com/?q=${schoolLatitude},${schoolLongitude}`;
+  const getMyLocation = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      console.log(position);
+      console.log("Latitude: " + latitude);
+      console.log("Longitude: " + longitude);
+    });
+  } else {
+    console.log("Geolocation is not available in this browser.");
+  }
+}
 
   const fetchSchoolLocation = () => {
     const schoolLatitude = 6.5243793;
     const schoolLongitude = 3.3792057;
     setSchoolLocation({ lat: schoolLatitude, lng: schoolLongitude });
   };
-
-  // 6.5243793
-  // 3.3792057
+ 
 
   useEffect(() => {
-    // getMyLocation()
+    getMyLocation()
     fetchSchoolLocation();
   }, []);
+
+
+  const handleLocateUsClick = (e) => {
+    e.preventDefault(); // Prevent the default behavior of the anchor link
+    if (schoolLocation) {
+      // Check if the location is available before generating the Google Maps link
+      const googleMapsLink = `https://maps.google.com/?q=${schoolLocation.lat},${schoolLocation.lng}`;
+      window.location.href = googleMapsLink; // Redirect to the Google Maps link
+    }
+  };
 
   return (
     <>
@@ -36,7 +56,7 @@ const AboutUsPage = () => {
             paddingTop: "200px",
           }}
         >
-          <div>
+          {/* <div>
             {schoolLocation ? (
               <div>
                 Latitude: {schoolLocation.lat}, Longitude: {schoolLocation.lng}
@@ -44,9 +64,11 @@ const AboutUsPage = () => {
             ) : (
               <div>loading</div>
             )}
-          </div>
-          <a href={"https://maps.google.com/?q=" + schoolLocation}>
-            My Location
+          </div> */}
+          {/* <a href={"https://maps.google.com/?q=" + schoolLocation}>Location Us
+          </a> */}
+          <a href="#" onClick={handleLocateUsClick}>
+            Locate Us
           </a>
           <header className="about-us-header">
             <img src="/pic/teacher21.jpg" alt="School Header" />
