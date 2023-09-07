@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../pages/AboutUsPage.css";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import Footer from "../components/footerComponents/Footer";
@@ -6,10 +6,29 @@ import { useTranslation } from "react-i18next";
 
 const AboutUsPage = () => {
   const { t } = useTranslation();
+  const [userLocation, setUserLocation] = useState(null);
+  const [schoolLocation, setSchoolLocation] = useState(null);
+
+  // const schoolLocationUrl = `https://maps.google.com/?q=${schoolLatitude},${schoolLongitude}`;
+
+  const fetchSchoolLocation = () => {
+    const schoolLatitude = 6.5243793;
+    const schoolLongitude = 3.3792057;
+    setSchoolLocation({ lat: schoolLatitude, lng: schoolLongitude });
+  };
+
+  // 6.5243793
+  // 3.3792057
+
+  useEffect(() => {
+    // getMyLocation()
+    fetchSchoolLocation();
+  }, []);
+
   return (
     <>
       <PagesNavbar />
-      {/* <div className="about-us-main-container">
+      <div className="about-us-main-container">
         <div
           className="d-flex flex-column justify-content-center align-items-center about-us-container"
           style={{
@@ -17,6 +36,18 @@ const AboutUsPage = () => {
             paddingTop: "200px",
           }}
         >
+          <div>
+            {schoolLocation ? (
+              <div>
+                Latitude: {schoolLocation.lat}, Longitude: {schoolLocation.lng}
+              </div>
+            ) : (
+              <div>loading</div>
+            )}
+          </div>
+          <a href={"https://maps.google.com/?q=" + schoolLocation}>
+            My Location
+          </a>
           <header className="about-us-header">
             <img src="/pic/teacher21.jpg" alt="School Header" />
             <div className="header-content">
@@ -47,7 +78,7 @@ const AboutUsPage = () => {
             </p>
           </section>
 
-          <section className="additional-image">
+          <section className="additional-image about-us-image1">
             <img src="/pic/teacher21.jpg" alt="First Image" />
             <div className="image-content">
               <h2>Our Campus</h2>
@@ -57,7 +88,7 @@ const AboutUsPage = () => {
             </div>
           </section>
 
-          <section className="additional-image">
+          <section className="additional-image about-us-image2">
             <img src="/pic/teacher21.jpg" alt="Second Image" />
             <div className="image-content">
               <h2>Our Facilities</h2>
@@ -77,10 +108,11 @@ const AboutUsPage = () => {
             </p>
           </section>
         </div>
-      </div> */}
+      </div>
 
-
-      <div className="about-us-main-container">
+      {/* <div className="about-us-main-container">
+      <a href={'https://maps.google.com/?q=' + children}>My Location</a>
+      <div>{children}</div>
         <div
           className="d-flex flex-column justify-content-center align-items-center about-us-container"
           style={{
@@ -101,8 +133,7 @@ const AboutUsPage = () => {
             <div dangerouslySetInnerHTML={{ __html: t("aboutUs.historyContent") }} />
           </section>
         </div>
-      </div>
-
+      </div> */}
 
       <Footer />
     </>

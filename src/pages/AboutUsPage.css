@@ -59,6 +59,14 @@
   padding: 20px 0;
 }
 
+.about-us-image1 {
+  margin-right: 20%;
+}
+
+.about-us-image2 {
+  margin-left: 20%;
+}
+
 .additional-image img {
   width: 100%;
   max-height: 400px;
