@@ -111,8 +111,9 @@ const CoursePage = () => {
                   ))
                 ) : (
                   <div>
-                    There is currently no subject available for the selected
-                    sources.
+                  There is currently no subject available for the selected
+                    sources. We apologize for any inconvenience. Kindly please
+                    check back later.
                   </div>
                 )}
               </div>
