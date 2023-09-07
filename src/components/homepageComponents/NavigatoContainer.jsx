@@ -16,7 +16,7 @@ const NavigatoContainer = () => {
     });
 
     Toast.fire({
-      icon: "error",
+      icon: "warning",
       title: "This page is currently not available at the moment. Please try again later.",
     });
   }
