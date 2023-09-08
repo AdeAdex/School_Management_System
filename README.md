@@ -1,5 +1,5 @@
 # School_Management_System
-I am developing a School Management System, which will be my first full-stack web application. The application is intended to be cross-platform and compatible with any standards-compliant browser, including desktop and mobile devices. It will leverage progressive enhancement, service workers, manifests, and other web-platform features to provide users with a native app-like experience."
+I am developing a School Management System, which will be a full-stack web application. The application is intended to be cross-platform and compatible with any standards-compliant browser, including desktop and mobile devices. It will leverage progressive enhancement, service workers, manifests, and other web-platform features to provide users with a native app-like experience."
 
 The front-end of the application will be built using Vite + React, a modern build tool and a popular JavaScript library for building user interfaces. Express.js, a framework built on top of Node.js, will be used as the back-end layer to manage servers, routes, and handle HTTP requests asynchronously.
 
