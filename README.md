@@ -5,7 +5,7 @@ The front-end of the application will be built using Vite + React, a modern buil
 
 For data storage, I will be using MongoDB, a NoSQL database, to efficiently store and manage the application's data.
 
-Once completed, the school portal web application will have the following functionalities:
+Once completed, the school management system web application will have the following functionalities:
 
 User Authentication: Users will be able to sign up and log in securely to access personalized features and data.
 
@@ -27,4 +27,4 @@ Push Notifications: Users may receive notifications and alerts related to their 
 
 Database Management: The application will efficiently manage and organize data using MongoDB, ensuring data integrity and security.
 
-Overall, the school portal web application will offer a user-friendly, seamless, and efficient experience for students, teachers, and administrators, facilitating various tasks and enhancing the learning process within the school community.
+Overall, the school management system web application will offer a user-friendly, seamless, and efficient experience for students, teachers, and administrators, facilitating various tasks and enhancing the learning process within the school community.
