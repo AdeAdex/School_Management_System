@@ -242,7 +242,7 @@ const StudentPortalDashboard = () => {
                 />
                 <Route path="registration_history" element={<StudentRegistrationHistory/>} />
                 <Route path="results" element={<StudentResults/>} />
-                <Route path="payment" element={<StudentPayment/>} />
+                <Route path="pay_tuition" element={<StudentPayment/>} />
                 <Route path="payment_history" element={<StudentPaymentHistory/>} />
               </Routes>
             )}

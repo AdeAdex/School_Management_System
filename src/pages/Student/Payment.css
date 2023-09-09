@@ -83,7 +83,7 @@
   cursor: pointer;
 }
 
-.loader {
+/* .loader {
   width: 2rem;
   height: 2rem;
   clear: both;
@@ -116,8 +116,8 @@
   top: 0.1875rem;
   right: calc(-50% - 0.1875rem);
   transform-origin: left center;
-}
-
+} */
+/* 
 @keyframes spVortex {
   from {
     transform: rotate(0deg);
@@ -126,7 +126,7 @@
   to {
     transform: rotate(359deg);
   }
-}
+} */
 
 .arrow {
   transform: rotate(180deg);

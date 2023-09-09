@@ -61,7 +61,7 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
             </div>
             <div className="d-grid gap-3">
               <StudentDashboardOffcanvasTitle title="payment" />
-              <StudentDashboardOffcanvasList  item="pay tuition" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList item="pay tuition" params="/student_dashboard/pay_tuition" label="pay tuition" icons="fas fa-user" />
               <StudentDashboardOffcanvasList item="payment history" params="/student_dashboard/payment_history" label="payment history" icons="fas fa-lock" />
             </div>
             <div className="d-grid gap-3 mb-5">

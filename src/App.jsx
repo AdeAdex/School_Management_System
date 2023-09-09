@@ -136,7 +136,7 @@ function App() {
           <Route path='course_registration' element={<StudentCourseRegistration/>} />
           <Route path='registration_history' element={<StudentRegistrationHistory/>} />
           <Route path='results' element={<StudentResults/>} />
-          <Route path='payment' element={<StudentPayment/>} />
+          <Route path='pay_tuition' element={<StudentPayment/>} />
           <Route path='payment_history' element={<StudentPaymentHistory/>} />
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
