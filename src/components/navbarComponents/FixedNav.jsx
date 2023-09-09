@@ -23,7 +23,7 @@ const FixedNav = () => {
         }}
       >
       <div className="w-50 h-100 my-auto d-flex justify-content-start position-relative">
-        <img src="vite.svg" alt="" className="py-2"  />
+        <img src="/pic/adexlogo.png" alt="" className="py-2"  />
       </div>
         <div className="w-50 my-auto d-flex justify-content-end">
           <button className="btn btn-sm text-white px-3" style={{backgroundColor: '#7AA93C'}} onClick={navigateToShop}>Shop</button>
