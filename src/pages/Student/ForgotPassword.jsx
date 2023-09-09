@@ -24,7 +24,8 @@ const ForgotPassword = () => {
 function MyApp() {
   let location = useLocation();
   // let sentOTP = location.state.myOTP;
-  let sentEmail = location.state.email
+  // let sentEmail = location.state.email
+  const [sentEmail, setSentEmail] = useState(location.state.email)
 
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
