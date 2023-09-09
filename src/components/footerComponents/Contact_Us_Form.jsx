@@ -14,7 +14,7 @@ const Contact_Us_Form = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      name: 'Adex',
       email: "",
       message: "",
     },

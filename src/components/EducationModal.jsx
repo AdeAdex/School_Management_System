@@ -8,12 +8,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import {useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
 const EducationModal = ({ isOpen, onClose, myResponse }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   let formik = useFormik({
     initialValues: {
       exam: "",
@@ -32,9 +32,9 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
         receivedEmail: globalState.email,
         id: crypto.randomUUID(),
       };
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_education";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/student_education";
+      axios.post(endpoint, newValues).then((response) => {
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -52,10 +52,9 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
           title: response.data.message,
         });
       });
-      navigate('/student/admission/education')
+      navigate("/student/admission/education");
     },
   });
-
 
   const [selectedYear, setSelectedYear] = useState("");
 
@@ -90,6 +89,13 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
           <Modal.Title className="text-uppercase text-center mx-auto">
             o level result
           </Modal.Title>
+          <button
+            type="button"
+            className="btn btn-link text-danger"
+            onClick={onClose}
+          >
+            <FaTimes />
+          </button>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
           <div className="education-login-box">
@@ -100,7 +106,7 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
               onSubmit={formik.handleSubmit}
             >
               <div className="education-input-box">
-              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
                   <InputLabel id="demo-simple-select-standard-label">
                     exam
                   </InputLabel>
@@ -114,15 +120,15 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value='WAEC'>WAEC</MenuItem>
-                    <MenuItem value='NECO'>NECO</MenuItem>
-                    <MenuItem value='NABTEB'>NABTEB</MenuItem>
-                    <MenuItem value='GCE'>GCE</MenuItem>
+                    <MenuItem value="WAEC">WAEC</MenuItem>
+                    <MenuItem value="NECO">NECO</MenuItem>
+                    <MenuItem value="NABTEB">NABTEB</MenuItem>
+                    <MenuItem value="GCE">GCE</MenuItem>
                   </Select>
                 </FormControl>
               </div>
               <div className="education-input-box">
-              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
                   <InputLabel id="demo-simple-select-standard-label">
                     Subject
                   </InputLabel>
@@ -137,13 +143,11 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    {
-                    myResponse.map((sub, index) => (
-                    <MenuItem  key={index} value={sub.subject}>
-                    {sub.subject}
-                    </MenuItem>
-                    ))
-                    }
+                    {myResponse.map((sub, index) => (
+                      <MenuItem key={index} value={sub.subject}>
+                        {sub.subject}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
@@ -163,15 +167,15 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value='A1'>A1</MenuItem>
-                    <MenuItem value='B2'>B2</MenuItem>
-                    <MenuItem value='B3'>B3</MenuItem>
-                    <MenuItem value='C4'>C4</MenuItem>
-                    <MenuItem value='C5'>C5</MenuItem>
-                    <MenuItem value='C6'>C6</MenuItem>
-                    <MenuItem value='D7'>D7</MenuItem>
-                    <MenuItem value='E8'>E8</MenuItem>
-                    <MenuItem value='F9'>F9</MenuItem>
+                    <MenuItem value="A1">A1</MenuItem>
+                    <MenuItem value="B2">B2</MenuItem>
+                    <MenuItem value="B3">B3</MenuItem>
+                    <MenuItem value="C4">C4</MenuItem>
+                    <MenuItem value="C5">C5</MenuItem>
+                    <MenuItem value="C6">C6</MenuItem>
+                    <MenuItem value="D7">D7</MenuItem>
+                    <MenuItem value="E8">E8</MenuItem>
+                    <MenuItem value="F9">F9</MenuItem>
                   </Select>
                 </FormControl>
               </div>

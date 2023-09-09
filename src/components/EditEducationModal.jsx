@@ -7,32 +7,42 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { FaTimes } from "react-icons/fa";
 
-const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
+const EditEducationModal = ({
+  isOpen,
+  onClose,
+  myId,
+  myEmail,
+  myResponse,
+  itemExam,
+  itemSubject,
+  itemExamNo,
+  itemYear,
+  itemGrade,
+  itemCandidate,
+}) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-
-
 
   let formik = useFormik({
     initialValues: {
-      exam: "",
-      subject: "",
-      grade: "",
-      year: "",
-      examNo: "",
-      candidateNo: "",
+      exam: itemExam,
+      subject: itemSubject,
+      grade: itemGrade,
+      year: itemYear,
+      examNo: itemExamNo,
+      candidateNo: itemCandidate,
       identificationNo: "",
     },
 
     onSubmit: (values) => {
-        let newValues = {...values, myId: myId, myEmail: myEmail}
-        console.log(newValues);
-        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
-        axios
-        .put(endpoint, newValues)
-        .then((response) => {
-          // console.log(response.data.response.previousEducation[index].exam);
-        })
+      let newValues = { ...values, myId: myId, myEmail: myEmail };
+      console.log(newValues);
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
+      axios.put(endpoint, newValues).then((response) => {
+        // console.log(response.data.response.previousEducation[index].exam);
+      });
     },
   });
 
@@ -63,6 +73,13 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
           <Modal.Title className="text-uppercase text-center mx-auto">
             edit o level result
           </Modal.Title>
+          <button
+            type="button"
+            className="btn btn-link text-danger"
+            onClick={onClose}
+          >
+            <FaTimes />
+          </button>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
           <div className="education-login-box">
@@ -73,7 +90,7 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
               onSubmit={formik.handleSubmit}
             >
               <div className="education-input-box">
-              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
                   <InputLabel id="demo-simple-select-standard-label">
                     exam
                   </InputLabel>
@@ -83,40 +100,39 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
                     onChange={formik.handleChange}
                     label="exam"
                     name="exam"
+                    value={formik.values.exam}
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value='WAEC'>WAEC</MenuItem>
-                    <MenuItem value='NECO'>NECO</MenuItem>
-                    <MenuItem value='NABTEB'>NABTEB</MenuItem>
-                    <MenuItem value='GCE'>GCE</MenuItem>
+                    <MenuItem value="WAEC">WAEC</MenuItem>
+                    <MenuItem value="NECO">NECO</MenuItem>
+                    <MenuItem value="NABTEB">NABTEB</MenuItem>
+                    <MenuItem value="GCE">GCE</MenuItem>
                   </Select>
                 </FormControl>
               </div>
               <div className="education-input-box">
-              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
                   <InputLabel id="demo-simple-select-standard-label">
                     Subject
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
-                    // value={selectedYear}
                     onChange={formik.handleChange}
                     label="Subject"
                     name="subject"
+                    value={formik.values.subject}
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    {
-                    myResponse.map((sub, index) => (
-                    <MenuItem  key={index} value={sub.subject}>
-                    {sub.subject}
-                    </MenuItem>
-                    ))
-                    }
+                    {myResponse.map((sub, index) => (
+                      <MenuItem key={index} value={sub.subject}>
+                        {sub.subject}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
@@ -128,23 +144,23 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
                   <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
-                    // value={10}
                     onChange={formik.handleChange}
                     label="Grade"
                     name="grade"
+                    value={formik.values.grade}
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value='A1'>A1</MenuItem>
-                    <MenuItem value='B2'>B2</MenuItem>
-                    <MenuItem value='B3'>B3</MenuItem>
-                    <MenuItem value='C4'>C4</MenuItem>
-                    <MenuItem value='C5'>C5</MenuItem>
-                    <MenuItem value='C6'>C6</MenuItem>
-                    <MenuItem value='D7'>D7</MenuItem>
-                    <MenuItem value='E8'>E8</MenuItem>
-                    <MenuItem value='F9'>F9</MenuItem>
+                    <MenuItem value="A1">A1</MenuItem>
+                    <MenuItem value="B2">B2</MenuItem>
+                    <MenuItem value="B3">B3</MenuItem>
+                    <MenuItem value="C4">C4</MenuItem>
+                    <MenuItem value="C5">C5</MenuItem>
+                    <MenuItem value="C6">C6</MenuItem>
+                    <MenuItem value="D7">D7</MenuItem>
+                    <MenuItem value="E8">E8</MenuItem>
+                    <MenuItem value="F9">F9</MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -160,6 +176,7 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
                     onChange={formik.handleChange}
                     label="Year"
                     name="year"
+                    value={formik.values.year}
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -175,6 +192,7 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
                   type="text"
                   name="examNo"
                   onChange={formik.handleChange}
+                  value={formik.values.examNo}
                 />
                 <span>exam no</span>
                 <i></i>
@@ -186,6 +204,7 @@ const EditEducationModal = ({ isOpen, onClose, myId, myEmail, myResponse}) => {
                   type="text"
                   name="candidateNo"
                   onChange={formik.handleChange}
+                  value={formik.values.candidateNo}
                 />
                 <span>candidate number</span>
                 <i></i>

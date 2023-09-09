@@ -15,12 +15,18 @@ const Education = () => {
   const [modalIdValue, setModalIdValue] = useState("");
   const [modalEmailValue, setModalEmailValue] = useState("");
   const [myEmail, setMyEmail] = useState("");
-  const [l, setL] = useState("");
   const [subject, setSubject] = useState([]);
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState("");
+  const [myExam, setMyExam] = useState("");
+  const [mySubject, setMySubject] = useState("");
+  const [myExamNo, setMyExamNo] = useState("");
+  const [myYear, setMyYear] = useState("");
+  const [myGrade, setMyGrade] = useState("");
+  const [myCandidate, setMyCandidate] = useState("");
 
   const openModal = () => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -30,33 +36,40 @@ const Education = () => {
       })
       .then((response) => {
         setModalOpen(true);
-        setSubject(response.data)
+        setSubject(response.data);
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  const openEditModal = (myId, myEmail, items) => {
+  const openEditModal = (
+    myId,
+    myEmail,
+    items,
+    itemExam,
+    itemSubject,
+    itemExamNo,
+    itemYear,
+    itemGrade,
+    itemCandidateNo
+  ) => {
     setModalIdValue(myId);
     setModalEmailValue(myEmail);
     setEditModalOpen(true);
-    setL(items);
-    //  axios.get(endpoints, {
-    //   headers: {
-    //     Authorization: `${myId} ${myEmail}`,
-    //     'Content-Type' : 'application/json'
-    //   }
-    //  })
-    //  .then((response) => {
-    //   console.log(response.data.response.previousEducation);
-    //  })
+    setMyExam(itemExam);
+    setMySubject(itemSubject);
+    setMyExamNo(itemExamNo);
+    setMyYear(itemYear);
+    setMyGrade(itemGrade);
+    setMyCandidate(itemCandidateNo);
 
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -65,11 +78,11 @@ const Education = () => {
         },
       })
       .then((response) => {
-        setSubject(response.data)
+        setSubject(response.data);
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
   const closeEditModal = () => {
@@ -78,7 +91,8 @@ const Education = () => {
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_education";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_education";
     axios
       .get(endpoint, {
         headers: {
@@ -91,21 +105,20 @@ const Education = () => {
         if (response.data.status) {
           setPreEdu(response.data.response);
           setMyEmail(response.data.response2.email);
-          setDescription('')
+          setDescription("");
         } else {
           // const timeout = setTimeout(() => {
           // setDescription(response.data.message)
           // }, 5000);
           // return () => clearTimeout(timeout);
-          setDescription(response.data.message)
-          setPreEdu([])
+          setDescription(response.data.message);
+          setPreEdu([]);
         }
-        
       })
       .catch((err) => {
         console.log(err);
-      })
-  });
+      });
+  },[]);
 
   const openConfirmDeleteModal = (myId, myEmail) => {
     Swal.fire({
@@ -122,7 +135,8 @@ const Education = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/delete";
+        let endpoint =
+          "https://school-portal-backend-adex2210.vercel.app/student_account/delete";
         axios
           .delete(endpoint, {
             headers: {
@@ -148,7 +162,7 @@ const Education = () => {
                 icon: "success",
                 title: response.data.message,
               });
-            } 
+            }
           });
       }
     });
@@ -182,7 +196,17 @@ const Education = () => {
                   type="submit"
                   className="btn btn-white shadow edit-btn"
                   onClick={() => {
-                    openEditModal(items.id, myEmail, items);
+                    openEditModal(
+                      items.id,
+                      myEmail,
+                      items,
+                      items.exam,
+                      items.subject,
+                      items.examNo,
+                      items.year,
+                      items.grade,
+                      items.candidateNo
+                    );
                   }}
                 >
                   Edit
@@ -202,21 +226,34 @@ const Education = () => {
         ))}
       </table>
       <div className="text-center">{description}</div>
-      
-      <button onClick={openModal} className="btn btn-primary" style={{marginTop: '200px'}}>
+
+      <button
+        onClick={openModal}
+        className="btn btn-primary"
+        style={{ marginTop: "200px" }}
+      >
         Add Result
       </button>
-      <EducationModal isOpen={modalOpen} myResponse={subject}  onClose={closeModal} />
+      <EducationModal
+        isOpen={modalOpen}
+        myResponse={subject}
+        onClose={closeModal}
+      />
       <EditEducationModal
         myResponse={subject}
         myId={modalIdValue}
         myEmail={modalEmailValue}
         isOpen={editModalOpen}
         onClose={closeEditModal}
+        itemExam={myExam}
+        itemSubject={mySubject}
+        itemExamNo={myExamNo}
+        itemYear={myYear}
+        itemGrade={myGrade}
+        itemCandidate={myCandidate}
       />
     </>
   );
 };
 
 export default Education;
-
