@@ -243,16 +243,17 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
         </form>
         <p className="otp-verification-resend mt-2">
           You don't receive the code ?
-          <a
+        </p>
+
+        <div className="d-flex gap-3 mb-2">
+        <a
             style={{ cursor: "pointer" }}
             onClick={resendNewOTP}
             className="otp-verification-resend-action ms-4"
           >
             Resend
           </a>
-        </p>
-
-        <div className="d-flex gap-3 mb-2"><small style={{color: 'red'}}>Token Expires in: </small>
+        <small style={{color: 'my-auto'}}> When Token Expires in: </small>
             <OTPCountdown
             startCountdown={startCountdown}
             // onCountdownComplete={handleCountdownComplete}
