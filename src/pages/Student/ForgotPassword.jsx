@@ -62,10 +62,12 @@ function MyApp() {
     <>
       <Stepper active={active} onStepClick={active} breakpoint="sm" className="p-4">
         <Stepper.Step label="First step" description="Email Verification">
+        <div className="custom-step-class position-relative">
           <EmailVerifications myOTP={sentOTP} sentEmail={sentEmail}/>
           <Group position="center" mt="xl">
-            <Button onClick={nextStep} style={{position: 'relative', top: '-75px', left: '120px'}}>Next step</Button>
+            <Button onClick={nextStep} className="email-verification--next-btn" style={{position: 'relative', top: '-105px',}}>Next step</Button>
           </Group>
+          </div>
         </Stepper.Step>
         <Stepper.Step label="Second step" description="OTP Verification">
           <OTPVerifications myOTP={sentOTP} sentEmail={sentEmail} startCountdown={true} />
@@ -77,10 +79,12 @@ function MyApp() {
           </Group>
         </Stepper.Step>
         <Stepper.Step label="Final step" description="Change Password">
+        <div className="custom-step-class position-relative">
           <ChangePasswordForms myEmail={myEmailResponse}/>
           <Button variant="default" onClick={prevStep} className="step3-back-btn" style={{position: 'relative', top: '-62px', left: '39%'}}>
               Back
             </Button>
+            </div>
         </Stepper.Step>
         <Stepper.Completed>
           Completed, click back button to get to previous step

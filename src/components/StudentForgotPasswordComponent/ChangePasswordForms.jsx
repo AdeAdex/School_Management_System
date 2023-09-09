@@ -103,7 +103,7 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
               </small>
             ) : null}
           </div>
-        <button type="submit" className="btn btn-primary my-4 w-50" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
+        <button type="submit" className="btn btn-primary my-4 w-50 change-password-btn" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
         </div>
 
       </form>

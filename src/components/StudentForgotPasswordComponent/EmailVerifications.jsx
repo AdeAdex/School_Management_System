@@ -168,10 +168,16 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
           >
             Sign in
           </Link>
-          <OTPCountdown
+          <div >
+          {startCountdown ? ( <div className="d-flex gap-3"><small style={{color: 'red'}}>Token Expires in: </small>
+            <OTPCountdown
             startCountdown={startCountdown}
             // onCountdownComplete={handleCountdownComplete}
-          />
+          /></div>) : (
+            <div className="" style={{ width: '100px', height: '25px' }}></div>
+          )}
+            
+          </div>
         </div>
       </form>
     </>

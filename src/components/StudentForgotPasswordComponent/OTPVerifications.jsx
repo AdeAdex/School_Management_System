@@ -252,7 +252,12 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
           </a>
         </p>
 
-        <OTPCountdown startCountdown={startCountdown} />
+        <div className="d-flex gap-3 mb-2"><small style={{color: 'red'}}>Token Expires in: </small>
+            <OTPCountdown
+            startCountdown={startCountdown}
+            // onCountdownComplete={handleCountdownComplete}
+          />
+          </div>
       </div>
     </>
   );
