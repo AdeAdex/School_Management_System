@@ -48,6 +48,9 @@ import axios from "axios";
 import ReadEventPage from './pages/ReadEventPage'
 import CoursePage from './pages/CoursePage'
 import AboutUsPage from './pages/AboutUsPage'
+import LogOutTab from './pages/Student/LogOutTab'
+import StudentRegistrationHistory from './pages/Student/StudentRegistrationHistory'
+import StudentResults from './pages/Student/StudentResults'
 
 
 
@@ -117,6 +120,7 @@ function App() {
             <Route path='personal_information' element={<PersonalInformation/>} />
             <Route path='education' element={<Education/>} />
             <Route path='referees' element={<Referees/>} />
+            <Route path='logout' element={<LogOutTab/>} />
           </Route>
         </Route>
         <Route path='/forgot_password' element={<ForgotPassword/>}/>
@@ -128,6 +132,8 @@ function App() {
           <Route path='change_password' element={<StudentChangePassword/>} />
           <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />  
           <Route path='course_registration' element={<StudentCourseRegistration/>} />
+          <Route path='registration_history' element={<StudentRegistrationHistory/>} />
+          <Route path='results' element={<StudentResults/>} />
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
             
@@ -145,7 +151,7 @@ function App() {
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>
-        <Route path='/aboutThisTeacher' element={<AboutTeachersPage/>}/>
+        <Route path='/about_this_teacher' element={<AboutTeachersPage/>}/>
         <Route path='/read_more_about_our_event' element={<ReadEventPage/>}/>
         <Route path='/our_courses' element={<CoursePage/>}/>
         <Route path='/aboutus' element={<AboutUsPage/>} />

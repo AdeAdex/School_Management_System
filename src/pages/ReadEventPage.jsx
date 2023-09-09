@@ -33,6 +33,7 @@ const ReadEventPage = () => {
           minHeight: "100vh",
           backgroundColor: "#f1f1f1",
           paddingTop: "200px",
+          position: "relative"
         }}
       >
         <img

@@ -14,6 +14,8 @@ import StudentCourseRegistration from "./StudentCourseRegistration";
 import StudentResources from "./StudentResources";
 import ChatModal from "../../components/studentDashboardComponents/ChatModal";
 import socketClient from 'socket.io-client';
+import StudentRegistrationHistory from "./StudentRegistrationHistory";
+import StudentResults from "./StudentResults";
 
 
 // import { styled, useTheme } from '@mui/material/styles';
@@ -236,6 +238,8 @@ const StudentPortalDashboard = () => {
                     />
                   }
                 />
+                <Route path="registration_history" element={<StudentRegistrationHistory/>} />
+                <Route path="results" element={<StudentResults/>} />
               </Routes>
             )}
           </div>

@@ -4,6 +4,7 @@ const Referees = () => {
   return (
     <>
       <div>Referees</div>
+      <div className='my-3'>Coming soon...</div>
     </>
   )
 }

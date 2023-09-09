@@ -103,7 +103,7 @@ const StudentCourseRegistration = () => {
 
   return (
     <>
-      <div className="w-100">
+      <div className="w-100 px-2">
         <div className="d-flex gap-4">
           <div>Course Registration: </div>
           <div className="fw-bold" ref={divRef}>{globalState.level}</div>
@@ -152,7 +152,7 @@ const StudentCourseRegistration = () => {
           className="d-flex shadow p-3 course-reg-form"
           style={{ position: "fixed", bottom: "40px", width: "75%" }}
         >
-          <FormControl variant="standard" sx={{ m: 1, width: "80%" }}>
+          <FormControl variant="standard" className="custom-form-control" sx={{ m: 1, width: "80%" }}>
             <InputLabel id="demo-simple-select-standard-label">
               Class Subjects
             </InputLabel>
@@ -176,7 +176,7 @@ const StudentCourseRegistration = () => {
                 : null}
             </Select>
           </FormControl>
-          <button type="submit" className="btn btn-primary my-auto">
+          <button type="submit" className="btn btn-primary my-auto add-subject-btn">
             Add Subject
           </button>
         </form>

@@ -55,18 +55,15 @@ const StudentDashboardOffcanvas = () => {
                {!offcanvasState && <StudentDashboardOffcanvasTitle title="academics" /> }
               <StudentDashboardOffcanvasList item="resources" params="/student_dashboard/resources" label="resources" icons="fas fa-file"/>
               <StudentDashboardOffcanvasList item="course registration" params="/student_dashboard/course_registration" label="course registration" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList item="registration history" label="registration history" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList item="results" label="results" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList item="registration history" params="/student_dashboard/registration_history" label="registration history" icons="fas fa-lock" />
+              <StudentDashboardOffcanvasList item="results" params="/student_dashboard/results" label="results" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
                {!offcanvasState && <StudentDashboardOffcanvasTitle title="payment" /> }
-              <StudentDashboardOffcanvasList item="pay tuition" label="pay tuition" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList item="payment history" label="payment history" icons="fas fa-lock" />
-              {/* <StudentDashboardOffcanvasList item="results" label="" icons="fas fa-edit" /> */}
+              <StudentDashboardOffcanvasList item="pay tuition" params="/student_dashboard/pay_tuition" label="pay tuition" icons="fas fa-user" />
+              <StudentDashboardOffcanvasList item="payment history" params="/student_dashboard/payment_history" label="payment history" icons="fas fa-lock" />
             </div>
             <div className="d-grid gap-3 mb-5">
-              {/* <StudentDashboardOffcanvasTitle title="" /> */}
-              {/* <StudentDashboardOffcanvasList item="logout" label="" icons="fas fa-user" /> */}
               <StudentDashboardOffcanvasList2 item="logout" label="logout" icons="fas fa-user"/>
             </div>
           </div>

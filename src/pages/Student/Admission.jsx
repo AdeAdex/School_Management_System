@@ -23,6 +23,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CredentialUpload from "./CredentialUpload";
 import Backdrop from "@mui/material/Backdrop";
+import LogOutTab from "./LogOutTab";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -300,7 +301,22 @@ const Admission = () => {
                   },
                 }}
               />
-              <Tab label="Item Seven" {...a11yProps(6)} />
+              <Tab
+                label="Log out"
+                component={Link}
+                to={
+                  !paid
+                    ? "/student/admission/logout"
+                    : "/student/admission/logout"
+                }
+                sx={{
+                  "&:hover": {
+                    color: "blue",
+                    backgroundColor: "lightgray",
+                  },
+                }}
+              />
+              {/* <Tab label="Item Seven" {...a11yProps(6)} /> */}
             </Tabs>
             <TabPanel value={value} index={0}>
               <PickClass />
@@ -339,7 +355,7 @@ const Admission = () => {
               <CredentialUpload />
             </TabPanel>
             <TabPanel value={value} index={6}>
-              Item Seven
+              <LogOutTab/>
             </TabPanel>
           </Box>
         </div>

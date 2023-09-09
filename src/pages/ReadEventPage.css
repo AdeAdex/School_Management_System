@@ -100,6 +100,7 @@
 
   .read-event-main-container {
     padding-top: 150px !important;
+    position: relative;
   }
 
   .banner {

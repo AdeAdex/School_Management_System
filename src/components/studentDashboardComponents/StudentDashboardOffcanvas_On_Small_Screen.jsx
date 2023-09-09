@@ -56,14 +56,13 @@ const StudentDashboardOffcanvas_On_Small_Screen = () => {
               <StudentDashboardOffcanvasTitle title="academics" />
               <StudentDashboardOffcanvasList  item="resources" params="/student_dashboard/resources" icons="fas fa-file"/>
               <StudentDashboardOffcanvasList  item="course registration" params="/student_dashboard/course_registration" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList  item="registration history" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList  item="results" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList item="registration history" params="/student_dashboard/registration_history" label="registration history" icons="fas fa-lock" />
+              <StudentDashboardOffcanvasList item="results" params="/student_dashboard/results" label="results" icons="fas fa-edit" />
             </div>
             <div className="d-grid gap-3">
               <StudentDashboardOffcanvasTitle title="payment" />
               <StudentDashboardOffcanvasList  item="pay tuition" icons="fas fa-user" />
-              <StudentDashboardOffcanvasList  item="payment history" icons="fas fa-lock" />
-              <StudentDashboardOffcanvasList  item="results" icons="fas fa-edit" />
+              <StudentDashboardOffcanvasList item="payment history" params="/student_dashboard/payment_history" label="payment history" icons="fas fa-lock" />
             </div>
             <div className="d-grid gap-3 mb-5">
               {/* <StudentDashboardOffcanvasTitle title="" /> */}

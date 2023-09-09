@@ -106,6 +106,10 @@
     width: 100% !important;
   }
 
+  .custom-form-control {
+    width: 60% !important;
+  }
+
   .navbar-content {
     display: none;
   }
@@ -131,6 +135,10 @@
   .dashboard-home-container-right {
     margin-left: unset !important;
     width: 100% !important;
+  }
+
+  .add-subject-btn {
+    font-size: 12px;
   }
 
 }

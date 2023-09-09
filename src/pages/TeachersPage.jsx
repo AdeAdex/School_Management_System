@@ -25,8 +25,8 @@ const TeachersPage = () => {
   }, [teacherInfo]);
 
   const toTeachersPage = (teacherData) => {
-    // navigate(`/aboutThisTeacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
-    navigate("/aboutThisTeacher", { state: teacherData });
+    // navigate(`/about_this_teacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
+    navigate("/about_this_teacher", { state: teacherData });
   };
 
   return (
@@ -110,8 +110,8 @@ const TeachersPage = () => {
                 // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
                 teacherName={eachTeacher.teacherName}
                 aboutTeacher={eachTeacher.teacherInfo}
-                to_where="/aboutThisTeacher"
-                para="/aboutThisTeacher"
+                to_where="/about_this_teacher"
+                para="/about_this_teacher"
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,

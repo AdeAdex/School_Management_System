@@ -2,7 +2,10 @@ import React from 'react'
 
 const CredentialUpload = () => {
   return (
-    <div>CredentialUpload</div>
+    <div>
+      <h6>CredentialUpload</h6>
+      <div className='my-3'>Coming soon...</div>
+    </div>
   )
 }
 
