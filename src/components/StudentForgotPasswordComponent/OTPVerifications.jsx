@@ -35,14 +35,14 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const dispatch = useDispatch();
   const [confirmNewOTP, setConfirmNewOTP] = useState(false);
   const [myLatestOTP, setMyLatestOTP] = useState("");
-  // const [startCountdown, setStartCountdown] = useState(false);
+  const [localStartCountdown, setLocalStartCountdown] = useState(startCountdown);
 
-  // useEffect(() => {
-  //   const storedValue = localStorage.getItem("ok") ;
-  //   if (storedValue) {
-  //     setStartCountdown(storedValue)
-  //   }
-  // }, [startCountdown])
+  useEffect(() => {
+    const storedValue = localStorage.getItem("ok") ;
+    if (storedValue) {
+      setLocalStartCountdown(storedValue)
+    }
+  }, [startCountdown])
 
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
@@ -60,34 +60,35 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
     const myNewValues = {
       myNewOTP,
       myEmailResponse,
+      // sentEmail,
       startCountdown,
       countdownStartTime,
       countdownTimeRemaining,
     };
-    console.log(myNewValues);
-    // let endpoint =
-    //   "https://school-portal-backend-adex2210.vercel.app/student_account/otp";
-    // axios.post(endpoint, myNewValues).then((response) => {
-    //   if (response.data.status) {
-    //     localStorage.secret = response.data.secret;
-    //     localStorage.setItem(
-    //       "ok",
-    //       response.data.result[0].startCountdown.toString()
-    //     );
-    //     // startCountdown(response.data.result[0].startCountdown);
-    //     localStorage.setItem(
-    //       "OTPCountdownStartTime",
-    //       response.data.result[0].countdownStartTime
-    //     );
-    //     localStorage.setItem(
-    //       "OTPCountdownTimeRemaining",
-    //       response.data.result[0].countdownTimeRemaining
-    //     );
-    //     setConfirmNewOTP(true);
-    //     setMyLatestOTP(myNewOTP);
-    //     enqueueSnackbar(response.data.message, { variant: "success" });
-    //   }
-    // });
+    let endpoint =
+      "http://localhost:2000/student_account/otp";
+    axios.post(endpoint, myNewValues)
+    .then((response) => {
+      if (response.data.status) {
+        localStorage.secret = response.data.secret;
+        localStorage.setItem(
+          "ok",
+          response.data.result[0].startCountdown.toString()
+        );
+        setLocalStartCountdown(response.data.result[0].startCountdown);
+        localStorage.setItem(
+          "OTPCountdownStartTime",
+          response.data.result[0].countdownStartTime
+        );
+        localStorage.setItem(
+          "OTPCountdownTimeRemaining",
+          response.data.result[0].countdownTimeRemaining
+        );
+        setConfirmNewOTP(true);
+        setMyLatestOTP(myNewOTP);
+        enqueueSnackbar(response.data.message, { variant: "success" });
+      }
+    });
   };
 
   function handleSubmit(e) {
@@ -262,7 +263,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
         </p>
 
         <div className="d-flex gap-1 mb-2">
-          <Link
+          <button
             style={{
               cursor: "pointer",
               textDecoration:
@@ -273,10 +274,10 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
             className={`otp-verification-resend-action ms-4 ${
               localStorage.getItem("ok") === "true" ? "disabled-link" : ""
             }`}
-            disabled={localStorage.getItem("ok") === "true"}
+            // disabled={localStorage.getItem("ok") === "true"}
           >
             Resend
-          </Link>
+          </button>
 
           <small className="" style={{ color: "blue", paddingTop: "2px" }}>
             When Token Expires in:{" "}
