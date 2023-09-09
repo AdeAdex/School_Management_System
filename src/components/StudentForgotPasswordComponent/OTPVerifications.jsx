@@ -245,14 +245,14 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
           You don't receive the code ?
         </p>
 
-        <div className="d-flex gap-3 mb-2">
-        <a
+        <div className="d-flex gap-3 mb-2 text-danger">
+        <Link
             style={{ cursor: "pointer" }}
             onClick={resendNewOTP}
             className="otp-verification-resend-action ms-4"
           >
             Resend
-          </a>
+          </Link>
         <small style={{color: 'my-auto'}}> When Token Expires in: </small>
             <OTPCountdown
             startCountdown={startCountdown}
