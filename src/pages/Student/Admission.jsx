@@ -114,11 +114,15 @@ const Admission = () => {
   }, [globalState, globalState.paidForAdmission, navigate]);
 
   const handleChange = (event, newValue) => {
-    if (paid === false && (newValue !== 1 || newValue !== 0)) {
-      setValue(1);
-      navigate("/student/admission/payment");
+    if (paid === false && (newValue !== 1 || newValue !== 0 || newValue !== 6)) {
+      setValue(newValue);
+      setTimeout(() => {
+        setValue(1);
+        navigate("/student/admission/payment");
+      }, 500);
     } else {
       setValue(newValue);
+      console.log(value);
     }
   };
 
@@ -305,7 +309,7 @@ const Admission = () => {
                 label="Log out"
                 component={Link}
                 to={
-                  !paid
+                  !paid 
                     ? "/student/admission/logout"
                     : "/student/admission/logout"
                 }

@@ -42,13 +42,11 @@ const StudentDashboardNavbar = () => {
     if (offCan.style.width === "20%") {
       offCan.style.width = "5%";
       nav.style.width = "95%";
-      // menu.style.setProperty("display", "none", "important");
       setOffCanvasTitleVisible(false);
       dispatch(show_hide_offcanvas(true));
     } else {
       offCan.style.width = "20%";
       nav.style.width = "80%";
-      // menu.style.setProperty("display", "block", "important");
       setOffCanvasTitleVisible(true);
       dispatch(show_hide_offcanvas(false));
     }

@@ -37,9 +37,9 @@ const AvatarUploader = ({myEmail, profilePicture}) => {
         <label htmlFor="avatarInput" style={{ cursor: "pointer" }}>
           {isLoading ? (
             <div className="ping"></div>
-          ) : cloudImage != null ? (
+          ) : profilePicture != null || profilePicture != "" ? (
             <img
-              src={cloudImage}
+              src={profilePicture}
               alt="Avatar"
               style={{ width: "50px", height: "50px", borderRadius: "50%" }}
             />
