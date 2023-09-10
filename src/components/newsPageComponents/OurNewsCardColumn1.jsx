@@ -3,6 +3,18 @@ import EventsCard from "../eventPageComponents/EventsCard";
 import EventCard_Img from "../eventPageComponents/EventCard_Img";
 
 const OurNewsCardColumn1 = () => {
+  const readNews = (title) => {
+    Swal.fire({
+      title: `Developer's Note`,
+      html: `This project is still in progress. Please check back later for updates on <span style="color: blue;">${title}</span>.`,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
+  };
   return (
     <>
       <div
@@ -19,17 +31,18 @@ const OurNewsCardColumn1 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          days_time_icon="fas fa-birthday-cake my-auto" 
+          title="Annual School Anniversary Celebration"
           hr_class="mb-3 bg-white"
           hr_style={{
             height: "3px",
             width: "35px",
           }}
           styles={{ backgroundColor: "#74CEE4" }}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
-          btn="read more"
+          content="Join us in commemorating another successful year of learning and growth at our school. Exciting events and surprises await!"
+          btn="Read More"
           btnstyle={{ backgroundColor: "#6FC4D9", textTransform: "capitalize" }}
+          onClick={() => readNews("Annual School Anniversary Celebration")}
         />
         <EventsCard
           cardstyle={{ width: "100%" }}
@@ -41,17 +54,18 @@ const OurNewsCardColumn1 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          days_time_icon="fas fa-running my-auto"
+          title="Exciting Sports Day Ahead"
           hr_class="mb-3 bg-white"
           hr_style={{
             height: "3px",
             width: "35px",
           }}
           styles={{ backgroundColor: "#6fc191" }}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
-          btn="read more"
+          content="Gear up for a day filled with athleticism and camaraderie as our students showcase their sports skills during Sports Day."
+          btn="Read More"
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "capitalize" }}
+          onClick={() => readNews("Exciting Sports Day Ahead")}
         />
         <EventCard_Img
           cardstyle={{ width: "100%" }}
@@ -63,8 +77,9 @@ const OurNewsCardColumn1 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          days_time_icon="fas fa-calendar-alt my-auto"
+          title="Science Fair Extravaganza"
+          content="Prepare to be amazed by the scientific wonders our students have in store at the upcoming Science Fair!"
         />
       </div>
     </>

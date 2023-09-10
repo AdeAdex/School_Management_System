@@ -4,6 +4,18 @@ import EventCard_Img from "../eventPageComponents/EventCard_Img";
 import EventsCard_Content from "../eventPageComponents/EventsCard_Content";
 
 const OurNewsCardColumn2 = () => {
+  const readNews = (title) => {
+    Swal.fire({
+      title: `Developer's Note`,
+      html: `This project is still in progress. Please check back later for updates on <span style="color: blue;">${title}</span>.`,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
+  }
   return (
     <>
       <div
@@ -17,17 +29,18 @@ const OurNewsCardColumn2 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school"
+          days_time_icon="fas fa-graduation-cap my-auto"
+          title="Academic Excellence Recognized"
           hr_class="mb-3 bg-white"
           hr_style={{
             height: "3px",
             width: "35px",
           }}
           styles={{ backgroundColor: "#6fc191" }}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
-          btn="read more"
+          content="We are proud to announce outstanding achievements in academics by our students. Discover their remarkable accomplishments."
+          btn="Read More"
           btnstyle={{ backgroundColor: "#6AB78A", textTransform: "capitalize" }}
+          onClick={() => readNews("Academic Excellence Recognized")}
         />
         <EventCard_Img
           cardstyle={{ width: "100%" }}
@@ -39,8 +52,9 @@ const OurNewsCardColumn2 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          days_time_icon="fas fa-calendar-alt my-auto"
+          title="Annual Extravaganza"
+          content="Join us for an unforgettable annual event filled with entertainment, games, and much more!"
         />
         <EventsCard
           cardstyle={{ width: "100%" }}
@@ -52,17 +66,18 @@ const OurNewsCardColumn2 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          days_time_icon="fas fa-globe my-auto"
+          title="Cultural Festival Highlights"
           hr_class="mb-3 bg-white"
           hr_style={{
             height: "3px",
             width: "35px",
           }}
           styles={{ backgroundColor: "#edbf47" }}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
-          btn="read more"
+          content="Experience the rich cultural diversity of our school through vibrant performances and activities at the Cultural Festival."
+          btn="Read More"
           btnstyle={{ backgroundColor: "#E0B84E", textTransform: "capitalize" }}
+          onClick={() => readNews("Cultural Festival Highlights")}
         />
         <EventsCard_Content
           cardstyle={{ width: "100%" }}
@@ -71,17 +86,18 @@ const OurNewsCardColumn2 = () => {
           time_container="time-container-none"
           country_container="country-container-none"
           days_time="none"
-          days_time_icon="fas fa-user my-auto"
-          title="our school anniversary"
+          days_time_icon="fas fa-users my-auto"
+          title="Celebrating Diversity"
           hr_class="mb-3 bg-white"
           hr_style={{
             height: "3px",
             width: "35px",
           }}
           styles={{ backgroundColor: "#E16C6C" }}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat alias veniam tempora."
-          btn="read more"
+          content="Join us in embracing and celebrating the diverse backgrounds and cultures that make our school community unique."
+          btn="Read More"
           btnstyle={{ backgroundColor: "#CA6969", textTransform: "capitalize" }}
+          onClick={() => readNews("Celebrating Diversity")}
         />
       </div>
     </>

@@ -23,6 +23,7 @@ const EventsCard_Content = ({
   classesStyle,
   hr_class,
   hr_style,
+  onClick
 }) => {
   return (
     <>
@@ -43,9 +44,9 @@ const EventsCard_Content = ({
             <div className={hr_class} style={hr_style}></div>
             <div>{content}</div>
           </div>
-          <a href="#" className="btn text-white" style={btnstyle}>
+          <button onClick={onClick} href="#" className="btn text-white" style={btnstyle}>
             {btn}
-          </a>
+          </button>
         </div>
       </div>
     </>
