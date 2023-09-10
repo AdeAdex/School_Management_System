@@ -25,7 +25,7 @@ const OurNewsCardColumn1 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#74CEE4" }}
-          img="pic/bg-image-4.jpg"
+          img="https://www.riversideschools.com.ng/wp-content/uploads/2020/09/DSC_0449.jpg"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#74CEE4" }}
           time_container="time-container-none"
@@ -48,7 +48,7 @@ const OurNewsCardColumn1 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#6fc191" }}
-          img="pic/bg-image-4.jpg"
+          img="https://www.deliabw.edu.hk/wp-content/uploads/2021/05/IMG_4619-1.jpg"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#6fc191" }}
           time_container="time-container-none"
@@ -71,7 +71,7 @@ const OurNewsCardColumn1 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#EC774B" }}
-          img="pic/bg-image-4.jpg"
+          img="https://natsci.source.colostate.edu/wp-content/uploads/sites/6/2023/04/LSOP_extravaganza_preview_1920.jpg"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#EC774B" }}
           time_container="time-container-none"

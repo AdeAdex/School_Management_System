@@ -46,7 +46,7 @@ const OurNewsCardColumn2 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#EC774B" }}
-          img="pic/bg-image-4.jpg"
+          img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8qXFYFyo5kihieyEOrNG_ZEdVw6aSsDyJQ&usqp=CAU"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#EC774B" }}
           time_container="time-container-none"
@@ -60,7 +60,7 @@ const OurNewsCardColumn2 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#edbf47" }}
-          img="pic/bg-image-4.jpg"
+          img="https://sm.ign.com/ign_latam/screenshot/default/screen-shot-2020-01-21-at-32150-pm_eg59.png"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#edbf47" }}
           time_container="time-container-none"

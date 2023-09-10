@@ -26,7 +26,7 @@ const OurNewsCardColumn3 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#C389CE" }}
-          img="pic/bg-image-4.jpg"
+          img="https://i1.wp.com/newdiplomatng.com/wp-content/uploads/2020/07/downloadfile-60.jpg"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#C389CE" }}
           time_container="time-container-none"
@@ -39,7 +39,7 @@ const OurNewsCardColumn3 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#E16C6C" }}
-          img="pic/bg-image-4.jpg"
+          img="https://i.pinimg.com/originals/60/bc/0d/60bc0dc66285569497011b465dad87c9.jpg"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#E16C6C" }}
           time_container="time-container-none"
@@ -62,7 +62,7 @@ const OurNewsCardColumn3 = () => {
           cardstyle={{ width: "100%" }}
           classes="our-news"
           classesStyle={{ backgroundColor: "#74CEE4" }}
-          img="pic/bg-image-4.jpg"
+          img="https://photos.peopleimages.com/picture/202211/2555379-selfie-college-graduation-and-students-in-university-celebrate-academic-success-with-a-happy-smile-black-gown-and-graduation-cap.-education-graduate-certificate-and-friends-with-diploma-in-hands-fit_400_400.jpg"
           h5Classes="card-title py-3 text-uppercase px-3"
           h5Style={{ marginBottom: "0px", backgroundColor: "#74CEE4" }}
           time_container="time-container-none"
