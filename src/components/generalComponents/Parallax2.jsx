@@ -17,6 +17,7 @@ const Parallax2 = ({ classes, styles, content_styles }) => {
               styles={{ backgroundColor: "#74CEE4" }}
               // innerText="days"
             ></Countdown>
+             
             {/* <Countdown
               // id="tm2"
               styles={{ backgroundColor: "#edbf47" }}
