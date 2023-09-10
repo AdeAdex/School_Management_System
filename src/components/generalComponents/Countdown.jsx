@@ -93,7 +93,7 @@ const Countdown = ({ id, styles, innerText }) => {
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
     return {
-      days: days.toString().padStart(3, "0"),
+      days: days.toString().padStart(2, "0"),
       hours: hours.toString().padStart(2, "0"),
       minutes: minutes.toString().padStart(2, "0"),
       seconds: seconds.toString().padStart(2, "0"),
