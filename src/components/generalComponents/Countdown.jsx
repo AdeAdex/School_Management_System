@@ -84,8 +84,8 @@ const Countdown = ({ id, styles, innerText }) => {
 
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-    if (days < 10) {
-      days = 10; // Set the initial value of days to 10 if it's less than 10
+    if (days < 20) {
+      days = 20; // Set the initial value of days to 10 if it's less than 10
     }
 
     const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
