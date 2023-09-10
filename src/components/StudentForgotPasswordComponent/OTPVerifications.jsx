@@ -77,7 +77,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
       countdownStartTime,
       countdownTimeRemaining,
     };
-    let endpoint = "http://localhost:2000/student_account/otp";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/otp";
     axios.post(endpoint, myNewValues).then((response) => {
       if (response.data.status) {
         localStorage.secret = response.data.secret;
