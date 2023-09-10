@@ -272,39 +272,6 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
           You don't receive the code ?
         </p>
 
-        {/* <div className="d-flex gap-1 mb-2">
-          <button
-            style={{
-              cursor: "pointer",
-              textDecoration:
-                localStorage.getItem("ok") === "true" ? "none" : "none",
-              color: localStorage.getItem("ok") === "true" ? "gray" : "blue",
-              padding: '1px 5px',
-              borderTop: "1px solid blue",
-              borderBottom: "1px solid blue",
-              borderLeft: "1px solid blue",
-
-
-
-            }}
-            onClick={resendNewOTP}
-            className={`otp-verification-resend-action ms-4 btn btn-sm ${
-              localStorage.getItem("ok") === "true" ? "" : ""
-            }`}
-            disabled={localStorage.getItem("ok") === "true"}
-          >
-            Resend
-          </button>
-
-          <small className="" style={{ color: "blue", paddingTop: "2px" }}>
-            {localStorage.getItem("ok") === "true" ? (<small>when Token Expires in:{" "}</small>) : null }
-          </small>
-          {localStorage.getItem("ok") === "true" ? (<OTPCountdown
-            startCountdown={startCountdown}
-            // onCountdownComplete={handleCountdownComplete}
-          />) : null}
-        </div> */}
-
         <div className="d-flex gap-1 mb-2">
           <button
             style={{
