@@ -23,22 +23,15 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
     } else {
       setStartCountdown(false);
     }
-
-
-    if (countdownExpired) {
-      localStorage.setItem("ok", "false"); // Set localStorage.ok to "false"
-    }
-  }, [startCountdown, countdownExpired])
+  }, [startCountdown])
   
-
-  // const [ok, setOk] = useState(false);
 
   let formik = useFormik({
     initialValues: {
       myEmail: sentEmail || "",
       startCountdown: true,
       countdownStartTime: Date.now(),
-      countdownTimeRemaining: 180,
+      countdownTimeRemaining: 30,
     },
 
     onSubmit: (values) => {
@@ -150,7 +143,20 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
               Please provide a valid Email address.
             </div>
           </div>
+
           <button
+  type="submit"
+  className="btn btn-success btn-sm my-4"
+  disabled={localStorage.getItem("ok") === "true" || isLoading}
+>
+  {isLoading ? (
+    <div className="spinner"></div>
+  ) : (
+    <div>Submit</div>
+  )}
+</button>
+
+          {/* <button
             type="submit"
             className="btn btn-success btn-sm my-4"
             disabled={localStorage.getItem("ok") === "true"}
@@ -160,7 +166,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
            ) : (
             <div>Submit</div>
            )} 
-          </button>
+          </button> */}
           <Link
             to="/student_login"
             className="fw-bold mb-4 mt-2"

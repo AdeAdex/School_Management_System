@@ -1,9 +1,6 @@
-// Code 2
-
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCountdownExpired } from "../../redux/portalSlice";
-
 
 const OTPCountdown = ({ startCountdown }) => {
   const [countdownTime, setCountdownTime] = useState(0);
@@ -22,18 +19,23 @@ const OTPCountdown = ({ startCountdown }) => {
       const currentTime = Date.now();
       const elapsedTime = Math.floor((currentTime - OTPTime) / 1000);
       const remainingTime = OTPCountdownTime - elapsedTime;
-
       setCountdownTime(remainingTime);
 
       if (remainingTime <= 0) {
-        clearInterval(countdownInterval);
-        setCountdownTime(0);
-        console.log(remainingTime);
         localStorage.setItem("ok", "false");
-        dispatch(setCountdownExpired(true));
+        setCountdownTime(0);
+        // dispatch(setCountdownExpired(true));
       } else {
         countdownInterval = setInterval(() => {
-          setCountdownTime((prevTime) => Math.max(0, prevTime - 1));
+          setCountdownTime((prevTime) => {
+            if (prevTime <= 0) {
+              localStorage.setItem("ok", "false");
+              clearInterval(countdownInterval);
+              // dispatch(setCountdownExpired(true));
+              return 0;
+            }
+            return Math.max(0, prevTime - 1);
+          });
         }, 1000);
 
         return () => {
@@ -43,7 +45,7 @@ const OTPCountdown = ({ startCountdown }) => {
     } else {
       setCountdownActive(false);
     }
-  }, [startCountdown]);
+  }, [startCountdown, dispatch]);
 
   const minutes = Math.floor(countdownTime / 60);
   const seconds = countdownTime % 60;

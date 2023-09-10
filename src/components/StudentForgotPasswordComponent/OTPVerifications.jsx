@@ -35,14 +35,26 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const dispatch = useDispatch();
   const [confirmNewOTP, setConfirmNewOTP] = useState(false);
   const [myLatestOTP, setMyLatestOTP] = useState("");
-  const [localStartCountdown, setLocalStartCountdown] = useState(startCountdown);
+  const [localStartCountdown, setLocalStartCountdown] =
+    useState(startCountdown);
+  const [localStorageOk, setLocalStorageOk] = useState(
+    localStorage.getItem("ok") === "true"
+  );
+
+  // useEffect(() => {
+  //   const storedValue = localStorage.getItem("ok") ;
+  //   if (localStorage.getItem("ok") === "false") {
+  //     setLocalStorageOk(localStorage.getItem("ok"))
+  //   }
+  // }, [localStorageOk, startCountdown])
 
   useEffect(() => {
-    const storedValue = localStorage.getItem("ok") ;
-    if (storedValue) {
-      setLocalStartCountdown(storedValue)
+    const storedValue = localStorage.getItem("ok");
+    if (storedValue === "false") {
+      // Check if it's "false"
+      setLocalStorageOk(false); // Set to false in the state
     }
-  }, [startCountdown])
+  }, [localStorageOk, startCountdown]);
 
   const myEmailResponse = useSelector(
     (state) => state.portalReducer.emailVerify
@@ -55,7 +67,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
     localStorage.removeItem("OTPCountdownTimeRemaining");
     const startCountdown = true;
     const countdownStartTime = Date.now();
-    const countdownTimeRemaining = 180;
+    const countdownTimeRemaining = 60;
     const myNewOTP = Math.floor(Math.random() * 9000 + 1000);
     const myNewValues = {
       myNewOTP,
@@ -65,10 +77,8 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
       countdownStartTime,
       countdownTimeRemaining,
     };
-    let endpoint =
-      "http://localhost:2000/student_account/otp";
-    axios.post(endpoint, myNewValues)
-    .then((response) => {
+    let endpoint = "http://localhost:2000/student_account/otp";
+    axios.post(endpoint, myNewValues).then((response) => {
       if (response.data.status) {
         localStorage.secret = response.data.secret;
         localStorage.setItem(
@@ -262,30 +272,71 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
           You don't receive the code ?
         </p>
 
-        <div className="d-flex gap-1 mb-2">
+        {/* <div className="d-flex gap-1 mb-2">
           <button
             style={{
               cursor: "pointer",
               textDecoration:
-                localStorage.getItem("ok") === "true" ? "none" : "underline",
+                localStorage.getItem("ok") === "true" ? "none" : "none",
               color: localStorage.getItem("ok") === "true" ? "gray" : "blue",
+              padding: '1px 5px',
+              borderTop: "1px solid blue",
+              borderBottom: "1px solid blue",
+              borderLeft: "1px solid blue",
+
+
+
             }}
             onClick={resendNewOTP}
-            className={`otp-verification-resend-action ms-4 ${
-              localStorage.getItem("ok") === "true" ? "disabled-link" : ""
+            className={`otp-verification-resend-action ms-4 btn btn-sm ${
+              localStorage.getItem("ok") === "true" ? "" : ""
             }`}
-            // disabled={localStorage.getItem("ok") === "true"}
+            disabled={localStorage.getItem("ok") === "true"}
           >
             Resend
           </button>
 
           <small className="" style={{ color: "blue", paddingTop: "2px" }}>
-            When Token Expires in:{" "}
+            {localStorage.getItem("ok") === "true" ? (<small>when Token Expires in:{" "}</small>) : null }
           </small>
-          <OTPCountdown
+          {localStorage.getItem("ok") === "true" ? (<OTPCountdown
             startCountdown={startCountdown}
             // onCountdownComplete={handleCountdownComplete}
-          />
+          />) : null}
+        </div> */}
+
+        <div className="d-flex gap-1 mb-2">
+          <button
+            style={{
+              cursor: "pointer",
+              textDecoration:
+                localStorage.getItem("ok") === "true" ? "none" : "none",
+              color: localStorage.getItem("ok") === "true" ? "gray" : "blue",
+              padding: "1px 5px",
+              borderTop: "1px solid blue",
+              borderBottom: "1px solid blue",
+              borderLeft: "1px solid blue",
+            }}
+            onClick={resendNewOTP}
+            className={`otp-verification-resend-action ms-4 btn btn-sm ${
+              localStorage.getItem("ok") === "true" ? "" : ""
+            }`}
+            disabled={localStorage.getItem("ok") === "true"}
+          >
+            Resend
+          </button>
+
+          <small className="" style={{ color: "blue", paddingTop: "2px" }}>
+            {localStorage.getItem("ok") === "true" ? (
+              <small>when Token Expires in: </small>
+            ) : null}
+          </small>
+          {localStorage.getItem("ok") === "true" ? (
+            <OTPCountdown
+              startCountdown={startCountdown}
+              // onCountdownComplete={handleCountdownComplete}
+            />
+          ) : null}
         </div>
       </div>
     </>
