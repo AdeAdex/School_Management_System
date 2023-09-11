@@ -91,7 +91,7 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
           </Modal.Title>
           <button
             type="button"
-            className="btn btn-link text-danger"
+            className="btn btn-link text-danger shadow"
             onClick={onClose}
           >
             <FaTimes />

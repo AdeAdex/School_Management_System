@@ -40,6 +40,8 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   const [localStorageOk, setLocalStorageOk] = useState(
     localStorage.getItem("ok") === "true"
   );
+  const [isLoading, setIsLoading] = useState(false);
+
 
   // useEffect(() => {
   //   const storedValue = localStorage.getItem("ok") ;
@@ -61,6 +63,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
   );
 
   const resendNewOTP = () => {
+    setIsLoading(true);
     console.log("hi Adex");
     localStorage.removeItem("ok");
     localStorage.removeItem("OTPCountdownStartTime");
@@ -78,7 +81,9 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
       countdownTimeRemaining,
     };
     let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/otp";
-    axios.post(endpoint, myNewValues).then((response) => {
+    axios.post(endpoint, myNewValues)
+    .then((response) => {
+      setIsLoading(false);
       if (response.data.status) {
         localStorage.secret = response.data.secret;
         localStorage.setItem(
@@ -272,7 +277,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
           You don't receive the code ?
         </p>
 
-        <div className="d-flex gap-1 mb-2">
+        <div className="d-flex gap-1 mb-2 mb-4">
           <button
             style={{
               cursor: "pointer",
@@ -290,7 +295,12 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
             }`}
             disabled={localStorage.getItem("ok") === "true"}
           >
-            Resend
+          {isLoading ? (
+                <div className="spinner"></div>
+              ) : (
+                <div> Resend</div>
+              )}
+           
           </button>
 
           <small className="" style={{ color: "blue", paddingTop: "2px" }}>
