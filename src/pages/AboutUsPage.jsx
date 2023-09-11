@@ -3,6 +3,7 @@ import "../pages/AboutUsPage.css";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import Footer from "../components/footerComponents/Footer";
 import { useTranslation } from "react-i18next";
+import AboutUsCarousel from "../components/aboutUsComponent/AboutUsCarousel";
 
 const AboutUsPage = () => {
   const { t } = useTranslation();
@@ -71,7 +72,8 @@ const AboutUsPage = () => {
             Locate Us
           </a>
           <header className="about-us-header">
-            <img src="/pic/teacher21.jpg" alt="School Header" />
+            {/* <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg" alt="School Header" /> */}
+            <AboutUsCarousel/>
             <div className="header-content">
               <h1>About Our School</h1>
               <p>

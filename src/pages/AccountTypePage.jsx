@@ -104,7 +104,7 @@ const AccountTypePage = () => {
               onClick={() => setImage("staff")}
             >
               <img
-                src="pic/teacher_avatar.png"
+                src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694434017/teacher_avatar_cisr1q.png"
                 alt=""
                 style={{ width: "100%", objectFit: "10% 70%" }}
               />
@@ -128,7 +128,7 @@ const AccountTypePage = () => {
               onClick={() => setImage("student")}
             >
               <img
-                src="pic/student_avatar.avif"
+                src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694434193/student_avatar_rpguy5.avif"
                 alt=""
                 style={{ width: "100%", objectFit: "cover" }}
               />

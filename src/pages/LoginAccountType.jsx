@@ -98,10 +98,10 @@ const LoginAccountType = () => {
               />
               <span>teacher</span>
               <img
-                src="/pic/teacher_avatar5.jpg"
+                src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694434276/teacher_avatar5_mspiob.jpg"
                 className="mx-auto"
                 style={{ height: "80%", width: "80%", borderRadius: "50%" }}
-                alt=""
+                alt="teacher-icon"
               />
             </div>
             <div
@@ -126,10 +126,10 @@ const LoginAccountType = () => {
               />
               <span>student</span>
               <img
-                src="/pic/teacher_avatar4.jpg"
+                src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694434291/teacher_avatar4_bndids.jpg"
                 className="mx-auto"
                 style={{ height: "80%", width: "80%", borderRadius: "50%" }}
-                alt=""
+                alt="student-icon"
               />
             </div>
           </div>
