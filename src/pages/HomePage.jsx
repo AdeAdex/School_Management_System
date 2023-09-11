@@ -17,10 +17,8 @@ const HomePage = () => {
 
   const scrollToContactUs = (param) => {
     if (param === "contact us") {
-      console.log("Function called with param:", param);
       if (contactUsRef.current) {
         contactUsRef.current.scrollIntoView({ behavior: 'smooth' })
-        console.log("Scrolling to contact us");
       }
     }
   }
