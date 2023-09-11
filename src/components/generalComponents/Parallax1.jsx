@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Parallax1 = ({
   classes,
   styles,
-  inner_content_2
+  inner_content_2,
+  onClick
 }) => {
   const navigate = useNavigate()
   const goToCoursesPage = () => {
@@ -25,6 +26,7 @@ const Parallax1 = ({
             <i className="fas fa-bars my-auto"></i> all courses
           </button>
           <button
+          onClick={onClick}
             className="parallax1-btn btn text-white text-uppercase d-flex gap-3 px-4 py-2 justify-content-center"
             style={{ backgroundColor: "#74CEE4", boxShadow: 'inset 0px -4px #54CAE1' }}
           >

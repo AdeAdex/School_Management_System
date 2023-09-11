@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
 const Contact_Us_Form = () => {
+  const contactUsRef = useRef();
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
@@ -14,7 +16,7 @@ const Contact_Us_Form = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: 'Adex',
+      name: "",
       email: "",
       message: "",
     },
@@ -48,7 +50,7 @@ const Contact_Us_Form = () => {
   });
 
   return (
-    <div className="contact-form shadow">
+    <div ref={contactUsRef} className="contact-form shadow">
       <form onSubmit={formik.handleSubmit}>
         <input
           type="text"

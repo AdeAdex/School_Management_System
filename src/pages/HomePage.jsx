@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Carousel from "../components/carouselComponents/Carousel";
 import OurActivities from "../components/homepageComponents/OurActivities";
 import OurEvents from "../components/eventPageComponents/OurEvents";
@@ -10,9 +10,20 @@ import Parallax2 from "../components/generalComponents/Parallax2";
 import Parallax3 from "../components/generalComponents/Parallax3";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import ScrollProgress from "../components/generalComponents/ScrollProgress";
-// import MyCountUp from "../components/MyCountUp";
+
 
 const HomePage = () => {
+  const contactUsRef = useRef();
+
+  const scrollToContactUs = (param) => {
+    if (param === "contact us") {
+      console.log("Function called with param:", param);
+      if (contactUsRef.current) {
+        contactUsRef.current.scrollIntoView({ behavior: 'smooth' })
+        console.log("Scrolling to contact us");
+      }
+    }
+  }
 
   return (
     <>
@@ -31,6 +42,7 @@ const HomePage = () => {
             backgroundImage: 'url("pic/bg-image-1.jpg")',
           }}
           inner_content_2="contact us"
+          onClick={() => scrollToContactUs('contact us')}
         />
         <div className="center-div">
         <section name="section1">
@@ -68,7 +80,9 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+        <div ref={contactUsRef}>
         <Footer />
+        </div>
       </div>
     </>
   );

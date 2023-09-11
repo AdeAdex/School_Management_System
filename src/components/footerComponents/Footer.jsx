@@ -9,7 +9,7 @@ import Small_hr from "../generalComponents/Small_hr";
 import MulticolorLine from "../generalComponents/MulticolorLine";
 import { useNavigate } from "react-router-dom";
 
-const Footer = () => {
+const Footer = ({ contactUsRef }) => {
 
   const navigate = useNavigate()
 
@@ -196,7 +196,7 @@ const Footer = () => {
                 width: "35px",
               }}
             ></Small_hr>
-            <Contact_Us_Form></Contact_Us_Form>
+            <Contact_Us_Form contactUsRef={contactUsRef} />
           </div>
         </div>
 
@@ -209,3 +209,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
