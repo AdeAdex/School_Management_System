@@ -71,7 +71,7 @@ const HomePage = () => {
         </section>
           <div className="d-flex justify-content-center mt-5">
             <button
-              className="btn text-white text-uppercase d-flex gap-3 px-4 py-2"
+              className="btn text-white text-uppercase d-flex gap-3 px-4 py-2 view-more-button type1"
               style={{ backgroundColor: "#74CEE4" }}
             >
               <i className="fas fa-border-all my-auto"></i> view more
