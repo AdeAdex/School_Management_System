@@ -11,7 +11,7 @@ const Parallax2 = ({ classes, styles, content_styles }) => {
             <br />
             ARE YOU READY ?
           </div>
-          <div className="bg-image2-containe center-di d-flex col-lg-10 justify-content-between mt-auto mx-auto">
+          <div className="bg-image2-containe center-di d-flex col-lg-10 justify-content-between mt-auto mx-auto text-uppercase">
             <Countdown
               // id="tm1"
               styles={{ backgroundColor: "#74CEE4" }}

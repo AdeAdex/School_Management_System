@@ -120,17 +120,21 @@ const Countdown = ({ id, styles, innerText }) => {
 
   return (
     <>
-      <div className="values">
-        {timeLeft.days} days,
+      <div className="values d-flex flex-column text-center gap-4">
+        {timeLeft.days}
+        <div style={{ backgroundColor: "#74CEE4", borderRadius: '5px', padding: '5px 10px'}}>days</div>
       </div>
-      <div className="values">
-        {timeLeft.hours} hours,
+      <div className="values d-flex flex-column text-center gap-4">
+        {timeLeft.hours}
+        <div style={{ backgroundColor: "#edbf47", borderRadius: '5px', padding: '5px 10px' }}>hour</div>
       </div>
-      <div className="values">
-        {timeLeft.minutes} minutes,
+      <div className="values d-flex flex-column text-center gap-4">
+        {timeLeft.minutes} 
+        <div style={{ backgroundColor: "#ec774b", borderRadius: '5px', padding: '5px 10px' }}>minutes</div>
       </div>
-      <div className="values">
-        {timeLeft.seconds} seconds
+      <div className="values d-flex flex-column text-center gap-4">
+        {timeLeft.seconds}
+        <div style={{ backgroundColor: "#6fc191", borderRadius: '5px', padding: '5px 10px' }}>seconds</div>
       </div>
     </>
   );
