@@ -306,6 +306,15 @@
         .sticky-icons:hover {
           background-color: lightgray;
         }
+
+        .days-countdown-container {
+          flex-direction: column;
+        }
+
+        .days-countdown-values {
+          margin-bottom: 20px;
+          gap: 10px !important;
+        }
         
       }
       

@@ -120,19 +120,19 @@ const Countdown = ({ id, styles, innerText }) => {
 
   return (
     <>
-      <div className="values d-flex flex-column text-center gap-4">
+      <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.days}</div>
         <div style={{ backgroundColor: "#74CEE4", borderRadius: '5px', padding: '5px 10px'}}>days</div>
       </div>
-      <div className="values d-flex flex-column text-center gap-4">
+      <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.hours}</div>
         <div style={{ backgroundColor: "#edbf47", borderRadius: '5px', padding: '5px 10px' }}>hour</div>
       </div>
-      <div className="values d-flex flex-column text-center gap-4">
+      <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.minutes}</div>
         <div style={{ backgroundColor: "#ec774b", borderRadius: '5px', padding: '5px 10px' }}>minutes</div>
       </div>
-      <div className="values d-flex flex-column text-center gap-4">
+      <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.seconds}</div>
         <div style={{ backgroundColor: "#6fc191", borderRadius: '5px', padding: '5px 10px' }}>seconds</div>
       </div>
