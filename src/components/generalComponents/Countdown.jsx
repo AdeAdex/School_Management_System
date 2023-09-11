@@ -1,4 +1,3 @@
-
 // import React, { useEffect, useState } from "react";
 
 // const Countdown = ({ id, styles, innerText }) => {
@@ -45,7 +44,7 @@
 //           {timeLeft.days} days,
 //         </div>
 //         <div className="values">
-//           {timeLeft.hours} hours, 
+//           {timeLeft.hours} hours,
 //         </div>
 //         <div className="values">
 //           {timeLeft.minutes} minutes,
@@ -61,9 +60,6 @@
 // };
 
 // export default Countdown;
-
-
-
 
 import React, { useEffect, useState } from "react";
 
@@ -85,10 +81,12 @@ const Countdown = ({ id, styles, innerText }) => {
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
     if (days < 20) {
-      days = 20; // Set the initial value of days to 10 if it's less than 10
+      days = 20;
     }
 
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -122,19 +120,51 @@ const Countdown = ({ id, styles, innerText }) => {
     <>
       <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.days}</div>
-        <div style={{ backgroundColor: "#74CEE4", borderRadius: '5px', padding: '5px 10px'}}>days</div>
+        <div
+          style={{
+            backgroundColor: "#74CEE4",
+            borderRadius: "5px",
+            padding: "5px 10px",
+          }}
+        >
+          days
+        </div>
       </div>
       <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.hours}</div>
-        <div style={{ backgroundColor: "#edbf47", borderRadius: '5px', padding: '5px 10px' }}>hour</div>
+        <div
+          style={{
+            backgroundColor: "#edbf47",
+            borderRadius: "5px",
+            padding: "5px 10px",
+          }}
+        >
+          hour
+        </div>
       </div>
       <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.minutes}</div>
-        <div style={{ backgroundColor: "#ec774b", borderRadius: '5px', padding: '5px 10px' }}>minutes</div>
+        <div
+          style={{
+            backgroundColor: "#ec774b",
+            borderRadius: "5px",
+            padding: "5px 10px",
+          }}
+        >
+          minutes
+        </div>
       </div>
       <div className="days-countdown-values d-flex flex-column text-center gap-4">
         <div className="fs-2 fw-bold">{timeLeft.seconds}</div>
-        <div style={{ backgroundColor: "#6fc191", borderRadius: '5px', padding: '5px 10px' }}>seconds</div>
+        <div
+          style={{
+            backgroundColor: "#6fc191",
+            borderRadius: "5px",
+            padding: "5px 10px",
+          }}
+        >
+          seconds
+        </div>
       </div>
     </>
   );
