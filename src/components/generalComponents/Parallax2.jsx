@@ -13,26 +13,8 @@ const Parallax2 = ({ classes, styles, content_styles }) => {
           </div>
           <div className="bg-image2-containe center-di d-flex col-lg-10 justify-content-between mt-auto mx-auto text-uppercase">
             <Countdown
-              // id="tm1"
               styles={{ backgroundColor: "#74CEE4" }}
-              // innerText="days"
             ></Countdown>
-             
-            {/* <Countdown
-              // id="tm2"
-              styles={{ backgroundColor: "#edbf47" }}
-              // innerText="hours"
-            ></Countdown>
-            <Countdown
-              // id="tm3"
-              styles={{ backgroundColor: "#ec774b" }}
-              // innerText="minutes"
-            ></Countdown>
-            <Countdown
-              // id="tm4"
-              styles={{ backgroundColor: "#6fc191" }}
-              // innerText="seconds"
-            ></Countdown> */}
           </div>
         </div>
       </div>
