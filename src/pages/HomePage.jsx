@@ -11,24 +11,22 @@ import Parallax3 from "../components/generalComponents/Parallax3";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import ScrollProgress from "../components/generalComponents/ScrollProgress";
 
-
 const HomePage = () => {
   const contactUsRef = useRef();
 
   const scrollToContactUs = (param) => {
     if (param === "contact us") {
       if (contactUsRef.current) {
-        contactUsRef.current.scrollIntoView({ behavior: 'smooth' })
+        contactUsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }
+  };
 
   return (
     <>
-    
       <Carousel />
-      <PagesNavbar/>
-      <ScrollProgress/>
+      <PagesNavbar />
+      <ScrollProgress />
       <div className="mx-aut" style={{ width: "100%", height: "100vh" }}>
         <div className="center-div">
           <NavigatoContainer />
@@ -40,12 +38,12 @@ const HomePage = () => {
             backgroundImage: 'url("pic/bg-image-1.jpg")',
           }}
           inner_content_2="contact us"
-          onClick={() => scrollToContactUs('contact us')}
+          onClick={() => scrollToContactUs("contact us")}
         />
         <div className="center-div">
-        <section name="section1">
-          <OurActivities />
-        </section>
+          <section name="section1">
+            <OurActivities />
+          </section>
         </div>
         <Parallax2
           classes="bg image2"
@@ -57,8 +55,8 @@ const HomePage = () => {
           }}
         />
         <div className="center-div">
-        <section name="section2">
-          <OurEvents />
+          <section name="section2">
+            <OurEvents />
           </section>
         </div>
         <Parallax3
@@ -66,9 +64,9 @@ const HomePage = () => {
           styles={{ height: "40%", backgroundImage: "url(pic/bg-image-4.jpg)" }}
         />
         <div className="center-div">
-        <section name="section3">
-          <OurNews></OurNews>
-        </section>
+          <section name="section3">
+            <OurNews></OurNews>
+          </section>
           <div className="d-flex justify-content-center mt-5">
             <button
               className="btn text-white text-uppercase d-flex gap-3 px-4 py-2 view-more-button type1"
@@ -78,8 +76,22 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+        <div>
+          <button
+            className="scroll-to-top-button"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          > Top
+             <div className="top-arrow">
+              <span className="arrow-span"></span>
+              <span className="arrow-span"></span>
+              <span className="arrow-span"></span>
+            </div>
+          </button>
+        </div>
         <div ref={contactUsRef}>
-        <Footer />
+          <Footer />
         </div>
       </div>
     </>
