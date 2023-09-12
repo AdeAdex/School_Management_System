@@ -313,6 +313,7 @@ body {
     margin-bottom: 20px;
     gap: 10px !important;
   }
+
 }
 
 .animation {
@@ -492,7 +493,7 @@ input[type="radio"]:focus {
 }
 
 /* This is the CSS styling for the scroll to the top button*/
-
+/* 
 .scroll-to-top-button {
   position: fixed;
   bottom: 20px;
@@ -502,7 +503,6 @@ input[type="radio"]:focus {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  /* border-radius: 5px; */
   z-index: 1000;
   width: 70px;
   height: 70px;
@@ -550,5 +550,94 @@ input[type="radio"]:focus {
   100% {
     opacity: 0;
     transform: rotate(45deg) translate(15px, 15px);
+  }
+} */
+
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #74cee4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden; /* Add this property to hide overflowing content */
+  transition: width 0.3s, height 0.3s;
+}
+
+.scroll-to-top-button:hover {
+  background-color: #46a3e4;
+}
+
+.top-arrow {
+  transform: rotate(180deg);
+  cursor: pointer;
+  display: inline-block; /* Add this property to make it inline with the text */
+  vertical-align: middle; /* Vertically center it with the text */
+}
+
+.top-arrow span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 5px solid red;
+  border-right: 5px solid red;
+  transform: rotate(45deg);
+  margin: -15px 4px;
+  animation: animate28797 2s infinite;
+}
+
+.top-arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.top-arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate28797 {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-15px, -15px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(15px, 15px);
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .scroll-to-top-button {
+    padding: 0px 0px 0px 0px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .top-arrow {
+    cursor: pointer;
+    position: absolute;
+    left: 40%;
+  }
+
+  .top-arrow span {
+    display: block;
+    width: 15px !important;
+    height: 15px !important;
+    transform: rotate(45deg);
+    margin: -20px -3px !important;
+    animation: animate28797 2s infinite;
   }
 }
