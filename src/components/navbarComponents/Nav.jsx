@@ -211,7 +211,7 @@ const Nav = () => {
                 <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <Link className="dropdown-item" to="/ourteachers">
-                      teachers
+                      teachers page
                     </Link>
                   </li>
                   <li>
