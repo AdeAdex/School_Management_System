@@ -16,7 +16,12 @@ const CreateAccount = () => {
       email: "",
       phoneNumber: "",
       password: "",
-      check: false,
+      checkbox: false,
+      city: "", // Added city field
+      age: "", // Added age field
+      gender: "", // Added gender field
+      country: "", // Added country field
+      state: "",
     },
 
     onSubmit: async (values) => {
@@ -92,16 +97,16 @@ const CreateAccount = () => {
     validationSchema: yup.object({
       firstName: yup
         .string()
-        .required("firstname is required to create account"),
-      lastName: yup.string().required("lastname is required to create account"),
+        .required("First name is required to create account"),
+      lastName: yup.string().required("Last name is required to create account"),
       email: yup
         .string()
         .lowercase()
-        .required("email is required to create account")
+        .required("Email is required to create account")
         .email("Please enter a valid email address"),
       phoneNumber: yup
         .string()
-        .required("phone number is required to create account"),
+        .required("Phone number is required to create account"),
       password: yup
         .string()
         .required("password is required to create account")
@@ -110,7 +115,12 @@ const CreateAccount = () => {
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
           "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
         ),
-      checkbox: yup.boolean().oneOf([true]),
+        checkbox: yup.boolean().oneOf([true], "You must agree to terms and conditions"),
+        city: yup.string().required("City is required"), // Validation for city field
+        age: yup.number().required("Age is required").min(18, "Age must be at least 18"), // Validation for age field
+        gender: yup.string().required("Gender is required"), // Validation for gender field
+        country: yup.string().required("Country is required"), // Validation for country field
+        state: yup.string().required("State is required"),
     }),
   });
 
