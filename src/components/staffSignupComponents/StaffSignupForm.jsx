@@ -5,8 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { format } from "date-fns";
 
-
-
 const StaffSignupForm = () => {
   const navigate = useNavigate();
 
@@ -19,12 +17,15 @@ const StaffSignupForm = () => {
       email: "",
       phoneNumber: "",
       password: "",
-      check: false,
+      checkbox: false,
+      city: "", // Added city field
+      age: "", // Added age field
+      gender: "", // Added gender field
+      country: "", // Added country field
+      state: "",
     },
 
     onSubmit: async (values) => {
-      setIsLoading(true);
-
       try {
         const randomNumber = Math.floor(Math.random() * 100000000);
         const numbersPart = randomNumber.toString().padStart(8, "0");
@@ -40,16 +41,18 @@ const StaffSignupForm = () => {
           registrationNumber,
           createdDate: currentDate,
         };
+
         const endpoint =
           "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_signup";
 
         const response = await axios.post(endpoint, newValues);
 
         if (response.data.status) {
-          setIsLoading(false);
           navigate("/staff_signin");
         } else {
-          const Toast = Swal.mixin({
+          Swal.fire({
+            icon: "error",
+            title: response.data.message,
             toast: true,
             position: "top",
             showConfirmButton: false,
@@ -60,16 +63,14 @@ const StaffSignupForm = () => {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
-
-          Toast.fire({
-            icon: "error",
-            title: response.data.message,
-          });
         }
-        setIsLoading(false);
       } catch (err) {
-        setIsLoading(false);
-        const Toast = Swal.mixin({
+        const errorMessage =
+          err.response?.data?.message || "An error occurred.";
+
+        Swal.fire({
+          icon: "error",
+          title: errorMessage,
           toast: true,
           position: "top",
           showConfirmButton: false,
@@ -80,40 +81,43 @@ const StaffSignupForm = () => {
             toast.addEventListener("mouseleave", Swal.resumeTimer);
           },
         });
-
-        const errorMessage =
-          err.response?.data?.message || "An error occurred.";
-
-        Toast.fire({
-          icon: "error",
-          title: errorMessage,
-        });
       }
     },
 
-    
     validationSchema: yup.object({
       firstName: yup
         .string()
-        .required("firstname is required to create account"),
-      lastName: yup.string().required("lastname is required to create account"),
+        .required("First name is required to create an account"),
+      lastName: yup
+        .string()
+        .required("Last name is required to create an account"),
       email: yup
         .string()
         .lowercase()
-        .required("email is required to create account")
+        .required("Email is required to create an account")
         .email("Please enter a valid email address"),
       phoneNumber: yup
         .string()
-        .required("phone number is required to create account"),
+        .required("Phone number is required to create an account"),
       password: yup
         .string()
-        .required("password is required to create account")
+        .required("Password is required to create an account")
         .min(8, "Password must be at least 8 characters long")
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
           "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
         ),
-      checkbox: yup.boolean().oneOf([true]),
+      checkbox: yup
+        .boolean()
+        .oneOf([true], "You must agree to terms and conditions"),
+      city: yup.string().required("City is required"), // Validation for city field
+      age: yup
+        .number()
+        .required("Age is required")
+        .min(18, "Age must be at least 18"), // Validation for age field
+      gender: yup.string().required("Gender is required"), // Validation for gender field
+      country: yup.string().required("Country is required"), // Validation for country field
+      state: yup.string().required("State is required"), // Validation for state field
     }),
   });
 
@@ -248,9 +252,7 @@ const StaffSignupForm = () => {
               City
             </label>
             {formik.touched.city && formik.errors.city ? (
-              <small className="error text-danger">
-                {formik.errors.city}
-              </small>
+              <small className="error text-danger">{formik.errors.city}</small>
             ) : null}
           </div>
           <div className="col-md-6 position-relative  flex-column mb-3">
@@ -271,9 +273,7 @@ const StaffSignupForm = () => {
               Age
             </label>
             {formik.touched.age && formik.errors.age ? (
-              <small className="error text-danger">
-                {formik.errors.age}
-              </small>
+              <small className="error text-danger">{formik.errors.age}</small>
             ) : null}
           </div>
           <div className="col-md-6 position-relative  flex-column mb-3">
@@ -340,9 +340,7 @@ const StaffSignupForm = () => {
               State
             </label>
             {formik.touched.state && formik.errors.state ? (
-              <small className="error text-danger">
-                {formik.errors.state}
-              </small>
+              <small className="error text-danger">{formik.errors.state}</small>
             ) : null}
           </div>
           <div className="col-lg-6 position-relative  flex-column mb-3">
@@ -404,7 +402,6 @@ const StaffSignupForm = () => {
             </button>
           </div>
         </form>
-       
       </div>
     </>
   );
