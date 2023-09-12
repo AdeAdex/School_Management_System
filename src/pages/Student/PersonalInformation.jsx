@@ -374,28 +374,33 @@ const PersonalInformation = () => {
             Please provide a your age.
           </div>
         </div>
-        <div className="col-md-6 position-relative d-flex flex-column mb-3">
-          <input
-            type="text"
-            autoComplete="on"
-            className={
-              formik.touched.gender && formik.errors.gender
-                ? "input form-control is-invalid"
-                : "input form-control"
-            }
-            id=""
-            name="gender"
-            required
-            onChange={formik.handleChange}
-            value={formik.values.gender}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Gender
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a your gender.
+        <div className="col-md-6 mb-3">
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="gender-label">Gender</InputLabel>
+              <Select
+                labelId="gender-label"
+                id="gender-select"
+                value={formik.values.gender}
+                label="Gender"
+                onChange={formik.handleChange}
+                name="gender"
+                onBlur={formik.handleBlur}
+                error={formik.touched.gender && Boolean(formik.errors.gender)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Male">Male</MenuItem>
+                <MenuItem value="Female">Female</MenuItem>
+                <MenuItem value="Others">Others</MenuItem>
+              </Select>
+              {formik.touched.gender && Boolean(formik.errors.gender) ? (
+                <small className="error text-danger">
+                  {formik.errors.gender}
+                </small>
+              ) : null}
+            </FormControl>
           </div>
-        </div>
 
         <div className="col-12">
           <button className="btn btn-primary signup-btn px-5" type="submit">
