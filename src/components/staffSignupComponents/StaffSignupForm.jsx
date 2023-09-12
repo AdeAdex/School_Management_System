@@ -49,7 +49,7 @@ const StaffSignupForm = () => {
         };
 
         const endpoint =
-          "http://localhost:2000/staff_account/staff_signup";
+          "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_signup";
 
         const response = await axios.post(endpoint, newValues);
 
@@ -64,7 +64,7 @@ const StaffSignupForm = () => {
             toast: true,
             position: "top",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 6000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener("mouseenter", Swal.stopTimer);
