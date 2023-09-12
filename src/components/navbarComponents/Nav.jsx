@@ -21,10 +21,16 @@ const Nav = () => {
   };
 
 
-  // const toCoursePage = (para) => {
-  //   navigate('/our_courses', { state: para })
-  // }
+
+  const navMobileStyle = {
+   height: '50px',
+   paddingLeft: '12px'
+  };
   
+  const navDesktopStyle = {
+    height: "50px",
+  };
+
   return (
     <>
       <nav
@@ -46,8 +52,8 @@ const Nav = () => {
             <img
               src="pic/ade.png"
               alt="Logo"
-              className="my-auto logo"
-              style={{ height: "50px", paddingLeft: '12px' }}
+              className="my-auto logo-image"
+              style={window.innerWidth <= 768 ? navMobileStyle : navDesktopStyle}
             />
           </Link>
           <button
@@ -64,11 +70,9 @@ const Nav = () => {
           </button>
         </div>
           <div
-            // className="collapse navbar-collapse"
             className={`collapse navbar-collapse ${opened ? "show opened" : ""}`}
             id="navbarSupportedContent"
              style={window.innerWidth <= 768 ? mobileStyle : desktopStyle}
-            // style={{ height: "80px" }}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <div className="sign-in-lg d-flex justify-content-between my-3 w-100 gap-3">
