@@ -11,8 +11,6 @@ import Select from "@mui/material/Select";
 import { TypeAnimation } from "react-type-animation";
 import { useMediaQuery } from "react-responsive";
 
-
-
 const StaffSignupForm = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
@@ -20,8 +18,22 @@ const StaffSignupForm = () => {
   const [callbackText, setCallbackText] = useState("");
   const [showTypingAnimation, setShowTypingAnimation] = useState(false);
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
+  const [allCountry, setAllCountry] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const sortedCountries = allCountry.slice().sort((a, b) => {
+    return a.country.localeCompare(b.country);
+  });
+
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/staff_account/countries";
+    axios.get(endpoint).then((response) => {
+      console.log(response.data);
+      setAllCountry(response.data);
+    });
+  }, []);
+
 
   let formik = useFormik({
     initialValues: {
@@ -80,11 +92,14 @@ const StaffSignupForm = () => {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
-          setMessage("If you want to register as a staff and don't have a valid Staff Verification Code, kindly contact the management through the Contact Us page. Thanks")
+          setMessage(
+            "If you want to register as a staff and don't have a valid Staff Verification Code, kindly contact the management through the Contact Us page. Thanks"
+          );
         }
       } catch (err) {
         const errorMessage =
-          err.response?.data?.message || "Apologies, an error occurred during the process.";
+          err.response?.data?.message ||
+          "Apologies, an error occurred during the process.";
 
         Swal.fire({
           icon: "error",
@@ -256,27 +271,6 @@ const StaffSignupForm = () => {
               type="text"
               autoComplete="on"
               className={
-                formik.touched.city && formik.errors.city
-                  ? "input form-control is-invalid"
-                  : "input form-control"
-              }
-              name="city"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              City
-            </label>
-            {formik.touched.city && formik.errors.city ? (
-              <small className="error text-danger">{formik.errors.city}</small>
-            ) : null}
-          </div>
-          <div className="col-md-6 position-relative  flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={
                 formik.touched.age && formik.errors.age
                   ? "input form-control is-invalid"
                   : "input form-control"
@@ -323,6 +317,35 @@ const StaffSignupForm = () => {
 
           <div className="col-md-6 mb-3">
             <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="country-label">Country</InputLabel>
+              <Select
+                labelId="country-label"
+                id="country-select"
+                value={formik.values.country}
+                label="Country"
+                onChange={formik.handleChange}
+                name="country"
+                onBlur={formik.handleBlur}
+                error={formik.touched.country && Boolean(formik.errors.country)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {sortedCountries.map((eachCountry, index) => (
+                  <MenuItem key={eachCountry.id} value={eachCountry.country}>
+                    {eachCountry.country}
+                  </MenuItem>
+                ))}
+              </Select>
+              {formik.touched.country && Boolean(formik.errors.country) ? (
+                <small className="error text-danger">
+                  {formik.errors.country}
+                </small>
+              ) : null}
+            </FormControl>
+          </div>
+          <div className="col-md-6 mb-3">
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
               <InputLabel id="state-label">State</InputLabel>
               <Select
                 labelId="state-label"
@@ -348,35 +371,28 @@ const StaffSignupForm = () => {
               ) : null}
             </FormControl>
           </div>
-
-          <div className="col-md-6 mb-3">
-            <FormControl sx={{ m: 0, width: "100%" }} size="small">
-              <InputLabel id="country-label">Country</InputLabel>
-              <Select
-                labelId="country-label"
-                id="country-select"
-                value={formik.values.country}
-                label="Country"
-                onChange={formik.handleChange}
-                name="country"
-                onBlur={formik.handleBlur}
-                error={formik.touched.country && Boolean(formik.errors.country)}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value="Nigeria">Nigeria</MenuItem>
-                <MenuItem value="UK">United Kingdom</MenuItem>
-                <MenuItem value="US">United State of America</MenuItem>
-                <MenuItem value="Canada">Canada</MenuItem>
-              </Select>
-              {formik.touched.country && Boolean(formik.errors.country) ? (
-                <small className="error text-danger">
-                  {formik.errors.country}
-                </small>
-              ) : null}
-            </FormControl>
+          <div className="col-md-6 position-relative  flex-column mb-3">
+            <input
+              type="text"
+              autoComplete="on"
+              className={
+                formik.touched.city && formik.errors.city
+                  ? "input form-control is-invalid"
+                  : "input form-control"
+              }
+              name="city"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="validationServer01" className="user-label">
+              City
+            </label>
+            {formik.touched.city && formik.errors.city ? (
+              <small className="error text-danger">{formik.errors.city}</small>
+            ) : null}
           </div>
+          
 
           <div className="col-lg-6 position-relative  flex-column mb-3">
             <input
@@ -423,35 +439,48 @@ const StaffSignupForm = () => {
             ) : null}
           </div>
           {message ? (
-          <small className="small-animation" style={{position: 'relative', top: '0px', fontSize: '14px', fontWeight: 'normal'}}>
-          <TypeAnimation
-          sequence={[
-            1500,
-            () => {
-              setTypingStatus("Typing...");
-            },
-            message,
-            () => {
-              setTypingStatus("Done Typing");
-            },
-            5000,
-            () => {
-              setTypingStatus("Deleting...");
-            },
-            "",
-            () => {
-              setTypingStatus("Done Deleting");
-            },
-          ]}
-          repeat={Infinity}
-        />
-        {typingStatus !== "Done Typing" && (
-          <span style={{ color: typingStatus === "Deleting..." ? "red" : "blue" }}>{typingStatus}</span>
-        )}
-          </small>
-        
-      ) : null}
-          
+            <small
+              className="small-animation"
+              style={{
+                position: "relative",
+                top: "0px",
+                fontSize: "14px",
+                fontWeight: "normal",
+              }}
+            >
+              <TypeAnimation
+                sequence={[
+                  1500,
+                  () => {
+                    setTypingStatus("Typing...");
+                  },
+                  message,
+                  () => {
+                    setTypingStatus("Done Typing");
+                  },
+                  5000,
+                  () => {
+                    setTypingStatus("Deleting...");
+                  },
+                  "",
+                  () => {
+                    setTypingStatus("Done Deleting");
+                  },
+                ]}
+                repeat={Infinity}
+              />
+              {typingStatus !== "Done Typing" && (
+                <span
+                  style={{
+                    color: typingStatus === "Deleting..." ? "red" : "blue",
+                  }}
+                >
+                  {typingStatus}
+                </span>
+              )}
+            </small>
+          ) : null}
+
           <div className="col-12">
             <div className="form-check">
               <input
