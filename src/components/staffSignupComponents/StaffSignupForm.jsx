@@ -8,9 +8,18 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { TypeAnimation } from "react-type-animation";
+import { useMediaQuery } from "react-responsive";
+
+
 
 const StaffSignupForm = () => {
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const [typingStatus, setTypingStatus] = useState("");
+  const [callbackText, setCallbackText] = useState("");
+  const [showTypingAnimation, setShowTypingAnimation] = useState(false);
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -64,17 +73,18 @@ const StaffSignupForm = () => {
             toast: true,
             position: "top",
             showConfirmButton: false,
-            timer: 6000,
+            timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener("mouseenter", Swal.stopTimer);
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
+          setMessage("If you want to register as a staff and don't have a valid Staff Verification Code, kindly contact the management through the Contact Us page. Thanks")
         }
       } catch (err) {
         const errorMessage =
-          err.response?.data?.message || "An error occurred.";
+          err.response?.data?.message || "Apologies, an error occurred during the process.";
 
         Swal.fire({
           icon: "error",
@@ -391,7 +401,7 @@ const StaffSignupForm = () => {
               </small>
             ) : null}
           </div>
-          <div className="col-md-12 position-relative  flex-column mb-3">
+          <div className="col-md-12 position-relative  flex-column mb-1">
             <input
               type="text"
               autoComplete="on"
@@ -412,6 +422,36 @@ const StaffSignupForm = () => {
               <small className="error text-danger">{formik.errors.pass}</small>
             ) : null}
           </div>
+          {message ? (
+          <small className="small-animation" style={{position: 'relative', top: '0px', fontSize: '14px', fontWeight: 'normal'}}>
+          <TypeAnimation
+          sequence={[
+            1500,
+            () => {
+              setTypingStatus("Typing...");
+            },
+            message,
+            () => {
+              setTypingStatus("Done Typing");
+            },
+            5000,
+            () => {
+              setTypingStatus("Deleting...");
+            },
+            "",
+            () => {
+              setTypingStatus("Done Deleting");
+            },
+          ]}
+          repeat={Infinity}
+        />
+        {typingStatus !== "Done Typing" && (
+          <span style={{ color: typingStatus === "Deleting..." ? "red" : "blue" }}>{typingStatus}</span>
+        )}
+          </small>
+        
+      ) : null}
+          
           <div className="col-12">
             <div className="form-check">
               <input
