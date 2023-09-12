@@ -72,7 +72,6 @@ const AboutUsPage = () => {
             Locate Us
           </a>
           <header className="about-us-header">
-            {/* <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg" alt="School Header" /> */}
             <AboutUsCarousel/>
             <div className="header-content">
               <h1>About Our School</h1>

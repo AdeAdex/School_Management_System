@@ -1,28 +1,59 @@
-import React from "react";
-import { useCallback, useEffect, useState } from "react";
-import { Carousel, Embla } from "@mantine/carousel";
-import { Progress, rem } from "@mantine/core";
+import React, { useEffect } from "react";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel } from "@mantine/carousel";
 
 const AboutUsCarousel = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [embla, setEmbla] = (useState < Embla) | (null > null);
-
-  const handleScroll = useCallback(() => {
-    if (!embla) return;
-    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
-    setScrollProgress(progress * 100);
-  }, [embla, setScrollProgress]);
-
-  useEffect(() => {
-    if (embla) {
-      embla.on("scroll", handleScroll);
-      handleScroll();
-    }
-  }, [embla]);
+  const autoplay = useRef(Autoplay({ delay: 1000 }));
 
   return (
     <>
       <Carousel
+        // maw={320}
+        // height={200}
+        width="100%"
+        height="100%"
+        mx="auto"
+        withIndicators
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
+        styles={{
+        control: {
+          '&[data-inactive]': {
+            opacity: 0,
+            cursor: 'default',
+          },
+        },
+      }}
+      >
+        <Carousel.Slide>
+          <img
+            src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
+            alt=""
+          />
+        </Carousel.Slide>
+        <Carousel.Slide>
+          <img
+            src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_16_mydc4f.jpg"
+            alt=""
+          />
+        </Carousel.Slide>
+        <Carousel.Slide>
+          <img
+            src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg"
+            alt=""
+          />
+        </Carousel.Slide>
+      </Carousel>
+    </>
+  );
+};
+
+export default AboutUsCarousel;
+
+{
+  /* <Carousel
         dragFree
         slideSize="50%"
         slideGap="md"
@@ -31,11 +62,13 @@ const AboutUsCarousel = () => {
         initialSlide={2}
       >
         <Carousel.Slide>
-                <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg" alt="" />
+          <img
+            src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
+            alt=""
+          />
         </Carousel.Slide>
         <Carousel.Slide>2</Carousel.Slide>
         <Carousel.Slide>3</Carousel.Slide>
-        {/* ...other slides */}
       </Carousel>
       <Progress
         value={scrollProgress}
@@ -46,9 +79,5 @@ const AboutUsCarousel = () => {
         size="sm"
         mt="xl"
         mx="auto"
-      />
-    </>
-  );
-};
-
-export default AboutUsCarousel;
+      /> */
+}
