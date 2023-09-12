@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./StudentSignUp.css";
 import { useNavigate } from "react-router-dom";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const PersonalInformation = () => {
   let navigate = useNavigate();
@@ -43,7 +43,8 @@ const PersonalInformation = () => {
 
     onSubmit: (values) => {
       globalState = { ...globalState, ...values };
-      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
+      const endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
       axios.post(endpoint, globalState).then((response) => {
         const Toast = Swal.mixin({
           toast: true,
@@ -299,87 +300,44 @@ const PersonalInformation = () => {
         </div>
 
         <div className="col-md-6 mb-3">
-          {/* <label htmlFor="validationServer04" className="user-label">
-            State
-          </label>
-          <select
-            autoComplete="on"
-            className="form-select "
-            id="validationServer04"
-            name="state"
-            aria-describedby="validationServer04Feedback"
-            required
-            onChange={formik.handleChange}
-            value={formik.values.state}
-          >
-            <option disabled>Choose...</option>
-            <option value="Oyo State">Oyo State</option>
-            <option value="Lagos State">Lagos State</option>
-          </select>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please select a valid state.
-          </div> */}
-          <FormControl sx={{ m: 0, width: '100%' }} size="small">
-          <InputLabel id="demo-select-small-label">State</InputLabel>
-          <Select
-            labelId="demo-select-small-label"
-            id="demo-select-small"
-            value={formik.values.state}
-            label="State"
-            onChange={formik.handleChange}
-            name="state"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value="Oyo State">Oyo State</MenuItem>
-            <MenuItem value="Lagos State">Lagos State</MenuItem>
-            <MenuItem value="Osun State">Osun State</MenuItem>
-          </Select>
+          <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="demo-select-small-label">State</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={formik.values.state}
+              label="State"
+              onChange={formik.handleChange}
+              name="state"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="Oyo State">Oyo State</MenuItem>
+              <MenuItem value="Lagos State">Lagos State</MenuItem>
+              <MenuItem value="Osun State">Osun State</MenuItem>
+            </Select>
           </FormControl>
         </div>
         <div className="col-md-6 mb-3">
-          {/* <label htmlFor="validationServer04" className="user-label">
-            Country
-          </label>
-          <select
-            autoComplete="on"
-            className="form-select "
-            id="validationServer04"
-            name="country"
-            aria-describedby="validationServer04Feedback"
-            required
-            onChange={formik.handleChange}
-            value={formik.values.country}
-          >
-            <option disabled>Choose...</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="Uk">United Kingdom</option>
-            <option value="USA">United State of America</option>
-            <option value="Canada">Canada</option>
-          </select>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please select a valid state.
-          </div> */}
-
-          <FormControl sx={{ m: 0, width: '100%' }} size="small">
-          <InputLabel id="demo-select-small-label">Country</InputLabel>
-          <Select
-            labelId="demo-select-small-label"
-            id="demo-select-small"
-            value={formik.values.country}
-            label="Country"
-            onChange={formik.handleChange}
-            name="country"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value="Nigeria">Nigeria</MenuItem>
-            <MenuItem value="UK">United Kingdom</MenuItem>
-            <MenuItem value="US">United State of America</MenuItem>
-            <MenuItem value="Canada">Canada</MenuItem>
-          </Select>
+          <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="demo-select-small-label">Country</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={formik.values.country}
+              label="Country"
+              onChange={formik.handleChange}
+              name="country"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="Nigeria">Nigeria</MenuItem>
+              <MenuItem value="UK">United Kingdom</MenuItem>
+              <MenuItem value="US">United State of America</MenuItem>
+              <MenuItem value="Canada">Canada</MenuItem>
+            </Select>
           </FormControl>
         </div>
         <div className="col-12">

@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { format } from "date-fns";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const StaffSignupForm = () => {
   const navigate = useNavigate();
@@ -23,6 +27,7 @@ const StaffSignupForm = () => {
       gender: "", // Added gender field
       country: "", // Added country field
       state: "",
+      pass: "",
     },
 
     onSubmit: async (values) => {
@@ -52,6 +57,7 @@ const StaffSignupForm = () => {
           setIsLoading(false);
           navigate("/staff_signin");
         } else {
+          setIsLoading(false);
           Swal.fire({
             icon: "error",
             title: response.data.message,
@@ -109,7 +115,7 @@ const StaffSignupForm = () => {
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
           "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
         ),
-        checkbox: yup.boolean().oneOf([true]),
+      checkbox: yup.boolean().oneOf([true]),
       city: yup.string().required("City is required"), // Validation for city field
       age: yup
         .number()
@@ -118,6 +124,7 @@ const StaffSignupForm = () => {
       gender: yup.string().required("Gender is required"), // Validation for gender field
       country: yup.string().required("Country is required"), // Validation for country field
       state: yup.string().required("State is required"), // Validation for state field
+      pass: yup.string().required("Staff Verification Code is required"),
     }),
   });
 
@@ -276,73 +283,91 @@ const StaffSignupForm = () => {
               <small className="error text-danger">{formik.errors.age}</small>
             ) : null}
           </div>
-          <div className="col-md-6 position-relative  flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={
-                formik.touched.gender && formik.errors.gender
-                  ? "input form-control is-invalid"
-                  : "input form-control"
-              }
-              name="gender"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              Gender
-            </label>
-            {formik.touched.gender && formik.errors.gender ? (
-              <small className="error text-danger">
-                {formik.errors.gender}
-              </small>
-            ) : null}
+          <div className="col-md-6 mb-3">
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="gender-label">Gender</InputLabel>
+              <Select
+                labelId="gender-label"
+                id="gender-select"
+                value={formik.values.gender}
+                label="Gender"
+                onChange={formik.handleChange}
+                name="gender"
+                onBlur={formik.handleBlur}
+                error={formik.touched.gender && Boolean(formik.errors.gender)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Male">Male</MenuItem>
+                <MenuItem value="Female">Female</MenuItem>
+                <MenuItem value="Others">Others</MenuItem>
+              </Select>
+              {formik.touched.gender && Boolean(formik.errors.gender) ? (
+                <small className="error text-danger">
+                  {formik.errors.gender}
+                </small>
+              ) : null}
+            </FormControl>
           </div>
-          <div className="col-md-6 position-relative  flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={
-                formik.touched.country && formik.errors.country
-                  ? "input form-control is-invalid"
-                  : "input form-control"
-              }
-              name="country"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              Country
-            </label>
-            {formik.touched.country && formik.errors.country ? (
-              <small className="error text-danger">
-                {formik.errors.country}
-              </small>
-            ) : null}
+
+          <div className="col-md-6 mb-3">
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="state-label">State</InputLabel>
+              <Select
+                labelId="state-label"
+                id="state-select"
+                value={formik.values.state}
+                label="State"
+                onChange={formik.handleChange}
+                name="state"
+                onBlur={formik.handleBlur}
+                error={formik.touched.state && Boolean(formik.errors.state)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Oyo State">Oyo State</MenuItem>
+                <MenuItem value="Lagos State">Lagos State</MenuItem>
+                <MenuItem value="Osun State">Osun State</MenuItem>
+              </Select>
+              {formik.touched.state && Boolean(formik.errors.state) ? (
+                <small className="error text-danger">
+                  {formik.errors.state}
+                </small>
+              ) : null}
+            </FormControl>
           </div>
-          <div className="col-md-6 position-relative  flex-column mb-3">
-            <input
-              type="text"
-              autoComplete="on"
-              className={
-                formik.touched.state && formik.errors.state
-                  ? "input form-control is-invalid"
-                  : "input form-control"
-              }
-              name="state"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label htmlFor="validationServer01" className="user-label">
-              State
-            </label>
-            {formik.touched.state && formik.errors.state ? (
-              <small className="error text-danger">{formik.errors.state}</small>
-            ) : null}
+
+          <div className="col-md-6 mb-3">
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="country-label">Country</InputLabel>
+              <Select
+                labelId="country-label"
+                id="country-select"
+                value={formik.values.country}
+                label="Country"
+                onChange={formik.handleChange}
+                name="country"
+                onBlur={formik.handleBlur}
+                error={formik.touched.country && Boolean(formik.errors.country)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Nigeria">Nigeria</MenuItem>
+                <MenuItem value="UK">United Kingdom</MenuItem>
+                <MenuItem value="US">United State of America</MenuItem>
+                <MenuItem value="Canada">Canada</MenuItem>
+              </Select>
+              {formik.touched.country && Boolean(formik.errors.country) ? (
+                <small className="error text-danger">
+                  {formik.errors.country}
+                </small>
+              ) : null}
+            </FormControl>
           </div>
+
           <div className="col-lg-6 position-relative  flex-column mb-3">
             <input
               type="password"
@@ -364,6 +389,27 @@ const StaffSignupForm = () => {
               <small className="error text-danger">
                 {formik.errors.password}
               </small>
+            ) : null}
+          </div>
+          <div className="col-md-12 position-relative  flex-column mb-3">
+            <input
+              type="text"
+              autoComplete="on"
+              className={
+                formik.touched.pass && formik.errors.pass
+                  ? "input form-control is-invalid"
+                  : "input form-control"
+              }
+              name="pass"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="validationServer01" className="user-label">
+              Staff Verification Code
+            </label>
+            {formik.touched.pass && formik.errors.pass ? (
+              <small className="error text-danger">{formik.errors.pass}</small>
             ) : null}
           </div>
           <div className="col-12">
