@@ -17,7 +17,7 @@ const StaffSignupForm = () => {
       email: "",
       phoneNumber: "",
       password: "",
-      checkbox: false,
+      check: false,
       city: "", // Added city field
       age: "", // Added age field
       gender: "", // Added gender field
@@ -26,6 +26,7 @@ const StaffSignupForm = () => {
     },
 
     onSubmit: async (values) => {
+      setIsLoading(true);
       try {
         const randomNumber = Math.floor(Math.random() * 100000000);
         const numbersPart = randomNumber.toString().padStart(8, "0");
@@ -43,11 +44,12 @@ const StaffSignupForm = () => {
         };
 
         const endpoint =
-          "https://school-portal-backend-adex2210.vercel.app/staff_account/staff_signup";
+          "http://localhost:2000/staff_account/staff_signup";
 
         const response = await axios.post(endpoint, newValues);
 
         if (response.data.status) {
+          setIsLoading(false);
           navigate("/staff_signin");
         } else {
           Swal.fire({
@@ -107,9 +109,7 @@ const StaffSignupForm = () => {
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
           "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
         ),
-      checkbox: yup
-        .boolean()
-        .oneOf([true], "You must agree to terms and conditions"),
+        checkbox: yup.boolean().oneOf([true]),
       city: yup.string().required("City is required"), // Validation for city field
       age: yup
         .number()
@@ -370,7 +370,7 @@ const StaffSignupForm = () => {
             <div className="form-check">
               <input
                 className={
-                  formik.touched.check && formik.errors.check
+                  formik.touched.checkbox && formik.errors.checkbox
                     ? "form-check-input is-invalid"
                     : "form-check-input"
                 }
@@ -391,7 +391,7 @@ const StaffSignupForm = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary signup-btn" type="submit">
+            <button className="btn btn-primary signup-bt" type="submit">
               {isLoading ? (
                 <span className="d-flex">
                   <div className="spinner my-auto"></div>
