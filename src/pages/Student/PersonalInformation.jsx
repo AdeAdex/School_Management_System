@@ -32,7 +32,8 @@ const PersonalInformation = () => {
   };
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
     axios
       .get(endpoint)
       .then((response) => {
@@ -242,74 +243,72 @@ const PersonalInformation = () => {
           </div>
         </div>
         <div className="col-md-6 mb-3">
-            <FormControl sx={{ m: 0, width: "100%" }} size="small">
-              <InputLabel id="country-label">Country</InputLabel>
-              <Select
-                labelId="country-label"
-                id="country-select"
-                value={formik.values.country}
-                label="Country"
-                // onChange={formik.handleChange}
-                onChange={(e) => {
-                  handleCountryChange(e); // Call the custom event handler
-                  formik.handleChange(e); // Call formik's handleChange
-                }}
-                name="country"
-                onBlur={formik.handleBlur}
-                error={formik.touched.country && Boolean(formik.errors.country)}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {allCountry
-                  .slice() // Create a copy to avoid modifying the original array
-                  .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
-                  .map((eachCountry, index) => (
-                    <MenuItem key={eachCountry.id} value={eachCountry.country}>
-                      {eachCountry.country}
-                    </MenuItem>
-                  ))}
-              </Select>
-              {formik.touched.country && Boolean(formik.errors.country) ? (
-                <small className="error text-danger">
-                  {formik.errors.country}
-                </small>
-              ) : null}
-            </FormControl>
-          </div>
-          <div className="col-md-6 mb-3">
-            <FormControl sx={{ m: 0, width: "100%" }} size="small">
-              <InputLabel id="state-label">State</InputLabel>
-              <Select
-                labelId="state-label"
-                id="state-select"
-                value={formik.values.state}
-                label="State"
-                onChange={formik.handleChange}
-                name="state"
-                onBlur={formik.handleBlur}
-                error={formik.touched.state && Boolean(formik.errors.state)}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {statesForCountry
-                  .slice() // Create a copy to avoid modifying the original array
-                  .sort() // Sort the array alphabetically
-                  .map((state) => (
-                    <MenuItem key={state} value={state}>
-                      {state}
-                    </MenuItem>
-                  ))}
-              </Select>
-              {formik.touched.state && Boolean(formik.errors.state) ? (
-                <small className="error text-danger">
-                  {formik.errors.state}
-                </small>
-              ) : null}
-            </FormControl>
-          </div>
-          <div className="col-md-6 position-relative d-flex flex-column mb-3">
+          <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="country-label">Country</InputLabel>
+            <Select
+              labelId="country-label"
+              id="country-select"
+              value={formik.values.country}
+              label="Country"
+              // onChange={formik.handleChange}
+              onChange={(e) => {
+                handleCountryChange(e); // Call the custom event handler
+                formik.handleChange(e); // Call formik's handleChange
+              }}
+              name="country"
+              onBlur={formik.handleBlur}
+              error={formik.touched.country && Boolean(formik.errors.country)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              {allCountry
+                .slice() // Create a copy to avoid modifying the original array
+                .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
+                .map((eachCountry, index) => (
+                  <MenuItem key={eachCountry.id} value={eachCountry.country}>
+                    {eachCountry.country}
+                  </MenuItem>
+                ))}
+            </Select>
+            {formik.touched.country && Boolean(formik.errors.country) ? (
+              <small className="error text-danger">
+                {formik.errors.country}
+              </small>
+            ) : null}
+          </FormControl>
+        </div>
+        <div className="col-md-6 mb-3">
+          <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="state-label">State</InputLabel>
+            <Select
+              labelId="state-label"
+              id="state-select"
+              value={formik.values.state}
+              label="State"
+              onChange={formik.handleChange}
+              name="state"
+              onBlur={formik.handleBlur}
+              error={formik.touched.state && Boolean(formik.errors.state)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              {statesForCountry
+                .slice() // Create a copy to avoid modifying the original array
+                .sort() // Sort the array alphabetically
+                .map((state) => (
+                  <MenuItem key={state} value={state}>
+                    {state}
+                  </MenuItem>
+                ))}
+            </Select>
+            {formik.touched.state && Boolean(formik.errors.state) ? (
+              <small className="error text-danger">{formik.errors.state}</small>
+            ) : null}
+          </FormControl>
+        </div>
+        <div className="col-md-6 position-relative d-flex flex-column mb-3">
           <input
             type="text"
             autoComplete="on"
@@ -353,7 +352,6 @@ const PersonalInformation = () => {
           <div className="invalid-feedback">Please provide your Address!</div>
         </div>
 
-        
         <div className="col-md-6 position-relative d-flex flex-column mb-3">
           <input
             type="number"
@@ -399,7 +397,6 @@ const PersonalInformation = () => {
           </div>
         </div>
 
-       
         <div className="col-12">
           <button className="btn btn-primary signup-btn px-5" type="submit">
             Save
