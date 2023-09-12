@@ -36,6 +36,10 @@ const PagesNavbar = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const callUs = () => {
+    window.open("tel:+2347033959586");
+  }
   
   return (
     <>
@@ -74,11 +78,12 @@ const PagesNavbar = () => {
                 to_where="/ournews"
                 styles={{ width: "auto" }}
               ></StickyNav>
-              <StickyNav
-                name="+2347033959586"
-                icon="fas fa-phone"
+              <StickyNav2
+              sticky2Name="+2347033959586"
+                sticky2Icon="fas fa-phone"
+                myFunc={callUs}
                 styles={{ width: "auto" }}
-              ></StickyNav>
+              />
             </div>
             <div className="d-flex gap-5 w-50 justify-content-end">
               {/* <StickyNav
