@@ -9,8 +9,6 @@ const AboutUsCarousel = () => {
   return (
     <>
       <Carousel
-        // maw={320}
-        // height={200}
         width="100%"
         height="100%"
         mx="auto"
@@ -18,14 +16,17 @@ const AboutUsCarousel = () => {
         plugins={[autoplay.current]}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={autoplay.current.reset}
+        dragFree
+        slideGap="md"
+        align="start"
         styles={{
-        control: {
-          '&[data-inactive]': {
-            opacity: 0,
-            cursor: 'default',
+          control: {
+            "&[data-inactive]": {
+              opacity: 0,
+              cursor: "default",
+            },
           },
-        },
-      }}
+        }}
       >
         <Carousel.Slide>
           <img
@@ -51,33 +52,3 @@ const AboutUsCarousel = () => {
 };
 
 export default AboutUsCarousel;
-
-{
-  /* <Carousel
-        dragFree
-        slideSize="50%"
-        slideGap="md"
-        height={200}
-        getEmblaApi={setEmbla}
-        initialSlide={2}
-      >
-        <Carousel.Slide>
-          <img
-            src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
-            alt=""
-          />
-        </Carousel.Slide>
-        <Carousel.Slide>2</Carousel.Slide>
-        <Carousel.Slide>3</Carousel.Slide>
-      </Carousel>
-      <Progress
-        value={scrollProgress}
-        styles={{
-          bar: { transitionDuration: "0ms" },
-          root: { maxWidth: rem(320) },
-        }}
-        size="sm"
-        mt="xl"
-        mx="auto"
-      /> */
-}

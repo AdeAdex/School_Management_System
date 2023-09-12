@@ -11,36 +11,33 @@ const AboutUsPage = () => {
   const [schoolLocation, setSchoolLocation] = useState(null);
 
   const getMyLocation = () => {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      console.log(position);
-      console.log("Latitude: " + latitude);
-      console.log("Longitude: " + longitude);
-    });
-  } else {
-    console.log("Geolocation is not available in this browser.");
-  }
-}
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(position);
+        console.log("Latitude: " + latitude);
+        console.log("Longitude: " + longitude);
+      });
+    } else {
+      console.log("Geolocation is not available in this browser.");
+    }
+  };
 
   const fetchSchoolLocation = () => {
     const schoolLatitude = 6.5243793;
     const schoolLongitude = 3.3792057;
     setSchoolLocation({ lat: schoolLatitude, lng: schoolLongitude });
   };
- 
 
   useEffect(() => {
-    getMyLocation()
+    getMyLocation();
     fetchSchoolLocation();
   }, []);
 
-
   const handleLocateUsClick = (e) => {
-    e.preventDefault(); // Prevent the default behavior of the anchor link
+    e.preventDefault();
     if (schoolLocation) {
-      // Check if the location is available before generating the Google Maps link
       const googleMapsLink = `https://maps.google.com/?q=${schoolLocation.lat},${schoolLocation.lng}`;
       window.location.href = googleMapsLink; // Redirect to the Google Maps link
     }
@@ -57,22 +54,11 @@ const AboutUsPage = () => {
             paddingTop: "200px",
           }}
         >
-          {/* <div>
-            {schoolLocation ? (
-              <div>
-                Latitude: {schoolLocation.lat}, Longitude: {schoolLocation.lng}
-              </div>
-            ) : (
-              <div>loading</div>
-            )}
-          </div> */}
-          {/* <a href={"https://maps.google.com/?q=" + schoolLocation}>Location Us
-          </a> */}
           <a href="#" onClick={handleLocateUsClick}>
             Locate Us
           </a>
           <header className="about-us-header">
-            <AboutUsCarousel/>
+            <AboutUsCarousel />
             <div className="header-content">
               <h1>About Our School</h1>
               <p>
@@ -102,7 +88,7 @@ const AboutUsPage = () => {
           </section>
 
           <section className="additional-image about-us-image1">
-            <img src="/pic/teacher21.jpg" alt="First Image" />
+            <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_12_uzsauy.jpg" alt="First Image" />
             <div className="image-content">
               <h2>Our Campus</h2>
               <p>
@@ -112,7 +98,7 @@ const AboutUsPage = () => {
           </section>
 
           <section className="additional-image about-us-image2">
-            <img src="/pic/teacher21.jpg" alt="Second Image" />
+            <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_17_tkrwco.jpg" alt="Second Image" />
             <div className="image-content">
               <h2>Our Facilities</h2>
               <p>
@@ -132,32 +118,6 @@ const AboutUsPage = () => {
           </section>
         </div>
       </div>
-
-      {/* <div className="about-us-main-container">
-      <a href={'https://maps.google.com/?q=' + children}>My Location</a>
-      <div>{children}</div>
-        <div
-          className="d-flex flex-column justify-content-center align-items-center about-us-container"
-          style={{
-            minHeight: "100vh",
-            paddingTop: "200px",
-          }}
-        >
-          <header className="about-us-header">
-            <img src="/pic/teacher21.jpg" alt="School Header" />
-            <div className="header-content">
-              <h1>{t("aboutUs.aboutOurSchool")}</h1>
-              <p>{t("aboutUs.welcomeMessage")}</p>
-            </div>
-          </header>
-
-          <section className="our-story">
-            <h2>{t("aboutUs.ourHistory")}</h2>
-            <div dangerouslySetInnerHTML={{ __html: t("aboutUs.historyContent") }} />
-          </section>
-        </div>
-      </div> */}
-
       <Footer />
     </>
   );
