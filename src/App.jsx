@@ -140,6 +140,7 @@ function App() {
           <Route path='payment_history' element={<StudentPaymentHistory/>} />
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
+        
             
         <Route path='/staff_dashboard' element={shouldRedirect ? <Navigate to="/staff_dashboard/home"/> : <Dashboard/>} />
         <Route path='/staff_dashboard/*' element={ <Dashboard/>}>

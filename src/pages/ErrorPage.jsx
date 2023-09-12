@@ -44,7 +44,7 @@ const ErrorPage = () => {
           className="error-footer"
           style={{width: "50%" }}
         >
-          <img src="pic/error-img2.png" style={{objectFit: "cover", width: '100%'}} alt="error image" />
+          <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694517790/error-img_kvxzzx.png" style={{objectFit: "cover", width: '100%'}} alt="error image" />
         </div>
       </div>
         

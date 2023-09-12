@@ -164,11 +164,11 @@ const Nav = () => {
                   {/* <li>
                     <hr className="dropdown-divider" />
                   </li> */}
-                  <li>
+                  {/* <li>
                     <a className="dropdown-item" href="#">
                       excursions
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
               <li className="nav-item">
@@ -186,14 +186,14 @@ const Nav = () => {
                 </a>
                 <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
-                    <Link className="dropdown-item" to="/staff_signup">
+                    <Link className="dropdown-item" to="https://mail.google.com/">
                       teachers email
                     </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="https://mail.google.com/">
                       students email
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
