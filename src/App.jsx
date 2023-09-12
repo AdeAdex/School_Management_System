@@ -53,6 +53,7 @@ import StudentRegistrationHistory from './pages/Student/StudentRegistrationHisto
 import StudentResults from './pages/Student/StudentResults'
 import StudentPayment from './pages/Student/StudentPayment'
 import StudentPaymentHistory from './pages/Student/StudentPaymentHistory'
+import ContactUSPage from './pages/ContactUSPage'
 
 
 
@@ -160,6 +161,7 @@ function App() {
         <Route path='/read_more_about_our_event' element={<ReadEventPage/>}/>
         <Route path='/our_courses' element={<CoursePage/>}/>
         <Route path='/aboutus' element={<AboutUsPage/>} />
+        <Route path='/contact_us' element={<ContactUSPage/>} />
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
     </Router>

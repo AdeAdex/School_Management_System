@@ -197,9 +197,31 @@ const Nav = () => {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <Link to="" className="nav-link">more</Link>
+           
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  more
+                </a>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
+                  <li>
+                    <Link className="dropdown-item" to="/ourteachers">
+                      teachers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/contact_us">
+                      contact us
+                    </Link>
+                  </li>
+                </ul>
               </li>
+              
               <li className="nav-item">
                 <Link to="/aboutus" className="nav-link">About US</Link>
               </li>

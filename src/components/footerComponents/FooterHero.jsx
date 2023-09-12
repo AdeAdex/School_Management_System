@@ -27,7 +27,7 @@ const FooterHero = () => {
         }}
       >
         <div className="w-50 d-flex justify-content-center">
-          <span className="d-flex my-auto">
+          <span className="d-flex my-auto px-4">
             © Copyright 2023 by Adex - Made With ❤ In Nigeria
           </span>{" "}
         </div>
