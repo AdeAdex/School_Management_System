@@ -32,7 +32,7 @@ const PersonalInformation = () => {
   };
 
   useEffect(() => {
-    let endpoint = "http://localhost:2000/staff_account/countries";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
     axios
       .get(endpoint)
       .then((response) => {
