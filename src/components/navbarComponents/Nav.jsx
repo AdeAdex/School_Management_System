@@ -47,7 +47,7 @@ const Nav = () => {
               src="pic/ade.png"
               alt="Logo"
               className="my-auto logo"
-              style={{ height: "50px" }}
+              style={{ height: "50px", paddingLeft: '12px' }}
             />
           </Link>
           <button
