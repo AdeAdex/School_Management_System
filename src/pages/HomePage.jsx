@@ -13,6 +13,25 @@ import ScrollProgress from "../components/generalComponents/ScrollProgress";
 
 const HomePage = () => {
   const contactUsRef = useRef();
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 1000) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
 
   const scrollToContactUs = (param) => {
     if (param === "contact us") {
@@ -76,20 +95,22 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-        <div>
+        {showScrollButton && (
           <button
             className="scroll-to-top-button"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-          > Top
-             <div className="top-arrow">
+          >
+            Top
+            <div className="top-arrow">
               <span className="arrow-span"></span>
               <span className="arrow-span"></span>
               <span className="arrow-span"></span>
             </div>
           </button>
-        </div>
+        )}
+
         <div ref={contactUsRef}>
           <Footer />
         </div>
