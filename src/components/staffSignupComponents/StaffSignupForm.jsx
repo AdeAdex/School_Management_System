@@ -19,6 +19,7 @@ const StaffSignupForm = () => {
   const [showTypingAnimation, setShowTypingAnimation] = useState(false);
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
   const [allCountry, setAllCountry] = useState([]);
+  const [statesForCountry, setStatesForCountry] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,11 +27,32 @@ const StaffSignupForm = () => {
     return a.country.localeCompare(b.country);
   });
 
+
+  const handleCountryChange = (event) => {
+    const selectedCountry = event.target.value;
+
+    // Find the selected country's states from the fetched data
+    const selectedCountryData = allCountry.find(
+      (countryData) => countryData.country === selectedCountry
+    );
+
+    // If the selectedCountryData is found, set the states
+    if (selectedCountryData) {
+      setStatesForCountry(selectedCountryData.states);
+    } else {
+      // If the selectedCountryData is not found, clear the states
+      setStatesForCountry([]);
+    }
+  };
+
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/countries";
     axios.get(endpoint).then((response) => {
       console.log(response.data);
       setAllCountry(response.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching countries:", error);
     });
   }, []);
 
@@ -323,7 +345,11 @@ const StaffSignupForm = () => {
                 id="country-select"
                 value={formik.values.country}
                 label="Country"
-                onChange={formik.handleChange}
+                // onChange={formik.handleChange}
+                onChange={(e) => {
+              handleCountryChange(e); // Call the custom event handler
+              formik.handleChange(e); // Call formik's handleChange
+            }}
                 name="country"
                 onBlur={formik.handleBlur}
                 error={formik.touched.country && Boolean(formik.errors.country)}
@@ -360,9 +386,14 @@ const StaffSignupForm = () => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value="Oyo State">Oyo State</MenuItem>
-                <MenuItem value="Lagos State">Lagos State</MenuItem>
-                <MenuItem value="Osun State">Osun State</MenuItem>
+                {statesForCountry
+        .slice() // Create a copy to avoid modifying the original array
+        .sort() // Sort the array alphabetically
+        .map((state) => (
+          <MenuItem key={state} value={state}>
+            {state}
+          </MenuItem>
+        ))}
               </Select>
               {formik.touched.state && Boolean(formik.errors.state) ? (
                 <small className="error text-danger">
@@ -371,6 +402,7 @@ const StaffSignupForm = () => {
               ) : null}
             </FormControl>
           </div>
+
           <div className="col-md-6 position-relative  flex-column mb-3">
             <input
               type="text"
@@ -523,3 +555,5 @@ const StaffSignupForm = () => {
 };
 
 export default StaffSignupForm;
+
+
