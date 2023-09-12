@@ -44,13 +44,11 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
+.contact-form-container .form-group {
   margin-bottom: 20px;
 }
 
-.contact-us-container input[type="text"],
-input[type="email"],
-textarea {
+.contact-form-container-input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -63,7 +61,7 @@ textarea {
   font-size: 14px;
 }
 
-.contact-us-container button[type="submit"] {
+.contact-form-submit-btn {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -73,7 +71,7 @@ textarea {
   font-size: 16px;
 }
 
-.contact-us-container button[type="submit"]:hover {
+.contact-form-submit-btn:hover {
   background-color: #0056b3;
 }
 
@@ -83,6 +81,37 @@ textarea {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-toast-width {
+  width: auto !important;
+  bottom: 10px !important;
+  overflow: hidden !important;
+}
+
+/* Custom CSS */
+.custom-toast-position {
+  top: 20px; /* Adjust the top position as needed */
+  right: 20px; /* Adjust the right position as needed */
+}
+
+.close-button {
+  border: none;
+  color: red !important;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0px 5px;
+  z-index: 1;
+}
+
+.toast-content {
+  color: red !important;
+  position: absolute;
+  top: 0;
+  right: 20px;
 }
 
 /* Responsive Design */
@@ -96,5 +125,16 @@ textarea {
   .map {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .custom-toast-width {
+    width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .custom-toast-position {
+    top: 0px;
+    right: 0px;
   }
 }
