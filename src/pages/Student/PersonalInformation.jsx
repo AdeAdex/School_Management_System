@@ -11,7 +11,38 @@ import Select from "@mui/material/Select";
 
 const PersonalInformation = () => {
   let navigate = useNavigate();
-  useEffect(() => {}, []);
+  const [allCountry, setAllCountry] = useState([]);
+  const [statesForCountry, setStatesForCountry] = useState([]);
+
+  const handleCountryChange = (event) => {
+    const selectedCountry = event.target.value;
+
+    // Find the selected country's states from the fetched data
+    const selectedCountryData = allCountry.find(
+      (countryData) => countryData.country === selectedCountry
+    );
+
+    // If the selectedCountryData is found, set the states
+    if (selectedCountryData) {
+      setStatesForCountry(selectedCountryData.states);
+    } else {
+      // If the selectedCountryData is not found, clear the states
+      setStatesForCountry([]);
+    }
+  };
+
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/staff_account/countries";
+    axios
+      .get(endpoint)
+      .then((response) => {
+        console.log(response.data);
+        setAllCountry(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching countries:", error);
+      });
+  }, []);
 
   // const [state, setState] = useState('');
   // const [country, setCountry] = useState('');
@@ -300,46 +331,73 @@ const PersonalInformation = () => {
         </div>
 
         <div className="col-md-6 mb-3">
-          <FormControl sx={{ m: 0, width: "100%" }} size="small">
-            <InputLabel id="demo-select-small-label">State</InputLabel>
-            <Select
-              labelId="demo-select-small-label"
-              id="demo-select-small"
-              value={formik.values.state}
-              label="State"
-              onChange={formik.handleChange}
-              name="state"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="Oyo State">Oyo State</MenuItem>
-              <MenuItem value="Lagos State">Lagos State</MenuItem>
-              <MenuItem value="Osun State">Osun State</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-        <div className="col-md-6 mb-3">
-          <FormControl sx={{ m: 0, width: "100%" }} size="small">
-            <InputLabel id="demo-select-small-label">Country</InputLabel>
-            <Select
-              labelId="demo-select-small-label"
-              id="demo-select-small"
-              value={formik.values.country}
-              label="Country"
-              onChange={formik.handleChange}
-              name="country"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="Nigeria">Nigeria</MenuItem>
-              <MenuItem value="UK">United Kingdom</MenuItem>
-              <MenuItem value="US">United State of America</MenuItem>
-              <MenuItem value="Canada">Canada</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="country-label">Country</InputLabel>
+              <Select
+                labelId="country-label"
+                id="country-select"
+                value={formik.values.country}
+                label="Country"
+                // onChange={formik.handleChange}
+                onChange={(e) => {
+                  handleCountryChange(e); // Call the custom event handler
+                  formik.handleChange(e); // Call formik's handleChange
+                }}
+                name="country"
+                onBlur={formik.handleBlur}
+                error={formik.touched.country && Boolean(formik.errors.country)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {allCountry
+                  .slice() // Create a copy to avoid modifying the original array
+                  .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
+                  .map((eachCountry, index) => (
+                    <MenuItem key={eachCountry.id} value={eachCountry.country}>
+                      {eachCountry.country}
+                    </MenuItem>
+                  ))}
+              </Select>
+              {formik.touched.country && Boolean(formik.errors.country) ? (
+                <small className="error text-danger">
+                  {formik.errors.country}
+                </small>
+              ) : null}
+            </FormControl>
+          </div>
+          <div className="col-md-6 mb-3">
+            <FormControl sx={{ m: 0, width: "100%" }} size="small">
+              <InputLabel id="state-label">State</InputLabel>
+              <Select
+                labelId="state-label"
+                id="state-select"
+                value={formik.values.state}
+                label="State"
+                onChange={formik.handleChange}
+                name="state"
+                onBlur={formik.handleBlur}
+                error={formik.touched.state && Boolean(formik.errors.state)}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {statesForCountry
+                  .slice() // Create a copy to avoid modifying the original array
+                  .sort() // Sort the array alphabetically
+                  .map((state) => (
+                    <MenuItem key={state} value={state}>
+                      {state}
+                    </MenuItem>
+                  ))}
+              </Select>
+              {formik.touched.state && Boolean(formik.errors.state) ? (
+                <small className="error text-danger">
+                  {formik.errors.state}
+                </small>
+              ) : null}
+            </FormControl>
+          </div>
         <div className="col-12">
           <button className="btn btn-primary signup-btn px-5" type="submit">
             Save

@@ -23,9 +23,6 @@ const StaffSignupForm = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // const sortedCountries = allCountry.slice().sort((a, b) => {
-  //   return a.country.localeCompare(b.country);
-  // });
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
