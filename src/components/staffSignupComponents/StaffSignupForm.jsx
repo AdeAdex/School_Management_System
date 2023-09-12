@@ -23,10 +23,9 @@ const StaffSignupForm = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const sortedCountries = allCountry.slice().sort((a, b) => {
-    return a.country.localeCompare(b.country);
-  });
-
+  // const sortedCountries = allCountry.slice().sort((a, b) => {
+  //   return a.country.localeCompare(b.country);
+  // });
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
@@ -47,15 +46,16 @@ const StaffSignupForm = () => {
 
   useEffect(() => {
     let endpoint = "http://localhost:2000/staff_account/countries";
-    axios.get(endpoint).then((response) => {
-      console.log(response.data);
-      setAllCountry(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching countries:", error);
-    });
+    axios
+      .get(endpoint)
+      .then((response) => {
+        console.log(response.data);
+        setAllCountry(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching countries:", error);
+      });
   }, []);
-
 
   let formik = useFormik({
     initialValues: {
@@ -347,9 +347,9 @@ const StaffSignupForm = () => {
                 label="Country"
                 // onChange={formik.handleChange}
                 onChange={(e) => {
-              handleCountryChange(e); // Call the custom event handler
-              formik.handleChange(e); // Call formik's handleChange
-            }}
+                  handleCountryChange(e); // Call the custom event handler
+                  formik.handleChange(e); // Call formik's handleChange
+                }}
                 name="country"
                 onBlur={formik.handleBlur}
                 error={formik.touched.country && Boolean(formik.errors.country)}
@@ -357,11 +357,14 @@ const StaffSignupForm = () => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                {sortedCountries.map((eachCountry, index) => (
-                  <MenuItem key={eachCountry.id} value={eachCountry.country}>
-                    {eachCountry.country}
-                  </MenuItem>
-                ))}
+                {allCountry
+                  .slice() // Create a copy to avoid modifying the original array
+                  .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
+                  .map((eachCountry, index) => (
+                    <MenuItem key={eachCountry.id} value={eachCountry.country}>
+                      {eachCountry.country}
+                    </MenuItem>
+                  ))}
               </Select>
               {formik.touched.country && Boolean(formik.errors.country) ? (
                 <small className="error text-danger">
@@ -387,13 +390,13 @@ const StaffSignupForm = () => {
                   <em>None</em>
                 </MenuItem>
                 {statesForCountry
-        .slice() // Create a copy to avoid modifying the original array
-        .sort() // Sort the array alphabetically
-        .map((state) => (
-          <MenuItem key={state} value={state}>
-            {state}
-          </MenuItem>
-        ))}
+                  .slice() // Create a copy to avoid modifying the original array
+                  .sort() // Sort the array alphabetically
+                  .map((state) => (
+                    <MenuItem key={state} value={state}>
+                      {state}
+                    </MenuItem>
+                  ))}
               </Select>
               {formik.touched.state && Boolean(formik.errors.state) ? (
                 <small className="error text-danger">
@@ -424,7 +427,6 @@ const StaffSignupForm = () => {
               <small className="error text-danger">{formik.errors.city}</small>
             ) : null}
           </div>
-          
 
           <div className="col-lg-6 position-relative  flex-column mb-3">
             <input
@@ -555,5 +557,3 @@ const StaffSignupForm = () => {
 };
 
 export default StaffSignupForm;
-
-
