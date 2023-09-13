@@ -11,11 +11,13 @@ const StudentDashboardPieChart = () => {
   useEffect(() => {
     let studentEmail = globalState.email
     let endpoint = "http://localhost:2000/student_account/student_performance"
-    axios.post(endpoint, studentEmail)
+    axios.post(endpoint, { studentEmail })
     .then((response) => {
-      console.log(response);
+      if (response.data.status) {
+        console.log(response);
+      }
     })
-  }, [])
+  }, [globalState])
   
   return (
     <>
