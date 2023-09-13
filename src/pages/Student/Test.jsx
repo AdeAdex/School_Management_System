@@ -102,7 +102,7 @@ const Test = () => {
         const remainingTime = countdownTime - elapsedTime;
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
-          localStorage.done = true;
+          // localStorage.done = true;
           if (localStorage.done) {
             setTimeIsUp(true);
           }
@@ -206,16 +206,23 @@ const Test = () => {
         },
       }).then((result) => {
         if (result.isConfirmed) {
-          const nonNegativeScores = questionScores.map((score) =>
-            Math.max(score, 0)
-          );
+          // const nonNegativeScores = questionScores.map((score) =>   // before making changes
+          //   Math.max(score, 0)  // before making changes
+          // );   // before making changes
 
-          const totalNonNegativeScore = nonNegativeScores.reduce(
-            (total, score) => total + score,
-            0
-          );
-          console.log(totalNonNegativeScore);
-          submitMyScore(totalNonNegativeScore);
+          // const totalNonNegativeScore = nonNegativeScores.reduce(   // before making changes
+          //   (total, score) => total + score,   // before making changes
+          //   0   // before making changes
+          // );
+          // console.log(totalNonNegativeScore);   // before making changes
+          // submitMyScore(totalNonNegativeScore);    // before making changes
+
+          const userScores =
+            questionScores.filter((isCorrect) => isCorrect).length * 10;
+
+          // Send user's scores to the backend
+          console.log("User Scores:", userScores);
+          submitMyScore(userScores);
         }
       });
     }
@@ -226,21 +233,23 @@ const Test = () => {
       myScores: newScores,
       myEmail: globalState.email,
       myDecision: true,
+      questionCategories: questions.map((question) => question.category), // before making changes
+      questionCorrectness: questionScores, // before making changes
     };
+    console.log(payload);
     const endpoint2 =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
+      "http://localhost:2000/student_account/update_my_admission_exam_score";
     axios.post(endpoint2, payload).then((response) => {
-      if (response.data.status) {
-        localStorage.setItem("submitted", response.data.response);
-        setPerformed(true);
-        if (localStorage.submitted === "true") {
-          localStorage.setItem("finished", response.data.response);
-          // console.log(local);
-        }
-        if (localStorage.done) {
-          toLogin();
-        }
-      }
+      // if (response.data.status) {
+      //   localStorage.setItem("submitted", response.data.response);
+      //   setPerformed(true);
+      //   if (localStorage.submitted === "true") {
+      //     localStorage.setItem("finished", response.data.response);
+      //   }
+      //   if (localStorage.done) {
+      //     // toLogin();
+      //   }
+      // }
     });
   };
 
@@ -257,7 +266,6 @@ const Test = () => {
     localStorage.setItem("currentQuestionIndex", String(index));
   };
 
-
   const handleOptionSelect = (option) => {
     const newSelectedOptions = [...selectedOptions];
     const newQuestionScores = [...questionScores];
@@ -268,9 +276,11 @@ const Test = () => {
     newSelectedOptions[questionIndex] = option;
 
     if (option.startsWith(currentQuestion.correctOption)) {
-      newQuestionScores[questionIndex] = 10;
+      // newQuestionScores[questionIndex] = 10; // before making changes
+      newQuestionScores[questionIndex] = true; // Set to true for correct
     } else {
-      newQuestionScores[questionIndex] = -10;
+      // newQuestionScores[questionIndex] = -10; // before making changes
+      newQuestionScores[questionIndex] = false; // Set to false for incorrect
     }
 
     setSelectedOptions(newSelectedOptions);
@@ -279,7 +289,6 @@ const Test = () => {
     const updatedAnsweredQuestions = [...answeredQuestions];
 
     if (option !== "") {
-      newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
       updatedAnsweredQuestions.push(currentQuestion.id);
     } else {
       const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
@@ -297,58 +306,107 @@ const Test = () => {
     );
     localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
     localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+
+    // Determine user scores
+    const scores = newQuestionScores.reduce((total, isCorrect) => {
+      return total + (isCorrect ? 10 : 0); // Add 10 for each correct answer
+    }, 0);
+
+    // Now you have the user scores based on correctness
+    console.log("User Scores:", scores);
   };
 
-  const toLogin = () => {
-    localStorage.removeItem("answeredQuestions");
-    localStorage.removeItem("questionScores");
-    localStorage.removeItem("currentQuestionIndex");
-    localStorage.removeItem("examStarted");
-    localStorage.removeItem("countdownStartTime");
-    localStorage.removeItem("countdownTimeRemaining");
-    localStorage.removeItem("selectedOptions");
-    localStorage.setItem("currentQuestionIndex", 0);
-    localStorage.removeItem("taken");
-    localStorage.removeItem("done");
-    localStorage.removeItem("submitted");
-    localStorage.removeItem("finished");
-    setIsLoading(true);
-    const payload = {
-      yourKeyHere: true,
-      myEmail: globalState.email,
-    };
-    let updateEndpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-    axios
-      .post(updateEndpoint, payload)
-      .then((response) => {
-        if (response.data.status) {
-          setIsLoading(false);
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+  // const handleOptionSelect = (option) => {
+  //   const newSelectedOptions = [...selectedOptions];
+  //   const newQuestionScores = [...questionScores];
 
-          Toast.fire({
-            icon: "success",
-            title: response.data.message,
-          });
+  //   const currentQuestion = questions[currentQuestionIndex];
+  //   const questionIndex = currentQuestion.id - 1;
 
-          localStorage.taken = response.data.newResult;
-          navigate("/student_login");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //   newSelectedOptions[questionIndex] = option;
+
+  //   if (option.startsWith(currentQuestion.correctOption)) {
+  //     newQuestionScores[questionIndex] = 10;
+  //   } else {
+  //     newQuestionScores[questionIndex] = -10;
+  //   }
+
+  //   setSelectedOptions(newSelectedOptions);
+
+  //   // Use an array for answeredQuestions
+  //   const updatedAnsweredQuestions = [...answeredQuestions];
+
+  //   if (option !== "") {
+  //     newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
+  //     updatedAnsweredQuestions.push(currentQuestion.id);
+  //   } else {
+  //     const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
+  //     if (index !== -1) {
+  //       updatedAnsweredQuestions.splice(index, 1);
+  //     }
+  //   }
+
+  //   setAnsweredQuestions(updatedAnsweredQuestions);
+  //   setQuestionScores(newQuestionScores);
+
+  //   localStorage.setItem(
+  //     "answeredQuestions",
+  //     JSON.stringify(updatedAnsweredQuestions)
+  //   );
+  //   localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
+  //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
+  // };
+
+  // const toLogin = () => {
+  //   localStorage.removeItem("answeredQuestions");
+  //   localStorage.removeItem("questionScores");
+  //   localStorage.removeItem("currentQuestionIndex");
+  //   localStorage.removeItem("examStarted");
+  //   localStorage.removeItem("countdownStartTime");
+  //   localStorage.removeItem("countdownTimeRemaining");
+  //   localStorage.removeItem("selectedOptions");
+  //   localStorage.setItem("currentQuestionIndex", 0);
+  //   localStorage.removeItem("taken");
+  //   localStorage.removeItem("done");
+  //   localStorage.removeItem("submitted");
+  //   localStorage.removeItem("finished");
+  //   setIsLoading(true);
+  //   const payload = {
+  //     yourKeyHere: true,
+  //     myEmail: globalState.email,
+  //   };
+  //   let updateEndpoint =
+  //     "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
+  //   axios
+  //     .post(updateEndpoint, payload)
+  //     .then((response) => {
+  //       if (response.data.status) {
+  //         setIsLoading(false);
+  //         const Toast = Swal.mixin({
+  //           toast: true,
+  //           position: "top",
+  //           showConfirmButton: false,
+  //           timer: 1500,
+  //           timerProgressBar: true,
+  //           didOpen: (toast) => {
+  //             toast.addEventListener("mouseenter", Swal.stopTimer);
+  //             toast.addEventListener("mouseleave", Swal.resumeTimer);
+  //           },
+  //         });
+
+  //         Toast.fire({
+  //           icon: "success",
+  //           title: response.data.message,
+  //         });
+
+  //         localStorage.taken = response.data.newResult;
+  //         navigate("/student_login");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const startExam = () => {
     Swal.fire({
