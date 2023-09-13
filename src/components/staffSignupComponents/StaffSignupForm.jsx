@@ -537,7 +537,7 @@ const StaffSignupForm = () => {
             </div>
           </div>
           <div className="col-12">
-            <button className="btn btn-primary signup-bt" type="submit">
+            <button className="btn btn-primary signup-btn" type="submit">
               {isLoading ? (
                 <span className="d-flex">
                   <div className="spinner my-auto"></div>
