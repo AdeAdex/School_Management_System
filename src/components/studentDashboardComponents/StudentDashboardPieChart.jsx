@@ -9,7 +9,7 @@ const StudentDashboardPieChart = () => {
 
   useEffect(() => {
     let studentEmail = globalState.email;
-    let endpoint = "http://localhost:2000/student_account/student_performance";
+    let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_performance";
     axios.post(endpoint, { studentEmail }).then((response) => {
       if (response.data.status) {
         setPerformance(response.data.res);
@@ -67,13 +67,24 @@ const StudentDashboardPieChart = () => {
     return color;
   };
 
-  // Convert percentages to PieChart data
-  const pieChartData = Object.keys(categoryPercentages).map((category) => ({
+  // // Convert percentages to PieChart data
+  // const pieChartData = Object.keys(categoryPercentages).map((category) => ({
+  //   title: category,
+  //   value:
+  //     (categoryPercentages[category].correct /
+  //       categoryPercentages[category].total) *
+  //     100,
+  //   color: getRandomColor(),
+  // }));
+
+
+  const categories = ["English", "Math", "Current Affair", "Sciences"];
+  const equalPercentage = 100 / categories.length;
+
+  // Generate data for the PieChart
+  const pieChartData = categories.map((category) => ({
     title: category,
-    value:
-      (categoryPercentages[category].correct /
-        categoryPercentages[category].total) *
-      100,
+    value: equalPercentage,
     color: getRandomColor(),
   }));
 
@@ -99,7 +110,7 @@ const StudentDashboardPieChart = () => {
         ]}
       /> */}
 
-      <PieChart
+      {/* <PieChart
         className="mx-auto"
         style={{ width: "80%" }}
         data={pieChartData}
@@ -107,7 +118,20 @@ const StudentDashboardPieChart = () => {
           `${dataEntry.title}: ${Math.round(dataEntry.value)}%`
         } // Display labels with title and percentage
         labelStyle={{ fontSize: "5px" }} // Adjust label font size as needed
+        animationDuration={100}
+      /> */}
+
+
+      <PieChart
+        className="mx-auto"
+        style={{ width: "80%" }}
+        data={pieChartData}
+        label={({ dataEntry }) =>
+          `${dataEntry.title}: ${Math.round(dataEntry.value)}%`
+        }
+        labelStyle={{ fontSize: "5px" }}
       />
+
     </>
   );
 };
