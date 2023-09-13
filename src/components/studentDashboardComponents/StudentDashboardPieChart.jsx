@@ -14,7 +14,7 @@ const StudentDashboardPieChart = () => {
     axios.post(endpoint, { studentEmail })
     .then((response) => {
       if (response.data.status) {
-        console.log(response);
+        console.log(response.data.res);
       }
     })
   }, [globalState])
