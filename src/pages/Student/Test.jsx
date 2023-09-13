@@ -178,7 +178,7 @@ const Test = () => {
   }, [timeIsUp, questions, beginExam, refreshing]);
 
 
-
+  
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
@@ -250,7 +250,7 @@ const Test = () => {
     };
     console.log(payload);
     const endpoint2 =
-      "http://localhost:2000/student_account/update_my_admission_exam_score";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
     axios.post(endpoint2, payload).then((response) => {
       if (response.data.status) {
         localStorage.setItem("submitted", response.data.response);
