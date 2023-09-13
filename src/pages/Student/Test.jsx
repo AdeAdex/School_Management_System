@@ -247,7 +247,7 @@ const Test = () => {
     };
     console.log(payload);
     const endpoint2 =
-      "http://localhost:2000/student_account/update_my_admission_exam_score";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/update_my_admission_exam_score";
     axios.post(endpoint2, payload).then((response) => {
       if (response.data.status) {
         localStorage.setItem("submitted", response.data.response);
@@ -366,56 +366,56 @@ const Test = () => {
   //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
   // };
 
-  // const toLogin = () => {
-  //   localStorage.removeItem("answeredQuestions");
-  //   localStorage.removeItem("questionScores");
-  //   localStorage.removeItem("currentQuestionIndex");
-  //   localStorage.removeItem("examStarted");
-  //   localStorage.removeItem("countdownStartTime");
-  //   localStorage.removeItem("countdownTimeRemaining");
-  //   localStorage.removeItem("selectedOptions");
-  //   localStorage.setItem("currentQuestionIndex", 0);
-  //   localStorage.removeItem("taken");
-  //   localStorage.removeItem("done");
-  //   localStorage.removeItem("submitted");
-  //   localStorage.removeItem("finished");
-  //   setIsLoading(true);
-  //   const payload = {
-  //     yourKeyHere: true,
-  //     myEmail: globalState.email,
-  //   };
-  //   let updateEndpoint =
-  //     "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
-  //   axios
-  //     .post(updateEndpoint, payload)
-  //     .then((response) => {
-  //       if (response.data.status) {
-  //         setIsLoading(false);
-  //         const Toast = Swal.mixin({
-  //           toast: true,
-  //           position: "top",
-  //           showConfirmButton: false,
-  //           timer: 1500,
-  //           timerProgressBar: true,
-  //           didOpen: (toast) => {
-  //             toast.addEventListener("mouseenter", Swal.stopTimer);
-  //             toast.addEventListener("mouseleave", Swal.resumeTimer);
-  //           },
-  //         });
+  const toLogin = () => {
+    localStorage.removeItem("answeredQuestions");
+    localStorage.removeItem("questionScores");
+    localStorage.removeItem("currentQuestionIndex");
+    localStorage.removeItem("examStarted");
+    localStorage.removeItem("countdownStartTime");
+    localStorage.removeItem("countdownTimeRemaining");
+    localStorage.removeItem("selectedOptions");
+    localStorage.setItem("currentQuestionIndex", 0);
+    localStorage.removeItem("taken");
+    localStorage.removeItem("done");
+    localStorage.removeItem("submitted");
+    localStorage.removeItem("finished");
+    setIsLoading(true);
+    const payload = {
+      yourKeyHere: true,
+      myEmail: globalState.email,
+    };
+    let updateEndpoint =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/update_admission_state";
+    axios
+      .post(updateEndpoint, payload)
+      .then((response) => {
+        if (response.data.status) {
+          setIsLoading(false);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
 
-  //         Toast.fire({
-  //           icon: "success",
-  //           title: response.data.message,
-  //         });
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
 
-  //         localStorage.taken = response.data.newResult;
-  //         navigate("/student_login");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+          localStorage.taken = response.data.newResult;
+          navigate("/student_login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const startExam = () => {
     Swal.fire({
