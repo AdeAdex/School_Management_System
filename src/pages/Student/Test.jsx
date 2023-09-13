@@ -36,7 +36,7 @@ const Test = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  let warningSound = new Audio("warning.wav");
+  let warningSound = new Audio("warning.mp3");
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
@@ -102,7 +102,9 @@ const Test = () => {
         const remainingTime = countdownTime - elapsedTime;
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
-          // localStorage.done = true;
+          // warningSound.pause();
+          // warningSound.currentTime = 0;
+          localStorage.done = true;
           if (localStorage.done) {
             setTimeIsUp(true);
           }
@@ -229,27 +231,34 @@ const Test = () => {
   };
 
   const submitMyScore = (newScores) => {
+
+    const questionDetails = questions.map((question, index) => ({
+      category: question.category,
+      correctness: questionScores[index],
+    }));
+
     let payload = {
       myScores: newScores,
       myEmail: globalState.email,
       myDecision: true,
-      questionCategories: questions.map((question) => question.category), // before making changes
-      questionCorrectness: questionScores, // before making changes
+      questionDetails: questionDetails,  // before making changes
+      // questionCategories: questions.map((question) => question.category), // before making changes
+      // questionCorrectness: questionScores, // before making changes
     };
     console.log(payload);
     const endpoint2 =
       "http://localhost:2000/student_account/update_my_admission_exam_score";
     axios.post(endpoint2, payload).then((response) => {
-      // if (response.data.status) {
-      //   localStorage.setItem("submitted", response.data.response);
-      //   setPerformed(true);
-      //   if (localStorage.submitted === "true") {
-      //     localStorage.setItem("finished", response.data.response);
-      //   }
-      //   if (localStorage.done) {
-      //     // toLogin();
-      //   }
-      // }
+      if (response.data.status) {
+        localStorage.setItem("submitted", response.data.response);
+        setPerformed(true);
+        if (localStorage.submitted === "true") {
+          localStorage.setItem("finished", response.data.response);
+        }
+        if (localStorage.done) {
+          toLogin();
+        }
+      }
     });
   };
 
