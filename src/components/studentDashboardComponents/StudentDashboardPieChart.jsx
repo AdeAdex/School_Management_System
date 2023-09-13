@@ -69,7 +69,7 @@ const StudentDashboardPieChart = () => {
         ]}
       /> */}
 
-      <h6 className="mt-3">The below Chat Indicate your Performance in the Entrance Exam</h6>
+      <small className="mt-3 fw-bold">Your performance in the entrance exam is indicated below: </small>
 
       <PieChart
         className="mx-auto"
