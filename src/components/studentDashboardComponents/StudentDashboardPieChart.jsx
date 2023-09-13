@@ -31,9 +31,20 @@ const StudentDashboardPieChart = () => {
   const categories = ["English", "Math", "Current Affair", "Sciences"];
   const equalPercentage = 100 / categories.length;
 
+
+
+  const truncateLabel = (label, maxLabelLength) => {
+    if (label.length > maxLabelLength) {
+      return label.slice(0, maxLabelLength) + "...";
+    }
+    return label;
+  };
+
+
   // Generate data for the PieChart
   const pieChartData = categories.map((category) => ({
-    title: category,
+    // title: category,
+    title: truncateLabel(category, 10),
     value: equalPercentage,
     color: getRandomColor(),
   }));
@@ -57,6 +68,8 @@ const StudentDashboardPieChart = () => {
           { label: "Sciences", value: 20, color: "#6fc191" },
         ]}
       /> */}
+
+      <h6 className="mt-3">The below Chat Indicate your Performance in the Entrance Exam</h6>
 
       <PieChart
         className="mx-auto"
