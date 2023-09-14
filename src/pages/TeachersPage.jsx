@@ -29,8 +29,8 @@ const TeachersPage = () => {
     navigate("/about_this_teacher", { state: teacherData });
   };
 
-  const firstFourTeacher = teacherInfo.slice(0, 4)
-  const lastFourTeacher = teacherInfo.slice(4)
+  const firstFourTeacher = teacherInfo.slice(0, 4);
+  const lastFourTeacher = teacherInfo.slice(4);
 
   return (
     <>
@@ -113,20 +113,17 @@ const TeachersPage = () => {
                 // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
                 teacherName={eachTeacher.teacherName}
                 aboutTeacher={eachTeacher.teacherInfo}
-                to_where="/about_this_teacher"
-                para="/about_this_teacher"
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,
                     teacherInfo: eachTeacher.teacherInfo,
                     teacherPicture: eachTeacher.teacherPicture,
                     teacherVideo: eachTeacher.teacherVideo,
-                    teacherSkills: eachTeacher.teacherSkills
+                    teacherSkills: eachTeacher.teacherSkills,
                   });
                 }}
               />
             ))}
-
           </div>
         </div>
         <Parallax3
@@ -141,92 +138,51 @@ const TeachersPage = () => {
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="card-group gap-4">
-
-          {lastFourTeacher.map((eachTeacher, index) => (
+            {lastFourTeacher.map((eachTeacher, index) => (
               <BlueHouseTeachersCard
                 img={eachTeacher.teacherPicture}
                 bodyClassName={`${
                   index % 5 === 0
-                    ? "orange"
+                    ? "maroon"
                     : index % 5 === 1
-                    ? "skyblue"
+                    ? "green"
                     : index % 5 === 2
-                    ? "yellow"
+                    ? "brown"
                     : index % 5 === 3
-                    ? "purple"
+                    ? "dark-slate-gray"
                     : "pink"
-                } orange-body-main col-lg-7 col-md-12 d-flex`}
-                h5Classes="card-title skyblue py-2 text-center text-uppercase px-3"
+                } py-2 ps-4`}
+                h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
                 h5Style={{ marginBottom: "0px" }}
                 title={eachTeacher.teacherName}
                 styles={{ backgroundColor: "#F9F9F9" }}
                 teacherName={eachTeacher.teacherName}
                 content={eachTeacher.teacherInfo}
-                iconStyle={{ backgroundColor: "#74cee4" }}
+                iconStyle={`${
+                  index % 5 === 0
+                    ? "maroon"
+                    : index % 5 === 1
+                    ? "green"
+                    : index % 5 === 2
+                    ? "brown"
+                    : index % 5 === 3
+                    ? "dark-slate-gray"
+                    : "pink"
+                }`}
+                // iconStyle={{ backgroundColor: "#74cee4" }}
                 to_where="/about_this_teacher"
-                para="/about_this_teacher"
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,
                     teacherInfo: eachTeacher.teacherInfo,
                     teacherPicture: eachTeacher.teacherPicture,
                     teacherVideo: eachTeacher.teacherVideo,
-                    teacherSkills: eachTeacher.teacherSkills
+                    teacherSkills: eachTeacher.teacherSkills,
                   });
                 }}
               />
             ))}
 
-
-
-            {/* <BlueHouseTeachersCard
-              teacherName="promise joy"
-              img="pic/teacher1.jpg"
-              cardstyle={{ width: "18rem" }}
-              classes="our-events"
-              h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
-              h5Style={{ marginBottom: "0px" }}
-              title="A DAY IN THE PARK"
-              styles={{ backgroundColor: "#F9F9F9" }}
-              content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{ backgroundColor: "#74cee4" }}
-            /> */}
-            {/* <BlueHouseTeachersCard
-              teacherName="wale ayefele"
-              img="pic/teacher12.png"
-              cardstyle={{ width: "18rem" }}
-              classes="our-events"
-              h5Classes="card-title yellow py-3 text-center text-uppercase px-3"
-              h5Style={{ marginBottom: "0px" }}
-              title="A DAY IN THE PARK"
-              styles={{ backgroundColor: "#F9F9F9" }}
-              content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{ backgroundColor: "#edbf47" }}
-            />
-            <BlueHouseTeachersCard
-              teacherName="george ramsey"
-              img="pic/teacher11.jpg"
-              cardstyle={{ width: "18rem" }}
-              classes="our-events"
-              h5Classes="card-title orange py-3 text-center text-uppercase px-3"
-              h5Style={{ marginBottom: "0px" }}
-              title="A DAY IN THE PARK"
-              styles={{ backgroundColor: "#F9F9F9" }}
-              content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{ backgroundColor: "#ec774b" }}
-            />
-            <BlueHouseTeachersCard
-              teacherName="evelyn rose"
-              img="pic/teacher7.jpg"
-              cardstyle={{ width: "18rem" }}
-              classes="our-events"
-              h5Classes="card-title pink py-3 text-center text-uppercase px-3"
-              h5Style={{ marginBottom: "0px" }}
-              title="A DAY IN THE PARK"
-              styles={{ backgroundColor: "#F9F9F9" }}
-              content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
-              iconStyle={{ backgroundColor: "#e16c6c" }}
-            /> */}
           </div>
         </div>
 

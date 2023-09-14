@@ -9,19 +9,13 @@ const OrangeHouseTeachersCard = ({
   bodyStyle,
   bodyClassName,
   to_where,
-  para,
   onClick,
 }) => {
   const navigate = useNavigate();
-  // const toTeachersPage = () => {
-  //   navigate(para)
-  // };
+ 
   return (
     <>
-      <div
-        className="card orange-card-main  mb-2"
-        style={{ width: "48.3%" }}
-      >
+      <div className="card orange-card-main  mb-2" style={{ width: "48.3%" }}>
         <div className="orange-container row g-0">
           <div className="col-lg-5 col-md-12">
             <img
@@ -37,20 +31,36 @@ const OrangeHouseTeachersCard = ({
           </div>
           <div className={bodyClassName} style={bodyStyle}>
             <div className="orange-body card-body col-lg-10 col-sm-12">
-              <Link
-                to={to_where}
+              <span
+                onClick={onClick}
                 className="card-title text-uppercase mb-4"
                 style={{
                   backgroundColor: "inherit",
                   textDecoration: "none",
                   color: "inherit",
+                  cursor: 'pointer'
                 }}
               >
                 <h5>{teacherName}</h5>
-              </Link>
-              <Small_hr hr_class="my-3" hr_style={{height: "3px", backgroundColor: "white", width: "35px"}}/>
-              <div className="card-text mt-3 position-relative" style={{ maxHeight: "5.8em", overflow: "hidden",  textOverflow: "ellipsis", backgroundColor: '' }}>
-              {aboutTeacher}
+              </span>
+              <Small_hr
+                hr_class="my-3"
+                hr_style={{
+                  height: "3px",
+                  backgroundColor: "white",
+                  width: "35px",
+                }}
+              />
+              <div
+                className="card-text mt-3 position-relative"
+                style={{
+                  maxHeight: "5.8em",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  backgroundColor: "",
+                }}
+              >
+                {aboutTeacher}
               </div>
               <button
                 onClick={onClick}
@@ -66,8 +76,7 @@ const OrangeHouseTeachersCard = ({
               <i
                 className="fas fa-paperclip shadow about-icon-mains"
                 title="CURRICULUM"
-              >
-              </i>
+              ></i>
               <i
                 className="far fa-floppy-disk shadow about-icon-mains"
                 title="DOCUMENT"
@@ -85,6 +94,3 @@ const OrangeHouseTeachersCard = ({
 };
 
 export default OrangeHouseTeachersCard;
-
-
-
