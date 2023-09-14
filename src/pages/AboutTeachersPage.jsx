@@ -57,7 +57,7 @@ const AboutTeachersPage = ({ seconds }) => {
             <img
               src={teacherPicture}
               alt=""
-              style={{ height: "400px", width: "100%", borderRadius: "5px" }}
+              style={{ height: "350px", width: "100%", borderRadius: "5px" }}
             />
           </div>
           <div className="skill_content" style={{ width: "33%" }}>
@@ -72,7 +72,7 @@ const AboutTeachersPage = ({ seconds }) => {
                 width: "35px",
               }}
             ></Small_hr>
-            <div className="text-color" style={{maxHeight: '21em', backgroundColor: '', overflowY: 'scroll', overflowX: 'hidden'}}>
+            <div className="text-color" style={{maxHeight: '18em', backgroundColor: '', overflowY: 'scroll', overflowX: 'hidden'}}>
               {teacherInfo}
             </div>
           </div>
