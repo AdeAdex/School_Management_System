@@ -156,7 +156,7 @@ const TeachersPage = () => {
                     ? "purple"
                     : "pink"
                 } orange-body-main col-lg-7 col-md-12 d-flex`}
-                h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+                h5Classes="card-title skyblue py-2 text-center text-uppercase px-3"
                 h5Style={{ marginBottom: "0px" }}
                 title={eachTeacher.teacherName}
                 styles={{ backgroundColor: "#F9F9F9" }}

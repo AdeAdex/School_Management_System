@@ -11,7 +11,8 @@ const BlueHouseTeachersCard = ({
   btn,
   title,
   teacherName,
-  iconStyle
+  iconStyle,
+  onClick
 }) => {
   return (
     <>
@@ -26,7 +27,15 @@ const BlueHouseTeachersCard = ({
           style={{ opacity: "1", filter: "blur", height: '250px' }}
         />
         <h5 className={h5Classes} style={h5Style}>
-          {title}
+        <button
+                onClick={onClick}
+                className="btn card-text text-white d-flex gap-2 shadow py-2 px-2 border-0"
+                style={{ cursor: "pointer", backgroundColor: "inherit" }}
+              >
+                <i className="fas fa-graduation-cap fs-5 my-auto"></i>
+                <h5 className="text-capitalize my-auto">know me</h5>{" "}
+                <span>:)</span>
+              </button>
         </h5>
         <div className="card-body" style={styles}>
           <div className="card-text text-color">
