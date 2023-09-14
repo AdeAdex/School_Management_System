@@ -22,6 +22,8 @@ const Contact_Teacher_Form = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
+      values.message = values.message + " This message was sent from Teachers Page"
+      console.log(values);
       setIsLoading(true);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/staff_account/people_reaching_us";
