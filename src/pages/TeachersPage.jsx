@@ -29,6 +29,9 @@ const TeachersPage = () => {
     navigate("/about_this_teacher", { state: teacherData });
   };
 
+  const firstFourTeacher = teacherInfo.slice(0, 4)
+  const lastFourTeacher = teacherInfo.slice(4)
+
   return (
     <>
       <PagesNavbar />
@@ -93,7 +96,7 @@ const TeachersPage = () => {
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="d-flex gap-lg-4 gap-md-4 w-100 flex-wrap position-relative">
-            {teacherInfo.map((eachTeacher, index) => (
+            {firstFourTeacher.map((eachTeacher, index) => (
               <OrangeHouseTeachersCard
                 img={eachTeacher.teacherPicture}
                 bodyClassName={`${
@@ -138,6 +141,40 @@ const TeachersPage = () => {
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="card-group gap-4">
+
+          {lastFourTeacher.map((eachTeacher, index) => (
+              <BlueHouseTeachersCard
+                img={eachTeacher.teacherPicture}
+                bodyClassName={`${
+                  index % 5 === 0
+                    ? "orange"
+                    : index % 5 === 1
+                    ? "skyblue"
+                    : index % 5 === 2
+                    ? "yellow"
+                    : index % 5 === 3
+                    ? "purple"
+                    : "pink"
+                } orange-body-main col-lg-7 col-md-12 d-flex`}
+                // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
+                teacherName={eachTeacher.teacherName}
+                aboutTeacher={eachTeacher.lastFourTeacher}
+                to_where="/about_this_teacher"
+                para="/about_this_teacher"
+                onClick={() => {
+                  toTeachersPage({
+                    teacherName: eachTeacher.teacherName,
+                    lastFourTeacher: eachTeacher.lastFourTeacher,
+                    teacherPicture: eachTeacher.teacherPicture,
+                    teacherVideo: eachTeacher.teacherVideo,
+                    teacherSkills: eachTeacher.teacherSkills
+                  });
+                }}
+              />
+            ))}
+
+
+
             <BlueHouseTeachersCard
               teacherName="promise joy"
               img="pic/teacher1.jpg"
