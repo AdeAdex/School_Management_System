@@ -162,6 +162,7 @@ const TeachersPage = () => {
                 styles={{ backgroundColor: "#F9F9F9" }}
                 teacherName={eachTeacher.teacherName}
                 content={eachTeacher.teacherInfo}
+                iconStyle={{ backgroundColor: "#74cee4" }}
                 to_where="/about_this_teacher"
                 para="/about_this_teacher"
                 onClick={() => {
@@ -178,7 +179,7 @@ const TeachersPage = () => {
 
 
 
-            <BlueHouseTeachersCard
+            {/* <BlueHouseTeachersCard
               teacherName="promise joy"
               img="pic/teacher1.jpg"
               cardstyle={{ width: "18rem" }}
@@ -189,8 +190,8 @@ const TeachersPage = () => {
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
               iconStyle={{ backgroundColor: "#74cee4" }}
-            />
-            <BlueHouseTeachersCard
+            /> */}
+            {/* <BlueHouseTeachersCard
               teacherName="wale ayefele"
               img="pic/teacher12.png"
               cardstyle={{ width: "18rem" }}
@@ -225,7 +226,7 @@ const TeachersPage = () => {
               styles={{ backgroundColor: "#F9F9F9" }}
               content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consequuntur dicta non try to eat everyday."
               iconStyle={{ backgroundColor: "#e16c6c" }}
-            />
+            /> */}
           </div>
         </div>
 

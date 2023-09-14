@@ -33,10 +33,6 @@ const BlueHouseTeachersCard = ({
           <div className="card-text mt-3 position-relative" style={{ maxHeight: "5.8em", overflow: "hidden",  textOverflow: "ellipsis", backgroundColor: '' }}>{content}</div>
           </div>
           <div className="d-flex justify-content-evenly mt-3">
-          {/* <FontAwesomeIcon icon="fa-solid fa-user" />
-          <FontAwesomeIcon icon="fa-solid fa-user" />
-          <FontAwesomeIcon icon="fa-solid fa-user" />
-          <FontAwesomeIcon icon="fa-solid fa-user" /> */}
               <i className="fas fa-paperclip shadow about-icon-mains" title="CURRICULUM" style={iconStyle}></i>
               <i className="far fa-floppy-disk shadow about-icon-mains" title="DOCUMENT" style={iconStyle}></i>
               <i className="fas fa-microphone shadow about-icon-mains" title="COURSES" style={iconStyle}></i>
