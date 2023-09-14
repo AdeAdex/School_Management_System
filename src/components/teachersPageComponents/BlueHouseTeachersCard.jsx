@@ -30,7 +30,7 @@ const BlueHouseTeachersCard = ({
         </h5>
         <div className="card-body" style={styles}>
           <div className="card-text text-color">
-            <div>{content}</div>
+          <div className="card-text mt-3 position-relative" style={{ maxHeight: "5.8em", overflow: "hidden",  textOverflow: "ellipsis", backgroundColor: '' }}>{content}</div>
           </div>
           <div className="d-flex justify-content-evenly mt-3">
           {/* <FontAwesomeIcon icon="fa-solid fa-user" />

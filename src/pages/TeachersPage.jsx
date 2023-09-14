@@ -156,15 +156,18 @@ const TeachersPage = () => {
                     ? "purple"
                     : "pink"
                 } orange-body-main col-lg-7 col-md-12 d-flex`}
-                // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
+                h5Classes="card-title skyblue py-3 text-center text-uppercase px-3"
+                h5Style={{ marginBottom: "0px" }}
+                title={eachTeacher.teacherName}
+                styles={{ backgroundColor: "#F9F9F9" }}
                 teacherName={eachTeacher.teacherName}
-                aboutTeacher={eachTeacher.lastFourTeacher}
+                content={eachTeacher.teacherInfo}
                 to_where="/about_this_teacher"
                 para="/about_this_teacher"
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,
-                    lastFourTeacher: eachTeacher.lastFourTeacher,
+                    teacherInfo: eachTeacher.teacherInfo,
                     teacherPicture: eachTeacher.teacherPicture,
                     teacherVideo: eachTeacher.teacherVideo,
                     teacherSkills: eachTeacher.teacherSkills
