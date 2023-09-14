@@ -310,6 +310,9 @@ html {
   box-shadow: #495052 1px 1px 5px 1px;
 }
 
+
+/* This is the css code for the contact us form*/
+
 .contact-form {
   background-color: inherit;
   padding: 10px;
@@ -367,6 +370,11 @@ html {
   box-shadow: inset 0px 3px 2px #88cc9a;
   background-color: #88cc9a;
 }
+
+
+/*                 */
+
+
 
 $skyblue: #74cee4;
 $orange: #edbf47;
@@ -462,3 +470,66 @@ $gray: #495052;
 }
 
 
+/* This is the css code for the contact us form*/
+
+.contact-teachers-form {
+  background-color: inherit;
+  padding: 20px 10px;
+  border-radius: 10px;
+}
+
+.contact-teachers-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-teachers-form label {
+  margin-bottom: 10px;
+}
+
+.textarea {
+  resize: none;
+  height: 100px;
+  width: 100%;
+}
+
+.contact-teachers-form input,
+.contact-teachers-form textarea {
+  padding: 5px 10px;
+  border: none !important;
+  outline: none;
+  box-shadow: inset 0px -8px 10px #353b3d;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  color: blue;
+}
+
+.contact-teachers-form input:focus,
+.contact-teachers-form textarea:focus {
+  outline: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-teachers-form button[type="submit"] {
+  background-color: #6fc191;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 5px;
+  width: 70px;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: inset 0px -10px 10px #6fc191;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-teachers-form button[type="submit"]:hover {
+  box-shadow: inset 0px 3px 2px #88cc9a;
+  background-color: #88cc9a;
+}
+
+
+/*                 */
