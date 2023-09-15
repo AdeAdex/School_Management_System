@@ -16,25 +16,21 @@ const StudentDashboardHome = () => {
           <small className="d-flex flex-column px-4 mb-5 text-white py-4" style={{backgroundColor: '#030552', borderRadius: '5px'}}><h6 className="text-uppercase">Welcome to your dashboard: {globalState.firstName} {" "}  {globalState.lastName}</h6><span className="my-3">You created an account with us on: {globalState.createdDate}</span></small>
           <div className="d-flex gap-3 w-100" style={{flexWrap: 'wrap'}}>
           <StudentDetails
-            // icons={<FaRegUser />}
             icons={<FaUser />}
             param={`${globalState.studentID}`}
             about="student Id"
           />
           <StudentDetails
-            // icons={<FaRegUser/>}
             icons={<FaGraduationCap />}
             param={`${globalState.level}`}
             about="Current Class"
           />
           <StudentDetails
-            // icons={<FaRegUser/>}
             icons={<FaCalendarAlt />}
             param={`${globalState.term}`}
             about="Current Term"
           />
           <StudentDetails
-            // icons={<FaRegUser/>}
             icons={<FaBuilding />}
             param={`${globalState.options}`}
             about="Faculty"
