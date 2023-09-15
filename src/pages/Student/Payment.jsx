@@ -90,6 +90,7 @@ const Payment = ({
             myEmail: myEmail,
             justPaid: true,
             amount: 5000,
+            reference: response.reference
           };
           let endpoint =
             "https://school-portal-backend-adex2210.vercel.app/student_account/paidAdmissionFee";
