@@ -54,10 +54,9 @@ const ChatModal = ({
                   >
                     {selectedSenderBody}
                     <div className="d-flex flex-column">
-                    <small className="mt-3">The Admissions Team: </small>
-                    <strong>Adex International School</strong>
+                      <small className="mt-3">The Admissions Team: </small>
+                      <strong>Adex International School</strong>
                     </div>
-                    
                   </div>
                 </div>
               </div>

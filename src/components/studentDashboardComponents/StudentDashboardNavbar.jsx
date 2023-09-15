@@ -9,12 +9,12 @@ import { show_hide_offcanvas } from "../../redux/portalSlice";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import MessageModal from "./MessageModal";
 import ChatModal from "./ChatModal";
 import { Link, useNavigate } from "react-router-dom";
-import socketClient from 'socket.io-client';
-
+import { Menu, Button, Text } from "@mantine/core";
+import Backdrop from "@mui/material/Backdrop";
 
 
 const StudentDashboardNavbar = () => {
@@ -23,10 +23,9 @@ const StudentDashboardNavbar = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const messagesLength = globalState?.messages?.length || 0;
-  const [myMessages, setMyMessages] = useState([])
-  let navigate = useNavigate()
-
-
+  const [myMessages, setMyMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  let navigate = useNavigate();
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -56,10 +55,24 @@ const StudentDashboardNavbar = () => {
 
   const openNotification = () => {
     setIsModalOpen(true);
-    setMyMessages(globalState.messages)
+    setMyMessages(globalState.messages);
   };
 
-  
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const logOut = () => {
+    setOpen(true);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setOpen(false);
+      localStorage.removeItem("studentSignInToken");
+    }, 1200);
+  };
 
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState();
@@ -67,8 +80,8 @@ const StudentDashboardNavbar = () => {
   const label = opened ? "Close navigation" : "Open navigation";
 
   const something = () => {
-    navigate(`/student_dashboard/edit_details`)  /* ?id=${globalState._id} */
-  }
+    navigate(`/student_dashboard/edit_details`); /* ?id=${globalState._id} */
+  };
 
   return (
     <>
@@ -120,25 +133,65 @@ const StudentDashboardNavbar = () => {
         </div>
 
         <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4 navbar-icons">
-          <Badge color="secondary" onClick={openNotification} style={{cursor: 'pointer'}} className="my-auto" badgeContent={messagesLength} showZero>
+          <Badge
+            color="secondary"
+            onClick={openNotification}
+            style={{ cursor: "pointer" }}
+            className="my-auto"
+            badgeContent={messagesLength}
+            showZero
+          >
             <NotificationsIcon />
           </Badge>
-          <button  className="border-0" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
+          <button className="border-0">
             <i className="fas fa-user fs-4 my-auto"></i>
-          </button> 
-          <Badge color="secondary" style={{cursor: 'pointer'}} className="my-auto"  showZero>
+          </button>
+          <Badge
+            color="secondary"
+            style={{ cursor: "pointer" }}
+            className="my-auto"
+            showZero
+          >
             <MailIcon />
           </Badge>
-          
-          <button className="border-0">
+          <Menu>
+            <Menu.Target>
+            <button className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
-          <AvatarUploader myEmail={globalState.email} profilePicture={globalState.profileURL} />
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Menu.Label className="mb-1">Application</Menu.Label>
+              <Menu.Item>Settings</Menu.Item>
+              <Menu.Item onClick={logOut}>Log Out</Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+
+          <AvatarUploader
+            myEmail={globalState.email}
+            profilePicture={globalState.profileURL}
+          />
         </div>
       </div>
-      <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <ChatModal name={globalState.firstName} picture={cloudImage} id={globalState._id}/>
+
+      <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+          onClick={handleClose}
+        >
+          {isLoading && <div className="loader"></div>}
+        </Backdrop>
+
+      <MessageModal
+        myMessages={myMessages}
+        opened={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+      <ChatModal
+        name={globalState.firstName}
+        picture={cloudImage}
+        id={globalState._id}
+      />
 
       <StudentDashboardOffcanvas_On_Small_Screen />
     </>
@@ -146,7 +199,3 @@ const StudentDashboardNavbar = () => {
 };
 
 export default StudentDashboardNavbar;
-
-
-
-
