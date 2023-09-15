@@ -9,6 +9,7 @@ import { show_hide_offcanvas } from "../../redux/portalSlice";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageModal from "./MessageModal";
 import ChatModal from "./ChatModal";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,12 +27,6 @@ const StudentDashboardNavbar = () => {
   let navigate = useNavigate()
 
 
-  // let socketRef = useRef()
-
-  // useEffect(() => {
-  //   socketRef.current = socketClient(endpoint);
-  // }, [])
-  
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -59,51 +54,17 @@ const StudentDashboardNavbar = () => {
     }
   };
 
-  const gooo = () => {
+  const openNotification = () => {
     setIsModalOpen(true);
     setMyMessages(globalState.messages)
-    // console.log(globalState.messages);
   };
 
   
 
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState();
-
-  // const changeFile = (e) => {
-  //   console.log(e.target.files[0]);
-  //   let myImage = e.target.files[0];
-  //   let reader = new FileReader();
-  //   reader.readAsDataURL(myImage);
-  //   reader.onload = () => {
-  //     setMyImage(reader.result);
-  //   };
-  // };
-
-  // const saveFile = () => {
-  //   const endpoint =
-  //     "https://school-portal-backend-adex2210.vercel.app/student_account/upload_profile_pic";
-  //   axios
-  //     .post(endpoint, { myImage })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setCloudImage(response.data.cloudLink);
-  //       console.log(response.data.cloudLink);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? "Close navigation" : "Open navigation";
-
-
-  const dooo = () => {
-    // navigate('/student_dashboard/chat')
-    // socket={socketRef}
-    // console.log(cloudImage);
-  }
 
   const something = () => {
     navigate(`/student_dashboard/edit_details`)  /* ?id=${globalState._id} */
@@ -159,18 +120,18 @@ const StudentDashboardNavbar = () => {
         </div>
 
         <div className="w-50 my-auto d-flex justify-content-end gap-5 me-4 navbar-icons">
-          <button onClick={something} className="border-0">
-            <i className="fas fa-bell fs-4 my-auto"></i>
-          </button>
-          <button onClick={dooo} className="border-0" data-bs-toggle="modal"
+          <Badge color="secondary" onClick={openNotification} style={{cursor: 'pointer'}} className="my-auto" badgeContent={messagesLength} showZero>
+            <NotificationsIcon />
+          </Badge>
+          <button  className="border-0" data-bs-toggle="modal"
             data-bs-target="#staticBackdrop">
             <i className="fas fa-user fs-4 my-auto"></i>
           </button> 
-          <Badge color="secondary" onClick={gooo} style={{cursor: 'pointer'}} className="my-auto" badgeContent={messagesLength} showZero>
+          <Badge color="secondary" style={{cursor: 'pointer'}} className="my-auto"  showZero>
             <MailIcon />
           </Badge>
           
-          <button onClick={gooo} className="border-0">
+          <button className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
           <AvatarUploader myEmail={globalState.email} profilePicture={globalState.profileURL} />

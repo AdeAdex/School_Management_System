@@ -68,12 +68,12 @@ const MessageModal = ({ opened, onClose, myMessages, socket  }) => {
         // size={isLargeScreen ? 350 : "100%"}
         className="mantine-drawer"
         size={isLargeScreen ? 300 : null}
-      style={{ width: isLargeScreen ? 300 : '100%' }}
-        // style={{display: 'flex', marginTop: 'auto', marginBottom: 'auto', height: '300px'}}
+      style={{ width: isLargeScreen ? 300 : '100%', backgroundColor: '' }}
       >
         {myMessages.map((message) => (
           <div
-            className="d-flex w-100 each-modal-message mb-3"
+            className="d-flex w-100 each-modal-message mb-3 shadow p-2"
+            style={{borderRadius: '5px', cursor: 'pointer'}}
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
             key={message._id}
@@ -87,7 +87,7 @@ const MessageModal = ({ opened, onClose, myMessages, socket  }) => {
               )
             }
           >
-            <img src="/pic/avatar.png" style={{ width: "80px" }} alt="" />
+            <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694532366/ade_ljooff.png" className="me-3" style={{ width: "50px" }} alt="logo" />
             <div className="my-auto">
               <div>{message.senderName}</div>
               <div style={{ fontSize: "12px" }}>{message.messageSubject}</div>
