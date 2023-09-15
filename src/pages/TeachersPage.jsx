@@ -63,7 +63,7 @@ const TeachersPage = () => {
               }}
               icon="fas fa-1 shadow"
               userFeedbackName="PEDAGOGICAL STUDY"
-              feedbackContent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eum dolor tempora fuga aliquam tenetur."
+              feedbackContent="Our pedagogical study program focuses on innovative teaching methods that empower students to reach their full potential."
             />
             <TeachersType
               container_style={{
@@ -74,7 +74,7 @@ const TeachersPage = () => {
               }}
               icon="fas fa-2 shadow"
               userFeedbackName="ASSISTANCE TO DISABLED"
-              feedbackContent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eum dolor tempora fuga aliquam tenetur."
+              feedbackContent="We are committed to providing specialized assistance to disabled individuals, ensuring their inclusion in our educational community."
             />
             <TeachersType
               container_style={{
@@ -85,7 +85,7 @@ const TeachersPage = () => {
               }}
               icon="fas fa-3 shadow"
               userFeedbackName="MONTESSORI TEACHING"
-              feedbackContent="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius eum dolor tempora fuga aliquam tenetur."
+              feedbackContent="Our Montessori teaching approach fosters independence, curiosity, and a love for learning in young children."
             />
           </div>
 
