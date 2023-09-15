@@ -173,23 +173,8 @@ const StudentDashboardNavbar = () => {
           <button onClick={gooo} className="border-0">
             <i className="fas fa-gear fs-4 my-auto"></i>
           </button>
-          {/* <button onClick={gooo} className="border-2">
-            <img src="/pic/avatar.png" style={{ width: "50px" }} alt="" />
-          </button> */}
           <AvatarUploader myEmail={globalState.email} profilePicture={globalState.profileURL} />
-          {/* <input type="file" className="bg-info" name="" id="" onChange={(e) => changeFile(e)} />
-          <button onClick={saveFile}>Upload</button>
-          <img src={cloudImage} alt="" style={{ width: "50px" }} />
-          <Avatar
-            component="a"
-            href=""
-            target="_blank"
-            src="/pic/avatar.png"
-            alt="it's me"
-            size="lg" radius="xl"
-          /> */}
         </div>
-        {/* <StudentDashboardOffcanvas isVisible={offCanvasTitleVisible}/> */}
       </div>
       <MessageModal myMessages={myMessages} opened={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <ChatModal name={globalState.firstName} picture={cloudImage} id={globalState._id}/>

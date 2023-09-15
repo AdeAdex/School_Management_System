@@ -29,6 +29,7 @@ const AvatarUploader = ({myEmail, profilePicture}) => {
 
   useEffect(() => {
     setCloudImage(profilePicture);
+    console.log(profilePicture);
   }, [profilePicture])
 
   return (
