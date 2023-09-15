@@ -47,9 +47,9 @@ const AvatarUploader = ({myEmail, profilePicture}) => {
           ) : (
             <div className="avatar-placeholder d-flex flex-column justify-content-center border">
               <img
-                src="../pic/avatar.png"
+                src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694766355/avatar_w8o6yk.png"
                 className="mx-auto"
-                alt=""
+                alt="profile pic"
                 style={{ width: "50px", height: "50px" }}
               />
               <small className="dp">Click to upload</small>
