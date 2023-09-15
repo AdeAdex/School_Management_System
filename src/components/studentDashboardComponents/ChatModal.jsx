@@ -37,11 +37,11 @@ const ChatModal = ({
              
               <div className="mb-4">
                 <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
-                  <small>Sent on: {selectedSenderDate}</small>
-                  <small>{selectedSenderTime}</small>
+                <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694532366/ade_ljooff.png" style={{ width: "45px" }} alt="" />
+                  <small className="my-auto">Sent on: {selectedSenderDate}</small>
+                  <small className="my-auto">{selectedSenderTime}</small>
                 </div>
                 <div className="d-flex gap-2">
-                  <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694532366/ade_ljooff.png" style={{ width: "45px" }} alt="" />
                   <div
                     className="my-auto p-2"
                     style={{
