@@ -9,8 +9,6 @@ const ChatModal = ({
   selectedSenderDate,
   selectedSenderTime,
 }) => {
- 
-
   return (
     <>
       <div
@@ -25,7 +23,7 @@ const ChatModal = ({
         <div className="modal-dialog d-flex">
           <div className="modal-content my-auto">
             <div className="modal-header">
-            Notification from: {selectedSenderName}
+              Notification from: {selectedSenderName}
               <button
                 type="button"
                 className="btn-close"
@@ -34,22 +32,32 @@ const ChatModal = ({
               ></button>
             </div>
             <div className="modal-body">
-             
               <div className="mb-4">
                 <div className="d-flex mb-4 gap-2 w-100 justify-content-center">
-                <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694532366/ade_ljooff.png" style={{ width: "45px" }} alt="" />
-                  <small className="my-auto">Sent on: {selectedSenderDate}</small>
+                  <img
+                    src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694532366/ade_ljooff.png"
+                    style={{ width: "45px" }}
+                    alt=""
+                  />
+                  <small className="my-auto">
+                    Sent on: {selectedSenderDate}
+                  </small>
                   <small className="my-auto">{selectedSenderTime}</small>
                 </div>
                 <div className="d-flex gap-2">
                   <div
                     className="my-auto p-2"
                     style={{
-                      backgroundColor: "lightgreen",
+                      backgroundColor: "lightgray",
                       borderRadius: "10px",
                     }}
                   >
                     {selectedSenderBody}
+                    <div className="d-flex flex-column">
+                    <small className="mt-3">The Admissions Team: </small>
+                    <strong>Adex International School</strong>
+                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -82,6 +90,3 @@ const ChatModal = ({
 };
 
 export default ChatModal;
-
-
-
