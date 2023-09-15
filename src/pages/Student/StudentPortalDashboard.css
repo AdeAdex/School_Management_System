@@ -141,6 +141,14 @@
     font-size: 12px;
   }
 
+  .dashboard-home-container-left {
+    padding: 0px 10px !important;
+  }
+
+  .dashboard-home-container-student-details {
+    width: 47% !important;
+  }
+
 }
 
 .custom-stepper .completed-step {

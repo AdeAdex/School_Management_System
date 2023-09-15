@@ -3,14 +3,14 @@ import React from "react";
 const StudentDetails = ({icons, param, about}) => {
   return (
     <div
-      className="shadow position-relative pb-3"
-      style={{ width: "48%", backgroundColor: "", borderRadius: '5px' }}
+      className="shadow position-relative pb-3 dashboard-home-container-student-details"
+      style={{ width: "49%", backgroundColor: "", borderRadius: '5px' }}
     >
-      <div className="d-flex justify-content-between px-3 py-3">
-        <small className="fs-5">
+      <div className="d-flex justify-content-between px-3 py-3 my-auto">
+        <small className="fs-5 my-auto">
           {icons}
         </small>
-        <h4 className="pe-5">{param}</h4>
+        <h4 className="pe-0 pe-lg-5 my-auto" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{param}</h4>
       </div>
       <hr
         className=""
