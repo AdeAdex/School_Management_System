@@ -162,7 +162,7 @@ const StudentDashboardNavbar = () => {
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Label className="mb-1">Application</Menu.Label>
-              <Menu.Item>Settings</Menu.Item>
+              <Menu.Item>Help</Menu.Item>
               <Menu.Item onClick={logOut}>Log Out</Menu.Item>
             </Menu.Dropdown>
           </Menu>
