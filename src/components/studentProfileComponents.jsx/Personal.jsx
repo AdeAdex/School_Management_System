@@ -106,12 +106,17 @@ const Personal = () => {
               defaultValue={globalState.state}
               variant="standard"
             >
+              {statesForCountry.length === 0 && formik.values.state ? (
+                <MenuItem value={formik.values.state}>
+                  {formik.values.state}
+                </MenuItem>
+              ) : null}
               {statesForCountry
                 .slice() // Create a copy to avoid modifying the original array
                 .sort() // Sort the array alphabetically
-                .map((state) => (
-                  <MenuItem key={state} value={state}>
-                    {state}
+                .map((selectedState) => (
+                  <MenuItem key={selectedState} value={selectedState}>
+                    {selectedState}
                   </MenuItem>
                 ))}
             </TextField>

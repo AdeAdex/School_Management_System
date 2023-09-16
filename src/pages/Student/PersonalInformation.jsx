@@ -53,8 +53,7 @@ const PersonalInformation = () => {
       setIsLoading(true);
       console.log(values);
       globalState = { ...globalState, ...values };
-      const endpoint =
-        "http://localhost:2000/student_account/student_update";
+      const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
       axios.post(endpoint, globalState).then((response) => {
         setIsLoading(false);
         const Toast = Swal.mixin({
@@ -297,9 +296,7 @@ const PersonalInformation = () => {
                 ))}
             </Select>
             {formik.touched.state && Boolean(formik.errors.state) ? (
-              <small className="error text-danger">
-                {formik.errors.state}
-              </small>
+              <small className="error text-danger">{formik.errors.state}</small>
             ) : null}
           </FormControl>
         </div>
