@@ -26,21 +26,18 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
   }, [startCountdown])
   
 
+  const countdownTime = 180;
   let formik = useFormik({
     initialValues: {
       myEmail: sentEmail || "",
       startCountdown: true,
-      // countdownStartTime: Date.now(),
-      // countdownTimeRemaining: 180,
-      countdownStartTime: null, // Initialize to null
-      countdownTimeRemaining: 0,
+      countdownStartTime: Date.now(),
+      countdownTimeRemaining: countdownTime,
     },
 
     onSubmit: (values) => {
       setIsLoading(true)
       const myOTP = Math.floor(Math.random() * 9000 + 1000);
-      const countdownStartTime = Date.now(); // Record the start time
-      newValues.countdownStartTime = countdownStartTime; 
       const newValues = { ...values, myOTP };
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/forgot_password";
       axios.post(endpoint, newValues).then((response) => {
