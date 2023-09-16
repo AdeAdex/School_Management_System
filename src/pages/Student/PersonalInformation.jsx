@@ -14,6 +14,7 @@ const PersonalInformation = () => {
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  let globalState = useSelector((state) => state.portalReducer.studentInfo);
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
@@ -32,32 +33,6 @@ const PersonalInformation = () => {
     }
   };
 
-  useEffect(() => {
-    let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
-    axios
-      .get(endpoint)
-      .then((response) => {
-        console.log(response.data);
-        setAllCountry(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching countries:", error);
-      });
-  }, []);
-
-  // const [state, setState] = useState('');
-  // const [country, setCountry] = useState('');
-
-  // const handleChangeState = (event) => {
-  //   setState(event.target.value);
-  // };
-
-  // const handleChangeCountry = (event) => {
-  //   setCountry(event.target.value);
-  // };
-
-  let globalState = useSelector((state) => state.portalReducer.studentInfo);
   let formik = useFormik({
     initialValues: {
       firstName: globalState.firstName,
@@ -79,9 +54,8 @@ const PersonalInformation = () => {
       globalState = { ...globalState, ...values };
       const endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
-      axios.post(endpoint, globalState)
-      .then((response) => {
-      setIsLoading(false);
+      axios.post(endpoint, globalState).then((response) => {
+        setIsLoading(false);
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -102,6 +76,19 @@ const PersonalInformation = () => {
       });
     },
   });
+
+  useEffect(() => {
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
+    axios
+      .get(endpoint)
+      .then((response) => {
+        setAllCountry(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching countries:", error);
+      });
+  }, []);
 
   return (
     <>
@@ -254,7 +241,6 @@ const PersonalInformation = () => {
               id="country-select"
               value={formik.values.country}
               label="Country"
-              // onChange={formik.handleChange}
               onChange={(e) => {
                 handleCountryChange(e); // Call the custom event handler
                 formik.handleChange(e); // Call formik's handleChange
@@ -295,20 +281,24 @@ const PersonalInformation = () => {
               onBlur={formik.handleBlur}
               error={formik.touched.myState && Boolean(formik.errors.myState)}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
+              {statesForCountry.length === 0 && formik.values.myState ? (
+                <MenuItem value={formik.values.myState}>
+                  {formik.values.myState}
+                </MenuItem>
+              ) : null}
               {statesForCountry
                 .slice() // Create a copy to avoid modifying the original array
                 .sort() // Sort the array alphabetically
-                .map((state) => (
-                  <MenuItem key={state} value={state}>
-                    {state}
+                .map((selectedState) => (
+                  <MenuItem key={selectedState} value={selectedState}>
+                    {selectedState}
                   </MenuItem>
                 ))}
             </Select>
             {formik.touched.myState && Boolean(formik.errors.myState) ? (
-              <small className="error text-danger">{formik.errors.myState}</small>
+              <small className="error text-danger">
+                {formik.errors.myState}
+              </small>
             ) : null}
           </FormControl>
         </div>
@@ -379,43 +369,41 @@ const PersonalInformation = () => {
           </div>
         </div>
         <div className="col-md-6 mb-3">
-            <FormControl sx={{ m: 0, width: "100%" }} size="small">
-              <InputLabel id="gender-label">Gender</InputLabel>
-              <Select
-                labelId="gender-label"
-                id="gender-select"
-                value={formik.values.gender}
-                label="Gender"
-                onChange={formik.handleChange}
-                name="gender"
-                onBlur={formik.handleBlur}
-                error={formik.touched.gender && Boolean(formik.errors.gender)}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value="Male">Male</MenuItem>
-                <MenuItem value="Female">Female</MenuItem>
-                <MenuItem value="Others">Others</MenuItem>
-              </Select>
-              {formik.touched.gender && Boolean(formik.errors.gender) ? (
-                <small className="error text-danger">
-                  {formik.errors.gender}
-                </small>
-              ) : null}
-            </FormControl>
-          </div>
+          <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="gender-label">Gender</InputLabel>
+            <Select
+              labelId="gender-label"
+              id="gender-select"
+              value={formik.values.gender}
+              label="Gender"
+              onChange={formik.handleChange}
+              name="gender"
+              onBlur={formik.handleBlur}
+              error={formik.touched.gender && Boolean(formik.errors.gender)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="Male">Male</MenuItem>
+              <MenuItem value="Female">Female</MenuItem>
+              <MenuItem value="Others">Others</MenuItem>
+            </Select>
+            {formik.touched.gender && Boolean(formik.errors.gender) ? (
+              <small className="error text-danger">
+                {formik.errors.gender}
+              </small>
+            ) : null}
+          </FormControl>
+        </div>
 
         <div className="col-12">
-          <button className={`btn btn-primary signup-btn ${isLoading ? 'px-1' : 'px-5' }`} type="submit">
-                
-            {
-              isLoading ? (
-                <div class="loaderBar"></div>
-              ) : (
-                <div>Save</div>
-              )
-            }
+          <button
+            className={`btn btn-primary signup-btn ${
+              isLoading ? "px-1" : "px-5"
+            }`}
+            type="submit"
+          >
+            {isLoading ? <div className="spinner"></div> : <div>Save</div>}
           </button>
         </div>
       </form>
