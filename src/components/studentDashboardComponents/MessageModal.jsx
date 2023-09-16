@@ -1,31 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { Modal, Group, Button, ScrollArea } from "@mantine/core";
 import { Drawer, Group, Button, ScrollArea } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import "../studentDashboardComponents/MessageModal.css";
-// import Backdrop from "@mui/material/Backdrop";
-// import Box from "@mui/material/Box";
-// import Modal from "@mui/material/Modal";
-// import Fade from "@mui/material/Fade";
-// import Button from "@mui/material/Button";
-// import Typography from "@mui/material/Typography";
 import { FaUserTie} from "react-icons/fa";
 import { Textarea } from "@mantine/core";
 import ChatModal from "./ChatModal";
 
-// const style = {
-//   position: "absolute",
-//   top: "85px",
-//   left: "",
-//   right: "40px",
-//   // transform: 'translate(-50%, -50%)',
-//   width: 400,
-//   height: "87%",
-//   bgcolor: "background.paper",
-//   // border: '2px solid #000',
-//   boxShadow: 24,
-//   padding: "10px",
-// };
 
 const MessageModal = ({ opened, onClose, myMessages, markMessageAsRead,  socket  }) => {
   const [selectedSenderName, setSelectedSenderName] = useState("");

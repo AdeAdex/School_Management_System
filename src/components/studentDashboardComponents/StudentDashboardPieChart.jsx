@@ -11,7 +11,8 @@ const StudentDashboardPieChart = () => {
     let studentEmail = globalState.email;
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student_performance";
-    axios.post(endpoint, { studentEmail }).then((response) => {
+    axios.post(endpoint, { studentEmail })
+    .then((response) => {
       if (response.data.status) {
         setPerformance(response.data.res);
       }
