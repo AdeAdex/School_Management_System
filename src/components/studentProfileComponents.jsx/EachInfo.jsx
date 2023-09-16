@@ -2,7 +2,8 @@ import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const EachInfo = ({ label, value }) => {
+
+const EachInfo = ({ label, value, enabled }) => {
   return (
     <>
       <div
@@ -19,11 +20,12 @@ const EachInfo = ({ label, value }) => {
         >
           
           <TextField
-          disabled
-          id="standard-disabled"
+          disabled={!enabled}
+          id={enabled ? 'outlined-disabled' : 'outlined-disabled'}
           label={label}
           defaultValue={value}
           variant="standard"
+          className={enabled ? 'custom-textfield-enabled' : 'custom-textfield-disabled'}
         />
         </Box>
       </div>

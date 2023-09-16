@@ -103,7 +103,7 @@
 
 // export default StudentEditDetails;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
 import Personal from "../../components/studentProfileComponents.jsx/Personal";
@@ -111,22 +111,41 @@ import { FaUserCheck } from "react-icons/fa";
 import { FaAddressCard } from "react-icons/fa";
 import Contact from "../../components/studentProfileComponents.jsx/Contact";
 import Referee from "../../components/studentProfileComponents.jsx/Referee";
+import { BiSolidEdit } from "react-icons/bi";
+import { FaSave } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import "./StudentEditDetails.css";
+
+
 
 const StudentEditDetails = () => {
+
+  const [edit, setEdit] = useState(true);
+  const [enabled, setEnabled] = useState(false);
+
+  const handleEditDetails = () => {
+    setEdit(false);
+    setEnabled(true);
+  };
+
+
   return (
     <SnackbarProvider
       maxSnack={1}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
-      <MyApp />
+      <MyApp handleEditDetails={handleEditDetails} edit={edit} enabled={enabled}/>
     </SnackbarProvider>
   );
 };
 
-function MyApp() {
-  // const globalState = useSelector((state) => state.portalReducer.studentInfo);
-
+function MyApp({ handleEditDetails, edit, enabled }) {
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const { enqueueSnackbar } = useSnackbar();
+  // const [edit, setEdit] = useState(true);
+  // const [enabled, setEnabled] = useState(false)
+
+  useEffect(() => {}, []);
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -134,6 +153,30 @@ function MyApp() {
 
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
+
+
+
+
+    const editMyDetails = () => {
+      handleEditDetails(); 
+      if (enabled && !edit) {
+        const payload = {
+          firstName: globalState.firstName,
+          lastName: globalState.lastName,
+          email: globalState.email,
+          phoneNumber: globalState.phoneNumber,
+          middleName: globalState.middleName,
+          address: globalState.address,
+          myTitle: globalState.myTitle,
+          city: globalState.city,
+          age: globalState.age,
+          gender: globalState.gender,
+          state: globalState.state,
+          country: globalState.country,
+        };
+    };
+  }
+
   return (
     <>
       <Stepper
@@ -149,7 +192,7 @@ function MyApp() {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
-          <Personal />
+          <Personal enabled={enabled} edit={edit}/>
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">
               Next step
@@ -179,7 +222,19 @@ function MyApp() {
         </Stepper.Step>
         {/* <Stepper.Completed>Completed</Stepper.Completed> */}
       </Stepper>
-      
+      <div className="edit-info-container">
+        <div className="edit-info-toggle" onClick={editMyDetails}>
+          <input type="checkbox" className="edit-info-input" />
+          <span className="edit-info-button"></span>
+          <span className="edit-info-label">
+            {edit ? (
+              <BiSolidEdit size={32} color="blue" />
+            ) : (
+              <FaSave size={32} color="blue" />
+            )}
+          </span>
+        </div>
+      </div>
     </>
   );
 }

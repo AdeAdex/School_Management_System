@@ -1,22 +1,21 @@
+
+
+
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import EachInfo from "./EachInfo";
-import EachInfoForSelect from "./EachInfoForSelect";
-import EachInfoForSelectState from "./EachInfoForSelectState";
-
-// import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
+import EachInfoForSelect from "./EachInfoForSelect";
+import EachInfoForSelectState from "./EachInfoForSelectState";
 
-const Personal = () => {
+const Personal = ({enabled, edit}) => {
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
 
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-
-  // useEffect(() => {}, [globalState]);
 
   useEffect(() => {
     let endpoint =
@@ -31,7 +30,6 @@ const Personal = () => {
         console.error("Error fetching countries:", error);
       });
   }, []);
-
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
@@ -50,13 +48,36 @@ const Personal = () => {
     }
   };
 
+
+  if (enabled && !edit) {
+   const initialValues = {
+      firstName: globalState.firstName,
+      lastName: globalState.lastName,
+      email: globalState.email,
+      phoneNumber: globalState.phoneNumber,
+      middleName: globalState.middleName,
+      address: globalState.address,
+      myTitle: globalState.myTitle,
+      city: globalState.city,
+      age: globalState.age,
+      gender: globalState.gender,
+      state: globalState.state,
+      country: globalState.country,
+    };
+
+    console.log(initialValues);
+
+    // const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_update"
+    // axios.post(endpoint, values)
+  }
+
   return (
     <>
       <div className="w-100 d-flex flex-wrap gap-4">
-        <EachInfo label="Surname" value={globalState.lastName} />
-        <EachInfo label="First Name" value={globalState.firstName} />
-        <EachInfo label="Middle name" value={globalState.middleName} />
-        <EachInfo label="Age" value={globalState.age} />
+        <EachInfo label="Surname" value={globalState.lastName} enabled={enabled}/>
+        <EachInfo label="First Name" value={globalState.firstName} enabled={enabled}/>
+        <EachInfo label="Middle name" value={globalState.middleName} enabled={enabled}/>
+        <EachInfo label="Age" value={globalState.age} enabled={enabled}/>
         <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
@@ -67,6 +88,7 @@ const Personal = () => {
             autoComplete="off"
           >
             <TextField
+              disabled={!enabled}
               id="standard-select-currency"
               select
               label="Nationality"
@@ -99,6 +121,7 @@ const Personal = () => {
             autoComplete="off"
           >
             <TextField
+              disabled={!enabled}
               id="standard-select-currency"
               select
               label="State of origin"
@@ -106,9 +129,9 @@ const Personal = () => {
               defaultValue={globalState.state}
               variant="standard"
             >
-              {statesForCountry.length === 0 && formik.values.state ? (
-                <MenuItem value={formik.values.state}>
-                  {formik.values.state}
+              {statesForCountry.length === 0 && globalState.state ? (
+                <MenuItem value={globalState.state}>
+                  {globalState.state}
                 </MenuItem>
               ) : null}
               {statesForCountry
@@ -124,8 +147,8 @@ const Personal = () => {
         </div>
         {/* <EachInfoForSelect label="Nationality" value={globalState.country}/>
         <EachInfoForSelectState label="State of origin" value={globalState.state}/> */}
-        <EachInfo label="Gender" value={globalState.gender} />
-        <EachInfo label="Title" value={globalState.myTitle} />
+        <EachInfo label="Gender" value={globalState.gender} enabled={enabled}/>
+        <EachInfo label="Title" value={globalState.myTitle} enabled={enabled}/>
       </div>
     </>
   );
