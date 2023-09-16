@@ -12,10 +12,27 @@ import EachInfoForSelect from "./EachInfoForSelect";
 import EachInfoForSelectState from "./EachInfoForSelectState";
 
 const Personal = ({enabled, edit}) => {
+  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
+  const [lastName, setLastName] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [middleName, setMiddleName] = useState("")
 
-  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const myDetails = {
+    lastName: lastName,
+    firstName,
+    middleName
+  }
+
+
+  useEffect(() => {
+   
+    console.log("MyDetails:",myDetails);
+  }, [lastName])
+  
+
 
   useEffect(() => {
     let endpoint =
@@ -23,7 +40,6 @@ const Personal = ({enabled, edit}) => {
     axios
       .get(endpoint)
       .then((response) => {
-        console.log(response.data);
         setAllCountry(response.data);
       })
       .catch((error) => {
@@ -38,6 +54,7 @@ const Personal = ({enabled, edit}) => {
     const selectedCountryData = allCountry.find(
       (countryData) => countryData.country === selectedCountry
     );
+    
 
     // If the selectedCountryData is found, set the states
     if (selectedCountryData) {
@@ -50,31 +67,18 @@ const Personal = ({enabled, edit}) => {
 
 
   if (enabled && !edit) {
-   const initialValues = {
-      firstName: globalState.firstName,
-      lastName: globalState.lastName,
-      email: globalState.email,
-      phoneNumber: globalState.phoneNumber,
-      middleName: globalState.middleName,
-      address: globalState.address,
-      myTitle: globalState.myTitle,
-      city: globalState.city,
-      age: globalState.age,
-      gender: globalState.gender,
-      state: globalState.state,
-      country: globalState.country,
-    };
+  
+  }
 
-    console.log(initialValues);
-
-    // const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_update"
-    // axios.post(endpoint, values)
+  const check = () => {
+    console.log(lastName);
   }
 
   return (
     <>
+    <form action="">
       <div className="w-100 d-flex flex-wrap gap-4">
-        <EachInfo label="Surname" value={globalState.lastName} enabled={enabled}/>
+        <EachInfo label="Surname" value={globalState.lastName} onChange={(e) => setLastName(e.target.value)} enabled={enabled}/>
         <EachInfo label="First Name" value={globalState.firstName} enabled={enabled}/>
         <EachInfo label="Middle name" value={globalState.middleName} enabled={enabled}/>
         <EachInfo label="Age" value={globalState.age} enabled={enabled}/>
@@ -93,7 +97,7 @@ const Personal = ({enabled, edit}) => {
               select
               label="Nationality"
               name="country"
-              defaultValue={globalState.country}
+              defaultValue={globalState.country || ''}
               variant="standard"
               onChange={(e) => {
                 handleCountryChange(e); // Call the custom event handler
@@ -126,7 +130,7 @@ const Personal = ({enabled, edit}) => {
               select
               label="State of origin"
               name="state"
-              defaultValue={globalState.state}
+              defaultValue={globalState.state || ''}
               variant="standard"
             >
               {statesForCountry.length === 0 && globalState.state ? (
@@ -149,7 +153,9 @@ const Personal = ({enabled, edit}) => {
         <EachInfoForSelectState label="State of origin" value={globalState.state}/> */}
         <EachInfo label="Gender" value={globalState.gender} enabled={enabled}/>
         <EachInfo label="Title" value={globalState.myTitle} enabled={enabled}/>
+        {/* <button onClick={check}>running</button> */}
       </div>
+      </form>
     </>
   );
 };

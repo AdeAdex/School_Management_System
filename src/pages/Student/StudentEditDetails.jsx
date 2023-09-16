@@ -155,26 +155,29 @@ function MyApp({ handleEditDetails, edit, enabled }) {
     setActive((current) => (current > 0 ? current - 1 : current));
 
 
+    const sendPayloadToBackend = (payload) => {
+      // Replace 'your-backend-api-url' with your actual backend API endpoint
+      const endpoint = 'https://your-backend-api-url/updateStudentDetails';
+  
+      axios
+        .post(endpoint, payload)
+        .then((response) => {
+          // Handle success response here
+          console.log('Details updated successfully!', response.data);
+        })
+        .catch((error) => {
+          // Handle error response here
+          console.error('Error updating details:', error);
+        });
+    };
+
 
 
     const editMyDetails = () => {
       handleEditDetails(); 
       if (enabled && !edit) {
-        const payload = {
-          firstName: globalState.firstName,
-          lastName: globalState.lastName,
-          email: globalState.email,
-          phoneNumber: globalState.phoneNumber,
-          middleName: globalState.middleName,
-          address: globalState.address,
-          myTitle: globalState.myTitle,
-          city: globalState.city,
-          age: globalState.age,
-          gender: globalState.gender,
-          state: globalState.state,
-          country: globalState.country,
-        };
-    };
+  
+      }
   }
 
   return (
@@ -192,7 +195,7 @@ function MyApp({ handleEditDetails, edit, enabled }) {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
-          <Personal enabled={enabled} edit={edit}/>
+          <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/>
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">
               Next step
