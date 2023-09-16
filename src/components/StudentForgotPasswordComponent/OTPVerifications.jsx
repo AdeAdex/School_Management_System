@@ -70,7 +70,7 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
     localStorage.removeItem("OTPCountdownTimeRemaining");
     const startCountdown = true;
     const countdownStartTime = Date.now();
-    const countdownTimeRemaining = 60;
+    const countdownTimeRemaining = 180;
     const myNewOTP = Math.floor(Math.random() * 9000 + 1000);
     const myNewValues = {
       myNewOTP,
