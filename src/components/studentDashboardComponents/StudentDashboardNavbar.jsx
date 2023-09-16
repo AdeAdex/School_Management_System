@@ -22,10 +22,11 @@ const StudentDashboardNavbar = () => {
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const messagesLength = globalState?.messages?.length || 0;
+  // const messagesLength = globalState?.messages?.length || 0;
   const [myMessages, setMyMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
+  const [messagesLength, setMessagesLength] = useState(0);
 
   const offCanvas = () => {
     const offCan = document.getElementById("offCan");
@@ -83,6 +84,55 @@ const StudentDashboardNavbar = () => {
     navigate(`/student_dashboard/edit_details`); /* ?id=${globalState._id} */
   };
 
+
+
+
+  // useEffect(() => {
+  //   const messagesLength = myMessages.filter((message) => !message.read).length;
+  //   dispatch(updateMessagesLength(messagesLength));
+  // }, [myMessages, dispatch]);
+
+  useEffect(() => {
+    const unreadMessages = myMessages.filter((message) => !message.read);
+    setMessagesLength(unreadMessages.length);
+  }, [myMessages]);
+
+
+  const markMessageAsRead = (messageId) => {
+    // Create a copy of the current messages array with updated messages
+    const updatedMessages = myMessages.map((message) => {
+      if (message._id === messageId && !message.read) {
+        // Create a new object that is a copy of the message with an added "read" property
+        return { ...message, read: true };
+      }
+      return message; // Return the original message if it's not the one to be marked as read
+    });
+
+    // Check if the messages array was actually updated
+    if (updatedMessages !== myMessages) {
+      // Update the state with the updated messages
+      setMyMessages(updatedMessages);
+    }
+  };
+
+
+  // const markMessageAsRead = (messageId) => {
+  //   // Create a copy of the current messages array with updated messages
+  //   const updatedMessages = myMessages.map((message) => {
+  //     if (message._id === messageId && !message.read) {
+  //       // Create a new object that is a copy of the message with an added "read" property
+  //       return { ...message, read: true };
+  //     }
+  //     return message; // Return the original message if it's not the one to be marked as read
+  //   });
+  
+  //   // Check if the messages array was actually updated
+  //   if (updatedMessages !== myMessages) {
+  //     // Update the state with the updated messages
+  //     setMyMessages(updatedMessages);
+  //   }
+  // };
+  
   return (
     <>
       <div
@@ -139,6 +189,7 @@ const StudentDashboardNavbar = () => {
             style={{ cursor: "pointer" }}
             className="my-auto"
             badgeContent={messagesLength}
+            // badgeContent={globalState.messagesLength}
             showZero
           >
             <NotificationsIcon />
@@ -186,6 +237,7 @@ const StudentDashboardNavbar = () => {
         myMessages={myMessages}
         opened={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        markMessageAsRead={markMessageAsRead}
       />
       <ChatModal
         name={globalState.firstName}

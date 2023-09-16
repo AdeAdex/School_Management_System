@@ -27,7 +27,7 @@ import ChatModal from "./ChatModal";
 //   padding: "10px",
 // };
 
-const MessageModal = ({ opened, onClose, myMessages, socket  }) => {
+const MessageModal = ({ opened, onClose, myMessages, markMessageAsRead,  socket  }) => {
   const [selectedSenderName, setSelectedSenderName] = useState("");
   const [selectedSenderSubject, setSelectedSenderSubject] = useState("");
   const [selectedSenderBody, setSelectedSenderBody] = useState("");
@@ -77,15 +77,16 @@ const MessageModal = ({ opened, onClose, myMessages, socket  }) => {
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
             key={message._id}
-            onClick={() =>
+            onClick={() => {
               openChatModal(
                 message.senderName,
                 message.messageSubject,
                 message.messageBody,
                 message.messageDate,
                 message.messageTime
-              )
-            }
+              );
+              markMessageAsRead(message._id); 
+            }}
           >
             <img src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694532366/ade_ljooff.png" className="me-3" style={{ width: "50px" }} alt="logo" />
             <div className="my-auto">
