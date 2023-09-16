@@ -51,7 +51,6 @@ const PersonalInformation = () => {
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log(values);
       globalState = { ...globalState, ...values };
       const endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
       axios.post(endpoint, globalState).then((response) => {
