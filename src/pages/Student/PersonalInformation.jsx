@@ -45,15 +45,16 @@ const PersonalInformation = () => {
       city: globalState.city,
       age: globalState.age,
       gender: globalState.gender,
-      myState: globalState.state,
+      state: globalState.state,
       country: globalState.country,
     },
 
     onSubmit: (values) => {
       setIsLoading(true);
+      console.log(values);
       globalState = { ...globalState, ...values };
       const endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
+        "http://localhost:2000/student_account/student_update";
       axios.post(endpoint, globalState).then((response) => {
         setIsLoading(false);
         const Toast = Swal.mixin({
@@ -274,16 +275,16 @@ const PersonalInformation = () => {
             <Select
               labelId="state-label"
               id="state-select"
-              value={formik.values.myState}
+              value={formik.values.state}
               label="State"
               onChange={formik.handleChange}
-              name="myState"
+              name="state"
               onBlur={formik.handleBlur}
-              error={formik.touched.myState && Boolean(formik.errors.myState)}
+              error={formik.touched.state && Boolean(formik.errors.state)}
             >
-              {statesForCountry.length === 0 && formik.values.myState ? (
-                <MenuItem value={formik.values.myState}>
-                  {formik.values.myState}
+              {statesForCountry.length === 0 && formik.values.state ? (
+                <MenuItem value={formik.values.state}>
+                  {formik.values.state}
                 </MenuItem>
               ) : null}
               {statesForCountry
@@ -295,9 +296,9 @@ const PersonalInformation = () => {
                   </MenuItem>
                 ))}
             </Select>
-            {formik.touched.myState && Boolean(formik.errors.myState) ? (
+            {formik.touched.state && Boolean(formik.errors.state) ? (
               <small className="error text-danger">
-                {formik.errors.myState}
+                {formik.errors.state}
               </small>
             ) : null}
           </FormControl>
