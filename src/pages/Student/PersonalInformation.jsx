@@ -13,6 +13,7 @@ const PersonalInformation = () => {
   let navigate = useNavigate();
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
@@ -69,15 +70,18 @@ const PersonalInformation = () => {
       city: globalState.city,
       age: globalState.age,
       gender: globalState.gender,
-      state: globalState.state,
+      myState: globalState.state,
       country: globalState.country,
     },
 
     onSubmit: (values) => {
+      setIsLoading(true);
       globalState = { ...globalState, ...values };
       const endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/student_update";
-      axios.post(endpoint, globalState).then((response) => {
+      axios.post(endpoint, globalState)
+      .then((response) => {
+      setIsLoading(false);
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -284,12 +288,12 @@ const PersonalInformation = () => {
             <Select
               labelId="state-label"
               id="state-select"
-              value={formik.values.state}
+              value={formik.values.myState}
               label="State"
               onChange={formik.handleChange}
-              name="state"
+              name="myState"
               onBlur={formik.handleBlur}
-              error={formik.touched.state && Boolean(formik.errors.state)}
+              error={formik.touched.myState && Boolean(formik.errors.myState)}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -303,8 +307,8 @@ const PersonalInformation = () => {
                   </MenuItem>
                 ))}
             </Select>
-            {formik.touched.state && Boolean(formik.errors.state) ? (
-              <small className="error text-danger">{formik.errors.state}</small>
+            {formik.touched.myState && Boolean(formik.errors.myState) ? (
+              <small className="error text-danger">{formik.errors.myState}</small>
             ) : null}
           </FormControl>
         </div>
@@ -403,8 +407,15 @@ const PersonalInformation = () => {
           </div>
 
         <div className="col-12">
-          <button className="btn btn-primary signup-btn px-5" type="submit">
-            Save
+          <button className={`btn btn-primary signup-btn ${isLoading ? 'px-1' : 'px-5' }`} type="submit">
+                
+            {
+              isLoading ? (
+                <div class="loaderBar"></div>
+              ) : (
+                <div>Save</div>
+              )
+            }
           </button>
         </div>
       </form>
