@@ -121,10 +121,7 @@ import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import EachInfo from "../../components/studentProfileComponents.jsx/EachInfo";
 
-
-
 const StudentEditDetails = () => {
-
   // const [edit, setEdit] = useState(true);
   // const [enabled, setEnabled] = useState(false);
 
@@ -132,7 +129,6 @@ const StudentEditDetails = () => {
   //   setEdit(false);
   //   setEnabled(true);
   // };
-
 
   return (
     <SnackbarProvider
@@ -149,11 +145,11 @@ function MyApp() {
   const { enqueueSnackbar } = useSnackbar();
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
-  const [lastName, setLastName] = useState("")
-  const [firstName, setFirstName] = useState("")
-  const [middleName, setMiddleName] = useState("")
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
   const [edit, setEdit] = useState(true);
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {}, []);
 
@@ -164,8 +160,6 @@ function MyApp() {
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
 
-
-    
   useEffect(() => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
@@ -186,7 +180,6 @@ function MyApp() {
     const selectedCountryData = allCountry.find(
       (countryData) => countryData.country === selectedCountry
     );
-    
 
     // If the selectedCountryData is found, set the states
     if (selectedCountryData) {
@@ -197,15 +190,11 @@ function MyApp() {
     }
   };
 
-
-
-
-    const editMyDetails = () => {
-      handleEditDetails(); 
-      if (enabled && !edit) {
-  
-      }
-  }
+  const editMyDetails = () => {
+    handleEditDetails();
+    if (enabled && !edit) {
+    }
+  };
 
   return (
     <>
@@ -222,84 +211,108 @@ function MyApp() {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
-        <div className="w-100 d-flex flex-wrap gap-4">
-        <EachInfo label="Surname" value={globalState.lastName} onChange={(e) => setLastName(e.target.value)} enabled={enabled}/>
-        <EachInfo label="First Name" value={globalState.firstName} enabled={enabled}/>
-        <EachInfo label="Middle name" value={globalState.middleName} enabled={enabled}/>
-        <EachInfo label="Age" value={globalState.age} enabled={enabled}/>
-        <div className="each-info" style={{ width: "48%" }}>
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 0, width: "100%" },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              disabled={!enabled}
-              id="standard-select-currency"
-              select
-              label="Nationality"
-              name="country"
-              defaultValue={globalState.country || ''}
-              variant="standard"
-              onChange={(e) => {
-                handleCountryChange(e); // Call the custom event handler
-              }}
-            >
-              {allCountry
-                .slice() // Create a copy to avoid modifying the original array
-                .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
-                .map((eachCountry, index) => (
-                  <MenuItem key={eachCountry.id} value={eachCountry.country}>
-                    {eachCountry.country}
-                  </MenuItem>
-                ))}
-            </TextField>
-          </Box>
-        </div>
+          <div className="w-100 d-flex flex-wrap gap-4">
+            <EachInfo
+              label="Surname"
+              value={globalState.lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="First Name"
+              value={globalState.firstName}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="Middle name"
+              value={globalState.middleName}
+              enabled={enabled}
+            />
+            <EachInfo label="Age" value={globalState.age} enabled={enabled} />
+            <div className="each-info" style={{ width: "48%" }}>
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  disabled={!enabled}
+                  id="standard-select-currency"
+                  select
+                  label="Nationality"
+                  name="country"
+                  defaultValue={globalState.country || ""}
+                  variant="standard"
+                  onChange={(e) => {
+                    handleCountryChange(e); // Call the custom event handler
+                  }}
+                >
+                  {allCountry
+                    .slice() // Create a copy to avoid modifying the original array
+                    .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
+                    .map((eachCountry, index) => (
+                      <MenuItem
+                        key={eachCountry.id}
+                        value={eachCountry.country}
+                      >
+                        {eachCountry.country}
+                      </MenuItem>
+                    ))}
+                </TextField>
+              </Box>
+            </div>
 
-        <div className="each-info" style={{ width: "48%" }}>
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 0, width: "100%" },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              disabled={!enabled}
-              id="standard-select-currency"
-              select
-              label="State of origin"
-              name="state"
-              defaultValue={globalState.state || ''}
-              variant="standard"
-            >
-              {statesForCountry.length === 0 && globalState.state ? (
-                <MenuItem value={globalState.state}>
-                  {globalState.state}
-                </MenuItem>
-              ) : null}
-              {statesForCountry
-                .slice() // Create a copy to avoid modifying the original array
-                .sort() // Sort the array alphabetically
-                .map((selectedState) => (
-                  <MenuItem key={selectedState} value={selectedState}>
-                    {selectedState}
-                  </MenuItem>
-                ))}
-            </TextField>
-          </Box>
-        </div>
-        {/* <EachInfoForSelect label="Nationality" value={globalState.country}/>
+            <div className="each-info" style={{ width: "48%" }}>
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  disabled={!enabled}
+                  id="standard-select-currency"
+                  select
+                  label="State of origin"
+                  name="state"
+                  defaultValue={globalState.state || ""}
+                  variant="standard"
+                >
+                  {statesForCountry.length === 0 && globalState.state ? (
+                    <MenuItem value={globalState.state}>
+                      {globalState.state}
+                    </MenuItem>
+                  ) : null}
+                  {statesForCountry
+                    .slice() // Create a copy to avoid modifying the original array
+                    .sort() // Sort the array alphabetically
+                    .map((selectedState) => (
+                      <MenuItem key={selectedState} value={selectedState}>
+                        {selectedState}
+                      </MenuItem>
+                    ))}
+                </TextField>
+              </Box>
+            </div>
+            {/* <EachInfoForSelect label="Nationality" value={globalState.country}/>
         <EachInfoForSelectState label="State of origin" value={globalState.state}/> */}
-        <EachInfo label="Gender" value={globalState.gender} enabled={enabled}/>
-        <EachInfo label="Title" value={globalState.myTitle} enabled={enabled}/>
-        {/* <button onClick={check}>running</button> */}
-      </div>
+            <EachInfo
+              label="Gender"
+              value={globalState.gender}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="Title"
+              value={globalState.myTitle}
+              enabled={enabled}
+            />
+            {/* <button onClick={check}>running</button> */}
+          </div>
           {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">
@@ -312,6 +325,12 @@ function MyApp() {
           icon={<FaAddressCard size="1.1rem" />}
           description="Contact"
         >
+          <div className="w-100 d-flex flex-wrap gap-4">
+            <EachInfo label="phone number 1" value={globalState.phoneNumber} />
+            <EachInfo label="phone number 2" value={globalState.phoneNumber} />
+            <EachInfo label="email" value={globalState.email} />
+            <EachInfo label="address" value={globalState.address} />
+          </div>
           {/* <Contact /> */}
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
