@@ -122,7 +122,6 @@ import axios from "axios";
 import EachInfo from "../../components/studentProfileComponents.jsx/EachInfo";
 
 const StudentEditDetails = () => {
-
   return (
     <SnackbarProvider
       maxSnack={1}
@@ -138,7 +137,7 @@ function MyApp() {
   const { enqueueSnackbar } = useSnackbar();
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
-  const [lastName, setLastName] = useState(globalState.firstName);
+  const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [country, setCountry] = useState("");
@@ -193,7 +192,15 @@ function MyApp() {
     setEdit(false);
     setEnabled(true);
     if (enabled && !edit) {
-      console.log(lastName, firstName, middleName, country, state, gender, title)
+      console.log(
+        lastName,
+        firstName,
+        middleName,
+        country,
+        state,
+        gender,
+        title
+      );
     }
   };
 
@@ -250,7 +257,8 @@ function MyApp() {
                   defaultValue={globalState.country || ""}
                   variant="standard"
                   onChange={(e) => {
-                    handleCountryChange(e); // Call the custom event handler
+                    handleCountryChange(e);
+                    setCountry(e.target.value);
                   }}
                 >
                   {allCountry
@@ -283,9 +291,12 @@ function MyApp() {
                   select
                   label="State of origin"
                   name="state"
-                  // defaultValue={globalState.state || ""}
-                  value={globalState.state || ''}
+                  defaultValue={globalState.state || ""}
+                  // value={globalState.state || ''}
                   variant="standard"
+                  onChange={(e) => {
+                    setState(e.target.value);
+                  }}
                 >
                   {statesForCountry.length === 0 && globalState.state ? (
                     <MenuItem value={globalState.state}>
