@@ -45,7 +45,7 @@ const Personal = ({ enabled, edit }) => {
           enabled={enabled}
         />
         <EachInfo label="Age" value={globalState.age} enabled={enabled} />
-        {/* <div className="each-info" style={{ width: "48%" }}>
+        <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
             sx={{
@@ -102,7 +102,7 @@ const Personal = ({ enabled, edit }) => {
               ))}
             </TextField>
           </Box>
-        </div> */}
+        </div>
 
         <EachInfo label="Gender" value={globalState.gender} enabled={enabled} />
         <EachInfo label="Title" value={globalState.title} enabled={enabled} />

@@ -297,7 +297,7 @@ function MyApp() {
               onChange={(e) => setAge(e.target.value)}
               enabled={enabled}
             />
-            {/* <div className="each-info" style={{ width: "48%" }}>
+            <div className="each-info" style={{ width: "48%" }}>
                 <Box
                   component="form"
                   sx={{
@@ -370,7 +370,7 @@ function MyApp() {
                       ))}
                   </TextField>
                 </Box>
-              </div> */}
+              </div>
 
             <EachInfo
               label="Gender"
