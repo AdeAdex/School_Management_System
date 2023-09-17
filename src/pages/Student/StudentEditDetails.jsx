@@ -137,6 +137,10 @@ function MyApp() {
   const { enqueueSnackbar } = useSnackbar();
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
+  const [edit, setEdit] = useState(true);
+  const [enabled, setEnabled] = useState(false);
+
+
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -145,8 +149,6 @@ function MyApp() {
   const [gender, setGender] = useState("");
   const [title, setTitle] = useState("");
   const [age, setAge] = useState("");
-  const [edit, setEdit] = useState(true);
-  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {}, []);
 
