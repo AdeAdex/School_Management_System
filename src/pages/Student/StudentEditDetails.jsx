@@ -122,13 +122,6 @@ import axios from "axios";
 import EachInfo from "../../components/studentProfileComponents.jsx/EachInfo";
 
 const StudentEditDetails = () => {
-  // const [edit, setEdit] = useState(true);
-  // const [enabled, setEnabled] = useState(false);
-
-  // const handleEditDetails = () => {
-  //   setEdit(false);
-  //   setEnabled(true);
-  // };
 
   return (
     <SnackbarProvider
@@ -191,8 +184,11 @@ function MyApp() {
   };
 
   const editMyDetails = () => {
-    handleEditDetails();
+    // handleEditDetails();
+    setEdit(false);
+    setEnabled(true);
     if (enabled && !edit) {
+      console.log(lastName)
     }
   };
 
@@ -215,12 +211,13 @@ function MyApp() {
             <EachInfo
               label="Surname"
               value={globalState.lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => console.log(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="First Name"
               value={globalState.firstName}
+              onChange={(e) => console.log(e.target.value)}
               enabled={enabled}
             />
             <EachInfo

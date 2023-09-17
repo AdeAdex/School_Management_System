@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 
-const EachInfo = ({ label, value, enabled }) => {
+const EachInfo = ({ label, value, enabled, onChange }) => {
   return (
     <>
       <div
@@ -23,6 +23,7 @@ const EachInfo = ({ label, value, enabled }) => {
           disabled={!enabled}
           id={enabled ? 'outlined-disabled' : 'outlined-disabled'}
           label={label}
+          onChange={onChange}
           defaultValue={value}
           variant="standard"
           className={enabled ? 'custom-textfield-enabled' : 'custom-textfield-disabled'}
@@ -34,3 +35,6 @@ const EachInfo = ({ label, value, enabled }) => {
 };
 
 export default EachInfo;
+
+
+
