@@ -144,7 +144,7 @@ function MyApp() {
   const [state, setState] = useState("");
   const [gender, setGender] = useState("");
   const [title, setTitle] = useState("");
-  // const , set] = useState("");
+  const [age, setAge] = useState("");
   const [edit, setEdit] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
@@ -196,6 +196,7 @@ function MyApp() {
         lastName,
         firstName,
         middleName,
+        age,
         country,
         state,
         gender,
