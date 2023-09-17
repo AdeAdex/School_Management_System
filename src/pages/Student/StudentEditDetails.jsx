@@ -238,7 +238,12 @@ function MyApp() {
               onChange={(e) => setMiddleName(e.target.value)}
               enabled={enabled}
             />
-            <EachInfo label="Age" value={globalState.age} enabled={enabled} />
+            <EachInfo
+              label="Age"
+              value={globalState.age}
+              onChange={(e) => setAge(e.target.value)}
+              enabled={enabled}
+            />
             <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
