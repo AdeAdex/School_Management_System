@@ -180,14 +180,34 @@ body {
     background-color: #f1f1f1;
   }
 
-  /* .navbar-collapse .navbar-nav, .collapse form {
-          display: none !important;
-          background-color: red;
-        } */
 
-  /* .navbar-collapse {
-          background-color: red !important;
-        } */
+
+/* Define a CSS class for the dropdown animation */
+@keyframes slideDown {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 1000px; /* Adjust the final max-height value as needed */
+    opacity: 1;
+  }
+}
+
+/* Apply the animation when the .opened class is present */
+.navbar-collapse {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+/* Apply the slideDown animation when .opened class is present */
+.navbar-collapse.opened {
+  animation: slideDown 1s ease-in-out forwards;
+}
+
+
+
 
   .navbar-toggler:focus .navbar-toggler:active,
   .navbar-toggler:hover {
@@ -313,7 +333,6 @@ body {
     margin-bottom: 20px;
     gap: 10px !important;
   }
-
 }
 
 .animation {
@@ -494,7 +513,6 @@ input[type="radio"]:focus {
 
 /* This is the CSS styling for the scroll to the top button*/
 
-
 .scroll-to-top-button {
   position: fixed;
   bottom: 20px;
@@ -508,7 +526,7 @@ input[type="radio"]:focus {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  overflow: hidden; 
+  overflow: hidden;
   transition: width 0.3s, height 0.3s;
 }
 
@@ -557,8 +575,6 @@ input[type="radio"]:focus {
     transform: rotate(45deg) translate(15px, 15px);
   }
 }
-
-
 
 @media (max-width: 767px) {
   .scroll-to-top-button {

@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import StickyNav from "./StickyNav";
 import { useDisclosure } from '@mantine/hooks';
 import { Burger } from '@mantine/core';
 
+
 const Nav = () => {
   let navigate = useNavigate()
-  const [opened, { toggle }] = useDisclosure(false);
-  const label = opened ? 'Close navigation' : 'Open navigation';
+  // const [opened, { toggle }] = useDisclosure(false);
+  // const label = opened ? 'Close navigation' : 'Open navigation';
+
+  const [opened, setOpened] = useState(false); // Define the setOpened function
+  const label = opened ? "Close navigation" : "Open navigation";
 
   const mobileStyle = {
     maxHeight: opened ? "1000px" : "0",
     overflow: "hidden",
-    // opacity: opened ? 1 : 0,
-    transition: "max-height 1s ease-in-out, opacity 1s ease-in-out",
   };
   
   const desktopStyle = {
@@ -56,7 +58,7 @@ const Nav = () => {
               style={window.innerWidth <= 768 ? navMobileStyle : navDesktopStyle}
             />
           </Link>
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -66,8 +68,9 @@ const Nav = () => {
             aria-label="Toggle navigation"
           >
           <Burger opened={opened} onClick={toggle} aria-label={label} />
-            {/* <span className="navbar-toggler-icon"></span> */}
-          </button>
+          </button> */}
+          {/* <Burger className="navbar-toggler my-auto me-3" opened={opened} onClick={() => setOpened(!opened)} aria-label={label} /> */}
+          <Burger className="navbar-toggler my-auto me-3" opened={opened} onClick={() => setOpened(prevOpened => !prevOpened)} aria-label={label} />
         </div>
           <div
             className={`collapse navbar-collapse ${opened ? "show opened" : ""}`}
