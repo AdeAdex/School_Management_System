@@ -41,7 +41,7 @@ const PersonalInformation = () => {
       phoneNumber: globalState.phoneNumber,
       middleName: globalState.middleName,
       address: globalState.address,
-      myTitle: globalState.myTitle,
+      title: globalState.title,
       city: globalState.city,
       age: globalState.age,
       gender: globalState.gender,
@@ -214,16 +214,16 @@ const PersonalInformation = () => {
             type="text"
             autoComplete="on"
             className={
-              formik.touched.myTitle && formik.errors.myTitle
+              formik.touched.title && formik.errors.title
                 ? "input form-control is-invalid"
                 : "input form-control"
             }
             id=""
-            name="myTitle"
+            name="title"
             required
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.myTitle}
+            value={formik.values.title}
           />
           <label htmlFor="validationServer01" className="user-label">
             Title

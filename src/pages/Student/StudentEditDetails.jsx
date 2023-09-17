@@ -106,20 +106,21 @@
 import React, { useEffect, useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
-import Personal from "../../components/studentProfileComponents.jsx/Personal";
 import { FaUserCheck } from "react-icons/fa";
 import { FaAddressCard } from "react-icons/fa";
-import Contact from "../../components/studentProfileComponents.jsx/Contact";
-import Referee from "../../components/studentProfileComponents.jsx/Referee";
 import { BiSolidEdit } from "react-icons/bi";
 import { FaSave } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./StudentEditDetails.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import EachInfo from "../../components/studentProfileComponents.jsx/EachInfo";
+import { newStudent } from "../../redux/portalSlice";
+import Personal from "../../components/studentProfileComponents.jsx/Personal";
+import Contact from "../../components/studentProfileComponents.jsx/Contact";
+import Referee from "../../components/studentProfileComponents.jsx/Referee";
 
 const StudentEditDetails = () => {
   return (
@@ -134,6 +135,7 @@ const StudentEditDetails = () => {
 
 function MyApp() {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
@@ -146,15 +148,22 @@ function MyApp() {
   const [country, setCountry] = useState(globalState.country || "");
   const [state, setState] = useState(globalState.state || "");
   const [gender, setGender] = useState(globalState.gender || "");
-  const [title, setTitle] = useState(globalState.myTitle || "");
+  const [title, setTitle] = useState(globalState.title || "");
   const [age, setAge] = useState(globalState.age || "");
   const [phoneNumber, setPhoneNumber] = useState(globalState.phoneNumber || "");
   const [email, setEmail] = useState(globalState.email || "");
   const [address, setAddress] = useState(globalState.address || "");
   const [refereeName, setRefereeName] = useState(globalState.refereeName || "");
-  const [refereePhoneNumber, setRefereePhoneNumber] = useState(globalState.refereePhoneNumber || "");
-  const [refereeAddress, setRefereeAddress] = useState(globalState.refereeAddress || "");
+  const [refereePhoneNumber, setRefereePhoneNumber] = useState(
+    globalState.refereePhoneNumber || ""
+  );
+  const [refereeAddress, setRefereeAddress] = useState(
+    globalState.refereeAddress || ""
+  );
 
+  //   useEffect(() => {
+  //   console.log(globalState);
+  // }, [globalState]);
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -198,7 +207,7 @@ function MyApp() {
     setEdit(false);
     setEnabled(true);
     if (enabled && !edit) {
-      console.log(
+      const payload = {
         lastName,
         firstName,
         middleName,
@@ -212,8 +221,22 @@ function MyApp() {
         address,
         refereeName,
         refereePhoneNumber,
-        refereeAddress
-      );
+        refereeAddress,
+      };
+
+      // console.log(payload);
+      let endpoint =
+        "http://localhost:2000/student_account/edit_and_update_student_information";
+      axios.post(endpoint, payload).then((response) => {
+        if (response.data.status) {
+          setEdit(true);
+          setEnabled(false);
+          console.log(
+            "my response: " + response.data.response,
+            "message: " + response.data.message
+          );
+        }
+      });
     }
   };
 
@@ -232,34 +255,32 @@ function MyApp() {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
-          {/* {hasRequiredData && ( */}
-            <div className="w-100 d-flex flex-wrap gap-4">
-              {/* <input type="text" name="" onChange={(e) => setLastName(e.target.value)} value={lastName} id="" /> */}
-              <EachInfo
-                label="Surname"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                enabled={enabled}
-              />
-              <EachInfo
-                label="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                enabled={enabled}
-              />
-              <EachInfo
-                label="Middle name"
-                value={middleName}
-                onChange={(e) => setMiddleName(e.target.value)}
-                enabled={enabled}
-              />
-              <EachInfo
-                label="Age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                enabled={enabled}
-              />
-              <div className="each-info" style={{ width: "48%" }}>
+          <div className="w-100 d-flex flex-wrap gap-4">
+            <EachInfo
+              label="Surname"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="Middle name"
+              value={middleName}
+              onChange={(e) => setMiddleName(e.target.value)}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="Age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              enabled={enabled}
+            />
+            {/* <div className="each-info" style={{ width: "48%" }}>
                 <Box
                   component="form"
                   sx={{
@@ -332,23 +353,21 @@ function MyApp() {
                       ))}
                   </TextField>
                 </Box>
-              </div>
-              {/* <EachInfoForSelect label="Nationality" value={globalState.country}/>
-        <EachInfoForSelectState label="State of origin" value={globalState.state}/> */}
-              <EachInfo
-                label="Gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                enabled={enabled}
-              />
-              <EachInfo
-                label="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                enabled={enabled}
-              />
-            </div>
-          {/* )} */}
+              </div> */}
+
+            <EachInfo
+              label="Gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              enabled={enabled}
+            />
+            <EachInfo
+              label="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              enabled={enabled}
+            />
+          </div>
           {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">
@@ -363,13 +382,13 @@ function MyApp() {
         >
           <div className="w-100 d-flex flex-wrap gap-4">
             <EachInfo
-              label="phone number 1"
+              label="Phone Number 1"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
-              label="phone number 2"
+              label="Phone Number 2"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               enabled={enabled}

@@ -10,7 +10,8 @@ const EachInfo = ({ label, value, enabled, onChange }) => {
         className="each-info"
         style={{width: "48%" }}
       >
-        <Box
+      <input type="text" name="" value={value} onChange={onChange} style={{width: "100%"}} id={enabled ? 'outlined-disabled' : 'outlined-disabled'} autoComplete="off" disabled={!enabled}/>
+        {/* <Box
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 0, width: "100%" },
@@ -28,7 +29,7 @@ const EachInfo = ({ label, value, enabled, onChange }) => {
           variant="standard"
           className={enabled ? 'custom-textfield-enabled' : 'custom-textfield-disabled'}
         />
-        </Box>
+        </Box> */}
       </div>
     </>
   );
