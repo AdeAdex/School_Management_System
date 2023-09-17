@@ -188,7 +188,7 @@ function MyApp() {
     setEdit(false);
     setEnabled(true);
     if (enabled && !edit) {
-      console.log(lastName)
+      console.log(lastName, firstName)
     }
   };
 
