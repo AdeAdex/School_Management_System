@@ -232,7 +232,7 @@ function MyApp() {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
-          {hasRequiredData && (
+          {/* {hasRequiredData && ( */}
             <div className="w-100 d-flex flex-wrap gap-4">
               {/* <input type="text" name="" onChange={(e) => setLastName(e.target.value)} value={lastName} id="" /> */}
               <EachInfo
@@ -348,7 +348,7 @@ function MyApp() {
                 enabled={enabled}
               />
             </div>
-          )}
+          {/* )} */}
           {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">
