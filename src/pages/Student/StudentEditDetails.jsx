@@ -341,7 +341,7 @@ function MyApp() {
             />
             <EachInfo
               label="Title"
-              value={myTitle}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
               enabled={enabled}
             />
