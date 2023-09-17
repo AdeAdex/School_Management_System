@@ -226,7 +226,7 @@ function MyApp() {
 
       // console.log(payload);
       let endpoint =
-        "http://localhost:2000/student_account/edit_and_update_student_information";
+        "https://school-portal-backend-adex2210.vercel.app/student_account/edit_and_update_student_information";
       axios.post(endpoint, payload).then((response) => {
         if (response.data.status) {
           setEdit(true);
