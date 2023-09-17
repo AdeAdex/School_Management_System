@@ -161,9 +161,9 @@ function MyApp() {
     globalState.refereeAddress || ""
   );
 
-  //   useEffect(() => {
-  //   console.log(globalState);
-  // }, [globalState]);
+    useEffect(() => {
+    // console.log(globalState);
+  }, [globalState, edit, enabled]);
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -232,6 +232,22 @@ function MyApp() {
         if (response.data.status) {
           setEdit(true);
           setEnabled(false);
+          const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: response.data.message,
+        });
           console.log(
             "my response: " + response.data.response,
             "message: " + response.data.message
