@@ -248,10 +248,10 @@ function MyApp() {
           icon: "success",
           title: response.data.message,
         });
-          console.log(
-            "my response: " + response.data.response,
-            "message: " + response.data.message
-          );
+          // console.log(
+          //   "my response: " + response.data.response,
+          //   "message: " + response.data.message
+          // );
         }
       });
     }
