@@ -101,7 +101,7 @@ const StudentPortalDashboard = () => {
             ) : (
               <Routes>
                 <Route path="home" element={<StudentDashboardHome />} />
-                <Route path="profile" element={<StudentProfile />} />
+                <Route path="profile" element={<StudentProfile globalState={globalState}/>} />
                 <Route
                   path="change_password"
                   element={

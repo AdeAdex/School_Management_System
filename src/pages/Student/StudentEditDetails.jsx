@@ -140,26 +140,25 @@ function MyApp() {
   const [edit, setEdit] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
-
-  // const [lastName, setLastName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [middleName, setMiddleName] = useState("");
-  // const [country, setCountry] = useState("");
-  // const [state, setState] = useState("");
-  // const [gender, setGender] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [age, setAge] = useState("");
-
   const [lastName, setLastName] = useState(globalState.lastName || "");
   const [firstName, setFirstName] = useState(globalState.firstName || "");
   const [middleName, setMiddleName] = useState(globalState.middleName || "");
   const [country, setCountry] = useState(globalState.country || "");
   const [state, setState] = useState(globalState.state || "");
   const [gender, setGender] = useState(globalState.gender || "");
-  const [title, setTitle] = useState(globalState.title || "");
+  const [title, setTitle] = useState(globalState.myTitle || "");
   const [age, setAge] = useState(globalState.age || "");
 
-  useEffect(() => {}, []);
+
+  const hasRequiredData =
+    globalState.lastName &&
+    globalState.firstName &&
+    globalState.middleName &&
+    globalState.country &&
+    globalState.state &&
+    globalState.gender &&
+    globalState.myTitle &&
+    globalState.age;
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -231,7 +230,9 @@ function MyApp() {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
+        {hasRequiredData && (
           <div className="w-100 d-flex flex-wrap gap-4">
+          {/* <input type="text" name="" onChange={(e) => setLastName(e.target.value)} value={lastName} id="" /> */}
             <EachInfo
               label="Surname"
               value={lastName}
@@ -309,7 +310,6 @@ function MyApp() {
                   label="State of origin"
                   name="state"
                   value={state || ""}
-                  // value={globalState.state || ''}
                   variant="standard"
                   onChange={(e) => {
                     setState(e.target.value);
@@ -346,6 +346,7 @@ function MyApp() {
               enabled={enabled}
             />
           </div>
+          )}
           {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">
