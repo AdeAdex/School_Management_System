@@ -156,7 +156,7 @@ function MyApp() {
   const [country, setCountry] = useState(globalState.country || "");
   const [state, setState] = useState(globalState.state || "");
   const [gender, setGender] = useState(globalState.gender || "");
-  const [title, setTitle] = useState(globalState.myTitle || "");
+  const [title, setTitle] = useState(globalState.title || "");
   const [age, setAge] = useState(globalState.age || "");
 
   useEffect(() => {}, []);
