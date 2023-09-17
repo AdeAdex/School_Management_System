@@ -28,6 +28,8 @@ const Login = () => {
     localStorage.removeItem("done");
     localStorage.removeItem("submitted");
     localStorage.removeItem("finished");
+    localStorage.removeItem("currentPaidState");
+    
   }, []);
 
   const togglePasswordVisibility = () => {
