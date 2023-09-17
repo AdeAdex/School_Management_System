@@ -141,14 +141,23 @@ function MyApp() {
   const [enabled, setEnabled] = useState(false);
 
 
-  const [lastName, setLastName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
-  const [gender, setGender] = useState("");
-  const [title, setTitle] = useState("");
-  const [age, setAge] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [middleName, setMiddleName] = useState("");
+  // const [country, setCountry] = useState("");
+  // const [state, setState] = useState("");
+  // const [gender, setGender] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [age, setAge] = useState("");
+
+  const [lastName, setLastName] = useState(globalState.lastName || "");
+  const [firstName, setFirstName] = useState(globalState.firstName || "");
+  const [middleName, setMiddleName] = useState(globalState.middleName || "");
+  const [country, setCountry] = useState(globalState.country || "");
+  const [state, setState] = useState(globalState.state || "");
+  const [gender, setGender] = useState(globalState.gender || "");
+  const [title, setTitle] = useState(globalState.myTitle || "");
+  const [age, setAge] = useState(globalState.age || "");
 
   useEffect(() => {}, []);
 
@@ -225,25 +234,25 @@ function MyApp() {
           <div className="w-100 d-flex flex-wrap gap-4">
             <EachInfo
               label="Surname"
-              value={globalState.lastName}
+              value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="First Name"
-              value={globalState.firstName}
+              value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="Middle name"
-              value={globalState.middleName}
+              value={middleName}
               onChange={(e) => setMiddleName(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="Age"
-              value={globalState.age}
+              value={age}
               onChange={(e) => setAge(e.target.value)}
               enabled={enabled}
             />
@@ -262,7 +271,7 @@ function MyApp() {
                   select
                   label="Nationality"
                   name="country"
-                  defaultValue={globalState.country || ""}
+                  value={country || ""}
                   variant="standard"
                   onChange={(e) => {
                     handleCountryChange(e);
@@ -299,7 +308,7 @@ function MyApp() {
                   select
                   label="State of origin"
                   name="state"
-                  defaultValue={globalState.state || ""}
+                  value={state || ""}
                   // value={globalState.state || ''}
                   variant="standard"
                   onChange={(e) => {
@@ -326,13 +335,13 @@ function MyApp() {
         <EachInfoForSelectState label="State of origin" value={globalState.state}/> */}
             <EachInfo
               label="Gender"
-              value={globalState.gender}
+              value={gender}
               onChange={(e) => setGender(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="Title"
-              value={globalState.myTitle}
+              value={myTitle}
               onChange={(e) => setTitle(e.target.value)}
               enabled={enabled}
             />
