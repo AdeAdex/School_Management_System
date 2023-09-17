@@ -12,7 +12,25 @@ const PagesNavbar = () => {
     scrollFunction();
   };
 
+  // function scrollFunction() {
+  //   if (
+  //     document.body.scrollTop > 100 ||
+  //     document.documentElement.scrollTop > 100
+  //   ) {
+  //     stickyNav.classList.add("scroll-animation");
+  //   } else if (
+  //     document.body.scrollTop < 100 ||
+  //     document.documentElement.scrollTop < 100
+  //   ) {
+  //     stickyNav.classList.remove("scroll-animation");
+  //   } else {
+  //   }
+  // }
+
+
   function scrollFunction() {
+    const stickyNav = document.getElementById("stickyNav");
+  
     if (
       document.body.scrollTop > 100 ||
       document.documentElement.scrollTop > 100
@@ -24,8 +42,10 @@ const PagesNavbar = () => {
     ) {
       stickyNav.classList.remove("scroll-animation");
     } else {
+      // You can add additional logic here if needed
     }
   }
+  
 
   const [modalOpen, setModalOpen] = useState(false);
 

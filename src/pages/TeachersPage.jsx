@@ -98,6 +98,7 @@ const TeachersPage = () => {
           <div className="d-flex gap-lg-4 gap-md-4 w-100 flex-wrap position-relative">
             {firstFourTeacher.map((eachTeacher, index) => (
               <OrangeHouseTeachersCard
+                key={index}
                 img={eachTeacher.teacherPicture}
                 bodyClassName={`${
                   index % 5 === 0
@@ -140,6 +141,7 @@ const TeachersPage = () => {
           <div className="card-group gap-4">
             {lastFourTeacher.map((eachTeacher, index) => (
               <BlueHouseTeachersCard
+                key={index}
                 img={eachTeacher.teacherPicture}
                 bodyClassName={`${
                   index % 5 === 0
@@ -182,7 +184,6 @@ const TeachersPage = () => {
                 }}
               />
             ))}
-
           </div>
         </div>
 
