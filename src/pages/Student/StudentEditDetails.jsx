@@ -211,13 +211,13 @@ function MyApp() {
             <EachInfo
               label="Surname"
               value={globalState.lastName}
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => setLastName(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="First Name"
               value={globalState.firstName}
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
