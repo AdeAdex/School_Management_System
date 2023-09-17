@@ -97,7 +97,7 @@ const Personal = ({enabled, edit}) => {
               select
               label="Nationality"
               name="country"
-              defaultValue={globalState.country || ''}
+              value={globalState.country || ''}
               variant="standard"
               onChange={(e) => {
                 handleCountryChange(e); // Call the custom event handler
@@ -130,7 +130,7 @@ const Personal = ({enabled, edit}) => {
               select
               label="State of origin"
               name="state"
-              defaultValue={globalState.state || ''}
+              value={globalState.state || ''}
               variant="standard"
             >
               {statesForCountry.length === 0 && globalState.state ? (

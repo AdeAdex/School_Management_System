@@ -138,9 +138,14 @@ function MyApp() {
   const { enqueueSnackbar } = useSnackbar();
   const [allCountry, setAllCountry] = useState([]);
   const [statesForCountry, setStatesForCountry] = useState([]);
-  const [lastName, setLastName] = useState("");
+  const [lastName, setLastName] = useState(globalState.firstName);
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [gender, setGender] = useState("");
+  const [title, setTitle] = useState("");
+  // const , set] = useState("");
   const [edit, setEdit] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
@@ -168,7 +173,7 @@ function MyApp() {
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
-
+    setCountry(selectedCountry);
     // Find the selected country's states from the fetched data
     const selectedCountryData = allCountry.find(
       (countryData) => countryData.country === selectedCountry
@@ -188,7 +193,7 @@ function MyApp() {
     setEdit(false);
     setEnabled(true);
     if (enabled && !edit) {
-      console.log(lastName, firstName)
+      console.log(lastName, firstName, middleName, country, state, gender, title)
     }
   };
 
@@ -223,6 +228,7 @@ function MyApp() {
             <EachInfo
               label="Middle name"
               value={globalState.middleName}
+              onChange={(e) => setMiddleName(e.target.value)}
               enabled={enabled}
             />
             <EachInfo label="Age" value={globalState.age} enabled={enabled} />
@@ -277,7 +283,8 @@ function MyApp() {
                   select
                   label="State of origin"
                   name="state"
-                  defaultValue={globalState.state || ""}
+                  // defaultValue={globalState.state || ""}
+                  value={globalState.state || ''}
                   variant="standard"
                 >
                   {statesForCountry.length === 0 && globalState.state ? (
@@ -301,14 +308,15 @@ function MyApp() {
             <EachInfo
               label="Gender"
               value={globalState.gender}
+              onChange={(e) => setGender(e.target.value)}
               enabled={enabled}
             />
             <EachInfo
               label="Title"
               value={globalState.myTitle}
+              onChange={(e) => setTitle(e.target.value)}
               enabled={enabled}
             />
-            {/* <button onClick={check}>running</button> */}
           </div>
           {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
           <Group position="center" mt="">
