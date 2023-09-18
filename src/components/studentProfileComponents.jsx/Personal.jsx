@@ -10,7 +10,6 @@ import Backdrop from "@mui/material/Backdrop";
 const Personal = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [isLoading, setIsLoading] = useState(false);
-  const [open, setOpen] = useState(false);
   const isEmptyObject = Object.keys(globalState).length === 0;
 
   useEffect(() => {
