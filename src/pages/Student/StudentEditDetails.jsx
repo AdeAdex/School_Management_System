@@ -103,6 +103,11 @@
 
 // export default StudentEditDetails;
 
+
+
+
+
+
 import React, { useEffect, useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
@@ -161,9 +166,13 @@ function MyApp() {
     globalState.refereeAddress || ""
   );
 
+ 
+   const isEmptyObject = Object.keys(globalState).length === 0;
+
   useEffect(() => {
-    // console.log(globalState);
-  }, [globalState, edit, enabled, phoneNumber, email]);
+  
+  }, [globalState, isEmptyObject])
+  
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -258,7 +267,11 @@ function MyApp() {
 
   return (
     <>
-      <Stepper
+    {isEmptyObject ?  (
+        <div className="loader"></div>
+        
+      ) : (
+        <Stepper
         active={active}
         onStepClick={setActive}
         breakpoint="sm"
@@ -476,6 +489,8 @@ function MyApp() {
         </Stepper.Step>
         {/* <Stepper.Completed>Completed</Stepper.Completed> */}
       </Stepper>
+      )}
+     
       <div className="edit-info-container">
         <div className="edit-info-toggle" onClick={editMyDetails}>
           <input type="checkbox" className="edit-info-input" />
