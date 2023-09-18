@@ -11,11 +11,12 @@ const Personal = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-   console.log(globalState);
-  }, [globalState])
-  
   const isEmptyObject = Object.keys(globalState).length === 0;
+
+  useEffect(() => {
+  //  console.log(globalState);
+  }, [globalState, isEmptyObject])
+  
   
   return (
     <>
