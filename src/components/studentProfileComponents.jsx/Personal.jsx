@@ -14,7 +14,7 @@ const Personal = () => {
   const isEmptyObject = Object.keys(globalState).length === 0;
 
   useEffect(() => {
-  //  console.log(globalState);
+  
   }, [globalState, isEmptyObject])
   
   
