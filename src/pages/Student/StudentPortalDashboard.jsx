@@ -57,7 +57,6 @@ const StudentPortalDashboard = () => {
       .then((response) => {
         if (response.data.status) {
           dispatch(newStudent(response.data.response));
-          // console.log(globalState);
         } else {
           console.log(response.data.message);
           navigate("/student_signin");

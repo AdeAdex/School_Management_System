@@ -4,48 +4,40 @@ import EachInfo from "./EachInfo";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
-import axios from "axios";
+import Backdrop from "@mui/material/Backdrop";
 
-const Personal = ({ enabled, edit }) => {
+
+const Personal = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-
-  const [allCountry, setAllCountry] = useState([]);
-  const [statesForCountry, setStatesForCountry] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
-    let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/staff_account/countries";
-    axios
-      .get(endpoint)
-      .then((response) => {
-        setAllCountry(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching countries:", error);
-      });
-  }, [globalState, allCountry]);
-
+   console.log(globalState);
+  }, [globalState])
+  
+  const isEmptyObject = Object.keys(globalState).length === 0;
+  
   return (
     <>
-      <div className="w-100 d-flex flex-wrap gap-4">
+      {isEmptyObject ?  (
+        <div className="loader"></div>
+        
+      ) : (
+        <div className="w-100 d-flex flex-wrap gap-4">
         <EachInfo
           label="Surname"
-          value={globalState.lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          enabled={enabled}
+          value={globalState.length == 0 ? "" : globalState.lastName}
         />
         <EachInfo
           label="First Name"
           value={globalState.firstName}
-          enabled={enabled}
         />
         <EachInfo
           label="Middle name"
           value={globalState.middleName}
-          enabled={enabled}
         />
-        <EachInfo label="Age" value={globalState.age} enabled={enabled} />
-        <div className="each-info" style={{ width: "48%" }}>
+        <EachInfo label="Age" value={globalState.age} />
+        {/* <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
             sx={{
@@ -60,20 +52,26 @@ const Personal = ({ enabled, edit }) => {
               select
               label="Nationality"
               name="country"
-              // value={globalState.country || ""}
-              value=""
+              value={globalState.country}
               variant="standard"
             >
-              {allCountry.map((eachCountry, index) => (
-                <MenuItem key={eachCountry.id} value={eachCountry.country}>
-                  {eachCountry.country}
-                </MenuItem>
-              ))}
+              <MenuItem value={globalState.country}>
+                {globalState.country}
+              </MenuItem>
             </TextField>
           </Box>
-        </div>
+        </div> */}
+        <EachInfo
+          label="Nationality"
+          value={globalState.country}
+        />
 
-        <div className="each-info" style={{ width: "48%" }}>
+        <EachInfo
+          label="State of origin"
+          value={globalState.state}
+        />
+
+        {/* <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
             sx={{
@@ -88,29 +86,66 @@ const Personal = ({ enabled, edit }) => {
               select
               label="State of origin"
               name="state"
-              // value={globalState.state || ""}
-              value=""
+              value={globalState.state}
               variant="standard"
             >
-              {statesForCountry.length === 0 && globalState.state ? (
-                <MenuItem value={globalState.state}>
-                  {globalState.state}
-                </MenuItem>
-              ) : null}
-              {statesForCountry.map((selectedState) => (
-                <MenuItem key={selectedState} value={selectedState}>
-                  {selectedState}
-                </MenuItem>
-              ))}
+              <MenuItem value={globalState.state}>{globalState.state}</MenuItem>
             </TextField>
           </Box>
-        </div>
+        </div> */}
 
-        <EachInfo label="Gender" value={globalState.gender} enabled={enabled} />
-        <EachInfo label="Title" value={globalState.title} enabled={enabled} />
+        <EachInfo label="Gender" value={globalState.gender} />
+        <EachInfo label="Title" value={globalState.title} />
       </div>
+      )}
     </>
   );
 };
 
 export default Personal;
+
+
+
+ {/* <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+          onClick={handleClose}
+        >
+          {isLoading && <div className="loader"></div>}
+        </Backdrop> */}
+
+
+// const [lastName, setLastName] = useState("");
+// const [firstName, setFirstName] = useState("");
+// const [middleName, setMiddleName] = useState("");
+// const [country, setCountry] = useState("");
+// const [state, setState] = useState("");
+// const [gender, setGender] = useState("");
+// const [title, setTitle] = useState("");
+// const [age, setAge] = useState("");
+// const [phoneNumber, setPhoneNumber] = useState("");
+// const [email, setEmail] = useState("");
+// const [address, setAddress] = useState("");
+// const [refereeName, setRefereeName] = useState("");
+// const [refereePhoneNumber, setRefereePhoneNumber] = useState("");
+// const [refereeAddress, setRefereeAddress] = useState("");
+
+
+// useEffect(() => {
+//   if (globalState) {
+//     setLastName(globalState.lastName || "");
+//     setFirstName(globalState.firstName || "");
+//     setMiddleName(globalState.middleName || "");
+//     setCountry(globalState.country || "");
+//     setState(globalState.state || "");
+//     setGender(globalState.gender || "");
+//     setTitle(globalState.title || "");
+//     setAge(globalState.age || "");
+//     setPhoneNumber(globalState.phoneNumber || "");
+//     setEmail(globalState.email || "");
+//     setAddress(globalState.address || "");
+//     setRefereeName(globalState.refereeName || "");
+//     setRefereePhoneNumber(globalState.refereePhoneNumber || "");
+//     setRefereeAddress(globalState.refereeAddress || "");
+//   }
+// }, [globalState]);

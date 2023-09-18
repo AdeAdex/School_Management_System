@@ -8,20 +8,6 @@ import Contact from "../../components/studentProfileComponents.jsx/Contact";
 import Referee from "../../components/studentProfileComponents.jsx/Referee";
 
 const StudentProfile = () => {
-  return (
-    <SnackbarProvider
-      maxSnack={1}
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-    >
-      <MyApp />
-    </SnackbarProvider>
-  );
-};
-
-function MyApp() {
-  // const globalState = useSelector((state) => state.portalReducer.studentInfo);
-
-  const { enqueueSnackbar } = useSnackbar();
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -29,7 +15,6 @@ function MyApp() {
 
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
-
   return (
     <>
       <Stepper
@@ -75,6 +60,7 @@ function MyApp() {
       </Stepper>
     </>
   );
-}
+};
+
 
 export default StudentProfile;
