@@ -145,8 +145,8 @@ function MyApp() {
   const [lastName, setLastName] = useState(globalState.lastName || "");
   const [firstName, setFirstName] = useState(globalState.firstName || "");
   const [middleName, setMiddleName] = useState(globalState.middleName || "");
-  const [country, setCountry] = useState(globalState.country || "");
-  const [state, setState] = useState(globalState.state || "");
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
   const [gender, setGender] = useState(globalState.gender || "");
   const [title, setTitle] = useState(globalState.title || "");
   const [age, setAge] = useState(globalState.age || "");
@@ -163,7 +163,7 @@ function MyApp() {
 
   useEffect(() => {
     // console.log(globalState);
-  }, [globalState, edit, enabled]);
+  }, [globalState, edit, enabled, phoneNumber, email]);
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -296,6 +296,7 @@ function MyApp() {
               onChange={(e) => setAge(e.target.value)}
               enabled={enabled}
             />
+
             <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
@@ -311,7 +312,7 @@ function MyApp() {
                   select
                   label="Nationality"
                   name="country"
-                  // value={country || ""}
+                  value={country || ""}
                   variant="standard"
                   onChange={(e) => {
                     handleCountryChange(e);
@@ -348,13 +349,13 @@ function MyApp() {
                   select
                   label="State of origin"
                   name="state"
-                  // value={state || ""}
+                  value={state || ""}
                   variant="standard"
                   onChange={(e) => {
                     setState(e.target.value);
                   }}
                 >
-                  {/* {statesForCountry.length === 0 && globalState.state ? (
+                  {statesForCountry.length === 0 && globalState.state ? (
                       <MenuItem value={globalState.state}>
                         {globalState.state}
                       </MenuItem>
@@ -366,9 +367,9 @@ function MyApp() {
                         <MenuItem key={selectedState} value={selectedState}>
                           {selectedState}
                         </MenuItem>
-                      ))} */}
+                      ))}
 
-                  {statesForCountry.length === 0 && globalState.state ? (
+                  {/* {statesForCountry.length === 0 && globalState.state ? (
                     <MenuItem value={globalState.state}>
                       {globalState.state}
                     </MenuItem>
@@ -381,7 +382,7 @@ function MyApp() {
                           {selectedState}
                         </MenuItem>
                       ))
-                  )}
+                  )} */}
                 </TextField>
               </Box>
             </div>
