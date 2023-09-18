@@ -4,51 +4,51 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const StudentDashboardPieChart = () => {
-  let globalState = useSelector((state) => state.portalReducer.studentInfo);
-  const [performance, setPerformance] = useState([]);
+  // let globalState = useSelector((state) => state.portalReducer.studentInfo);
+  // const [performance, setPerformance] = useState([]);
 
-  useEffect(() => {
-    let studentEmail = globalState.email;
-    let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/student_performance";
-    axios.post(endpoint, { studentEmail })
-    .then((response) => {
-      if (response.data.status) {
-        setPerformance(response.data.res);
-      }
-    });
-  }, [globalState]);
+  // useEffect(() => {
+  //   let studentEmail = globalState.email;
+  //   let endpoint =
+  //     "https://school-portal-backend-adex2210.vercel.app/student_account/student_performance";
+  //   axios.post(endpoint, { studentEmail })
+  //   .then((response) => {
+  //     if (response.data.status) {
+  //       setPerformance(response.data.res);
+  //     }
+  //   });
+  // }, [globalState]);
 
-  // Helper function to generate random colors
-  const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
+  // // Helper function to generate random colors
+  // const getRandomColor = () => {
+  //   const letters = "0123456789ABCDEF";
+  //   let color = "#";
+  //   for (let i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  //   return color;
+  // };
 
-  const categories = ["English", "Math", "Current Affair", "Sciences"];
-  const equalPercentage = 100 / categories.length;
-
-
-
-  const truncateLabel = (label, maxLabelLength) => {
-    if (label.length > maxLabelLength) {
-      return label.slice(0, maxLabelLength) + "...";
-    }
-    return label;
-  };
+  // const categories = ["English", "Math", "Current Affair", "Sciences"];
+  // const equalPercentage = 100 / categories.length;
 
 
-  // Generate data for the PieChart
-  const pieChartData = categories.map((category) => ({
-    // title: category,
-    title: truncateLabel(category, 10),
-    value: equalPercentage,
-    color: getRandomColor(),
-  }));
+
+  // const truncateLabel = (label, maxLabelLength) => {
+  //   if (label.length > maxLabelLength) {
+  //     return label.slice(0, maxLabelLength) + "...";
+  //   }
+  //   return label;
+  // };
+
+
+  // // Generate data for the PieChart
+  // const pieChartData = categories.map((category) => ({
+  //   // title: category,
+  //   title: truncateLabel(category, 10),
+  //   value: equalPercentage,
+  //   color: getRandomColor(),
+  // }));
 
   return (
     <>
@@ -72,7 +72,7 @@ const StudentDashboardPieChart = () => {
 
       <small className="mt-3 fw-bold">Your performance in the entrance exam is indicated below: </small>
 
-      <PieChart
+      {/* <PieChart
         className="mx-auto"
         style={{ width: "80%" }}
         data={pieChartData}
@@ -80,7 +80,7 @@ const StudentDashboardPieChart = () => {
           `${dataEntry.title}: ${Math.round(dataEntry.value)}%`
         }
         labelStyle={{ fontSize: "5px" }}
-      />
+      /> */}
     </>
   );
 };

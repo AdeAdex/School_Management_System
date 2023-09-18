@@ -161,7 +161,7 @@ function MyApp() {
     globalState.refereeAddress || ""
   );
 
-    useEffect(() => {
+  useEffect(() => {
     // console.log(globalState);
   }, [globalState, edit, enabled]);
 
@@ -227,27 +227,26 @@ function MyApp() {
       // console.log(payload);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/edit_and_update_student_information";
-      axios.post(endpoint, payload)
-      .then((response) => {
+      axios.post(endpoint, payload).then((response) => {
         if (response.data.status) {
           setEdit(true);
           setEnabled(false);
           const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
 
-        Toast.fire({
-          icon: "success",
-          title: response.data.message,
-        });
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
           // console.log(
           //   "my response: " + response.data.response,
           //   "message: " + response.data.message
@@ -298,64 +297,64 @@ function MyApp() {
               enabled={enabled}
             />
             <div className="each-info" style={{ width: "48%" }}>
-                <Box
-                  component="form"
-                  sx={{
-                    "& .MuiTextField-root": { m: 0, width: "100%" },
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  disabled={!enabled}
+                  id="standard-select-currency"
+                  select
+                  label="Nationality"
+                  name="country"
+                  // value={country || ""}
+                  variant="standard"
+                  onChange={(e) => {
+                    handleCountryChange(e);
+                    setCountry(e.target.value);
                   }}
-                  noValidate
-                  autoComplete="off"
                 >
-                  <TextField
-                    disabled={!enabled}
-                    id="standard-select-currency"
-                    select
-                    label="Nationality"
-                    name="country"
-                    value={country || ""}
-                    variant="standard"
-                    onChange={(e) => {
-                      handleCountryChange(e);
-                      setCountry(e.target.value);
-                    }}
-                  >
-                    {allCountry
-                      .slice() // Create a copy to avoid modifying the original array
-                      .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
-                      .map((eachCountry, index) => (
-                        <MenuItem
-                          key={eachCountry.id}
-                          value={eachCountry.country}
-                        >
-                          {eachCountry.country}
-                        </MenuItem>
-                      ))}
-                  </TextField>
-                </Box>
-              </div>
+                  {allCountry
+                    .slice() // Create a copy to avoid modifying the original array
+                    .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
+                    .map((eachCountry, index) => (
+                      <MenuItem
+                        key={eachCountry.id}
+                        value={eachCountry.country}
+                      >
+                        {eachCountry.country}
+                      </MenuItem>
+                    ))}
+                </TextField>
+              </Box>
+            </div>
 
-              <div className="each-info" style={{ width: "48%" }}>
-                <Box
-                  component="form"
-                  sx={{
-                    "& .MuiTextField-root": { m: 0, width: "100%" },
+            <div className="each-info" style={{ width: "48%" }}>
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  disabled={!enabled}
+                  id="standard-select-currency"
+                  select
+                  label="State of origin"
+                  name="state"
+                  // value={state || ""}
+                  variant="standard"
+                  onChange={(e) => {
+                    setState(e.target.value);
                   }}
-                  noValidate
-                  autoComplete="off"
                 >
-                  <TextField
-                    disabled={!enabled}
-                    id="standard-select-currency"
-                    select
-                    label="State of origin"
-                    name="state"
-                    value={state || ""}
-                    variant="standard"
-                    onChange={(e) => {
-                      setState(e.target.value);
-                    }}
-                  >
-                    {statesForCountry.length === 0 && globalState.state ? (
+                  {/* {statesForCountry.length === 0 && globalState.state ? (
                       <MenuItem value={globalState.state}>
                         {globalState.state}
                       </MenuItem>
@@ -367,10 +366,25 @@ function MyApp() {
                         <MenuItem key={selectedState} value={selectedState}>
                           {selectedState}
                         </MenuItem>
-                      ))}
-                  </TextField>
-                </Box>
-              </div>
+                      ))} */}
+
+                  {statesForCountry.length === 0 && globalState.state ? (
+                    <MenuItem value={globalState.state}>
+                      {globalState.state}
+                    </MenuItem>
+                  ) : (
+                    statesForCountry
+                      .slice() // Create a copy to avoid modifying the original array
+                      .sort() // Sort the array alphabetically
+                      .map((selectedState) => (
+                        <MenuItem key={selectedState} value={selectedState}>
+                          {selectedState}
+                        </MenuItem>
+                      ))
+                  )}
+                </TextField>
+              </Box>
+            </div>
 
             <EachInfo
               label="Gender"

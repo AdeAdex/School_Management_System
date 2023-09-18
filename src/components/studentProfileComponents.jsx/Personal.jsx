@@ -60,7 +60,8 @@ const Personal = ({ enabled, edit }) => {
               select
               label="Nationality"
               name="country"
-              value={globalState.country || ""}
+              // value={globalState.country || ""}
+              value=""
               variant="standard"
             >
               {allCountry.map((eachCountry, index) => (
@@ -87,7 +88,8 @@ const Personal = ({ enabled, edit }) => {
               select
               label="State of origin"
               name="state"
-              value={globalState.state || ""}
+              // value={globalState.state || ""}
+              value=""
               variant="standard"
             >
               {statesForCountry.length === 0 && globalState.state ? (
