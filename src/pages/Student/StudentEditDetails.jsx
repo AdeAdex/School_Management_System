@@ -175,8 +175,8 @@ function MyApp() {
   const [refereePhoneNumber, setRefereePhoneNumber] = useState(
     isEmptyObject ? "" : globalState.refereePhoneNumber || ""
   );
-  const [refereeAddress, setRefereeAddress] = useState(
-    isEmptyObject ? "" : globalState.refereeAddress || ""
+  const [refereeEmail, setRefereeEmail] = useState(
+    isEmptyObject ? "" : globalState.refereeEmail || ""
   );
 
   useEffect(() => {
@@ -193,7 +193,7 @@ function MyApp() {
     setAddress(globalState.address);
     setRefereeName(globalState.refereeName);
     setRefereePhoneNumber(globalState.refereePhoneNumber);
-    setRefereeAddress(globalState.refereeAddress);
+    setRefereeEmail(globalState.refereeEmail);
   }, [isEmptyObject]);
 
   const [active, setActive] = useState(0);
@@ -251,7 +251,7 @@ function MyApp() {
         address,
         refereeName,
         refereePhoneNumber,
-        refereeAddress,
+        refereeEmail,
       };
 
       console.log(payload);
@@ -474,7 +474,7 @@ function MyApp() {
                   <TextField
                     disabled={!enabled}
                     id={enabled ? "outlined-disabled" : "outlined-disabled"}
-                    label="email"
+                    label="Email"
                     onChange={(e) => setEmail(e.target.value)}
                     defaultValue={email}
                     variant="standard"
@@ -499,7 +499,7 @@ function MyApp() {
                   <TextField
                     disabled={!enabled}
                     id={enabled ? "outlined-disabled" : "outlined-disabled"}
-                    label="address"
+                    label="Address"
                     onChange={(e) => setAddress(e.target.value)}
                     defaultValue={address}
                     variant="standard"
@@ -538,9 +538,9 @@ function MyApp() {
                 enabled={enabled}
               />
               <EachInfo
-                label="Email / Address"
-                value={refereeAddress}
-                onChange={(e) => setRefereeAddress(e.target.value)}
+                label="Email"
+                value={refereeEmail}
+                onChange={(e) => setRefereeEmail(e.target.value)}
                 enabled={enabled}
               />
             </div>
