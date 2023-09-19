@@ -106,8 +106,7 @@
 import React, { useEffect, useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
-import { FaUserCheck } from "react-icons/fa";
-import { FaAddressCard } from "react-icons/fa";
+import { FaUserCheck, FaAddressCard, FaUserTag } from "react-icons/fa";
 import { BiSolidEdit } from "react-icons/bi";
 import { FaSave } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -257,34 +256,35 @@ function MyApp() {
       };
 
       console.log(payload);
-      // let endpoint =
-      //   "https://school-portal-backend-adex2210.vercel.app/student_account/edit_and_update_student_information";
-      // axios.post(endpoint, payload).then((response) => {
-      //   if (response.data.status) {
-      //     setEdit(true);
-      //     setEnabled(false);
-      //     const Toast = Swal.mixin({
-      //       toast: true,
-      //       position: "top",
-      //       showConfirmButton: false,
-      //       timer: 1500,
-      //       timerProgressBar: true,
-      //       didOpen: (toast) => {
-      //         toast.addEventListener("mouseenter", Swal.stopTimer);
-      //         toast.addEventListener("mouseleave", Swal.resumeTimer);
-      //       },
-      //     });
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/edit_and_update_student_information";
+      axios.post(endpoint, payload).then((response) => {
+        if (response.data.status) {
+          setEdit(true);
+          setEnabled(false);
+          enqueueSnackbar(response.data.message, { variant: "success" });
+          // const Toast = Swal.mixin({
+          //   toast: true,
+          //   position: "top",
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          //   timerProgressBar: true,
+          //   didOpen: (toast) => {
+          //     toast.addEventListener("mouseenter", Swal.stopTimer);
+          //     toast.addEventListener("mouseleave", Swal.resumeTimer);
+          //   },
+          // });
 
-      //     Toast.fire({
-      //       icon: "success",
-      //       title: response.data.message,
-      //     });
-      // console.log(
-      //   "my response: " + response.data.response,
-      //   "message: " + response.data.message
-      // );
-      // }
-      // });
+          // Toast.fire({
+          //   icon: "success",
+          //   title: response.data.message,
+          // });
+      console.log(
+        "my response: " + response.data.response,
+        "message: " + response.data.message
+      );
+      }
+      });
     }
   };
 
@@ -332,7 +332,7 @@ function MyApp() {
                 enabled={enabled}
               />
 
-              {/* <div className="each-info" style={{ width: "48%" }}>
+              <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
                 sx={{
@@ -367,9 +367,9 @@ function MyApp() {
                     ))}
                 </TextField>
               </Box>
-            </div> */}
+            </div>
 
-              {/* <div className="each-info" style={{ width: "48%" }}>
+              <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
                 sx={{
@@ -407,7 +407,7 @@ function MyApp() {
                 
                 </TextField>
               </Box>
-            </div> */}
+            </div>
 
               <EachInfo
                 label="Gender"
@@ -542,7 +542,7 @@ function MyApp() {
               <Button onClick={nextStep}>Next step</Button>
             </Group>
           </Stepper.Step>
-          <Stepper.Step label="" description="Referee">
+          <Stepper.Step label="" icon={<FaUserTag size="1.1rem" />} description="Referee">
             <div className="w-100 d-flex flex-wrap gap-4">
               <EachInfo
                 label="full Name"

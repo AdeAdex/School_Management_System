@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
 import Personal from "../../components/studentProfileComponents.jsx/Personal";
-import { FaUserCheck } from "react-icons/fa";
-import { FaAddressCard } from "react-icons/fa";
+import { FaUserCheck, FaAddressCard, FaUserTag } from "react-icons/fa";
 import Contact from "../../components/studentProfileComponents.jsx/Contact";
 import Referee from "../../components/studentProfileComponents.jsx/Referee";
 
@@ -48,7 +47,7 @@ const StudentProfile = () => {
             <Button onClick={nextStep}>Next step</Button>
           </Group>
         </Stepper.Step>
-        <Stepper.Step label="" icon={<FaAddressCard size="1.1rem" />} description="Referee">
+        <Stepper.Step label="" icon={<FaUserTag size="1.1rem" />} description="Referee">
           <Referee/>
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
