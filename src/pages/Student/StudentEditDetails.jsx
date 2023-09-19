@@ -168,30 +168,31 @@ function MyApp() {
   // );
   
 
-  const [lastName, setLastName] = useState(isEmptyObject ? '' : globalState.lastName);
-const [firstName, setFirstName] = useState(isEmptyObject ? '' : globalState.firstName);
-const [middleName, setMiddleName] = useState(isEmptyObject ? '' : globalState.middleName);
-const [country, setCountry] = useState(isEmptyObject ? '' : globalState.country);
-const [state, setState] = useState(isEmptyObject ? '' : globalState.state);
-const [gender, setGender] = useState(isEmptyObject ? '' : globalState.gender);
-const [title, setTitle] = useState(isEmptyObject ? '' : globalState.title);
-const [age, setAge] = useState(isEmptyObject ? '' : globalState.age);
-const [phoneNumber, setPhoneNumber] = useState(isEmptyObject ? '' : globalState.phoneNumber);
-const [email, setEmail] = useState(isEmptyObject ? '' : globalState.email);
-const [address, setAddress] = useState(isEmptyObject ? '' : globalState.address);
-const [refereeName, setRefereeName] = useState(isEmptyObject ? '' : globalState.refereeName);
-const [refereePhoneNumber, setRefereePhoneNumber] = useState(isEmptyObject ? '' : globalState.refereePhoneNumber);
-const [refereeAddress, setRefereeAddress] = useState(isEmptyObject ? '' : globalState.refereeAddress);
+  const [lastName, setLastName] = useState(isEmptyObject ? '' : globalState.lastName || '');
+  const [firstName, setFirstName] = useState(isEmptyObject ? '' : globalState.firstName || '');
+  const [middleName, setMiddleName] = useState(isEmptyObject ? '' : globalState.middleName || '');
+  const [country, setCountry] = useState(isEmptyObject ? '' : globalState.country || '');
+  const [state, setState] = useState(isEmptyObject ? '' : globalState.state || '');
+  const [gender, setGender] = useState(isEmptyObject ? '' : globalState.gender || '');
+  const [title, setTitle] = useState(isEmptyObject ? '' : globalState.title || '');
+  const [age, setAge] = useState(isEmptyObject ? '' : globalState.age || '');
+  const [phoneNumber, setPhoneNumber] = useState(isEmptyObject ? '' : globalState.phoneNumber || '');
+  const [email, setEmail] = useState(isEmptyObject ? '' : globalState.email || '');
+  const [address, setAddress] = useState(isEmptyObject ? '' : globalState.address || '');
+  const [refereeName, setRefereeName] = useState(isEmptyObject ? '' : globalState.refereeName || '');
+  const [refereePhoneNumber, setRefereePhoneNumber] = useState(isEmptyObject ? '' : globalState.refereePhoneNumber || '');
+  const [refereeAddress, setRefereeAddress] = useState(isEmptyObject ? '' : globalState.refereeAddress || '');
 
  
 
   useEffect(() => {
-    console.log(lastName,
+    const payload = {
+      lastName,
       firstName,
       middleName,
       age,
-      // country,
-      // state,
+      country,
+      state,
       gender,
       title,
       phoneNumber,
@@ -199,7 +200,10 @@ const [refereeAddress, setRefereeAddress] = useState(isEmptyObject ? '' : global
       address,
       refereeName,
       refereePhoneNumber,
-      refereeAddress,);
+      refereeAddress,
+    };
+
+    console.log(payload);
   }, [globalState, isEmptyObject])
   
 
