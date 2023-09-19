@@ -445,26 +445,76 @@ function MyApp() {
         </Box>
       </div>
            
-            <EachInfo
-              label="Phone Number 2"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              enabled={enabled}
-            />
+      <div className="each-info" style={{ width: "48%" }}>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 0, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            disabled={!enabled}
+            id={enabled ? "outlined-disabled" : "outlined-disabled"}
+            label="Phone Number 2"
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            defaultValue={phoneNumber}
+            variant="standard"
+            className={
+              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
+            }
+          />
+        </Box>
+      </div>
+           
+      <div className="each-info" style={{ width: "48%" }}>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 0, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            disabled={!enabled}
+            id={enabled ? "outlined-disabled" : "outlined-disabled"}
+            label="email"
+            onChange={(e) => setEmail(e.target.value)}
+            defaultValue={email}
+            variant="standard"
+            className={
+              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
+            }
+          />
+        </Box>
+      </div>
+            
+      <div className="each-info" style={{ width: "48%" }}>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 0, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            disabled={!enabled}
+            id={enabled ? "outlined-disabled" : "outlined-disabled"}
+            label="address"
+            onChange={(e) => setAddress(e.target.value)}
+            defaultValue={address}
+            variant="standard"
+            className={
+              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
+            }
+          />
+        </Box>
+      </div>
+           
           </div>
-          {/* <Contact /> */}
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
               Back
