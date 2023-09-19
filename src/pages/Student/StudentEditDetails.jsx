@@ -547,78 +547,24 @@ function MyApp() {
           </Stepper.Step>
           <Stepper.Step label="" description="Referee">
             <div className="w-100 d-flex flex-wrap gap-4">
-              <div className="each-info" style={{ width: "48%" }}>
-                <Box
-                  component="form"
-                  sx={{
-                    "& .MuiTextField-root": { m: 0, width: "100%" },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    disabled={!enabled}
-                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
-                    label="full Name"
-                    onChange={(e) => setRefereeName(e.target.value)}
-                    defaultValue={refereeName}
-                    variant="standard"
-                    className={
-                      enabled
-                        ? "custom-textfield-enabled"
-                        : "custom-textfield-disabled"
-                    }
-                  />
-                </Box>
-              </div>
-              <div className="each-info" style={{ width: "48%" }}>
-                <Box
-                  component="form"
-                  sx={{
-                    "& .MuiTextField-root": { m: 0, width: "100%" },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    disabled={!enabled}
-                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
-                    label="Phone Number"
-                    onChange={(e) => setRefereePhoneNumber(e.target.value)}
-                    defaultValue={refereePhoneNumber}
-                    variant="standard"
-                    className={
-                      enabled
-                        ? "custom-textfield-enabled"
-                        : "custom-textfield-disabled"
-                    }
-                  />
-                </Box>
-              </div>
-              <div className="each-info" style={{ width: "48%" }}>
-                <Box
-                  component="form"
-                  sx={{
-                    "& .MuiTextField-root": { m: 0, width: "100%" },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    disabled={!enabled}
-                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
-                    label=""
-                    onChange={(e) => setRefereeAddress(e.target.value)}
-                    defaultValue={refereeAddress}
-                    variant="standard"
-                    className={
-                      enabled
-                        ? "custom-textfield-enabled"
-                        : "custom-textfield-disabled"
-                    }
-                  />
-                </Box>
-              </div>
+              <EachInfo
+                label="full Name"
+                value={refereeName}
+                onChange={(e) => setRefereeName(e.target.value)}
+                enabled={enabled}
+              />
+              <EachInfo
+                label="Phone Number"
+                value={refereePhoneNumber}
+                onChange={(e) => setRefereePhoneNumber(e.target.value)}
+                enabled={enabled}
+              />
+              <EachInfo
+                label="Email / Address"
+                value={refereeAddress}
+                onChange={(e) => setRefereeAddress(e.target.value)}
+                enabled={enabled}
+              />
             </div>
             <Group position="center" mt="xl">
               <Button variant="default" onClick={prevStep}>
@@ -626,7 +572,7 @@ function MyApp() {
               </Button>
             </Group>
           </Stepper.Step>
-          <Stepper.Completed>Completed</Stepper.Completed>
+          {/* <Stepper.Completed>Completed</Stepper.Completed> */}
         </Stepper>
       )}
 
