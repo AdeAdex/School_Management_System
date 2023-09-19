@@ -37,7 +37,7 @@ const Personal = () => {
           value={globalState.middleName}
         />
         <EachInfo label="Age" value={globalState.age} />
-        {/* <div className="each-info" style={{ width: "48%" }}>
+        <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
             sx={{
@@ -47,7 +47,7 @@ const Personal = () => {
             autoComplete="off"
           >
             <TextField
-              disabled={!enabled}
+              disabled
               id="standard-select-currency"
               select
               label="Nationality"
@@ -60,8 +60,8 @@ const Personal = () => {
               </MenuItem>
             </TextField>
           </Box>
-        </div> */}
-        <EachInfo
+        </div>
+        {/* <EachInfo
           label="Nationality"
           value={globalState.country}
         />
@@ -69,9 +69,9 @@ const Personal = () => {
         <EachInfo
           label="State of origin"
           value={globalState.state}
-        />
+        /> */}
 
-        {/* <div className="each-info" style={{ width: "48%" }}>
+        <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
             sx={{
@@ -81,7 +81,7 @@ const Personal = () => {
             autoComplete="off"
           >
             <TextField
-              disabled={!enabled}
+              disabled
               id="standard-select-currency"
               select
               label="State of origin"
@@ -92,7 +92,7 @@ const Personal = () => {
               <MenuItem value={globalState.state}>{globalState.state}</MenuItem>
             </TextField>
           </Box>
-        </div> */}
+        </div>
 
         <EachInfo label="Gender" value={globalState.gender} />
         <EachInfo label="Title" value={globalState.title} />

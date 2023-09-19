@@ -30,7 +30,7 @@ const StudentProfile = () => {
           icon={<FaUserCheck size="1.1rem" />}
           description="Personal"
         >
-          <Personal/>
+          <Personal />
           <Group position="center" mt="">
             <Button onClick={nextStep} className="">Next step</Button>
           </Group>
