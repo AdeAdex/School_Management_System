@@ -117,7 +117,6 @@ import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import EachInfo from "../../components/studentProfileComponents.jsx/EachInfo";
 
-
 const StudentEditDetails = () => {
   return (
     <SnackbarProvider
@@ -263,27 +262,7 @@ function MyApp() {
           setEdit(true);
           setEnabled(false);
           enqueueSnackbar(response.data.message, { variant: "success" });
-          // const Toast = Swal.mixin({
-          //   toast: true,
-          //   position: "top",
-          //   showConfirmButton: false,
-          //   timer: 1500,
-          //   timerProgressBar: true,
-          //   didOpen: (toast) => {
-          //     toast.addEventListener("mouseenter", Swal.stopTimer);
-          //     toast.addEventListener("mouseleave", Swal.resumeTimer);
-          //   },
-          // });
-
-          // Toast.fire({
-          //   icon: "success",
-          //   title: response.data.message,
-          // });
-      console.log(
-        "my response: " + response.data.response,
-        "message: " + response.data.message
-      );
-      }
+        }
       });
     }
   };
@@ -333,64 +312,64 @@ function MyApp() {
               />
 
               <div className="each-info" style={{ width: "48%" }}>
-              <Box
-                component="form"
-                sx={{
-                  "& .MuiTextField-root": { m: 0, width: "100%" },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField
-                  disabled={!enabled}
-                  id="standard-select-currency"
-                  select
-                  label="Nationality"
-                  name="country"
-                  value={country || ""}
-                  variant="standard"
-                  onChange={(e) => {
-                    handleCountryChange(e);
-                    setCountry(e.target.value);
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
                   }}
+                  noValidate
+                  autoComplete="off"
                 >
-                  {allCountry
-                    .slice() // Create a copy to avoid modifying the original array
-                    .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
-                    .map((eachCountry, index) => (
-                      <MenuItem
-                        key={eachCountry.id}
-                        value={eachCountry.country}
-                      >
-                        {eachCountry.country}
-                      </MenuItem>
-                    ))}
-                </TextField>
-              </Box>
-            </div>
+                  <TextField
+                    disabled={!enabled}
+                    id="standard-select-currency"
+                    select
+                    label="Nationality"
+                    name="country"
+                    value={country || ""}
+                    variant="standard"
+                    onChange={(e) => {
+                      handleCountryChange(e);
+                      setCountry(e.target.value);
+                    }}
+                  >
+                    {allCountry
+                      .slice() // Create a copy to avoid modifying the original array
+                      .sort((a, b) => a.country.localeCompare(b.country)) // Sort alphabetically
+                      .map((eachCountry, index) => (
+                        <MenuItem
+                          key={eachCountry.id}
+                          value={eachCountry.country}
+                        >
+                          {eachCountry.country}
+                        </MenuItem>
+                      ))}
+                  </TextField>
+                </Box>
+              </div>
 
               <div className="each-info" style={{ width: "48%" }}>
-              <Box
-                component="form"
-                sx={{
-                  "& .MuiTextField-root": { m: 0, width: "100%" },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField
-                  disabled={!enabled}
-                  id="standard-select-currency"
-                  select
-                  label="State of origin"
-                  name="state"
-                  value={state || ""}
-                  variant="standard"
-                  onChange={(e) => {
-                    setState(e.target.value);
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
                   }}
+                  noValidate
+                  autoComplete="off"
                 >
-                  {statesForCountry.length === 0 && globalState.state ? (
+                  <TextField
+                    disabled={!enabled}
+                    id="standard-select-currency"
+                    select
+                    label="State of origin"
+                    name="state"
+                    value={state || ""}
+                    variant="standard"
+                    onChange={(e) => {
+                      setState(e.target.value);
+                    }}
+                  >
+                    {statesForCountry.length === 0 && globalState.state ? (
                       <MenuItem value={globalState.state}>
                         {globalState.state}
                       </MenuItem>
@@ -403,11 +382,9 @@ function MyApp() {
                           {selectedState}
                         </MenuItem>
                       ))}
-
-                
-                </TextField>
-              </Box>
-            </div>
+                  </TextField>
+                </Box>
+              </div>
 
               <EachInfo
                 label="Gender"
@@ -542,7 +519,11 @@ function MyApp() {
               <Button onClick={nextStep}>Next step</Button>
             </Group>
           </Stepper.Step>
-          <Stepper.Step label="" icon={<FaUserTag size="1.1rem" />} description="Referee">
+          <Stepper.Step
+            label=""
+            icon={<FaUserTag size="1.1rem" />}
+            description="Referee"
+          >
             <div className="w-100 d-flex flex-wrap gap-4">
               <EachInfo
                 label="full Name"
