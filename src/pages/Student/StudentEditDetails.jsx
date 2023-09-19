@@ -148,26 +148,6 @@ function MyApp() {
   const [edit, setEdit] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
-  // const [lastName, setLastName] = useState(globalState.lastName);
-  // const [firstName, setFirstName] = useState(globalState.firstName);
-  // const [middleName, setMiddleName] = useState(globalState.middleName);
-  // const [country, setCountry] = useState("");
-  // const [state, setState] = useState("");
-  // const [gender, setGender] = useState(globalState.gender);
-  // const [title, setTitle] = useState(globalState.title);
-  // const [age, setAge] = useState(globalState.age);
-  // const [phoneNumber, setPhoneNumber] = useState(globalState.phoneNumber);
-  // const [email, setEmail] = useState(globalState.email);
-  // const [address, setAddress] = useState(globalState.address);
-  // const [refereeName, setRefereeName] = useState(globalState.refereeName);
-  // const [refereePhoneNumber, setRefereePhoneNumber] = useState(
-  //   globalState.refereePhoneNumber
-  // );
-  // const [refereeAddress, setRefereeAddress] = useState(
-  //   globalState.refereeAddress
-  // );
-  
-
   const [lastName, setLastName] = useState(isEmptyObject ? '' : globalState.lastName || '');
   const [firstName, setFirstName] = useState(isEmptyObject ? '' : globalState.firstName || '');
   const [middleName, setMiddleName] = useState(isEmptyObject ? '' : globalState.middleName || '');
@@ -186,25 +166,21 @@ function MyApp() {
  
 
   useEffect(() => {
-    const payload = {
-      lastName,
-      firstName,
-      middleName,
-      age,
-      country,
-      state,
-      gender,
-      title,
-      phoneNumber,
-      email,
-      address,
-      refereeName,
-      refereePhoneNumber,
-      refereeAddress,
-    };
-
-    console.log(payload);
-  }, [globalState, isEmptyObject])
+      setLastName(globalState.lastName);
+      setFirstName(globalState.firstName);
+      setMiddleName(globalState.middleName);
+      setCountry(globalState.country);
+      setState(globalState.state);
+      setGender(globalState.gender);
+      setTitle(globalState.title);
+      setAge(globalState.age);
+      setPhoneNumber(globalState.phoneNumber);
+      setEmail(globalState.email);
+      setAddress(globalState.address);
+      setRefereeName(globalState.refereeName);
+      setRefereePhoneNumber(globalState.refereePhoneNumber);
+      setRefereeAddress(globalState.refereeAddress);
+  }, [isEmptyObject])
   
 
   const [active, setActive] = useState(0);
@@ -297,10 +273,11 @@ function MyApp() {
       // });
     }
   };
+  
 
   return (
     <>
-    {isEmptyObject ?  (
+    {lastName === undefined ?  (
         <div className="loader"></div>
       ) : (
         <Stepper
@@ -317,15 +294,12 @@ function MyApp() {
           description="Personal"
         >
           <div className="w-100 d-flex flex-wrap gap-4">
-          {lastName !== undefined ? (
             <EachInfo
               label="Surname"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               enabled={enabled}
             />
-          ) : null
-          }
             <EachInfo
               label="First Name"
               value={firstName}
@@ -448,12 +422,29 @@ function MyApp() {
           description="Contact"
         >
           <div className="w-100 d-flex flex-wrap gap-4">
-            <EachInfo
-              label="Phone Number 1"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              enabled={enabled}
-            />
+          <div className="each-info" style={{ width: "48%" }}>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 0, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            disabled={!enabled}
+            id={enabled ? "outlined-disabled" : "outlined-disabled"}
+            label="Phone Number 1"
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            defaultValue={phoneNumber}
+            variant="standard"
+            className={
+              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
+            }
+          />
+        </Box>
+      </div>
+           
             <EachInfo
               label="Phone Number 2"
               value={phoneNumber}
