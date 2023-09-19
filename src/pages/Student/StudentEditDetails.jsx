@@ -117,10 +117,7 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import EachInfo from "../../components/studentProfileComponents.jsx/EachInfo";
-import { newStudent } from "../../redux/portalSlice";
-import Personal from "../../components/studentProfileComponents.jsx/Personal";
-import Contact from "../../components/studentProfileComponents.jsx/Contact";
-import Referee from "../../components/studentProfileComponents.jsx/Referee";
+
 
 const StudentEditDetails = () => {
   return (

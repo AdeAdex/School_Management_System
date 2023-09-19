@@ -64,12 +64,8 @@ import ContactUSPage from './pages/ContactUSPage'
 
 function App() {
   let socketRef = useRef()
-  const dispatch = useDispatch();
   const ioEndpoint = "http://localhost:2000"
-  // const globalState = useSelector((state)=>state.portalReducer.firstName)
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
-  // const examState = useSelector((state) => state.portalReducer.taken);
-  const [count, setCount] = useState(0)
   useEffect(()=> {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', ()=> {
@@ -82,20 +78,12 @@ function App() {
         })
       })
     }
-    //https://school-portal-backend-adex2210.vercel.app/
     socketRef.current = socketClient(ioEndpoint);
-    // dispatch(newStudent(res.data.response));
-    // let myEmail = globalState.email
-    // let payload = {
-    //   myEmail: myEmail
-    // }
-    // axios.post(endpoint, payload)
   },[])
 
   let staffSignInToken = localStorage.staffSignInToken
   let studentLoginToken = localStorage.studentLoginToken
   let studentSignInToken = localStorage.studentSignInToken
-  let username = "Adex";
   let shouldRedirect = true;
   let takenAdmissionExam = localStorage.getItem('taken') === 'true';
 

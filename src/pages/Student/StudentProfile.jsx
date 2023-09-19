@@ -48,7 +48,7 @@ const StudentProfile = () => {
             <Button onClick={nextStep}>Next step</Button>
           </Group>
         </Stepper.Step>
-        <Stepper.Step label="" description="Referee">
+        <Stepper.Step label="" icon={<FaAddressCard size="1.1rem" />} description="Referee">
           <Referee/>
           <Group position="center" mt="xl">
             <Button variant="default" onClick={prevStep}>
