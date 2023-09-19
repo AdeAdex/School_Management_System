@@ -26,7 +26,7 @@ const Personal = () => {
         <div className="w-100 d-flex flex-wrap gap-4">
         <EachInfo
           label="Surname"
-          value={globalState.length == 0 ? "" : globalState.lastName}
+          value={globalState.lastName}
         />
         <EachInfo
           label="First Name"

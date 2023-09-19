@@ -140,6 +140,7 @@ const StudentEditDetails = () => {
 
 function MyApp() {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const isEmptyObject = Object.keys(globalState).length === 0;
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [allCountry, setAllCountry] = useState([]);
@@ -147,30 +148,58 @@ function MyApp() {
   const [edit, setEdit] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
-  const [lastName, setLastName] = useState(globalState.lastName || "");
-  const [firstName, setFirstName] = useState(globalState.firstName || "");
-  const [middleName, setMiddleName] = useState(globalState.middleName || "");
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
-  const [gender, setGender] = useState(globalState.gender || "");
-  const [title, setTitle] = useState(globalState.title || "");
-  const [age, setAge] = useState(globalState.age || "");
-  const [phoneNumber, setPhoneNumber] = useState(globalState.phoneNumber || "");
-  const [email, setEmail] = useState(globalState.email || "");
-  const [address, setAddress] = useState(globalState.address || "");
-  const [refereeName, setRefereeName] = useState(globalState.refereeName || "");
-  const [refereePhoneNumber, setRefereePhoneNumber] = useState(
-    globalState.refereePhoneNumber || ""
-  );
-  const [refereeAddress, setRefereeAddress] = useState(
-    globalState.refereeAddress || ""
-  );
+  // const [lastName, setLastName] = useState(globalState.lastName);
+  // const [firstName, setFirstName] = useState(globalState.firstName);
+  // const [middleName, setMiddleName] = useState(globalState.middleName);
+  // const [country, setCountry] = useState("");
+  // const [state, setState] = useState("");
+  // const [gender, setGender] = useState(globalState.gender);
+  // const [title, setTitle] = useState(globalState.title);
+  // const [age, setAge] = useState(globalState.age);
+  // const [phoneNumber, setPhoneNumber] = useState(globalState.phoneNumber);
+  // const [email, setEmail] = useState(globalState.email);
+  // const [address, setAddress] = useState(globalState.address);
+  // const [refereeName, setRefereeName] = useState(globalState.refereeName);
+  // const [refereePhoneNumber, setRefereePhoneNumber] = useState(
+  //   globalState.refereePhoneNumber
+  // );
+  // const [refereeAddress, setRefereeAddress] = useState(
+  //   globalState.refereeAddress
+  // );
+  
+
+  const [lastName, setLastName] = useState(isEmptyObject ? '' : globalState.lastName);
+const [firstName, setFirstName] = useState(isEmptyObject ? '' : globalState.firstName);
+const [middleName, setMiddleName] = useState(isEmptyObject ? '' : globalState.middleName);
+const [country, setCountry] = useState(isEmptyObject ? '' : globalState.country);
+const [state, setState] = useState(isEmptyObject ? '' : globalState.state);
+const [gender, setGender] = useState(isEmptyObject ? '' : globalState.gender);
+const [title, setTitle] = useState(isEmptyObject ? '' : globalState.title);
+const [age, setAge] = useState(isEmptyObject ? '' : globalState.age);
+const [phoneNumber, setPhoneNumber] = useState(isEmptyObject ? '' : globalState.phoneNumber);
+const [email, setEmail] = useState(isEmptyObject ? '' : globalState.email);
+const [address, setAddress] = useState(isEmptyObject ? '' : globalState.address);
+const [refereeName, setRefereeName] = useState(isEmptyObject ? '' : globalState.refereeName);
+const [refereePhoneNumber, setRefereePhoneNumber] = useState(isEmptyObject ? '' : globalState.refereePhoneNumber);
+const [refereeAddress, setRefereeAddress] = useState(isEmptyObject ? '' : globalState.refereeAddress);
 
  
-   const isEmptyObject = Object.keys(globalState).length === 0;
 
   useEffect(() => {
-  
+    console.log(lastName,
+      firstName,
+      middleName,
+      age,
+      // country,
+      // state,
+      gender,
+      title,
+      phoneNumber,
+      email,
+      address,
+      refereeName,
+      refereePhoneNumber,
+      refereeAddress,);
   }, [globalState, isEmptyObject])
   
 
@@ -180,6 +209,7 @@ function MyApp() {
 
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
+    
 
   useEffect(() => {
     let endpoint =
@@ -212,7 +242,6 @@ function MyApp() {
   };
 
   const editMyDetails = () => {
-    // handleEditDetails();
     setEdit(false);
     setEnabled(true);
     if (enabled && !edit) {
@@ -233,35 +262,35 @@ function MyApp() {
         refereeAddress,
       };
 
-      // console.log(payload);
-      let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/student_account/edit_and_update_student_information";
-      axios.post(endpoint, payload).then((response) => {
-        if (response.data.status) {
-          setEdit(true);
-          setEnabled(false);
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      console.log(payload);
+      // let endpoint =
+      //   "https://school-portal-backend-adex2210.vercel.app/student_account/edit_and_update_student_information";
+      // axios.post(endpoint, payload).then((response) => {
+      //   if (response.data.status) {
+      //     setEdit(true);
+      //     setEnabled(false);
+      //     const Toast = Swal.mixin({
+      //       toast: true,
+      //       position: "top",
+      //       showConfirmButton: false,
+      //       timer: 1500,
+      //       timerProgressBar: true,
+      //       didOpen: (toast) => {
+      //         toast.addEventListener("mouseenter", Swal.stopTimer);
+      //         toast.addEventListener("mouseleave", Swal.resumeTimer);
+      //       },
+      //     });
 
-          Toast.fire({
-            icon: "success",
-            title: response.data.message,
-          });
+      //     Toast.fire({
+      //       icon: "success",
+      //       title: response.data.message,
+      //     });
           // console.log(
           //   "my response: " + response.data.response,
           //   "message: " + response.data.message
           // );
-        }
-      });
+        // }
+      // });
     }
   };
 
@@ -269,7 +298,6 @@ function MyApp() {
     <>
     {isEmptyObject ?  (
         <div className="loader"></div>
-        
       ) : (
         <Stepper
         active={active}
@@ -285,12 +313,15 @@ function MyApp() {
           description="Personal"
         >
           <div className="w-100 d-flex flex-wrap gap-4">
+          {lastName !== undefined ? (
             <EachInfo
               label="Surname"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               enabled={enabled}
             />
+          ) : null
+          }
             <EachInfo
               label="First Name"
               value={firstName}
@@ -310,7 +341,7 @@ function MyApp() {
               enabled={enabled}
             />
 
-            <div className="each-info" style={{ width: "48%" }}>
+            {/* <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
                 sx={{
@@ -345,9 +376,9 @@ function MyApp() {
                     ))}
                 </TextField>
               </Box>
-            </div>
+            </div> */}
 
-            <div className="each-info" style={{ width: "48%" }}>
+            {/* <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
                 sx={{
@@ -382,23 +413,10 @@ function MyApp() {
                         </MenuItem>
                       ))}
 
-                  {/* {statesForCountry.length === 0 && globalState.state ? (
-                    <MenuItem value={globalState.state}>
-                      {globalState.state}
-                    </MenuItem>
-                  ) : (
-                    statesForCountry
-                      .slice() // Create a copy to avoid modifying the original array
-                      .sort() // Sort the array alphabetically
-                      .map((selectedState) => (
-                        <MenuItem key={selectedState} value={selectedState}>
-                          {selectedState}
-                        </MenuItem>
-                      ))
-                  )} */}
+                
                 </TextField>
               </Box>
-            </div>
+            </div> */}
 
             <EachInfo
               label="Gender"
