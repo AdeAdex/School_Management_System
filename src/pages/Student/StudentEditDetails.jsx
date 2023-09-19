@@ -103,11 +103,6 @@
 
 // export default StudentEditDetails;
 
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { Stepper, Button, Group } from "@mantine/core";
@@ -148,40 +143,63 @@ function MyApp() {
   const [edit, setEdit] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
-  const [lastName, setLastName] = useState(isEmptyObject ? '' : globalState.lastName || '');
-  const [firstName, setFirstName] = useState(isEmptyObject ? '' : globalState.firstName || '');
-  const [middleName, setMiddleName] = useState(isEmptyObject ? '' : globalState.middleName || '');
-  const [country, setCountry] = useState(isEmptyObject ? '' : globalState.country || '');
-  const [state, setState] = useState(isEmptyObject ? '' : globalState.state || '');
-  const [gender, setGender] = useState(isEmptyObject ? '' : globalState.gender || '');
-  const [title, setTitle] = useState(isEmptyObject ? '' : globalState.title || '');
-  const [age, setAge] = useState(isEmptyObject ? '' : globalState.age || '');
-  const [phoneNumber, setPhoneNumber] = useState(isEmptyObject ? '' : globalState.phoneNumber || '');
-  const [email, setEmail] = useState(isEmptyObject ? '' : globalState.email || '');
-  const [address, setAddress] = useState(isEmptyObject ? '' : globalState.address || '');
-  const [refereeName, setRefereeName] = useState(isEmptyObject ? '' : globalState.refereeName || '');
-  const [refereePhoneNumber, setRefereePhoneNumber] = useState(isEmptyObject ? '' : globalState.refereePhoneNumber || '');
-  const [refereeAddress, setRefereeAddress] = useState(isEmptyObject ? '' : globalState.refereeAddress || '');
-
- 
+  const [lastName, setLastName] = useState(
+    isEmptyObject ? "" : globalState.lastName || ""
+  );
+  const [firstName, setFirstName] = useState(
+    isEmptyObject ? "" : globalState.firstName || ""
+  );
+  const [middleName, setMiddleName] = useState(
+    isEmptyObject ? "" : globalState.middleName || ""
+  );
+  const [country, setCountry] = useState(
+    isEmptyObject ? "" : globalState.country || ""
+  );
+  const [state, setState] = useState(
+    isEmptyObject ? "" : globalState.state || ""
+  );
+  const [gender, setGender] = useState(
+    isEmptyObject ? "" : globalState.gender || ""
+  );
+  const [title, setTitle] = useState(
+    isEmptyObject ? "" : globalState.title || ""
+  );
+  const [age, setAge] = useState(isEmptyObject ? "" : globalState.age || "");
+  const [phoneNumber, setPhoneNumber] = useState(
+    isEmptyObject ? "" : globalState.phoneNumber || ""
+  );
+  const [email, setEmail] = useState(
+    isEmptyObject ? "" : globalState.email || ""
+  );
+  const [address, setAddress] = useState(
+    isEmptyObject ? "" : globalState.address || ""
+  );
+  const [refereeName, setRefereeName] = useState(
+    isEmptyObject ? "" : globalState.refereeName || ""
+  );
+  const [refereePhoneNumber, setRefereePhoneNumber] = useState(
+    isEmptyObject ? "" : globalState.refereePhoneNumber || ""
+  );
+  const [refereeAddress, setRefereeAddress] = useState(
+    isEmptyObject ? "" : globalState.refereeAddress || ""
+  );
 
   useEffect(() => {
-      setLastName(globalState.lastName);
-      setFirstName(globalState.firstName);
-      setMiddleName(globalState.middleName);
-      setCountry(globalState.country);
-      setState(globalState.state);
-      setGender(globalState.gender);
-      setTitle(globalState.title);
-      setAge(globalState.age);
-      setPhoneNumber(globalState.phoneNumber);
-      setEmail(globalState.email);
-      setAddress(globalState.address);
-      setRefereeName(globalState.refereeName);
-      setRefereePhoneNumber(globalState.refereePhoneNumber);
-      setRefereeAddress(globalState.refereeAddress);
-  }, [isEmptyObject])
-  
+    setLastName(globalState.lastName);
+    setFirstName(globalState.firstName);
+    setMiddleName(globalState.middleName);
+    setCountry(globalState.country);
+    setState(globalState.state);
+    setGender(globalState.gender);
+    setTitle(globalState.title);
+    setAge(globalState.age);
+    setPhoneNumber(globalState.phoneNumber);
+    setEmail(globalState.email);
+    setAddress(globalState.address);
+    setRefereeName(globalState.refereeName);
+    setRefereePhoneNumber(globalState.refereePhoneNumber);
+    setRefereeAddress(globalState.refereeAddress);
+  }, [isEmptyObject]);
 
   const [active, setActive] = useState(0);
   const nextStep = (variant) =>
@@ -189,7 +207,6 @@ function MyApp() {
 
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
-    
 
   useEffect(() => {
     let endpoint =
@@ -265,61 +282,60 @@ function MyApp() {
       //       icon: "success",
       //       title: response.data.message,
       //     });
-          // console.log(
-          //   "my response: " + response.data.response,
-          //   "message: " + response.data.message
-          // );
-        // }
+      // console.log(
+      //   "my response: " + response.data.response,
+      //   "message: " + response.data.message
+      // );
+      // }
       // });
     }
   };
-  
 
   return (
     <>
-    {lastName === undefined ?  (
+      {lastName === undefined ? (
         <div className="loader"></div>
       ) : (
         <Stepper
-        active={active}
-        onStepClick={setActive}
-        breakpoint="sm"
-        className="p-4"
-        style={{ backgroundColor: "", width: "100%", height: "100%" }}
-        color=""
-      >
-        <Stepper.Step
-          label=""
-          icon={<FaUserCheck size="1.1rem" />}
-          description="Personal"
+          active={active}
+          onStepClick={setActive}
+          breakpoint="sm"
+          className="p-4"
+          style={{ backgroundColor: "", width: "100%", height: "100%" }}
+          color=""
         >
-          <div className="w-100 d-flex flex-wrap gap-4">
-            <EachInfo
-              label="Surname"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="Middle name"
-              value={middleName}
-              onChange={(e) => setMiddleName(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="Age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              enabled={enabled}
-            />
+          <Stepper.Step
+            label=""
+            icon={<FaUserCheck size="1.1rem" />}
+            description="Personal"
+          >
+            <div className="w-100 d-flex flex-wrap gap-4">
+              <EachInfo
+                label="Surname"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                enabled={enabled}
+              />
+              <EachInfo
+                label="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                enabled={enabled}
+              />
+              <EachInfo
+                label="Middle name"
+                value={middleName}
+                onChange={(e) => setMiddleName(e.target.value)}
+                enabled={enabled}
+              />
+              <EachInfo
+                label="Age"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                enabled={enabled}
+              />
 
-            {/* <div className="each-info" style={{ width: "48%" }}>
+              {/* <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
                 sx={{
@@ -356,7 +372,7 @@ function MyApp() {
               </Box>
             </div> */}
 
-            {/* <div className="each-info" style={{ width: "48%" }}>
+              {/* <div className="each-info" style={{ width: "48%" }}>
               <Box
                 component="form"
                 sx={{
@@ -396,164 +412,224 @@ function MyApp() {
               </Box>
             </div> */}
 
-            <EachInfo
-              label="Gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              enabled={enabled}
-            />
-          </div>
-          {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
-          <Group position="center" mt="">
-            <Button onClick={nextStep} className="">
-              Next step
-            </Button>
-          </Group>
-        </Stepper.Step>
-        <Stepper.Step
-          label=""
-          icon={<FaAddressCard size="1.1rem" />}
-          description="Contact"
-        >
-          <div className="w-100 d-flex flex-wrap gap-4">
-          <div className="each-info" style={{ width: "48%" }}>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 0, width: "100%" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            disabled={!enabled}
-            id={enabled ? "outlined-disabled" : "outlined-disabled"}
-            label="Phone Number 1"
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            defaultValue={phoneNumber}
-            variant="standard"
-            className={
-              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
-            }
-          />
-        </Box>
-      </div>
-           
-      <div className="each-info" style={{ width: "48%" }}>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 0, width: "100%" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            disabled={!enabled}
-            id={enabled ? "outlined-disabled" : "outlined-disabled"}
-            label="Phone Number 2"
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            defaultValue={phoneNumber}
-            variant="standard"
-            className={
-              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
-            }
-          />
-        </Box>
-      </div>
-           
-      <div className="each-info" style={{ width: "48%" }}>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 0, width: "100%" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            disabled={!enabled}
-            id={enabled ? "outlined-disabled" : "outlined-disabled"}
-            label="email"
-            onChange={(e) => setEmail(e.target.value)}
-            defaultValue={email}
-            variant="standard"
-            className={
-              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
-            }
-          />
-        </Box>
-      </div>
-            
-      <div className="each-info" style={{ width: "48%" }}>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 0, width: "100%" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            disabled={!enabled}
-            id={enabled ? "outlined-disabled" : "outlined-disabled"}
-            label="address"
-            onChange={(e) => setAddress(e.target.value)}
-            defaultValue={address}
-            variant="standard"
-            className={
-              enabled ? "custom-textfield-enabled" : "custom-textfield-disabled"
-            }
-          />
-        </Box>
-      </div>
-           
-          </div>
-          <Group position="center" mt="xl">
-            <Button variant="default" onClick={prevStep}>
-              Back
-            </Button>
-            <Button onClick={nextStep}>Next step</Button>
-          </Group>
-        </Stepper.Step>
-        <Stepper.Step label="" description="Referee">
-          <div className="w-100 d-flex flex-wrap gap-4">
-            <EachInfo
-              label="full Name"
-              value={refereeName}
-              onChange={(e) => setRefereeName(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="Phone Number"
-              value={refereePhoneNumber}
-              onChange={(e) => setRefereePhoneNumber(e.target.value)}
-              enabled={enabled}
-            />
-            <EachInfo
-              label="email"
-              value={refereeAddress}
-              onChange={(e) => setRefereeAddress(e.target.value)}
-              enabled={enabled}
-            />
-          </div>
-          {/* <Referee /> */}
-          <Group position="center" mt="xl">
-            <Button variant="default" onClick={prevStep}>
-              Back
-            </Button>
-          </Group>
-        </Stepper.Step>
-        {/* <Stepper.Completed>Completed</Stepper.Completed> */}
-      </Stepper>
+              <EachInfo
+                label="Gender"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                enabled={enabled}
+              />
+              <EachInfo
+                label="Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                enabled={enabled}
+              />
+            </div>
+            {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
+            <Group position="center" mt="">
+              <Button onClick={nextStep} className="">
+                Next step
+              </Button>
+            </Group>
+          </Stepper.Step>
+          <Stepper.Step
+            label=""
+            icon={<FaAddressCard size="1.1rem" />}
+            description="Contact"
+          >
+            <div className="w-100 d-flex flex-wrap gap-4">
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label="Phone Number 1"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    defaultValue={phoneNumber}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label="Phone Number 2"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    defaultValue={phoneNumber}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    defaultValue={email}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label="address"
+                    onChange={(e) => setAddress(e.target.value)}
+                    defaultValue={address}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+            </div>
+            <Group position="center" mt="xl">
+              <Button variant="default" onClick={prevStep}>
+                Back
+              </Button>
+              <Button onClick={nextStep}>Next step</Button>
+            </Group>
+          </Stepper.Step>
+          <Stepper.Step label="" description="Referee">
+            <div className="w-100 d-flex flex-wrap gap-4">
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label="full Name"
+                    onChange={(e) => setRefereeName(e.target.value)}
+                    defaultValue={refereeName}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label="Phone Number"
+                    onChange={(e) => setRefereePhoneNumber(e.target.value)}
+                    defaultValue={refereePhoneNumber}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id={enabled ? "outlined-disabled" : "outlined-disabled"}
+                    label=""
+                    onChange={(e) => setRefereeAddress(e.target.value)}
+                    defaultValue={refereeAddress}
+                    variant="standard"
+                    className={
+                      enabled
+                        ? "custom-textfield-enabled"
+                        : "custom-textfield-disabled"
+                    }
+                  />
+                </Box>
+              </div>
+            </div>
+            <Group position="center" mt="xl">
+              <Button variant="default" onClick={prevStep}>
+                Back
+              </Button>
+            </Group>
+          </Stepper.Step>
+          <Stepper.Completed>Completed</Stepper.Completed>
+        </Stepper>
       )}
-     
+
       <div className="edit-info-container">
         <div className="edit-info-toggle" onClick={editMyDetails}>
           <input type="checkbox" className="edit-info-input" />
