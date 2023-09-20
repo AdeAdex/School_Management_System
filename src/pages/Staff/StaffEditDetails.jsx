@@ -601,7 +601,7 @@ const StaffEditDetails = () => {
             <button
               type="submit"
               className="edit-enter"
-              onClick={() => formik.handleSubmit(selectedOption)}
+              // onClick={() => formik.handleSubmit(selectedOption)}
             >
               Enter
             </button>
