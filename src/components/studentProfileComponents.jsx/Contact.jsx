@@ -8,10 +8,10 @@ const Contact = () => {
   return (
     <>
       <div className="w-100 d-flex flex-wrap gap-4">
-        <EachInfo label="phone number 1" value={globalState.phoneNumber} />
-        <EachInfo label="phone number 2" value={globalState.phoneNumber} />
-        <EachInfo label="email" value={globalState.email} />
-        <EachInfo label="address" value={globalState.address} />
+        <EachInfo label="Phone Number 1" value={globalState.phoneNumber} />
+        <EachInfo label="Phone Number 2" value={globalState.phoneNumber} />
+        <EachInfo label="Email" value={globalState.email} />
+        <EachInfo label="Address" value={globalState.address} />
       </div>
     </>
   );
