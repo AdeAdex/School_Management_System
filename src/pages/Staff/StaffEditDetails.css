@@ -84,6 +84,7 @@
   font-size: 10px;
   letter-spacing: 2px;
   margin-bottom: 1em;
+  margin-top: 20px;
 }
 
 .edit-enter:hover {
@@ -97,94 +98,25 @@
 
 
 
-/* 
-.upload-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  max-width: 800px;
-}
-
-.table {
+.video-form {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
-.table-head {
-  background-color: #333;
-  color: white;
-}
 
-.table th, .table td {
+.upload-video-input {
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
-.edit-btn, .delete-btn {
-  padding: 5px 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.edit-btn {
-  background-color: #2ecc71;
-  color: white;
-}
-
-.delete-btn {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.upload-form, .video-form {
-  margin: auto;
-  max-width: 400px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.form-label {
-  font-weight: bold;
-  color: #555;
-}
-
-.form-select, .edit-enter {
-  width: 100%;
-  padding: 8px;
-  margin: 6px 0;
+  margin: 5px 0;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.edit-enter {
-  background-color: #333;
-  color: white;
-  border: none;
+@media (max-width: 768px) {
+  .upload-video-input {
+    font-size: 14px;
+  }
 }
 
-.video-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.video-thumbnail {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-} */
+

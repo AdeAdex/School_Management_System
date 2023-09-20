@@ -62,8 +62,8 @@ const Dashboard = () => {
           <StaffDashboardNavbar/>
         </div>
           <div
-            className="d-flex p-4 centered-container"
-            style={{ overflowY: "scroll", height: "90%" }}
+            className="d-flex p-4 "
+            style={{ overflowY: "scroll", height: "90%", backgroundColor: '' }}
           >
             {isLoading ? (
               <div className="loader"></div>
