@@ -28,7 +28,6 @@ const StudentResources = () => {
       })
       .then((response) => {
         setReceivedVideo(response.data);
-        console.log(response);
       });
   }, [globalState]);
 

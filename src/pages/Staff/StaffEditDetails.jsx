@@ -144,10 +144,26 @@ const StaffEditDetails = () => {
 
     onSubmit: (values) => {
       let newValues = { ...values, myImage };
-      console.log(newValues);
+      // console.log(newValues);
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
-      axios.post(endpoint, newValues).then((response) => {
-        console.log(response);
+      axios.post(endpoint, newValues)
+      .then((response) => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: response.data.message,
+        });
       });
     },
   });
