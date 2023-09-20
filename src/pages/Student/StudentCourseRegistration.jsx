@@ -69,7 +69,7 @@ const StudentCourseRegistration = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const selectedSubject = classSubject.find((option) => option === subject);
+    // const selectedSubject = classSubject.find((option) => option === subject);
     if (selectedSubjectsDetails.length > 0) {
          let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
