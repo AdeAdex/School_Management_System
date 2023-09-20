@@ -144,7 +144,6 @@ const StaffEditDetails = () => {
 
     onSubmit: (values) => {
       let newValues = { ...values, myImage };
-      // console.log(newValues);
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
       axios.post(endpoint, newValues)
       .then((response) => {

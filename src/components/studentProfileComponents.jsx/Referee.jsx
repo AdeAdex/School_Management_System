@@ -8,9 +8,9 @@ const Referee = () => {
   return (
     <>
       <div className="w-100 d-flex flex-wrap gap-4">
-        <EachInfo label="full name" value={globalState.refereeName} />
-        <EachInfo label="phone number" value={globalState.refereePhoneNumber} />
-        <EachInfo label="email" value={globalState.refereeAddress} />
+        <EachInfo label="Full Name" value={globalState.refereeName} />
+        <EachInfo label="Phone Number" value={globalState.refereePhoneNumber} />
+        <EachInfo label="Email" value={globalState.refereeEmail} />
       </div>
     </>
   );
