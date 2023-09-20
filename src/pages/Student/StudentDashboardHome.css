@@ -1,0 +1,5 @@
+@media screen and (max-width: 768px) {
+  .welcome-msg-on-dashbord {
+    flex-direction: column !important;
+  }
+}
