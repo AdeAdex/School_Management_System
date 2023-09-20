@@ -13,18 +13,19 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
   const [startCountdown, setStartCountdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const countdownExpired = useSelector((state) => state.portalReducer.countdownExpired);
+  const countdownExpired = useSelector(
+    (state) => state.portalReducer.countdownExpired
+  );
 
   useEffect(() => {
-    const storedValue = localStorage.getItem("ok") ;
+    const storedValue = localStorage.getItem("ok");
 
     if (storedValue) {
       setStartCountdown(storedValue === "true");
     } else {
       setStartCountdown(false);
     }
-  }, [startCountdown])
-  
+  }, [startCountdown]);
 
   const countdownTime = 180;
   let formik = useFormik({
@@ -36,17 +37,21 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
     },
 
     onSubmit: (values) => {
-      setIsLoading(true)
+      setIsLoading(true);
       const myOTP = Math.floor(Math.random() * 9000 + 1000);
       const newValues = { ...values, myOTP };
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/forgot_password";
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/student_account/forgot_password";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
-          setIsLoading(false)
+          setIsLoading(false);
           localStorage.secret = response.data.secret;
           setMyEmail(response.data.response[0]);
           if (response.data.status) {
-            localStorage.setItem("ok", response.data.result[0].startCountdown.toString());
+            localStorage.setItem(
+              "ok",
+              response.data.result[0].startCountdown.toString()
+            );
             setStartCountdown(response.data.result[0].startCountdown);
             // setIsCountdownActive(response.data.result[0].startCountdown);
             localStorage.setItem(
@@ -146,28 +151,12 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
           </div>
 
           <button
-  type="submit"
-  className="btn btn-success btn-sm my-4"
-  disabled={localStorage.getItem("ok") === "true" || isLoading}
->
-  {isLoading ? (
-    <div className="spinner"></div>
-  ) : (
-    <div>Submit</div>
-  )}
-</button>
-
-          {/* <button
             type="submit"
             className="btn btn-success btn-sm my-4"
-            disabled={localStorage.getItem("ok") === "true"}
+            disabled={localStorage.getItem("ok") === "true" || isLoading}
           >
-           {isLoading ? (
-            <div className="spinner"></div>
-           ) : (
-            <div>Submit</div>
-           )} 
-          </button> */}
+            {isLoading ? <div className="spinner"></div> : <div>Submit</div>}
+          </button>
           <Link
             to="/student_login"
             className="fw-bold mb-4 mt-2"
@@ -175,15 +164,20 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
           >
             Sign in
           </Link>
-          <div >
-          {startCountdown ? ( <div className="d-flex gap-3"><small style={{color: 'red'}}>Token Expires in: </small>
-            <OTPCountdown
-            startCountdown={startCountdown}
-            // onCountdownComplete={handleCountdownComplete}
-          /></div>) : (
-            <div className="" style={{ width: '100px', height: '25px' }}></div>
-          )}
-            
+          <div>
+            {startCountdown ? (
+              <div className="d-flex gap-3">
+                <small style={{ color: "red" }}>Token Expires in: </small>
+                <OTPCountdown
+                  startCountdown={startCountdown}
+                />
+              </div>
+            ) : (
+              <div
+                className=""
+                style={{ width: "100px", height: "25px" }}
+              ></div>
+            )}
           </div>
         </div>
       </form>

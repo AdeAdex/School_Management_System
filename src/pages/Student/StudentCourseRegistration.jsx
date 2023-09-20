@@ -10,7 +10,6 @@ import Select from "@mui/material/Select";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { MultiSelect } from "@mantine/core";
 
-
 const StudentCourseRegistration = () => {
   const [classSubject, setClassSubject] = useState([]);
   const [subject, setSubject] = useState("");
@@ -71,7 +70,7 @@ const StudentCourseRegistration = () => {
     event.preventDefault();
     // const selectedSubject = classSubject.find((option) => option === subject);
     if (selectedSubjectsDetails.length > 0) {
-         let endpoint =
+      let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
       axios
         .post(endpoint, {
@@ -84,8 +83,6 @@ const StudentCourseRegistration = () => {
           // console.log(response.data.selectedArray);
           dispatch(mySubSub(response.data.selectedArray));
         });
-  
-      
     }
 
     setSubject(""); // Reset the selected subject
@@ -108,7 +105,9 @@ const StudentCourseRegistration = () => {
       <div className="w-100 px-2">
         <div className="d-flex gap-4">
           <div>Course Registration: </div>
-          <div className="fw-bold" ref={divRef}>{globalState.level}</div>
+          <div className="fw-bold" ref={divRef}>
+            {globalState.level}
+          </div>
         </div>
         <div>
           <table className="table table-borderd mt-4">
@@ -124,7 +123,12 @@ const StudentCourseRegistration = () => {
               {yhea && yhea.length > 0 ? (
                 yhea.map((subject, index) => (
                   <tr key={index}>
-                    <td>{subject.mySubject}</td>
+                    <td>
+                      {subject.mySubject.map((eachSubject, subIndex) => (
+                        <div key={subIndex}>{eachSubject}</div>
+                      ))}
+                      
+                    </td>
                     <td>{subject.newTerm}</td>
                     <td>{subject.myOption}</td>
                     <td>
@@ -154,9 +158,13 @@ const StudentCourseRegistration = () => {
           className="d-flex shadow p-3 course-reg-form"
           style={{ position: "fixed", bottom: "40px", width: "75%" }}
         >
-          <FormControl variant="standard" className="custom-form-control" sx={{ m: 1, width: "80%" }}>
-          {classSubject ? (
-            <MultiSelect
+          <FormControl
+            variant="standard"
+            className="custom-form-control"
+            sx={{ m: 1, width: "80%" }}
+          >
+            {classSubject ? (
+              <MultiSelect
                 data={classSubject.map((option, index) => ({
                   label: option,
                   value: option,
@@ -166,14 +174,15 @@ const StudentCourseRegistration = () => {
                 searchable
                 nothingFound="Nothing found"
                 onChange={(selectedItems) => {
-      setSelectedSubjectsDetails(selectedItems); 
-    }}
+                  setSelectedSubjectsDetails(selectedItems);
+                }}
               />
-          ) : null}
-          
-            
+            ) : null}
           </FormControl>
-          <button type="submit" className="btn btn-primary my-auto add-subject-btn">
+          <button
+            type="submit"
+            className="btn btn-primary my-auto add-subject-btn"
+          >
             Add Subject
           </button>
         </form>
@@ -184,8 +193,8 @@ const StudentCourseRegistration = () => {
 
 export default StudentCourseRegistration;
 
-
-{/* <InputLabel id="demo-simple-select-standard-label">
+{
+  /* <InputLabel id="demo-simple-select-standard-label">
               Class Subjects
             </InputLabel>
             <Select
@@ -206,4 +215,5 @@ export default StudentCourseRegistration;
                     </MenuItem>
                   ))
                 : null}
-            </Select> */}
+            </Select> */
+}
