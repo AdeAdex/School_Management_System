@@ -17,6 +17,7 @@ import { Menu, Button, Text } from "@mantine/core";
 import Backdrop from "@mui/material/Backdrop";
 
 
+
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
@@ -80,9 +81,7 @@ const StudentDashboardNavbar = () => {
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? "Close navigation" : "Open navigation";
 
-  const something = () => {
-    navigate(`/student_dashboard/edit_details`); /* ?id=${globalState._id} */
-  };
+
 
 
 
@@ -132,6 +131,11 @@ const StudentDashboardNavbar = () => {
   //     setMyMessages(updatedMessages);
   //   }
   // };
+
+
+  const toProfile = () => {
+    navigate('/student_dashboard/profile')
+  }
   
   return (
     <>
@@ -194,7 +198,7 @@ const StudentDashboardNavbar = () => {
           >
             <NotificationsIcon />
           </Badge>
-          <button className="border-0">
+          <button className="border-0" onClick={toProfile}>
             <i className="fas fa-user fs-4 my-auto"></i>
           </button>
           <Badge
@@ -212,8 +216,8 @@ const StudentDashboardNavbar = () => {
           </button>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Label className="mb-1">Application</Menu.Label>
-              <Menu.Item>Help</Menu.Item>
+              <Menu.Label className="mb-1">Settings</Menu.Label>
+              <Menu.Item >Help</Menu.Item>
               <Menu.Item onClick={logOut}>Log Out</Menu.Item>
             </Menu.Dropdown>
           </Menu>
