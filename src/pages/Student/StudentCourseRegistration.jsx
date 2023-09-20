@@ -8,6 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { MultiSelect } from "@mantine/core";
+
 
 const StudentCourseRegistration = () => {
   const [classSubject, setClassSubject] = useState([]);
@@ -67,23 +69,31 @@ const StudentCourseRegistration = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // const selectedSubject = classSubject.find((option) => option === subject);
+
+    // if (selectedSubject) {
+    //   setSelectedSubjectsDetails([...selectedSubjectsDetails, selectedSubject]);
+
     const selectedSubject = classSubject.find((option) => option === subject);
 
-    if (selectedSubject) {
-      setSelectedSubjectsDetails([...selectedSubjectsDetails, selectedSubject]);
-      let endpoint =
-        "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
-      axios
-        .post(endpoint, {
-          selectedSubject,
-          formTerm,
-          formOption,
-          receivedEmail,
-        })
-        .then((response) => {
-          console.log(response.data.selectedArray);
-          dispatch(mySubSub(response.data.selectedArray));
-        });
+  if (selectedSubject) {
+    setSelectedSubjectsDetails([...selectedSubjectsDetails, selectedSubject]);
+
+    console.log(selectedSubject);
+
+      // let endpoint =
+      //   "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
+      // axios
+      //   .post(endpoint, {
+      //     selectedSubject,
+      //     formTerm,
+      //     formOption,
+      //     receivedEmail,
+      //   })
+      //   .then((response) => {
+      //     console.log(response.data.selectedArray);
+      //     dispatch(mySubSub(response.data.selectedArray));
+      //   });
     }
 
     setSubject(""); // Reset the selected subject
@@ -153,7 +163,37 @@ const StudentCourseRegistration = () => {
           style={{ position: "fixed", bottom: "40px", width: "75%" }}
         >
           <FormControl variant="standard" className="custom-form-control" sx={{ m: 1, width: "80%" }}>
-            <InputLabel id="demo-simple-select-standard-label">
+          {classSubject ? (
+            <MultiSelect
+                data={classSubject.map((option, index) => ({
+                  label: option,
+                  value: option,
+                }))}
+                label="Your Subject Here"
+                placeholder="Pick all that you want to register"
+                searchable
+                nothingFound="Nothing found"
+                onChange={(selectedItems) => {
+      setSelectedSubjectsDetails(selectedItems); 
+    }}
+              />
+          ) : null}
+          
+            
+          </FormControl>
+          <button type="submit" className="btn btn-primary my-auto add-subject-btn">
+            Add Subject
+          </button>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default StudentCourseRegistration;
+
+
+{/* <InputLabel id="demo-simple-select-standard-label">
               Class Subjects
             </InputLabel>
             <Select
@@ -174,15 +214,4 @@ const StudentCourseRegistration = () => {
                     </MenuItem>
                   ))
                 : null}
-            </Select>
-          </FormControl>
-          <button type="submit" className="btn btn-primary my-auto add-subject-btn">
-            Add Subject
-          </button>
-        </form>
-      </div>
-    </>
-  );
-};
-
-export default StudentCourseRegistration;
+            </Select> */}
