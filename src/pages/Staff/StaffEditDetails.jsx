@@ -96,8 +96,8 @@ const StaffEditDetails = () => {
         selectedSubjects: selectedSubjects,
         options: selectedOption,
       };
-      // console.log(newValues);
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+      console.log(newValues);
+      let endpoint = "http://localhost:2000/staff_account/edit_details";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
           const Toast = Swal.mixin({
