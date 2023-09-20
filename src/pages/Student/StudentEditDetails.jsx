@@ -525,7 +525,7 @@ function MyApp() {
           >
             <div className="w-100 d-flex flex-wrap gap-4">
               <EachInfo
-                label="full Name"
+                label="Full Name"
                 value={refereeName}
                 onChange={(e) => setRefereeName(e.target.value)}
                 enabled={enabled}
