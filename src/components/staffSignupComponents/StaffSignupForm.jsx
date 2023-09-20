@@ -46,7 +46,6 @@ const StaffSignupForm = () => {
     axios
       .get(endpoint)
       .then((response) => {
-        console.log(response.data);
         setAllCountry(response.data);
       })
       .catch((error) => {
