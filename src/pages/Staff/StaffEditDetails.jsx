@@ -15,10 +15,11 @@ const StaffEditDetails = () => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [subjectToRegister, setSubjectToRegister] = useState([]);
   const myEmail = globalState.email;
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/uploaded_subject";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/uploaded_subject";
     axios
       .get(endpoint, {
         headers: {
@@ -33,7 +34,8 @@ const StaffEditDetails = () => {
         // setReceivedVideo(response.data.response[0].Resources[0].jss2Resources);
       });
 
-    let endpoint2 = "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
+    let endpoint2 =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     axios
       .get(endpoint2, {
         headers: {
@@ -59,28 +61,29 @@ const StaffEditDetails = () => {
   // https://school-portal-backend-adex2210.vercel.app
   // https://school-portal-backend-adex2210.vercel.app
 
-
   const handleOptionChange = async (selectedOption) => {
     try {
       setSubjectToRegister([]);
-  
+
       let response;
-      if (selectedOption === 'Science') {
-        response = await axios.get('https://school-portal-backend-adex2210.vercel.app/staff_account/science_option_endpoint');
-      } else if (selectedOption === 'Commercial') {
-        response = await axios.get('https://school-portal-backend-adex2210.vercel.app/staff_account/commercial_option_endpoint');
+      if (selectedOption === "Science") {
+        response = await axios.get(
+          "https://school-portal-backend-adex2210.vercel.app/staff_account/science_option_endpoint"
+        );
+      } else if (selectedOption === "Commercial") {
+        response = await axios.get(
+          "https://school-portal-backend-adex2210.vercel.app/staff_account/commercial_option_endpoint"
+        );
       } else {
-        return; 
+        return;
       }
-  
+
       setSubjectToRegister(response.data);
       setSelectedOption(selectedOption);
     } catch (error) {
       console.error(error);
     }
   };
-
-
 
   let formik = useFormik({
     initialValues: {
@@ -97,7 +100,8 @@ const StaffEditDetails = () => {
         selectedSubjects: selectedSubjects,
         options: selectedOption,
       };
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/staff_account/edit_details";
       axios.post(endpoint, newValues).then((response) => {
         if (response.data.status) {
           const Toast = Swal.mixin({
@@ -144,9 +148,9 @@ const StaffEditDetails = () => {
 
     onSubmit: (values) => {
       let newValues = { ...values, myImage };
-      let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
-      axios.post(endpoint, newValues)
-      .then((response) => {
+      let endpoint =
+        "https://school-portal-backend-adex2210.vercel.app/staff_account/upload_resources";
+      axios.post(endpoint, newValues).then((response) => {
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -199,7 +203,8 @@ const StaffEditDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(myClass, myEmail, myTerm, myOptions, id);
-        let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
+        let endpoint =
+          "https://school-portal-backend-adex2210.vercel.app/staff_account/delete_class";
         axios
           .delete(endpoint, {
             data: { myClass, myEmail, myTerm, myOptions, id },
@@ -228,8 +233,10 @@ const StaffEditDetails = () => {
     });
   };
   return (
-      
-      <div className="upload-container d-flex flex-column gap-5" style={{overflowY: "", width: '100%',  }}>
+    <div
+      className="upload-container d-flex flex-column gap-5"
+      style={{ overflowX: "hidden", width: "100%", paddingTop: "100px" }}
+    >
       <table className="table gap-2">
         <thead className="text-white table-head mb-3">
           <tr className="text-uppercase">
@@ -281,10 +288,12 @@ const StaffEditDetails = () => {
       </table>
       <div className="w-100">
         <div className="w-100">
-          <h3 className="edit-login text-center my-3">
-            Upload Class Subject
-          </h3>
-          <form action="" className="upload-form" onSubmit={formik.handleSubmit}>
+          <h3 className="edit-login text-center my-3">Upload Class Subject</h3>
+          <form
+            action=""
+            className="upload-form"
+            onSubmit={formik.handleSubmit}
+          >
             <div className="col-md-12 mb-3">
               <label
                 htmlFor="validationServer04"
@@ -382,7 +391,11 @@ const StaffEditDetails = () => {
         </div>
       </div>
       <div>
-        <form action="" className="video-form mb-5" onSubmit={videoUpload.handleSubmit}>
+        <form
+          action=""
+          className="video-form mb-5"
+          onSubmit={videoUpload.handleSubmit}
+        >
           <h3 className="text-center">Upload video</h3>
           <div className="d-flex flex-column gap-4" style={{ width: "400px" }}>
             {receivedVideo && receivedVideo.length > 0
@@ -425,48 +438,50 @@ const StaffEditDetails = () => {
             </select>
           </div>
           <div className="d-flex flex-column">
-          <input
-            type="file"
-            name="video_data"
-            id=""
-            accept="video/*"
-            onChange={handleVideoFileChange}
-            className="upload-video-input"
-          />
-          <input
-            type="text"
-            name="uploader_name"
-            id=""
-            placeholder="video uploader name"
-            onChange={videoUpload.handleChange}
-            className="upload-video-input"
-          />
-          <input
-            type="text"
-            name="video_title"
-            id=""
-            placeholder="video title"
-            onChange={videoUpload.handleChange}
-            className="upload-video-input"
-          />
-          <input
-            type="text"
-            name="video_length"
-            id=""
-            placeholder="video length"
-            onChange={videoUpload.handleChange}
-            className="upload-video-input"
-          />
-          <input
-            type="text"
-            name="video_duration"
-            id=""
-            placeholder="video duration"
-            onChange={videoUpload.handleChange}
-            className="upload-video-input"
-          />
+            <input
+              type="file"
+              name="video_data"
+              id=""
+              accept="video/*"
+              onChange={handleVideoFileChange}
+              className="upload-video-input"
+            />
+            <input
+              type="text"
+              name="uploader_name"
+              id=""
+              placeholder="video uploader name"
+              onChange={videoUpload.handleChange}
+              className="upload-video-input"
+            />
+            <input
+              type="text"
+              name="video_title"
+              id=""
+              placeholder="video title"
+              onChange={videoUpload.handleChange}
+              className="upload-video-input"
+            />
+            <input
+              type="text"
+              name="video_length"
+              id=""
+              placeholder="video length"
+              onChange={videoUpload.handleChange}
+              className="upload-video-input"
+            />
+            <input
+              type="text"
+              name="video_duration"
+              id=""
+              placeholder="video duration"
+              onChange={videoUpload.handleChange}
+              className="upload-video-input"
+            />
           </div>
-          <button className="btn btn-primary btn-sm my-3" type="submit">Submit</button>
+          <button className="btn btn-primary btn-sm my-3" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </div>

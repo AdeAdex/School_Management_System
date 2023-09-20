@@ -327,11 +327,12 @@ function MyApp() {
                 <table className="table table-border table-stripped gap-2 w-100">
                   <thead>
                     <tr className="text-uppercase">
+                      <td>profile picture</td>
                       <td>first name</td>
                       <td>last name</td>
                       <td>email</td>
                       <td>Admission Status</td>
-                      <td>matric No</td>
+                      <td>Student ID</td>
                       <td>class</td>
                       <td>term</td>
                       <td>option</td>
@@ -340,11 +341,12 @@ function MyApp() {
                   </thead>
                   <tbody>
                     <tr>
+                    <img src={selectedStudent.profileURL} alt="" style={{width: '80px', height: '80px'}} />
                       <td>{selectedStudent.firstName}</td>
                       <td>{selectedStudent.lastName}</td>
                       <td>{selectedStudent.email}</td>
                       <td>{selectedStudent.paidForAdmission}</td>
-                      <td>{selectedStudent.matric}</td>
+                      <td>{selectedStudent.studentID}</td>
                       <td>{selectedStudent.level}</td>
                       <td>{selectedStudent.term}</td>
                       <td>{selectedStudent.options}</td>
@@ -384,13 +386,14 @@ function MyApp() {
                 </table>
               ) : (
                 <div className="d-block d-md-none">
+                <img src={selectedStudent.profileURL} alt="" style={{width: '80px', height: '80px'}} />
                   <div>First Name: {selectedStudent.firstName}</div>
                   <div>Last Name: {selectedStudent.lastName}</div>
                   <div>Email: {selectedStudent.email}</div>
                   <div>
                     Admission Status: {selectedStudent.paidForAdmission}
                   </div>
-                  <div>Matric No: {selectedStudent.matric}</div>
+                  <div>Student ID: {selectedStudent.studentID}</div>
                   <div>Class: {selectedStudent.level}</div>
                   <div>Term: {selectedStudent.term}</div>
                   <div>Options: {selectedStudent.options}</div>
