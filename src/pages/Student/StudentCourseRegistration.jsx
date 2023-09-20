@@ -70,32 +70,9 @@ const StudentCourseRegistration = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const selectedSubject = classSubject.find((option) => option === subject);
-
-    // if (selectedSubject) {
-    //   setSelectedSubjectsDetails([...selectedSubjectsDetails, selectedSubject]);
-
-
-    // console.log(selectedSubject);
-
-    //   // let endpoint =
-    //   //   "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
-    //   // axios
-    //   //   .post(endpoint, {
-    //   //     selectedSubject,
-    //   //     formTerm,
-    //   //     formOption,
-    //   //     receivedEmail,
-    //   //   })
-    //   //   .then((response) => {
-    //   //     console.log(response.data.selectedArray);
-    //   //     dispatch(mySubSub(response.data.selectedArray));
-    //   //   });
-    // }
-
-
     if (selectedSubjectsDetails.length > 0) {
          let endpoint =
-        "http://localhost:2000/student_account/student_term_subject";
+        "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
       axios
         .post(endpoint, {
           selectedSubjectsDetails,
@@ -105,7 +82,7 @@ const StudentCourseRegistration = () => {
         })
         .then((response) => {
           // console.log(response.data.selectedArray);
-          // dispatch(mySubSub(response.data.selectedArray));
+          dispatch(mySubSub(response.data.selectedArray));
         });
   
       
