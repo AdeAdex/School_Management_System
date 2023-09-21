@@ -34,6 +34,12 @@ const StudentRegistrationHistory = () => {
   return (
    <>
    <div className="w-100 px-2 course-reg-container" style={{height: '100%', backgroundColor: ''}}>
+   <div className="d-flex gap-4  py-2">
+          <div>Registration History: </div>
+          <div className="fw-bold">
+            {globalState.level}
+          </div>
+        </div>
    <div className="" style={{overflowY: 'auto', height: '70%'}}>
           <table className="table table-borderd mt-4">
             <thead>
