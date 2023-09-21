@@ -44,9 +44,9 @@ const StudentCourseRegistration = () => {
         console.log(err);
       });
 
-    // https://school-portal-backend-adex2210.vercel.app
+    
     let endpoint2 =
-      "http://localhost:2000/student_account/student_term_subject";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
     axios
       .get(endpoint2, {
         params: {
