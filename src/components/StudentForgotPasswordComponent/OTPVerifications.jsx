@@ -75,7 +75,6 @@ function MyApp({ myOTP: myOTP, sentEmail: sentEmail, startCountdown }) {
     const myNewValues = {
       myNewOTP,
       myEmailResponse,
-      // sentEmail,
       startCountdown,
       countdownStartTime,
       countdownTimeRemaining,
