@@ -46,7 +46,7 @@ const StudentCourseRegistration = () => {
 
     // https://school-portal-backend-adex2210.vercel.app
     let endpoint2 =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/student_term_subject";
+      "http://localhost:2000/student_account/student_term_subject";
     axios
       .get(endpoint2, {
         params: {
@@ -58,7 +58,6 @@ const StudentCourseRegistration = () => {
       })
       .then((response) => {
         setYhea(response.data);
-        // console.log(response.data);
       });
   }, [globalState]);
 
@@ -123,12 +122,7 @@ const StudentCourseRegistration = () => {
               {yhea && yhea.length > 0 ? (
                 yhea.map((subject, index) => (
                   <tr key={index}>
-                    <td>
-                      {subject.mySubject.map((eachSubject, subIndex) => (
-                        <div key={subIndex}>{eachSubject}</div>
-                      ))}
-                      
-                    </td>
+                    <td>{subject.mySubject}</td>
                     <td>{subject.newTerm}</td>
                     <td>{subject.myOption}</td>
                     <td>
