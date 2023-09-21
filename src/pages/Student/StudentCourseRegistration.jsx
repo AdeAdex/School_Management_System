@@ -187,27 +187,3 @@ const StudentCourseRegistration = () => {
 
 export default StudentCourseRegistration;
 
-{
-  /* <InputLabel id="demo-simple-select-standard-label">
-              Class Subjects
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-standard-label"
-              id="demo-simple-select-standard"
-              value={subject}
-              onChange={handleChange}
-              label="Class Subjects"
-              name="registerSubject"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {classSubject
-                ? classSubject.map((option, index) => (
-                    <MenuItem key={index} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))
-                : null}
-            </Select> */
-}
