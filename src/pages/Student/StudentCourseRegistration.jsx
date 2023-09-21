@@ -101,14 +101,14 @@ const StudentCourseRegistration = () => {
 
   return (
     <>
-      <div className="w-100 px-2">
-        <div className="d-flex gap-4">
+      <div className="w-100 px-2" style={{height: '100%', backgroundColor: ''}}>
+        <div className="d-flex gap-4  py-2">
           <div>Course Registration: </div>
           <div className="fw-bold" ref={divRef}>
             {globalState.level}
           </div>
         </div>
-        <div>
+        <div className="" style={{overflowY: 'auto', height: '70%'}}>
           <table className="table table-borderd mt-4">
             <thead>
               <tr>
