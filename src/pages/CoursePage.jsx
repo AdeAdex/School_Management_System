@@ -40,7 +40,7 @@ const CoursePage = () => {
       setData3(response.data);
     });
 
-    axios.get(endpoint3).then((response) => {
+    axios.get(endpoint4).then((response) => {
       setData4(response.data);
     });
   }, []);
@@ -175,7 +175,7 @@ const CoursePage = () => {
                       <h2 className="subject-title">{sub.subject}</h2>
                     </div>
                   ))
-                ) : selectedOption === "" && data4.length > 0 ? (
+                ) : selectedOption === "art" && data4.length > 0 ? (
                   data4.map((sub, index) => (
                     <div className="subject-card" key={index}>
                       <h2 className="subject-title">{sub.subject}</h2>
