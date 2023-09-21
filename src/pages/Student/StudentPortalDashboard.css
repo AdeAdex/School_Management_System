@@ -110,6 +110,8 @@
 
   .course-reg-form {
     width: 100% !important;
+    bottom: 0px !important;
+    background-color: whitesmoke;
   }
 
   .custom-form-control {
