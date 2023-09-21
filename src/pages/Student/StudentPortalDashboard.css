@@ -45,6 +45,12 @@
   margin-top: 12px;
 }
 
+.add-subject-btn {
+  font-size: 12px;
+  position: relative;
+  top: 12px !important;
+}
+
 @media screen and (min-width: 768px) {
   .offcanvas-btn2 {
     display: none !important;
