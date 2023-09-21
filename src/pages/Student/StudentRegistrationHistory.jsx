@@ -61,7 +61,7 @@ const StudentRegistrationHistory = () => {
               ) : (
                 <tr>
                   <td colSpan="4" className="text-center">
-                    No Results Found. Add subjects.
+                    No Results Found. Register subjects to display the History here.
                   </td>
                 </tr>
               )}
