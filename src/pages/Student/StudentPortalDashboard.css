@@ -108,10 +108,15 @@
     width: 100% !important;
   }
 
+  .course-reg-container {
+    padding-bottom: 100px;
+  }
+
   .course-reg-form {
     width: 100% !important;
     bottom: 0px !important;
     background-color: whitesmoke;
+    left: 0;
   }
 
   .custom-form-control {
