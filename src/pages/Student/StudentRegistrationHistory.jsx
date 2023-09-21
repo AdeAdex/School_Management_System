@@ -47,7 +47,6 @@ const StudentRegistrationHistory = () => {
                 <td>Subject Title</td>
                 <td>Term</td>
                 <td>Options</td>
-                <td>Action</td>
               </tr>
             </thead>
             <tbody>
@@ -57,15 +56,6 @@ const StudentRegistrationHistory = () => {
                     <td>{subject.mySubject}</td>
                     <td>{subject.newTerm}</td>
                     <td>{subject.myOption}</td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-white shadow delete-btn"
-                        onClick={() => deleteSelectedSubject(subject._id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
                   </tr>
                 ))
               ) : (
