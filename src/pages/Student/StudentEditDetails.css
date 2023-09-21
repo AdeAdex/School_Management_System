@@ -146,3 +146,32 @@
 .edit-info-toggle .edit-info-input:checked ~ .edit-info-label {
   color: rgba(0, 0, 0, 0.8);
 }
+
+
+/* Your CSS file */
+.blink-animation {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+
+.scale-fade-animation {
+  animation: scale-fade 0.5s ease-in-out;
+}
+
+@keyframes scale-fade {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}

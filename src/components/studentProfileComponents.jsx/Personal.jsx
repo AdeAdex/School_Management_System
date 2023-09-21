@@ -61,16 +61,6 @@ const Personal = () => {
             </TextField>
           </Box>
         </div>
-        {/* <EachInfo
-          label="Nationality"
-          value={globalState.country}
-        />
-
-        <EachInfo
-          label="State of origin"
-          value={globalState.state}
-        /> */}
-
         <div className="each-info" style={{ width: "48%" }}>
           <Box
             component="form"
@@ -94,8 +84,51 @@ const Personal = () => {
           </Box>
         </div>
 
-        <EachInfo label="Gender" value={globalState.gender} />
-        <EachInfo label="Title" value={globalState.title} />
+        <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled
+                    id="standard-select-currency"
+                    select
+                    label="Title"
+                    name="title"
+                    value={globalState.title}
+                    variant="standard"
+                  >
+                    <MenuItem value={globalState.title}>{globalState.title}</MenuItem>
+                  </TextField>
+                </Box>
+              </div>
+
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled
+                    id="standard-select-currency"
+                    select
+                    label="Gender"
+                    name="gender"
+                    value={globalState.gender}
+                    variant="standard"
+                  >
+                    <MenuItem value={globalState.gender}>{globalState.gender}</MenuItem>
+                  </TextField>
+                </Box>
+              </div>
       </div>
       )}
     </>
@@ -114,38 +147,3 @@ export default Personal;
           {isLoading && <div className="loader"></div>}
         </Backdrop> */}
 
-
-// const [lastName, setLastName] = useState("");
-// const [firstName, setFirstName] = useState("");
-// const [middleName, setMiddleName] = useState("");
-// const [country, setCountry] = useState("");
-// const [state, setState] = useState("");
-// const [gender, setGender] = useState("");
-// const [title, setTitle] = useState("");
-// const [age, setAge] = useState("");
-// const [phoneNumber, setPhoneNumber] = useState("");
-// const [email, setEmail] = useState("");
-// const [address, setAddress] = useState("");
-// const [refereeName, setRefereeName] = useState("");
-// const [refereePhoneNumber, setRefereePhoneNumber] = useState("");
-// const [refereeAddress, setRefereeAddress] = useState("");
-
-
-// useEffect(() => {
-//   if (globalState) {
-//     setLastName(globalState.lastName || "");
-//     setFirstName(globalState.firstName || "");
-//     setMiddleName(globalState.middleName || "");
-//     setCountry(globalState.country || "");
-//     setState(globalState.state || "");
-//     setGender(globalState.gender || "");
-//     setTitle(globalState.title || "");
-//     setAge(globalState.age || "");
-//     setPhoneNumber(globalState.phoneNumber || "");
-//     setEmail(globalState.email || "");
-//     setAddress(globalState.address || "");
-//     setRefereeName(globalState.refereeName || "");
-//     setRefereePhoneNumber(globalState.refereePhoneNumber || "");
-//     setRefereeAddress(globalState.refereeAddress || "");
-//   }
-// }, [globalState]);

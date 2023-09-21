@@ -47,3 +47,10 @@
 } 
 
 
+
+
+/* Style to remove the border and outline from the input field in EachInfo component*/
+.custom-textfield-enabled .MuiInputBase-input {
+  border: none; 
+  outline: none; 
+}

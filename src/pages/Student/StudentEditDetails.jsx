@@ -385,20 +385,63 @@ function MyApp() {
                 </Box>
               </div>
 
-              <EachInfo
-                label="Gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                enabled={enabled}
-              />
-              <EachInfo
-                label="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                enabled={enabled}
-              />
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id="standard-select-currency"
+                    select
+                    label="Title"
+                    name="title"
+                    value={title || ""}
+                    variant="standard"
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                    }}
+                  >
+                    <MenuItem value="Mr">Mr</MenuItem>
+                    <MenuItem value="Mrs">Mrs</MenuItem>
+                    <MenuItem value="Miss">Miss</MenuItem>
+                  </TextField>
+                </Box>
+              </div>
+
+              <div className="each-info" style={{ width: "48%" }}>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0, width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    disabled={!enabled}
+                    id="standard-select-currency"
+                    select
+                    label="Gender"
+                    name="gender"
+                    value={gender || ""}
+                    variant="standard"
+                    onChange={(e) => {
+                      setGender(e.target.value);
+                    }}
+                  >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Others">Others</MenuItem>
+                  </TextField>
+                </Box>
+              </div>
+             
             </div>
-            {/* <Personal enabled={enabled} edit={edit} sendPayloadToBackend={sendPayloadToBackend}/> */}
             <Group position="center" mt="">
               <Button onClick={nextStep} className="">
                 Next step
@@ -557,9 +600,9 @@ function MyApp() {
         <div className="edit-info-toggle" onClick={editMyDetails}>
           <input type="checkbox" className="edit-info-input" />
           <span className="edit-info-button"></span>
-          <span className="edit-info-label">
+          <span className={`edit-info-label ${edit ? 'blink-animation' : 'scale-fade-animation'}`}>
             {edit ? (
-              <BiSolidEdit size={32} color="blue" />
+              <BiSolidEdit size={32} color="orangered" />
             ) : (
               <FaSave size={32} color="blue" />
             )}
