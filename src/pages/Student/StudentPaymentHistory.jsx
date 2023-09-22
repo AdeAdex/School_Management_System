@@ -51,13 +51,13 @@ const StudentPaymentHistory = () => {
             </thead>
             <tbody>
               {yhea && yhea.length > 0 ? (
-                yhea.map((subject, index) => (
+                yhea.map((payment, index) => (
                   <tr key={index}>
-                    <td>{subject.mySubject}</td>
-                    <td>{subject.newTerm}</td>
-                    <td>{subject.myOption}</td>
-                    <td>{subject.myOption}</td>
-                    <td>{subject.myOption}</td>
+                    <td>{payment.paidFor}</td>
+                    <td>{payment.amountToPaid}</td>
+                    <td>{payment.amountPaid}</td>
+                    <td>{payment.balance}</td>
+                    <td>{payment.date}</td>
                     <td>
                       <button
                         type="button"
