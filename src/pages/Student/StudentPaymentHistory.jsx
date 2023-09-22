@@ -62,9 +62,9 @@ const StudentPaymentHistory = () => {
                       <button
                         type="button"
                         className="btn btn-white shadow delete-btn"
-                        onClick={() => deleteSelectedSubject(subject._id)}
+                        // onClick={() => deleteSelectedSubject(subject._id)}
                       >
-                        Delete
+                        Print
                       </button>
                     </td>
                   </tr>
