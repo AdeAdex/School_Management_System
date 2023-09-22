@@ -8,7 +8,7 @@ const LogOutTab = () => {
     setTimeout(() => {
       setIsLoading(false);
       localStorage.removeItem("studentLoginToken");
-    }, 1200);
+    }, 1000);
   };
   return (
     <div>
