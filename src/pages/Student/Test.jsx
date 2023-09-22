@@ -177,9 +177,6 @@ const Test = () => {
     }
   }, [timeIsUp, questions, beginExam, refreshing]);
 
-
-  
-
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
 
@@ -234,7 +231,6 @@ const Test = () => {
   };
 
   const submitMyScore = (newScores) => {
-
     const questionDetails = questions.map((question, index) => ({
       category: question.category,
       correctness: questionScores[index],
@@ -244,7 +240,7 @@ const Test = () => {
       myScores: newScores,
       myEmail: globalState.email,
       myDecision: true,
-      questionDetails: questionDetails,  // before making changes
+      questionDetails: questionDetails, // before making changes
       // questionCategories: questions.map((question) => question.category), // before making changes
       // questionCorrectness: questionScores, // before making changes
     };
@@ -497,7 +493,7 @@ const Test = () => {
                   style={{ width: "50px", height: "50px" }}
                 />
                 <div className="my-auto sch-name">
-                  Adex International School
+                  Adex International High School
                 </div>
               </div>
               <div
@@ -528,52 +524,56 @@ const Test = () => {
                 </button>
               </div>
             </div>
+
             <div className="exam-instructions">
-              <h2 className="text-center mb-3">Exam Instructions:</h2>
-              <p>
-                You are about to take a timed exam consisting of 10
-                multiple-choice questions. You will have 5 minutes to complete
-                the entire exam. Please read the instructions carefully before
-                starting the exam:
-              </p>
-              <ol>
-                <li>
-                  The exam comprises 10 questions, each with multiple-choice
-                  options.
-                </li>
-                <li>You must select one correct option for each question.</li>
-                <li>
-                  You can change your selected option for a question before
-                  submitting the exam.
-                </li>
-                <li>
-                  Make sure to read each question and all the options before
-                  making a selection.
-                </li>
-                <li>
-                  The exam is timed, and you have 5 minutes to complete it. The
-                  timer will start when you begin the exam.
-                </li>
-                <li>
-                  You can see your remaining time on the top-left corner of the
-                  screen.
-                </li>
-                <li>
-                  After answering all 10 questions or when the timer runs out,
-                  the exam will be automatically submitted.
-                </li>
-                <li>
-                  Do not refresh the page or leave the exam screen during the
-                  test, as it may result in submission.
-                </li>
-                <li>Good luck! Start the exam when you are ready.</li>
-              </ol>
-              <p>
-                Please note that your responses will be recorded and evaluated
-                once the exam is completed or the time limit is reached.
-                Remember, managing your time efficiently is essential to
-                complete all the questions within the given timeframe.
-              </p>
+              <h2 className="text-center mb-3">Entrance Exam</h2>
+              <section>
+                <h3 className="text-center mb-3">Exam Instructions:</h3>
+                <p>
+                  You are about to take a timed exam consisting of 10
+                  multiple-choice questions. You will have 5 minutes to complete
+                  the entire exam. Please read the instructions carefully before
+                  starting the exam:
+                </p>
+                <ol>
+                  <li>
+                    The exam comprises 10 questions, each with multiple-choice
+                    options.
+                  </li>
+                  <li>You must select one correct option for each question.</li>
+                  <li>
+                    You can change your selected option for a question before
+                    submitting the exam.
+                  </li>
+                  <li>
+                    Make sure to read each question and all the options before
+                    making a selection.
+                  </li>
+                  <li>
+                    The exam is timed, and you have 5 minutes to complete it.
+                    The timer will start when you begin the exam.
+                  </li>
+                  <li>
+                    You can see your remaining time in the top-left corner of
+                    the screen.
+                  </li>
+                  <li>
+                    After answering all 10 questions or when the timer runs out,
+                    the exam will be automatically submitted.
+                  </li>
+                  <li>
+                    Do not refresh the page or leave the exam screen during the
+                    test, as it may result in submission.
+                  </li>
+                  <li>Good luck! Start the exam when you are ready.</li>
+                </ol>
+                <p>
+                  Please note that your responses will be recorded and evaluated
+                  once the exam is completed or the time limit is reached.
+                  Remember, managing your time efficiently is essential to
+                  complete all the questions within the given timeframe.
+                </p>
+              </section>
               <div className="start-exam-div">
                 <button
                   className="start-exam-btn btn btn-sm btn-success d-flex px-3 mx-auto"
@@ -611,7 +611,7 @@ const Test = () => {
                         alt=""
                         style={{ width: "50px", height: "50px" }}
                       />
-                      <div className="my-auto">Adex International School</div>
+                      <div className="my-auto">Adex International High School</div>
                     </div>
                     <span className="fs-5 " style={{ display: "inline-flex" }}>
                       Thank You:{" "}
@@ -635,7 +635,7 @@ const Test = () => {
                         alt=""
                         style={{ width: "50px", height: "50px" }}
                       />
-                      <div className="my-auto">Adex International School</div>
+                      <div className="my-auto">Adex International High School</div>
                     </div>
                     <div
                       className={`fs-4 position-absolute start-0 ${
