@@ -1,4 +1,9 @@
-/* PaymentDetails.css */
+
+@media print {
+        .empty-page {
+          display: none !important;
+        }
+      }
 
 .payment-container {
   /* display: flex; */

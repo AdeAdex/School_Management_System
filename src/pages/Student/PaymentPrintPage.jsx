@@ -7,12 +7,14 @@ const PaymentPrintPage = () => {
   const location = useLocation();
   const { payment, studentInfo } = location.state;
 
+  const isContentEmpty = !(studentInfo && payment);
+
   useEffect(() => {
     window.print();
   }, [location, payment, studentInfo]);
   return (
     <>
-      <div className="payment-container">
+      <div className={`payment-container ${isContentEmpty ? 'empty-page' : ''}`}>
         <div className="payment-details">
           {studentInfo && payment ? (
             <table className="payment-table">
