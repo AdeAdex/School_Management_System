@@ -14,7 +14,7 @@ const CoursePage = () => {
   const location = useLocation();
   const para = location.state ? location.state.para : null;
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("science");
 
   useEffect(() => {
     let endpoint =
@@ -28,7 +28,6 @@ const CoursePage = () => {
 
     axios.get(endpoint).then((response) => {
       setSubjects(response.data);
-      console.log(response.data);
     });
 
     axios.get(endpoint2).then((response) => {
@@ -111,7 +110,7 @@ const CoursePage = () => {
                   ))
                 ) : (
                   <div>
-                  There is currently no subject available for the selected
+                    There is currently no subject available for the selected
                     sources. We apologize for any inconvenience. Kindly please
                     check back later.
                   </div>
@@ -181,19 +180,7 @@ const CoursePage = () => {
                       <h2 className="subject-title">{sub.subject}</h2>
                     </div>
                   ))
-                ) : selectedOption === ""  ? (
-                  data2.map((sub, index) => (
-                    <div className="subject-card" key={index}>
-                      <h2 className="subject-title">{sub.subject}</h2>
-                    </div>
-                  ))
-                ): (
-                  <div>
-                    There is currently no subject available for the selected
-                    sources. We apologize for any inconvenience. Kindly please
-                    check back later.
-                  </div>
-                )}
+                ) : null }
               </div>
             </div>
           </div>
