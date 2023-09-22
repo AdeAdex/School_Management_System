@@ -25,7 +25,7 @@ const StudentPaymentHistory = () => {
         },
       })
       .then((response) => {
-        setYhea(response.data);
+        setYhea(response.data.response);
       });
   }, [globalState]);
   return (
