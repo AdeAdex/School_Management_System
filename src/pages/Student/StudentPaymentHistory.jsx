@@ -82,7 +82,11 @@ const StudentPaymentHistory = () => {
                             },
                             {
                               firstName: globalState.firstName,
-                              photoURL: globalState.photoURL,
+                              lastName: globalState.lastName,
+                              profileURL: globalState.profileURL,
+                              gender: globalState.gender,
+                              studentID: globalState.studentID,
+                              level: globalState.level,
                             }
                           );
                         }}

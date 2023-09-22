@@ -19,11 +19,11 @@ const PaymentPrintPage = () => {
               <h2>Payment Details</h2>
               <div className="student-info">
                 <div className="student-photo">
-                  <img src={studentInfo.photoUrl} alt={studentInfo.firstName} />
+                  <img src={studentInfo.profileURL} alt={studentInfo.firstName} />
                 </div>
                 <div className="student-details">
                   <p>
-                    <strong>Name:</strong> {studentInfo.firstName}
+                    <strong>Name:</strong> {studentInfo.firstName} {" "} {studentInfo.lastName}
                   </p>
                   <p>
                     <strong>Gender:</strong> {studentInfo.gender}
