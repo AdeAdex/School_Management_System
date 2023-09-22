@@ -20,46 +20,13 @@ const StudentPaymentHistory = () => {
   // };
 
 
-  // const handlePrint = (payment) => {
-  //   // Create the URL for the print page
-  
-  //   // Open the URL in a new window or tab with the payment data as state
-  //   window.open( '_blank', 'noopener noreferrer', {
-  //     state: payment,
-  //   });
-  // };
-
-
   const handlePrint = (payment) => {
-    // Open a new window with specific dimensions
-    const printWindow = window.open('', '_blank', 'width=600,height=400,noopener,noreferrer');
+    const printPageUrl = '/print_page';
   
-    if (printWindow) {
-      // Set the content of the new window
-      printWindow.document.write('<html><head><title>Payment Details</title></head><body>');
-      printWindow.document.write('<div style="text-align: center;"><h1>Payment Details</h1></div>');
-      printWindow.document.write('<div id="payment-details-container">');
-      printWindow.document.write('<div id="payment-details-content">');
-      printWindow.document.write('<h2>Payment Details</h2>');
-  
-      // Display payment details
-      printWindow.document.write(`<p>Paid For: ${payment.paidFor}</p>`);
-      printWindow.document.write(`<p>Amount To Paid: ₦${payment.amountToPaid.toFixed(2)}</p>`);
-      printWindow.document.write(`<p>Amount Paid: ₦${payment.amountPaid.toFixed(2)}</p>`);
-      printWindow.document.write(`<p>Balance: ₦${payment.balance.toFixed(2)}</p>`);
-      printWindow.document.write(`<p>Date: ${payment.date}</p>`);
-  
-      printWindow.document.write('</div></div></body></html>');
-      printWindow.document.close();
-  
-      // Print the new window
-      printWindow.print();
-    } else {
-      alert('Pop-up blocked. Please allow pop-ups to print.');
-    }
+    window.open(printPageUrl, '_blank', 'noopener noreferrer', {
+      state: payment,
+    });
   };
-  
-
   
 
   useEffect(() => {    

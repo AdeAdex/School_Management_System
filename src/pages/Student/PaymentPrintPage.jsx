@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import Payment from "./Payment";
 
 const PaymentPrintPage = () => {
   const location = useLocation();
   const payment = location.state;
   useEffect(() => {
+        console.log("Location:", location);
+    console.log("Payment Data:", payment);
+
     window.print();
-  }, []);
+  }, [Payment]);
   return (
     <>
       <div className="payment-details">
