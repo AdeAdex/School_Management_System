@@ -14,7 +14,7 @@ const CoursePage = () => {
   const location = useLocation();
   const para = location.state ? location.state.para : null;
 
-  const [selectedOption, setSelectedOption] = useState("science");
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     let endpoint =
@@ -102,7 +102,7 @@ const CoursePage = () => {
                       <h2 className="subject-title">{sub.subject}</h2>
                     </div>
                   ))
-                ) : selectedOption === "" && data4.length > 0 ? (
+                ) : selectedOption === "art" && data4.length > 0 ? (
                   data4.map((sub, index) => (
                     <div className="subject-card" key={index}>
                       <h2 className="subject-title">{sub.subject}</h2>
