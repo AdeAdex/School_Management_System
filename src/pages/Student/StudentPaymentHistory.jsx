@@ -38,7 +38,7 @@ const StudentPaymentHistory = () => {
 
   useEffect(() => {    
     let endpoint =
-      "http://localhost:2000/student_account/paymentHistory";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/paymentHistory";
     axios
       .get(endpoint, {
         params: {
