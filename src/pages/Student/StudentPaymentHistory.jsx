@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const StudentPaymentHistory = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
+  const [showPrintPage, setShowPrintPage] = useState(false);
 
   const receivedEmail = globalState.email;
   const formClass = globalState.level;
@@ -11,6 +12,29 @@ const StudentPaymentHistory = () => {
   const formOption = globalState.options;
 
   const [yhea, setYhea] = useState([]);
+
+  const handlePrintClick = () => {
+    // Open a new blank window
+    const printWindow = window.open('', '_blank');
+    
+    // Render the PaymentPrintPage component in the new window
+    if (printWindow) {
+      printWindow.document.write('<html><head><title>Payment Details</title></head><body>');
+      printWindow.document.write('<div style="text-align: center;"><h1>Payment Details</h1></div>');
+      printWindow.document.write('<div id="payment-details-container">');
+      printWindow.document.write('<div id="payment-details-content">');
+      printWindow.document.write('<h2>Payment Details</h2>');
+      
+      // Render PaymentPrintPage component's content
+      printWindow.document.write(document.getElementById('payment-details-content').innerHTML);
+      
+      printWindow.document.write('</div></div></body></html>');
+      printWindow.document.close();
+      printWindow.print();
+    } else {
+      alert('Pop-up blocked. Please allow pop-ups to print.');
+    }
+  };
 
   useEffect(() => {    
     let endpoint =
@@ -62,7 +86,7 @@ const StudentPaymentHistory = () => {
                       <button
                         type="button"
                         className="btn btn-white shadow delete-btn"
-                        onClick={() => window.print()}
+                        onClick={handlePrintClick}
                       >
                         Print
                       </button>
