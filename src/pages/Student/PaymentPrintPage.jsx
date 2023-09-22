@@ -12,9 +12,12 @@ const PaymentPrintPage = () => {
   useEffect(() => {
     window.print();
   }, [location, payment, studentInfo]);
+
   return (
     <>
-      <div className={`payment-container ${isContentEmpty ? 'empty-page' : ''}`}>
+      <div
+        className={`payment-container ${isContentEmpty ? "empty-page" : ""}`}
+      >
         <div className="payment-details">
           {studentInfo && payment ? (
             <table className="payment-table">
@@ -51,10 +54,12 @@ const PaymentPrintPage = () => {
                     <h3>Fee Breakdown</h3>
                     <div className="fee-breakdown">
                       <p>
-                        <strong>Amount To Pay:</strong> ₦{payment.amountToPaid.toFixed(2)}
+                        <strong>Amount To Pay:</strong> ₦
+                        {payment.amountToPaid.toFixed(2)}
                       </p>
                       <p>
-                        <strong>Amount Paid:</strong> ₦{payment.amountPaid.toFixed(2)}
+                        <strong>Amount Paid:</strong> ₦
+                        {payment.amountPaid.toFixed(2)}
                       </p>
                       <p>
                         <strong>Balance:</strong> ₦{payment.balance.toFixed(2)}
