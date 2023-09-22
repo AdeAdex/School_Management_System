@@ -41,7 +41,7 @@ const StudentPaymentHistory = () => {
           <table className="table table-borderd mt-4">
             <thead>
               <tr>
-                <td>Invoi</td>
+                <td>#INVOIVE</td>
                 <td>AMOUNT TO BE PAID</td>
                 <td>AMOUNT PAID</td>
                 <td>BALANCE</td>
@@ -55,6 +55,8 @@ const StudentPaymentHistory = () => {
                   <tr key={index}>
                     <td>{subject.mySubject}</td>
                     <td>{subject.newTerm}</td>
+                    <td>{subject.myOption}</td>
+                    <td>{subject.myOption}</td>
                     <td>{subject.myOption}</td>
                     <td>
                       <button
