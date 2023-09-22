@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const StudentPaymentHistory = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [showPrintPage, setShowPrintPage] = useState(false);
+  const navigate = useNavigate()
 
   const receivedEmail = globalState.email;
   const formClass = globalState.level;
@@ -13,28 +15,52 @@ const StudentPaymentHistory = () => {
 
   const [yhea, setYhea] = useState([]);
 
-  const handlePrintClick = () => {
-    // Open a new blank window
-    const printWindow = window.open('', '_blank');
-    
-    // Render the PaymentPrintPage component in the new window
+  // const handlePrint = (payment) => {
+  //  navigate('/print_page', {state: payment})
+  // };
+
+
+  // const handlePrint = (payment) => {
+  //   // Create the URL for the print page
+  
+  //   // Open the URL in a new window or tab with the payment data as state
+  //   window.open( '_blank', 'noopener noreferrer', {
+  //     state: payment,
+  //   });
+  // };
+
+
+  const handlePrint = (payment) => {
+    // Open a new window with specific dimensions
+    const printWindow = window.open('', '_blank', 'width=600,height=400,noopener,noreferrer');
+  
     if (printWindow) {
+      // Set the content of the new window
       printWindow.document.write('<html><head><title>Payment Details</title></head><body>');
       printWindow.document.write('<div style="text-align: center;"><h1>Payment Details</h1></div>');
       printWindow.document.write('<div id="payment-details-container">');
       printWindow.document.write('<div id="payment-details-content">');
       printWindow.document.write('<h2>Payment Details</h2>');
-      
-      // Render PaymentPrintPage component's content
-      printWindow.document.write(document.getElementById('payment-details-content').innerHTML);
-      
+  
+      // Display payment details
+      printWindow.document.write(`<p>Paid For: ${payment.paidFor}</p>`);
+      printWindow.document.write(`<p>Amount To Paid: ₦${payment.amountToPaid.toFixed(2)}</p>`);
+      printWindow.document.write(`<p>Amount Paid: ₦${payment.amountPaid.toFixed(2)}</p>`);
+      printWindow.document.write(`<p>Balance: ₦${payment.balance.toFixed(2)}</p>`);
+      printWindow.document.write(`<p>Date: ${payment.date}</p>`);
+  
       printWindow.document.write('</div></div></body></html>');
       printWindow.document.close();
+  
+      // Print the new window
       printWindow.print();
     } else {
       alert('Pop-up blocked. Please allow pop-ups to print.');
     }
   };
+  
+
+  
 
   useEffect(() => {    
     let endpoint =
@@ -86,7 +112,13 @@ const StudentPaymentHistory = () => {
                       <button
                         type="button"
                         className="btn btn-white shadow delete-btn"
-                        onClick={handlePrintClick}
+                        onClick={() => {handlePrint({
+                          paidFor: payment.paidFor, 
+                          amountToPaid: payment.amountToPaid, 
+                          amountPaid: payment.amountPaid, 
+                          balance: payment.balance, 
+                          date: payment.date
+                        })}}
                       >
                         Print
                       </button>

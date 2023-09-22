@@ -54,6 +54,7 @@ import StudentResults from './pages/Student/StudentResults'
 import StudentPayment from './pages/Student/StudentPayment'
 import StudentPaymentHistory from './pages/Student/StudentPaymentHistory'
 import ContactUSPage from './pages/ContactUSPage'
+import PaymentPrintPage from './pages/Student/PaymentPrintPage'
 
 
 
@@ -150,6 +151,7 @@ function App() {
         <Route path='/our_courses' element={<CoursePage/>}/>
         <Route path='/aboutus' element={<AboutUsPage/>} />
         <Route path='/contact_us' element={<ContactUSPage/>} />
+        <Route path='/print_page' element={<PaymentPrintPage/>} / >
         <Route path='/*' element={<ErrorPage/>}/>
       </Routes>
     </Router>
