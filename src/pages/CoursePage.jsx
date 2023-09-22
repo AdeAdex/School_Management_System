@@ -181,7 +181,13 @@ const CoursePage = () => {
                       <h2 className="subject-title">{sub.subject}</h2>
                     </div>
                   ))
-                ) : (
+                ) : selectedOption === ""  ? (
+                  data2.map((sub, index) => (
+                    <div className="subject-card" key={index}>
+                      <h2 className="subject-title">{sub.subject}</h2>
+                    </div>
+                  ))
+                ): (
                   <div>
                     There is currently no subject available for the selected
                     sources. We apologize for any inconvenience. Kindly please
