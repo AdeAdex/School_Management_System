@@ -53,7 +53,7 @@ const PaymentPrintPage = () => {
                     <hr />
                     <h3>Fee Breakdown</h3>
                     <div className="fee-breakdown">
-                    <p>
+                      <p>
                         <strong>Paid For:</strong> {payment.paidFor}
                       </p>
                       <p>
