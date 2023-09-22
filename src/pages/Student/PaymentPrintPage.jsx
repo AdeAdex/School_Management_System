@@ -53,6 +53,9 @@ const PaymentPrintPage = () => {
                     <hr />
                     <h3>Fee Breakdown</h3>
                     <div className="fee-breakdown">
+                    <p>
+                        <strong>Paid For:</strong> {payment.paidFor}
+                      </p>
                       <p>
                         <strong>Amount To Pay:</strong> ₦
                         {payment.amountToPaid.toFixed(2)}
