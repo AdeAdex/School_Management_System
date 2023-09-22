@@ -14,7 +14,7 @@ const CoursePage = () => {
   const location = useLocation();
   const para = location.state ? location.state.para : null;
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("science");
 
   useEffect(() => {
     let endpoint =
