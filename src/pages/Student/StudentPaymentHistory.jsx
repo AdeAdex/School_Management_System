@@ -15,18 +15,18 @@ const StudentPaymentHistory = () => {
 
   const [yhea, setYhea] = useState([]);
 
-  // const handlePrint = (payment) => {
-  //  navigate('/print_page', {state: payment})
-  // };
-
-
   const handlePrint = (payment) => {
-    const printPageUrl = '/print_page';
-  
-    window.open(printPageUrl, '_blank', 'noopener noreferrer', {
-      state: payment,
-    });
+   navigate('/print_page', {state: payment, globalState})
   };
+
+
+  // const handlePrint = (payment) => {
+  //   const printPageUrl = '/print_page';
+  
+  //   window.open(printPageUrl, '_blank', 'noopener noreferrer', {
+  //     state: payment,
+  //   });
+  // };
   
 
   useEffect(() => {    
