@@ -13,10 +13,10 @@ const StudentPaymentHistory = () => {
   const [yhea, setYhea] = useState([]);
 
   useEffect(() => {    
-    let endpoint2 =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/paymentHistory";
+    let endpoint =
+      "http://localhost:2000/student_account/paymentHistory";
     axios
-      .get(endpoint2, {
+      .get(endpoint, {
         params: {
           receivedEmail,
           formClass,
@@ -39,7 +39,7 @@ const StudentPaymentHistory = () => {
         </div>
         <div className="" style={{overflowY: 'auto', height: '70%'}}>
           <table className="table table-borderd mt-4">
-            <thead>
+            <thead className='fw-bold'>
               <tr>
                 <td>#INVOIVE</td>
                 <td>AMOUNT TO BE PAID</td>
@@ -54,15 +54,15 @@ const StudentPaymentHistory = () => {
                 yhea.map((payment, index) => (
                   <tr key={index}>
                     <td>{payment.paidFor}</td>
-                    <td>{payment.amountToPaid}</td>
-                    <td>{payment.amountPaid}</td>
-                    <td>{payment.balance}</td>
+                    <td>₦{payment.amountToPaid.toFixed(2)}</td>
+                    <td>₦{payment.amountPaid.toFixed(2)}</td>
+                    <td>₦{payment.balance.toFixed(2)}</td>
                     <td>{payment.date}</td>
                     <td>
                       <button
                         type="button"
                         className="btn btn-white shadow delete-btn"
-                        // onClick={() => deleteSelectedSubject(subject._id)}
+                        onClick={() => window.print()}
                       >
                         Print
                       </button>
