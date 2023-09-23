@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import { useSelector } from "react-redux";
-// import { Tooltip as ReactTooltip } from "react-tooltip";\
 import { Tooltip, Button } from "@mantine/core";
 
 const StudentDashboardOffcanvasList = ({
@@ -41,7 +40,7 @@ const StudentDashboardOffcanvasList = ({
         style={{ cursor: "pointer" }}
       >
       
-        {/* <Tooltip
+        <Tooltip
           transitionProps={{ transition: "slide-right", duration: 300 }}
           label={label}
           withArrow
@@ -58,9 +57,9 @@ const StudentDashboardOffcanvasList = ({
             ></i>
             {!offcanvasState && <div className="text-capitalize">{item}</div>}
           </div>
-        </Tooltip> */}
+        </Tooltip>
 
-        {offcanvasState ? (
+        {/* {offcanvasState ? (
         <Tooltip
           transitionProps={{ transition: 'slide-right', duration: 300 }}
           label={label}
@@ -81,7 +80,7 @@ const StudentDashboardOffcanvasList = ({
           <i className={icons} style={{ marginTop: 'auto', marginBottom: 'auto' }}></i>
           <div className="text-capitalize">{item}</div>
         </div>
-      )}
+      )} */}
 
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
