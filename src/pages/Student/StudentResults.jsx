@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { PieChart } from "react-minimal-pie-chart";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 
-const StudentDashboardBarChart = () => {
-  const globalState = useSelector((state) => state.portalReducer.studentInfo);
+const StudentResults = () => {
+  let globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [performance, setPerformance] = useState([]);
 
   useEffect(() => {
-    const studentEmail = globalState.email;
-    const endpoint =
+    let studentEmail = globalState.email;
+    let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student_performance";
     axios.post(endpoint, { studentEmail }).then((response) => {
       if (response.data.status) {
@@ -18,7 +19,17 @@ const StudentDashboardBarChart = () => {
     });
   }, [globalState]);
 
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   const categoryCounts = {};
+
   performance.forEach((item) => {
     const { category, correctness } = item;
     if (!categoryCounts[category]) {
@@ -35,6 +46,7 @@ const StudentDashboardBarChart = () => {
 
   const categories = ["English", "Maths", "Current Affair", "Sciences"];
 
+  // Calculate the total true count and total count for "Maths"
   const mathsTrueCount = categoryCounts["Maths"]
     ? categoryCounts["Maths"].trueCount
     : 0;
@@ -42,50 +54,37 @@ const StudentDashboardBarChart = () => {
     ? categoryCounts["Maths"].total
     : 0;
 
-  const barChartData = {
-    labels: categories,
-    datasets: [
-      {
-        label: "Performance (%)",
-        data: categories.map((category) =>
-          category === "Maths"
-            ? mathsTotalCount > 0
-              ? (mathsTrueCount / mathsTotalCount) * 100
-              : 0
-            : categoryCounts[category] && categoryCounts[category].total > 0
-            ? (categoryCounts[category].trueCount /
-                categoryCounts[category].total) *
-              100
-            : 0
-        ),
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-        ],
-      },
-    ],
-  };
-
-  const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 100,
-      },
-    },
-  };
+  const pieChartData = categories.map((category) => ({
+    title: category,
+    value:
+      category === "Maths"
+        ? mathsTotalCount > 0
+          ? (mathsTrueCount / mathsTotalCount) * 100
+          : 0 // Set Maths to 0% if there is no data
+        : categoryCounts[category] && categoryCounts[category].total > 0
+        ? (categoryCounts[category].trueCount /
+            categoryCounts[category].total) *
+          100
+        : 0,
+    color: getRandomColor(),
+  }));
 
   return (
     <>
-      <small className="mt-3 fw-bold">
-        Your performance in the entrance exam is indicated below:{" "}
-      </small>
-
-      <Bar data={barChartData} options={options} />
+      <div className="d-flex flex-column px-3">
+        <small className="my-3">Still Working on this Page ...</small>
+        <PieChart
+          className="mx-auto"
+          style={{ width: "80%" }}
+          data={pieChartData}
+          label={({ dataEntry }) =>
+            `${dataEntry.title}: ${dataEntry.value.toFixed(2)}%`
+          }
+          labelStyle={{ fontSize: "5px" }}
+        />
+      </div>  
     </>
   );
 };
 
-export default StudentDashboardBarChart;
+export default StudentResults;
