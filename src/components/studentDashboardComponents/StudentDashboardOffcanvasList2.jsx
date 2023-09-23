@@ -34,12 +34,12 @@ const StudentDashboardOffcanvasList2 = ({ icons, item, label, params }) => {
       >
         <Tooltip
           transitionProps={{ transition: "slide-right", duration: 300 }}
-          label={label}
+          label={label ? label.toUpperCase() : ''}
           withArrow
           arrowSize={6}
           position="right"
           color="darkblue"
-          style={{ position: 'absolute',  margin: '0px 40px' }}
+          style={{ position: 'absolute',  margin: '0px 30px' }}
         >
           <div className="d-flex gap-3">
             <i
