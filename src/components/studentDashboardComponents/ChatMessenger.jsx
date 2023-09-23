@@ -137,7 +137,7 @@ const ChatMessenger = ({
                 </div>
               ))
             ) : (
-              <div>Nothing</div>
+              <div>Nothing. The developer is still working on gettting this page working. Coming soon...</div>
             )}
           </div>
           {/* </ScrollToBottom> */}
