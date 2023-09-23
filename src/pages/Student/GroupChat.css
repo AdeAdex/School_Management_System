@@ -1,0 +1,41 @@
+.group-chat:hover {
+  background-color: rgba(128, 128, 128, 0.22);
+}
+
+.chat-div {
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  
+}
+
+#you {
+  margin-left: 10px;
+  background-color: rgba(128, 128, 128, 0.63);
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+#others {
+  margin-left: auto;
+  margin-right: 10px;
+  background-color: green;
+  width: 70%;
+  margin-bottom: 20px;
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .chat-container {
+    flex-direction: column;
+  }
+
+  .chat-nav, .chat-messenger-container, .online-container {
+    width: 100% !important;
+  } 
+
+  .chat-nav {
+    
+  }
+}

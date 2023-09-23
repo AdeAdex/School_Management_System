@@ -104,6 +104,10 @@ const StudentDashboardNavbar = () => {
     navigate("/student_dashboard/profile");
   };
 
+  const toChat = () => {
+    navigate("/student_dashboard/conversation")
+  }
+
   return (
     <>
       <div
@@ -165,6 +169,7 @@ const StudentDashboardNavbar = () => {
             style={{ cursor: "pointer" }}
             className="my-auto"
             showZero
+            onClick={toChat}
           >
             <MailIcon />
           </Badge>

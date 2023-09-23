@@ -53,6 +53,7 @@ import StudentRegistrationHistory from './pages/Student/StudentRegistrationHisto
 import StudentResults from './pages/Student/StudentResults'
 import StudentPayment from './pages/Student/StudentPayment'
 import StudentPaymentHistory from './pages/Student/StudentPaymentHistory'
+import GroupChat from './pages/Student/GroupChat'
 import ContactUSPage from './pages/ContactUSPage'
 import PaymentPrintPage from './pages/Student/PaymentPrintPage'
 
@@ -128,6 +129,7 @@ function App() {
           <Route path='results' element={<StudentResults/>} />
           <Route path='pay_tuition' element={<StudentPayment/>} />
           <Route path='payment_history' element={<StudentPaymentHistory/>} />
+          <Route path='conversation' element={<GroupChat/>} />
           {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
         

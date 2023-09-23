@@ -18,6 +18,7 @@ import StudentRegistrationHistory from "./StudentRegistrationHistory";
 import StudentResults from "./StudentResults";
 import StudentPayment from "./StudentPayment";
 import StudentPaymentHistory from "./StudentPaymentHistory";
+import GroupChat from "./GroupChat";
 
 
 const StudentPortalDashboard = () => {
@@ -108,6 +109,7 @@ const StudentPortalDashboard = () => {
                   }
                 />
                 <Route path="edit_details" element={<StudentEditDetails socket={socketRef}/>} />
+                <Route path="conversation"  element={<GroupChat socket={socketRef} />} />
                 <Route path="resources" element={<StudentResources />} />
                 <Route
                   path="course_registration"
