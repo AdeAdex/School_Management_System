@@ -19,7 +19,9 @@ const StudentDashboardPieChart = () => {
     });
   }, [globalState]);
 
-  // Helper function to generate random colors
+
+
+
   const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -28,48 +30,48 @@ const StudentDashboardPieChart = () => {
     }
     return color;
   };
-
-  const categories = ["English", "Math", "Current Affair", "Sciences"];
-  const equalPercentage = 100 / categories.length;
-
-
-
-  const truncateLabel = (label, maxLabelLength) => {
-    if (label.length > maxLabelLength) {
-      return label.slice(0, maxLabelLength) + "...";
+  
+  const categoryCounts = {};
+  
+  performance.forEach((item) => {
+    const { category, correctness } = item;
+    if (!categoryCounts[category]) {
+      categoryCounts[category] = {
+        total: 0,
+        trueCount: 0,
+      };
     }
-    return label;
-  };
-
-
-  // // Generate data for the PieChart
+    categoryCounts[category].total++;
+    if (correctness) {
+      categoryCounts[category].trueCount++;
+    }
+  });
+  
+  const categories = ["English", "Maths", "Current Affair", "Sciences"];
+  
+  // Calculate the total true count and total count for "Maths"
+  const mathsTrueCount = categoryCounts["Maths"] ? categoryCounts["Maths"].trueCount : 0;
+  const mathsTotalCount = categoryCounts["Maths"] ? categoryCounts["Maths"].total : 0;
+  
   const pieChartData = categories.map((category) => ({
-    // title: category,
-    title: truncateLabel(category, 10),
-    value: equalPercentage,
+    title: category,
+    value:
+      category === "Maths"
+        ? mathsTotalCount > 0
+          ? (mathsTrueCount / mathsTotalCount) * 100
+          : 0 // Set Maths to 0% if there is no data
+        : categoryCounts[category] && categoryCounts[category].total > 0
+        ? (categoryCounts[category].trueCount / categoryCounts[category].total) * 100
+        : 0,
     color: getRandomColor(),
   }));
+  
+ 
+
+
 
   return (
     <>
-      {/* <PieChart
-        className="mx-auto"
-        style={{ width: "80%" }}
-        data={[
-          {
-            label: "English",
-            value: 10,
-            color: "#E38627",
-            animate: true,
-            animationDuration: 500,
-            animationEasing: "linear",
-          },
-          { label: "Math", value: 15, color: "#C13C37" },
-          { label: "Current Affair", value: 20, color: "#6A2135" },
-          { label: "Sciences", value: 20, color: "#6fc191" },
-        ]}
-      /> */}
-
       <small className="mt-3 fw-bold">Your performance in the entrance exam is indicated below: </small>
 
       <PieChart
@@ -77,7 +79,7 @@ const StudentDashboardPieChart = () => {
         style={{ width: "80%" }}
         data={pieChartData}
         label={({ dataEntry }) =>
-          `${dataEntry.title}: ${Math.round(dataEntry.value)}%`
+          `${dataEntry.title}: ${dataEntry.value.toFixed(2)}%`
         }
         labelStyle={{ fontSize: "5px" }}
       />
@@ -88,5 +90,9 @@ const StudentDashboardPieChart = () => {
 export default StudentDashboardPieChart;
 
 
-// className={bodyClassName} style={bodyStyle}
-// className="card-body" style={styles}
+
+
+
+
+
+
