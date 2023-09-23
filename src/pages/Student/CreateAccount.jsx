@@ -88,23 +88,26 @@ const CreateAccount = () => {
       }
     },
 
-    
     validationSchema: yup.object({
       firstName: yup
         .string()
-        .required("firstname is required to create account"),
-      lastName: yup.string().required("lastname is required to create account"),
+        .required("First name is required to create account"),
+      lastName: yup
+        .string()
+        .required("Last name is required to create account"),
       email: yup
         .string()
         .lowercase()
-        .required("email is required to create account")
+        .required("Email is required to create account")
         .email("Please enter a valid email address"),
       phoneNumber: yup
         .string()
-        .required("phone number is required to create account"),
+        .required("Phone number is required to create account")
+        .min(6, "Phone number must be at least 6 characters long")
+        .matches(/^\+(?:[0-9]\s?){6,14}[0-9]$/, "Phone number must start with a '+' and contain 6 to 14 digits with optional spaces"),
       password: yup
         .string()
-        .required("password is required to create account")
+        .required("Password is required to create account")
         .min(8, "Password must be at least 8 characters long")
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]+$/,
