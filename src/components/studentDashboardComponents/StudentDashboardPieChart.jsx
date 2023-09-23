@@ -11,16 +11,12 @@ const StudentDashboardPieChart = () => {
     let studentEmail = globalState.email;
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student_performance";
-    axios.post(endpoint, { studentEmail })
-    .then((response) => {
+    axios.post(endpoint, { studentEmail }).then((response) => {
       if (response.data.status) {
         setPerformance(response.data.res);
       }
     });
   }, [globalState]);
-
-
-
 
   const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
@@ -30,9 +26,9 @@ const StudentDashboardPieChart = () => {
     }
     return color;
   };
-  
+
   const categoryCounts = {};
-  
+
   performance.forEach((item) => {
     const { category, correctness } = item;
     if (!categoryCounts[category]) {
@@ -46,13 +42,17 @@ const StudentDashboardPieChart = () => {
       categoryCounts[category].trueCount++;
     }
   });
-  
+
   const categories = ["English", "Maths", "Current Affair", "Sciences"];
-  
+
   // Calculate the total true count and total count for "Maths"
-  const mathsTrueCount = categoryCounts["Maths"] ? categoryCounts["Maths"].trueCount : 0;
-  const mathsTotalCount = categoryCounts["Maths"] ? categoryCounts["Maths"].total : 0;
-  
+  const mathsTrueCount = categoryCounts["Maths"]
+    ? categoryCounts["Maths"].trueCount
+    : 0;
+  const mathsTotalCount = categoryCounts["Maths"]
+    ? categoryCounts["Maths"].total
+    : 0;
+
   const pieChartData = categories.map((category) => ({
     title: category,
     value:
@@ -61,18 +61,18 @@ const StudentDashboardPieChart = () => {
           ? (mathsTrueCount / mathsTotalCount) * 100
           : 0 // Set Maths to 0% if there is no data
         : categoryCounts[category] && categoryCounts[category].total > 0
-        ? (categoryCounts[category].trueCount / categoryCounts[category].total) * 100
+        ? (categoryCounts[category].trueCount /
+            categoryCounts[category].total) *
+          100
         : 0,
     color: getRandomColor(),
   }));
-  
- 
-
-
 
   return (
     <>
-      <small className="mt-3 fw-bold">Your performance in the entrance exam is indicated below: </small>
+      <small className="mt-3 fw-bold">
+        Your performance in the entrance exam is indicated below:{" "}
+      </small>
 
       <PieChart
         className="mx-auto"
@@ -88,11 +88,3 @@ const StudentDashboardPieChart = () => {
 };
 
 export default StudentDashboardPieChart;
-
-
-
-
-
-
-
-
