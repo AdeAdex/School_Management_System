@@ -93,9 +93,16 @@
     background-color: initial !important; */
   }
 
+
+  /* backdrop background color for offcanvas on small screen */
+
   .offcanvas-backdrop {
-    background-color: rgba(3, 5, 82, 0.7); /* Change the color and opacity as desired */
+    background-color: rgba(3, 5, 82, 0.7);
   }
+
+  /* .custom-backdrop-class {
+    background-color: initial;
+  } */
 
   .centered-container {
     padding: unset !important;

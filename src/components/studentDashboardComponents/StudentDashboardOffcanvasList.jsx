@@ -9,7 +9,8 @@ const StudentDashboardOffcanvasList = ({
   item,
   params,
   label,
-  toggleOffcanvas,
+  isOffcanvasOpen,
+  setIsOffcanvasOpen,
 }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -28,6 +29,7 @@ const StudentDashboardOffcanvasList = ({
       setIsLoading(false);
       setOpen(false);
       navigate(params);
+      // setIsOffcanvasOpen(true);   // working for the offcanvas to close when i click the offcanvaslist
     }, 1200);
   };
   return (
@@ -40,7 +42,7 @@ const StudentDashboardOffcanvasList = ({
         style={{ cursor: "pointer" }}
       >
       
-        <Tooltip
+        {/* <Tooltip
           transitionProps={{ transition: "slide-right", duration: 300 }}
           label={label ? label.toUpperCase() : ''}
           withArrow
@@ -56,9 +58,9 @@ const StudentDashboardOffcanvasList = ({
             ></i>
             {!offcanvasState && <div className="text-capitalize">{item}</div>}
           </div>
-        </Tooltip>
+        </Tooltip> */}
 
-        {/* {offcanvasState ? (
+        {offcanvasState ? (
         <Tooltip
           transitionProps={{ transition: 'slide-right', duration: 300 }}
           label={label}
@@ -79,7 +81,7 @@ const StudentDashboardOffcanvasList = ({
           <i className={icons} style={{ marginTop: 'auto', marginBottom: 'auto' }}></i>
           <div className="text-capitalize">{item}</div>
         </div>
-      )} */}
+      )}
 
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

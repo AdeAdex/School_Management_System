@@ -16,14 +16,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, Button, Text } from "@mantine/core";
 import Backdrop from "@mui/material/Backdrop";
 
-
-
 const StudentDashboardNavbar = () => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   const [offCanvasTitleVisible, setOffCanvasTitleVisible] = useState(true);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const messagesLength = globalState?.messages?.length || 0;
   const [myMessages, setMyMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
@@ -81,21 +78,10 @@ const StudentDashboardNavbar = () => {
   const [opened, { toggle }] = useDisclosure(false);
   const label = opened ? "Close navigation" : "Open navigation";
 
-
-
-
-
-
-  // useEffect(() => {
-  //   const messagesLength = myMessages.filter((message) => !message.read).length;
-  //   dispatch(updateMessagesLength(messagesLength));
-  // }, [myMessages, dispatch]);
-
   useEffect(() => {
     const unreadMessages = myMessages.filter((message) => !message.read);
     setMessagesLength(unreadMessages.length);
   }, [myMessages]);
-
 
   const markMessageAsRead = (messageId) => {
     // Create a copy of the current messages array with updated messages
@@ -114,29 +100,10 @@ const StudentDashboardNavbar = () => {
     }
   };
 
-
-  // const markMessageAsRead = (messageId) => {
-  //   // Create a copy of the current messages array with updated messages
-  //   const updatedMessages = myMessages.map((message) => {
-  //     if (message._id === messageId && !message.read) {
-  //       // Create a new object that is a copy of the message with an added "read" property
-  //       return { ...message, read: true };
-  //     }
-  //     return message; // Return the original message if it's not the one to be marked as read
-  //   });
-  
-  //   // Check if the messages array was actually updated
-  //   if (updatedMessages !== myMessages) {
-  //     // Update the state with the updated messages
-  //     setMyMessages(updatedMessages);
-  //   }
-  // };
-
-
   const toProfile = () => {
-    navigate('/student_dashboard/profile')
-  }
-  
+    navigate("/student_dashboard/profile");
+  };
+
   return (
     <>
       <div
@@ -145,14 +112,6 @@ const StudentDashboardNavbar = () => {
         style={{ width: "100%", height: "80px" }}
       >
         <div className="w-50 my-auto d-flex burger">
-          {/* <button
-            className="btn my-auto offcanvas-btn"
-            type="button"
-            onClick={offCanvas}
-            id="offcanvasBtn"
-          >
-            <i className="fas fa-bars fs-3 px-2"></i>
-          </button> */}
           <Burger
             opened={opened}
             className="my-auto offcanvas-btn px-2 mx-3"
@@ -211,13 +170,13 @@ const StudentDashboardNavbar = () => {
           </Badge>
           <Menu>
             <Menu.Target>
-            <button className="border-0">
-            <i className="fas fa-gear fs-4 my-auto"></i>
-          </button>
+              <button className="border-0">
+                <i className="fas fa-gear fs-4 my-auto"></i>
+              </button>
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Label className="mb-1">Settings</Menu.Label>
-              <Menu.Item >Help</Menu.Item>
+              <Menu.Item>Help</Menu.Item>
               <Menu.Item onClick={logOut}>Log Out</Menu.Item>
             </Menu.Dropdown>
           </Menu>
@@ -230,12 +189,12 @@ const StudentDashboardNavbar = () => {
       </div>
 
       <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={open}
-          onClick={handleClose}
-        >
-          {isLoading && <div className="loader"></div>}
-        </Backdrop>
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        {isLoading && <div className="loader"></div>}
+      </Backdrop>
 
       <MessageModal
         myMessages={myMessages}
