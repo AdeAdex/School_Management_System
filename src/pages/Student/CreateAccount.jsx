@@ -151,6 +151,8 @@ const CreateAccount = () => {
     label: `(${item.code})`,
   }));
 
+  const sortedDialCode = [...dialCode].sort((a, b) => a.country.localeCompare(b.country));
+
 
   return (
     <>
@@ -270,7 +272,7 @@ const CreateAccount = () => {
                 onChange={handleSelectChange}
                 value={selectedCode}
               >
-                {dialCode.map((allCode, index) => (
+                {sortedDialCode.map((allCode, index) => (
                   <option key={index} value={allCode.code}>
                     {selectedCode === allCode.code
                       ? allCode.code
