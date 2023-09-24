@@ -65,7 +65,7 @@ const CreateAccount = () => {
 
         console.log(newValues);
         const endpoint =
-          "https://school-portal-backend-adex2210.vercel.app/student_account/student";
+          "http://localhost:2000/student_account/student";
 
         const response = await axios.post(endpoint, newValues);
 
