@@ -178,12 +178,15 @@ const Footer = ({ contactUsRef }) => {
                   onClick={open}
                 ></FooterGallary>
                 <FooterGallary
-                  img="pic/gallary2.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg"
                   cover="Image 2"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg"
+                  onClick={open}
                 ></FooterGallary>
                 <FooterGallary
-                  img="pic/gallary3.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg"
                   cover="Image 3"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg"
                 ></FooterGallary>
               </div>
               <div className="d-flex gap-3">
