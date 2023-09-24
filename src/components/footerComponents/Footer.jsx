@@ -74,6 +74,12 @@ const Footer = ({ contactUsRef }) => {
     
   }
 
+  const modalStyles = {
+    modal: {
+      width: '400px !important',
+    },
+  };
+
   return (
     <>
       <div
@@ -166,9 +172,9 @@ const Footer = ({ contactUsRef }) => {
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3">
                 <FooterGallary
-                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
                   cover="Image 1"
-                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
                   onClick={open}
                 ></FooterGallary>
                 <FooterGallary
@@ -215,7 +221,7 @@ const Footer = ({ contactUsRef }) => {
           <FooterHero></FooterHero>
         </div>
       </div>
-      <Modal opened={opened} onClose={close} title="School Gallary" centered>
+      <Modal opened={opened} onClose={close} title="School Gallary" centered size="70%">
         <FooterCarousel/>
       </Modal>
       
