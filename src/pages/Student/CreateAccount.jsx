@@ -9,7 +9,7 @@ import { Select } from "@mantine/core";
 const CreateAccount = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [selectedCode, setSelectedCode] = useState("");
   const [dialCode, setDialCode] = useState([]);
 
   useEffect(() => {
@@ -18,6 +18,8 @@ const CreateAccount = () => {
       .get(endpoint)
       .then((response) => {
         setDialCode(response.data);
+        const defaultCode = response.data.length > 0 ? response.data[0].code : '';
+        setSelectedCode(defaultCode);
       })
       .catch((error) => {
         console.error("Error fetching countries:", error);
@@ -25,7 +27,6 @@ const CreateAccount = () => {
   }, []);
 
   
-  const [selectedCode, setSelectedCode] = useState("");
 
   const handleSelectChange = (event) => {
     setSelectedCode(event.target.value);
