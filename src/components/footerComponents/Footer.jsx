@@ -8,8 +8,13 @@ import FooterHero from "./FooterHero";
 import Small_hr from "../generalComponents/Small_hr";
 import MulticolorLine from "../generalComponents/MulticolorLine";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from '@mantine/carousel';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core'
+import FooterCarousel from "./FooterCarousel";
 
 const Footer = ({ contactUsRef }) => {
+  const [opened, { open, close }] = useDisclosure(false);
 
   const navigate = useNavigate()
 
@@ -63,6 +68,10 @@ const Footer = ({ contactUsRef }) => {
         title: "Currently Unavailable, Please Try Again Later",
       });
     }
+  }
+
+  const handleClick = () => {
+    
   }
 
   return (
@@ -157,8 +166,10 @@ const Footer = ({ contactUsRef }) => {
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3">
                 <FooterGallary
-                  img="pic/gallary1.jpeg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg"
                   cover="Image 1"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg"
+                  onClick={open}
                 ></FooterGallary>
                 <FooterGallary
                   img="pic/gallary2.jpg"
@@ -204,6 +215,10 @@ const Footer = ({ contactUsRef }) => {
           <FooterHero></FooterHero>
         </div>
       </div>
+      <Modal opened={opened} onClose={close} title="School Gallary" centered>
+        <FooterCarousel/>
+      </Modal>
+      
     </>
   );
 };
