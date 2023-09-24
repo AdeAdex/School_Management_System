@@ -4,10 +4,33 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { format } from "date-fns";
+import { Select } from "@mantine/core";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+
+  const [dialCode, setDialCode] = useState([]);
+
+  useEffect(() => {
+    let endpoint = "http://localhost:2000/staff_account/dial_code";
+    axios
+      .get(endpoint)
+      .then((response) => {
+        setDialCode(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching countries:", error);
+      });
+  }, []);
+
+  
+  const [selectedCode, setSelectedCode] = useState("");
+
+  const handleSelectChange = (event) => {
+    setSelectedCode(event.target.value);
+    // console.log(selectedCode);
+  };
 
   let formik = useFormik({
     initialValues: {
@@ -36,7 +59,10 @@ const CreateAccount = () => {
           ...values,
           registrationNumber,
           createdDate: currentDate,
+          phoneNumber: selectedCode + values.phoneNumber
         };
+
+        console.log(newValues);
         const endpoint =
           "https://school-portal-backend-adex2210.vercel.app/student_account/student";
 
@@ -104,7 +130,10 @@ const CreateAccount = () => {
         .string()
         .required("Phone number is required to create account")
         .min(6, "Phone number must be at least 6 characters long")
-        .matches(/^\+(?:[0-9]\s?){6,14}[0-9]$/, "Phone number must start with a '+' and contain 6 to 14 digits with optional spaces"),
+        .matches(
+          /^[0-9][0-9\s]{5,13}[0-9]$/,
+          "Phone number must start with a digit (0-9) and contain 6 to 14 digits with optional spaces"
+        ),
       password: yup
         .string()
         .required("Password is required to create account")
@@ -116,6 +145,12 @@ const CreateAccount = () => {
       checkbox: yup.boolean().oneOf([true]),
     }),
   });
+
+  const options = dialCode.map((item) => ({
+    value: item.code,
+    label: `(${item.code})`,
+  }));
+
 
   return (
     <>
@@ -208,6 +243,43 @@ const CreateAccount = () => {
             ) : null}
           </div>
           <div className="col-md-6 position-relative  flex-column mb-3">
+            <span
+              className="tel-span"
+              style={{
+                position: "absolute",
+                height: "",
+                width: "58px",
+                alignItems: "center",
+                overflow: "hidden",
+              }}
+            >
+              {/* <Select
+                data={options}
+                style={{ padding: "1px 0px", width: '100px', backgroundColor: "#E9ECEF" }}
+              /> */}
+
+              <select
+                name=""
+                className="dial-code"
+                style={{
+                  backgroundColor: "unset",
+                  width: "55px",
+                  border: 'none',
+                  outline: 'none'
+                }}
+                onChange={handleSelectChange}
+                value={selectedCode}
+              >
+                {dialCode.map((allCode, index) => (
+                  <option key={index} value={allCode.code}>
+                    {selectedCode === allCode.code
+                      ? allCode.code
+                      : `${allCode.country} - ${allCode.code}`}
+                  </option>
+                ))}
+              </select>
+            </span>
+
             <input
               type="tel"
               autoComplete="on"
@@ -221,7 +293,7 @@ const CreateAccount = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            <label htmlFor="validationServer01" className="user-label">
+            <label htmlFor="validationServer01" className="user-label tel">
               Phone Number
             </label>
             {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
@@ -230,6 +302,7 @@ const CreateAccount = () => {
               </small>
             ) : null}
           </div>
+
           <div className="col-lg-6 position-relative  flex-column mb-3">
             <input
               type="password"
