@@ -8,15 +8,15 @@ import FooterHero from "./FooterHero";
 import Small_hr from "../generalComponents/Small_hr";
 import MulticolorLine from "../generalComponents/MulticolorLine";
 import { useNavigate } from "react-router-dom";
-import { Carousel } from '@mantine/carousel';
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core'
+import { Carousel } from "@mantine/carousel";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, Button } from "@mantine/core";
 import FooterCarousel from "./FooterCarousel";
 
 const Footer = ({ contactUsRef }) => {
   const [opened, { open, close }] = useDisclosure(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const primarySchool = (para) => {
     if (para == "call") {
@@ -43,13 +43,13 @@ const Footer = ({ contactUsRef }) => {
 
   const toRespectiveLocation = (para) => {
     if (para == "teacher") {
-      navigate('/ourteachers')
+      navigate("/ourteachers");
     } else if (para == "courses") {
-      navigate('/our_courses')
+      navigate("/our_courses");
     } else if (para == "events") {
-      navigate('/ourevent')
+      navigate("/ourevent");
     } else if (para == "secondary") {
-      navigate('/') 
+      navigate("/");
     } else {
       const Toast = Swal.mixin({
         toast: true,
@@ -68,15 +68,13 @@ const Footer = ({ contactUsRef }) => {
         title: "Currently Unavailable, Please Try Again Later",
       });
     }
-  }
+  };
 
-  const handleClick = () => {
-    
-  }
+  const handleClick = () => {};
 
   const modalStyles = {
     modal: {
-      width: '400px !important',
+      width: "400px !important",
     },
   };
 
@@ -146,12 +144,30 @@ const Footer = ({ contactUsRef }) => {
             ></Small_hr>
             <div className="d-flex flex-column gap-3">
               <div className="d-flex gap-3 flex-wrap w-100">
-                <OurTagBtn onClick={() => toRespectiveLocation('teacher')} btn_txt="teacher"></OurTagBtn>
-                <OurTagBtn onClick={() => toRespectiveLocation('courses')} btn_txt="courses"></OurTagBtn>
-                <OurTagBtn onClick={() => toRespectiveLocation('events')} btn_txt="events"></OurTagBtn>
-                <OurTagBtn onClick={() => toRespectiveLocation('nursery')} btn_txt="nursery"></OurTagBtn>
-                <OurTagBtn onClick={() => toRespectiveLocation('primary')} btn_txt="primary"></OurTagBtn>
-                <OurTagBtn onClick={() => toRespectiveLocation('secondary')} btn_txt="secondary"></OurTagBtn>
+                <OurTagBtn
+                  onClick={() => toRespectiveLocation("teacher")}
+                  btn_txt="teacher"
+                ></OurTagBtn>
+                <OurTagBtn
+                  onClick={() => toRespectiveLocation("courses")}
+                  btn_txt="courses"
+                ></OurTagBtn>
+                <OurTagBtn
+                  onClick={() => toRespectiveLocation("events")}
+                  btn_txt="events"
+                ></OurTagBtn>
+                <OurTagBtn
+                  onClick={() => toRespectiveLocation("nursery")}
+                  btn_txt="nursery"
+                ></OurTagBtn>
+                <OurTagBtn
+                  onClick={() => toRespectiveLocation("primary")}
+                  btn_txt="primary"
+                ></OurTagBtn>
+                <OurTagBtn
+                  onClick={() => toRespectiveLocation("secondary")}
+                  btn_txt="secondary"
+                ></OurTagBtn>
               </div>
             </div>
           </div>
@@ -190,14 +206,20 @@ const Footer = ({ contactUsRef }) => {
                 ></FooterGallary>
               </div>
               <div className="d-flex gap-3">
-                <FooterGallary img="pic/5.png" cover="Image 4"></FooterGallary>
                 <FooterGallary
-                  img="pic/avatar.png"
-                  cover="Image 5"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg"
+                  cover="Image 4"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg"
                 ></FooterGallary>
                 <FooterGallary
-                  img="pic/img.png"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986706/samples/imagecon-group.jpg"
+                  cover="Image 5"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986706/samples/imagecon-group.jpg"
+                ></FooterGallary>
+                <FooterGallary
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg"
                   cover="Image 6"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg"
                 ></FooterGallary>
               </div>
             </div>
@@ -224,15 +246,17 @@ const Footer = ({ contactUsRef }) => {
           <FooterHero></FooterHero>
         </div>
       </div>
-      <Modal opened={opened} onClose={close} title="School Gallary" centered size="70%">
-        <FooterCarousel/>
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="School Gallary"
+        centered
+        size="70%"
+      >
+        <FooterCarousel />
       </Modal>
-      
     </>
   );
 };
 
 export default Footer;
-
-
-
