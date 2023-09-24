@@ -11,16 +11,7 @@ const StickyNav = (props) => {
 
   return (
     <>
-      <div className="my-auto d-flex sticky-icons" style={props.styles}>
-        <div className="d-flex gap-2">
-          <i
-            className={props.icon}
-            style={{ marginTop: "auto", marginBottom: "auto" }}
-          ></i>
-          <span
-            className="text-uppercase"
-            style={{ fontSize: "17px", cursor: "pointer" }}
-            onClick={() => {
+      <div className="my-auto d-flex sticky-icons" style={props.styles}  onClick={() => {
               if (props.to_where == "") {
                 // Swal.fire({
                 //   title: "Languages",
@@ -34,7 +25,15 @@ const StickyNav = (props) => {
               } else {
                 login(props.params);
               }
-            }}
+            }}>
+        <div className="d-flex gap-2">
+          <i
+            className={props.icon}
+            style={{ marginTop: "auto", marginBottom: "auto" }}
+          ></i>
+          <span
+            className="text-uppercase"
+            style={{ fontSize: "17px", cursor: "pointer" }}
           >
             {props.name}
           </span>
