@@ -107,7 +107,7 @@ const Nav = () => {
                 >
                   courses
                 </a>
-                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px 0px 20px 0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <Link to="/our_courses" state={{ para: "jOne" }} className="dropdown-item">
                       JSS 1
@@ -153,7 +153,7 @@ const Nav = () => {
                 >
                   portals
                 </a>
-                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px 0px 20px 0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <Link className="dropdown-item" to="/staff_signin">
                       teachers
@@ -187,7 +187,7 @@ const Nav = () => {
                 >
                   email
                 </a>
-                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px 0px 20px 0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <Link className="dropdown-item" to="https://mail.google.com/">
                       teachers email
@@ -211,7 +211,7 @@ const Nav = () => {
                 >
                   more
                 </a>
-                <ul className="dropdown-menu" style={{width: '250px', padding: '0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
+                <ul className="dropdown-menu" style={{width: '250px', padding: '0px 0px 20px 0px', marginTop: '15px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderTop: '4px solid #3D6AFF'}}>
                   <li>
                     <Link className="dropdown-item" to="/ourteachers">
                       teachers page
