@@ -9,7 +9,7 @@ import { useDisclosure } from "@mantine/hooks";
 const imageStyle = {
   width: "100%",
   height: "100%",
-  objectFit: "fit",
+  objectFit: "fill",
 };
 
 const FooterCarousel = ({ images }) => {
@@ -69,7 +69,7 @@ const FooterCarousel = ({ images }) => {
       >
         {images.map((image, index) => (
           <Carousel.Slide key={index} >
-            <img src={image.image} alt={image.imageName} style={imageStyle} onClick={() => handleClick(image.image)}/>
+            <img src={image.image} alt={image.imageName} className="modal-image" style={imageStyle} onClick={() => handleClick(image.image)}/>
           </Carousel.Slide>
         ))}
       </Carousel>
