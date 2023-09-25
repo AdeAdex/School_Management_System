@@ -25,8 +25,8 @@ const AboutUsPage = () => {
   };
 
   const fetchSchoolLocation = () => {
-    const schoolLatitude = 6.5243793;
-    const schoolLongitude = 3.3792057;
+    const schoolLatitude = 8.142165;
+    const schoolLongitude = 4.245186;
     setSchoolLocation({ lat: schoolLatitude, lng: schoolLongitude });
   };
 
