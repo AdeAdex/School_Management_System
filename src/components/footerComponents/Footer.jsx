@@ -19,27 +19,27 @@ import FooterCarousel from "./FooterCarousel";
 const galleryImages1 = [
   {
     image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg",
-    imageName:"" 
+    imageName:"1" 
   },
   {
     image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg",
-    imageName:""
+    imageName:"1"
   },
   {
     image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_16_mydc4f.jpg",
-    imageName:""
+    imageName:"1"
   },
   {
     image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_19_ap7ihu.jpg",
-    imageName:""
+    imageName:"1"
   },
   {
     image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_18_xjzpbq.jpg",
-    imageName:""
+    imageName:"1"
   },
   {
     image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_14_esjffp.jpg",
-    imageName:""
+    imageName:"1"
   },
 ]
 
@@ -49,24 +49,144 @@ const galleryImages2 = [
     imageName: "Image 2",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1693830496/cc1zqlglcnkj1esgvupi.jpg",
     imageName: "Image 2",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1693829906/b1ecrxmqyigo1vecefhx.jpg",
     imageName: "Image 2",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632152/bg-image-6_tibn5o.jpg",
     imageName: "Image 2",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632170/loginImage7_jqkq7f.png",
     imageName: "Image 2",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632157/bg-image-2_xfvcqi.jpg",
     imageName: "Image 2",
+  },
+  
+];
+
+const galleryImages3 = [
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632158/signupimg_jbc9ys.jpg",
+    imageName: "Image 3",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_12_uzsauy.jpg",
+    imageName: "Image 3",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632154/bg-image-4_sixgsj.jpg",
+    imageName: "Image 3",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632157/gallary6_jqjgju.jpg",
+    imageName: "Image 3",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632161/gallary4_doecm8.png",
+    imageName: "Image 3",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695632170/gallary8_j2xdnc.jpg",
+    imageName: "Image 3",
+  },
+  
+];
+
+const galleryImages4 = [
+  {
+    image: "",
+    imageName: "Image 4",
+  },
+  {
+    image: "",
+    imageName: "Image 4",
+  },
+  {
+    image: "",
+    imageName: "Image 4",
+  },
+  {
+    image: "",
+    imageName: "Image 4",
+  },
+  {
+    image: "",
+    imageName: "Image 4",
+  },
+  {
+    image: "",
+    imageName: "Image 4",
+  },
+  
+];
+
+const galleryImages5 = [
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694647086/l32mjyxe5ktnrrkkowlq.jpg",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694645967/zw5ljhi2cw0z9yyw5hez.jpg",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694644126/iis8s6e1nxkudjcchmpu.jpg",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694643333/szuwnde5apdk1zjfmofq.png",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694640968/gp2lgd9iw2pm6iumf7jq.jpg",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694639957/jx9npjefyuayw3kfkqvh.jpg",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694023868/e5v5pdumpommlo3b6fcz.jpg",
+    imageName: "Image 5",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694014250/lfotsv9pitdvinhvbarm.jpg",
+    imageName: "Image 5",
+  },
+  
+];
+
+const galleryImages6 = [
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_17_tkrwco.jpg",
+    imageName: "Image 6",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg",
+    imageName: "Image 6",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg",
+    imageName: "Image 6",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_9_joxtyd.jpg",
+    imageName: "Image 6",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_6_x43nrl.jpg",
+    imageName: "Image 6",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg",
+    imageName: "Image 6",
   },
   
 ];
