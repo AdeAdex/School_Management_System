@@ -42,10 +42,11 @@ const AboutUsPage = () => {
 
   const mapStyle = {
     backgroundImage: `url('https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695638407/map_embn7a.png')`,
-    backgroundSize: "c",
+    backgroundSize: "fill",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     animation: "moveBackground 40s linear infinite", 
+    // height: '200px',
   };
 
 
@@ -106,7 +107,7 @@ const AboutUsPage = () => {
                     <p>Email: adeoluamole@gmail.com</p>
                   </div>
                 </div>
-                <div className="map" style={mapStyle}>
+                <div className="map " style={mapStyle}>
                   <a
                     href="#"
                     target="_blank"
