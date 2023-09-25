@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FooterHeader from "./FooterHeader";
 import OurTagBtn from "./OurTagBtn";
 import FooterGallary from "./FooterGallary";
@@ -13,8 +13,90 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
 import FooterCarousel from "./FooterCarousel";
 
+
+
+
+const galleryImages1 = [
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_13_s6nfrc.jpg",
+    imageName:"" 
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg",
+    imageName:""
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_16_mydc4f.jpg",
+    imageName:""
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_19_ap7ihu.jpg",
+    imageName:""
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_18_xjzpbq.jpg",
+    imageName:""
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_14_esjffp.jpg",
+    imageName:""
+  },
+]
+
+const galleryImages2 = [
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    imageName: "Image 2",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    imageName: "Image 2",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    imageName: "Image 2",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    imageName: "Image 2",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    imageName: "Image 2",
+  },
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg",
+    imageName: "Image 2",
+  },
+  
+];
+
+
 const Footer = ({ contactUsRef }) => {
+
   const [opened, { open, close }] = useDisclosure(false);
+  const [selectedImages, setSelectedImages] = useState(galleryImages1);
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    // Function to handle window resize
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768); // Adjust the breakpoint as needed
+    };
+
+    // Initial check on component mount
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup by removing event listener when component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
 
   const navigate = useNavigate();
 
@@ -70,13 +152,20 @@ const Footer = ({ contactUsRef }) => {
     }
   };
 
-  const handleClick = () => {};
+ 
 
   const modalStyles = {
     modal: {
       width: "400px !important",
     },
   };
+
+
+  const handleClick = (images) => {
+    setSelectedImages(images);
+    open()
+  };
+
 
   return (
     <>
@@ -191,18 +280,19 @@ const Footer = ({ contactUsRef }) => {
                   img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
                   cover="Image 1"
                   cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435006/images_4_qwldyn.jpg"
-                  onClick={open}
+                  onClick={() => handleClick(galleryImages1)}
                 ></FooterGallary>
                 <FooterGallary
                   img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg"
                   cover="Image 2"
                   cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694508881/our-history_oadezh.jpg"
-                  onClick={open}
+                  onClick={() => handleClick(galleryImages2)}
                 ></FooterGallary>
                 <FooterGallary
                   img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg"
                   cover="Image 3"
                   cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg"
+                  onClick={() => handleClick(galleryImages3)}
                 ></FooterGallary>
               </div>
               <div className="d-flex gap-3">
@@ -210,16 +300,19 @@ const Footer = ({ contactUsRef }) => {
                   img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg"
                   cover="Image 4"
                   cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg"
+                  onClick={() => handleClick(galleryImages4)}
                 ></FooterGallary>
                 <FooterGallary
                   img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986706/samples/imagecon-group.jpg"
                   cover="Image 5"
                   cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986706/samples/imagecon-group.jpg"
+                  onClick={() => handleClick(galleryImages5)}
                 ></FooterGallary>
                 <FooterGallary
                   img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg"
                   cover="Image 6"
                   cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg"
+                  onClick={() => handleClick(galleryImages6)}
                 ></FooterGallary>
               </div>
             </div>
@@ -246,14 +339,15 @@ const Footer = ({ contactUsRef }) => {
           <FooterHero></FooterHero>
         </div>
       </div>
+
       <Modal
         opened={opened}
         onClose={close}
         title="School Gallary"
         centered
-        size="70%"
+        size={`${isSmallScreen ? '100%' : '70%'} `}
       >
-        <FooterCarousel />
+        <FooterCarousel images={selectedImages}/>
       </Modal>
     </>
   );
