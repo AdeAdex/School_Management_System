@@ -210,7 +210,7 @@
   }
 
   .map {
-    max-width: 100%; /* Make the map responsive */
-    height: 300px !important; /* Allow the map to adjust its height */
+    max-width: 100%;
+    height: 300px ;
   }
 }
