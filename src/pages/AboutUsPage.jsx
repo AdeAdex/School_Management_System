@@ -34,12 +34,13 @@ const AboutUsPage = () => {
     getMyLocation();
     fetchSchoolLocation();
   }, []);
+ 
 
   const handleLocateUsClick = (e) => {
     e.preventDefault();
     if (schoolLocation) {
       const googleMapsLink = `https://maps.google.com/?q=${schoolLocation.lat},${schoolLocation.lng}`;
-      window.location.href = googleMapsLink; // Redirect to the Google Maps link
+      window.open(googleMapsLink, '_blank'); // Opens the link in a new tab
     }
   };
 
