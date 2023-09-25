@@ -53,7 +53,7 @@ const galleryImages2 = [
     imageName: "Image 2",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1693829906/b1ecrxmqyigo1vecefhx.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634107/jss2_student_donz5y.webp",
     imageName: "Image 2",
   },
   {
@@ -77,7 +77,7 @@ const galleryImages3 = [
     imageName: "Image 3",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_12_uzsauy.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634051/Science_Fair_Extravaganza_bnabp4.jpg",
     imageName: "Image 3",
   },
   {
@@ -101,27 +101,52 @@ const galleryImages3 = [
 
 const galleryImages4 = [
   {
-    image: "",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633195/teacher23_r8mpga.jpg",
     imageName: "Image 4",
   },
   {
-    image: "",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633195/teacher24_o2rai6.jpg",
     imageName: "Image 4",
   },
   {
-    image: "",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633193/teacher21_vkswie.jpg",
     imageName: "Image 4",
   },
   {
-    image: "",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633196/teacher20_gkyxa0.jpg",
     imageName: "Image 4",
   },
   {
-    image: "",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633195/teacher1414_dk6hun.jpg",
     imageName: "Image 4",
   },
   {
-    image: "",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633194/teacher18_v38gv2.jpg",
+    imageName: "Image 4",
+  },
+
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633194/teacher22_gjthgu.webp",
+    imageName: "Image 4",
+  },
+
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633193/teacher19_yys6xy.webp",
+    imageName: "Image 4",
+  },
+
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633192/teacher17_sykjad.avif",
+    imageName: "Image 4",
+  },
+
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633191/admin_yp1hnf.webp",
+    imageName: "Image 4",
+  },
+
+  {
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633192/teacher13_higxnp.jpg",
     imageName: "Image 4",
   },
   
@@ -165,15 +190,15 @@ const galleryImages5 = [
 
 const galleryImages6 = [
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435027/images_17_tkrwco.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634160/art_fnsqly.jpg",
     imageName: "Image 6",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634156/ANNUAL_SCHOOL_ANNIVERSARY_CELEBRATION_ixxc63.jpg",
     imageName: "Image 6",
   },
   {
-    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg",
+    image: "https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634157/Athletics_and_Sport_gnf3rd.jpg",
     imageName: "Image 6",
   },
   {
@@ -409,29 +434,29 @@ const Footer = ({ contactUsRef }) => {
                   onClick={() => handleClick(galleryImages2)}
                 ></FooterGallary>
                 <FooterGallary
-                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634051/Science_Fair_Extravaganza_bnabp4.jpg"
                   cover="Image 3"
-                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_8_qedp5t.jpg"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634051/Science_Fair_Extravaganza_bnabp4.jpg"
                   onClick={() => handleClick(galleryImages3)}
                 ></FooterGallary>
               </div>
               <div className="d-flex gap-3">
                 <FooterGallary
-                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633195/teacher24_o2rai6.jpg"
                   cover="Image 4"
-                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435026/images_11_h7kiqj.jpg"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695633195/teacher24_o2rai6.jpg"
                   onClick={() => handleClick(galleryImages4)}
                 ></FooterGallary>
                 <FooterGallary
-                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986706/samples/imagecon-group.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694023868/e5v5pdumpommlo3b6fcz.jpg"
                   cover="Image 5"
-                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986706/samples/imagecon-group.jpg"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694023868/e5v5pdumpommlo3b6fcz.jpg"
                   onClick={() => handleClick(galleryImages5)}
                 ></FooterGallary>
                 <FooterGallary
-                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg"
+                  img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634160/art_fnsqly.jpg"
                   cover="Image 6"
-                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1694435025/images_5_m9uf3f.jpg"
+                  cover_img="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695634160/art_fnsqly.jpg"
                   onClick={() => handleClick(galleryImages6)}
                 ></FooterGallary>
               </div>
