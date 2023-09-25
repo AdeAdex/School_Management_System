@@ -245,7 +245,7 @@ const CreateAccount = () => {
               <small className="error text-danger">{formik.errors.email}</small>
             ) : null}
           </div>
-          <div className="col-md-6 position-relative  flex-column mb-3">
+          <div className="col-md-6 position-relative  flex-column mb-3 telephone-container">
             <span
               className="tel-span"
               style={{
