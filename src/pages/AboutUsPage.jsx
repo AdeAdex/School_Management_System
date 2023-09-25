@@ -46,7 +46,7 @@ const AboutUsPage = () => {
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     animation: "moveBackground 40s linear infinite", 
-    // height: '200px',
+    height: '300px',
   };
 
 
