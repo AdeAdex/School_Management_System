@@ -210,6 +210,31 @@ const PersonalInformation = () => {
           </div>
         </div>
         <div className="col-lg-6 position-relative  flex-column mb-3">
+        {/* <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="gender-label">Title</InputLabel>
+            <Select
+              labelId="title-label"
+              id="title-select"
+              value={formik.values.title}
+              label="Title"
+              onChange={formik.handleChange}
+              name="title"
+              onBlur={formik.handleBlur}
+              error={formik.touched.title && Boolean(formik.errors.title)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="Male">Mr</MenuItem>
+              <MenuItem value="Female">Mrs</MenuItem>
+              <MenuItem value="Others">Miss</MenuItem>
+            </Select>
+            {formik.touched.title && Boolean(formik.errors.title) ? (
+              <small className="error text-danger">
+                {formik.errors.title}
+              </small>
+            ) : null}
+          </FormControl> */}
           <input
             type="text"
             autoComplete="on"
