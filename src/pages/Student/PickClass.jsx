@@ -5,9 +5,7 @@ import React, { useEffect, useState } from "react";
 const PickClass = () => {
   const [responseArray, setResponseArray] = useState([]);
 
-  useEffect(() => {
- 
-  }, []);
+  useEffect(() => {}, []);
 
   // const handleResponseChange = (event) => {
   //   const { name, value } = event.target;
@@ -53,36 +51,6 @@ const PickClass = () => {
               onBlur={formik.handleBlur}
             >
               <option disabled>Choose...</option>
-              {responseArray.map(
-                (option, index) => (
-                  responseArray.sort(),
-                  (
-                    <option key={index} value={option.class}>
-                      {option.class}
-                    </option>
-                  )
-                )
-              )}
-            </select>
-          </div>
-          <div className="col-md-12 mb-3">
-            <label
-              htmlFor="validationServer04"
-              className="form-label fw-bold text-secondary"
-            >
-              Level
-            </label>
-            <select
-              className="form-select "
-              id="validationServer04"
-              name="state"
-              aria-describedby="validationServer04Feedback"
-              required
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              // onChange={(e) => setState(e.target.value)}
-            >
-              <option disabled>Choose...</option>
               <option value="JSS 1">JSS 1</option>
               <option value="JSS 2">JSS 2</option>
               <option value="JSS 3">JSS 3</option>
@@ -91,10 +59,33 @@ const PickClass = () => {
               <option value="SSS 3">SSS 3</option>
             </select>
             <div id="validationServer04Feedback" className="invalid-feedback">
-              Please select a valid state.
+              Please select a valid class.
             </div>
           </div>
-          <button type="submit" className="btn btn-sm btn-primary">
+          <div className="col-md-12 mb-3">
+            <label
+              htmlFor="validationServer04"
+              className="form-label fw-bold text-secondary"
+            >
+              Options
+            </label>
+            <select
+              className="form-select"
+              id="validationServer04"
+              name="studentNewOptions"
+              aria-describedby="validationServer04Feedback"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <option disabled>Choose...</option>
+              <option value="Science">All</option>
+              <option value="Science">Science Option</option>
+              <option value="Commercial">Commercial Option</option>
+              <option value="Art">Art Option</option>
+            </select>
+          </div>
+          <button type="submit" className="btn btn-sm btn-primary" disabled>
             Submit
           </button>
         </form>

@@ -64,34 +64,6 @@ const UpgradeLevelModal = ({
           <Modal.Body className="text-uppercase">
             <div>
               <form action="" onSubmit={formik.handleSubmit}>
-                {/* <div className="col-md-12 mb-3">
-                <label
-                  htmlFor="validationServer04"
-                  className="form-label fw-bold text-secondary"
-                >
-                  class type
-                </label>
-                <select
-                  className="form-select "
-                  id="validationServer04"
-                  name="classType"
-                  aria-describedby="validationServer04Feedback"
-                  required
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                >
-                  <option disabled>Choose...</option>
-                  <option value={1}>JSS 1</option>
-                  <option value={2}>JSS 2</option>
-                  <option value={3}>JSS 3</option>
-                </select>
-                <div
-                  id="validationServer04Feedback"
-                  className="invalid-feedback"
-                >
-                  Please select a valid state.
-                </div>
-              </div> */}
                 <div className="col-md-12 mb-3">
                   <label
                     htmlFor="validationServer04"
