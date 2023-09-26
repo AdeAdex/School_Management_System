@@ -6,19 +6,21 @@ const PickClass = () => {
   const [responseArray, setResponseArray] = useState([]);
 
   useEffect(() => {
-    const endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
-    axios
-      .get(endpoint, {
-        headers: {
-          Authorization: `${"staffArray"}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response.data.response[0].staffArray);
-        const responseData = response.data.response[0].staffArray;
-        setResponseArray(responseData);
-      });
+    // const endpoint =
+    //   "https://school-portal-backend-adex2210.vercel.app/staff_account/details";
+    // axios
+    //   .get(endpoint, {
+    //     headers: {
+    //       Authorization: `${"staffArray"}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data.response[0].staffArray);
+    //     const responseData = response.data.response[0].staffArray;
+    //     setResponseArray(responseData);
+    //     console.log(responseData);
+    //   });
   }, []);
 
   // const handleResponseChange = (event) => {
@@ -47,31 +49,6 @@ const PickClass = () => {
   return (
     <>
       <div>
-        {/* <h1>Response Form</h1>
-        <select
-          name="address"
-          onChange={(event) => handleResponseChange(index, event)}
-        >
-          <option value="">Select an option for Array 1</option>
-          {responseArray.map((option, index) => (
-            <option key={index} value={option.address}>
-              {option.address}
-            </option>
-          ))}
-        </select>
-
-        <select
-          name="country"
-          onChange={(event) => handleResponseChange(index, event)}
-        >
-          <option value="">Select an option for Array 2</option>
-          {responseArray.map((option, index) => (
-            <option key={index} value={option.class}>
-              {option.class}
-            </option>
-          ))}
-        </select> */}
-
         <form action="" onSubmit={formik.handleSubmit}>
           <div className="col-md-12 mb-3">
             <label
@@ -131,7 +108,9 @@ const PickClass = () => {
               Please select a valid state.
             </div>
           </div>
-          <button type="submit" className="btn btn-sm btn-primary">Submit</button>
+          <button type="submit" className="btn btn-sm btn-primary">
+            Submit
+          </button>
         </form>
       </div>
     </>
