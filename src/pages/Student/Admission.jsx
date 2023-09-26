@@ -128,9 +128,6 @@ const Admission = () => {
     }
   };
 
-  // useEffect(() => {
-
-  // }, [value, paid])
 
   const handlePaymentClick = () => {
     if (!paid) {
