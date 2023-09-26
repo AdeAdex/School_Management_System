@@ -210,8 +210,8 @@ const PersonalInformation = () => {
           </div>
         </div>
         <div className="col-lg-6 position-relative  flex-column mb-3">
-        {/* <FormControl sx={{ m: 0, width: "100%" }} size="small">
-            <InputLabel id="gender-label">Title</InputLabel>
+        <FormControl sx={{ m: 0, width: "100%" }} size="small">
+            <InputLabel id="title-label">Title</InputLabel>
             <Select
               labelId="title-label"
               id="title-select"
@@ -234,8 +234,8 @@ const PersonalInformation = () => {
                 {formik.errors.title}
               </small>
             ) : null}
-          </FormControl> */}
-          <input
+          </FormControl>
+          {/* <input
             type="text"
             autoComplete="on"
             className={
@@ -255,7 +255,7 @@ const PersonalInformation = () => {
           </label>
           <div id="validationServer04Feedback" className="invalid-feedback">
             Please provide a valid Title.
-          </div>
+          </div> */}
         </div>
         <div className="col-md-6 mb-3">
           <FormControl sx={{ m: 0, width: "100%" }} size="small">

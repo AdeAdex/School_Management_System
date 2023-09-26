@@ -118,7 +118,7 @@ const Education = () => {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  },[preEdu]);
 
   const openConfirmDeleteModal = (myId, myEmail) => {
     Swal.fire({
