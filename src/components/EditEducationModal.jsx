@@ -100,7 +100,7 @@ const EditEducationModal = ({
                     onChange={formik.handleChange}
                     label="exam"
                     name="exam"
-                    value={formik.values.exam}
+                    value={itemExam || formik.values.exam}
                   >
                     <MenuItem value="">
                       <em>None</em>
