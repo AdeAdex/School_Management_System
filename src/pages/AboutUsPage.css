@@ -146,7 +146,6 @@
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 300px;
 }
 
 @media screen and (max-width: 768px) {
@@ -180,21 +179,21 @@
   }
 
   .locate-us-container {
-    padding: 20px; /* Reduce padding for smaller screens */
+    padding: 20px;
   }
 
   .location-info {
-    flex-direction: column; /* Stack elements vertically on smaller screens */
-    gap: 10px; /* Reduce the gap between elements */
+    flex-direction: column;
+    gap: 10px; 
   }
 
   .location-details {
-    flex: none; /* Prevent location details from stretching */
-    text-align: center; /* Center-align location details */
+    flex: none; 
+    text-align: center; 
   }
 
-  .about-us-header .map {
+  .location-info .map {
     max-width: 100%;
-    height: 400px !important;
+    min-height: 200px !important;
   }
 }
