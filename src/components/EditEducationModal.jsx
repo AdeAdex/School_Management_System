@@ -315,7 +315,6 @@ const EditEducationModal = ({
       year: itemYear || "",
       examNo: itemExamNo || "",
       candidateNo: itemCandidate || "",
-      identificationNo: "",
     },
 
     onSubmit: (values) => {
@@ -323,7 +322,8 @@ const EditEducationModal = ({
       console.log(newValues);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
-      axios.put(endpoint, newValues).then((response) => {
+      axios.put(endpoint, newValues)
+      .then((response) => {
         // console.log(response.data.response.previousEducation[index].exam);
       });
     },

@@ -57,18 +57,12 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
 
   const [selectedYear, setSelectedYear] = useState("");
 
-  // const handleChange = (event) => {
-  //   setSelectedYear(event.target.value);
-  // };
 
   const generateYearOptions = () => {
     const currentYear = new Date().getFullYear();
     const startYear = 1950;
     const years = [];
-
-    // for (let year = startYear; year <= currentYear; year++) {
-    //   years.push(year);
-    // }
+   
 
     for (let year = currentYear; year >= startYear; year--) {
       years.push(year);
