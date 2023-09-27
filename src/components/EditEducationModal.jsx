@@ -284,13 +284,9 @@
 
 
 
-
-
-
-
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -311,22 +307,14 @@ const EditEducationModal = ({
   itemGrade,
   itemCandidate,
 }) => {
-  const [itemExams, setItemExam] = useState("");
-  const [itemSubjects, setItemSubject] = useState("");
-  const [itemGrades, setItemGrade] = useState("");
-  const [itemYears, setItemYear] = useState("");
-  const [itemExamNos, setItemExamNo] = useState("");
-  const [itemCandidateNos, setItemCandidateNo] = useState("");
-  const [itemIdentificationNos, setItemIdentificationNo] = useState("");
-
   let formik = useFormik({
     initialValues: {
-      exam: itemExam,
-      subject: itemSubject,
-      grade: itemGrade,
-      year: itemYear,
-      examNo: itemExamNo,
-      candidateNo: itemCandidate,
+      exam: itemExam || "",
+      subject: itemSubject || "",
+      grade: itemGrade || "",
+      year: itemYear || "",
+      examNo: itemExamNo || "",
+      candidateNo: itemCandidate || "",
       identificationNo: "",
     },
 
@@ -381,7 +369,7 @@ const EditEducationModal = ({
               onSubmit={formik.handleSubmit}
             >
               <div className="education-input-box">
-                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
                   <InputLabel id="demo-simple-select-standard-label">
                     exam
                   </InputLabel>
@@ -390,7 +378,7 @@ const EditEducationModal = ({
                     id="demo-simple-select-standard"
                     label="exam"
                     name="exam"
-                    value={itemExam || formik.values.exam}
+                    value={formik.values.exam || itemExam}
                     onChange={formik.handleChange}
                   >
                     <MenuItem value="">
@@ -413,7 +401,7 @@ const EditEducationModal = ({
                     id="demo-simple-select-standard"
                     label="Subject"
                     name="subject"
-                    value={itemSubject || formik.values.subject}
+                    value={formik.values.subject || itemSubject}
                     onChange={formik.handleChange}
                   >
                     <MenuItem value="">
@@ -437,7 +425,7 @@ const EditEducationModal = ({
                     id="demo-simple-select-standard"
                     label="Grade"
                     name="grade"
-                    value={itemGrade || formik.values.grade}
+                    value={formik.values.grade || itemGrade}
                     onChange={formik.handleChange}
                   >
                     <MenuItem value="">
@@ -465,7 +453,7 @@ const EditEducationModal = ({
                     id="demo-simple-select-standard"
                     label="Year"
                     name="year"
-                    value={itemYear || formik.values.year}
+                    value={formik.values.year || itemYear}
                     onChange={formik.handleChange}
                   >
                     <MenuItem value="">
@@ -482,7 +470,7 @@ const EditEducationModal = ({
                   type="text"
                   name="examNo"
                   onChange={formik.handleChange}
-                  value={formik.values.examNo}
+                  value={formik.values.examNo || itemExamNo}
                 />
                 <span>Exam No</span>
                 <i></i>
@@ -494,21 +482,9 @@ const EditEducationModal = ({
                   type="text"
                   name="candidateNo"
                   onChange={formik.handleChange}
-                  value={formik.values.candidateNo}
+                  value={formik.values.candidateNo || itemCandidate}
                 />
                 <span>Candidate Number</span>
-                <i></i>
-              </div>
-              <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="identificationNo"
-                  onChange={formik.handleChange}
-                  value={formik.values.identificationNo}
-                />
-                <span>Identification Number</span>
                 <i></i>
               </div>
               <button

@@ -23,7 +23,6 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
       examNo: "",
       candidateNo: "",
       receivedEmail: "",
-      identificationNo: "",
     },
 
     onSubmit: (values) => {
@@ -219,17 +218,6 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                   onChange={formik.handleChange}
                 />
                 <span>candidate number</span>
-                <i></i>
-              </div>
-              <div className="education-input-box">
-                <input
-                  required="required"
-                  className="education-input"
-                  type="text"
-                  name="identificationNo"
-                  onChange={formik.handleChange}
-                />
-                <span>Identification number</span>
                 <i></i>
               </div>
               <button

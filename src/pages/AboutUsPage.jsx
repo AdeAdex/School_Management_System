@@ -106,12 +106,11 @@ const AboutUsPage = () => {
                     <p>Email: adeoluamole@gmail.com</p>
                   </div>
                 </div>
-                <div className="map " style={mapStyle}>
+                <div className="map " style={mapStyle} onClick={handleLocateUsClick}>
                   <a
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={handleLocateUsClick}
                     style={{
                       fontSize: "20px",
                       fontWeight: "bold",
