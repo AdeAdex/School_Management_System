@@ -4,6 +4,8 @@ import EducationModal from "../../components/EducationModal";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import EditEducationModal from "../../components/EditEducationModal";
+import "animate.css";
+
 
 const Education = () => {
   // const globalState = useSelector((state) => state.portalReducer.studentInfo);
@@ -16,6 +18,7 @@ const Education = () => {
   const [modalEmailValue, setModalEmailValue] = useState("");
   const [myEmail, setMyEmail] = useState("");
   const [subject, setSubject] = useState([]);
+  const [subject2, setSubject2] = useState([]);
   const [description, setDescription] = useState("");
   const [myExam, setMyExam] = useState("");
   const [mySubject, setMySubject] = useState("");
@@ -24,7 +27,14 @@ const Education = () => {
   const [myGrade, setMyGrade] = useState("");
   const [myCandidate, setMyCandidate] = useState("");
 
+
+  // const confirmExam = () => {
+
+  // }
+
   const openModal = () => {
+
+
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
     axios
@@ -41,6 +51,27 @@ const Education = () => {
       .catch((err) => {
         console.log(err);
       });
+
+
+
+      let endpoint2 =
+      "https://school-portal-backend-adex2210.vercel.app/student_account/common_entrance";
+    axios
+      .get(endpoint2, {
+        headers: {
+          Authorization: `hello`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setModalOpen(true);
+        setSubject2(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      
+
   };
 
   const closeModal = () => {
@@ -229,6 +260,7 @@ const Education = () => {
 
       <button
         onClick={openModal}
+        // onClick={confirmExam}
         className="btn btn-primary"
         style={{ marginTop: "200px" }}
       >
@@ -237,6 +269,7 @@ const Education = () => {
       <EducationModal
         isOpen={modalOpen}
         myResponse={subject}
+        myResponse2={subject2}
         onClose={closeModal}
       />
       <EditEducationModal

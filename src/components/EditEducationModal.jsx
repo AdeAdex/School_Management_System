@@ -384,6 +384,7 @@ const EditEducationModal = ({
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
+                    <MenuItem value="WAEC">NCEE</MenuItem>
                     <MenuItem value="WAEC">WAEC</MenuItem>
                     <MenuItem value="NECO">NECO</MenuItem>
                     <MenuItem value="NABTEB">NABTEB</MenuItem>

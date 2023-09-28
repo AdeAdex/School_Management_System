@@ -11,7 +11,7 @@ import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
-const EducationModal = ({ isOpen, onClose, myResponse }) => {
+const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   let navigate = useNavigate();
   let formik = useFormik({
@@ -75,6 +75,12 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
     ));
   };
 
+  const [selectedExam, setSelectedExam] = useState('');
+
+  const handleExamChange = (event) => {
+    setSelectedExam(event.target.value);
+  };
+
   return (
     <>
       <Modal show={isOpen} onHide={onClose} animation={true}>
@@ -91,8 +97,20 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
           </button>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
-          <div className="education-login-box">
-            <form
+  <select
+    name="exam"
+    id="examSelect"
+    value={selectedExam}
+    onChange={handleExamChange}
+  >
+    <option value="">Select an exam</option>
+    <option value="NCEE">Nigerian Common Entrance Examination (NCEE)</option>
+    <option value="UTME">University Tertiary Matriculation Examination</option>
+  </select>
+
+  {selectedExam === "NCEE" ? (
+    <div className="education-login-box">
+    <form
               className="education-form"
               action=""
               method="post"
@@ -113,6 +131,7 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
+                    <MenuItem value="WAEC">NCEE</MenuItem>
                     <MenuItem value="WAEC">WAEC</MenuItem>
                     <MenuItem value="NECO">NECO</MenuItem>
                     <MenuItem value="NABTEB">NABTEB</MenuItem>
@@ -226,8 +245,151 @@ const EducationModal = ({ isOpen, onClose, myResponse }) => {
                 Submit
               </button>
             </form>
-          </div>
-        </Modal.Body>
+    </div>
+  ) : selectedExam === "UTME" ? (
+    <div className="education-login-box">
+    <form
+              className="education-form"
+              action=""
+              method="post"
+              onSubmit={formik.handleSubmit}
+            >
+              <div className="education-input-box">
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    exam
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    onChange={formik.handleChange}
+                    label="exam"
+                    name="exam"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="WAEC">NCEE</MenuItem>
+                    <MenuItem value="WAEC">WAEC</MenuItem>
+                    <MenuItem value="NECO">NECO</MenuItem>
+                    <MenuItem value="NABTEB">NABTEB</MenuItem>
+                    <MenuItem value="GCE">GCE</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+              <div className="education-input-box">
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Subject
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={selectedYear}
+                    onChange={formik.handleChange}
+                    label="Subject"
+                    name="subject"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {myResponse.map((sub, index) => (
+                      <MenuItem key={index} value={sub.subject}>
+                        {sub.subject}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
+              <div className="education-input-box">
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Grade
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={10}
+                    onChange={formik.handleChange}
+                    label="Grade"
+                    name="grade"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="A1">A1</MenuItem>
+                    <MenuItem value="B2">B2</MenuItem>
+                    <MenuItem value="B3">B3</MenuItem>
+                    <MenuItem value="C4">C4</MenuItem>
+                    <MenuItem value="C5">C5</MenuItem>
+                    <MenuItem value="C6">C6</MenuItem>
+                    <MenuItem value="D7">D7</MenuItem>
+                    <MenuItem value="E8">E8</MenuItem>
+                    <MenuItem value="F9">F9</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+              <div className="education-input-box">
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Year
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    // value={selectedYear}
+                    onChange={formik.handleChange}
+                    label="Year"
+                    name="year"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {generateYearOptions()}
+                  </Select>
+                </FormControl>
+              </div>
+              <div className="education-input-box">
+                <input
+                  required="required"
+                  className="education-input"
+                  type="text"
+                  name="examNo"
+                  onChange={formik.handleChange}
+                />
+                <span>exam no</span>
+                <i></i>
+              </div>
+              <div className="education-input-box">
+                <input
+                  required="required"
+                  className="education-input"
+                  type="text"
+                  name="candidateNo"
+                  onChange={formik.handleChange}
+                />
+                <span>candidate number</span>
+                <i></i>
+              </div>
+              <button
+                className="submit-btn bg-primary"
+                type="submit"
+                onClick={onClose}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+              </button>
+            </form>
+    </div>
+  ) : (
+    
+    <p>Please select an exam</p>
+  )}
+</Modal.Body>
+        
         {/* <Modal.Footer>
           <Button variant="primary">Save Changes</Button>
         </Modal.Footer> */}
