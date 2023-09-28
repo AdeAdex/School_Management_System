@@ -365,3 +365,9 @@
   }
  }
  
+
+ .custom-label {
+  max-width: 80px; /* Adjust the maximum width as needed */
+  word-wrap: break-word;
+  white-space: normal;
+}

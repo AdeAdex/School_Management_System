@@ -84,11 +84,11 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
       <Modal show={isOpen} onHide={onClose} animation={true}>
         <Modal.Header className="bg-white text-dark">
           <Modal.Title className="text-uppercase text-center mx-auto">
-            {selectedExam === "NCEE" ? (
+            {/* {selectedExam === "NCEE" ? ( */}
               <span>Common Entrance</span>
-            ) : (
-              <span> o level result</span>
-            )}
+            {/* ) : ( */}
+              {/* <span> o level result</span> */}
+            {/* )} */}
           </Modal.Title>
           <button
             type="button"
@@ -99,7 +99,7 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
           </button>
         </Modal.Header>
         <Modal.Body className="text-uppercase">
-          <select
+          {/* <select
             name="exam"
             id="examSelect"
             value={selectedExam}
@@ -121,9 +121,9 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
             <option value="UTME">
               University Tertiary Matriculation Examination
             </option>
-          </select>
+          </select> */}
 
-          {selectedExam === "NCEE" ? (
+          {/* {selectedExam === "NCEE" ? ( */}
             <div className="education-login-box">
               <form
                 className="education-form"
@@ -149,7 +149,7 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value="WAEC">NCEE</MenuItem>
+                      <MenuItem value="NCEE">NCEE</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -269,8 +269,8 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
                 </button>
               </form>
             </div>
-          ) : selectedExam === "UTME" ? (
-            <div className="education-login-box">
+          {/* ) : selectedExam === "UTME" ? ( */}
+            {/* <div className="education-login-box">
               <form
                 className="education-form"
                 action=""
@@ -417,10 +417,10 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
                   Submit
                 </button>
               </form>
-            </div>
-          ) : (
+            </div> */}
+          {/* ) : (
             <p>Please select an exam</p>
-          )}
+          )} */}
         </Modal.Body>
 
         {/* <Modal.Footer>

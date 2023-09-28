@@ -79,7 +79,7 @@ const StudentDashboardPieChart = () => {
         style={{ width: "80%" }}
         data={pieChartData}
         label={({ dataEntry }) =>
-          `${dataEntry.title}: ${dataEntry.value.toFixed(2)}%`
+          `${dataEntry.title}: ${dataEntry.value.toFixed(2)}% `
         }
         labelStyle={{ fontSize: "5px" }}
       /> */}
@@ -89,12 +89,14 @@ const StudentDashboardPieChart = () => {
   style={{ width: "80%" }}
   data={pieChartData}
   label={({ dataEntry }) => (
-    <div>
-      {dataEntry.title}: <br /> {dataEntry.value.toFixed(2)}%
+    <div className="custom-label">
+      <div className="title">{dataEntry.title}</div>
+      <div className="value">{dataEntry.value.toFixed(2)}%</div>
     </div>
   )}
   labelStyle={{ fontSize: "5px" }}
 />
+
     </>
   );
 };

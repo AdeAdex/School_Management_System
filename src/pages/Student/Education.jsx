@@ -35,22 +35,22 @@ const Education = () => {
   const openModal = () => {
 
 
-    let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
-    axios
-      .get(endpoint, {
-        headers: {
-          Authorization: `hello`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        setModalOpen(true);
-        setSubject(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // let endpoint =
+    //   "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
+    // axios
+    //   .get(endpoint, {
+    //     headers: {
+    //       Authorization: `hello`,
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((response) => {
+    //     setModalOpen(true);
+    //     setSubject(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
 
 
@@ -81,7 +81,6 @@ const Education = () => {
   const openEditModal = (
     myId,
     myEmail,
-    items,
     itemExam,
     itemSubject,
     itemExamNo,
@@ -100,7 +99,7 @@ const Education = () => {
     setMyCandidate(itemCandidateNo);
 
     let endpoint =
-      "https://school-portal-backend-adex2210.vercel.app/student_account/student_subject";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/common_entrance";
     axios
       .get(endpoint, {
         headers: {
@@ -109,7 +108,7 @@ const Education = () => {
         },
       })
       .then((response) => {
-        setSubject(response.data);
+        setSubject2(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -135,13 +134,10 @@ const Education = () => {
       .then((response) => {
         if (response.data.status) {
           setPreEdu(response.data.response);
+          console.log(response.data.response)
           setMyEmail(response.data.response2.email);
           setDescription("");
         } else {
-          // const timeout = setTimeout(() => {
-          // setDescription(response.data.message)
-          // }, 5000);
-          // return () => clearTimeout(timeout);
           setDescription(response.data.message);
           setPreEdu([]);
         }
@@ -230,7 +226,6 @@ const Education = () => {
                     openEditModal(
                       items.id,
                       myEmail,
-                      items,
                       items.exam,
                       items.subject,
                       items.examNo,
@@ -274,6 +269,7 @@ const Education = () => {
       />
       <EditEducationModal
         myResponse={subject}
+        myResponse2={subject2}
         myId={modalIdValue}
         myEmail={modalEmailValue}
         isOpen={editModalOpen}
