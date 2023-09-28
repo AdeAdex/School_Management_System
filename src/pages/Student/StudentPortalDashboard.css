@@ -367,7 +367,14 @@
  
 
  .custom-label {
-  max-width: 80px; /* Adjust the maximum width as needed */
-  word-wrap: break-word;
-  white-space: normal;
+  text-align: center !important; /* Center align the content */
+  color: #000 !important; /* Set a contrasting text color */
+  background-color: #fff !important; /* Set a contrasting background color */
 }
+
+.title {
+  font-weight: bold !important; /* Make the title bold if desired */
+  /* Add any additional styling for the title */
+}
+
+
