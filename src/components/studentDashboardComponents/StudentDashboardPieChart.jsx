@@ -74,7 +74,7 @@ const StudentDashboardPieChart = () => {
         Your performance in the entrance exam is indicated below:{" "}
       </small>
 
-      <PieChart
+      {/* <PieChart
         className="mx-auto"
         style={{ width: "80%" }}
         data={pieChartData}
@@ -82,7 +82,19 @@ const StudentDashboardPieChart = () => {
           `${dataEntry.title}: ${dataEntry.value.toFixed(2)}%`
         }
         labelStyle={{ fontSize: "5px" }}
-      />
+      /> */}
+
+      <PieChart
+  className="mx-auto"
+  style={{ width: "80%" }}
+  data={pieChartData}
+  label={({ dataEntry }) => (
+    <div>
+      {dataEntry.title}: <br /> {dataEntry.value.toFixed(2)}%
+    </div>
+  )}
+  labelStyle={{ fontSize: "5px" }}
+/>
     </>
   );
 };
