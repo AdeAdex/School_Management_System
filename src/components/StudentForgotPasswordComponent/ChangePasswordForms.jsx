@@ -50,7 +50,6 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
     <>
       <form
         action=""
-        // className="changepass-form"
         className="email-verification-from mx-auto d-flex border shadow"
         method="post"
         onSubmit={changePass.handleSubmit}
@@ -106,7 +105,7 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
               </small>
             ) : null}
           </div>
-        <button type="submit" className="btn btn-primary my-4 w-50 change-password-btn" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}>Change Password</button>
+        <button type="submit" className="btn btn-primary my-4 w-50 change-password-btn" style={{marginLeft: 'auto'}} disabled={!changePass.isValid || !changePass.dirty}> {isLoading ? <div className="spinner"></div> : <div>Change Password</div>}</button>
         </div>
 
       </form>
