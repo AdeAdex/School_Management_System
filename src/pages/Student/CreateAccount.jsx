@@ -17,6 +17,7 @@ const CreateAccount = () => {
   const [dialCode, setDialCode] = useState([]);
   const [startTyping, setStartTyping] = useState(false);
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
+  const [isAllTermsRead, setIsAllTermsRead] = useState(false);
 
   useEffect(() => {
     let endpoint =
@@ -168,23 +169,21 @@ const CreateAccount = () => {
     a.country.localeCompare(b.country)
   );
 
+  const initialEmoji = isAllTermsRead ? "✅" : "❗";
+
   const terms = [
     {
-      emoji: "✅",
+      emoji: initialEmoji,
       value: "Terms & Condition",
       description:
         "By creating an account, you agree to the following terms and conditions:\n\n1. You will provide accurate and truthful information during registration.\n2. You are responsible for maintaining the confidentiality of your account password.\n3. You will not share your account credentials with others.\n4. You will notify us immediately of any unauthorized access to your account.\n5. You will abide by all applicable laws and regulations while using our services.\n6. We reserve the right to terminate or suspend your account if you violate these terms.\nYour password is securely encrypted to protect your privacy.",
     },
   ];
 
-  // const items = terms.map((item) => (
-  //   <Accordion.Item key={item.value} value={item.value}>
-  //     <Accordion.Control icon={item.emoji} disabled={item.value === 'Bananas'}>
-  //       {item.value}
-  //     </Accordion.Control>
-  //     <Accordion.Panel>{item.description}</Accordion.Panel>
-  //   </Accordion.Item>
-  // ));
+  const handleAccordionChange = (value) => {
+    setIsAllTermsRead(value.length === terms.length);
+  };
+
 
   const items = terms.map((item) => (
     <Accordion.Item key={item.value} value={item.value}>
@@ -201,6 +200,7 @@ const CreateAccount = () => {
       </Accordion.Panel>
     </Accordion.Item>
   ));
+
 
   return (
     <>
@@ -413,14 +413,25 @@ const CreateAccount = () => {
           </div>
         </form>
 
-        <div style={{ height: '200px', overflow: 'auto' }}>
-  <Accordion defaultValue="Apples">
-    {items}
-  </Accordion>
-</div>
+        <div style={{ height: "200px", overflow: "auto" }}>
+          <Accordion defaultValue={[]} onChange={handleAccordionChange}>
+        {items}
+      </Accordion>
+      {isAllTermsRead && (
+        <div>
+          <p>All terms and conditions have been read.</p>
+        </div>
+      )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default CreateAccount;
 
 
-        {/* {startTyping && (
+ {/* {startTyping && (
           <small className="" style={{ marginTop: "100px" }}>
             <TypeAnimation
               style={{
@@ -437,9 +448,3 @@ const CreateAccount = () => {
             />
           </small>
         )} */}
-      </div>
-    </>
-  );
-};
-
-export default CreateAccount;
