@@ -7,6 +7,8 @@ import { format } from "date-fns";
 import { Select } from "@mantine/core";
 import { TypeAnimation } from "react-type-animation";
 import { useMediaQuery } from "react-responsive";
+import { Accordion } from "@mantine/core";
+// import classes from './Demo.module.css';
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -166,11 +168,49 @@ const CreateAccount = () => {
     a.country.localeCompare(b.country)
   );
 
+  const terms = [
+    {
+      emoji: "✅",
+      value: "Terms & Condition",
+      description:
+        "By creating an account, you agree to the following terms and conditions:\n\n1. You will provide accurate and truthful information during registration.\n2. You are responsible for maintaining the confidentiality of your account password.\n3. You will not share your account credentials with others.\n4. You will notify us immediately of any unauthorized access to your account.\n5. You will abide by all applicable laws and regulations while using our services.\n6. We reserve the right to terminate or suspend your account if you violate these terms.\nYour password is securely encrypted to protect your privacy.",
+    },
+  ];
+
+  // const items = terms.map((item) => (
+  //   <Accordion.Item key={item.value} value={item.value}>
+  //     <Accordion.Control icon={item.emoji} disabled={item.value === 'Bananas'}>
+  //       {item.value}
+  //     </Accordion.Control>
+  //     <Accordion.Panel>{item.description}</Accordion.Panel>
+  //   </Accordion.Item>
+  // ));
+
+  const items = terms.map((item) => (
+    <Accordion.Item key={item.value} value={item.value}>
+      <Accordion.Control icon={item.emoji} disabled={item.value === "Bananas"}>
+        {item.value}
+      </Accordion.Control>
+      <Accordion.Panel>
+        {item.description.split("\n").map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </Accordion.Panel>
+    </Accordion.Item>
+  ));
+
   return (
     <>
       <div
         className="create-account"
-        style={{ padding: "60px 100px 0px", width: "100%" }}
+        style={{
+          padding: "60px 100px 0px",
+          width: "100%",
+          position: "relative",
+        }}
       >
         <h2 className="fw-bold fs-2" style={{ textTransform: "capitalize" }}>
           student sign up
@@ -352,7 +392,8 @@ const CreateAccount = () => {
                 onBlur={formik.handleBlur}
               />
               <label className="form-check-label" htmlFor="invalidCheck3">
-                Agree to terms and conditions
+                I have read and Agree to{" "}
+                <Link onClick={() => alert("hi")}>terms and conditions</Link>
               </label>
               <div id="invalidCheck3Feedback" className="invalid-feedback">
                 You must agree before submitting.
@@ -372,7 +413,14 @@ const CreateAccount = () => {
           </div>
         </form>
 
-        {startTyping && (
+        <div style={{ height: '200px', overflow: 'auto' }}>
+  <Accordion defaultValue="Apples">
+    {items}
+  </Accordion>
+</div>
+
+
+        {/* {startTyping && (
           <small className="" style={{ marginTop: "100px" }}>
             <TypeAnimation
               style={{
@@ -388,7 +436,7 @@ const CreateAccount = () => {
               repeat={Infinity}
             />
           </small>
-        )}
+        )} */}
       </div>
     </>
   );
