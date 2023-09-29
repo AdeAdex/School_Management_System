@@ -169,7 +169,7 @@ const CreateAccount = () => {
     a.country.localeCompare(b.country)
   );
 
-  const initialEmoji = isAllTermsRead ? "✅" : "✅";
+  const initialEmoji = isAllTermsRead ? "✅" : "❗";
 
   const terms = [
     {
