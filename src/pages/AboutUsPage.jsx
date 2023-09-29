@@ -45,10 +45,8 @@ const AboutUsPage = () => {
     backgroundSize: "fill",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    animation: "moveBackground 40s linear infinite", 
+    animation: "moveBackground 40s linear infinite",
   };
-
-
 
   const styles = `
   @keyframes moveBackground {
@@ -69,12 +67,6 @@ const AboutUsPage = () => {
     }
   }
 `;
-
-
-
-  // You can add the styles to the head of your HTML document
-  const styleSheet = document.styleSheets[0];
-  styleSheet.insertRule(styles, styleSheet.cssRules.length);
 
   return (
     <>
@@ -106,7 +98,14 @@ const AboutUsPage = () => {
                     <p>Email: adeoluamole@gmail.com</p>
                   </div>
                 </div>
-                <div className="map " style={mapStyle} onClick={handleLocateUsClick}>
+                <div
+                  className="map "
+                  style={{
+                    ...mapStyle,
+                    cursor: "pointer",
+                  }}
+                  onClick={handleLocateUsClick}
+                >
                   <a
                     href="#"
                     target="_blank"
