@@ -257,4 +257,21 @@ select.dial-code option {
 }
 
 
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking-emoji {
+  animation: blink 1s infinite; /* Adjust the duration as needed */
+}
+
+
 
