@@ -8,7 +8,6 @@ import { Select } from "@mantine/core";
 import { TypeAnimation } from "react-type-animation";
 import { useMediaQuery } from "react-responsive";
 import { Accordion } from "@mantine/core";
-// import classes from './Demo.module.css';
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -36,6 +35,7 @@ const CreateAccount = () => {
   }, []);
 
   useEffect(() => {
+    localStorage.removeItem("read");
     setTimeout(() => {
       setStartTyping(true);
     }, 1000);
@@ -43,7 +43,6 @@ const CreateAccount = () => {
 
   const handleSelectChange = (event) => {
     setSelectedCode(event.target.value);
-    // console.log(selectedCode);
   };
 
   let formik = useFormik({
@@ -169,7 +168,8 @@ const CreateAccount = () => {
     a.country.localeCompare(b.country)
   );
 
-  const initialEmoji = isAllTermsRead ? "✅" : "❗";
+  // const initialEmoji = isAllTermsRead ? "✅" : "❗";
+  const initialEmoji = localStorage.getItem("read") === "true" ? "✅" : "❗";
 
   const terms = [
     {
@@ -179,13 +179,13 @@ const CreateAccount = () => {
         "By creating an account, you agree to the following terms and conditions:\n\n1. Make sure to provide a correct email address as you will receive important emails related to your account.\n2. You will provide accurate and truthful information during registration.\n3. You are responsible for maintaining the confidentiality of your account password.\n4. You will not share your account credentials with others.\n5. You will notify us immediately of any unauthorized access to your account.\n6. You will abide by all applicable laws and regulations while using our services.\n7. We reserve the right to terminate or suspend your account if you violate these terms.\n\nNote: Your password is securely encrypted to protect your privacy.",
     },
   ];
-  
-  
 
   const handleAccordionChange = (value) => {
     setIsAllTermsRead(value.length === terms.length);
+    if (value.length === terms.length) {
+      localStorage.setItem("read", "true");
+    }
   };
-
 
   const items = terms.map((item) => (
     <Accordion.Item key={item.value} value={item.value}>
@@ -202,6 +202,32 @@ const CreateAccount = () => {
       </Accordion.Panel>
     </Accordion.Item>
   ));
+
+
+  const handleCheckboxChange = (event) => {
+    if (localStorage.getItem("read") === "false" || localStorage.getItem("read") === undefined || localStorage.getItem("read") === null) {
+      event.preventDefault();
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "warning",
+        title: "You must read all terms and conditions before checking this box.",
+      });
+    } else {
+      formik.handleChange(event);
+    }
+  };
+
 
 
   return (
@@ -378,28 +404,31 @@ const CreateAccount = () => {
             ) : null}
           </div>
           <div className="col-12">
-            <div className="form-check">
-              <input
-                className={
-                  formik.touched.check && formik.errors.check
-                    ? "form-check-input is-invalid"
-                    : "form-check-input"
-                }
-                type="checkbox"
-                id="invalidCheck2"
-                aria-describedby="invalidCheck3Feedback"
-                required
-                name="check"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              <label className="form-check-label" htmlFor="invalidCheck3">
-                I have read and Agree to terms and conditions
-              </label>
-              <div id="invalidCheck3Feedback" className="invalid-feedback">
-                You must agree before submitting.
+              <div className="form-check">
+                <input
+                  className={
+                    formik.touched.check && formik.errors.check
+                      ? "form-check-input is-invalid"
+                      : "form-check-input"
+                  }
+                  type="checkbox"
+                  id="invalidCheck2"
+                  aria-describedby="invalidCheck3Feedback"
+                  required
+                  name="check"
+                  // onChange={formik.handleChange}
+                  // onBlur={formik.handleBlur}
+                  onChange={handleCheckboxChange}
+    onBlur={formik.handleBlur}
+    checked={formik.values.check}
+                />
+                <label className="form-check-label" htmlFor="invalidCheck3">
+                  I have read and Agree to terms and conditions
+                </label>
+                <div id="invalidCheck3Feedback" className="invalid-feedback">
+                  You must agree before submitting.
+                </div>
               </div>
-            </div>
           </div>
           <div className="col-12">
             <button className="btn btn-primary signup-btn" type="submit">
@@ -416,13 +445,13 @@ const CreateAccount = () => {
 
         <div style={{ height: "200px", overflow: "auto" }}>
           <Accordion defaultValue={[]} onChange={handleAccordionChange}>
-        {items}
-      </Accordion>
-      {isAllTermsRead && (
-        <div>
-          <p>All terms and conditions have been read.</p>
-        </div>
-      )}
+            {items}
+          </Accordion>
+          {localStorage.getItem("read") === "true" && (
+            <div>
+              <p>All terms and conditions have been read.</p>
+            </div>
+          )}
         </div>
       </div>
     </>
@@ -431,8 +460,8 @@ const CreateAccount = () => {
 
 export default CreateAccount;
 
-
- {/* {startTyping && (
+{
+  /* {startTyping && (
           <small className="" style={{ marginTop: "100px" }}>
             <TypeAnimation
               style={{
@@ -448,4 +477,5 @@ export default CreateAccount;
               repeat={Infinity}
             />
           </small>
-        )} */}
+        )} */
+}
