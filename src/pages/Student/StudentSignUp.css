@@ -12,7 +12,7 @@
 }
 
 .telephone-container .input[type="tel"] {
-  padding: 8px 10px 8px 60px;
+  padding: 8px 10px 8px 65px;
 }
 
 .input:focus {
@@ -38,7 +38,7 @@ input[data-autocompleted] {
 }
 
 .tel {
-  left: 68px;
+  left: 77px;
 }
 
 .input:focus,

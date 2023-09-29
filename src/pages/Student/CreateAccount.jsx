@@ -256,11 +256,6 @@ const CreateAccount = () => {
                 overflow: "hidden",
               }}
             >
-              {/* <Select
-                data={options}
-                style={{ padding: "1px 0px", width: '100px', backgroundColor: "#E9ECEF" }}
-              /> */}
-
               <select
                 name=""
                 className="dial-code"
