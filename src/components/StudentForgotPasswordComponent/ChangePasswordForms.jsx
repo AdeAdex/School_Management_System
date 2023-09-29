@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 const ChangePasswordForms = ({myEmail: myEmail}) => {
   const [myMessage, setMyMessage] = useState("");
   let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const changePass = useFormik({
     initialValues: {
@@ -15,14 +17,15 @@ const ChangePasswordForms = ({myEmail: myEmail}) => {
     },
 
     onSubmit: (values) => {
+      setIsLoading(true);
       let newValues = { ...values, myEmail };
       console.log(newValues);
       let endpoint = "https://school-portal-backend-adex2210.vercel.app/student_account/change_password";
       axios
       .post(endpoint, newValues)
       .then((response) => {
+      setIsLoading(false);
         setMyMessage(response.data.message);
-        console.log(response.data.message);
         navigate('/student_login')
       });
     },

@@ -47,6 +47,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
           setIsLoading(false);
           localStorage.secret = response.data.secret;
           setMyEmail(response.data.response[0]);
+          setIsLoading(false);
           if (response.data.status) {
             localStorage.setItem(
               "ok",
@@ -82,7 +83,7 @@ const EmailVerifications = ({ sentEmail: sentEmail }) => {
             });
           }
         } else {
-          console.log(response.data.message);
+          setIsLoading(false);
           const Toast = Swal.mixin({
             toast: true,
             position: "top",

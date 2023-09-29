@@ -63,6 +63,7 @@ const Admission = () => {
     const storedPaid = localStorage.getItem("currentPaidState");
     return storedPaid !== null ? JSON.parse(storedPaid) : false;
   });
+  
 
   const handleClose = () => {
     setOpen(false);
@@ -98,6 +99,9 @@ const Admission = () => {
             "currentPaidState",
             globalState.paidForAdmission
           );
+          // if (res.data.status) {
+
+          // }
         } else {
           navigate("/student_login");
         }
@@ -106,6 +110,10 @@ const Admission = () => {
         console.log(err);
       });
   }, [globalState, globalState.paidForAdmission, navigate]);
+
+  useEffect(() => {
+   
+  }, [isLoading]);
  
 
   const handleChange = (event, newValue) => {
