@@ -103,7 +103,7 @@ const SignupHero = ({ isAdmissionPage }) => {
               carousel_content3="Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Dolore, minima quia eligendi repellat eius in molestias
                 distinctio, expedita labore amet"
-              carousel_name1="Grace George"
+              carousel_name1="Grace Ojegbile"
               carousel_name2="Timson K"
               carousel_name3="Adeolu Adex"
               carousel_role1="Fashionist"
