@@ -5,20 +5,26 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { format } from "date-fns";
 import { Select } from "@mantine/core";
+import { TypeAnimation } from "react-type-animation";
+import { useMediaQuery } from "react-responsive";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCode, setSelectedCode] = useState("");
   const [dialCode, setDialCode] = useState([]);
+  const [startTyping, setStartTyping] = useState(false);
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
-    let endpoint = "https://school-portal-backend-adex2210.vercel.app/staff_account/dial_code";
+    let endpoint =
+      "https://school-portal-backend-adex2210.vercel.app/staff_account/dial_code";
     axios
       .get(endpoint)
       .then((response) => {
         setDialCode(response.data);
-        const defaultCode = response.data.length > 0 ? response.data[0].code : '';
+        const defaultCode =
+          response.data.length > 0 ? response.data[0].code : "";
         setSelectedCode(defaultCode);
       })
       .catch((error) => {
@@ -26,7 +32,11 @@ const CreateAccount = () => {
       });
   }, []);
 
-  
+  useEffect(() => {
+    setTimeout(() => {
+      setStartTyping(true);
+    }, 1000);
+  }, [startTyping]);
 
   const handleSelectChange = (event) => {
     setSelectedCode(event.target.value);
@@ -60,7 +70,7 @@ const CreateAccount = () => {
           ...values,
           registrationNumber,
           createdDate: currentDate,
-          phoneNumber: selectedCode + values.phoneNumber
+          phoneNumber: selectedCode + values.phoneNumber,
         };
 
         console.log(newValues);
@@ -152,8 +162,9 @@ const CreateAccount = () => {
     label: `(${item.code})`,
   }));
 
-  const sortedDialCode = [...dialCode].sort((a, b) => a.country.localeCompare(b.country));
-
+  const sortedDialCode = [...dialCode].sort((a, b) =>
+    a.country.localeCompare(b.country)
+  );
 
   return (
     <>
@@ -171,7 +182,7 @@ const CreateAccount = () => {
           </Link>
         </h6>
         <form
-          className="row g-3 mt-4"
+          className="row g-3 mt-4 mb-4"
           action=""
           method="post"
           onSubmit={formik.handleSubmit}
@@ -262,8 +273,8 @@ const CreateAccount = () => {
                 style={{
                   backgroundColor: "unset",
                   width: "55px",
-                  border: 'none',
-                  outline: 'none'
+                  border: "none",
+                  outline: "none",
                 }}
                 onChange={handleSelectChange}
                 value={selectedCode}
@@ -360,6 +371,24 @@ const CreateAccount = () => {
             </button>
           </div>
         </form>
+
+        {startTyping && (
+          <small className="" style={{ marginTop: "100px" }}>
+            <TypeAnimation
+              style={{
+                whiteSpace: "pre-line",
+                height: "195px",
+                display: "block",
+              }}
+              sequence={[
+                "By creating an account, you agree to the following terms and conditions:\n\n1. You will provide accurate and truthful information during registration.\n2. You are responsible for maintaining the confidentiality of your account password.\n3. You will not share your account credentials with others.\n4. You will notify us immediately of any unauthorized access to your account.\n5. You will abide by all applicable laws and regulations while using our services.\n6. We reserve the right to terminate or suspend your account if you violate these terms.\nYour password is securely encrypted to protect your privacy.",
+                1000,
+                "",
+              ]}
+              repeat={Infinity}
+            />
+          </small>
+        )}
       </div>
     </>
   );
