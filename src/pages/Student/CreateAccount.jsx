@@ -173,10 +173,14 @@ const CreateAccount = () => {
   const terms = [
     {
       emoji: (
-      <span className={`emoji ${localStorage.getItem("read") === null ? "blinking-emoji" :  ""}`}>
-        {initialEmoji}
-      </span>
-    ),
+        <span
+          className={`emoji ${
+            localStorage.getItem("read") === null ? "blinking-emoji" : ""
+          }`}
+        >
+          {initialEmoji}
+        </span>
+      ),
       value: "Terms & Condition",
       description:
         "By creating an account, you agree to the following terms and conditions:\n\n1. Make sure to provide a correct email address as you will receive important emails related to your account.\n2. You will provide accurate and truthful information during registration.\n3. You are responsible for maintaining the confidentiality of your account password.\n4. You will not share your account credentials with others.\n5. You will notify us immediately of any unauthorized access to your account.\n6. You will abide by all applicable laws and regulations while using our services.\n7. We reserve the right to terminate or suspend your account if you violate these terms.\n\nNote: Your password is securely encrypted to protect your privacy.",
@@ -206,9 +210,12 @@ const CreateAccount = () => {
     </Accordion.Item>
   ));
 
-
   const handleCheckboxChange = (event) => {
-    if (localStorage.getItem("read") === "false" || localStorage.getItem("read") === undefined || localStorage.getItem("read") === null) {
+    if (
+      localStorage.getItem("read") === "false" ||
+      localStorage.getItem("read") === undefined ||
+      localStorage.getItem("read") === null
+    ) {
       event.preventDefault();
       const Toast = Swal.mixin({
         toast: true,
@@ -224,14 +231,13 @@ const CreateAccount = () => {
 
       Toast.fire({
         icon: "warning",
-        title: "You must read all terms and conditions before checking this box.",
+        title:
+          "You must read all terms and conditions before checking this box.",
       });
     } else {
       formik.handleChange(event);
     }
   };
-
-
 
   return (
     <>
@@ -407,31 +413,31 @@ const CreateAccount = () => {
             ) : null}
           </div>
           <div className="col-12">
-              <div className="form-check">
-                <input
-                  className={
-                    formik.touched.check && formik.errors.check
-                      ? "form-check-input is-invalid"
-                      : "form-check-input"
-                  }
-                  type="checkbox"
-                  id="invalidCheck2"
-                  aria-describedby="invalidCheck3Feedback"
-                  required
-                  name="check"
-                  // onChange={formik.handleChange}
-                  // onBlur={formik.handleBlur}
-                  onChange={handleCheckboxChange}
-    onBlur={formik.handleBlur}
-    checked={formik.values.check}
-                />
-                <label className="form-check-label" htmlFor="invalidCheck3">
-                  I have read and Agree to terms and conditions
-                </label>
-                <div id="invalidCheck3Feedback" className="invalid-feedback">
-                  You must agree before submitting.
-                </div>
+            <div className="form-check">
+              <input
+                className={
+                  formik.touched.check && formik.errors.check
+                    ? "form-check-input is-invalid"
+                    : "form-check-input"
+                }
+                type="checkbox"
+                id="invalidCheck2"
+                aria-describedby="invalidCheck3Feedback"
+                required
+                name="check"
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+                onChange={handleCheckboxChange}
+                onBlur={formik.handleBlur}
+                checked={formik.values.check}
+              />
+              <label className="form-check-label" htmlFor="invalidCheck3">
+                I have read and Agree to terms and conditions
+              </label>
+              <div id="invalidCheck3Feedback" className="invalid-feedback">
+                You must agree before submitting.
               </div>
+            </div>
           </div>
           <div className="col-12">
             <button className="btn btn-primary signup-btn" type="submit">
