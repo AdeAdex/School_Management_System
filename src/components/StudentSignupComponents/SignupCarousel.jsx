@@ -69,7 +69,7 @@ const SignupCarousel = ({
                   </div>
                 </div>
               </div>
-              <div className="carousel-item" data-bs-interval="8000">
+              <div className="carousel-item" data-bs-interval="3000">
                 <div>{carousel_content2}</div>
                 <div className="d-flex gap-3 mt-3">
                   <img
@@ -88,7 +88,7 @@ const SignupCarousel = ({
                   </div>
                 </div>
               </div>
-              <div className="carousel-item" data-bs-interval="8000">
+              <div className="carousel-item" data-bs-interval="3000">
                 <div>{carousel_content3}</div>
                 <div className="d-flex gap-3 mt-3">
                   <img
