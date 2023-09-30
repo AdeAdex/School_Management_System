@@ -62,7 +62,7 @@ The back-end layer is powered by Express.js, a framework built on top of Node.js
 
 
 
-<h3>Features</h3>
+<h3 className="mt-3">Features</h3>
 
 **Server Setup**
 
