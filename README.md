@@ -2,13 +2,13 @@
 
 Welcome to the School Management System, a fully developed full-stack web application designed to streamline and enhance the school administration process.
 
-__Front-End__
+<h2>Front-End<h2>
 
 The front-end of the application is built using Vite + React, a modern build tool, and a popular JavaScript library for building user interfaces.
 
 
 
-<h2>**Features**</h2>
+<h3>Features</h3>
 
 **User Authentication:**
 Users can securely sign up and log in to access personalized features and data.
