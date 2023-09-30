@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
@@ -34,7 +33,16 @@ const EditEducationModal = ({
     },
 
     onSubmit: (values) => {
-      let newValues = { ...values, myId: myId, myEmail: myEmail };
+      let newValues = {
+        exam: values.exam || itemExam,
+        subject: values.subject || itemSubject,
+        grade: values.grade || itemGrade,
+        year: values.year || itemYear,
+        examNo: values.examNo || itemExamNo,
+        candidateNo: values.candidateNo || itemCandidate,
+        myId: myId,
+        myEmail: myEmail,
+      };
       console.log(newValues);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
@@ -85,7 +93,7 @@ const EditEducationModal = ({
               onSubmit={formik.handleSubmit}
             >
               <div className="education-input-box">
-              <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: "100%" }}>
                   <InputLabel id="demo-simple-select-standard-label">
                     exam
                   </InputLabel>
@@ -100,11 +108,9 @@ const EditEducationModal = ({
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value="NCEE">Nigerian Common Entrance Examination (NCEE)</MenuItem>
-                    {/* <MenuItem value="WAEC">WAEC</MenuItem>
-                    <MenuItem value="NECO">NECO</MenuItem>
-                    <MenuItem value="NABTEB">NABTEB</MenuItem>
-                    <MenuItem value="GCE">GCE</MenuItem> */}
+                    <MenuItem value="NCEE">
+                      Nigerian Common Entrance Examination (NCEE)
+                    </MenuItem>
                   </Select>
                 </FormControl>
               </div>

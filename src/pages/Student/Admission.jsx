@@ -93,7 +93,6 @@ const Admission = () => {
           localStorage.removeItem("taken");
           localStorage.removeItem("done");
           localStorage.removeItem("examStarted");
-          console.log(globalState.paidForAdmission);
           // setPaid(globalState.paidForAdmission);
           localStorage.setItem(
             "currentPaidState",

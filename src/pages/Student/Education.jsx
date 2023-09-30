@@ -134,7 +134,6 @@ const Education = () => {
       .then((response) => {
         if (response.data.status) {
           setPreEdu(response.data.response);
-          console.log(response.data.response)
           setMyEmail(response.data.response2.email);
           setDescription("");
         } else {
