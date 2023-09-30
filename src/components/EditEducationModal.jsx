@@ -43,7 +43,6 @@ const EditEducationModal = ({
         myId: myId,
         myEmail: myEmail,
       };
-      console.log(newValues);
       let endpoint =
         "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
       axios.put(endpoint, newValues)
