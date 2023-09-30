@@ -2,7 +2,7 @@
 
 Welcome to the School Management System, a fully developed full-stack web application designed to streamline and enhance the school administration process.
 
-Front-End
+**Front-End**
 
 The front-end of the application is built using Vite + React, a modern build tool, and a popular JavaScript library for building user interfaces.
 
@@ -75,7 +75,7 @@ Handling of user profile management, including updates and password resets: User
 
 Real-time chat functionality using Socket.io, allowing users to communicate within class group chats: Socket.io is integrated to facilitate real-time chat features. Users can join chat rooms, send and receive messages, and engage in class group discussions.
 
-Integration with cloud services (Cloudinary) for file storage and retrieval: Cloudinary is used to manage file storage and retrieval, enabling users to upload and access various types of media, such as images and documents.
+Integration with cloud services (Cloudinary) for file storage and retrieval: Cloudinary is used to manage file storage and retrieval, enabling users to upload and access various types of media, such as images, videos and documents.
 
 Password Hashing: User passwords are securely hashed using bcrypt before being stored in the database. This hashing process adds an extra layer of security by transforming plain-text passwords into irreversible, cryptographically hashed values.
 
