@@ -149,6 +149,10 @@ select.dial-code option {
   .admission, .create-account {
     padding: 20px 20px !important;
   }
+
+  .admission-nav {
+    flex-direction: column;
+  }
 }
 
 /* #demo-select-small-label:focus, #demo-select-small-label:active {

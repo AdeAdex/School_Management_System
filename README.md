@@ -11,45 +11,78 @@ The front-end of the application is built using Vite + React, a modern build too
 <h3>Features</h3>
 
 **User Authentication:**
-Users can securely sign up and log in to access personalized features and data.
+Student can securely sign up and log in to access personalized features and data.
 
 **Dashboard:**
-Upon login, users are directed to a personalized dashboard displaying essential information and enabling various actions.
+Upon login, students are directed to a personalized dashboard displaying essential information and enabling various actions.
 
 **Course Registration:**
 Students can conveniently register for their courses online, simplifying the registration process.
 
 **Profile Management:**
-Users have the ability to update and manage their profile information, including contact details and preferences.
+Students have the ability to update and manage their profile information, including contact details and preferences.
 
 **Resource Access:**
 Students can access learning resources, study materials, and other educational content relevant to their courses.
 
 **Password Reset:**
-Users have the option to reset their passwords in case they forget them.
+Students have the option to reset their passwords in case they forget them.
 
 **Responsive Design:**
-The application is responsive, providing an optimal viewing experience across different devices and screen sizes.
+The application is responsive, providing an optimal viewing experience across different devices and screen sizes for students.
 
 **Offline Support:**
-The use of service workers enables the application to work offline or with limited connectivity, allowing users to access certain features even without an internet connection.
+The use of service workers enables the application to work offline or with limited connectivity, allowing students to access certain features even without an internet connection.
 
 **Push Notifications:**
-Users may receive notifications and alerts related to their courses, updates, and important announcements.
+Students may receive notifications and alerts related to their courses, updates, and important announcements.
 
 **Easy navigation to different pages:**
-Users can smoothly navigate to various pages such as teachers, about us, contact us, events, news, etc.
+Students can smoothly navigate to various pages such as teachers, about us, contact us, events, news, etc.
 
 **View the school gallery:**
-Access a gallery showcasing the school's images and events.
+Access a gallery showcasing the school's images and events for students.
 
 **Contact the management team:**
-Users can easily get in touch with the school's management team.
+Students can easily get in touch with the school's management team.
 
 **Connect via social media:**
-Stay connected with the school through various social media channels.
+Stay connected with the school through various social media channels for students.
 
 
+
+<h3>Admin Features</h3>
+
+**Search Student Records:**
+Admins can search and access student records for various purposes, such as identifying candidates for class upgrades or confirming payment statuses.
+
+
+**Create Group Chat for Student and Staff:**
+Admins have the authority to create and manage group chat rooms, facilitating communication between students and staff members.
+
+**Create Staff Accounts:**
+Administrators can create and manage staff accounts, assigning roles and permissions as needed within the system.
+
+**Create Events:**
+Admins have the capability to create and manage events, including setting event details, dates, and locations.
+
+**Upload Class Subjects:**
+Admins can upload and manage class subjects, making them accessible to both students and teachers.
+
+**Upload Resources for Students:**
+Admins can upload educational resources such as study materials, lecture notes, and assignments for students to access.
+
+**Manage Class Assignments:**
+Administrators can oversee class assignments, including assignment creation, distribution, and collection.
+
+**Enroll or Withdraw Students:**
+Admins can enroll new students into the system or withdraw students who are no longer part of the institution.
+
+**Allocate Resources:**
+Admins can allocate resources such as classrooms, equipment, and staff members to specific classes or departments.
+
+**Announcements and Notifications:**
+Admins can send announcements and notifications to students and staff members regarding important updates and information.
 
 
 

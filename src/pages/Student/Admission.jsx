@@ -143,14 +143,21 @@ const Admission = () => {
     <>
       <div className="">
         {globalState?.firstName && globalState?.lastName ? (
-          <div className="font-bold ml-4 my-auto d-fle text-lg fw-bold fs-4 shadow p-2 mb-3">
-            {globalState.firstName} {globalState.lastName}
+          <div className="d-flex font-bold ml-4 my-auto text-lg fw-bold fs-4 shadow p-2 mb-3 justify-content-between admission-nav">
+          <div className="">
+          {globalState.firstName} {globalState.lastName}
             <div className="my-auto" style={{ fontSize: "14px" }}>
               <small>Registration Number:</small>{" "}
               {globalState.registrationNumber}
             </div>
           </div>
-          <div>adex</div>
+            
+            {
+              globalState.paidForAdmission && (
+                <div className="my-auto" style={{ fontSize: "14px" }}><small> Student ID:</small> {globalState.studentID}</div>
+              )
+            }
+          </div>
         ) : (
           <div className="loaders"></div>
         )}
