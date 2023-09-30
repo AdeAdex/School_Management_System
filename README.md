@@ -56,7 +56,7 @@ Stay connected with the school through various social media channels.
 
 
 
-**Back-End**
+<h2>Back-End</h2>
 
 The back-end layer is powered by Express.js, a framework built on top of Node.js, which manages servers, routes, and handles HTTP requests asynchronously.
 
