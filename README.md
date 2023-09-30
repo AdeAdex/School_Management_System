@@ -10,10 +10,10 @@ The front-end of the application is built using Vite + React, a modern build too
 
 **Features**
 
-User Authentication
+**User Authentication:**
 Users can securely sign up and log in to access personalized features and data.
 
-Dashboard
+**Dashboard:**
 Upon login, users are directed to a personalized dashboard displaying essential information and enabling various actions.
 
 Course Registration
