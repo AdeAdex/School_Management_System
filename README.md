@@ -64,7 +64,7 @@ The back-end layer is powered by Express.js, a framework built on top of Node.js
 
 <h3>Features</h3>
 
-**Server Setup**
+<h4>Server Setup<h4>
 
 **Express.js server setup with CORS support:** The backend of the School Management System is built on the Express.js framework. Express.js provides a robust and flexible foundation for handling HTTP requests and managing routes. CORS (Cross-Origin Resource Sharing) support is implemented to allow secure communication with the frontend, even when they are hosted on different domains.
 
@@ -72,7 +72,7 @@ The back-end layer is powered by Express.js, a framework built on top of Node.js
 
 **Implementation of environmental variables using dotenv for configuration:** Environmental variables are used to store sensitive information and configuration settings securely. The dotenv library is employed to load these variables, ensuring that sensitive data such as database credentials and API keys are kept confidential.
 
-**API Routes and Controllers**
+<h4>API Routes and Controllers</h4>
 
 **Creation of API routes for student and staff account management:** API routes are established to define endpoints for managing student and staff accounts. These routes allow users to interact with the system, including user registration, login, and profile management.
 
@@ -90,7 +90,7 @@ The back-end layer is powered by Express.js, a framework built on top of Node.js
 
 **Password Validation and Comparison:** When users log in, their entered passwords are validated and compared securely with the hashed passwords stored in the database using bcrypt. This ensures that only authorized users with valid credentials can access the system.
 
-**Socket.io Integration**
+<h4>Socket.io Integration</h4>
 
 **Implementation of Socket.io for real-time chat features:** Socket.io is utilized to enable real-time chat functionality within the application. It provides a seamless communication platform for users to interact instantly.
 
@@ -98,19 +98,19 @@ The back-end layer is powered by Express.js, a framework built on top of Node.js
 
 **Broadcast messages to specific chat rooms:** Messages can be broadcasted to specific chat rooms, allowing targeted communication and group discussions among users.
 
-**Payment Gateway Integration**
+<h4>Payment Gateway Integration</h4>
 
 **Integration of Paystack for processing acceptance and application fee payments:** Paystack, a payment gateway, is integrated to facilitate secure and convenient payment processing. Students can make payments for acceptance or application fees using this payment gateway.
 
 **Handling payment evidence uploads and verification:** The system supports the upload of payment evidence to validate payments. This ensures that students can provide proof of payment, enhancing transparency and record-keeping.
 
-**Email and SMS Integration**
+<h4>Email and SMS Integration</h4>
 
 **Integration with nodemailer for sending email notifications:** Nodemailer is used to send email notifications to users. It enables the system to deliver important updates, notifications, and communication via email.
 
 **Integration with Twilio for SMS notifications:** Twilio is integrated to send SMS notifications to users. This feature provides an additional communication channel for important alerts and notifications.
 
-**Server Deployment**
+<h4>Server Deployment</h4>
 
 **Deployment of the Express.js server to a specific port:** The Express.js server is deployed to a specific port, allowing it to listen for incoming requests and respond accordingly.
 
