@@ -62,15 +62,15 @@ The back-end layer is powered by Express.js, a framework built on top of Node.js
 
 
 
-<h3 className="mt-3">Features</h3>
+<h3>Features</h3>
 
 **Server Setup**
 
-Express.js server setup with CORS support: The backend of the School Management System is built on the Express.js framework. Express.js provides a robust and flexible foundation for handling HTTP requests and managing routes. CORS (Cross-Origin Resource Sharing) support is implemented to allow secure communication with the frontend, even when they are hosted on different domains.
+**Express.js server setup with CORS support:** The backend of the School Management System is built on the Express.js framework. Express.js provides a robust and flexible foundation for handling HTTP requests and managing routes. CORS (Cross-Origin Resource Sharing) support is implemented to allow secure communication with the frontend, even when they are hosted on different domains.
 
-MongoDB connection for efficient data storage and management: MongoDB, a NoSQL database, is utilized for data storage and management. MongoDB's efficiency and flexibility make it a suitable choice for handling various types of data within the application. It ensures that data can be stored, retrieved, and managed effectively.
+**MongoDB connection for efficient data storage and management:** MongoDB, a NoSQL database, is utilized for data storage and management. MongoDB's efficiency and flexibility make it a suitable choice for handling various types of data within the application. It ensures that data can be stored, retrieved, and managed effectively.
 
-Implementation of environmental variables using dotenv for configuration: Environmental variables are used to store sensitive information and configuration settings securely. The dotenv library is employed to load these variables, ensuring that sensitive data such as database credentials and API keys are kept confidential.
+**Implementation of environmental variables using dotenv for configuration:** Environmental variables are used to store sensitive information and configuration settings securely. The dotenv library is employed to load these variables, ensuring that sensitive data such as database credentials and API keys are kept confidential.
 
 **API Routes and Controllers**
 
