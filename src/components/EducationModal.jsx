@@ -149,7 +149,7 @@ const EducationModal = ({ isOpen, onClose, myResponse, myResponse2 }) => {
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value="NCEE">NCEE</MenuItem>
+                      <MenuItem value="NCEE">Nigerian Common Entrance Examination (NCEE)</MenuItem>
                     </Select>
                   </FormControl>
                 </div>

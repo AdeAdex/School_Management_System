@@ -66,7 +66,7 @@ const EditEducationModal = ({
       <Modal show={isOpen} onHide={onClose} animation={true}>
         <Modal.Header className="bg-white text-dark">
           <Modal.Title className="text-uppercase text-center mx-auto">
-            edit o level result
+            edit Common Entrance
           </Modal.Title>
           <button
             type="button"
@@ -100,7 +100,7 @@ const EditEducationModal = ({
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value="NCEE">NCEE</MenuItem>
+                    <MenuItem value="NCEE">Nigerian Common Entrance Examination (NCEE)</MenuItem>
                     {/* <MenuItem value="WAEC">WAEC</MenuItem>
                     <MenuItem value="NECO">NECO</MenuItem>
                     <MenuItem value="NABTEB">NABTEB</MenuItem>
