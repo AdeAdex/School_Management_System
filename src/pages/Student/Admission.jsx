@@ -63,7 +63,6 @@ const Admission = () => {
     const storedPaid = localStorage.getItem("currentPaidState");
     return storedPaid !== null ? JSON.parse(storedPaid) : false;
   });
-  
 
   const handleClose = () => {
     setOpen(false);
@@ -110,10 +109,7 @@ const Admission = () => {
       });
   }, [globalState, globalState.paidForAdmission, navigate]);
 
-  useEffect(() => {
-   
-  }, [isLoading]);
- 
+  useEffect(() => {}, [isLoading]);
 
   const handleChange = (event, newValue) => {
     if ((paid === false || paid === true) && newValue == 6) {
@@ -135,7 +131,6 @@ const Admission = () => {
     }
   };
 
-
   const handlePaymentClick = () => {
     if (!paid) {
       navigate("/student/admission/payment");
@@ -155,6 +150,7 @@ const Admission = () => {
               {globalState.registrationNumber}
             </div>
           </div>
+          <div>adex</div>
         ) : (
           <div className="loaders"></div>
         )}
