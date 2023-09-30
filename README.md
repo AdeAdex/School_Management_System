@@ -8,7 +8,7 @@ The front-end of the application is built using Vite + React, a modern build too
 
 
 
-**Features**
+<h2>**Features**</h2>
 
 **User Authentication:**
 Users can securely sign up and log in to access personalized features and data.
