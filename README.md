@@ -16,37 +16,37 @@ Users can securely sign up and log in to access personalized features and data.
 **Dashboard:**
 Upon login, users are directed to a personalized dashboard displaying essential information and enabling various actions.
 
-Course Registration
+**Course Registration:**
 Students can conveniently register for their courses online, simplifying the registration process.
 
-Profile Management
+**Profile Management:**
 Users have the ability to update and manage their profile information, including contact details and preferences.
 
-Resource Access
+**Resource Access:**
 Students can access learning resources, study materials, and other educational content relevant to their courses.
 
-Password Reset
+**Password Reset:**
 Users have the option to reset their passwords in case they forget them.
 
-Responsive Design
+**Responsive Design:**
 The application is responsive, providing an optimal viewing experience across different devices and screen sizes.
 
-Offline Support
+**Offline Support:**
 The use of service workers enables the application to work offline or with limited connectivity, allowing users to access certain features even without an internet connection.
 
-Push Notifications
+**Push Notifications:**
 Users may receive notifications and alerts related to their courses, updates, and important announcements.
 
-Easy navigation to different pages
+**Easy navigation to different pages:**
 Users can smoothly navigate to various pages such as teachers, about us, contact us, events, news, etc.
 
-View the school gallery
+**View the school gallery:**
 Access a gallery showcasing the school's images and events.
 
-Contact the management team
+**Contact the management team:**
 Users can easily get in touch with the school's management team.
 
-Connect via social media
+**Connect via social media:**
 Stay connected with the school through various social media channels.
 
 
