@@ -92,7 +92,7 @@ const TeachersPage = () => {
           <ActivitiesHeader
             classes="activities activities-color"
             name="orange house"
-            content="FULL TIME · AGE: 3-6 YEARS OLD"
+            content="FULL TIME"
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="d-flex gap-lg-4 gap-md-4 w-100 flex-wrap position-relative">
@@ -135,7 +135,7 @@ const TeachersPage = () => {
           <ActivitiesHeader
             classes="activities activities-color"
             name="blue house"
-            content="FULL TIME · AGE: 0-3 YEARS OLD"
+            content="FULL TIME"
             hrStyle={{ backgroundColor: "orange" }}
           />
           <div className="card-group gap-4">
