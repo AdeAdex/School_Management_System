@@ -246,6 +246,35 @@ const Payment = ({
         {myChoice ? (
           <>
           <div className="give-it-a-class-name text-white">
+          {
+            payWithSlip && payWithSlip.length > 0 ? (
+              <div className="card-content">
+                <div className="name-date">
+                  <div className="name">
+                    {lastName} {firstName}
+                  </div>
+                  <div className="date my-3 text-white">
+                    <span className="my-auto">Uploaded:</span>{" "}
+                    <small className="my-auto">{receiptDate}</small>
+                  </div>
+                </div>
+                <div className="selected-image">
+                  <div
+                    className="admission-receipt"
+                    style={{ width: "20%", height: "80px", borderRadius: "0%" }}
+                    onClick={openModal}
+                  >
+                    <img src={cloudImage} alt="Avatar" className="hover-img" />
+                    <div class="cover-container">
+                      <img src={cloudImage} alt="" className="cover-img" />
+                      <p className="cover-txt" style={{ fontSize: "12px" }}>
+                        Hover & Click{" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
               <div className="card-content">
                 <div className="name-date d-flex flex-column">
                 <div className="ms-auto mb-2">Card</div>
@@ -260,6 +289,8 @@ const Payment = ({
                   )}
                 </div>
               </div>
+            )
+          }
             </div>
           </>
         ) : (
