@@ -162,6 +162,9 @@ const Payment = ({
         <div className="method">
           {paid ? (
             <>
+            {
+              global
+            }
               <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
                 <FormControl fullWidth>
                   <InputLabel
