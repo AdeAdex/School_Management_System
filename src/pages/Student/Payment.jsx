@@ -17,6 +17,7 @@ const Payment = ({
   receiptDate,
   lastName,
   firstName,
+  payWithSlip
 }) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
@@ -162,10 +163,31 @@ const Payment = ({
         <div className="method">
           {paid ? (
             <>
-            {/* {
-              global
-            } */}
-              <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
+            {
+             payWithSlip && payWithSlip.length > 0 ? (
+                <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    style={{ fontSize: "22px" }}
+                  >
+                    Pay Method
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value="slip"
+                    label="Pay Method"
+                    disabled
+                  >
+                    <MenuItem value="slip">
+                        ✓ Payment Slip Upload
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+              ) : (
+                <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
                 <FormControl fullWidth>
                   <InputLabel
                     id="demo-simple-select-label"
@@ -192,6 +214,9 @@ const Payment = ({
                   </Select>
                 </FormControl>
               </Box>
+              )
+            }
+             
             </>
           ) : (
             <>

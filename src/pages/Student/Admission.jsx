@@ -287,6 +287,7 @@ const Admission = () => {
                   receiptDate={globalState.paymentURL[0].dateUploaded}
                   lastName={globalState.lastName}
                   firstName={globalState.firstName}
+                  payWithSlip={globalState.paymentURL}
                 />
               ) : (
                 <Payment
