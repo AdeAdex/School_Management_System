@@ -8,7 +8,7 @@ const StudentCountUp = () => {
 
   useEffect(() => {
     let endpoint =
-      "http://localhost:2000/student_account/total_number_of_register_student";
+      "https://school-portal-backend-adex2210.vercel.app/student_account/total_number_of_register_student";
     axios
       .get(endpoint)
       .then((response) => {
