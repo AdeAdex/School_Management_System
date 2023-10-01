@@ -17,7 +17,6 @@ const StudentCountUp = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(registeredStudent);
   }, [registeredStudent]);
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const StudentCountUp = () => {
   const handleIntersect = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // startCounting();
+        startCounting();
       }
     });
   };
