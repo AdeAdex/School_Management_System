@@ -33,13 +33,13 @@ const CoursesCountUp = () => {
   const startCounting = () => {
     let counter = 0;
     const interval = setInterval(() => {
-      if (counter <= 32) {
+      if (counter <= 45) {
         targetRef.current.textContent = counter;
-        counter = counter + 2;
+        counter = counter + 1;
       } else {
         clearInterval(interval);
       }
-    }, 100);
+    }, 30);
   };
   return (
     <>

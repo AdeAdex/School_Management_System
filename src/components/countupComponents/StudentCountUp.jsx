@@ -1,8 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import CalculateTotalNumber from "../generalComponents/CalculateTotalNumber";
+import axios from "axios";
+
 
 const StudentCountUp = () => {
   const targetRef = useRef(null);
+  const [registeredStudent, setRegisteredStudent] = useState(0)
+
+  useEffect(() => {
+  let endpoint = "http://localhost:2000/student_account/total_number_of_register_student"
+  axios.get(endpoint)
+  .then((response) => {
+    setRegisteredStudent(response.data.length)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  }, [])
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersect, {
@@ -33,13 +48,13 @@ const StudentCountUp = () => {
   const startCounting = () => {
     let counter = 0;
     const interval = setInterval(() => {
-      if (counter <= 150) {
+      if (counter <= parseInt(registeredStudent +  50)) {
         targetRef.current.textContent = counter;
-        counter = counter + 10;
+        counter = counter + 1;
       } else {
         clearInterval(interval);
       }
-    }, 100);
+    }, 30);
   };
   return (
     <>

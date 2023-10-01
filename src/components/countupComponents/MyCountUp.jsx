@@ -35,11 +35,11 @@ const MyCountUp = () => {
     const interval = setInterval(() => {
       if (counter <= 50) {
         targetRef.current.textContent = counter;
-        counter = counter + 2;
+        counter = counter + 1;
       } else {
         clearInterval(interval);
       }
-    }, 100);
+    }, 30);
   };
   return (
     <>
