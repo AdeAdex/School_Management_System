@@ -2,22 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import CalculateTotalNumber from "../generalComponents/CalculateTotalNumber";
 import axios from "axios";
 
-
 const StudentCountUp = () => {
   const targetRef = useRef(null);
-  const [registeredStudent, setRegisteredStudent] = useState(0)
+  const [registeredStudent, setRegisteredStudent] = useState(0);
 
   useEffect(() => {
-  let endpoint = "http://localhost:2000/student_account/total_number_of_register_student"
-  axios.get(endpoint)
-  .then((response) => {
-    setRegisteredStudent(response.data.length)
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  }, [])
-  
+    let endpoint =
+      "http://localhost:2000/student_account/total_number_of_register_student";
+    axios
+      .get(endpoint)
+      .then((response) => {
+        setRegisteredStudent(response.data.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(registeredStudent);
+  }, [registeredStudent]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersect, {
@@ -37,10 +38,16 @@ const StudentCountUp = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (registeredStudent > 0) {
+      startCounting();
+    }
+  }, [registeredStudent]);
+
   const handleIntersect = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        startCounting();
+        // startCounting();
       }
     });
   };
@@ -48,7 +55,7 @@ const StudentCountUp = () => {
   const startCounting = () => {
     let counter = 0;
     const interval = setInterval(() => {
-      if (counter <= parseInt(registeredStudent +  50)) {
+      if (counter <= parseInt(registeredStudent + 50)) {
         targetRef.current.textContent = counter;
         counter = counter + 1;
       } else {
