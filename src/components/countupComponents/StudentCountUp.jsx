@@ -23,7 +23,7 @@ const StudentCountUp = () => {
     const observer = new IntersectionObserver(handleIntersect, {
       root: null,
       rootMargin: "0px",
-      threshold: 1.0,
+      threshold: 0.1,
     });
 
     if (targetRef.current) {
@@ -53,8 +53,9 @@ const StudentCountUp = () => {
 
   const startCounting = () => {
     let counter = 0;
+    let totalNumberOfRegisteredStudent = parseInt(registeredStudent + 50)
     const interval = setInterval(() => {
-      if (counter <= parseInt(registeredStudent + 50)) {
+      if (counter <= totalNumberOfRegisteredStudent) {
         targetRef.current.textContent = counter;
         counter = counter + 1;
       } else {
