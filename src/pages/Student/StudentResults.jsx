@@ -77,7 +77,7 @@ const StudentResults = () => {
           className="mx-auto"
           style={{ width: "80%" }}
           data={pieChartData}
-          label={({ dataEntry }) => `${dataEntry.title}: ${dataEntry.value}%`}
+          label={({ dataEntry }) => `${dataEntry.title}: ${dataEntry.value.toFixed(1)}%`}
           labelStyle={{ fontSize: "4px" }}
         />
       </div>
