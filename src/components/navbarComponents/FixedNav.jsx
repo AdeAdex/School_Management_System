@@ -23,8 +23,8 @@ const FixedNav = () => {
           backgroundColor: "#262626",
         }}
       >
-      <div className="w-50 h-100 my-auto d-flex justify-content-start position-relative">
-        <img src="/pic/adexlogo.png" alt="" className="py-2" onClick={navigateToShop} />
+      <div className="w-50 h-100 my-auto d-flex justify-content-start position-relative" >
+        <img src="/pic/adexlogo.png" alt="" className="my-auto" onClick={navigateToShop} style={{borderRadius: '3px'}} />
       </div>
         <div className="w-50 my-auto d-flex justify-content-end">
           <button className="btn btn-sm text-white px-3" style={{backgroundColor: '#7AA93C'}} onClick={navigateToShop}>Shop</button>
