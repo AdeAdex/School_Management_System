@@ -7,8 +7,7 @@ const PickClass = () => {
   const [responseArray, setResponseArray] = useState([]);
   let globalState = useSelector((state) => state.portalReducer.studentInfo);
 
-  useEffect(() => {
-  }, [globalState]);
+  useEffect(() => {}, [globalState]);
 
   // const handleResponseChange = (event) => {
   //   const { name, value } = event.target;
@@ -35,9 +34,21 @@ const PickClass = () => {
 
   return (
     <>
-      <div className={`${globalState.paidForAdmission ? 'mt-4' : ''}`}>
-        {globalState.paidForAdmission == 'true' ? (
-          <small style={{fontFamily: 'serif'}}>You've been granted admission to study in our school for a perfect education from JSS1 to SSS3 for 6 years, providing you with a dynamic education that will change your life and prepare you for the future.</small>
+      <div className={`${globalState.paidForAdmission ? "mt-4" : ""}`}>
+        {globalState.paidForAdmission == "true" ? (
+          <small style={{ fontFamily: "serif" }}>
+            Congratulations on your admission to our school!
+            <div>
+              You've been granted the opportunity to embark on a transformative
+              educational journey from JSS1 to SSS3, spanning six enriching
+              years.
+            </div>
+            <div>
+              Our commitment is to provide you with a dynamic and comprehensive
+              education that will not only change your life but also prepare you
+              for a bright and promising future.
+            </div>
+          </small>
         ) : (
           <form action="" onSubmit={formik.handleSubmit}>
             <div className="col-md-12 mb-3">
