@@ -6,7 +6,6 @@ import { FiPlay } from "react-icons/fi";
 const FixedNav = () => {
   const navigate = useNavigate()
   const navigateToShop = () => {
-    // window.location.href = 'https://adex2210.github.io/e-commerce/';
     window.open('https://adex2210.github.io/e-commerce/', '_blank');
   }
 

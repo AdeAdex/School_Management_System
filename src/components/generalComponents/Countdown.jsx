@@ -65,7 +65,7 @@ import React, { useEffect, useState } from "react";
 
 const Countdown = ({ id, styles, innerText }) => {
   const calculateTimeLeft = () => {
-    const endDate = new Date("2023-10-01T00:00:00Z"); // Set your countdown end date and time
+    const endDate = new Date("2023-10-20T00:00:00Z"); // Set your countdown end date and time
     const currentDate = new Date();
     const difference = endDate - currentDate;
 
