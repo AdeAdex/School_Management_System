@@ -119,7 +119,6 @@ const Payment = ({
             .then((response) => {
               if (response.data.status) {
                 localStorage.setItem("currentPaidState", true);
-                console.log(response.data.message);
               }
             })
             .catch((err) => {
