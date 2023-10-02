@@ -98,11 +98,15 @@ const Admission = () => {
           localStorage.removeItem("taken");
           localStorage.removeItem("done");
           localStorage.removeItem("examStarted");
-          localStorage.setItem(
-            "currentPaidState",
-            globalState.paidForAdmission
-          );
+          // localStorage.setItem(
+          //   "currentPaidState",
+          //   globalState.paidForAdmission
+          // );
          
+
+          const newPaid = res.data.response.paidForAdmission;
+          localStorage.setItem("currentPaidState", newPaid);
+          setPaid(newPaid);
 
         } else {
           navigate("/student_login");
@@ -115,11 +119,11 @@ const Admission = () => {
 
 
   const handleChange = (event, newValue) => {
-    if ((paid === false || paid === true) && newValue == 6) {
+    if ((paid === "false" || paid === "true") && newValue == 6) {
       setValue(newValue);
       navigate("/student/admission/logout");
     } else if (
-      paid === false &&
+      paid === "false" &&
       (newValue !== 1 || newValue !== 0 || newValue !== 6)
     ) {
       setValue(newValue);

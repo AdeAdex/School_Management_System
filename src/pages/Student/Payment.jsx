@@ -155,22 +155,22 @@ const Payment = ({
     <>
       <div className="payment-card">
         <div className="status">
-          <div className={`status-value w-100 ${paid ? "paid" : "not-paid"}`}>
+          <div className={`status-value w-100 ${paid == "true" ? "paid" : "not-paid"}`}>
             <span>Application Fee:</span>
             <Badge
               variant="gradient"
               gradient={{
                 from: "teal",
-                to: paid ? "blue" : "orangered",
+                to: paid == "true" ? "blue" : "orangered",
                 deg: 60,
               }}
             >
-              {paid ? "Paid" : "Not Paid"}
+              {paid == "true" ? "Paid" : "Not Paid"}
             </Badge>
           </div>
         </div>
         <div className="amount">
-          {paid ? (
+          {paid == "true" ? (
             <>
               <span>Amount Paid:</span> <small className="fw-bold">₦5000</small>
             </>
@@ -182,7 +182,7 @@ const Payment = ({
           )}
         </div>
         <div className="method">
-          {paid ? (
+          {paid == "true" ? (
             <>
             {
              payWithSlip && payWithSlip.length > 0 ? (
@@ -302,7 +302,7 @@ const Payment = ({
                   <div className="name">
                     {lastName} {firstName}
                   </div>
-                  {paid ? (
+                  {paid == "true" ? (
                   <button onClick={payForAdmission} className="btn pay-btn mt-3 mx-auto px-5" style={{ backgroundColor: 'green' }} disabled>✓ Paid ₦5000</button>
                   ) : (
                     
