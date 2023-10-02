@@ -102,8 +102,8 @@ const Payment = ({
           footer: "",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.reload();
-            window.location.reload();
+            // window.location.reload();
+            // window.location.reload();
           }
         });
         
