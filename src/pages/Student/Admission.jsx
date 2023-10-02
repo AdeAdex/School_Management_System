@@ -63,6 +63,12 @@ const Admission = () => {
     const storedPaid = localStorage.getItem("currentPaidState");
     return storedPaid !== null ? JSON.parse(storedPaid) : false;
   });
+  
+  useEffect(() => {
+    console.log(paid);
+  }, [isLoading, paid]);
+ 
+  
 
   const handleClose = () => {
     setOpen(false);
@@ -92,14 +98,12 @@ const Admission = () => {
           localStorage.removeItem("taken");
           localStorage.removeItem("done");
           localStorage.removeItem("examStarted");
-          // setPaid(globalState.paidForAdmission);
           localStorage.setItem(
             "currentPaidState",
             globalState.paidForAdmission
           );
-          // if (res.data.status) {
+         
 
-          // }
         } else {
           navigate("/student_login");
         }
@@ -107,9 +111,8 @@ const Admission = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [globalState, globalState.paidForAdmission, navigate]);
+  }, [globalState, globalState.paidForAdmission, paid, navigate]);
 
-  useEffect(() => {}, [isLoading]);
 
   const handleChange = (event, newValue) => {
     if ((paid === false || paid === true) && newValue == 6) {
