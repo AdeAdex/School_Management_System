@@ -65,7 +65,6 @@ const Admission = () => {
   });
   
   useEffect(() => {
-    console.log(paid);
   }, [isLoading, paid]);
  
   
@@ -98,15 +97,14 @@ const Admission = () => {
           localStorage.removeItem("taken");
           localStorage.removeItem("done");
           localStorage.removeItem("examStarted");
+          const newPaid = res.data.response.paidForAdmission;
+          localStorage.setItem("currentPaidState", newPaid);
+          setPaid(newPaid);
+          
           // localStorage.setItem(
           //   "currentPaidState",
           //   globalState.paidForAdmission
           // );
-         
-
-          const newPaid = res.data.response.paidForAdmission;
-          localStorage.setItem("currentPaidState", newPaid);
-          setPaid(newPaid);
 
         } else {
           navigate("/student_login");
@@ -127,14 +125,12 @@ const Admission = () => {
       (newValue !== 1 || newValue !== 0 || newValue !== 6)
     ) {
       setValue(newValue);
-      console.log("my details " + value, paid);
       setTimeout(() => {
         setValue(1);
         navigate("/student/admission/payment");
       }, 500);
     } else {
       setValue(newValue);
-      console.log("my details two " + value, paid);
     }
   };
 

@@ -65,7 +65,6 @@ const Payment = ({
   };
 
   useEffect(() => {
-    console.log("payment page paid is " + paid);
     setCloudImage(receiptURL);
   }, [receiptURL]);
 
