@@ -146,6 +146,29 @@
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url("https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695638407/map_embn7a.png");
+  background-size: fill;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: moveBackground 40s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%; /* Move from left to right */
+  }
+  50% {
+    background-position: 100% 100%; /* Move from top to bottom */
+  }
+  75% {
+    background-position: 0% 100%; /* Move from right to left */
+  }
+  100% {
+    background-position: 0% 0%; /* Move from bottom to top */
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -184,12 +207,12 @@
 
   .location-info {
     flex-direction: column;
-    gap: 10px; 
+    gap: 10px;
   }
 
   .location-details {
-    flex: none; 
-    text-align: center; 
+    flex: none;
+    text-align: center;
   }
 
   .location-info .map {

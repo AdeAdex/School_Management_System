@@ -40,33 +40,6 @@ const AboutUsPage = () => {
     }
   };
 
-  const mapStyle = {
-    backgroundImage: `url('https://res.cloudinary.com/dn4gfzlhq/image/upload/v1695638407/map_embn7a.png')`,
-    backgroundSize: "fill",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    animation: "moveBackground 40s linear infinite",
-  };
-
-  const styles = `
-  @keyframes moveBackground {
-    0% {
-      background-position: 0% 0%;
-    }
-    25% {
-      background-position: 100% 0%; /* Move from left to right */
-    }
-    50% {
-      background-position: 100% 100%; /* Move from top to bottom */
-    }
-    75% {
-      background-position: 0% 100%; /* Move from right to left */
-    }
-    100% {
-      background-position: 0% 0%; /* Move from bottom to top */
-    }
-  }
-`;
 
   return (
     <>
@@ -99,11 +72,7 @@ const AboutUsPage = () => {
                   </div>
                 </div>
                 <div
-                  className="map "
-                  style={{
-                    ...mapStyle,
-                    cursor: "pointer",
-                  }}
+                  className="map"
                   onClick={handleLocateUsClick}
                 >
                   <a
