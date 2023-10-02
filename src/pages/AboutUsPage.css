@@ -151,6 +151,7 @@
   background-position: center;
   background-repeat: no-repeat;
   animation: moveBackground 40s linear infinite;
+  cursor: pointer
 }
 
 @keyframes moveBackground {
