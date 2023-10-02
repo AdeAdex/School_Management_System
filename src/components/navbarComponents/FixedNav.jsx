@@ -8,6 +8,10 @@ const FixedNav = () => {
     // window.location.href = 'https://adex2210.github.io/e-commerce/';
     window.open('https://adex2210.github.io/e-commerce/', '_blank');
   }
+
+  const navigateToGame = () => {
+    window.open('https://adex2210.github.io/rock-Paper-Scissors/', '_blank');
+  }
   return (
     <>
       <div
@@ -24,7 +28,7 @@ const FixedNav = () => {
         }}
       >
       <div className="w-50 h-100 my-auto d-flex justify-content-start position-relative" >
-        <img src="/pic/adexlogo.png" alt="" className="my-auto" onClick={navigateToShop} style={{borderRadius: '3px'}} />
+        <img src="/pic/adexlogo.png" alt="" className="my-auto" onClick={navigateToGame} style={{borderRadius: '3px'}} />
       </div>
         <div className="w-50 my-auto d-flex justify-content-end">
           <button className="btn btn-sm text-white px-3" style={{backgroundColor: '#7AA93C'}} onClick={navigateToShop}>Shop</button>
