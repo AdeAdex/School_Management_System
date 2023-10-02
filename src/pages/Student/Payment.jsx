@@ -102,6 +102,7 @@ const Payment = ({
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
+            window.location.reload();
           }
         });
         
