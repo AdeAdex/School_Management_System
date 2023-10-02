@@ -38,6 +38,25 @@ const Payment = ({
         .then((response) => {
           setIsLoading(false);
           openModal();
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            html: `
+            <div class="toast-content">
+              <button id="close-toast-button" class="close-button">&times;</button>
+            </div>
+          `,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
         })
         .catch((err) => {
           console.log(err);
