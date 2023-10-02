@@ -162,18 +162,19 @@ const Payment = ({
         <small>
           {paid === "true" ? null : (
             <div>
-              <TypeAnimation
-                style={{
-                  whiteSpace: "pre-line",
-                  height: "auto",
-                  display: "block",
-                  marginBottom: "10px",
-                }}
-                sequence={[
-                  `Important Information:\nIf you've chosen to pay with a debit card, there will be no charges incurred.\nIf you've opted for payment by uploading a payment slip, please proceed to upload your payment receipt. Our administration team will review and confirm your payment.\nThank you for your attention.`,
-                  500,
-                ]}
-              />
+            <TypeAnimation
+  style={{
+    whiteSpace: "pre-line",
+    height: "auto",
+    display: "block",
+    marginBottom: '10px'
+  }}
+  sequence={[
+    `Important Information:\nIf you've chosen to pay with a debit card, there will be no charges incurred as this is a test mode.\nIf you've opted for payment by uploading a payment slip, please proceed to upload your payment receipt, which can be any image file. Our administration team will review and confirm your payment.\nThank you for your attention.`,
+    500
+  ]}
+/>
+
 
             </div>
           )}
