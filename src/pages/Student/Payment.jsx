@@ -9,6 +9,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { TypeAnimation } from "react-type-animation";
+import { useMediaQuery } from "react-responsive";
 
 const Payment = ({
   paid,
@@ -17,12 +19,16 @@ const Payment = ({
   receiptDate,
   lastName,
   firstName,
-  payWithSlip
+  payWithSlip,
 }) => {
   const [myImage, setMyImage] = useState("");
   const [cloudImage, setCloudImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [message, setMessage] = useState(
+    "You've selected payment with a debit card. You won't be charged. You have selected payment with slip upload. Please upload your payment slip, and the admin will confirm your payment."
+  );
+  const [typingStatus, setTypingStatus] = useState("");
 
   const handleImageSelect = (e) => {
     setIsLoading(true);
@@ -68,7 +74,6 @@ const Payment = ({
     setCloudImage(receiptURL);
   }, [receiptURL]);
 
-
   const openModal = () => {
     setModalOpen(true);
   };
@@ -102,17 +107,15 @@ const Payment = ({
           footer: "",
         }).then((result) => {
           if (result.isConfirmed) {
-            // window.location.reload();
-            // window.location.reload();
           }
         });
-        
+
         if (response.status === "success") {
           let payload = {
             myEmail: myEmail,
             justPaid: true,
             amount: 5000,
-            reference: response.reference
+            reference: response.reference,
           };
           let endpoint =
             "https://school-portal-backend-adex2210.vercel.app/student_account/paidAdmissionFee";
@@ -134,27 +137,54 @@ const Payment = ({
   };
 
   const [payType, setPayType] = useState("card");
-  const [myChoice, setMyChoice] = useState(true)
+  const [myChoice, setMyChoice] = useState(true);
 
   const handleChange = (event) => {
     setPayType(event.target.value);
     if (event.target.value === "card") {
-      setMyChoice(true)
+      setMyChoice(true);
+      // setMessage("You've selected payment with a debit card. You won't be charged.");
     } else {
-      setMyChoice(false)
+      setMyChoice(false);
+      // setTypingStatus('');
+
+      // setMessage("You have selected payment with slip upload. Please upload your payment slip, and the admin will confirm your payment.");
     }
   };
 
   const payForAdmission = () => {
     payWithPaystack();
-  }
-  
+  };
 
   return (
     <>
       <div className="payment-card">
+        <small>
+          {paid === "true" ? null : (
+            <div>
+              <TypeAnimation
+                style={{
+                  whiteSpace: "pre-line",
+                  height: "auto",
+                  display: "block",
+                  marginBottom: "10px",
+                }}
+                sequence={[
+                  `Important Information:\nIf you've chosen to pay with a debit card, there will be no charges incurred.\nIf you've opted for payment by uploading a payment slip, please proceed to upload your payment receipt. Our administration team will review and confirm your payment.\nThank you for your attention.`,
+                  500,
+                ]}
+              />
+
+            </div>
+          )}
+        </small>
+
         <div className="status">
-          <div className={`status-value w-100 ${paid == "true" ? "paid" : "not-paid"}`}>
+          <div
+            className={`status-value w-100 ${
+              paid == "true" ? "paid" : "not-paid"
+            }`}
+          >
             <span>Application Fee:</span>
             <Badge
               variant="gradient"
@@ -183,60 +213,55 @@ const Payment = ({
         <div className="method">
           {paid == "true" ? (
             <>
-            {
-             payWithSlip && payWithSlip.length > 0 ? (
+              {payWithSlip && payWithSlip.length > 0 ? (
                 <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel
-                    id="demo-simple-select-label"
-                    style={{ fontSize: "22px" }}
-                  >
-                    Pay Method
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value="slip"
-                    label="Pay Method"
-                    disabled
-                  >
-                    <MenuItem value="slip">
-                        ✓ Payment Slip Upload
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
+                  <FormControl fullWidth>
+                    <InputLabel
+                      id="demo-simple-select-label"
+                      style={{ fontSize: "22px" }}
+                    >
+                      Pay Method
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value="slip"
+                      label="Pay Method"
+                      disabled
+                    >
+                      <MenuItem value="slip">✓ Payment Slip Upload</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
               ) : (
                 <Box sx={{ width: "100%", marginTop: "30px", minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel
-                    id="demo-simple-select-label"
-                    style={{ fontSize: "22px" }}
-                  >
-                    Pay Method
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={payType}
-                    label="Pay Method"
-                    onChange={handleChange}
-                    disabled={payType !== ""}
-                  >
-                    <MenuItem value="card">
-                      {payType === "card" ? "✓ Debit Card" : "Debit Card"}
-                    </MenuItem>
-                    <MenuItem value="slip">
-                      {payType === "slip"
-                        ? "✓ Payment Slip Upload"
-                        : "Payment Slip Upload"}
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
-              )
-            }
-             
+                  <FormControl fullWidth>
+                    <InputLabel
+                      id="demo-simple-select-label"
+                      style={{ fontSize: "22px" }}
+                    >
+                      Pay Method
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={payType}
+                      label="Pay Method"
+                      onChange={handleChange}
+                      disabled={payType !== ""}
+                    >
+                      <MenuItem value="card">
+                        {payType === "card" ? "✓ Debit Card" : "Debit Card"}
+                      </MenuItem>
+                      <MenuItem value="slip">
+                        {payType === "slip"
+                          ? "✓ Payment Slip Upload"
+                          : "Payment Slip Upload"}
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+              )}
             </>
           ) : (
             <>
@@ -265,103 +290,132 @@ const Payment = ({
         </div>
         {myChoice ? (
           <>
-          <div className="give-it-a-class-name text-white">
-          {
-            payWithSlip && payWithSlip.length > 0 ? (
-              <div className="card-content">
-                <div className="name-date">
-                  <div className="name">
-                    {lastName} {firstName}
+            <div className="give-it-a-class-name text-white">
+              {payWithSlip && payWithSlip.length > 0 ? (
+                <div className="card-content">
+                  <div className="name-date">
+                    <div className="name">
+                      {lastName} {firstName}
+                    </div>
+                    <div className="date my-3 text-white">
+                      <span className="my-auto">Uploaded:</span>{" "}
+                      <small className="my-auto">{receiptDate}</small>
+                    </div>
                   </div>
-                  <div className="date my-3 text-white">
-                    <span className="my-auto">Uploaded:</span>{" "}
-                    <small className="my-auto">{receiptDate}</small>
-                  </div>
-                </div>
-                <div className="selected-image">
-                  <div
-                    className="admission-receipt"
-                    style={{ width: "20%", height: "80px", borderRadius: "0%" }}
-                    onClick={openModal}
-                  >
-                    <img src={cloudImage} alt="Avatar" className="hover-img" />
-                    <div class="cover-container">
-                      <img src={cloudImage} alt="" className="cover-img" />
-                      <p className="cover-txt" style={{ fontSize: "12px" }}>
-                        Hover & Click{" "}
-                      </p>
+                  <div className="selected-image">
+                    <div
+                      className="admission-receipt"
+                      style={{
+                        width: "20%",
+                        height: "80px",
+                        borderRadius: "0%",
+                      }}
+                      onClick={openModal}
+                    >
+                      <img
+                        src={cloudImage}
+                        alt="Avatar"
+                        className="hover-img"
+                      />
+                      <div class="cover-container">
+                        <img src={cloudImage} alt="" className="cover-img" />
+                        <p className="cover-txt" style={{ fontSize: "12px" }}>
+                          Hover & Click{" "}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="card-content">
-                <div className="name-date d-flex flex-column">
-                <div className="ms-auto mb-2">Card</div>
-                  <div className="name">
-                    {lastName} {firstName}
+              ) : (
+                <div className="card-content">
+                  <div className="name-date d-flex flex-column">
+                    <div className="ms-auto mb-2">Card</div>
+                    <div className="name">
+                      {lastName} {firstName}
+                    </div>
+                    {paid == "true" ? (
+                      <button
+                        onClick={payForAdmission}
+                        className="btn pay-btn mt-3 mx-auto px-5"
+                        style={{ backgroundColor: "green" }}
+                        disabled
+                      >
+                        ✓ Paid ₦5000
+                      </button>
+                    ) : (
+                      <button
+                        onClick={payForAdmission}
+                        className="btn pay-btn mt-3 mx-auto px-5"
+                        style={{ backgroundColor: "white" }}
+                      >
+                        Pay ₦5000
+                      </button>
+                    )}
                   </div>
-                  {paid == "true" ? (
-                  <button onClick={payForAdmission} className="btn pay-btn mt-3 mx-auto px-5" style={{ backgroundColor: 'green' }} disabled>✓ Paid ₦5000</button>
-                  ) : (
-                    
-                  <button onClick={payForAdmission} className="btn pay-btn mt-3 mx-auto px-5" style={{ backgroundColor: 'white' }}>Pay ₦5000</button>
-                  )}
                 </div>
-              </div>
-            )
-          }
+              )}
             </div>
           </>
         ) : (
           <>
-          <div className="payment-slip">
-          <span>Payment Slip:</span>
-          <small className="fw-bold">Upload your payment slip here</small>
-          <input type="file" accept="image/*" onChange={handleImageSelect} />
-          {isLoading ? ( // Display ping while isLoading
-            <div className="ping"></div>
-          ) : cloudImage ? (
-            <div className="give-it-a-class-name text-white">
-              <div className="card-content">
-                <div className="name-date">
-                  <div className="name">
-                    {lastName} {firstName}
-                  </div>
-                  <div className="date my-3 text-white">
-                    <span className="my-auto">Uploaded:</span>{" "}
-                    <small className="my-auto">{receiptDate}</small>
-                  </div>
-                </div>
-                <div className="selected-image">
-                  <div
-                    className="admission-receipt"
-                    style={{ width: "20%", height: "80px", borderRadius: "0%" }}
-                    onClick={openModal}
-                  >
-                    <img src={cloudImage} alt="Avatar" className="hover-img" />
-                    <div class="cover-container">
-                      <img src={cloudImage} alt="" className="cover-img" />
-                      <p className="cover-txt" style={{ fontSize: "12px" }}>
-                        Hover & Click{" "}
-                      </p>
+            <div className="payment-slip">
+              <span>Payment Slip:</span>
+              <small className="fw-bold">Upload your payment slip here</small>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageSelect}
+              />
+              {isLoading ? (
+                <div className="ping"></div>
+              ) : cloudImage ? (
+                <div className="give-it-a-class-name text-white">
+                  <div className="card-content">
+                    <div className="name-date">
+                      <div className="name">
+                        {lastName} {firstName}
+                      </div>
+                      <div className="date my-3 text-white">
+                        <span className="my-auto">Uploaded:</span>{" "}
+                        <small className="my-auto">{receiptDate}</small>
+                      </div>
+                    </div>
+                    <div className="selected-image">
+                      <div
+                        className="admission-receipt"
+                        style={{
+                          width: "20%",
+                          height: "80px",
+                          borderRadius: "0%",
+                        }}
+                        onClick={openModal}
+                      >
+                        <img
+                          src={cloudImage}
+                          alt="Avatar"
+                          className="hover-img"
+                        />
+                        <div class="cover-container">
+                          <img src={cloudImage} alt="" className="cover-img" />
+                          <p className="cover-txt" style={{ fontSize: "12px" }}>
+                            Hover & Click{" "}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                // Display arrow if no image is selected
+                <div className="arrow">
+                  <span className="arrow-span"></span>
+                  <span className="arrow-span"></span>
+                  <span className="arrow-span"></span>
+                </div>
+              )}
             </div>
-          ) : (
-            // Display arrow if no image is selected
-            <div className="arrow">
-              <span className="arrow-span"></span>
-              <span className="arrow-span"></span>
-              <span className="arrow-span"></span>
-            </div>
-          )}
-        </div>
           </>
         )}
-        
       </div>
 
       {modalOpen && (
@@ -377,10 +431,8 @@ const Payment = ({
 
 export default Payment;
 
-
-
-
-{/* <div className="payment-slip">
+{
+  /* <div className="payment-slip">
           <span>Payment Slip:</span>
           <small className="fw-bold">Upload your payment slip here</small>
           <input type="file" accept="image/*" onChange={handleImageSelect} />
@@ -423,4 +475,5 @@ export default Payment;
               <span className="arrow-span"></span>
             </div>
           )}
-        </div> */}
+        </div> */
+}
