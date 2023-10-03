@@ -37,6 +37,8 @@ const Test = () => {
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.portalReducer.studentInfo);
   let warningSound = new Audio("warning.mp3");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
   useEffect(() => {
     let studentLoginToken = localStorage.studentLoginToken;
@@ -146,7 +148,7 @@ const Test = () => {
       }
     });
 
-    if (timeIsUp) {
+    if (timeIsUp && !hasSubmitted) {
       const nonNegativeScores = questionScores.map((score) =>
         Math.max(score, 0)
       );
@@ -157,6 +159,8 @@ const Test = () => {
       );
 
       submitMyScore(totalNonNegativeScore);
+      console.log("this is total in useeffect " + totalNonNegativeScore);
+      setHasSubmitted(true);
     }
 
     const storedQuestionScores = localStorage.getItem("questionScores");
@@ -175,7 +179,7 @@ const Test = () => {
     if (storedAnsweredQuestions) {
       setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     }
-  }, [timeIsUp, questions, beginExam, refreshing]);
+  }, [timeIsUp, questions, beginExam, refreshing, hasSubmitted]);
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;

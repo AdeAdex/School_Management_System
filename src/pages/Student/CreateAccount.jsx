@@ -75,7 +75,6 @@ const CreateAccount = () => {
           phoneNumber: selectedCode + values.phoneNumber,
         };
 
-        console.log(newValues);
         const endpoint =
           "https://school-portal-backend-adex2210.vercel.app/student_account/student";
 
