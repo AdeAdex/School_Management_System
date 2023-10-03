@@ -183,7 +183,7 @@ const CreateAccount = () => {
       ),
       value: "Terms & Condition",
       description:
-        "By creating an account, you agree to the following terms and conditions:\n\n1. Make sure to provide a correct email address as you will receive important emails related to your account.\n2. You will provide accurate and truthful information during registration.\n3. You are responsible for maintaining the confidentiality of your account password.\n4. You will not share your account credentials with others.\n5. You will notify us immediately of any unauthorized access to your account.\n6. You will abide by all applicable laws and regulations while using our services.\n7. We reserve the right to terminate or suspend your account if you violate these terms.\n\nNote: Your password is securely encrypted to protect your privacy.",
+        "By creating an account, you agree to the following terms and conditions:\n\n1. Make sure to provide a correct email address as you will receive important emails related to your account.\n2. You will provide accurate and truthful information during registration.\n3. You are responsible for maintaining the confidentiality of your account password.\n4. You will not share your account credentials with others.\n5. You will notify us immediately of any unauthorized access to your account.\n6. You will abide by all applicable laws and regulations while using our services.\n7. We reserve the right to terminate or suspend your account if you violate these terms.\n\nNote: Your password is securely encrypted to protect your privacy.\n Rest assured, there will be no charges made to your account at the time of making any payment.",
     },
   ];
 
