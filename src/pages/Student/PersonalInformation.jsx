@@ -235,27 +235,6 @@ const PersonalInformation = () => {
               </small>
             ) : null}
           </FormControl>
-          {/* <input
-            type="text"
-            autoComplete="on"
-            className={
-              formik.touched.title && formik.errors.title
-                ? "input form-control is-invalid"
-                : "input form-control"
-            }
-            id=""
-            name="title"
-            required
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.title}
-          />
-          <label htmlFor="validationServer01" className="user-label">
-            Title
-          </label>
-          <div id="validationServer04Feedback" className="invalid-feedback">
-            Please provide a valid Title.
-          </div> */}
         </div>
         <div className="col-md-6 mb-3">
           <FormControl sx={{ m: 0, width: "100%" }} size="small">
