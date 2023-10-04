@@ -22,7 +22,6 @@ const Test = () => {
   const [questionScores, setQuestionScores] = useState(
     Array.from({ length: questions.length }, () => 0)
   );
-  // const [taken, setTaken] = useState(false);
   const [performed, setPerformed] = useState(false);
   const [beginExam, setBeginExam] = useState(false);
   const [timeIsUp, setTimeIsUp] = useState(false);
@@ -104,8 +103,6 @@ const Test = () => {
         const remainingTime = countdownTime - elapsedTime;
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
-          // warningSound.pause();
-          // warningSound.currentTime = 0;
           localStorage.done = true;
           if (localStorage.done) {
             setTimeIsUp(true);
@@ -117,7 +114,6 @@ const Test = () => {
           setCountdown({ minutes, seconds });
 
           if (minutes === 0 && seconds <= 30) {
-            // warningSound.play();
           }
         }
       }, 1000);
@@ -130,7 +126,6 @@ const Test = () => {
 
   useEffect(() => {
     localStorage.getItem("finished") === "true";
-    // setTaken(localStorage.getItem('taken') === 'true')
     setBeginExam(localStorage.getItem("examStarted") === "true");
     startCountdown();
     let endpoint =
@@ -180,6 +175,7 @@ const Test = () => {
       setAnsweredQuestions(JSON.parse(storedAnsweredQuestions));
     }
   }, [timeIsUp, questions, beginExam, refreshing, hasSubmitted]);
+  
 
   const handleNextClick = () => {
     const newQuestionIndex = currentQuestionIndex + 1;
@@ -244,9 +240,7 @@ const Test = () => {
       myScores: newScores,
       myEmail: globalState.email,
       myDecision: true,
-      questionDetails: questionDetails, // before making changes
-      // questionCategories: questions.map((question) => question.category), // before making changes
-      // questionCorrectness: questionScores, // before making changes
+      questionDetails: questionDetails,
     };
     console.log(payload);
     const endpoint2 =
@@ -327,47 +321,6 @@ const Test = () => {
     // Now you have the user scores based on correctness
     console.log("User Scores:", scores);
   };
-
-  // const handleOptionSelect = (option) => {
-  //   const newSelectedOptions = [...selectedOptions];
-  //   const newQuestionScores = [...questionScores];
-
-  //   const currentQuestion = questions[currentQuestionIndex];
-  //   const questionIndex = currentQuestion.id - 1;
-
-  //   newSelectedOptions[questionIndex] = option;
-
-  //   if (option.startsWith(currentQuestion.correctOption)) {
-  //     newQuestionScores[questionIndex] = 10;
-  //   } else {
-  //     newQuestionScores[questionIndex] = -10;
-  //   }
-
-  //   setSelectedOptions(newSelectedOptions);
-
-  //   // Use an array for answeredQuestions
-  //   const updatedAnsweredQuestions = [...answeredQuestions];
-
-  //   if (option !== "") {
-  //     newQuestionScores[questionIndex] = newQuestionScores[questionIndex] || 0;
-  //     updatedAnsweredQuestions.push(currentQuestion.id);
-  //   } else {
-  //     const index = updatedAnsweredQuestions.indexOf(currentQuestion.id);
-  //     if (index !== -1) {
-  //       updatedAnsweredQuestions.splice(index, 1);
-  //     }
-  //   }
-
-  //   setAnsweredQuestions(updatedAnsweredQuestions);
-  //   setQuestionScores(newQuestionScores);
-
-  //   localStorage.setItem(
-  //     "answeredQuestions",
-  //     JSON.stringify(updatedAnsweredQuestions)
-  //   );
-  //   localStorage.setItem("questionScores", JSON.stringify(newQuestionScores));
-  //   localStorage.setItem("selectedOptions", JSON.stringify(newSelectedOptions));
-  // };
 
   const toLogin = () => {
     localStorage.removeItem("answeredQuestions");
