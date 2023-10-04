@@ -225,9 +225,9 @@ const PersonalInformation = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value="Male">Mr</MenuItem>
-              <MenuItem value="Female">Mrs</MenuItem>
-              <MenuItem value="Others">Miss</MenuItem>
+              <MenuItem value="Mr">Mr</MenuItem>
+              <MenuItem value="Mrs">Mrs</MenuItem>
+              <MenuItem value="Miss">Miss</MenuItem>
             </Select>
             {formik.touched.title && Boolean(formik.errors.title) ? (
               <small className="error text-danger">
