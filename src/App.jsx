@@ -93,18 +93,13 @@ function App() {
     <>
     <Router>
       <Routes>
-        <Route path='/' element={<HomePage/>}/>
         {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
-          {/* <Route path='/student_dashboard/chat' element={<ChatModal socket={socketRef}/>}/> */}
-          {/* <Route path='edit_details' element={<StudentEditDetails socket={socketRef}/>} />   */}
-
-          <Route path='/chat' element={<Chat socket={socketRef}/>} />  
-
-
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/chat' element={<Chat socket={socketRef}/>} />  
         <Route path='/student-entrance-exam_questions' element={takenAdmissionExam != true ? <Test/> : <Navigate to="../student/admission/pick_class"/>}/>
         <Route path='/student_signin' element={<StudentSignIn/>}/>
         <Route path='/student' element={shouldRedirect ? <Navigate to="/student/create_account"/> : <StudentSignUp/>}/>
-        <Route path='/student/*' element={ <StudentSignUp/>}>   {/* studentLoginToken ?   : <Navigate to="/student_login"/> */}
+        <Route path='/student/*' element={ <StudentSignUp/>}>  
           <Route path='create_account' element={<CreateAccount/>}/>
           <Route path='admission' element={shouldRedirect ? <Navigate to="student/admission/pick_class"/> : <Admission/>}/>
           <Route path='admission/*' element={shouldRedirect ?  <Navigate to="student/admission/pick_class"/> : <Navigate to="/student_login"/>}>
