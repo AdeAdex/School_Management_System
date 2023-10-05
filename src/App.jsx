@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import './index.css'
 import { Link, Navigate, Route, BrowserRouter as Router, Routes} from 'react-router-dom'
@@ -125,7 +123,6 @@ function App() {
           <Route path='pay_tuition' element={<StudentPayment/>} />
           <Route path='payment_history' element={<StudentPaymentHistory/>} />
           <Route path='conversation' element={<GroupChat/>} />
-          {/* <Route path='chat' element={<ChatModal socket={socketRef}/>}/> */}
         </Route>
         
             
