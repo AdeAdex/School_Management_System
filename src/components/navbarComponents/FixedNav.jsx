@@ -6,7 +6,7 @@ import { FiPlay } from "react-icons/fi";
 const FixedNav = () => {
   const navigate = useNavigate()
   const navigateToShop = () => {
-    window.open('https://adex2210.github.io/e-commerce/', '_blank');
+    window.open('https://adex2210.github.io/ShopStream-Your-One-Stop-Shopping-Destination', '_blank');
   }
 
   const navigateToGame = () => {
