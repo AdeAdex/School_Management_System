@@ -47,7 +47,6 @@ const EditEducationModal = ({
         "https://school-portal-backend-adex2210.vercel.app/student_account/edit";
       axios.put(endpoint, newValues)
       .then((response) => {
-        // console.log(response.data.response.previousEducation[index].exam);
       });
     },
   });
