@@ -151,7 +151,7 @@ const ContactUSPage = () => {
               </button>
             </form>
           </div>
-          <div className="map">
+          <div className="map" style={{height: '200px !important'}}>
             {/* Add your map or location here */}
             {/* Example: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083..." width="100%" height="400" frameBorder="0" allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe> */}
           </div>
