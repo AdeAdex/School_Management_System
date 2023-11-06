@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 import Footer from "../components/footerComponents/Footer";
 import { useLocation } from "react-router-dom";
 import "../pages/ReadEventPage.css";
+
 
 const ReadEventPage = () => {
   const location = useLocation();
@@ -23,6 +24,11 @@ const ReadEventPage = () => {
     "Workshops and Activities",
     "Closing Ceremony",
   ];
+
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <>

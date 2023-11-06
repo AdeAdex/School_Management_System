@@ -30,6 +30,8 @@ const AboutUsPage = () => {
   useEffect(() => {
     getMyLocation();
     fetchSchoolLocation();
+    window.scrollTo(0, 0);
+
   }, []);
 
   const handleLocateUsClick = (e) => {

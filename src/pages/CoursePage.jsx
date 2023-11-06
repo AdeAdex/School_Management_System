@@ -17,6 +17,7 @@ const CoursePage = () => {
   const [selectedOption, setSelectedOption] = useState("science");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/student_subject";
     let endpoint2 =

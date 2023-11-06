@@ -14,6 +14,12 @@ const TeachersPage = () => {
   const [teacherInfo, setTeacherInfo] = useState([]);
   const navigate = useNavigate();
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+  
+
   useEffect(() => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";

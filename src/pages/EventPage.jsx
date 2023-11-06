@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OurEvents from "../components/eventPageComponents/OurEvents";
 import Previous_Next_Btn from "../components/generalComponents/Previous_Next_Btn";
 import Footer from "../components/footerComponents/Footer";
@@ -6,6 +6,10 @@ import Parallax2 from "../components/generalComponents/Parallax2";
 import PagesNavbar from "../components/navbarComponents/PagesNavbar";
 
 const EventPage = () => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <>
     <PagesNavbar/>
