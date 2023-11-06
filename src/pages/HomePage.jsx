@@ -15,6 +15,10 @@ const HomePage = () => {
   const contactUsRef = useRef();
   const [showScrollButton, setShowScrollButton] = useState(false);
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
