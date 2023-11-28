@@ -10,7 +10,7 @@ const FooterHero = () => {
     } else if (para == "twitter") {
       window.open('https://twitter.com/AdeAdex_', '_blank');
     } else if (para == "linkedin") {
-      window.open('https://www.linkedin.com/in/adeolu-amole-629a80151/', '_blank');
+      window.open('https://www.linkedin.com/in/adeolu-amole', '_blank');
     } else {
 
     }
