@@ -10,9 +10,10 @@ const OrangeHouseTeachersCard = ({
   bodyClassName,
   to_where,
   onClick,
+  isSmallScreen,
 }) => {
   const navigate = useNavigate();
- 
+
   return (
     <>
       <div className="card orange-card-main  mb-2" style={{ width: "48.3%" }}>
@@ -38,7 +39,7 @@ const OrangeHouseTeachersCard = ({
                   backgroundColor: "inherit",
                   textDecoration: "none",
                   color: "inherit",
-                  cursor: 'pointer'
+                  cursor: "pointer",
                 }}
               >
                 <h5>{teacherName}</h5>
@@ -60,7 +61,11 @@ const OrangeHouseTeachersCard = ({
                   backgroundColor: "",
                 }}
               >
-                {aboutTeacher}
+                {isSmallScreen ? (
+                  <span>{aboutTeacher.slice(0, 85) + " ..."}</span>
+                ) : (
+                  <span>{aboutTeacher.slice(0, 124) + " ..."}</span>
+                )}
               </div>
               <button
                 onClick={onClick}

@@ -40,6 +40,8 @@ const ActivitiesContainer = ({ title, icon, style, content }) => {
     opacity: showTooltip ? 1 : 0,
     transition: 'visibility 0s, opacity 0.3s',
     zIndex: 1,
+    width: '60%',
+    textAlign: 'center'
   };
 
   return (
@@ -53,7 +55,7 @@ const ActivitiesContainer = ({ title, icon, style, content }) => {
       <div>
         <h4 className='text-capitalize'>{title}</h4>
         <div className="content mt-3">{content}</div>
-        <div style={tooltipStyle}>{title}</div>
+        <div className='tooltip' style={tooltipStyle}>{title}</div>
       </div>
     </div>
   );

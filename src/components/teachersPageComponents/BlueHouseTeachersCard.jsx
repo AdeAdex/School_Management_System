@@ -13,6 +13,7 @@ const BlueHouseTeachersCard = ({
   bodyClassName,
   bodyStyle,
   styles,
+  isSmallScreen,
 }) => {
   return (
     <>
@@ -57,7 +58,11 @@ const BlueHouseTeachersCard = ({
                 backgroundColor: "",
               }}
             >
-              {content}
+              {isSmallScreen ? (
+                <span>{content.slice(0, 80) + " ..."}</span>
+              ) : (
+                <span>{content.slice(0, 90) + " ..."}</span>
+              )}
             </div>
           </div>
           <div className="d-flex justify-content-evenly mt-3">

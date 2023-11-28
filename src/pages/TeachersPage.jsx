@@ -14,11 +14,23 @@ const TeachersPage = () => {
   const [teacherInfo, setTeacherInfo] = useState([]);
   const navigate = useNavigate();
 
-  
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
-  
+  }, []);
 
   useEffect(() => {
     let endpoint =
@@ -61,6 +73,7 @@ const TeachersPage = () => {
         <div className="center-div mt-4">
           <div className="teachers_type d-flex w-100 gap-4">
             <TeachersType
+              isSmallScreen={isSmallScreen}
               container_style={{
                 height: "160px",
                 width: "33.3%",
@@ -72,6 +85,7 @@ const TeachersPage = () => {
               feedbackContent="Our pedagogical study program focuses on innovative teaching methods that empower students to reach their full potential."
             />
             <TeachersType
+              isSmallScreen={isSmallScreen}
               container_style={{
                 height: "160px",
                 width: "33.3%",
@@ -83,6 +97,7 @@ const TeachersPage = () => {
               feedbackContent="We are committed to providing specialized assistance to disabled individuals, ensuring their inclusion in our educational community."
             />
             <TeachersType
+              isSmallScreen={isSmallScreen}
               container_style={{
                 height: "160px",
                 width: "33.3%",
@@ -120,6 +135,7 @@ const TeachersPage = () => {
                 // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
                 teacherName={eachTeacher.teacherName}
                 aboutTeacher={eachTeacher.teacherInfo}
+                isSmallScreen={isSmallScreen}
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,
@@ -165,6 +181,7 @@ const TeachersPage = () => {
                 title={eachTeacher.teacherName}
                 styles={{ backgroundColor: "#F9F9F9" }}
                 teacherName={eachTeacher.teacherName}
+                isSmallScreen={isSmallScreen}
                 content={eachTeacher.teacherInfo}
                 iconStyle={`${
                   index % 5 === 0

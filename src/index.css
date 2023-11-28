@@ -231,7 +231,7 @@ body {
   }
 
   .carousel-inner {
-    height: 300px !important;
+    height: 250px !important;
   }
   #carouselExampleDark {
     margin-top: 140px !important;
@@ -330,6 +330,10 @@ body {
   .days-countdown-values {
     margin-bottom: 20px;
     gap: 10px !important;
+  }
+
+  .tooltip {
+    width: 80% !important
   }
 }
 

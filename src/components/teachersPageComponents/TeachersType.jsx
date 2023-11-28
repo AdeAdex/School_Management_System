@@ -5,7 +5,8 @@ const TeachersType = ({
   userFeedbackName,
   feedbackUsername,
   feedbackContent,
-  icon
+  icon,
+  isSmallScreen,
 }) => {
   return (
     <>
@@ -29,7 +30,13 @@ const TeachersType = ({
             {userFeedbackName}{" "}
             <span style={{ color: "#1DA1F2" }}>{feedbackUsername}</span>
           </div>
-          <div style={{fontSize: '14px'}}>{feedbackContent}</div>
+          <div style={{ fontSize: "14px" }}>
+            {isSmallScreen ? (
+              <div>{feedbackContent.slice(0, 52) + "..."}</div>
+            ) : (
+              <div>{feedbackContent}</div>
+            )}
+          </div>
         </div>
       </div>
     </>
