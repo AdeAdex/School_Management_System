@@ -33,7 +33,7 @@ const SigninForm = () => {
       axios.post(endpoint, values).then((res) => {
         if (res.data.status) {
           localStorage.studentSignInToken = res.data.studentSignInToken;
-          navigate("/student_dashboard");
+          navigate(`/student_dashboard`);
         } else {
           setMyMessage(res.data.message);
           navigate("/student_signin");

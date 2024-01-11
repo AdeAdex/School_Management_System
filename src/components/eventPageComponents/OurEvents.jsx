@@ -23,7 +23,7 @@ const OurEvents = () => {
   }, []);
 
   const readMore = (eventData) => {
-    navigate("/read_more_about_our_event", { state: eventData });
+    navigate(`/read_more_about_our_event/${eventData.eventTitle}`, { state: eventData });
   };
 
   return (
