@@ -27,7 +27,25 @@ const AboutTeachersPage = ({ seconds }) => {
     setTimeout(() => countDown(), 1000);
   }, [countdown]);
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  useEffect(() => {
+    // Function to handle window resize
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768); // Adjust the breakpoint as needed
+    };
+
+    // Initial check on component mount
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup by removing event listener when component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const sortedTeacherSkills = teacherSkills.slice().sort((a, b) => b.percentage - a.percentage);
 
@@ -57,7 +75,7 @@ const AboutTeachersPage = ({ seconds }) => {
             <img
               src={teacherPicture}
               alt=""
-              style={{ height: "350px", width: "100%", borderRadius: "5px" }}
+              style={{ height: isSmallScreen ? "250px" : "350px", width: "100%", borderRadius: "5px" }}
             />
           </div>
           <div className="skill_content" style={{ width: "33%" }}>
