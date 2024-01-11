@@ -42,10 +42,16 @@ const TeachersPage = () => {
     });
   }, [teacherInfo]);
 
+  // const toTeachersPage = (teacherData) => {
+  //   // navigate(`/about_this_teacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
+  //   navigate("/about_this_teacher", { state: teacherData });
+  // };
   const toTeachersPage = (teacherData) => {
-    // navigate(`/about_this_teacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
-    navigate("/about_this_teacher", { state: teacherData });
+    navigate(`/about_this_teacher/${teacherData.teacherName}`, {
+      state: teacherData,
+    });
   };
+  
 
   const firstFourTeacher = teacherInfo.slice(0, 4);
   const lastFourTeacher = teacherInfo.slice(4);
@@ -195,7 +201,7 @@ const TeachersPage = () => {
                     : "pink"
                 }`}
                 // iconStyle={{ backgroundColor: "#74cee4" }}
-                to_where="/about_this_teacher"
+                // to_where="/about_this_teacher"
                 onClick={() => {
                   toTeachersPage({
                     teacherName: eachTeacher.teacherName,

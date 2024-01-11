@@ -140,7 +140,7 @@ function App() {
         <Route path='/ourevent' element={<EventPage/>}/>
         <Route path='/ournews' element={<NewsPage/>}/>
         <Route path='/ourteachers' element={<TeachersPage/>}/>
-        <Route path='/about_this_teacher' element={<AboutTeachersPage/>}/>
+        <Route path='/about_this_teacher/:name' element={<AboutTeachersPage/>}/>
         <Route path='/read_more_about_our_event' element={<ReadEventPage/>}/>
         <Route path='/our_courses' element={<CoursePage/>}/>
         <Route path='/aboutus' element={<AboutUsPage/>} />
