@@ -61,7 +61,7 @@ const AboutTeachersPage = ({ seconds }) => {
           styles={{
             height: "60%",
             backgroundImage:
-              'url("pic/teacher24.jpg"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
+              'url("/pic/teacher24.jpg"), linear-gradient(rgba(72, 72, 178, 0.5), rgba(116, 116, 124, 0.8))',
             backgroundPosition: "60% 10%",
           }}
           inner_classes="activities activities-white-color"
@@ -137,7 +137,7 @@ const AboutTeachersPage = ({ seconds }) => {
           classes="bg"
           styles={{
             height: "30%",
-            backgroundImage: 'url("pic/gallary6.jpg")',
+            backgroundImage: 'url("/pic/gallary6.jpg")',
           }}
           inner_content_2="contact us"
         />
@@ -159,7 +159,7 @@ const AboutTeachersPage = ({ seconds }) => {
               className="w-100 shadow p-3"
               style={{ height: "300px" }}
               controls
-              poster="pic/pic.jpg"
+              poster="/pic/pic.jpg"
             >
               <source src={teacherVideo} type="video/mp4" />
             </video>
@@ -227,7 +227,7 @@ const AboutTeachersPage = ({ seconds }) => {
           classes="bg"
           styles={{
             height: "30%",
-            backgroundImage: 'url("pic/gallary4.png")',
+            backgroundImage: 'url("/pic/gallary4.png")',
           }}
           inner_content_2="curriculum"
         />
@@ -235,7 +235,7 @@ const AboutTeachersPage = ({ seconds }) => {
           classes="bg"
           styles={{
             height: "30%",
-            backgroundImage: 'url("pic/gallary4.png")',
+            backgroundImage: 'url("/pic/gallary4.png")',
           }}
           inner_content_2="contact us"
         /> */}

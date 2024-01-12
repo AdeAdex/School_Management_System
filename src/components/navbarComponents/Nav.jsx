@@ -52,7 +52,7 @@ const Nav = () => {
             to="/"
           >
             <img
-              src="pic/ade.png"
+              src="/pic/ade.png"
               alt="Logo"
               className="my-auto logo-image"
               style={window.innerWidth <= 768 ? navMobileStyle : navDesktopStyle}
