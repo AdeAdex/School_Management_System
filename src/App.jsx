@@ -81,9 +81,7 @@ function App() {
     socketRef.current = socketClient(ioEndpoint);
   },[])
 
-  let staffSignInToken = localStorage.staffSignInToken
-  let studentLoginToken = localStorage.studentLoginToken
-  let studentSignInToken = localStorage.studentSignInToken
+ 
   let shouldRedirect = true;
   let takenAdmissionExam = localStorage.getItem('taken') === 'true';
 
@@ -91,7 +89,6 @@ function App() {
     <>
     <Router>
       <Routes>
-        {/* <Route path='/:username' element={username? <UserPage/> : <Navigate to="/*"/>}/> */}
         <Route path='/' element={<HomePage/>}/>
         <Route path='/chat' element={<Chat socket={socketRef}/>} />  
         <Route path='/student-entrance-exam_questions' element={takenAdmissionExam != true ? <Test/> : <Navigate to="../student/admission/pick_class"/>}/>

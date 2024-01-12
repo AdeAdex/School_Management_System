@@ -1,6 +1,5 @@
 import React from "react";
 import Small_hr from "../generalComponents/Small_hr";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const OrangeHouseTeachersCard = ({
   img,
@@ -12,7 +11,6 @@ const OrangeHouseTeachersCard = ({
   onClick,
   isSmallScreen,
 }) => {
-  const navigate = useNavigate();
 
   return (
     <>

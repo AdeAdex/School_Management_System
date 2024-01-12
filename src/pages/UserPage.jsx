@@ -1,7 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+
 
 const UserPage = () => {
+  const location = useLocation();
   let { username } = useParams();
   return (
     <>

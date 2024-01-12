@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 const TeachersPage = () => {
   const [teacherInfo, setTeacherInfo] = useState([]);
   const navigate = useNavigate();
-
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,22 +36,16 @@ const TeachersPage = () => {
     let endpoint =
       "https://school-portal-backend-adex2210.vercel.app/staff_account/create_staff_account";
     axios.get(endpoint).then((response) => {
-      // console.log(response.data.response[0].aboutTeacher);
       setTeacherInfo(response.data.response[0].aboutTeacher);
-      // console.log(teacherInfo);
     });
   }, [teacherInfo]);
+ 
 
-  // const toTeachersPage = (teacherData) => {
-  //   // navigate(`/about_this_teacher?name=${teacherName}&info=${teacherInfo}&picture=${teacherPicture}`);
-  //   navigate("/about_this_teacher", { state: teacherData });
-  // };
   const toTeachersPage = (teacherData) => {
     navigate(`/about_this_teacher/${teacherData.teacherName}`, {
       state: teacherData,
     });
   };
-  
 
   const firstFourTeacher = teacherInfo.slice(0, 4);
   const lastFourTeacher = teacherInfo.slice(4);
@@ -138,7 +132,6 @@ const TeachersPage = () => {
                     ? "purple"
                     : "pink"
                 } orange-body-main col-lg-7 col-md-12 d-flex`}
-                // bodyClassName="orange-body-main col-lg-7 col-md-12 orange d-flex"
                 teacherName={eachTeacher.teacherName}
                 aboutTeacher={eachTeacher.teacherInfo}
                 isSmallScreen={isSmallScreen}
@@ -151,6 +144,7 @@ const TeachersPage = () => {
                     teacherSkills: eachTeacher.teacherSkills,
                   });
                 }}
+                // loading={loading}
               />
             ))}
           </div>
