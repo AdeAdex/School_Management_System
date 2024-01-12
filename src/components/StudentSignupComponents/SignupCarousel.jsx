@@ -55,7 +55,7 @@ const SignupCarousel = ({
                 <div className="d-flex gap-3 mt-4">
                   <img
                     src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1696005927/Love_xfpgkb.jpg"
-                    alt=""
+                    alt="Grace"
                     style={{
                       width: "40px",
                       height: "40px",
@@ -73,8 +73,8 @@ const SignupCarousel = ({
                 <div>{carousel_content2}</div>
                 <div className="d-flex gap-3 mt-3">
                   <img
-                    src="https://media.licdn.com/dms/image/D4D03AQGIQqrLQL-R7A/profile-displayphoto-shrink_800_800/0/1688408720036?e=1701302400&v=beta&t=WIhgJkdq8dKBURfYuZwVwhzXGKZ2hr7JHbAtKSJ5_WA"
-                    alt=""
+                    src=""
+                    alt="Felix"
                     style={{
                       width: "40px",
                       height: "40px",
@@ -93,7 +93,7 @@ const SignupCarousel = ({
                 <div className="d-flex gap-3 mt-3">
                   <img
                     src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1696005821/facebook_1696005686916_7113563436657715941_wk9exl.jpg"
-                    alt=""
+                    alt="Bunmi"
                     style={{
                       width: "40px",
                       height: "40px",

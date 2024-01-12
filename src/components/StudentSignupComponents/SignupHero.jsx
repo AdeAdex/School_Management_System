@@ -79,7 +79,7 @@ const SignupHero = ({ isAdmissionPage }) => {
 
           <div className="d-flex justify-content-center w-100">
             <img
-              src="pic/ade.png"
+              src="/pic/ade.png"
               className="mt-5 mb-lg-1 d-flex align-items-center"
               style={{ width: "50px" }}
               alt=""
