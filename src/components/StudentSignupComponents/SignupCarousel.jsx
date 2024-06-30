@@ -73,7 +73,7 @@ const SignupCarousel = ({
                 <div>{carousel_content2}</div>
                 <div className="d-flex gap-3 mt-3">
                   <img
-                    src=""
+                    src="https://res.cloudinary.com/dn4gfzlhq/image/upload/v1681986699/samples/people/smiling-man.jpg"
                     alt="Felix"
                     style={{
                       width: "40px",

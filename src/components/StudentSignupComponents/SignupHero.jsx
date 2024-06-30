@@ -67,6 +67,7 @@ const SignupHero = ({ isAdmissionPage }) => {
             borderRadius: "10px",
             height: "100%",
             backgroundImage: "url('/pic/signupimg.jpg')",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
         >
