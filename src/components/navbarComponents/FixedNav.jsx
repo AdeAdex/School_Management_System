@@ -6,11 +6,11 @@ import { FiPlay } from "react-icons/fi";
 const FixedNav = () => {
   const navigate = useNavigate()
   const navigateToShop = () => {
-    window.open('https://adex2210.github.io/ShopStream-Your-One-Stop-Shopping-Destination/', '_blank');
+    window.open('https://adeadex.github.io/ShopStream-Your-One-Stop-Shopping-Destination', '_blank');
   }
 
   const navigateToGame = () => {
-    window.open('https://adex2210.github.io/rock-Paper-Scissors/', '_blank');
+    window.open('https://adeadex.github.io/rock-Paper-Scissors', '_blank');
   }
   return (
     <>
