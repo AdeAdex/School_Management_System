@@ -25,8 +25,8 @@ const Contact_Us_Form = () => {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       setIsLoading(true);
-      // let endpoint = 'https://school-portal-backend-adex2210.vercel.app/staff_account/people_reaching_us'
-      let endpoint = 'http://localhost:2000/staff_account/people_reaching_us'
+      let endpoint = 'https://school-portal-backend-adex2210.vercel.app/staff_account/people_reaching_us'
+      // let endpoint = 'http://localhost:2000/staff_account/people_reaching_us'
       axios.post(endpoint, values)
       .then((response) => {
       setIsLoading(false);
